@@ -1,4 +1,27 @@
 {
+    "builds": {
+        "web": {"default": true},
+        "native": {
+            "packager": "phonegap",
+            "phonegap" : {
+                "config": {
+                    // Uncomment the line below and add the platform you wish to build for
+                    "platform": "ios",
+
+                    // Uncomment and Set this line to true to enable PhoneGap Remote Building.
+                    // To properly use this you must set the following properties in your local.properties file (if this file does not exist create it in your app root)
+                    // phonegap.remote.username=myname@domain.com
+                    // phonegap.remote.password=mys3cr3tp@ssw0rd
+                    //"remote":false,
+
+                    "id": "com.domain.ttapp",
+                    "name": "ttapp"
+                }
+            }
+        }
+    },
+
+                
     /**
      * The application's namespace, used by Sencha Command to generate classes
      */
@@ -39,6 +62,10 @@
      *      }
      */
     "js": [
+        {
+            "path": "https://www.gstatic.com/swiffy/v7.1/runtime.js",
+            "update": "delta"
+        },
         {
             "path": "touch/sencha-touch.js",
             "x-bootstrap": true
@@ -120,6 +147,12 @@
      * must be kept intact for proper generation of deltas between updates
      */
     "archivePath": "archive",
+      "buildOptions": {
+        "product": "touch",
+        "minVersion": 3,
+        "debug": false,
+        "logger": "false"
+    },
 
     /**
      * List of package names to require for the cmd build process
