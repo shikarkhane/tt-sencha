@@ -2,7 +2,7 @@ Ext.define('ttapp.view.Main', {
     extend: 'Ext.tab.Panel',
     xtype: 'main',
     requires: [
-        'Ext.TitleBar', 'ttapp.store.trinkets'
+        'Ext.TitleBar', 'ttapp.store.trinkets', 'Ext.dataview.List'
     ],
     config: {
         tabBarPosition: 'bottom',
@@ -10,22 +10,9 @@ Ext.define('ttapp.view.Main', {
         items: [
             {
                 title: 'Home tab',
-                iconCls: 'home',
-
-                styleHtmlContent: true,
-                scrollable: true,
-
-                items: [{
-                    docked: 'top',
-                    xtype: 'titlebar',
-                    title: 'tinktime'
-                },
-                {
-                    store: 'ttapp.store.trinkets',
-                    itemTpl: '{name}'
-                }],
-
-                html: "I changed the default** to something different!"
+                xtype: 'list',
+                store: 'defaultTrinket',
+                itemTpl: '{name}'
                     
             },
             {
