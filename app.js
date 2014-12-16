@@ -16,9 +16,10 @@ Ext.application({
     requires: [
         'Ext.MessageBox'
     ],
+    controllers: ['tink'],
 
     views: [
-        'Main'
+        'Main','Home', 'Feed', 'Tink'
     ],
 
     stores: ['trinkets'],

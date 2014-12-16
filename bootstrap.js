@@ -33,7 +33,6 @@ Ext.Loader.addClassPathMappings({
   "Ext.device.sqlite.SQLResultSetRowList": "touch/src/device/sqlite/Sencha.js",
   "Ext.device.sqlite.SQLTransaction": "touch/src/device/sqlite/Sencha.js",
   "Message": "app/model/message.js",
-  "Trinket": "app/model/trinket.js",
   "ttapp": "app"
 });
 
@@ -659,7 +658,8 @@ Ext.ClassManager.addNameAlternateMappings({
     "Ext.viewport.WP"
   ],
   "Message": [],
-  "Trinket": [],
+  "ttapp.model.trinket": [],
+  "ttapp.store.trinkets": [],
   "ttapp.view.Main": []
 });
 
@@ -1382,7 +1382,8 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.viewport.Viewport": [],
   "Ext.viewport.WindowsPhone": [],
   "Message": [],
-  "Trinket": [],
+  "ttapp.model.trinket": [],
+  "ttapp.store.trinkets": [],
   "ttapp.view.Main": [
     "widget.main"
   ]

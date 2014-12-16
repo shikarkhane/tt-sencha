@@ -147,12 +147,7 @@
      * must be kept intact for proper generation of deltas between updates
      */
     "archivePath": "archive",
-      "buildOptions": {
-        "product": "touch",
-        "minVersion": 3,
-        "debug": false,
-        "logger": "false"
-    },
+    
 
     /**
      * List of package names to require for the cmd build process

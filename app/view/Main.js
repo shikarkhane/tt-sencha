@@ -9,24 +9,22 @@ Ext.define('ttapp.view.Main', {
 
         items: [
             {
-                title: 'Home tab',
-                xtype: 'list',
-                store: 'defaultTrinket',
-                itemTpl: '{name}'
+                title: 'swiffy',
+                xtype: 'panel',
+                id: "swiffydiv",
+                html: '<div id="swiffycontainer" style="width: 750px; height: 750px"></div>',
+                initialize : function() {
+                    console.log('inside initialize');
+                    var me = this;
                     
-            },
-            {
-                title: 'Toojoo',
-                iconCls: 'action',
+                    me.on('painted', function() {
+                        me.fireEvent('viewready', me);
+                    }, null, { single : true });
 
-                items: [
-                    {
-                        docked: 'top',
-                        xtype: 'titlebar',
-                        title: 'Getting Started'
-                    }
-                ]
+                    
+                }
             }
         ]
+
     }
 });
