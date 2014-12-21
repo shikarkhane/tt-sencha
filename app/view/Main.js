@@ -1,18 +1,18 @@
 Ext.define('ttapp.view.Main', {
-    extend: 'Ext.tab.Panel',
+    extend: 'Ext.Container',
     xtype: 'main',
     requires: [
         'Ext.TitleBar', 'ttapp.store.trinkets', 'Ext.dataview.List'
     ],
     config: {
-        tabBarPosition: 'bottom',
+        //tabBarPosition: 'bottom',
 
         items: [
             {
                 title: 'swiffy',
                 xtype: 'panel',
                 id: "swiffydiv",
-                html: '<div id="swiffycontainer" style="width: 750px; height: 750px"></div>',
+                html: '<iframe id="tinkcontainer" src="resources/tinks/default/default.html" style="width: 550px; height: 550px"></iframe>',
                 initialize : function() {
                     console.log('inside initialize');
                     var me = this;
@@ -23,6 +23,11 @@ Ext.define('ttapp.view.Main', {
 
                     
                 }
+            },
+            {
+                xtype: 'button',
+                text: "tink",
+                ui: 'confirm-round'
             }
         ]
 
