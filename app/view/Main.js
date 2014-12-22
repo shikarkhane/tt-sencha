@@ -2,7 +2,7 @@ Ext.define('ttapp.view.Main', {
     extend: 'Ext.Container',
     xtype: 'main',
     requires: [
-        'Ext.TitleBar', 'ttapp.store.trinkets', 'Ext.dataview.List'
+        'ttapp.view.Thinking'
     ],
     config: {
         //tabBarPosition: 'bottom',
@@ -12,24 +12,33 @@ Ext.define('ttapp.view.Main', {
                 title: 'swiffy',
                 xtype: 'panel',
                 id: "swiffydiv",
-                html: '<iframe id="tinkcontainer" src="resources/tinks/default/default.html" style="width: 550px; height: 550px"></iframe>',
-                initialize : function() {
-                    console.log('inside initialize');
-                    var me = this;
-                    
-                    me.on('painted', function() {
-                        me.fireEvent('viewready', me);
-                    }, null, { single : true });
-
-                    
-                }
+                html: '<iframe id="tinkcontainer" src="resources/tinks/default/default.html" style="width: 550px; height: 550px"></iframe>'
             },
             {
-                xtype: 'button',
-                text: "tink",
-                ui: 'confirm-round'
+                xtype: 'thinkingbutton'
             }
         ]
 
+    },
+    initialize: function() {
+        this.callParent(arguments);
+
+        var thinkElement = Ext.get('thinkbutton');
+
+        thinkElement.on(['touchstart'],
+        'onStartThinkingEvent', this);
+        thinkElement.on(['touchend'],
+        'onStopThinkingEvent', this);
+    },
+    onStartThinkingEvent: function(e, target, options, eventController) {
+        //this.down('toucheventlogger').addLog(eventController.info.eventName);
+        console.log('touchstart event');
+        Ext.getDom('tinkcontainer').contentWindow.tt_start_animation();
+    },
+    onStopThinkingEvent: function(e, target, options, eventController) {
+        //this.down('toucheventlogger').addLog(eventController.info.eventName);
+        console.log('touchend event');
+        Ext.getDom('tinkcontainer').contentWindow.tt_stop_animation();
     }
+
 });

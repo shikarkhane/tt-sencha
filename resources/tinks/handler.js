@@ -14,6 +14,6 @@ function tt_start_animation(){
     stage.start();
 };
 function tt_stop_animation(){
-	console.log('start animation');
+	console.log('stop animation');
 	stage.destroy();
 };
