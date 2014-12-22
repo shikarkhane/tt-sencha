@@ -2,12 +2,15 @@ Ext.define('ttapp.view.Main', {
     extend: 'Ext.Container',
     xtype: 'main',
     requires: [
-        'ttapp.view.Thinking'
+        'ttapp.view.Thinking', 'ttapp.view.TimerClock'
     ],
     config: {
         //tabBarPosition: 'bottom',
 
         items: [
+            {
+                xtype: 'timerClock'   
+            },
             {
                 title: 'swiffy',
                 xtype: 'panel',
