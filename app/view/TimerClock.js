@@ -18,7 +18,7 @@ Ext.define('ttapp.view.TimerClock', {
                 if (me.isPaused()) {
                     return;
                 }
-                me.setHtml(me.formatTime(duration++));
+                me.setHtml(me.formatTime(me.duration++));
                 if (duration >= 300) {
                     me.stop();
                 }
@@ -26,7 +26,10 @@ Ext.define('ttapp.view.TimerClock', {
         me.clockIntervalHook = setInterval(updateClock, 1000);
         return me;
     },
-
+    getDuration: function(){
+        // display seconds is 1 sec ahead than private variable on pause
+        return (this.duration - 1);   
+    },
     pause: function () {
         this.paused = true;
         return this;

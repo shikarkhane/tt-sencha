@@ -28,20 +28,14 @@ Ext.define('ttapp.view.Main', {
 
         var thinkElement = Ext.get('thinkbutton');
 
-        thinkElement.on(['touchstart'],
-        'onStartThinkingEvent', this);
-        thinkElement.on(['touchend'],
-        'onStopThinkingEvent', this);
+        thinkElement.on(['touchstart'], 'onStartThinkingEvent', this);
+        thinkElement.on(['touchend'], 'onStopThinkingEvent', this);
     },
     onStartThinkingEvent: function(e, target, options, eventController) {
-        //this.down('toucheventlogger').addLog(eventController.info.eventName);
-        console.log('touchstart event');
-        Ext.getDom('tinkcontainer').contentWindow.tt_start_animation();
+        this.fireEvent("startedthinking", this);
     },
     onStopThinkingEvent: function(e, target, options, eventController) {
-        //this.down('toucheventlogger').addLog(eventController.info.eventName);
-        console.log('touchend event');
-        Ext.getDom('tinkcontainer').contentWindow.tt_stop_animation();
+        this.fireEvent("stoppedthinking", this);
     }
 
 });

@@ -675,6 +675,8 @@ Ext.ClassManager.addNameAlternateMappings({
   "ttapp.view.Feed": [],
   "ttapp.view.Home": [],
   "ttapp.view.Main": [],
+  "ttapp.view.Thinking": [],
+  "ttapp.view.TimerClock": [],
   "ttapp.view.Tink": []
 });
 
@@ -1419,6 +1421,12 @@ Ext.ClassManager.addNameAliasMappings({
   ],
   "ttapp.view.Main": [
     "widget.main"
+  ],
+  "ttapp.view.Thinking": [
+    "widget.thinkingbutton"
+  ],
+  "ttapp.view.TimerClock": [
+    "widget.timerClock"
   ],
   "ttapp.view.Tink": [
     "widget.tink"
