@@ -7,7 +7,7 @@ Ext.define('ttapp.view.TimerClock', {
     config: {
         listeners: {
             initialize: function () {
-                this.start();
+                //this.start();
             }
         }
     },

@@ -19,10 +19,10 @@ Ext.application({
     controllers: ['tink'],
 
     views: [
-        'Main','Home', 'Feed', 'Tink'
+        'Main','Home', 'Feed', 'Tink', 'SendTo'
     ],
 
-    stores: ['trinkets'],
+    stores: ['trinkets', 'Contacts'],
 
     icon: {
         '57': 'resources/icons/Icon.png',
@@ -48,7 +48,7 @@ Ext.application({
         
         
         // Initialize the main view
-        Ext.Viewport.add(Ext.create('ttapp.view.Main'));
+        Ext.Viewport.add(Ext.create('ttapp.view.Tink'));
     },
 
     onUpdated: function() {

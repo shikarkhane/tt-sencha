@@ -291,6 +291,17 @@
         "controllerNamespace": "ttapp.controller",
         "name": "tink"
       }
+    },
+    "app/controller/SendTo.js": {
+      "source": "{controllerFileName}.js.tpl.merge",
+      "version": "7cd8d1cf12515ca525732931d6b775e3f7924ad9",
+      "parameters": {
+        "appName": "ttapp",
+        "controllerFileName": "SendTo",
+        "controllerName": "SendTo",
+        "controllerNamespace": "ttapp.controller",
+        "name": "SendTo"
+      }
     }
   }
 }

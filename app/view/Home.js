@@ -1,20 +1,13 @@
 Ext.define('ttapp.view.Home', {
-	extend: 'Ext.carousel.Carousel',
+	extend: 'Ext.Container',
 	xtype: 'home',
-	 requires: [
-        'ttapp.view.Tink', 'ttapp.view.Feed'
-    ],
 	config:{
 		fullscreen: true,
 		styleHtmlContent: true,
 		  items: [
         {
-            xtype: 'tink'
+            html: '<h1>Tinktime</h1>'
                     
-        },
-        {
-         	//xtype: 'feed'
-         	html : 'Item 2'
         }
     ]
 	}
