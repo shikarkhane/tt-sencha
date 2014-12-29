@@ -10,7 +10,7 @@
                 },{
                     name: 'swiffy_json',
                     type: 'string'
-                },]
+                }]
             }
         });
 

@@ -669,12 +669,16 @@ Ext.ClassManager.addNameAlternateMappings({
     "Ext.viewport.WP"
   ],
   "Message": [],
+  "ttapp.controller.SendTo": [],
   "ttapp.controller.tink": [],
+  "ttapp.model.Contact": [],
   "ttapp.model.trinket": [],
+  "ttapp.store.Contacts": [],
   "ttapp.store.trinkets": [],
   "ttapp.view.Feed": [],
   "ttapp.view.Home": [],
   "ttapp.view.Main": [],
+  "ttapp.view.SendTo": [],
   "ttapp.view.Thinking": [],
   "ttapp.view.TimerClock": [],
   "ttapp.view.Tink": []
@@ -1410,8 +1414,13 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.viewport.Viewport": [],
   "Ext.viewport.WindowsPhone": [],
   "Message": [],
+  "ttapp.controller.SendTo": [
+    "widget.controlsendto"
+  ],
   "ttapp.controller.tink": [],
+  "ttapp.model.Contact": [],
   "ttapp.model.trinket": [],
+  "ttapp.store.Contacts": [],
   "ttapp.store.trinkets": [],
   "ttapp.view.Feed": [
     "widget.feed"
@@ -1421,6 +1430,9 @@ Ext.ClassManager.addNameAliasMappings({
   ],
   "ttapp.view.Main": [
     "widget.main"
+  ],
+  "ttapp.view.SendTo": [
+    "widget.sendto"
   ],
   "ttapp.view.Thinking": [
     "widget.thinkingbutton"

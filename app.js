@@ -16,7 +16,7 @@ Ext.application({
     requires: [
         'Ext.MessageBox'
     ],
-    controllers: ['tink'],
+    controllers: ['tink', 'SendTo'],
 
     views: [
         'Main','Home', 'Feed', 'Tink', 'SendTo'
