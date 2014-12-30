@@ -7,6 +7,7 @@ Ext.define('ttapp.view.Feed', {
     	items: [{
     		xtype: 'progressindicator',
     		loadingText: 'Tinkmeter',
+    		hidden: false,
     		flex: 1
     	},
     			{
