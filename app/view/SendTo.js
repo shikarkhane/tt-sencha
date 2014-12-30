@@ -23,7 +23,13 @@ Ext.define('ttapp.view.SendTo', {
 	                        { xtype: 'spacer' },
 	                        {
 	                            xtype: 'searchfield',
+	                            id: 'searchContactsField',
 	                            placeHolder: 'Search...'
+	                        },
+	                        {
+	                        	xtype: 'button',
+	                        	id: 'sendTink',
+	                        	text: "Send"
 	                        },
 	                        { xtype: 'spacer' }
 	                    ]

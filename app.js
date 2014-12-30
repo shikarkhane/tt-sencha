@@ -16,13 +16,13 @@ Ext.application({
     requires: [
         'Ext.MessageBox'
     ],
-    controllers: ['tink', 'SendTo'],
+    controllers: ['Tink', 'SendTo'],
 
     views: [
         'Main','Home', 'Feed', 'Tink', 'SendTo'
     ],
 
-    stores: ['trinkets', 'Contacts'],
+    stores: ['Trinkets', 'Contacts', 'Messages'],
 
     icon: {
         '57': 'resources/icons/Icon.png',

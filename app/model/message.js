@@ -1,4 +1,4 @@
- Ext.define('Message', {
+ Ext.define('ttapp.model.Message', {
             extend: 'Ext.data.Model',
             config: {
                 fields: [{
@@ -19,6 +19,13 @@
                 },{
                     name: 'seconds_sent',
                     type: 'int'
+                },{
+                    name: 'for_inbox',
+                    type: 'boolean'
+                },
+                {
+                    name: 'unread',
+                    type: 'boolean'
                 }]
             }
         });

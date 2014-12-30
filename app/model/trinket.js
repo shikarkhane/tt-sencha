@@ -1,4 +1,4 @@
- Ext.define('ttapp.model.trinket', {
+ Ext.define('ttapp.model.Trinket', {
             extend: 'Ext.data.Model',
             config: {
                 fields: [{

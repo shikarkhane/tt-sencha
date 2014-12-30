@@ -3,17 +3,27 @@ Ext.define('ttapp.controller.SendTo', {
     xtype: 'sendto',
     config: {
         refs: {
-            
+            sendTinkButtonClick: '#sendTink',
+            searchContactsField: '#searchContactsField'
         },
         control: {
-            'sendto list toolbar searchfield': {
-                show: 'searchReady'
+            'searchContactsField': {
+                // todo not working yet
+                keyup: 'searchReady'
+            },
+            'sendTinkButtonClick': {
+                tap: 'sendMyTink'
             }
-            
         }
     },
     searchReady : function(){
         console.log('ready to search');
+    },
+    sendMyTink : function(){
+        console.log('send my tink');
+        var cs = Ext.getCmp('choose-recepients');
+        cs.hide();
+        Ext.Viewport.setActiveItem('feed');
     },
 
     showSendTo: function(){

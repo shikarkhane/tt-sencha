@@ -1,11 +1,11 @@
- 	Ext.define('ttapp.store.trinkets', {
+ 	Ext.define('ttapp.store.Trinkets', {
         extend: 'Ext.data.Store',
         requires: [
-        	'ttapp.model.trinket'
+        	'ttapp.model.Trinket'
     	],
         config: {
         	storeId: 'defaultTrinket',
-            model: 'ttapp.model.trinket',
+            model: 'ttapp.model.Trinket',
             data: [
             {
                 'trinket_id': "1",

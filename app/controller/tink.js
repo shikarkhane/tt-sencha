@@ -1,4 +1,4 @@
-Ext.define('ttapp.controller.tink', {
+Ext.define('ttapp.controller.Tink', {
     extend: 'Ext.app.Controller',
     requires: [
         'ttapp.view.TimerClock'
