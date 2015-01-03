@@ -19,7 +19,7 @@ Ext.application({
     controllers: ['Tink', 'SendTo'],
 
     views: [
-        'Main','Home', 'Feed', 'Tink', 'SendTo'
+        'Main','Home', 'Feed', 'Tink', 'SendTo', 'Trinket'
     ],
 
     stores: ['Trinkets', 'Contacts', 'Messages'],

@@ -8,7 +8,13 @@
                     name: 'name',
                     type: 'string'
                 },{
-                    name: 'swiffy_json',
+                    name: 'label',
+                    type: 'string'
+                },{
+                    name: 'thumbnail_path',
+                    type: 'string'
+                },{
+                    name: 'file_path',
                     type: 'string'
                 }]
             }

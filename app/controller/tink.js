@@ -10,10 +10,14 @@ Ext.define('ttapp.controller.Tink', {
         control: {
             'tink': {
                 startedthinking: 'onThinking',
-                stoppedthinking: 'onStoppedThinking'
+                stoppedthinking: 'onStoppedThinking',
+                choosetrinket: 'onChooseTrinket'
             }
         }
     },
+onChooseTrinket: function(){
+    Ext.Viewport.setActiveItem('trinket');
+},
 onThinking : function(){
     //console.log('thinking');
     this.getClock().start();
