@@ -32,7 +32,6 @@ Ext.define('ttapp.view.Tink', {
 
         var thinkElement = Ext.get('thinkbutton');
         var trinketArea = Ext.get('swiffydiv');
-        console.log(trinketArea);
         
         trinketArea.on(['longpress','swipe'], 'onChooseTrinket', this);
         thinkElement.on(['touchstart'], 'onStartThinkingEvent', this);

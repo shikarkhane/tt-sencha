@@ -16,10 +16,11 @@ Ext.application({
     requires: [
         'Ext.MessageBox'
     ],
-    controllers: ['Tink', 'SendTo'],
+    controllers: ['Tink', 'SendTo', 'Landing', 'Authenticate'],
 
     views: [
-        'Main','Home', 'Feed', 'Tink', 'SendTo', 'Trinket'
+        'Landing', 'Feed', 'Tink', 'SendTo', 'Trinket',
+        'Authenticate', 'ConfirmPhoneNumber'
     ],
 
     stores: ['Trinkets', 'Contacts', 'Messages'],
@@ -48,7 +49,7 @@ Ext.application({
         
         
         // Initialize the main view
-        Ext.Viewport.add(Ext.create('ttapp.view.Tink'));
+        Ext.Viewport.add(Ext.create('ttapp.view.Landing'));
     },
 
     onUpdated: function() {
