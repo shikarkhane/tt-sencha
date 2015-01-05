@@ -23,7 +23,7 @@ Ext.application({
         'Authenticate', 'ConfirmPhoneNumber'
     ],
 
-    stores: ['Trinkets', 'Contacts', 'Messages'],
+    stores: ['Trinkets', 'Contacts', 'Messages', 'Profile'],
 
     icon: {
         '57': 'resources/icons/Icon.png',

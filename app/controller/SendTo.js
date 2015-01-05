@@ -12,20 +12,52 @@ Ext.define('ttapp.controller.SendTo', {
                 keyup: 'searchReady'
             },
             'sendTinkButtonClick': {
-                tap: 'sendMyTink'
+                tap: 'composeTink'
             }
         }
     },
     searchReady : function(){
         console.log('ready to search');
     },
-    sendMyTink : function(){
-        console.log('send my tink');
+    composeTink : function(){
+        debugger;
+        from_user = this.getFromUser();
+        this.sendTink(from_user, "carin", 201501010101, 1, "hello", 13);
+        this.showFeed();
+    },
+    sendTink: function(from_user, to_user, send_timestamp, trinket_id, text, seconds_sent){
+          Ext.Ajax.request({
+                            url: 'http://localhost:8888/message-queue/',
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json'},
+                            disableCaching: false,
+                            jsonData: {
+                                "from_user" : from_user,
+                                "to_user" : to_user, 
+                                "send_timestamp": send_timestamp, 
+                                "trinket_id": trinket_id, 
+                                "text" : text,
+                                "seconds_sent": seconds_sent
+                            },
+
+                            success: function(response) {
+                                console.log(response.responseText);
+                            }
+                        });
+    },
+    showFeed: function(){
         var cs = Ext.getCmp('choose-recepients');
         cs.hide();
         Ext.Viewport.setActiveItem('feed');
     },
-
+    getFromUser: function(){
+        var profileStore = Ext.getStore('profilestore');
+        profileStore.each(function(p){
+                from_user = p.data.phone_number;
+                return false;
+            });
+        return from_user;
+    },
     showSendTo: function(){
         //Ext.Viewport.setActiveItem('sendto');
         Ext.Viewport.add({
