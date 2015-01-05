@@ -12,6 +12,7 @@ Ext.define('ttapp.view.ConfirmPhoneNumber', {
 	            html: '<h1>Confirm code</h1>'
 	        },
 	        {
+	        	id: 'myVerificationCode',
                 xtype: 'numberfield',
                 name: 'verify-phone-number',
                 maxLength: 5,

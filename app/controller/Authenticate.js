@@ -13,7 +13,8 @@ Ext.define('ttapp.controller.Authenticate', {
         }
     },
     sendConfirmationCode: function(){
-        console.log('send confirmation code!');
+        var phoneNumber = Ext.getCmp('myPhoneNumber').getValue();
+        this.myPhoneNumber = phoneNumber;
 
         Ext.Ajax.request({
                             url: 'http://localhost:8888/sms-code/',
@@ -21,7 +22,7 @@ Ext.define('ttapp.controller.Authenticate', {
                             headers: { 'Content-Type': 'application/json'},
                             disableCaching: false,
                             jsonData: {
-                                "to_user": "nikhil"
+                                "to_user": phoneNumber
                             },
 
                             success: function(response) {
@@ -31,15 +32,16 @@ Ext.define('ttapp.controller.Authenticate', {
         Ext.Viewport.setActiveItem('confirmphonenumber');
     },
     confirmCode: function(){
-        console.log('confirm code');
+        var code = Ext.getCmp('myVerificationCode').getValue();
+
         Ext.Ajax.request({
                             url: 'http://localhost:8888/verify-user/',
                             method: 'POST',
                             headers: { 'Content-Type': 'application/json'},
                             disableCaching: false,
                             jsonData: {
-                                "to_user": "nikhil",
-                                "code" : "1234"
+                                "to_user": this.myPhoneNumber,
+                                "code" : code
                             },
 
                             success: function(response) {
