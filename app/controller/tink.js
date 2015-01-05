@@ -10,7 +10,9 @@ Ext.define('ttapp.controller.Tink', {
         control: {
             'tink': {
                 startedthinking: 'onThinking',
-                stoppedthinking: 'onStoppedThinking',
+                stoppedthinking: 'onStoppedThinking'
+            },
+            'tink panel':{
                 choosetrinket: 'onChooseTrinket'
             }
         }

@@ -6,7 +6,7 @@ Ext.define('ttapp.controller.Landing', {
         control: {
             'landing': {
                 userAcknowledge: function(){
-                    Ext.Viewport.setActiveItem('authenticate');
+                    Ext.Viewport.setActiveItem('tink');
                 }
             }
         }

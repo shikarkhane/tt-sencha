@@ -45,9 +45,6 @@ Ext.define('ttapp.controller.Authenticate', {
                             },
 
                             success: function(response) {
-                                //debugger;
-                                console.log(response.responseText);
-                                debugger;
                                 if ( JSON.parse(response.responseText)['status'] == true){
                                     Ext.Viewport.setActiveItem('tink');                             
                                 }
