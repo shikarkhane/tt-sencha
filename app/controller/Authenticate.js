@@ -12,24 +12,12 @@ Ext.define('ttapp.controller.Authenticate', {
             }
         }
     },
-    saveProfile: function( phoneNumber, isVerified, lastUpdatedOn){
-        var profileStore = Ext.getStore('profilestore');
-        
-        var usr = Ext.create('ttapp.model.Profile',{
-            phone_number: phoneNumber,
-            is_verified: isVerified,
-            last_updated_on: lastUpdatedOn
-            });
-
-        profileStore.add(usr);
-        profileStore.sync();
-    },
     sendConfirmationCode: function(){
         var phoneNumber = Ext.getCmp('myPhoneNumber').getValue();
         this.myPhoneNumber = phoneNumber;
         
         // store user profile locally
-        this.saveProfile(phoneNumber,false, "20140101");
+        Ext.getStore('profilestore').addProfile(phoneNumber,false, "20140101");
 
         Ext.Ajax.request({
                             url: 'http://localhost:8888/sms-code/',
@@ -61,8 +49,8 @@ Ext.define('ttapp.controller.Authenticate', {
 
                             success: function(response) {
                                 if ( JSON.parse(response.responseText)['status'] == true){
-                                    //todo write a get local user utility
-                                    //this.saveProfile(this.myPhoneNumber,true, "20150101");
+                                    debugger;
+                                    Ext.getStore('profilestore').verified();
 
                                     Ext.Viewport.setActiveItem('tink');                             
                                 }

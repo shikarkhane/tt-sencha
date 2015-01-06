@@ -1,5 +1,6 @@
 Ext.define('ttapp.controller.Landing', {
     extend: 'Ext.app.Controller',
+    requires: ['ttapp.store.Profile'],
     config: {
         refs: {
         },
@@ -10,19 +11,12 @@ Ext.define('ttapp.controller.Landing', {
         }
     },
     onUserAction: function(){
-        if ( this.isUserVerified === true){
+        debugger;
+        if ( Ext.getStore('profilestore').isUserVerified() === true){
             Ext.Viewport.setActiveItem('tink');
         }
         else{
             Ext.Viewport.setActiveItem('authenticate');   
         }
-    },
-    isUserVerified: function(){
-        var profileStore = Ext.getStore('profilestore');
-        profileStore.each(function(p){
-                isVerified = p.data.is_verified;
-                return false;
-            });
-        return is_verified;
     }
 });

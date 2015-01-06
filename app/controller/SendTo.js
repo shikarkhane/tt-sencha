@@ -21,7 +21,7 @@ Ext.define('ttapp.controller.SendTo', {
     },
     composeTink : function(){
         debugger;
-        from_user = this.getFromUser();
+        from_user = Ext.getStore('profilestore').getPhoneNumber();
         this.sendTink(from_user, "carin", 201501010101, 1, "hello", 13);
         this.showFeed();
     },
@@ -49,14 +49,6 @@ Ext.define('ttapp.controller.SendTo', {
         var cs = Ext.getCmp('choose-recepients');
         cs.hide();
         Ext.Viewport.setActiveItem('feed');
-    },
-    getFromUser: function(){
-        var profileStore = Ext.getStore('profilestore');
-        profileStore.each(function(p){
-                from_user = p.data.phone_number;
-                return false;
-            });
-        return from_user;
     },
     showSendTo: function(){
         //Ext.Viewport.setActiveItem('sendto');
