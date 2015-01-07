@@ -33,7 +33,7 @@ onStoppedThinking : function(){
     this.getClock().pause();
     var periodInSeconds = this.getClock().getDuration();
 
-    this.getApplication().getController('SendTo').showSendTo();
+    this.getApplication().getController('SendTo').showSendTo(periodInSeconds, 1);
 }
 
 });

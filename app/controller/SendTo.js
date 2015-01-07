@@ -20,9 +20,8 @@ Ext.define('ttapp.controller.SendTo', {
         console.log('ready to search');
     },
     composeTink : function(){
-        debugger;
         from_user = Ext.getStore('profilestore').getPhoneNumber();
-        this.sendTink(from_user, "carin", 201501010101, 1, "hello", 13);
+        this.sendTink(from_user, "carin", (new Date()).valueOf(), this.trinket_id, "hello", this.seconds_sent);
         this.showFeed();
     },
     sendTink: function(from_user, to_user, send_timestamp, trinket_id, text, seconds_sent){
@@ -50,8 +49,10 @@ Ext.define('ttapp.controller.SendTo', {
         cs.hide();
         Ext.Viewport.setActiveItem('feed');
     },
-    showSendTo: function(){
-        //Ext.Viewport.setActiveItem('sendto');
+    showSendTo: function(seconds_sent, trinket_id){
+        this.seconds_sent = seconds_sent;
+        this.trinket_id = trinket_id;
+
         Ext.Viewport.add({
             xtype: 'sendto',
             id: 'choose-recepients',

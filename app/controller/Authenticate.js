@@ -49,7 +49,6 @@ Ext.define('ttapp.controller.Authenticate', {
 
                             success: function(response) {
                                 if ( JSON.parse(response.responseText)['status'] == true){
-                                    debugger;
                                     Ext.getStore('profilestore').verified();
 
                                     Ext.Viewport.setActiveItem('tink');                             

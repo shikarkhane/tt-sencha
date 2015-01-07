@@ -11,7 +11,6 @@ Ext.define('ttapp.controller.Landing', {
         }
     },
     onUserAction: function(){
-        debugger;
         if ( Ext.getStore('profilestore').isUserVerified() === true){
             Ext.Viewport.setActiveItem('tink');
         }

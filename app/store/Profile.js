@@ -14,9 +14,9 @@ Ext.define('ttapp.store.Profile', {
         }
     },
     isUserVerified: function(){
+        this.load();
         var m = this.getAt(0);
-        debugger;
-        if (! m === null){
+        if ( Ext.isDefined(m) ){
             return m.get('is_verified');    
         }
         else{ return false;}
@@ -33,9 +33,11 @@ Ext.define('ttapp.store.Profile', {
         this.sync();
     },
     getPhoneNumber: function(){
+        this.load();
         return this.getAt(0).get('phone_number');
     },
     verified: function(){
+        this.load();
         this.getAt(0).set('is_verified', true);
         this.sync();
     }
