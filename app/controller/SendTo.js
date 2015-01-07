@@ -11,17 +11,18 @@ Ext.define('ttapp.controller.SendTo', {
                 // todo not working yet
                 keyup: 'searchReady'
             },
-            'sendTinkButtonClick': {
-                tap: 'composeTink'
+            'sendto list': {
+                itemtap: 'composeTink'
             }
         }
     },
     searchReady : function(){
         console.log('ready to search');
     },
-    composeTink : function(){
+    composeTink : function(list, idx, target, record, evt){
         from_user = Ext.getStore('profilestore').getPhoneNumber();
-        this.sendTink(from_user, "carin", (new Date()).valueOf(), this.trinket_id, "hello", this.seconds_sent);
+        this.sendTink(from_user, record.data.first_name, (new Date()).valueOf(), 
+            this.trinket_id, "hello", this.seconds_sent);
         this.showFeed();
     },
     sendTink: function(from_user, to_user, send_timestamp, trinket_id, text, seconds_sent){
