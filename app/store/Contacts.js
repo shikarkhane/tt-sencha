@@ -29,6 +29,13 @@ Ext.define('ttapp.store.Contacts', {
 	            'last_name' : 'Mach',
 	            'on_tinktime' : true,
 	            'phone_number' : '0705438947'
+	        },
+	        { 
+	        	'id' : 4,
+	            'first_name' : '51512',
+	            'last_name' : '',
+	            'on_tinktime' : true,
+	            'phone_number' : '0705438947'
 	        }
 
         ]

@@ -4,7 +4,8 @@ Ext.define('ttapp.view.Feed', {
     requires: ['ttapp.model.Message','Ext.dataview.List', 'Ext.ProgressIndicator'],
     config: {
     	layout: 'vbox',
-    	items: [{
+    	items: [
+/*        {
     		xtype: 'progressindicator',
     		// loadingText: 'Tinkmeter',
     		hidden: false,
@@ -12,6 +13,7 @@ Ext.define('ttapp.view.Feed', {
     		minProgressInput : 20,
     		flex: 1
     	},
+        */
     			{
 		            xtype: 'list',
 		            flex: 5,
@@ -20,7 +22,7 @@ Ext.define('ttapp.view.Feed', {
 		            scrollable: {
 		                direction: 'vertical'
 		            },
-		            itemTpl: '<b>{from_user}</b>  sent <b>{seconds_sent} secs</b> of <b>{trinket_id}</b> to <b>{to_user}</b>',
+		            itemTpl: '<b>{from_user}</b>  sent <b>{seconds_sent} secs</b> of trinket <b>{trinket_id}</b> to <b>{to_user}</b>',
 		            store: 'Messages'
 	            }
         ]
