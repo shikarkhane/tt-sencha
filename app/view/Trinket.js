@@ -1,7 +1,7 @@
 Ext.define('ttapp.view.Trinket', {
     extend: 'Ext.Container',
     xtype: 'trinket',
-    requires: ['ttapp.model.Trinket'],
+    requires: ['ttapp.model.Trinket', 'ttapp.store.Trinkets'],
     config: {
         layout: 'fit',
         items: [{
@@ -9,8 +9,8 @@ Ext.define('ttapp.view.Trinket', {
             scrollable: true,
             inline: true,
             //cls: 'dataview-inline',
-            itemTpl: '<div class="img" style="width:75px;height:100px;background-image: url({thumbnail_path});"></div>',
-            store: 'Trinkets'
+            itemTpl: '<div class="img" style="width:256px;height:256px;background-image: url({thumbnail_path});"></div>',
+            store: 'trinketstore'
         }]
     }
 });

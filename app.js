@@ -16,7 +16,8 @@ Ext.application({
     requires: [
         'Ext.MessageBox'
     ],
-    controllers: ['Tink', 'SendTo', 'Landing', 'Authenticate'],
+    controllers: ['Tink', 'SendTo', 'Landing', 'Authenticate',
+    'Trinket'],
 
     views: [
         'Landing', 'Feed', 'Tink', 'SendTo', 'Trinket',
