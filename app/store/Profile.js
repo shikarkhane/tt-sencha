@@ -46,6 +46,10 @@ Ext.define('ttapp.store.Profile', {
         this.load();
         this.getAt(0).set('selected_trinket_filename', trinket_name);
         this.sync();
+    },
+    getActiveTrinket: function(){
+        this.load();
+        return this.getAt(0).get('selected_trinket_filename');
     }
 
 });
