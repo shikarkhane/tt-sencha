@@ -5,15 +5,10 @@ Ext.define('ttapp.view.Feed', {
     config: {
     	layout: 'vbox',
     	items: [
-/*        {
-    		xtype: 'progressindicator',
-    		// loadingText: 'Tinkmeter',
-    		hidden: false,
-    		docked: 'top',
-    		minProgressInput : 20,
-    		flex: 1
-    	},
-        */
+            {
+                xtype: 'dogear'
+            },
+        
     			{
 		            xtype: 'list',
 		            flex: 5,

@@ -11,6 +11,9 @@ Ext.define('ttapp.view.Tink', {
             },
         items: [
             {
+                xtype: 'dogear'
+            },
+            {
                 xtype: 'timerClock'   
             },
             {
