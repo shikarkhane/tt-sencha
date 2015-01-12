@@ -16,6 +16,6 @@ Ext.define('ttapp.controller.Trinket', {
             Ext.Viewport.setActiveItem('tink');
         });
 
-        task.delay(300); 
+        task.delay(1500);
     }
 });
