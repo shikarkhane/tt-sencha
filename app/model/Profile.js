@@ -6,7 +6,7 @@ Ext.define('ttapp.model.Profile', {
             'phone_number',
             'is_verified',
             'last_updated_on',
-            'selected_trinket_filename'
+            'selected_trinket_name'
         ]
     }
 });

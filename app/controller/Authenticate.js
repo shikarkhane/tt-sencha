@@ -18,7 +18,7 @@ Ext.define('ttapp.controller.Authenticate', {
         
         // store user profile locally
         Ext.getStore('profilestore').addProfile(phoneNumber,false, "20140101",
-            Ext.getStore('trinketstore').getDefaultTrinket().get('file_path'));
+            Ext.getStore('trinketstore').getDefaultTrinket());
 
         Ext.Ajax.request({
                             url: 'http://localhost:8888/sms-code/',

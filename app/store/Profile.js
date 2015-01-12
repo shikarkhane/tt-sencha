@@ -22,12 +22,12 @@ Ext.define('ttapp.store.Profile', {
         else{ return false;}
         
     },
-    addProfile: function(phoneNumber, isVerified, lastUpdatedOn, selectedTrinketFilename){
+    addProfile: function(phoneNumber, isVerified, lastUpdatedOn, selectedTrinketName){
         var usr = Ext.create('ttapp.model.Profile',{
             phone_number: phoneNumber,
             is_verified: isVerified,
             last_updated_on: lastUpdatedOn,
-            selected_trinket_filename: selectedTrinketFilename
+            selected_trinket_name: selectedTrinketName
             });
 
         this.add(usr);
@@ -44,12 +44,12 @@ Ext.define('ttapp.store.Profile', {
     },
     setActiveTrinket: function(trinket_name){
         this.load();
-        this.getAt(0).set('selected_trinket_filename', trinket_name);
+        this.getAt(0).set('selected_trinket_name', trinket_name);
         this.sync();
     },
     getActiveTrinket: function(){
         this.load();
-        return this.getAt(0).get('selected_trinket_filename');
+        return this.getAt(0).get('selected_trinket_name');
     }
 
 });

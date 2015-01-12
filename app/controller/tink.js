@@ -34,13 +34,13 @@ Ext.define('ttapp.controller.Tink', {
         Ext.getDom('tinkcontainer').contentWindow.tt_stop_animation();
         this.getClock().pause();
         var periodInSeconds = this.getClock().getDuration();
-
-        this.getApplication().getController('SendTo').showSendTo(periodInSeconds, 1);
+        var trinketId = Ext.getStore('trinketstore').getTrinketId(Ext.getStore('profilestore').getActiveTrinket());
+        this.getApplication().getController('SendTo').showSendTo(periodInSeconds, trinketId);
     },
     useActiveTrinket : function(){
         var trinketArea = Ext.get('swiffydiv');
-        var activeTrinket = Ext.getStore('profilestore').getActiveTrinket();
-        trinketArea.setHtml('<iframe id="tinkcontainer" style="width:350px;height:500px;" src="resources/tinks/'+ activeTrinket + '"></iframe>');
+        var activeTrinketFilePath = Ext.getStore('trinketstore').getFilePath(Ext.getStore('profilestore').getActiveTrinket());
+        trinketArea.setHtml('<iframe id="tinkcontainer" style="width:350px;height:500px;" src="resources/tinks/'+ activeTrinketFilePath + '"></iframe>');
     }
 
 });

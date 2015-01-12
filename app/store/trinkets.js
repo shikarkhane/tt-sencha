@@ -78,6 +78,17 @@ Ext.define('ttapp.store.Trinkets', {
     },
     getDefaultTrinket: function(){
         this.load();
-        return this.getAt(0);
+        return this.getAt(0).get('name');
+    }
+    ,
+    getTrinketId: function(name){
+        this.load();
+        var i = this.find('name', name);
+        return this.getAt(i).get('trinket_id');
+    },
+    getFilePath: function(name){
+        this.load();
+        var i = this.find('name', name);
+        return this.getAt(i).get('file_path');
     }
  });

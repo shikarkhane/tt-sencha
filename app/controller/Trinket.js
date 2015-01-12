@@ -10,7 +10,7 @@ Ext.define('ttapp.controller.Trinket', {
         }
     },
     onTrinketSelection : function(list, idx, target, record, evt){
-        Ext.getStore('profilestore').setActiveTrinket(record.data.file_path);
+        Ext.getStore('profilestore').setActiveTrinket(record.data.name);
         
         var task = Ext.create('Ext.util.DelayedTask', function() {
             Ext.Viewport.setActiveItem('tink');
