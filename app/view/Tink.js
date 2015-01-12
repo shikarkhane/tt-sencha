@@ -20,7 +20,7 @@ Ext.define('ttapp.view.Tink', {
                 height: '500px',
                 width: '350px',
                 flex: 5,
-                html: '<iframe id="tinkcontainer" style="width:350px;height:500px;" src="resources/tinks/default/default.html"></iframe>',
+                html: '<iframe id="tinkcontainer" style="width:350px;height:500px;" src="resources/tinks/default.html"></iframe>',
                 listeners: {
                         tap : {
                             element: 'element',
@@ -41,9 +41,7 @@ Ext.define('ttapp.view.Tink', {
         this.callParent(arguments);
 
         var thinkElement = Ext.get('thinkbutton');
-        var trinketArea = Ext.get('swiffydiv');
-        
-        //trinketArea.on(['longpress','swipe'], 'onChooseTrinket', this);
+
         thinkElement.on(['touchstart'], 'onStartThinkingEvent', this);
         thinkElement.on(['touchend'], 'onStopThinkingEvent', this);
     },
