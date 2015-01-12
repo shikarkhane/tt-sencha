@@ -83,6 +83,7 @@ Ext.define('ttapp.store.Trinkets', {
     ,
     getTrinketId: function(name){
         this.load();
+        debugger;
         var i = this.find('name', name);
         return this.getAt(i).get('trinket_id');
     },

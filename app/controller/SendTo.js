@@ -71,7 +71,7 @@ Ext.define('ttapp.controller.SendTo', {
     },
     composeTink : function(list, idx, target, record, evt){
         from_user = Ext.getStore('profilestore').getPhoneNumber();
-        this.sendTink(from_user, record.data.first_name, (new Date()).valueOf(), 
+        this.sendTink(from_user, record.data.phone_number, (new Date()).valueOf(), 
             this.trinket_id, "hello", this.seconds_sent);
         ttapp.util.FeedProxy.process();
         this.showFeed();
