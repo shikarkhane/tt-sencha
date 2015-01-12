@@ -4,10 +4,10 @@ Ext.define('ttapp.controller.DogEar', {
         refs: {
         },
         control: {
-            'tink toolbar': {
+            'tink toolbar #ext-button-2': {
                 tap: 'goToFeed'
             },
-            'feed toolbar': {
+            'feed toolbar #ext-button-1': {
                 tap: 'goToTink'
             }
         }
