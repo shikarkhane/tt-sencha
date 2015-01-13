@@ -69,8 +69,10 @@ Ext.define('ttapp.controller.SendTo', {
     },
     composeTink : function(list, idx, target, record, evt){
         from_user = Ext.getStore('profilestore').getPhoneNumber();
+
         this.sendTink(from_user, record.data.phone_number, (new Date()).valueOf(), 
             this.trinket_id, "hello", this.seconds_sent);
+
         ttapp.util.FeedProxy.process();
         this.showFeed();
     },
@@ -95,7 +97,6 @@ Ext.define('ttapp.controller.SendTo', {
                         });
     },
     showFeed: function(){
-
         var cs = Ext.ComponentQuery.query('#choose-recepients')[0];
         cs.destroy();
         Ext.Viewport.setActiveItem('feed');
