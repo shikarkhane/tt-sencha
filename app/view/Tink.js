@@ -5,6 +5,7 @@ Ext.define('ttapp.view.Tink', {
         'ttapp.view.Thinking', 'ttapp.view.TimerClock'
     ],
     config: {
+        itemId: 'tinkPage',
         layout: {
                 type: 'vbox',
                 align: 'middle'

@@ -22,8 +22,6 @@ Ext.define('ttapp.controller.Tink', {
         Ext.Viewport.setActiveItem('trinket');
     },
     onThinking : function(){
-        //console.log('thinking');
-        debugger;
         this.getClock().start();
         Ext.getDom('tinkcontainer').contentWindow.tt_start_animation();
 
@@ -42,9 +40,10 @@ Ext.define('ttapp.controller.Tink', {
         this.useActiveTrinket();
     },
     resetTimerClock: function(){
-        var cs = Ext.ComponentQuery.query('#tinkTimerClock')[0];
-        cs.destroy();
-        Ext.Viewport.add({
+        var tc = Ext.ComponentQuery.query('#tinkTimerClock')[0];
+        tc.destroy();
+        var tp = Ext.ComponentQuery.query('#tinkPage')[0];
+        tp.add({
             itemId: 'tinkTimerClock',
             xtype: 'timerClock'
         });
