@@ -4,13 +4,6 @@ Ext.define('ttapp.view.TimerClock', {
     duration: 0, 
     paused: false,
     clockIntervalHook: undefined,
-    config: {
-        listeners: {
-            initialize: function () {
-                //this.start();
-            }
-        }
-    },
     start: function () {
         var me = this,
             duration = me.duration,

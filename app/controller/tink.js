@@ -11,7 +11,7 @@ Ext.define('ttapp.controller.Tink', {
             'tink': {
                 startedthinking: 'onThinking',
                 stoppedthinking: 'onStoppedThinking',
-                show: 'useActiveTrinket'
+                show: 'onShow'
             },
             'tink panel':{
                 choosetrinket: 'onChooseTrinket'
@@ -23,7 +23,7 @@ Ext.define('ttapp.controller.Tink', {
     },
     onThinking : function(){
         //console.log('thinking');
-
+        debugger;
         this.getClock().start();
         Ext.getDom('tinkcontainer').contentWindow.tt_start_animation();
 
@@ -36,6 +36,18 @@ Ext.define('ttapp.controller.Tink', {
         var periodInSeconds = this.getClock().getDuration();
         var trinketId = Ext.getStore('trinketstore').getTrinketId(Ext.getStore('profilestore').getActiveTrinket());
         this.getApplication().getController('SendTo').showSendTo(periodInSeconds, trinketId);
+    },
+    onShow: function(){
+        this.resetTimerClock();
+        this.useActiveTrinket();
+    },
+    resetTimerClock: function(){
+        var cs = Ext.ComponentQuery.query('#tinkTimerClock')[0];
+        cs.destroy();
+        Ext.Viewport.add({
+            itemId: 'tinkTimerClock',
+            xtype: 'timerClock'
+        });
     },
     useActiveTrinket : function(){
         var trinketArea = Ext.get('swiffydiv');
