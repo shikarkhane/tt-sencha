@@ -5,21 +5,20 @@ Ext.define('ttapp.view.Feed', {
     config: {
     	layout: 'vbox',
     	items: [
-            {
-                xtype: 'dogear'
+        {
+            xtype: 'dogear'
+        },
+    	{
+            xtype: 'list',
+            flex: 5,
+            ui: 'round',
+            pinHeaders: false,
+            scrollable: {
+                direction: 'vertical'
             },
-        
-    			{
-		            xtype: 'list',
-		            flex: 5,
-		            ui: 'round',
-		            pinHeaders: false,
-		            scrollable: {
-		                direction: 'vertical'
-		            },
-		            itemTpl: '<b>{from_user}</b>  sent <b>{seconds_sent} secs</b> of trinket <b>{trinket_id}</b> to <b>{to_user}</b>',
-		            store: 'Messages'
-	            }
+            itemTpl: '<b>{from_user}</b>  sent <b>{seconds_sent} secs</b> of trinket <b>{trinket_id}</b> to <b>{to_user}</b>',
+            store: 'Messages'
+        }
         ]
     }
 });
