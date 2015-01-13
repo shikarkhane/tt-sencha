@@ -60,13 +60,3 @@ Ext.define('ttapp.view.Tink', {
 
 });
 
-
-/* dog ear on the top corner code snippet
-var p = Ext.widget('panel', {
-    floating: true
-    , html: '<img src="http://img.stockfresh.com/files/c/ccaetano/x/88/475832_69663329.jpg"/ '
-    , shadow: false
-});
-
-p.show().alignTo(Ext.getBody(), 'tr-tr');
-*/
