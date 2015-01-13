@@ -3,12 +3,10 @@ Ext.define('ttapp.controller.SendTo', {
     xtype: 'sendto',
     config: {
         refs: {
-            sendTinkButtonClick: '#sendTink',
-            searchContactsField: '#searchContactsField'
+            searchContactsField: 'searchfield[cls~=searchContactsField]'
         },
         control: {
             'searchContactsField': {
-                // todo not working yet
                 keyup: 'onSearchKeyUp',
                 clearicontap: 'onSearchClearIconTap'
             },
@@ -97,8 +95,9 @@ Ext.define('ttapp.controller.SendTo', {
                         });
     },
     showFeed: function(){
-        var cs = Ext.getCmp('choose-recepients');
-        cs.hide();
+
+        var cs = Ext.ComponentQuery.query('#choose-recepients')[0];
+        cs.destroy();
         Ext.Viewport.setActiveItem('feed');
     },
     showSendTo: function(seconds_sent, trinket_id){
@@ -107,7 +106,7 @@ Ext.define('ttapp.controller.SendTo', {
 
         Ext.Viewport.add({
             xtype: 'sendto',
-            id: 'choose-recepients',
+            itemId: 'choose-recepients',
             modal: true,
             hideOnMaskTap: true,
             showAnimation: {

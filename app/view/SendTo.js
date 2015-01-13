@@ -22,7 +22,7 @@ Ext.define('ttapp.view.SendTo', {
 	                        { xtype: 'spacer' },
 	                        {
 	                            xtype: 'searchfield',
-	                            id: 'searchContactsField',
+	                            cls: 'searchContactsField',
 	                            placeHolder: 'Search...'
 	                        },
 	                        { xtype: 'spacer' }
