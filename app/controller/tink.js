@@ -27,7 +27,6 @@ Ext.define('ttapp.controller.Tink', {
 
     },
     onStoppedThinking : function(){
-        //console.log('stopped thinking');
 
         Ext.getDom('tinkcontainer').contentWindow.tt_stop_animation();
         this.getClock().pause();

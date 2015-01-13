@@ -29,5 +29,9 @@ Ext.define('ttapp.store.Messages', {
 
     config: {
         model: 'ttapp.model.Message'
+    },
+    getLastRecord: function(){
+        this.load();
+        return this.last();
     }
 });
