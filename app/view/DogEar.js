@@ -9,17 +9,16 @@ Ext.define('ttapp.view.DogEar', {
                 ui: 'plain'
             },
             items: [
-                { 
-                    iconCls: 'action'
+                {
+                    xtype: 'button',
+                    iconCls: 'action',
+                    docked: 'left'
                 },
-                { 
-                    iconCls: 'add'
+                {
+                    xtype: 'button',
+                    iconCls: 'add',
+                    docked: 'right'
                 }
-            ],
-            layout: {
-                pack : (Ext.filterPlatform('ie10') && !Ext.os.is.Phone) ? 'start' : 'center',
-                align: 'center'
-            }
-
+            ]
     }
 });

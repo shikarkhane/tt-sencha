@@ -2,13 +2,15 @@ Ext.define('ttapp.controller.DogEar', {
     extend: 'Ext.app.Controller',
     config: {
         refs: {
+            btnToTink: 'button[iconCls~=action]',
+            btnToFeed: 'button[iconCls~=add]'
         },
         control: {
-            'tink toolbar #ext-button-2': {
-                tap: 'goToFeed'
-            },
-            'feed toolbar #ext-button-1': {
+            'btnToTink': {
                 tap: 'goToTink'
+            },
+            'btnToFeed': {
+                tap: 'goToFeed'
             }
         }
     },
