@@ -11,13 +11,18 @@ Ext.define('ttapp.controller.SendTo', {
                 clearicontap: 'onSearchClearIconTap'
             },
             'sendto list': {
-                itemtap: 'composeTink'
+                itemtap: 'composeTink'              
             }
         }
     },
+    clearAll: function(){
+        var sf = Ext.ComponentQuery.query('searchfield[cls~=searchContactsField]')[0];
+        sf.reset();
+        this.onSearchClearIconTap();
+    },
     onSearchClearIconTap: function() {
         //call the clearFilter method on the store instance
-        Ext.getStore('Contacts').getStore().clearFilter();
+        Ext.getStore('Contacts').clearFilter();
     },
     onSearchKeyUp : function(field){
         var value = field.getValue(),
@@ -67,13 +72,16 @@ Ext.define('ttapp.controller.SendTo', {
 
         }
     },
-    composeTink : function(list, idx, target, record, evt){
+    composeTink : function(list, idx, target, record, evt){        
         from_user = Ext.getStore('profilestore').getPhoneNumber();
 
         this.sendTink(from_user, record.data.phone_number, (new Date()).valueOf(), 
             this.trinket_id, "hello", this.seconds_sent);
 
+        // ajax load the feed
         ttapp.util.FeedProxy.process();
+        //reset before leaving
+        this.clearAll();
         this.showFeed();
     },
     sendTink: function(from_user, to_user, send_timestamp, trinket_id, text, seconds_sent){

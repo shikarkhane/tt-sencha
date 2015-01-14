@@ -1,3 +1,17 @@
+Ext.define('ttapp.util.ContactsProxy', {
+    singleton: true,
+    requires: ['Ext.device.Contacts'],
+    process: function() {
+        var contactsStore = Ext.getStore('Contacts'),
+            contactModel,
+           	contactsArray = Ext.device.Contacts.getContacts();
+  			debugger;         	
+           	Ext.Array.each(contactsArray, function(c){
+           		console.log('inside contacts array');
+           	});
+    }
+});
+
 Ext.define('ttapp.store.Contacts', {
     extend: 'Ext.data.Store',
 

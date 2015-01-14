@@ -35,7 +35,10 @@ Ext.define('ttapp.store.Profile', {
     },
     getPhoneNumber: function(){
         this.load();
-        return this.getAt(0).get('phone_number');
+        if(this.getAt(0)){
+            return this.getAt(0).get('phone_number');
+        }
+        else{ return false;}
     },
     verified: function(){
         this.load();

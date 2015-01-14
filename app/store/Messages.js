@@ -7,6 +7,7 @@ Ext.define('ttapp.util.FeedProxy', {
             messageModel,
            	to_user = Ext.getStore('profilestore').getPhoneNumber();
            	
+        if(to_user){
 			 Ext.Ajax.request({
                         url: 'http://localhost:8888/feed/' + to_user + '/',
                         method: 'GET',
@@ -21,6 +22,7 @@ Ext.define('ttapp.util.FeedProxy', {
                             });
                         }
                     });
+            }
     }
 });
 
