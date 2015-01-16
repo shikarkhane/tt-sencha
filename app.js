@@ -17,11 +17,12 @@ Ext.application({
         'Ext.MessageBox'
     ],
     controllers: ['Tink', 'SendTo', 'Landing', 'Authenticate',
-    'Trinket', 'DogEar'],
+    'Trinket', 'DogEar', 'Split'],
 
     views: [
         'Landing', 'Feed', 'Tink', 'SendTo', 'Trinket',
-        'Authenticate', 'ConfirmPhoneNumber', 'DogEar'
+        'Authenticate', 'ConfirmPhoneNumber', 'DogEar',
+        'Split', 'Options'
     ],
 
     stores: ['Trinkets', 'Contacts', 'Messages', 'Profile'],
