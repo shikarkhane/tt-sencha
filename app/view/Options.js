@@ -3,6 +3,7 @@ Ext.define('ttapp.view.Options', {
     xtype: 'options',
     config: {
         fullscreen: true,
+        activeItem: 2,
         defaults: {
             styleHtmlContent: true
         },
