@@ -9,7 +9,7 @@ Ext.define('ttapp.util.FeedProxy', {
            	
         if(to_user){
 			 Ext.Ajax.request({
-                        url: 'http://localhost:8888/feed/' + to_user + '/',
+                        url:  ttapp.config.Config.getBaseURL() + '/feed/' + to_user + '/',
                         method: 'GET',
                         headers: { 'Content-Type': 'application/json'},
                         disableCaching: false,

@@ -12,7 +12,7 @@ Ext.define('ttapp.controller.Landing', {
     },
     onUserAction: function(){
         if ( Ext.getStore('profilestore').isUserVerified() === true){
-            Ext.Viewport.setActiveItem('tink');
+            Ext.Viewport.setActiveItem('trinket');
         }
         else{
             Ext.Viewport.setActiveItem('authenticate');   

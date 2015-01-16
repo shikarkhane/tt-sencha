@@ -1,6 +1,7 @@
 Ext.define('ttapp.controller.SendTo', {
     extend: 'Ext.app.Controller',
     xtype: 'sendto',
+    requires: ['ttapp.config.Config'],
     config: {
         refs: {
             searchContactsField: 'searchfield[cls~=searchContactsField]'
@@ -86,7 +87,7 @@ Ext.define('ttapp.controller.SendTo', {
     },
     sendTink: function(from_user, to_user, send_timestamp, trinket_id, text, seconds_sent){
           Ext.Ajax.request({
-                            url: 'http://localhost:8888/message-queue/',
+                            url:  ttapp.config.Config.getBaseURL() + '/message-queue/',
                             method: 'POST',
                             headers: { 'Content-Type': 'application/json'},
                             disableCaching: false,

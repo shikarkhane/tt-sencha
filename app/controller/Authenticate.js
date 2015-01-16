@@ -1,5 +1,6 @@
 Ext.define('ttapp.controller.Authenticate', {
     extend: 'Ext.app.Controller',
+    requires: ['ttapp.config.Config'],
     config: {
         refs: {
         },
@@ -21,7 +22,7 @@ Ext.define('ttapp.controller.Authenticate', {
             Ext.getStore('trinketstore').getDefaultTrinket());
 
         Ext.Ajax.request({
-                            url: 'http://localhost:8888/sms-code/',
+                            url: ttapp.config.Config.getBaseURL() + '/sms-code/',
                             method: 'POST',
                             headers: { 'Content-Type': 'application/json'},
                             disableCaching: false,
@@ -39,7 +40,7 @@ Ext.define('ttapp.controller.Authenticate', {
         var code = Ext.getCmp('myVerificationCode').getValue();
 
         Ext.Ajax.request({
-                            url: 'http://localhost:8888/verify-user/',
+                            url: ttapp.config.Config.getBaseURL() + '/verify-user/',
                             method: 'POST',
                             headers: { 'Content-Type': 'application/json'},
                             disableCaching: false,
@@ -53,7 +54,7 @@ Ext.define('ttapp.controller.Authenticate', {
                                     Ext.getStore('profilestore').verified();
 
                                     ttapp.util.FeedProxy.process();
-                                    Ext.Viewport.setActiveItem('tink');                             
+                                    Ext.Viewport.setActiveItem('trinket');
                                 }
                                 else{
                                     console.log('Verification code doesnt match');
