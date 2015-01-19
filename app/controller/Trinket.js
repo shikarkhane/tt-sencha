@@ -13,7 +13,8 @@ Ext.define('ttapp.controller.Trinket', {
         Ext.getStore('profilestore').setActiveTrinket(record.data.name);
         
         var task = Ext.create('Ext.util.DelayedTask', function() {
-            Ext.Viewport.setActiveItem('tink');
+            // Ext.Viewport.setActiveItem('tink');
+            Ext.ComponentQuery.query('#options')[0].setActiveItem(1, 'slide');
         });
 
         task.delay(1500);
