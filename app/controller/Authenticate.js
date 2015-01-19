@@ -54,7 +54,7 @@ Ext.define('ttapp.controller.Authenticate', {
                                     Ext.getStore('profilestore').verified();
 
                                     ttapp.util.FeedProxy.process();
-                                    Ext.Viewport.setActiveItem('trinket');
+                                    Ext.Viewport.setActiveItem('options');                                
                                 }
                                 else{
                                     console.log('Verification code doesnt match');

@@ -108,7 +108,8 @@ Ext.define('ttapp.controller.SendTo', {
     showFeed: function(){
         var cs = Ext.ComponentQuery.query('#choose-recepients')[0];
         cs.destroy();
-        Ext.Viewport.setActiveItem('feed');
+        //Ext.Viewport.setActiveItem('feed');
+        Ext.ComponentQuery.query('#options')[0].setActiveItem(3, 'slide');
     },
     showSendTo: function(seconds_sent, trinket_id){
         this.seconds_sent = seconds_sent;
