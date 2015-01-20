@@ -12,7 +12,7 @@ Ext.define('ttapp.view.SendTo', {
                 direction: 'vertical'
             },
             itemTpl: '{first_name} {last_name}',
-            store: 'Contacts',
+            store: 'phonecontacts',
 	        items: [
 	                {
 	                    xtype: 'toolbar',

@@ -20,8 +20,8 @@
                     name: 'send_timestamp',
                     type: 'int'
                 }, {
-                    name: 'trinket_id',
-                    type: 'int'
+                    name: 'trinket_name',
+                    type: 'string'
                 }, {
                     name: 'text',
                     type: 'string'

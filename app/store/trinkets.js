@@ -90,5 +90,10 @@ Ext.define('ttapp.store.Trinkets', {
         this.load();
         var i = this.find('name', name);
         return this.getAt(i).get('file_path');
+    },
+    getThumbnailPath: function(name){
+        this.load();
+        var i = this.find('name', name);
+        return this.getAt(i).get('thumbnail_path');
     }
  });

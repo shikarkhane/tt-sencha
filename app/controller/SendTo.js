@@ -77,7 +77,7 @@ Ext.define('ttapp.controller.SendTo', {
         from_user = Ext.getStore('profilestore').getPhoneNumber();
 
         this.sendTink(from_user, record.data.phone_number, (new Date()).valueOf(), 
-            this.trinket_id, "hello", this.seconds_sent);
+            this.trinket_name, "hello", this.seconds_sent);
 
         // ajax load the feed
         ttapp.util.FeedProxy.process();
@@ -85,7 +85,7 @@ Ext.define('ttapp.controller.SendTo', {
         this.clearAll();
         this.showFeed();
     },
-    sendTink: function(from_user, to_user, send_timestamp, trinket_id, text, seconds_sent){
+    sendTink: function(from_user, to_user, send_timestamp, trinket_name, text, seconds_sent){
           Ext.Ajax.request({
                             url:  ttapp.config.Config.getBaseURL() + '/message-queue/',
                             method: 'POST',
@@ -95,7 +95,7 @@ Ext.define('ttapp.controller.SendTo', {
                                 "from_user" : from_user,
                                 "to_user" : to_user, 
                                 "send_timestamp": send_timestamp, 
-                                "trinket_id": trinket_id, 
+                                "trinket_name": trinket_name, 
                                 "text" : text,
                                 "seconds_sent": seconds_sent
                             },
@@ -111,9 +111,9 @@ Ext.define('ttapp.controller.SendTo', {
         //Ext.Viewport.setActiveItem('feed');
         Ext.ComponentQuery.query('#options')[0].setActiveItem(3, 'slide');
     },
-    showSendTo: function(seconds_sent, trinket_id){
+    showSendTo: function(seconds_sent, trinket_name){
         this.seconds_sent = seconds_sent;
-        this.trinket_id = trinket_id;
+        this.trinket_name = trinket_name;
 
         Ext.Viewport.add({
             xtype: 'sendto',

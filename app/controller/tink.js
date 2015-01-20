@@ -32,8 +32,8 @@ Ext.define('ttapp.controller.Tink', {
         Ext.getDom('tinkcontainer').contentWindow.tt_stop_animation();
         this.getClock().pause();
         var periodInSeconds = this.getClock().getDuration();
-        var trinketId = Ext.getStore('trinketstore').getTrinketId(Ext.getStore('profilestore').getActiveTrinket());
-        this.getApplication().getController('SendTo').showSendTo(periodInSeconds, trinketId);
+        var trinketName = Ext.getStore('profilestore').getActiveTrinket();
+        this.getApplication().getController('SendTo').showSendTo(periodInSeconds, trinketName);
     },
     onShow: function(){
         this.resetTimerClock();
@@ -50,8 +50,9 @@ Ext.define('ttapp.controller.Tink', {
     },
     useActiveTrinket : function(){
         var trinketArea = Ext.get('swiffydiv');
-        var activeTrinketFilePath = Ext.getStore('trinketstore').getFilePath(Ext.getStore('profilestore').getActiveTrinket());
-        trinketArea.setHtml('<iframe id="tinkcontainer" style="width:350px;height:500px;" src="resources/tinks/'+ activeTrinketFilePath + '"></iframe>');
+        var trinketName = Ext.getStore('profilestore').getActiveTrinket();
+        var activeTrinketFilePath = Ext.getStore('trinketstore').getFilePath(trinketName);
+        trinketArea.setHtml('<iframe id="tinkcontainer" style="width:350px;height:500px;" src="resources/tinks/swiffy/' + activeTrinketFilePath + '"></iframe>');
     }
 
 });
