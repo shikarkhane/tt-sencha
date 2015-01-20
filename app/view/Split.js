@@ -9,12 +9,34 @@ Ext.define('ttapp.view.Split', {
             flex: 1
         },
         items: [
-            {
-                xtype: 'splitnewtink'
-            },
-            {
-                xtype: 'splittinkbox'
-            }
+        {
+            xtype: 'container',
+            layout: 'vbox',
+            items:
+            [
+                {xtype: 'spacer', flex:4},
+                {
+                    xtype: 'splitnewtink',
+                    flex: 1,
+                    style: 'text-align:center;'
+                },
+                {xtype: 'spacer', flex:4}
+            ]
+        },
+        {
+            xtype: 'container',
+            layout: 'vbox',
+            items:
+            [
+                {xtype: 'spacer', flex:4},
+                {
+                    xtype: 'splittinkbox',
+                    flex: 1,
+                    style: 'text-align:center;'
+                },
+                {xtype: 'spacer', flex:4}
+            ]
+        }
         ],
         listeners: {
             swipeleft : {
