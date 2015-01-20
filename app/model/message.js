@@ -1,7 +1,16 @@
  Ext.define('ttapp.model.Message', {
             extend: 'Ext.data.Model',
             config: {
-                fields: [{
+                fields: [
+                {
+                    name: 'from_user_name',
+                    type: 'string'                    
+                },
+                {
+                    name: 'to_user_name',
+                    type: 'string'                    
+                },
+                {
                     name: 'from_user',
                     type: 'string'
                 }, {
