@@ -16,7 +16,7 @@ Ext.define('ttapp.view.Feed', {
             scrollable: {
                 direction: 'vertical'
             },
-            itemTpl: '<b>{from_user}</b>  sent <b>{seconds_sent} secs</b> of trinket <b>{trinket_id}</b> to <b>{to_user}</b>',
+            itemTpl: '<b>{from_user_name}</b>  sent <b>{seconds_sent} secs</b> of trinket <b>{trinket_id}</b> to <b>{to_user_name}</b>',
             store: 'Messages'
         }
         ]

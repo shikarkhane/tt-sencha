@@ -14,7 +14,7 @@ Ext.application({
     name: 'ttapp',
 
     requires: [
-        'Ext.MessageBox'
+        'Ext.MessageBox', 'Ext.device.Contacts'
     ],
     controllers: ['Tink', 'SendTo', 'Landing', 'Authenticate',
     'Trinket', 'DogEar', 'Split'],
@@ -48,12 +48,31 @@ Ext.application({
     launch: function() {
         // Destroy the #appLoadingIndicator element
         Ext.fly('appLoadingIndicator').destroy();
-        
-        
+        /*var contactsConfig = {            
+                success: function(context, contacts){
+                    Ext.Msg.alert('Contacts?', 'doing nothing', Ext.emptyFn);
+
+                },
+                    
+                failure: function(context){
+                     Ext.Msg.alert('Failure', 'It did not work.', Ext.emptyFn);
+               },
+                scope: this,                                    
+                includeImages: true
+            };
+
+         Ext.Viewport.add({
+            xtype: 'list',
+            itemTpl: '{First} {Last}',
+            store: {
+                fields: ['First', 'Last'],
+                data: Ext.device.Contacts.getContacts(contactsConfig)
+            }
+        });*/
         // Initialize the main view
         Ext.Viewport.add(Ext.create('ttapp.view.Landing'));
         ttapp.util.FeedProxy.process();
-        // ttapp.util.ContactsProxy.process();
+        //ttapp.util.ContactsProxy.process();
     },
 
     onUpdated: function() {

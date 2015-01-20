@@ -3,12 +3,27 @@ Ext.define('ttapp.util.ContactsProxy', {
     requires: ['Ext.device.Contacts'],
     process: function() {
         var contactsStore = Ext.getStore('Contacts'),
-            contactModel,
-           	contactsArray = Ext.device.Contacts.getContacts();
-  			debugger;         	
-           	Ext.Array.each(contactsArray, function(c){
-           		console.log('inside contacts array');
-           	});
+            contactModel;
+            
+        if (Ext.os.deviceType == 'Phone'){
+            var contactsConfig = {            
+                success: function(context, contacts){
+                    Ext.Msg.alert('Contacts?', 'wrong place', Ext.emptyFn);
+
+                    Ext.Array.each(contacts, function(c){
+                        Ext.Msg.alert('Title', c, Ext.emptyFn);
+                    });
+                },
+                    
+                failure: function(context){
+                     Ext.Msg.alert('Failure', 'It did not work.', Ext.emptyFn);
+               },
+                scope: this,                                    
+                includeImages: true
+            };
+            var contactsArray = Ext.device.Contacts.getContacts(contactsConfig);
+            Ext.Msg.alert('what', contactsArray.length, Ext.emptyFn);            
+        }
     }
 });
 
@@ -16,6 +31,7 @@ Ext.define('ttapp.store.Contacts', {
     extend: 'Ext.data.Store',
 
     config: {
+        storeId: 'phonecontacts',
         model: 'ttapp.model.Contact',
     	//sort the store using the lastname field
         sorters: 'lastName',

@@ -6,7 +6,14 @@ Ext.define('ttapp.view.Options', {
         fullscreen: true,
         activeItem: 2,
         defaults: {
-            styleHtmlContent: true
+            styleHtmlContent: true,
+            listeners: {
+                activate: function(newActiveItem){
+                    if ( newActiveItem instanceof ttapp.view.Tink){
+                        this.fireEvent("resetTinkOnActivate", this);
+                    }
+                }
+            }
         },
         items: [
             {
