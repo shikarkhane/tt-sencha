@@ -48,17 +48,23 @@ Ext.application({
     launch: function() {
         // Destroy the #appLoadingIndicator element
         Ext.fly('appLoadingIndicator').destroy();
-        /*var contactsConfig = {            
-                success: function(context, contacts){
-                    Ext.Msg.alert('Contacts?', 'doing nothing', Ext.emptyFn);
+        
+        /*var opts = new ContactFindOptions();
+        opts.filter = "";
+        opts.multiple = true;
+        var contactsConfig = {        
+                options: opts,
+                fields: ["name", "phoneNumbers"],
+                success: function(contacts){
+                    Ext.Msg.alert('Simple contacts', contacts.length, Ext.emptyFn);
 
                 },
                     
                 failure: function(context){
                      Ext.Msg.alert('Failure', 'It did not work.', Ext.emptyFn);
                },
-                scope: this,                                    
-                includeImages: true
+               scope: this,
+               includeImages: false
             };
 
          Ext.Viewport.add({
@@ -68,11 +74,12 @@ Ext.application({
                 fields: ['First', 'Last'],
                 data: Ext.device.Contacts.getContacts(contactsConfig)
             }
-        });*/
+        });
+*/
         // Initialize the main view
         Ext.Viewport.add(Ext.create('ttapp.view.Landing'));
         ttapp.util.FeedProxy.process();
-        //ttapp.util.ContactsProxy.process();
+        ttapp.util.ContactsProxy.process();
     },
 
     onUpdated: function() {

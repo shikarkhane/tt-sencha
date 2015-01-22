@@ -1,12 +1,13 @@
 Ext.define('ttapp.view.SplitTinkBox', {
     extend: 'Ext.Container',
     xtype: 'splittinkbox',
+    requires: ['Ext.Label'],
     config:{
         styleHtmlContent: true,
         items:
             [
                 {
-                    xtype: 'panel',
+                    xtype: 'label',
                     html: '<h1>Tinkbox</h1>'
                 }
             ],

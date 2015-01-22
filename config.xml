@@ -16,9 +16,7 @@
     <preference name="PageLength" value="0" />
     <preference name="PaginationBreakingMode" value="page" />
     <preference name="PaginationMode" value="unpaginated" />
-    <feature name="LocalStorage">
-        <param name="ios-package" value="CDVLocalStorage" />
-    </feature>
+   
     <feature name="Contacts">
         <param name="ios-package" value="CDVContacts" />
     </feature>

@@ -6,23 +6,43 @@ Ext.define('ttapp.util.ContactsProxy', {
             contactModel;
             
         if (Ext.os.deviceType == 'Phone'){
-            var contactsConfig = {            
-                success: function(context, contacts){
-                    Ext.Msg.alert('Contacts?', 'wrong place', Ext.emptyFn);
+            var opts = new ContactFindOptions();
+            opts.filter = "";
+            opts.multiple = true;
+            var contactsConfig = {        
+                options: opts,
+                fields: ["name", "phoneNumbers"],
+                success: function(contacts){
+                    if ( contacts.length > 0){
 
-                    Ext.Array.each(contacts, function(c){
-                        Ext.Msg.alert('Title', c, Ext.emptyFn);
-                    });
+                        var cStore = Ext.getStore('phonecontacts'),
+                            cModel;
+
+                        // remove all existing contacts
+                        cStore.removeAll(true);
+
+                        Ext.Array.each(contacts, function(item, index, contacts_itself){
+
+                        // item.name.familyName, item.name.givenName, item.phoneNumbers[0].value
+                            cModel = Ext.create('ttapp.model.Contact', {
+                                    'id': index,
+                                    'first_name': item.name.givenName,
+                                    'last_name': item.name.familyName,
+                                    'on_tinktime': true,
+                                    'phone_number': item.phoneNumbers[0].value
+                                });
+                            cStore.add(cModel);    
+                        });
+                   }
                 },
                     
                 failure: function(context){
-                     Ext.Msg.alert('Failure', 'It did not work.', Ext.emptyFn);
+                     Ext.Msg.alert('Change privacy!', 'Allow tinktime in settings > privacy > contacts', Ext.emptyFn);
                },
-                scope: this,                                    
-                includeImages: true
+               scope: this,
+               includeImages: false
             };
-            var contactsArray = Ext.device.Contacts.getContacts(contactsConfig);
-            Ext.Msg.alert('what', contactsArray.length, Ext.emptyFn);            
+            Ext.device.Contacts.getContacts(contactsConfig);
         }
     }
 });
@@ -66,14 +86,7 @@ Ext.define('ttapp.store.Contacts', {
 	            'last_name' : '',
 	            'on_tinktime' : true,
 	            'phone_number' : '07051512'
-	        },
-            { 
-                'id' : 5,
-                'first_name' : '5050',
-                'last_name' : '',
-                'on_tinktime' : true,
-                'phone_number' : '5050'
-            }
+	        }
 
         ]
     },

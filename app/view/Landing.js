@@ -1,6 +1,7 @@
 Ext.define('ttapp.view.Landing', {
 	extend: 'Ext.Container',
 	xtype: 'landing',
+	requires: ['Ext.Label'],
 	config:{
 		fullscreen: true,
 		styleHtmlContent: true,		
