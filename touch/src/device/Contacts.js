@@ -42,17 +42,7 @@ Ext.define('Ext.device.Contacts', {
     ],
 
     constructor: function() {
-        // var browserEnv = Ext.browser.is;
 
-        /*if (browserEnv.WebView) {
-            if (browserEnv.Cordova) {
-                return Ext.create('Ext.device.contacts.Cordova');
-            }else if (browserEnv.Sencha) {
-                return Ext.create('Ext.device.contacts.Sencha');
-            }
-        }
-        return Ext.create('Ext.device.contacts.Abstract');
-        */
         return Ext.create('Ext.device.contacts.Cordova');
     }
 });

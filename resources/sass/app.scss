@@ -10,9 +10,25 @@
 // Examples of using the icon mixin:
 // @include icon('user');
  
+//custom nexalight font
 @include font-face("nexalight", font-files("custom/NexaLight.otf"));
+
+//images
+$b-split-img: '../images/background/split.png';
+$b-tink-img: '../images/background/tink.png';
+$b-tinkbox-img: '../images/background/tinkbox.png';
+$i-mail-img: '../images/icons/mail.png';
+$i-tink-img: '../images/icons/tink.png';
+$o-tink-img: '../images/others/tink.png';
+
  
 body{
     color: #FFFFFF;
     font-family: "nexalight";
+}
+
+div{
+   &.x-container, &.x-fullscreen, &.x-layout-card-item, &.x-sized{
+        background: url($b-tink-img) no-repeat 100% !important;
+    }
 }

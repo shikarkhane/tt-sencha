@@ -32,8 +32,9 @@ Ext.Loader.addClassPathMappings({
   "Ext.device.sqlite.SQLResultSet": "touch/src/device/sqlite/Sencha.js",
   "Ext.device.sqlite.SQLResultSetRowList": "touch/src/device/sqlite/Sencha.js",
   "Ext.device.sqlite.SQLTransaction": "touch/src/device/sqlite/Sencha.js",
-  "Message": "app/model/message.js",
-  "ttapp": "app"
+  "ttapp": "app",
+  "ttapp.util.ContactsProxy": "app/store/Contacts.js",
+  "ttapp.util.FeedProxy": "app/store/Messages.js"
 });
 
 Ext.ClassManager.addNameAlternateMappings({
@@ -668,20 +669,38 @@ Ext.ClassManager.addNameAlternateMappings({
   "Ext.viewport.WindowsPhone": [
     "Ext.viewport.WP"
   ],
-  "Message": [],
+  "ttapp.config.Config": [],
+  "ttapp.controller.Authenticate": [],
+  "ttapp.controller.DogEar": [],
+  "ttapp.controller.Landing": [],
   "ttapp.controller.SendTo": [],
-  "ttapp.controller.tink": [],
+  "ttapp.controller.Split": [],
+  "ttapp.controller.Tink": [],
+  "ttapp.controller.Trinket": [],
   "ttapp.model.Contact": [],
-  "ttapp.model.trinket": [],
+  "ttapp.model.Message": [],
+  "ttapp.model.Profile": [],
+  "ttapp.model.Trinket": [],
   "ttapp.store.Contacts": [],
-  "ttapp.store.trinkets": [],
+  "ttapp.store.Messages": [],
+  "ttapp.store.Profile": [],
+  "ttapp.store.Trinkets": [],
+  "ttapp.util.ContactsProxy": [],
+  "ttapp.util.FeedProxy": [],
+  "ttapp.view.Authenticate": [],
+  "ttapp.view.ConfirmPhoneNumber": [],
+  "ttapp.view.DogEar": [],
   "ttapp.view.Feed": [],
-  "ttapp.view.Home": [],
-  "ttapp.view.Main": [],
+  "ttapp.view.Landing": [],
+  "ttapp.view.Options": [],
   "ttapp.view.SendTo": [],
+  "ttapp.view.Split": [],
+  "ttapp.view.SplitNewTink": [],
+  "ttapp.view.SplitTinkBox": [],
   "ttapp.view.Thinking": [],
   "ttapp.view.TimerClock": [],
-  "ttapp.view.Tink": []
+  "ttapp.view.Tink": [],
+  "ttapp.view.Trinket": []
 });
 
 Ext.ClassManager.addNameAliasMappings({
@@ -1413,26 +1432,59 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.viewport.Ios": [],
   "Ext.viewport.Viewport": [],
   "Ext.viewport.WindowsPhone": [],
-  "Message": [],
+  "ttapp.config.Config": [],
+  "ttapp.controller.Authenticate": [],
+  "ttapp.controller.DogEar": [],
+  "ttapp.controller.Landing": [],
   "ttapp.controller.SendTo": [
-    "widget.controlsendto"
+    "widget.sendto"
   ],
-  "ttapp.controller.tink": [],
+  "ttapp.controller.Split": [],
+  "ttapp.controller.Tink": [],
+  "ttapp.controller.Trinket": [
+    "widget.trinketselection"
+  ],
   "ttapp.model.Contact": [],
-  "ttapp.model.trinket": [],
+  "ttapp.model.Message": [],
+  "ttapp.model.Profile": [],
+  "ttapp.model.Trinket": [],
   "ttapp.store.Contacts": [],
-  "ttapp.store.trinkets": [],
+  "ttapp.store.Messages": [],
+  "ttapp.store.Profile": [
+    "store.Profile"
+  ],
+  "ttapp.store.Trinkets": [],
+  "ttapp.util.ContactsProxy": [],
+  "ttapp.util.FeedProxy": [],
+  "ttapp.view.Authenticate": [
+    "widget.authenticate"
+  ],
+  "ttapp.view.ConfirmPhoneNumber": [
+    "widget.confirmphonenumber"
+  ],
+  "ttapp.view.DogEar": [
+    "widget.dogear"
+  ],
   "ttapp.view.Feed": [
     "widget.feed"
   ],
-  "ttapp.view.Home": [
-    "widget.home"
+  "ttapp.view.Landing": [
+    "widget.landing"
   ],
-  "ttapp.view.Main": [
-    "widget.main"
+  "ttapp.view.Options": [
+    "widget.options"
   ],
   "ttapp.view.SendTo": [
     "widget.sendto"
+  ],
+  "ttapp.view.Split": [
+    "widget.split"
+  ],
+  "ttapp.view.SplitNewTink": [
+    "widget.splitnewtink"
+  ],
+  "ttapp.view.SplitTinkBox": [
+    "widget.splittinkbox"
   ],
   "ttapp.view.Thinking": [
     "widget.thinkingbutton"
@@ -1442,6 +1494,9 @@ Ext.ClassManager.addNameAliasMappings({
   ],
   "ttapp.view.Tink": [
     "widget.tink"
+  ],
+  "ttapp.view.Trinket": [
+    "widget.trinket"
   ]
 });
 
