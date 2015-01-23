@@ -3,9 +3,16 @@
 // is already included in your app.json file).
 @import 'sencha-touch/default';
 @import 'sencha-touch/default/all';
+@import "compass/css3";
 
 // Custom code goes here..
 
 // Examples of using the icon mixin:
 // @include icon('user');
-
+ 
+@include font-face("nexalight", font-files("custom/NexaLight.otf"));
+ 
+body{
+    color: #FFFFFF;
+    font-family: "nexalight";
+}
