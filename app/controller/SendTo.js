@@ -23,11 +23,11 @@ Ext.define('ttapp.controller.SendTo', {
     },
     onSearchClearIconTap: function() {
         //call the clearFilter method on the store instance
-        Ext.getStore('Contacts').clearFilter();
+        Ext.getStore('phonecontacts').clearFilter();
     },
     onSearchKeyUp : function(field){
         var value = field.getValue(),
-            store = Ext.getStore('Contacts');
+            store = Ext.getStore('phonecontacts');
 
         //first clear any current filters on thes tore
         store.clearFilter();
