@@ -5,6 +5,7 @@ Ext.define('ttapp.view.ConfirmPhoneNumber', {
 	config:{
 		fullscreen: true,
 		styleHtmlContent: true,		
+		cls: 'cls-tt-landing',	
 		items: 
 		  [
 	        {

@@ -6,6 +6,7 @@ Ext.define('ttapp.view.Tink', {
     ],
     config: {
         itemId: 'tinkPage',
+        cls: 'cls-tt-tinking',
         layout: {
                 type: 'vbox',
                 align: 'middle'
@@ -25,7 +26,7 @@ Ext.define('ttapp.view.Tink', {
                 height: '500px',
                 width: '350px',
                 flex: 5,
-                html: '<iframe id="tinkcontainer" style="width:350px;height:500px;" src="resources/tinks/default.html"></iframe>',
+                html: '<iframe id="tinkcontainer" style="width:350px;height:500px;" src="resources/tinks/swiffy/default.html"></iframe>',
                 listeners: {
                         tap : {
                             element: 'element',

@@ -4,6 +4,7 @@ Ext.define('ttapp.view.Feed', {
     requires: ['ttapp.model.Message','Ext.dataview.List', 'Ext.ProgressIndicator'],
     config: {
     	layout: 'vbox',
+        cls: 'cls-tt-tinkbox',
     	items: [
         {
             xtype: 'dogear'

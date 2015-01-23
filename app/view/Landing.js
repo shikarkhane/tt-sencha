@@ -6,6 +6,7 @@ Ext.define('ttapp.view.Landing', {
 		fullscreen: true,
 		styleHtmlContent: true,		
 		layout: 'vbox',
+		cls: 'cls-tt-landing',
 		items: 
 		  [
 		  { xtype: 'spacer', flex: 1 },

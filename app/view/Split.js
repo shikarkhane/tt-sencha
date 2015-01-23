@@ -5,6 +5,7 @@ Ext.define('ttapp.view.Split', {
     config: {
         fullscreen: true,
         layout: 'hbox',
+        cls: 'cls-tt-split',
         defaults: {
             flex: 1
         },

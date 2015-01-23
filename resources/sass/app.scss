@@ -11,7 +11,7 @@
 // @include icon('user');
  
 //custom nexalight font
-@include font-face("nexalight", font-files("custom/NexaLight.otf"));
+@include font-face("nexalight", "/stylesheets/fonts/custom/NexaLight.otf");
 
 //images
 $b-split-img: '../images/background/split.png';
@@ -27,8 +27,17 @@ body{
     font-family: "nexalight";
 }
 
-div{
-   &.x-container, &.x-fullscreen, &.x-layout-card-item, &.x-sized{
-        background: url($b-tink-img) no-repeat 100% !important;
-    }
+.cls-tt-landing{
+    background: url($b-tink-img) no-repeat 100% !important;
 }
+.cls-tt-tinking{
+    background: url($b-tink-img) no-repeat 100% !important;
+}
+.cls-tt-tinkbox{
+    background: url($b-tinkbox-img) no-repeat 100% !important;
+}
+.cls-tt-split{
+    background: url($b-split-img) no-repeat 100% !important;
+}
+
+

@@ -4,6 +4,7 @@ Ext.define('ttapp.view.Trinket', {
     requires: ['ttapp.model.Trinket', 'ttapp.store.Trinkets'],
     config: {
         layout: 'fit',
+        cls: 'cls-tt-tinking',  
         items: [{
             xtype: 'dataview',
             scrollable: true,

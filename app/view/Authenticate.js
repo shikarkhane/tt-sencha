@@ -4,7 +4,8 @@ Ext.define('ttapp.view.Authenticate', {
 	requires: ['Ext.field.Number'],
 	config:{
 		fullscreen: true,
-		styleHtmlContent: true,		
+		styleHtmlContent: true,	
+		cls: 'cls-tt-landing',	
 		items: 
 		  [
 	        {
