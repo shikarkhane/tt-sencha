@@ -13,11 +13,11 @@ Ext.define('ttapp.controller.Split', {
         }
     },
     onNewTink: function(){
-        // Ext.Viewport.setActiveItem('tink');
-        Ext.ComponentQuery.query('#options')[0].setActiveItem(1, 'slide');
+         Ext.Viewport.setActiveItem('tink','slide');
+        //Ext.ComponentQuery.query('#options')[0].setActiveItem(1, 'slide');
     },
     onTinkBox: function(){
-        //Ext.Viewport.setActiveItem('feed');
-        Ext.ComponentQuery.query('#options')[0].setActiveItem(3, 'slide');
+        Ext.Viewport.setActiveItem('feed','slide');
+        //Ext.ComponentQuery.query('#options')[0].setActiveItem(3, 'slide');
     }
 });

@@ -12,7 +12,7 @@ Ext.define('ttapp.view.Feed', {
     	{
             xtype: 'list',
             flex: 5,
-            ui: 'round',
+            style: 'opacity:0.2;',
             pinHeaders: false,
             scrollable: {
                 direction: 'vertical'

@@ -12,10 +12,11 @@ Ext.define('ttapp.controller.Landing', {
     },
     onUserAction: function(){
         if ( Ext.getStore('profilestore').isUserVerified() === true){
-            Ext.Viewport.setActiveItem('options');
+            //Ext.Viewport.setActiveItem('options');
+            Ext.Viewport.setActiveItem('trinket','slide');
         }
         else{
-            Ext.Viewport.setActiveItem('authenticate');   
+            Ext.Viewport.setActiveItem('authenticate','slide');   
         }
     }
 });

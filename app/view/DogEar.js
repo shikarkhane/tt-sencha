@@ -4,6 +4,7 @@ Ext.define('ttapp.view.DogEar', {
     config: {
             ui: 'neutral',
             docked: 'top',
+            style: 'opacity:0.2;',
             scrollable: null,
             defaults: {
                 ui: 'plain'
