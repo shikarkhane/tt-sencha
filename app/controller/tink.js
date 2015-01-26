@@ -1,7 +1,7 @@
 Ext.define('ttapp.controller.Tink', {
     extend: 'Ext.app.Controller',
     requires: [
-        'ttapp.view.TimerClock'
+        'ttapp.view.TimerClock', 'ttapp.config.Config'
     ],
     config: {
         refs: {
@@ -52,7 +52,11 @@ Ext.define('ttapp.controller.Tink', {
         var trinketArea = Ext.get('swiffydiv');
         var trinketName = Ext.getStore('profilestore').getActiveTrinket();
         var activeTrinketFilePath = Ext.getStore('trinketstore').getFilePath(trinketName);
-        trinketArea.setHtml('<iframe id="tinkcontainer" style="width:350px;height:500px;" src="resources/tinks/swiffy/' + activeTrinketFilePath + '"></iframe>');
+
+        var width = ttapp.config.Config.getWidth(),
+        height = ttapp.config.Config.getHeight();
+
+        trinketArea.setHtml('<iframe id="tinkcontainer" style="width:' + width +'px;height:' + height + 'px;" src="resources/tinks/swiffy/' + activeTrinketFilePath + '"></iframe>');
     }
 
 });

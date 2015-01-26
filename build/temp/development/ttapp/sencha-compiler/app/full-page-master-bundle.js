@@ -1,2 +1,2 @@
 // @tag full-page
-// @require /Users/nikhil/Documents/tt-sencha/app.js
+// @require E:\sencha\workspace\tt-sencha\app.js

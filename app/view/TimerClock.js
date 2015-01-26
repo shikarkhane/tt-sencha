@@ -20,6 +20,8 @@ Ext.define('ttapp.view.TimerClock', {
                     me.stop();
                 }
             };
+        this.setTop(ttapp.config.Config.getHeight() * 0.05);
+        this.setLeft((ttapp.config.Config.getWidth() - 42)/2);
         me.clockIntervalHook = setInterval(updateClock, 1000);
         return me;
     },
@@ -60,6 +62,6 @@ Ext.define('ttapp.view.TimerClock', {
         minutes = minutes <= 9 ? "0" + minutes : minutes;
         seconds %= 60;
         seconds = seconds <= 9 ? "0" + seconds : seconds;
-        return hours + ":" + minutes + ":" + seconds
+        return minutes + ":" + seconds
     }
 });
