@@ -5,10 +5,9 @@ Ext.define('ttapp.view.SendTo', {
     config: {
     	itemId: 'choose-recepients',
     	fullscreen: true,
+    	layout: 'fit',
     	items: [{
             xtype: 'list',
-            ui: 'round',
-            pinHeaders: false,
             scrollable: {
                 direction: 'vertical'
             },
