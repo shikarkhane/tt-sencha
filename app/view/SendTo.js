@@ -3,7 +3,8 @@ Ext.define('ttapp.view.SendTo', {
     xtype: 'sendto',
     requires: ['ttapp.model.Contact','Ext.dataview.List','Ext.field.Search', 'Ext.Toolbar'],
     config: {
-    	layout: 'fit',
+    	itemId: 'choose-recepients',
+    	fullscreen: true,
     	items: [{
             xtype: 'list',
             ui: 'round',
@@ -19,13 +20,18 @@ Ext.define('ttapp.view.SendTo', {
 	                    docked: 'top',
 
 	                    items: [
-	                        { xtype: 'spacer' },
+	                    
 	                        {
 	                            xtype: 'searchfield',
 	                            cls: 'searchContactsField',
-	                            placeHolder: 'Search...'
+	                            placeHolder: 'Search...',
+	                            docked: 'left'
 	                        },
-	                        { xtype: 'spacer' }
+	                        { 
+	                        	xtype: 'button',
+	                        	iconCls: 'delete',
+	                        	docked: 'right'
+	                        }
 	                    ]
 	                }
 	                ]

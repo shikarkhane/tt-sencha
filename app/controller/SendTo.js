@@ -4,7 +4,8 @@ Ext.define('ttapp.controller.SendTo', {
     requires: ['ttapp.config.Config'],
     config: {
         refs: {
-            searchContactsField: 'searchfield[cls~=searchContactsField]'
+            searchContactsField: 'searchfield[cls~=searchContactsField]',
+            btnClose: 'button[iconCls~=delete]',
         },
         control: {
             'searchContactsField': {
@@ -13,6 +14,9 @@ Ext.define('ttapp.controller.SendTo', {
             },
             'sendto list': {
                 itemtap: 'composeTink'              
+            },
+            'btnClose': {
+                tap: 'returnToTink'
             }
         }
     },
@@ -24,6 +28,10 @@ Ext.define('ttapp.controller.SendTo', {
     onSearchClearIconTap: function() {
         //call the clearFilter method on the store instance
         Ext.getStore('phonecontacts').clearFilter();
+    },
+    returnToTink: function(){
+        this.closeMe();
+        this.showTink();
     },
     onSearchKeyUp : function(field){
         var value = field.getValue(),
@@ -73,6 +81,10 @@ Ext.define('ttapp.controller.SendTo', {
 
         }
     },
+    closeMe: function(){
+        var cs = Ext.ComponentQuery.query('#choose-recepients')[0];
+        cs.destroy();
+    },
     composeTink : function(list, idx, target, record, evt){        
         from_user = Ext.getStore('profilestore').getPhoneNumber();
 
@@ -83,6 +95,7 @@ Ext.define('ttapp.controller.SendTo', {
         ttapp.util.FeedProxy.process();
         //reset before leaving
         this.clearAll();
+        this.closeMe();
         this.showFeed();
     },
     sendTink: function(from_user, to_user, send_timestamp, trinket_name, text, seconds_sent){
@@ -106,33 +119,17 @@ Ext.define('ttapp.controller.SendTo', {
                         });
     },
     showFeed: function(){
-        var cs = Ext.ComponentQuery.query('#choose-recepients')[0];
-        cs.destroy();
         Ext.Viewport.setActiveItem('feed','slide');
         //Ext.ComponentQuery.query('#options')[0].setActiveItem(3, 'slide');
+    },
+    showTink: function(){
+        Ext.Viewport.setActiveItem('tink','slide');
+        //Ext.ComponentQuery.query('#options')[0].setActiveItem(1, 'slide');
     },
     showSendTo: function(seconds_sent, trinket_name){
         this.seconds_sent = seconds_sent;
         this.trinket_name = trinket_name;
 
-        Ext.Viewport.add({
-            xtype: 'sendto',
-            itemId: 'choose-recepients',
-            modal: true,
-            hideOnMaskTap: true,
-            showAnimation: {
-                type: 'popIn',
-                duration: 250,
-                easing: 'ease-out'
-            },
-            hideAnimation: {
-                type: 'popOut',
-                duration: 250,
-                easing: 'ease-out'
-            },
-            centered: true,
-            width: Ext.filterPlatform('ie10') ? '100%' : (Ext.os.deviceType == 'Phone') ? 260 : 400,
-            height: Ext.filterPlatform('ie10') ? '30%' : Ext.os.deviceType == 'Phone' ? 220 : 400
-        });
+        Ext.Viewport.setActiveItem('sendto','slide');
     }
 });
