@@ -43,7 +43,7 @@ Ext.define('ttapp.view.SendTo', {
 	            	items:[
 	            		{xtype: 'image', height:100, width: 100, flex: 1, itemId: 'previewTrinket'},
 	            		{xtype: 'label', itemId: 'previewSeconds'},
-	            		{xtype: 'textfield', flex: 1, itemId: 'previewTextMsg'}
+	            		{xtype: 'textfield', flex: 1, placeHolder: "Add a message!", itemId: 'previewTextMsg'}
 	            	]
 	            },
 	            {
