@@ -104,25 +104,46 @@ Ext.define('ttapp.controller.SendTo', {
         var cs = Ext.ComponentQuery.query('#choose-recepients')[0];
         cs.destroy();
     },
+    inviteViaSms: function(){
+        console.log('inviteViaSms');
+        if (Ext.os.deviceType == 'Phone'){
+            var x = 1;
+        }
+    },
     composeTink : function(list, idx, target, record, evt){        
         var from_user = Ext.getStore('profilestore').getPhoneNumber();
         var prevTextMsg = Ext.ComponentQuery.query('#previewTextMsg')[0];
 
-        if (this.phoneNumber){
-            this.sendTink(from_user, this.phoneNumber, (new Date()).valueOf(), 
-                this.trinket_name, prevTextMsg.getValue(), this.seconds_sent);
+        //is receipient on tinktime
+        if( Ext.getStore('phonecontacts').isOnTinkTime()){
+            if (this.phoneNumber){
+                this.sendTink(from_user, this.phoneNumber, (new Date()).valueOf(), 
+                    this.trinket_name, prevTextMsg.getValue(), this.seconds_sent);
 
-            // ajax load the feed
-            ttapp.util.FeedProxy.process();
-            //reset before leaving
-            this.clearAll();
-            this.closeMe();
-            this.showSplit();
+                // ajax load the feed
+                ttapp.util.FeedProxy.process();
+                //reset before leaving
+                this.clearAll();
+                this.closeMe();
+                this.showSplit();
+            }
+            else{
+                Ext.Msg.alert('Receiver?', 'Please choose a receipient.', Ext.emptyFn);
+            }
         }
         else{
-            Ext.Msg.alert('Receiver?', 'Please choose a receipient.', Ext.emptyFn);
+            //ask for user confirmation to send sms
+            Ext.Msg.confirm(
+            "Send invite?",
+            "Your friend is not using tinktime. Send him an invite to view this tink!",
+            function(buttonId) {
+                if (buttonId === 'yes') {
+                    this.inviteViaSms();
+                }
+            },
+            this
+        );
         }
-
     },
     sendTink: function(from_user, to_user, send_timestamp, trinket_name, text, seconds_sent){
           Ext.Ajax.request({

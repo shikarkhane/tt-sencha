@@ -77,7 +77,7 @@ Ext.define('ttapp.store.Contacts', {
 	        	'id' : 3,
 	            'first_name' : 'Justyna',
 	            'last_name' : 'Mach',
-	            'on_tinktime' : true,
+	            'on_tinktime' : false,
 	            'phone_number' : '0707654321'
 	        },
 	        { 
@@ -106,6 +106,15 @@ Ext.define('ttapp.store.Contacts', {
     	else{
     		return this.getAt(i).get('first_name') + ' ' + this.getAt(i).get('last_name');
     	}
+    },
+    isOnTinkTime: function(phoneNumber){
+        var result = false
+        this.load();
+        var i = this.find('phone_number', phoneNumber);
+        if ( i > -1){
+            result = this.getAt(i).get('on_tinktime');
+        }
+        return result
     }
 
 });
