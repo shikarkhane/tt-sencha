@@ -111,6 +111,7 @@ Ext.define('ttapp.store.Contacts', {
         var result = false
         this.load();
         var i = this.find('phone_number', phoneNumber);
+        
         if ( i > -1){
             result = this.getAt(i).get('on_tinktime');
         }

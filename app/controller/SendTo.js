@@ -121,9 +121,10 @@ Ext.define('ttapp.controller.SendTo', {
         var from_user = Ext.getStore('profilestore').getPhoneNumber();
         var prevTextMsg = Ext.ComponentQuery.query('#previewTextMsg')[0];
 
-        //is receipient on tinktime
-        if( Ext.getStore('phonecontacts').isOnTinkTime()){
-            if (this.phoneNumber){
+        //is a receipient chosen
+        if( this.phoneNumber){
+            //is receipient on tinktime
+            if (Ext.getStore('phonecontacts').isOnTinkTime(this.phoneNumber)){
                 this.sendTink(from_user, this.phoneNumber, (new Date()).valueOf(), 
                     this.trinket_name, prevTextMsg.getValue(), this.seconds_sent);
 
@@ -135,21 +136,23 @@ Ext.define('ttapp.controller.SendTo', {
                 this.showSplit();
             }
             else{
-                Ext.Msg.alert('Receiver?', 'Please choose a receipient.', Ext.emptyFn);
+                
+                //ask for user confirmation to send sms
+                Ext.Msg.confirm(
+                    "Send invite?",
+                    "Your friend is not using tinktime. Send him an invite to view this tink!",
+                    function(buttonId) {
+                        if (buttonId === 'yes') {
+                            this.inviteViaSms();
+                        }
+                    },
+                    this
+                );
+
             }
         }
         else{
-            //ask for user confirmation to send sms
-            Ext.Msg.confirm(
-            "Send invite?",
-            "Your friend is not using tinktime. Send him an invite to view this tink!",
-            function(buttonId) {
-                if (buttonId === 'yes') {
-                    this.inviteViaSms();
-                }
-            },
-            this
-        );
+            Ext.Msg.alert('Receiver?', 'Please choose a receipient.', Ext.emptyFn);
         }
     },
     sendTink: function(from_user, to_user, send_timestamp, trinket_name, text, seconds_sent){
