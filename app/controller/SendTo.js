@@ -6,19 +6,38 @@ Ext.define('ttapp.controller.SendTo', {
         refs: {
             searchContactsField: 'searchfield[cls~=searchContactsField]',
             btnClose: 'button[iconCls~=delete]',
+            btnSendTink: 'button[cls~=clsSendTink]',
         },
         control: {
             'searchContactsField': {
                 keyup: 'onSearchKeyUp',
                 clearicontap: 'onSearchClearIconTap'
             },
+            'btnSendTink': {
+                tap: 'composeTink'              
+            },
             'sendto list': {
-                itemtap: 'composeTink'              
+                itemtap: 'saveTappedContact'              
             },
             'btnClose': {
                 tap: 'returnToTink'
+            },
+            'sendto': {
+                show: 'setPreviewItems'
             }
         }
+    },
+    setPreviewItems: function(){
+        var prevTrinket = Ext.ComponentQuery.query('#previewTrinket')[0];
+        var secSent = Ext.ComponentQuery.query('#previewSeconds')[0];
+        
+        secSent.setHtml(this.seconds_sent);
+
+        var activeTrinketThumbnailPath = Ext.getStore('trinketstore').getThumbnailPath(this.trinket_name);
+        prevTrinket.setSrc(activeTrinketThumbnailPath);
+    },
+    saveTappedContact: function(list, idx, target, record, evt){
+        this.phoneNumber = record.data.phone_number;
     },
     clearAll: function(){
         var sf = Ext.ComponentQuery.query('searchfield[cls~=searchContactsField]')[0];
@@ -86,17 +105,24 @@ Ext.define('ttapp.controller.SendTo', {
         cs.destroy();
     },
     composeTink : function(list, idx, target, record, evt){        
-        from_user = Ext.getStore('profilestore').getPhoneNumber();
+        var from_user = Ext.getStore('profilestore').getPhoneNumber();
+        var prevTextMsg = Ext.ComponentQuery.query('#previewTextMsg')[0];
 
-        this.sendTink(from_user, record.data.phone_number, (new Date()).valueOf(), 
-            this.trinket_name, "hello", this.seconds_sent);
+        if (this.phoneNumber){
+            this.sendTink(from_user, this.phoneNumber, (new Date()).valueOf(), 
+                this.trinket_name, prevTextMsg.getValue(), this.seconds_sent);
 
-        // ajax load the feed
-        ttapp.util.FeedProxy.process();
-        //reset before leaving
-        this.clearAll();
-        this.closeMe();
-        this.showSplit();
+            // ajax load the feed
+            ttapp.util.FeedProxy.process();
+            //reset before leaving
+            this.clearAll();
+            this.closeMe();
+            this.showSplit();
+        }
+        else{
+            Ext.Msg.alert('Receiver?', 'Please choose a receipient.', Ext.emptyFn);
+        }
+
     },
     sendTink: function(from_user, to_user, send_timestamp, trinket_name, text, seconds_sent){
           Ext.Ajax.request({

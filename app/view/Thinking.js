@@ -16,9 +16,8 @@ Ext.define('ttapp.view.Thinking', {
         
         items: [
             {
-                xtype: 'button',
-                text: "tink",
-                ui: 'confirm-round'
+                xtype: 'button',                
+                cls: 'clsTinkButton'
             }
         ]
     }

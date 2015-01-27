@@ -3,10 +3,11 @@ Ext.define('ttapp.controller.Landing', {
     requires: ['ttapp.store.Profile'],
     config: {
         refs: {
+            btnBegin: 'button[cls~=clsBegin]',
         },
         control: {
-            'landing': {
-                userAcknowledge: 'onUserAction'
+            'btnBegin': {
+                tap: 'onUserAction'
             }
         }
     },

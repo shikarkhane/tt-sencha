@@ -9,32 +9,41 @@ Ext.define('ttapp.view.Landing', {
 		cls: 'cls-tt-landing',
 		items: 
 		  [
-		  { xtype: 'spacer', flex: 1 },
+		  { xtype: 'spacer', flex: 2 },
 		  {
 		  	xtype: 'container',
 		  	layout: 'hbox',
+		  	flex: 1,
 		  	items:
 		  	[
 			  	{xtype: 'spacer', flex:1},
 			  	{
-				  	xtype: 'label',
-					html: '<h2>Tinktime</h2>',
-					flex: 1,
-					style: 'text-align:center;'
+			  		xtype: 'container',
+		  			layout: 'vbox',
+		  			flex: 1,
+		  			items:
+		  			[{
+			  			xtype: 'label',
+						html: '<h2>Tinktime</h2>',
+						flex: 2,
+						style: 'text-align:center;'
+					},
+					{
+						xtype: 'button',
+						text: "begin",
+						cls: "clsBegin",
+	                	ui: 'confirm-round',
+	                	flex: 1
+					}
+		  			]
+				  	
 				},
+				
 				{xtype: 'spacer', flex:1}
 		  	]
 	       },	
-	       { xtype: 'spacer', flex: 1 },
-    	],
-        listeners: {
-        	tap : {
-        		element: 'element',
-		        fn: function(){
-		        	this.fireEvent("userAcknowledge", this);
-		        }
-		     }
-		}
+	       { xtype: 'spacer', flex: 2 },
+    	]
 
 	}
  });

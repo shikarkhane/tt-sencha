@@ -5,9 +5,10 @@ Ext.define('ttapp.view.SendTo', {
     config: {
     	itemId: 'choose-recepients',
     	fullscreen: true,
-    	layout: 'fit',
+    	layout: 'vbox',
     	items: [{
-            xtype: 'list',
+    		xtype: 'list',
+    		flex: 3,
             scrollable: {
                 direction: 'vertical'
             },
@@ -34,6 +35,22 @@ Ext.define('ttapp.view.SendTo', {
 	                    ]
 	                }
 	                ]
+	            },
+	            {
+	            	xtype: 'container',
+	            	layout: 'hbox',
+	            	flex: 2,
+	            	items:[
+	            		{xtype: 'image', height:100, width: 100, flex: 1, itemId: 'previewTrinket'},
+	            		{xtype: 'label', itemId: 'previewSeconds'},
+	            		{xtype: 'textfield', flex: 1, itemId: 'previewTextMsg'}
+	            	]
+	            },
+	            {
+	            	xtype: 'button',
+	            	cls: 'clsSendTink',
+	            	flex: 1,
+	            	text: 'Send'
 	            }
         ]
     }
