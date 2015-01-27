@@ -105,9 +105,16 @@ Ext.define('ttapp.controller.SendTo', {
         cs.destroy();
     },
     inviteViaSms: function(){
-        console.log('inviteViaSms');
+        //console.log(this.phoneNumber);
         if (Ext.os.deviceType == 'Phone'){
-            var x = 1;
+            var sConf = {
+                number: this.phoneNumber,
+                message: "I have sent you a tink. Download tinktime app to view it.",
+                intent: "INTENT",
+                success: function(){ Ext.Msg.alert('Success', 'sms', Ext.emptyFn); },
+                error: function(){ Ext.Msg.alert('Error', 'sms', Ext.emptyFn); }
+            }
+            sms.send(sConf.number, sConf.message, sConf.intent, sConf.success, sConf.error);
         }
     },
     composeTink : function(list, idx, target, record, evt){        
