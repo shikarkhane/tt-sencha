@@ -111,8 +111,12 @@ Ext.define('ttapp.controller.SendTo', {
                 number: this.phoneNumber,
                 message: "I have sent you a tink. Download tinktime app to view it.",
                 intent: "INTENT",
-                success: function(){ Ext.Msg.alert('Success', 'sms', Ext.emptyFn); },
-                error: function(){ Ext.Msg.alert('Error', 'sms', Ext.emptyFn); }
+                success: function(){ 
+                    Ext.Viewport.setActiveItem('split','slide');
+                },
+                error: function(){ 
+                    Ext.Msg.alert('Cancelled', 'Sms not sent!', Ext.emptyFn); 
+                }
             }
             sms.send(sConf.number, sConf.message, sConf.intent, sConf.success, sConf.error);
         }

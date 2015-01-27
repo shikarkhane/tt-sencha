@@ -2,8 +2,6 @@ Ext.define('ttapp.util.ContactsProxy', {
     singleton: true,
     requires: ['Ext.device.Contacts'],
     process: function() {
-        var contactsStore = Ext.getStore('Contacts'),
-            contactModel;
             
         if (Ext.os.deviceType == 'Phone'){
             var opts = new ContactFindOptions();
