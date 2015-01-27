@@ -42,7 +42,8 @@ Ext.define('ttapp.controller.Tink', {
     },
     showActiveTrinketThumbnail: function(imgUrl){
         var i = Ext.create('Ext.Img', {
-            src: imgUrl, //i.url
+            itemId: 'placeholderTrinket',
+            src: imgUrl, 
             height: 100,
             width: 100
         });
@@ -50,6 +51,12 @@ Ext.define('ttapp.controller.Tink', {
         i.setLeft(ttapp.config.Config.getWidth()/3);
 
         this.activeThumbnail = i; //reference to remove on start thinking
+
+        i.on('tap', function() {
+            var pt = Ext.ComponentQuery.query('#placeholderTrinket')[0];
+            pt.destroy();
+            Ext.Viewport.setActiveItem('trinket');
+        });
 
         Ext.Viewport.add(i);
     },
