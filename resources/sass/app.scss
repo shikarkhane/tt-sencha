@@ -14,7 +14,9 @@
 @include font-face("nexalight", "/stylesheets/fonts/custom/NexaLight.otf");
 
 //images
-$b-split-img: '../images/background/split.png';
+$b-landing-img: '../images/background/landing.png';
+$b-split-left-img: '../images/background/split_left.png';
+$b-split-right-img: '../images/background/split_right.png';
 $b-tink-img: '../images/background/tink.png';
 $b-tinkbox-img: '../images/background/tinkbox.png';
 $i-mail-img: '../images/icons/mail.png';
@@ -28,16 +30,24 @@ body{
 }
 
 .cls-tt-landing{
-    background: url($b-tink-img) no-repeat 100% !important;
+    background-image: url($b-landing-img);
+    background-size: 100% 100%;
 }
 .cls-tt-tinking{
-    background: url($b-tink-img) no-repeat 100% !important;
+    background-image: url($b-tink-img);
+    background-size: 100% 100%;
 }
 .cls-tt-tinkbox{
-    background: url($b-tinkbox-img) no-repeat 100% !important;
+    background-image: url($b-tinkbox-img);
+    background-size: 100% 100%;
 }
-.cls-tt-split{
-    background: url($b-split-img) no-repeat 100% !important;
+.cls-tt-split-left{
+    background-image: url($b-split-left-img);
+    background-size: 100% 100%;
+}
+.cls-tt-split-right{
+    background-image: url($b-split-right-img);
+    background-size: 100% 100%;
 }
 
 

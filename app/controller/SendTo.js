@@ -96,7 +96,7 @@ Ext.define('ttapp.controller.SendTo', {
         //reset before leaving
         this.clearAll();
         this.closeMe();
-        this.showFeed();
+        this.showSplit();
     },
     sendTink: function(from_user, to_user, send_timestamp, trinket_name, text, seconds_sent){
           Ext.Ajax.request({
@@ -118,9 +118,9 @@ Ext.define('ttapp.controller.SendTo', {
                             }
                         });
     },
-    showFeed: function(){
-        Ext.Viewport.setActiveItem('feed','slide');
-        //Ext.ComponentQuery.query('#options')[0].setActiveItem(3, 'slide');
+    showSplit: function(){
+        Ext.Viewport.setActiveItem('split','slide');
+        //Ext.ComponentQuery.query('#options')[0].setActiveItem(2, 'slide');
     },
     showTink: function(){
         Ext.Viewport.setActiveItem('tink','slide');

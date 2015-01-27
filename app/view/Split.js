@@ -5,7 +5,6 @@ Ext.define('ttapp.view.Split', {
     config: {
         fullscreen: true,
         layout: 'hbox',
-        cls: 'cls-tt-split',
         defaults: {
             flex: 1
         },
@@ -13,6 +12,7 @@ Ext.define('ttapp.view.Split', {
         {
             xtype: 'container',
             layout: 'vbox',
+            cls: 'cls-tt-split-left',
             items:
             [
                 {xtype: 'spacer', flex:4},
@@ -27,6 +27,7 @@ Ext.define('ttapp.view.Split', {
         {
             xtype: 'container',
             layout: 'vbox',
+            cls: 'cls-tt-split-right',
             items:
             [
                 {xtype: 'spacer', flex:4},
