@@ -12,7 +12,6 @@ Ext.define('ttapp.util.ContactsProxy', {
                 fields: ["name", "phoneNumbers"],
                 success: function(contacts){
                     if ( contacts.length > 0){
-
                         var cStore = Ext.getStore('phonecontacts'),
                             cModel;
 

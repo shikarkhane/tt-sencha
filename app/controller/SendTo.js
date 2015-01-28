@@ -1,6 +1,6 @@
 Ext.define('ttapp.controller.SendTo', {
     extend: 'Ext.app.Controller',
-    requires: ['ttapp.config.Config', 'ttapp.view.SendTo'],
+    requires: ['ttapp.config.Config'],
     config: {
         refs: {
             searchContactsField: 'searchfield[cls~=searchContactsField]',
