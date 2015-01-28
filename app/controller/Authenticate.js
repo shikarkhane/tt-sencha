@@ -16,24 +16,24 @@ Ext.define('ttapp.controller.Authenticate', {
     sendConfirmationCode: function(){
         var phoneNumber = Ext.getCmp('myPhoneNumber').getValue();
         this.myPhoneNumber = phoneNumber;
-        
+        debugger;
         // store user profile locally
-        Ext.getStore('profilestore').addProfile(phoneNumber,false, "20140101",
+        Ext.getStore('profilestore').addProfile(phoneNumber,false, (new Date()).valueOf(),
             Ext.getStore('trinketstore').getDefaultTrinket());
 
         Ext.Ajax.request({
-                            url: ttapp.config.Config.getBaseURL() + '/sms-code/',
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json'},
-                            disableCaching: false,
-                            jsonData: {
-                                "to_user": phoneNumber
-                            },
+            url: ttapp.config.Config.getBaseURL() + '/sms-code/',
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json'},
+            disableCaching: false,
+            jsonData: {
+                "to_user": phoneNumber
+            },
 
-                            success: function(response) {
-                                console.log(response.responseText);
-                            }
-                        });
+            success: function(response) {
+                console.log(response.responseText);
+            }
+        });
         Ext.Viewport.setActiveItem('confirmphonenumber');
     },
     confirmCode: function(){

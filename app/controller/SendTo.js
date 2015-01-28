@@ -135,6 +135,7 @@ Ext.define('ttapp.controller.SendTo', {
         if( this.phoneNumber){
             //is receipient on tinktime
             if (Ext.getStore('phonecontacts').isOnTinkTime(this.phoneNumber)){
+
                 this.sendTink(from_user, this.phoneNumber, (new Date()).valueOf(), 
                     this.trinket_name, prevTextMsg.getValue(), this.seconds_sent);
 
@@ -144,6 +145,7 @@ Ext.define('ttapp.controller.SendTo', {
                 this.clearAll();
                 this.closeMe();
                 this.showSplit();
+                
             }
             else{
                 
