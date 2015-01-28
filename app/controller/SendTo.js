@@ -22,9 +22,16 @@ Ext.define('ttapp.controller.SendTo', {
                 tap: 'returnToTink'
             },
             'sendto': {
-                show: 'setPreviewItems'
+                show: 'onShowSendTo'
             }
         }
+    },
+    onShowSendTo: function(){
+        this.refreshContactList();
+        this.setPreviewItems();
+    },
+    refreshContactList: function(){
+        ttapp.util.ContactsProxy.process();
     },
     setPreviewItems: function(){
         var prevTrinket = Ext.ComponentQuery.query('#previewTrinket')[0];

@@ -19,17 +19,26 @@ Ext.define('ttapp.util.ContactsProxy', {
                         cStore.removeAll(true);
 
                         Ext.Array.each(contacts, function(item, index, contacts_itself){
+                            var lname = item.name.givenName,
+                                fname = item.name.familyName;
+                            var pnumber = 0;
+
+                            if(item.phoneNumbers){
+                                pnumber = item.phoneNumbers[0].value;
+                            }     
 
                         // item.name.familyName, item.name.givenName, item.phoneNumbers[0].value
                             cModel = Ext.create('ttapp.model.Contact', {
-                                    'id': index,
-                                    'first_name': item.name.givenName,
-                                    'last_name': item.name.familyName,
-                                    'on_tinktime': true,
-                                    'phone_number': item.phoneNumbers[0].value
+                                    id: index,
+                                    first_name: fname,
+                                    last_name: lname,
+                                    on_tinktime: false,
+                                    phone_number: pnumber
                                 });
                             cStore.add(cModel);    
+                            cStore.sync();
                         });
+                        //Ext.Msg.alert('Contacts store', cStore.getAllCount(), Ext.emptyFn);
                    }
                 },
                     
@@ -46,10 +55,14 @@ Ext.define('ttapp.util.ContactsProxy', {
 
 Ext.define('ttapp.store.Contacts', {
     extend: 'Ext.data.Store',
-
+    requires: [ 'Ext.data.proxy.LocalStorage'],
     config: {
         storeId: 'phonecontacts',
         model: 'ttapp.model.Contact',
+        proxy: {
+            type: 'localstorage',
+            id: 'contactstoreproxy'
+        },
     	//sort the store using the lastname field
         sorters: 'lastName',
 

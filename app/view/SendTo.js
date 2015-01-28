@@ -7,6 +7,7 @@ Ext.define('ttapp.view.SendTo', {
     	fullscreen: true,
     	layout: 'vbox',
     	items: [{
+    		itemId: 'contactsListToChoose',
     		xtype: 'list',
     		flex: 3,
             scrollable: {
