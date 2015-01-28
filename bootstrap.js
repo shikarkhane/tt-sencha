@@ -34,8 +34,7 @@ Ext.Loader.addClassPathMappings({
   "Ext.device.sqlite.SQLTransaction": "touch/src/device/sqlite/Sencha.js",
   "ttapp": "app",
   "ttapp.util.ContactsProxy": "app/store/Contacts.js",
-  "ttapp.util.FeedProxy": "app/store/Messages.js",
-  "ttappl": "app"
+  "ttapp.util.FeedProxy": "app/store/Messages.js"
 });
 
 Ext.ClassManager.addNameAlternateMappings({
@@ -676,6 +675,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "ttapp.controller.Landing": [],
   "ttapp.controller.SendTo": [],
   "ttapp.controller.Split": [],
+  "ttapp.controller.Tink": [],
   "ttapp.controller.Trinket": [],
   "ttapp.model.Contact": [],
   "ttapp.model.Message": [],
@@ -700,8 +700,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "ttapp.view.Thinking": [],
   "ttapp.view.TimerClock": [],
   "ttapp.view.Tink": [],
-  "ttapp.view.Trinket": [],
-  "ttappl.controller.Tink": []
+  "ttapp.view.Trinket": []
 });
 
 Ext.ClassManager.addNameAliasMappings({
@@ -1441,6 +1440,7 @@ Ext.ClassManager.addNameAliasMappings({
     "widget.sendto"
   ],
   "ttapp.controller.Split": [],
+  "ttapp.controller.Tink": [],
   "ttapp.controller.Trinket": [
     "widget.trinketselection"
   ],
@@ -1497,8 +1497,7 @@ Ext.ClassManager.addNameAliasMappings({
   ],
   "ttapp.view.Trinket": [
     "widget.trinket"
-  ],
-  "ttappl.controller.Tink": []
+  ]
 });
 
 

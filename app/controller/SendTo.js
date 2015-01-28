@@ -1,7 +1,6 @@
 Ext.define('ttapp.controller.SendTo', {
     extend: 'Ext.app.Controller',
-    xtype: 'sendto',
-    requires: ['ttapp.config.Config'],
+    requires: ['ttapp.config.Config', 'ttapp.view.SendTo'],
     config: {
         refs: {
             searchContactsField: 'searchfield[cls~=searchContactsField]',
@@ -187,7 +186,7 @@ Ext.define('ttapp.controller.SendTo', {
         Ext.Viewport.setActiveItem('tink','slide');
         //Ext.ComponentQuery.query('#options')[0].setActiveItem(1, 'slide');
     },
-    showSendTo: function(seconds_sent, trinket_name){
+    showSendTo: function(tinkView, seconds_sent, trinket_name){
         this.seconds_sent = seconds_sent;
         this.trinket_name = trinket_name;
 

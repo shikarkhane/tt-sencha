@@ -20,11 +20,11 @@ Ext.define('ttapp.view.Tink', {
                 xtype: 'timerClock'   
             },
             {
-                title: 'swiffy',
-                xtype: 'panel',
-                id: "swiffydiv",
-                flex: 5,
-                html: '<iframe id="tinkcontainer" style="width:350px;height:500px;" src="resources/tinks/swiffy/default.html"></iframe>',
+                xtype: 'image',
+                itemId: 'placeholderTrinket',
+                width: 100,
+                height: 100,
+                hidden: true,
                 listeners: {
                         tap : {
                             element: 'element',
@@ -33,6 +33,13 @@ Ext.define('ttapp.view.Tink', {
                             }
                          }
                     }
+            },
+            {
+                title: 'swiffy',
+                xtype: 'panel',
+                id: "swiffydiv",
+                flex: 5,
+                html: '<iframe id="tinkcontainer" style="width:350px;height:500px;" src="resources/tinks/swiffy/default.html"></iframe>'                
             },
             {
                 flex: 1,
@@ -48,9 +55,6 @@ Ext.define('ttapp.view.Tink', {
 
         thinkElement.on(['touchstart'], 'onStartThinkingEvent', this);
         thinkElement.on(['touchend'], 'onStopThinkingEvent', this);
-    },
-    onChooseTrinket: function(e, target, options, eventController) {
-        this.fireEvent("choosetrinket", this);
     },
     onStartThinkingEvent: function(e, target, options, eventController) {
         this.fireEvent("startedthinking", this);

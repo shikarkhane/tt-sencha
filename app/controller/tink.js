@@ -14,7 +14,7 @@ Ext.define('ttapp.controller.Tink', {
                 show: 'onShow',
                 resetTinkOnActivate: 'onShow'
             },
-            'tink panel':{
+            'tink image':{
                 choosetrinket: 'onChooseTrinket'
             }
         }
@@ -23,7 +23,7 @@ Ext.define('ttapp.controller.Tink', {
         Ext.Viewport.setActiveItem('trinket');
     },
     onThinking : function(){
-        this.activeThumbnail.destroy();
+        this.hideActiveTrinketThumbnail();
         this.getClock().start();
         Ext.getDom('tinkcontainer').contentWindow.tt_start_animation();
 
@@ -34,31 +34,22 @@ Ext.define('ttapp.controller.Tink', {
         this.getClock().pause();
         var periodInSeconds = this.getClock().getDuration();
         var trinketName = Ext.getStore('profilestore').getActiveTrinket();
-        this.getApplication().getController('SendTo').showSendTo(periodInSeconds, trinketName);
+        this.getApplication().getController('SendTo').showSendTo(this, periodInSeconds, trinketName);
     },
     onShow: function(){
         this.resetTimerClock();
         this.useActiveTrinket();
     },
     showActiveTrinketThumbnail: function(imgUrl){
-        var i = Ext.create('Ext.Img', {
-            itemId: 'placeholderTrinket',
-            src: imgUrl, 
-            height: 100,
-            width: 100
-        });
-        i.setTop(ttapp.config.Config.getHeight()/3);
-        i.setLeft(ttapp.config.Config.getWidth()/3);
-
-        this.activeThumbnail = i; //reference to remove on start thinking
-
-        i.on('tap', function() {
-            var pt = Ext.ComponentQuery.query('#placeholderTrinket')[0];
-            pt.destroy();
-            Ext.Viewport.setActiveItem('trinket');
-        });
-
-        Ext.Viewport.add(i);
+        var pt = Ext.ComponentQuery.query('#placeholderTrinket')[0];
+        pt.setSrc(imgUrl);
+        pt.setTop(ttapp.config.Config.getHeight()/3);
+        pt.setLeft(ttapp.config.Config.getWidth()/3);
+        pt.setHidden(false);
+    },
+    hideActiveTrinketThumbnail: function(imgUrl){
+        var pt = Ext.ComponentQuery.query('#placeholderTrinket')[0];
+        pt.setHidden(true);
     },
     resetTimerClock: function(){
         var tc = Ext.ComponentQuery.query('#tinkTimerClock')[0];
