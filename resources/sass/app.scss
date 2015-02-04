@@ -8,7 +8,9 @@
 // Custom code goes here..
 
 // Examples of using the icon mixin:
-// @include icon('user');
+@include icon('mail');
+@include icon('speedometer');
+
  
 //custom nexalight font
 @include font-face("nexalight", "/stylesheets/fonts/custom/NexaLight.otf");
@@ -50,13 +52,38 @@ body{
     background-size: 100% 100%;
 }
 
+.x-html h1, .x-html h2, .x-html h3, .x-html h4, .x-html h5, .x-html h6{
+    color: #FFFFFF;
+    font-family: "nexalight";
+    font-size: 35pt;
+}
+.x-button.x-button-confirm-round.clsBegin.x-layout-box-item.x-flexed.x-sized .x-button-label{
+    background-color: #E55845;
+    color: #FFFFFF;
+    font-family: "nexalight";
+    height: 35px;
+    width: 140px;
+    font-size: 16pt;
+    @include border-radius(10px);
+}
+.clsTimerClock{
+    color: #FFFFFF;
+    font-family: "nexalight";
+    font-size: 20pt;
+}
 .x-button-normal.x-button.clsTinkButton.x-layout-box-item.x-stretched {
     background-image: url($o-tink-img);
     background-size: 100% 100%;
     width: 60px;
     height: 60px;
+    background-color:rgba(135,156,189,0.34);
 }
 .img-trinket{
 	border: 2px solid white;
 	margin-left: 7px;
+    @include border-radius(10px);
+}
+.prev-trinket{
+    border: 2px solid white;
+    @include border-radius(10px);
 }

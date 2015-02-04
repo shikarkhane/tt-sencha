@@ -43,8 +43,8 @@ Ext.define('ttapp.controller.Tink', {
     showActiveTrinketThumbnail: function(imgUrl){
         var pt = Ext.ComponentQuery.query('#placeholderTrinket')[0];
         pt.setSrc(imgUrl);
-        pt.setTop(ttapp.config.Config.getHeight()/3);
-        pt.setLeft(ttapp.config.Config.getWidth()/3);
+        pt.setTop((ttapp.config.Config.getHeight()/3));
+        pt.setLeft((ttapp.config.Config.getWidth()/2)-50);
         pt.setHidden(false);
     },
     hideActiveTrinketThumbnail: function(imgUrl){
@@ -57,7 +57,8 @@ Ext.define('ttapp.controller.Tink', {
         var tp = Ext.ComponentQuery.query('#tinkPage')[0];
         tp.add({
             itemId: 'tinkTimerClock',
-            xtype: 'timerClock'
+            xtype: 'timerClock',
+            cls: 'clsTimerClock'
         });
     },
     useActiveTrinket : function(){

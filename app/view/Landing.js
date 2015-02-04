@@ -20,7 +20,8 @@ Ext.define('ttapp.view.Landing', {
 			  	{
 			  		xtype: 'container',
 		  			layout: 'vbox',
-		  			flex: 1,
+		  			pack: 'center',
+		  			flex: 2,
 		  			items:
 		  			[{
 			  			xtype: 'label',

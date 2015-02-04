@@ -25,6 +25,7 @@ Ext.define('ttapp.view.Tink', {
                 width: 100,
                 height: 100,
                 hidden: true,
+                cls: 'prev-trinket',
                 listeners: {
                         tap : {
                             element: 'element',

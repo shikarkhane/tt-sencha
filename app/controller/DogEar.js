@@ -2,8 +2,8 @@ Ext.define('ttapp.controller.DogEar', {
     extend: 'Ext.app.Controller',
     config: {
         refs: {
-            btnToTink: 'button[iconCls~=action]',
-            btnToFeed: 'button[iconCls~=add]'
+            btnToTink: 'button[iconCls~=speedometer]',
+            btnToFeed: 'button[iconCls~=mail]'
         },
         control: {
             'btnToTink': {

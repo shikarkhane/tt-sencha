@@ -7,6 +7,7 @@ Ext.define('ttapp.view.Thinking', {
         flex: 1,
         margin: 10,
         
+
         layout: {
             type: 'vbox',
             pack: 'center',
@@ -16,6 +17,7 @@ Ext.define('ttapp.view.Thinking', {
         
         items: [
             {
+                
                 xtype: 'button',                
                 cls: 'clsTinkButton'
             }

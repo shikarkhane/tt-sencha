@@ -12,12 +12,12 @@ Ext.define('ttapp.view.DogEar', {
             items: [
                 {
                     xtype: 'button',
-                    iconCls: 'action',
+                    iconCls: 'speedometer',
                     docked: 'left'
                 },
                 {
                     xtype: 'button',
-                    iconCls: 'add',
+                    iconCls: 'mail',
                     docked: 'right'
                 }
             ]

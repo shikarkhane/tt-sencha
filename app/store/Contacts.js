@@ -136,7 +136,7 @@ Ext.define('ttapp.store.Contacts', {
     	}
     },
     isOnTinkTime: function(phoneNumber){
-        debugger;
+        
         var result = false
         var i = this.find('phone_number', phoneNumber);
         
