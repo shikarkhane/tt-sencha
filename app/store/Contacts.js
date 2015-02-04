@@ -1,6 +1,46 @@
 Ext.define('ttapp.util.ContactsProxy', {
     singleton: true,
     requires: ['Ext.device.Contacts'],
+    areOnTinktime: function(contacts, device){
+        console.log(device);
+        Ext.Ajax.request({
+                            url:  ttapp.config.Config.getBaseURL() + '/are-on-network/',
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json'},
+                            disableCaching: false,
+                            jsonData: {
+                                "contacts" : contacts,
+                                "device" : device
+                            },
+
+                            success: function(response) {
+                                
+                                var cStore = Ext.getStore('phonecontacts'),
+                                                cModel;
+
+                                // remove all existing contacts
+                                cStore.removeAll(true);
+
+                                Ext.Array.each(Ext.JSON.decode(response.responseText), function(item, index, contacts_itself){
+                                    var lname = item.first_name,
+                                        fname = item.last_name,
+                                        pnumber = item.phone_number,
+                                        onTinkTime = item.on_tinktime;
+
+                                // item.name.familyName, item.name.givenName, item.phoneNumbers[0].value
+                                    cModel = Ext.create('ttapp.model.Contact', {
+                                            id: index,
+                                            first_name: fname,
+                                            last_name: lname,
+                                            on_tinktime: onTinkTime,
+                                            phone_number: pnumber
+                                        });
+                                    cStore.add(cModel);    
+                                    cStore.sync();
+                                });
+                            }
+                        });
+    },
     process: function() {
             
         if (Ext.os.deviceType == 'Phone'){
@@ -12,33 +52,7 @@ Ext.define('ttapp.util.ContactsProxy', {
                 fields: ["name", "phoneNumbers"],
                 success: function(contacts){
                     if ( contacts.length > 0){
-                        var cStore = Ext.getStore('phonecontacts'),
-                            cModel;
-
-                        // remove all existing contacts
-                        cStore.removeAll(true);
-
-                        Ext.Array.each(contacts, function(item, index, contacts_itself){
-                            var lname = item.name.givenName,
-                                fname = item.name.familyName;
-                            var pnumber = 0;
-
-                            if(item.phoneNumbers){
-                                pnumber = item.phoneNumbers[0].value;
-                            }     
-
-                        // item.name.familyName, item.name.givenName, item.phoneNumbers[0].value
-                            cModel = Ext.create('ttapp.model.Contact', {
-                                    id: index,
-                                    first_name: fname,
-                                    last_name: lname,
-                                    on_tinktime: false,
-                                    phone_number: pnumber
-                                });
-                            cStore.add(cModel);    
-                            cStore.sync();
-                        });
-                        //Ext.Msg.alert('Contacts store', cStore.getAllCount(), Ext.emptyFn);
+                        contacts = this.areOnTinktime(contacts, 'ios');
                    }
                 },
                     
@@ -58,7 +72,7 @@ Ext.define('ttapp.util.ContactsProxy', {
                 'first_name' : 'Nikhil',
                 'last_name' : 'Shikarkhane',
                 'on_tinktime' : true,
-                'phone_number' : '+0705438947'
+                'phone_number' : '+46705438947'
             },
             { 
                 'id' : 2,
@@ -90,29 +104,8 @@ Ext.define('ttapp.util.ContactsProxy', {
             }
 
         ]
-            var cStore = Ext.getStore('phonecontacts'),
-                            cModel;
-
-            // remove all existing contacts
-            cStore.removeAll(true);
-
-            Ext.Array.each(contacts, function(item, index, contacts_itself){
-                var lname = item.first_name,
-                    fname = item.last_name,
-                    pnumber = item.phone_number,
-                    onTinkTime = item.on_tinktime;
-
-            // item.name.familyName, item.name.givenName, item.phoneNumbers[0].value
-                cModel = Ext.create('ttapp.model.Contact', {
-                        id: index,
-                        first_name: fname,
-                        last_name: lname,
-                        on_tinktime: onTinkTime,
-                        phone_number: pnumber
-                    });
-                cStore.add(cModel);    
-                cStore.sync();
-            });
+            contacts = this.areOnTinktime(contacts, 'default');
+            
         }
     }
 });
@@ -131,45 +124,7 @@ Ext.define('ttapp.store.Contacts', {
         sorters: 'lastName',
 
         //group the store using the lastName field
-        groupField: 'lastName',
-        data: [
-	        { 
-	        	'id' : 1,
-	            'first_name' : 'Nikhil',
-	            'last_name' : 'Shikarkhane',
-	            'on_tinktime' : true,
-	            'phone_number' : '0705438947'
-	        },
-	        { 
-	        	'id' : 2,
-	            'first_name' : 'Monica',
-	            'last_name' : 'Sylvander',
-	            'on_tinktime' : true,
-	            'phone_number' : '0701234567'
-	        },
-	        { 
-	        	'id' : 3,
-	            'first_name' : 'Justyna',
-	            'last_name' : 'Mach',
-	            'on_tinktime' : false,
-	            'phone_number' : '0707654321'
-	        },
-	        { 
-	        	'id' : 4,
-	            'first_name' : '51512',
-	            'last_name' : '',
-	            'on_tinktime' : true,
-	            'phone_number' : '07051512'
-	        },
-            { 
-                'id' : 5,
-                'first_name' : '5050',
-                'last_name' : '',
-                'on_tinktime' : true,
-                'phone_number' : '5050'
-            }
-
-        ]
+        groupField: 'lastName'
     },
     getFirstLastName: function(phoneNumber){
     	var i = this.find('phone_number', phoneNumber);
