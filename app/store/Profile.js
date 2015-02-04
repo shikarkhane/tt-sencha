@@ -23,15 +23,27 @@ Ext.define('ttapp.store.Profile', {
         
     },
     addProfile: function(phoneNumber, isVerified, lastUpdatedOn, selectedTrinketName){
+        var result = false;
+        //empty store if exists
+        this.removeAll();
+        
         var usr = Ext.create('ttapp.model.Profile',{
             phone_number: phoneNumber,
             is_verified: isVerified,
             last_updated_on: lastUpdatedOn,
             selected_trinket_name: selectedTrinketName
             });
+        var errors = usr.validate();
 
-        this.add(usr);
-        this.sync();
+        if(errors.isValid()){
+            this.add(usr);
+            this.sync();
+            result = true;
+        }
+        else{
+            Ext.Msg.alert('Check number', 'Phone number is not correct', Ext.emptyFn); 
+        }
+        return result;
     },
     getPhoneNumber: function(){
         this.load();

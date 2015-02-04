@@ -17,7 +17,7 @@ Ext.define('ttapp.view.Authenticate', {
                 xtype: 'textfield',
                 name: 'verify-phone-number',
                 placeHolder: '+46705432112',
-                maxLength: 12,
+                maxLength: 15,
                 minLength: 10                
 	        },
 	        {

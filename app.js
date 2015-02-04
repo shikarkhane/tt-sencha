@@ -48,34 +48,21 @@ Ext.application({
     launch: function() {
         // Destroy the #appLoadingIndicator element
         Ext.fly('appLoadingIndicator').destroy();
-        
-        /*var opts = new ContactFindOptions();
-        opts.filter = "";
-        opts.multiple = true;
-        var contactsConfig = {        
-                options: opts,
-                fields: ["name", "phoneNumbers"],
-                success: function(contacts){
-                    Ext.Msg.alert('Simple contacts', contacts.length, Ext.emptyFn);
-
-                },
-                    
-                failure: function(context){
-                     Ext.Msg.alert('Failure', 'It did not work.', Ext.emptyFn);
-               },
-               scope: this,
-               includeImages: false
-            };
-
-         Ext.Viewport.add({
-            xtype: 'list',
-            itemTpl: '{First} {Last}',
-            store: {
-                fields: ['First', 'Last'],
-                data: Ext.device.Contacts.getContacts(contactsConfig)
+     
+     /*   
+        Ext.device.Push.register({
+            type: Ext.device.Push.ALERT|Ext.device.Push.BADGE|Ext.device.Push.SOUND,
+            success: function(token) {
+                Ext.Msg.alert('Succes', token, Ext.emptyFn);
+            },
+            failure: function(error) {
+              Ext.Msg.alert('Error', error, Ext.emptyFn);
+            },
+            received: function(notifications) {
+                Ext.Msg.alert('Received', JSON.stringify(notifications)), Ext.emptyFn);
             }
-        });
-*/
+        });*/
+
         // Initialize the main view
         Ext.Viewport.add(Ext.create('ttapp.view.Landing'));
         ttapp.util.FeedProxy.process();

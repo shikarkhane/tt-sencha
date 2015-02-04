@@ -8,5 +8,9 @@ Ext.define('ttapp.model.Profile', {
             'last_updated_on',
             'selected_trinket_name'
         ]
+        ,
+            validations: [
+                {type: 'format',   name: 'phone_number', matcher: /^\+[0-9]+$/, message:"(+) followed by digits only."}
+            ]
     }
 });
