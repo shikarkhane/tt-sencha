@@ -11,6 +11,7 @@
 @include icon('mail');
 @include icon('speedometer');
 
+@include sencha-button-ui('ttButton', #E55845,'glossy');
  
 //custom nexalight font
 @include font-face("nexalight", "/stylesheets/fonts/custom/NexaLight.otf");
@@ -58,7 +59,6 @@ body{
     font-size: 35pt;
 }
 .x-button.x-button-confirm-round.clsBegin.x-layout-box-item.x-flexed.x-sized .x-button-label{
-    background-color: #E55845;
     color: #FFFFFF;
     font-family: "nexalight";
     height: 35px;

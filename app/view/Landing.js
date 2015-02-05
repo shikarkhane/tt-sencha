@@ -33,7 +33,7 @@ Ext.define('ttapp.view.Landing', {
 						xtype: 'button',
 						text: "begin",
 						cls: "clsBegin",
-	                	ui: 'confirm-round',
+	                	ui: 'ttButton',
 	                	flex: 1
 					}
 		  			]
