@@ -51,7 +51,8 @@ Ext.define('ttapp.view.SendTo', {
 	            	xtype: 'button',
 	            	cls: 'clsSendTink',
 	            	flex: 1,
-	            	text: 'Send'
+	            	text: 'Send',
+	            	ui: 'ttButton'
 	            }
         ]
     }
