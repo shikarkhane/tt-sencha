@@ -36,7 +36,9 @@ Ext.define('ttapp.util.FeedProxy', {
                                 }
                                 
                                 if( fromUser == myNumber.toString()){
-                                    fromUserName = 'me';                                    
+                                    fromUserName = 'me';
+                                    forInbox = false;
+                                    unread = false;                                    
                                 }
                                 else{
                                     fromUserName = Ext.getStore('phonecontacts').getFirstLastName(fromUser);
