@@ -40,7 +40,7 @@ Ext.define('ttapp.view.Tink', {
                 xtype: 'panel',
                 id: "swiffydiv",
                 flex: 5,
-                html: '<iframe id="tinkcontainer" style="width:350px;height:500px;" src="resources/tinks/swiffy/default.html"></iframe>'                
+                html: '<iframe id="tinkcontainer" style="width:320px;height:480px;" src="resources/tinks/swiffy/default.html"></iframe>'                
             },
             {
                 flex: 1,

@@ -12,13 +12,14 @@ Ext.define('ttapp.view.Feed', {
     	{
             xtype: 'list',
             flex: 5,
-            cls: 'clsFeed',
+            baseCls: 'clsFeed',
+            itemCls: 'clsMessageItem',
             //style: 'opacity:0.5;',
             pinHeaders: false,
             scrollable: {
                 direction: 'vertical'
             },
-            itemTpl: '<div class="clsMessage"><div class="clsTextMessage"><div>{from_user_name}</div><div>{text}</div><div>{to_user_name}</div></div><div class="clsTrinketMessage"><div>{seconds_sent} secs</div><div><img src={trinket_file_path} width=65px height=65px></div></div></div>',
+            itemTpl: '<div class="clsMessage{to_user_name}"><div class="clsTextMessage"><div>{from_user_name}</div><div>{text}</div><div>{to_user_name}</div></div><div class="clsTrinketMessage"><div>{seconds_sent} secs</div><div><img src={trinket_file_path} width=65px height=65px></div></div></div>',
             store: 'Messages'
         }
         ]

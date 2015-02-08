@@ -102,12 +102,12 @@ body{
 }
 .clsFeed .x-list-item{
     position:relative;
-    color:#333;
     padding:0em 0em;
     min-height:2.2em;
     display:-webkit-box;
     display:box;
     border:1px solid #c8c8c8;
+    @include border-right-radius(4px);
     margin-top:4px;
     margin-right:10px;
 }

@@ -4,17 +4,11 @@ Ext.define('ttapp.view.Thinking', {
     id: 'thinkbutton',
     
     config: {
-        flex: 1,
-        margin: 10,
-        
-
         layout: {
             type: 'vbox',
             pack: 'center',
             align: 'stretch'
         },
-        
-        
         items: [
             {
                 
