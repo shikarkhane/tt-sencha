@@ -107,7 +107,7 @@ body{
     display:-webkit-box;
     display:box;
     border:1px solid #c8c8c8;
-    @include border-right-radius(4px);
+    @include border-right-radius(10px);
     margin-top:4px;
     margin-right:10px;
 }
