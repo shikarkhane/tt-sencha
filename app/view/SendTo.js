@@ -37,23 +37,45 @@ Ext.define('ttapp.view.SendTo', {
 	                }
 	                ]
 	            },
+	            {xtype: 'spacer', flex: 1},
+	            {
+	            	xtype: 'container',
+	            	layout: 'float',
+	            	cls: 'clsPreviewSelection',
+	            	//styleHtmlCls : 'clsPreviewSelection',
+	            	//styleHtmlContent : true,
+	            	flex: 1.4,
+	            	items:[
+	            		{xtype: 'image', height:100, width: 100, itemId: 'previewTrinket'},
+	            		{
+	            			xtype: 'label', 
+	            			itemId: 'previewSeconds', 
+	            			cls: 'clsSecondsSentPreview', 
+	            			width: 100, 
+	            			height:100, 
+	            			zIndex: 1, 
+	            			left: 0, 
+	            			top: 0
+	            		},
+	            		{xtype: 'textareafield', left: 100, maxRows: 4, placeHolder: "Add a message!", itemId: 'previewTextMsg'}
+	            	]
+	            },
+	            {xtype: 'spacer', flex: 1},
 	            {
 	            	xtype: 'container',
 	            	layout: 'hbox',
-	            	flex: 2,
 	            	items:[
-	            		{xtype: 'image', height:100, width: 100, flex: 1, itemId: 'previewTrinket'},
-	            		{xtype: 'label', itemId: 'previewSeconds'},
-	            		{xtype: 'textfield', flex: 1, placeHolder: "Add a message!", itemId: 'previewTextMsg'}
+		            	{xtype: 'spacer'},
+		            	{
+			            	xtype: 'button',
+			            	cls: 'clsSendTink',	            	
+			            	text: 'Send',
+			            	ui: 'ttButton'
+		            	},
+		            	{xtype: 'spacer'}
 	            	]
 	            },
-	            {
-	            	xtype: 'button',
-	            	cls: 'clsSendTink',
-	            	flex: 1,
-	            	text: 'Send',
-	            	ui: 'ttButton'
-	            }
+				{xtype: 'spacer', flex: 1}
         ]
     }
 });

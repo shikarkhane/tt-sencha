@@ -17,7 +17,7 @@ Ext.define('ttapp.view.Trinket', {
             scrollable: true,
             inline: true,
             //cls: 'dataview-inline',
-            itemTpl: '<div class="img-trinket" style="width:'+widthToUse+'px;height:'+widthToUse+'px;background-image: url({thumbnail_path});"></div>',
+            itemTpl: '<img src={thumbnail_path} height='+widthToUse+' width='+widthToUse+' class="img-trinket">',
             store: 'trinketstore'
         }));
     }

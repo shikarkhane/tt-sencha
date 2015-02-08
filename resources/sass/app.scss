@@ -87,3 +87,33 @@ body{
     border: 2px solid white;
     @include border-radius(10px);
 }
+.clsSendTink{
+       height: 35px;
+    width: 140px;
+}
+.clsPreviewSelection{
+    border: 2px solid white;
+    @include border-radius(10px);
+}
+.clsSecondsSentPreview{
+ background-color:rgba(173, 174, 158, 0.4);
+ font-size: 3em; 
+ text-align: center;
+}
+.clsFeed .x-list-item{
+    position:relative;
+    color:#333;
+    padding:0em 0em;
+    min-height:2.2em;
+    display:-webkit-box;
+    display:box;
+    border:1px solid #c8c8c8;
+    margin-top:4px;
+    margin-right:10px;
+}
+.clsTextMessage{
+    float: left;
+}
+.clsTrinketMessage{
+    float: right;
+}
