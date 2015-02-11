@@ -2,7 +2,7 @@ Ext.define('ttapp.util.ContactsProxy', {
     singleton: true,
     requires: ['Ext.device.Contacts'],
     areOnTinktime: function(contacts, device){
-        console.log(device);
+        //console.log(device);
         Ext.Ajax.request({
                             url:  ttapp.config.Config.getBaseURL() + '/are-on-network/',
                             method: 'POST',
@@ -14,7 +14,6 @@ Ext.define('ttapp.util.ContactsProxy', {
                             },
 
                             success: function(response) {
-                                
                                 var cStore = Ext.getStore('phonecontacts'),
                                                 cModel;
 
@@ -38,7 +37,11 @@ Ext.define('ttapp.util.ContactsProxy', {
                                     cStore.add(cModel);    
                                     cStore.sync();
                                 });
-                            }
+                            },
+                                failure: function(response, opts) {
+                                    Ext.Msg.alert('Is on netwk', "error", Ext.emptyFn);           
+                                    
+                                }
                         });
     },
     process: function() {
@@ -51,8 +54,10 @@ Ext.define('ttapp.util.ContactsProxy', {
                 options: opts,
                 fields: ["name", "phoneNumbers"],
                 success: function(contacts){
+                    
                     if ( contacts.length > 0){
-                        contacts = this.areOnTinktime(contacts, 'ios');
+                        contacts = ttapp.util.ContactsProxy.areOnTinktime(contacts, 'ios');
+
                    }
                 },
                     
