@@ -34,8 +34,6 @@ Ext.define('ttapp.util.ContactsCleaner', {
                 };
                 c_array.push(c);
             });
-        
-    console.log(c_array);
     return c_array;
     }
 });
