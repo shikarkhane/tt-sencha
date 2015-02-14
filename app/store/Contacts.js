@@ -12,22 +12,25 @@ Ext.define('ttapp.util.ContactsCleaner', {
     },
     deviceSpecificFormat: function(d, i){
         if( d == 'default'){
-            console.log('default');
+            return [i.first_name, i.last_name, i.phone_number]
         }
         if(d == 'ios'){
-            console.log('ios');
+            if (item.phoneNumbers){
+                return[i.name.givenName, i.name.familyName, item.phoneNumbers[0].value];
+                }
         }
+        return null;
     },
-    cleaner: function(contacts, device){
+    process: function(contacts, device){
         var c = {};
         var c_array = [];
 
         Ext.Array.each(contacts, function(item, index, contacts_itself){
-            ds = this.deviceSpecificFormat( device, item);
+            ds = ttapp.util.ContactsCleaner.deviceSpecificFormat( device, item);
                 c = {
-                    "first_name": this.encode_utf8(ds[0]), 
-                    "last_name" : this.encode_utf8(ds[1]), 
-                    "phone_number" : this.cleanPhonerNumber(ds[2])
+                    "first_name": ttapp.util.ContactsCleaner.encode_utf8(ds[0]), 
+                    "last_name" : ttapp.util.ContactsCleaner.encode_utf8(ds[1]), 
+                    "phone_number" : ttapp.util.ContactsCleaner.cleanPhoneNumber(ds[2])
                 };
                 c_array.push(c);
             });
@@ -92,7 +95,7 @@ Ext.define('ttapp.util.ContactsProxy', {
                 success: function(contacts){
                     
                     if ( contacts.length > 0){
-                        x = ttapp.util.ContactsCleaner.cleaner(contacts, 'ios');
+                        x = ttapp.util.ContactsCleaner.process(contacts, 'ios');
                         ttapp.util.ContactsProxy.areOnTinktime(x);
                    }
                 },
@@ -145,7 +148,7 @@ Ext.define('ttapp.util.ContactsProxy', {
             }
 
         ]
-            x = ttapp.util.ContactsCleaner.cleaner(contacts, 'default');
+            x = ttapp.util.ContactsCleaner.process(contacts, 'default');
             this.areOnTinktime(x);
             
         }
