@@ -1,7 +1,27 @@
+Ext.define('ttapp.util.ContactsCleaner', {
+    singleton: true,
+    cleaner: function(contacts, device){
+        var c = {};
+        var c_array = [];
+
+        if ( device == 'default'){
+            console.log('cleaning default');
+            Ext.Array.each(contacts, function(item, index, contacts_itself){
+                c = {"first_name": item.first_name, "last_name" : item.last_name, "phone_number" : item.phone_number}
+                c_array.push(c);
+            });
+        }
+        if ( device == 'ios'){
+            console.log('cleaning ios');
+        }
+    console.log(c_array);
+    return c_array;
+    }
+});
 Ext.define('ttapp.util.ContactsProxy', {
     singleton: true,
     requires: ['Ext.device.Contacts'],
-    areOnTinktime: function(contacts, device){
+    areOnTinktime: function(contacts){
         //console.log(device);
         Ext.Ajax.request({
                             url:  ttapp.config.Config.getBaseURL() + '/are-on-network/',
@@ -9,8 +29,7 @@ Ext.define('ttapp.util.ContactsProxy', {
                             headers: { 'Content-Type': 'application/json'},
                             disableCaching: false,
                             jsonData: {
-                                "contacts" : contacts,
-                                "device" : device
+                                "contacts" : contacts
                             },
 
                             success: function(response) {
@@ -19,7 +38,7 @@ Ext.define('ttapp.util.ContactsProxy', {
 
                                 // remove all existing contacts
                                 cStore.removeAll(true);
-
+debugger;
                                 Ext.Array.each(Ext.JSON.decode(response.responseText), function(item, index, contacts_itself){
                                     var lname = item.first_name,
                                         fname = item.last_name,
@@ -56,8 +75,8 @@ Ext.define('ttapp.util.ContactsProxy', {
                 success: function(contacts){
                     
                     if ( contacts.length > 0){
-                        contacts = ttapp.util.ContactsProxy.areOnTinktime(contacts, 'ios');
-
+                        x = ttapp.util.ContactsCleaner.cleaner(contacts, 'ios');
+                        ttapp.util.ContactsProxy.areOnTinktime(x);
                    }
                 },
                     
@@ -109,7 +128,8 @@ Ext.define('ttapp.util.ContactsProxy', {
             }
 
         ]
-            contacts = this.areOnTinktime(contacts, 'default');
+            x = ttapp.util.ContactsCleaner.cleaner(contacts, 'default');
+            this.areOnTinktime(x);
             
         }
     }

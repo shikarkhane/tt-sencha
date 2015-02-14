@@ -4,3 +4,9 @@ ue\":\"+46 76-335 06 79\",\"id\":0,\"pref\":false},{\"type\":\"mobile\",\"value\
 home\",\"value\":\"omurcali@kth.se\",\"id\":0,\"pref\":false}],\"addresses\":null,\"ims\":null,\"organizations\":null,\"birthday\":null,\"note\":null,
 \"photos\":[{\"pref\":\"false\",\"value\":\"/var/mobile/Containers/Data/Application/D883F450-7D21-4199-B6D7-56267A413FD4/tmp/photo_0MXDw\",\"type\":\"
 url\"}],\"categories\":null,\"urls\":null}]
+
+
+
+
+Problem reading phonenumbers
+{"organizations": null, "phoneNumbers": [{"pref": false, "type": "home", "id": 0, "value": "+48\u00a0502\u00a0623\u00a0476"}], "displayName": null, "name": {"honorificPrefix": null, "middleName": null, "familyName": "Mach", "formatted": "Justyna Mach", "givenName": "Justyna", "honorificSuffix": null}, "rawId": null, "emails": null, "note": null, "photos": null, "ims": null, "birthday": null, "urls": null, "nickname": null, "id": 34, "categories": null, "addresses": null},
