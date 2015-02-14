@@ -1,19 +1,37 @@
 Ext.define('ttapp.util.ContactsCleaner', {
     singleton: true,
+    encode_utf8: function( s ) {
+      return unescape( encodeURIComponent( s ) );
+    },
+    decode_utf8: function( s ) {
+      return decodeURIComponent( escape( s ) );
+    },
+    cleanPhoneNumber: function(n){
+        n = n.replace('-', '').replace(' ', '');
+        return n;
+    },
+    deviceSpecificFormat: function(d, i){
+        if( d == 'default'){
+            console.log('default');
+        }
+        if(d == 'ios'){
+            console.log('ios');
+        }
+    },
     cleaner: function(contacts, device){
         var c = {};
         var c_array = [];
 
-        if ( device == 'default'){
-            console.log('cleaning default');
-            Ext.Array.each(contacts, function(item, index, contacts_itself){
-                c = {"first_name": item.first_name, "last_name" : item.last_name, "phone_number" : item.phone_number}
+        Ext.Array.each(contacts, function(item, index, contacts_itself){
+            ds = this.deviceSpecificFormat( device, item);
+                c = {
+                    "first_name": this.encode_utf8(ds[0]), 
+                    "last_name" : this.encode_utf8(ds[1]), 
+                    "phone_number" : this.cleanPhonerNumber(ds[2])
+                };
                 c_array.push(c);
             });
-        }
-        if ( device == 'ios'){
-            console.log('cleaning ios');
-        }
+        
     console.log(c_array);
     return c_array;
     }
@@ -38,7 +56,6 @@ Ext.define('ttapp.util.ContactsProxy', {
 
                                 // remove all existing contacts
                                 cStore.removeAll(true);
-debugger;
                                 Ext.Array.each(Ext.JSON.decode(response.responseText), function(item, index, contacts_itself){
                                     var lname = item.first_name,
                                         fname = item.last_name,
