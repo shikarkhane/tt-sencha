@@ -17,7 +17,7 @@ Ext.application({
         'Ext.MessageBox', 'Ext.device.Contacts'
     ],
     controllers: ['Tink', 'SendTo', 'Landing', 'Authenticate',
-    'Trinket', 'DogEar', 'Split'],
+    'Trinket', 'DogEar', 'Split', 'Feed'],
 
     views: [
         'Landing', 'Feed', 'Tink', 'SendTo', 'Trinket',
