@@ -4,7 +4,6 @@ Ext.define('ttapp.controller.SendTo', {
     config: {
         refs: {
             searchContactsField: 'searchfield[cls~=searchContactsField]',
-            btnClose: 'button[iconCls~=delete]',
             btnSendTink: 'button[cls~=clsSendTink]',
         },
         control: {
@@ -18,7 +17,7 @@ Ext.define('ttapp.controller.SendTo', {
             'sendto list': {
                 itemtap: 'saveTappedContact'              
             },
-            'btnClose': {
+            'sendto list toolbar button': {
                 tap: 'returnToTink'
             },
             'sendto': {

@@ -17,12 +17,12 @@ Ext.application({
         'Ext.MessageBox', 'Ext.device.Contacts'
     ],
     controllers: ['Tink', 'SendTo', 'Landing', 'Authenticate',
-    'Trinket', 'DogEar', 'Split', 'Feed'],
+    'Trinket', 'DogEar', 'Split', 'Feed', 'ReplayTink'],
 
     views: [
         'Landing', 'Feed', 'Tink', 'SendTo', 'Trinket',
         'Authenticate', 'ConfirmPhoneNumber', 'DogEar',
-        'Split', 'Options'
+        'Split', 'Options', 'ReplayTink'
     ],
 
     stores: ['Trinkets', 'Contacts', 'Messages', 'Profile'],
