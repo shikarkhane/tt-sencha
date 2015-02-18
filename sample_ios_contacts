@@ -10,3 +10,34 @@ url\"}],\"categories\":null,\"urls\":null}]
 
 Problem reading phonenumbers
 {"organizations": null, "phoneNumbers": [{"pref": false, "type": "home", "id": 0, "value": "+48\u00a0502\u00a0623\u00a0476"}], "displayName": null, "name": {"honorificPrefix": null, "middleName": null, "familyName": "Mach", "formatted": "Justyna Mach", "givenName": "Justyna", "honorificSuffix": null}, "rawId": null, "emails": null, "note": null, "photos": null, "ims": null, "birthday": null, "urls": null, "nickname": null, "id": 34, "categories": null, "addresses": null},
+
+
+
+<script>
+document.addEventListener('deviceready', onDeviceReady, false);
+function onDeviceReady(){
+	//alert("decice is working!");
+	pushNotification = window.plugins.pushNotification;
+	//alert(pushNotification);
+
+    PushNotification.register(tokenHandler, errorHandler, { badge: true, sound: true, alert: true, ecb: 'onNotificationAPN' });
+}
+
+    function tokenHandler( result ) {
+        // set the deviceToken locally, to be submitted on user login
+        alert(result);
+        console.log(result);
+        window.localStorage.setItem('deviceToken', result);
+    }
+
+     function errorHandler( error ) {
+        alert(error);
+        console.log(error);
+    }
+
+
+    function onNotificationAPN ( event ) {
+        alert('inside onNotificationAPN event');        
+    }
+
+</script>
