@@ -1,5 +1,20 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.tinktime.app" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+    <feature name="LocalStorage">
+        <param name="ios-package" value="CDVLocalStorage" />
+    </feature>
+    <feature name="Contacts">
+        <param name="ios-package" value="CDVContacts" />
+    </feature>
+    <feature name="Sms">
+        <param name="ios-package" value="Sms" />
+    </feature>
+    <feature name="Console">
+        <param name="ios-package" value="CDVLogger" />
+    </feature>
+    <feature name="PushPlugin">
+        <param name="ios-package" value="PushPlugin" />
+    </feature>
     <preference name="AllowInlineMediaPlayback" value="false" />
     <preference name="AutoHideSplashScreen" value="true" />
     <preference name="BackupWebStorage" value="cloud" />
@@ -16,15 +31,6 @@
     <preference name="PageLength" value="0" />
     <preference name="PaginationBreakingMode" value="page" />
     <preference name="PaginationMode" value="unpaginated" />
-    <feature name="LocalStorage">
-        <param name="ios-package" value="CDVLocalStorage" />
-    </feature>
-    <feature name="Contacts">
-        <param name="ios-package" value="CDVContacts" />
-    </feature>
-    <feature name="Sms">
-        <param name="ios-package" value="Sms" />
-    </feature>
     <name>Tinktime</name>
     <description>
         Hello World sample application that responds to the deviceready event.

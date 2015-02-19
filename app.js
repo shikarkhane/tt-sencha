@@ -14,7 +14,7 @@ Ext.application({
     name: 'ttapp',
 
     requires: [
-        'Ext.MessageBox', 'Ext.device.Contacts'
+        'Ext.MessageBox', 'Ext.device.Contacts', 'Ext.device.Push', 'Ext.device.Device'
     ],
     controllers: ['Tink', 'SendTo', 'Landing', 'Authenticate',
     'Trinket', 'DogEar', 'Split', 'Feed', 'ReplayTink'],
@@ -48,20 +48,6 @@ Ext.application({
     launch: function() {
         // Destroy the #appLoadingIndicator element
         Ext.fly('appLoadingIndicator').destroy();
-     
-     /*   
-        Ext.device.Push.register({
-            type: Ext.device.Push.ALERT|Ext.device.Push.BADGE|Ext.device.Push.SOUND,
-            success: function(token) {
-                Ext.Msg.alert('Succes', token, Ext.emptyFn);
-            },
-            failure: function(error) {
-              Ext.Msg.alert('Error', error, Ext.emptyFn);
-            },
-            received: function(notifications) {
-                Ext.Msg.alert('Received', JSON.stringify(notifications)), Ext.emptyFn);
-            }
-        });*/
 
         // Initialize the main view
         Ext.Viewport.add(Ext.create('ttapp.view.Landing'));

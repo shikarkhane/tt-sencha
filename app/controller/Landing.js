@@ -1,6 +1,7 @@
 Ext.define('ttapp.controller.Landing', {
     extend: 'Ext.app.Controller',
-    requires: ['ttapp.store.Profile', 'Ext.device.Push', 'Ext.device.Device'],
+    requires: ['ttapp.store.Profile'],
+    //, 'Ext.device.Push', 'Ext.device.Device'
     config: {
         refs: {
             btnBegin: 'button[cls~=clsBegin]',
@@ -13,9 +14,9 @@ Ext.define('ttapp.controller.Landing', {
     },
     onUserAction: function(){
         if ( Ext.getStore('profilestore').isUserVerified() === true){
-            //Ext.Viewport.setActiveItem('options');
+            
             if (Ext.os.deviceType == 'Phone'){
-                this.takeUserPermissionForPushNotify(Ext.getStore('profilestore').getPhoneNumber());
+                this.takeUserPermissionForPushNotify();
             }
             Ext.Viewport.setActiveItem('trinket','slide');
         }
@@ -23,14 +24,12 @@ Ext.define('ttapp.controller.Landing', {
             Ext.Viewport.setActiveItem('authenticate','slide');   
         }
     },
-    takeUserPermissionForPushNotify: function(to_user){
-        Ext.device.Push.register({
-            type: Ext.device.Push.ALERT|Ext.device.Push.BADGE|Ext.device.Push.SOUND,
-            success: function(token) {
-                console.log('# Push notification registration successful:');
-                console.log('    token: ' + token);
-
-                Ext.Ajax.request({
+    storeDeviceInfoOnServer: function(token){
+        var to_user = Ext.getStore('profilestore').getPhoneNumber();
+        if(!token){
+            token = null;
+        }
+          Ext.Ajax.request({
                             url:  ttapp.config.Config.getBaseURL() + '/push/' + to_user + '/',
                             method: 'POST',
                             headers: { 'Content-Type': 'application/json'},
@@ -46,15 +45,23 @@ Ext.define('ttapp.controller.Landing', {
                                 console.log(response.responseText);
                             }
                         });
+      
+    },
+    takeUserPermissionForPushNotify: function(){
+        var pFunctions = {
+            tokenHandler: function ( token ) {
+                this.storeDeviceInfoOnServer(token);
             },
-            failure: function(error) {
-                console.log('# Push notification registration unsuccessful:');
-                console.log('     error: ' + error);
+            errorHandler: function ( error ) {
+                console.log(error);
             },
-            received: function(notifications) {
-                console.log('# Push notification received:');
-                console.log('    ' + JSON.stringify(notifications));
+            onNotificationAPN: function ( event ) {
+                console.log('inside onNotificationAPN event');        
             }
-        });
+        };
+
+        pushNotification = window.plugins.pushNotification;
+        pushNotification.register(pFunctions.tokenHandler, pFunctions.errorHandler, { badge: true, sound: true, alert: true, ecb: 'onNotificationAPN' });
+        
     }
 });
