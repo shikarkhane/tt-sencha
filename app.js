@@ -14,7 +14,7 @@ Ext.application({
     name: 'ttapp',
 
     requires: [
-        'Ext.MessageBox', 'Ext.device.Contacts', 'Ext.device.Push', 'Ext.device.Device'
+        'Ext.MessageBox', 'Ext.device.Contacts'
     ],
     controllers: ['Tink', 'SendTo', 'Landing', 'Authenticate',
     'Trinket', 'DogEar', 'Split', 'Feed', 'ReplayTink'],

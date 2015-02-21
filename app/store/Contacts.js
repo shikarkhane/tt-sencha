@@ -7,17 +7,33 @@ Ext.define('ttapp.util.ContactsCleaner', {
       return decodeURIComponent( escape( s ) );
     },
     cleanPhoneNumber: function(n){
-        n = n.replace('-', '').replace(' ', '');
-        return n;
+        var f = 0;
+        
+        if( n.charAt(0) == '+'){ 
+            f = 1;
+        }
+        
+        n = n.replace(/\D/g,'');
+        
+        if (n.match(/[0-9]+/)){
+            if ( f == 1){
+                return '+'+ n;
+            }
+        }
+        else{
+            return null;    
+        }        
     },
     deviceSpecificFormat: function(d, i){
         if( d == 'default'){
             return [i.first_name, i.last_name, i.phone_number]
         }
         if(d == 'ios'){
-            if (item.phoneNumbers){
-                return[i.name.givenName, i.name.familyName, item.phoneNumbers[0].value];
+            if (i.phoneNumbers){
+                if(i.phoneNumbers.length > 0){
+                    return [i.name.givenName, i.name.familyName, i.phoneNumbers[0].value];    
                 }
+            }
         }
         return null;
     },
@@ -27,12 +43,17 @@ Ext.define('ttapp.util.ContactsCleaner', {
 
         Ext.Array.each(contacts, function(item, index, contacts_itself){
             ds = ttapp.util.ContactsCleaner.deviceSpecificFormat( device, item);
-                c = {
-                    "first_name": ttapp.util.ContactsCleaner.encode_utf8(ds[0]), 
-                    "last_name" : ttapp.util.ContactsCleaner.encode_utf8(ds[1]), 
-                    "phone_number" : ttapp.util.ContactsCleaner.cleanPhoneNumber(ds[2])
-                };
-                c_array.push(c);
+            if(ds){
+                var phn = ttapp.util.ContactsCleaner.cleanPhoneNumber(ds[2]);
+                if (phn){
+                    c = {
+                        "first_name": ttapp.util.ContactsCleaner.encode_utf8(ds[0]), 
+                        "last_name" : ttapp.util.ContactsCleaner.encode_utf8(ds[1]), 
+                        "phone_number" : phn
+                    };
+                    c_array.push(c);                                    
+                }
+            }
             });
     return c_array;
     }
@@ -58,8 +79,8 @@ Ext.define('ttapp.util.ContactsProxy', {
                                 // remove all existing contacts
                                 cStore.removeAll(true);
                                 Ext.Array.each(Ext.JSON.decode(response.responseText), function(item, index, contacts_itself){
-                                    var lname = item.first_name,
-                                        fname = item.last_name,
+                                    var lname = item.last_name,
+                                        fname = item.first_name,
                                         pnumber = item.phone_number,
                                         onTinkTime = item.on_tinktime;
 
@@ -93,7 +114,9 @@ Ext.define('ttapp.util.ContactsProxy', {
                 success: function(contacts){
                     
                     if ( contacts.length > 0){
+                        Ext.Msg.alert('Contacts', contacts.length, Ext.emptyFn);   
                         x = ttapp.util.ContactsCleaner.process(contacts, 'ios');
+                        Ext.Msg.alert('Count', x.length, Ext.emptyFn);   
                         ttapp.util.ContactsProxy.areOnTinktime(x);
                    }
                 },
@@ -111,6 +134,8 @@ Ext.define('ttapp.util.ContactsProxy', {
             var contacts = [
             { 
                 'id' : 1,
+                'name': { 'givenName': 'nike', 'familyName': 'shikari'},
+                'phoneNumbers': [{'value': '0101010101'}],
                 'first_name' : 'Nikhil',
                 'last_name' : 'Shikarkhane',
                 'on_tinktime' : true,
@@ -118,33 +143,12 @@ Ext.define('ttapp.util.ContactsProxy', {
             },
             { 
                 'id' : 2,
+                'phoneNumbers': [],
                 'first_name' : 'Monica',
                 'last_name' : 'Sylvander',
                 'on_tinktime' : true,
                 'phone_number' : '+0701234567'
-            },
-            { 
-                'id' : 3,
-                'first_name' : 'Justyna',
-                'last_name' : 'Mach',
-                'on_tinktime' : false,
-                'phone_number' : '+0707654321'
-            },
-            { 
-                'id' : 4,
-                'first_name' : '51512',
-                'last_name' : '',
-                'on_tinktime' : true,
-                'phone_number' : '+07051512'
-            },
-            { 
-                'id' : 5,
-                'first_name' : '5050',
-                'last_name' : '',
-                'on_tinktime' : true,
-                'phone_number' : '+5050'
             }
-
         ]
             x = ttapp.util.ContactsCleaner.process(contacts, 'default');
             this.areOnTinktime(x);
