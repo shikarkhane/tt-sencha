@@ -30,7 +30,7 @@ Ext.define('ttapp.util.Push', {
       
     },
     onNotificationAPN: function ( event ) {
-        console.log('inside onNotificationAPN event');        
+        console.log('inside onNotificationAPN event' + event);        
     },
     tokenHandler: function ( token ) {
         console.log(token);
@@ -55,7 +55,8 @@ Ext.define('ttapp.util.Push', {
  
             case 'message':
               // this is the actual push notification. its format depends on the data model from the push server
-              Ext.Msg.alert('New message!', e.message, Ext.emptyFn); 
+              Ext.Msg.alert('Update!', e.message, Ext.emptyFn); 
+              Ext.Viewport.setActiveItem('feed','slide');
             break;
  
             case 'error':
