@@ -13,9 +13,9 @@ Ext.define('ttapp.util.Push', {
                             headers: { 'Content-Type': 'application/json'},
                             disableCaching: false,
                             jsonData: {
-                                "device_name" : 'test-nikhil-iphone',
-                                "device_platform" : 'ios',
-                                "device_uuid": 'myuuid',
+                                "device_name" : device.name,
+                                "device_platform" : device.platform.toLowerCase(),
+                                "device_uuid": device.uuid,
                                 "push_token": token
                             },
 
