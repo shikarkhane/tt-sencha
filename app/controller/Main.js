@@ -1,5 +1,6 @@
 Ext.define('ttapp.controller.Main', {
     extend: 'Ext.app.Controller',
+    requires: ['ttapp.util.Push'],
     config: {
         refs: {
         },
@@ -8,9 +9,6 @@ Ext.define('ttapp.controller.Main', {
     },
     launch: function(){
         // when app comes to foreground
-        document.addEventListener("resume", onResume, false);
-    },
-    onResume: function(){
-        ttapp.util.Push.takeUserPermissionForPushNotify();
+        document.addEventListener("resume", ttapp.util.Push.takeUserPermissionForPushNotify, false);
     }
 });
