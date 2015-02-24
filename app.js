@@ -52,7 +52,7 @@ Ext.application({
         // Initialize the main view
         Ext.Viewport.add(Ext.create('ttapp.view.Landing'));
         ttapp.util.FeedProxy.process();
-        // ttapp.util.ContactsProxy.process();
+        ttapp.util.ContactsProxy.process(Ext.getStore('phonecontacts'));
     },
 
     onUpdated: function() {

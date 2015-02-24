@@ -13,6 +13,8 @@ Ext.define('ttapp.controller.Landing', {
         }
     },
     onUserAction: function(){
+        
+
         if ( Ext.getStore('profilestore').isUserVerified() === true){
             
             if (Ext.os.deviceType == 'Phone'){
