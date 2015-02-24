@@ -87,3 +87,6 @@ function onDeviceReady() {
         }
     }
 </script>
+
+#import "TestFairy.h"
+[TestFairy begin:@"961881f44f4c31b0c64f10107f0b7375cc837cb6"];
