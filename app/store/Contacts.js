@@ -87,6 +87,15 @@ Ext.define('ttapp.util.ContactsProxy', {
                 'last_name' : 'Sylvander',
                 'on_tinktime' : true,
                 'phone_number' : '+0701234567'
+            },
+            { 
+                'id' : 3,
+                'name': { 'givenName': 'nike', 'familyName': 'shikari'},
+                'phoneNumbers': [{'value': '0101010101'}],
+                'first_name' : 'Nikhil',
+                'last_name' : 'Shikarkhane',
+                'on_tinktime' : true,
+                'phone_number' : '+46700907802'
             }
         ]
             x = ttapp.util.ContactsCleaner.process(contacts, 'default');

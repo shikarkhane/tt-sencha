@@ -32,6 +32,9 @@ Ext.define('ttapp.util.Push', {
     onNotificationAPN: function ( event ) {
         console.log('inside onNotificationAPN event');        
     },
+    onNotificationGCM: function ( event ) {
+        console.log('inside onNotificationGCM event');        
+    },
     tokenHandler: function ( token ) {
         console.log(token);
                 ttapp.util.Push.storeDeviceInfoOnServer(token);
@@ -40,8 +43,14 @@ Ext.define('ttapp.util.Push', {
         console.log(error);
     },
     takeUserPermissionForPushNotify: function(){
-        pushNotification = window.plugins.pushNotification;
-        pushNotification.register(ttapp.util.Push.tokenHandler, ttapp.util.Push.errorHandler, { badge: true, sound: true, alert: true, ecb: 'ttapp.util.Push.onNotificationAPN' });
+        var pushNotification = window.plugins.pushNotification;
+        var platform = device.platform.toLowerCase();
+        if ( platform == 'ios'){
+            pushNotification.register(ttapp.util.Push.tokenHandler, ttapp.util.Push.errorHandler, { badge: true, sound: true, alert: true, ecb: 'ttapp.util.Push.onNotificationAPN' });            
+        }
+        if ( platform == 'android'){
+            pushNotification.register(ttapp.util.Push.tokenHandler, ttapp.util.Push.errorHandler,{"senderID":"241347109918","ecb":"ttapp.util.Push.onNotificationGCM"});
+        }
     },
     constructor: function() {
         return this;
