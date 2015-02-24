@@ -16,21 +16,21 @@ Ext.define('ttapp.store.Trinkets', {
             'name': "japanese-art",
             'label': "Yoko Mosiro",
             'thumbnail_path': "http://3.bp.blogspot.com/-Ym11wW_7EDM/TfZV-svjbEI/AAAAAAAASuA/YEp21pLkD9A/s1600/wandering+son.jpg",
-            'file_path': 'japanese-art.html'
+            'file_path': 'rocket.html'
         },
         {
             'trinket_id': "3",
             'name': "retro",
             'label': "Magic retro",
             'thumbnail_path': "https://lh4.googleusercontent.com/-zjDcdgxjYn8/AAAAAAAAAAI/AAAAAAAAAAA/2kCdlHilc7c/photo.jpg",
-            'file_path': 'retro.html'
+            'file_path': 'squares.html'
         },
         {
             'trinket_id': "4",
             'name': "kids",
             'label': "Little wonder",
             'thumbnail_path': "https://lh6.googleusercontent.com/-iXf078xniKQ/AAAAAAAAAAI/AAAAAAAAATs/jsuIkakKKPk/photo.jpg",
-            'file_path': 'kids.html'
+            'file_path': 'yellowblobs.html'
         },
         {
             'trinket_id': "5",
