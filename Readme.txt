@@ -10,3 +10,4 @@ phonegap plugin add org.apache.cordova.contacts
 phonegap plugin add https://github.com/aharris88/phonegap-sms-plugin.git
 phonegap plugin add https://github.com/phonegap-build/PushPlugin.git
 phonegap plugin add https://github.com/apache/cordova-plugin-console.git
+phonegap plugin add org.apache.cordova.device
