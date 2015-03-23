@@ -3,12 +3,12 @@ Ext.define('ttapp.view.SplitNewTink', {
     xtype: 'splitnewtink',
     requires: ['Ext.Label'],
     config:{
-        styleHtmlContent: true,
+        // styleHtmlContent: true,
         items:
             [
                 {
-                    xtype: 'label',
-                    html: '<h1>New Tink</h1>'
+                    xtype: 'button',
+                    html: 'New Tink'
                 }
             ],
         listeners: {

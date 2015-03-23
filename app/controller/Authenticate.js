@@ -34,7 +34,7 @@ Ext.define('ttapp.controller.Authenticate', {
                     console.log(response.responseText);
                 }
             });
-            Ext.Viewport.setActiveItem('confirmphonenumber');
+            Ext.Viewport.animateActiveItem('confirmphonenumber',{type:'slide'}); 
         }
     },
     confirmCode: function(){

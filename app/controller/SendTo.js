@@ -3,7 +3,7 @@ Ext.define('ttapp.controller.SendTo', {
     requires: ['ttapp.config.Config'],
     config: {
         refs: {
-            searchContactsField: 'searchfield[cls~=searchContactsField]',
+            searchContactsField: 'searchfield[cls~=search-contacts-field]',
             btnSendTink: 'button[cls~=clsSendTink]',
         },
         control: {
@@ -31,14 +31,27 @@ Ext.define('ttapp.controller.SendTo', {
     setPreviewItems: function(){
         var prevTrinket = Ext.ComponentQuery.query('#previewTrinket')[0];
         var secSent = Ext.ComponentQuery.query('#previewSeconds')[0];
-        
-        secSent.setHtml(this.seconds_sent);
+        console.log(this.seconds_sent);
+        if(this.seconds_sent == null){
+            secSent.setHtml('--s');
+        }
+        else{
+            secSent.setHtml(this.seconds_sent);
+        }
 
         var activeTrinketThumbnailPath = Ext.getStore('trinketstore').getThumbnailPath(this.trinket_name);
         prevTrinket.setSrc(activeTrinketThumbnailPath);
     },
     saveTappedContact: function(list, idx, target, record, evt){
-        this.phoneNumber = record.data.phone_number;
+        this.fullName = record.data.first_name + ' '+ record.data.last_name;
+        this.getSearchContactsField().setValue(this.fullName);
+        setTimeout(function() {
+            Ext.getStore('phonecontacts').clearFilter();
+            Ext.getCmp('contactsListToChoose').setStore('');
+            Ext.getCmp('contactsListToChoose').setHeight('0px');
+            $(".search-list-sec .x-dock.x-unsized>.x-dock-body").css({"background":"none"});
+        },
+        10);
     },
     clearAll: function(){
         var sf = Ext.ComponentQuery.query('searchfield[cls~=searchContactsField]')[0];
@@ -48,6 +61,9 @@ Ext.define('ttapp.controller.SendTo', {
     onSearchClearIconTap: function() {
         //call the clearFilter method on the store instance
         Ext.getStore('phonecontacts').clearFilter();
+        Ext.getCmp('contactsListToChoose').setStore('');
+        Ext.getCmp('contactsListToChoose').setHeight('0px');
+        $(".search-list-sec .x-dock.x-unsized>.x-dock-body").css({"background":"none"});
     },
     returnToTink: function(){
         this.closeMe();
@@ -59,7 +75,15 @@ Ext.define('ttapp.controller.SendTo', {
 
         //first clear any current filters on thes tore
         store.clearFilter();
-
+        if (field.getValue() == '') {
+            Ext.getCmp('contactsListToChoose').setStore('');
+            Ext.getCmp('contactsListToChoose').setHeight('0px');
+            $(".search-list-sec .x-dock.x-unsized>.x-dock-body").css({"background":"none"});
+        } else {
+            Ext.getCmp('contactsListToChoose').setStore('phonecontacts');
+            Ext.getCmp('contactsListToChoose').setHeight('100%'); 
+            $(".search-list-sec .x-dock.x-unsized>.x-dock-body").css({"background":"rgba(233,233,233,0.85)"} );
+        }
         //check if a value is set first, as if it isnt we dont have to do anything
         if (value) {
             //the user could have entered spaces, so we must split them so we can loop through them all
@@ -84,7 +108,7 @@ Ext.define('ttapp.controller.SendTo', {
                 //loop through each of the regular expressions
                 for (i = 0; i < regexps.length; i++) {
                     var search = regexps[i],
-                        didMatch = record.get('first_name').match(search) || record.get('last_name').match(search);
+                        didMatch = record.get('first_name').match(search) || record.get('last_name').match(search) || record.get('phone_type').match(search) || record.get('phone_number').match(search);
 
                     //if it matched the first or last name, push it into the matches array
                     matched.push(didMatch);

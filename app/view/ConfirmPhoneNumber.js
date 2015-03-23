@@ -3,27 +3,32 @@ Ext.define('ttapp.view.ConfirmPhoneNumber', {
 	xtype: 'confirmphonenumber',
 	requires: ['Ext.field.Number'],
 	config:{
-		fullscreen: true,
-		styleHtmlContent: true,		
-		cls: 'cls-tt-landing',	
+		fullscreen: true,	
+		cls: 'bg-transparent',	
 		items: 
-		  [
-	        {
+		  [{
+
+		  	xtype:'panel',
+		  	cls:'authenticate-page',
+		  	items:[{
 	        	xtype: 'panel',
-	            html: '<h1>Confirm code</h1>'
-	        },
-	        {
-	        	id: 'myVerificationCode',
-                xtype: 'numberfield',
-                name: 'verify-phone-number',
-                maxLength: 5,
-                minLength: 5                
-	        },
-	        {
-                xtype: 'button',
-                text: "Confirm code!",
-                ui: 'confirm-round'
-	        }	
+	        	cls:'page-title',
+	            html: 'Confirm code'
+		        },
+		        {
+		        	id: 'myVerificationCode',
+	                xtype: 'numberfield',
+	                name: 'verify-phone-number',
+	                cls:'form-field',
+	                clearIcon:false             
+		        },
+		        {
+	                xtype: 'button',
+	                text: "Confirm code!",
+	                cls:'form-btn'
+		        }]
+		  
+		  }
     	]
 	}
  });

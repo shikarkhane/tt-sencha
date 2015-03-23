@@ -6,14 +6,25 @@ Ext.define('ttapp.view.Tink', {
     ],
     config: {
         itemId: 'tinkPage',
-        cls: 'cls-tt-tinking',
+        cls: 'bg-transparent-white flip-design-right',
         layout: {
                 type: 'vbox',
                 align: 'middle'
             },
         items: [
             {
-                xtype: 'dogear'
+                xtype: 'toolbar',
+                docked:'top',
+                cls:'top-bar',
+                items:[{
+                    xtype:'button',
+                    cls:'top-btn btn-tink',
+                    docked:'left'
+                },{
+                    xtype:'button',
+                    cls:'top-btn btn-mail current flip-design-right',
+                    docked:'right',
+                }]
             },
             {
                 itemId: 'tinkTimerClock',
@@ -39,12 +50,13 @@ Ext.define('ttapp.view.Tink', {
                 title: 'swiffy',
                 xtype: 'panel',
                 id: "swiffydiv",
-                flex: 5,
-                html: '<iframe id="tinkcontainer" style="width:320px;height:480px;" src="resources/tinks/swiffy/default.html"></iframe>'                
+                //flex: 5,
+                html: '<iframe id="tinkcontainer" class="tinkanimation" style="" src="resources/tinks/swiffy/default.html"></iframe>'                
             },
             {
-                flex: 1,                
-                xtype: 'thinkingbutton'
+                //flex: 1,                
+                xtype: 'thinkingbutton',
+                docked:'bottom',
             }
         ]
 

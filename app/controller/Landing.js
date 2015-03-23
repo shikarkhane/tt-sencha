@@ -23,7 +23,7 @@ Ext.define('ttapp.controller.Landing', {
             Ext.Viewport.setActiveItem('trinket','slide');
         }
         else{
-            Ext.Viewport.setActiveItem('authenticate','slide');   
+            Ext.Viewport.animateActiveItem('authenticate',{type:'slide'});   
         }
     }
 });
