@@ -5,47 +5,58 @@ Ext.define('ttapp.view.Split', {
     config: {
         fullscreen: true,
         layout: 'hbox',
-        items: [
+        cls:'split-page',
+        items: [{
+            xtype:'toolbar',
+            
+            docked:'top',
+            cls:'top-bar',
+            items:[{
+                xtype:'button',
+                cls:'top-btn btn-tink',
+                docked:'left'
+            },{
+                xtype:'button',
+                cls:'top-btn btn-mail current',
+                docked:'right',
+            }]
+
+        
+        },
         {
             xtype: 'image',
             itemId: 'sentTrinket',
-            width: 100,
-            height: 100,
+            src:'resources/images/others/tink_design.png',
             cls: 'prev-trinket',
-            html: '<h2>Done!</h2>',
+            html: 'Done!',
             styleHtmlCls : 'clsSentTrinket',
             styleHtmlContent: true
         },
         {
             xtype: 'container',
-            flex: 1,
+            //flex: 1,
             layout: 'vbox',
             cls: 'cls-tt-split-left',
             items:
-            [
-                {xtype: 'spacer', flex:6},
-                {
+            [ {
                     xtype: 'splitnewtink',
-                    flex: 1,
+                    //flex: 1,
                     style: 'text-align:center;'
                 },
-                {xtype: 'spacer', flex:2}
             ]
         },
         {
             xtype: 'container',
             layout: 'vbox',
-            flex: 1,
+            //flex: 1,
             cls: 'cls-tt-split-right',
             items:
             [
-                {xtype: 'spacer', flex:6},
                 {
                     xtype: 'splittinkbox',
-                    flex: 1,
+                    //flex: 1,
                     style: 'text-align:center;'
                 },
-                {xtype: 'spacer', flex:2}
             ]
         }
         ],

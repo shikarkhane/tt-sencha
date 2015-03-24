@@ -4,7 +4,7 @@ Ext.define('ttapp.view.Feed', {
     requires: ['ttapp.model.Message','Ext.dataview.List', 'Ext.ProgressIndicator'],
     config: {
     	layout: 'vbox',
-        cls: 'cls-tt-tinkbox',
+        cls: 'cls-tt-tinkbox bg-transparent-colored flip-design-left',
     	items: [
         {
             xtype: 'dogear'
@@ -19,7 +19,17 @@ Ext.define('ttapp.view.Feed', {
             scrollable: {
                 direction: 'vertical'
             },
-            itemTpl: '<div class="clsMessage{to_user_name}"><div class="clsTextMessage"><div>{from_user_name}</div><div>{text}</div><div>{to_user_name}</div></div><div class="clsTrinketMessage"><div>{seconds_sent} secs</div><div><img src={trinket_file_path} width=65px height=65px></div></div></div>',
+            itemTpl: '<div class="{unread}"><div class="clsMessage{to_user_name}"><div class="clsTrinketMessage"><div class="clsSeconds">{seconds_sent}<span>s</span></div><div class="clsTrinketFile"><img src={trinket_file_path} /></div></div><div class="clsTextMessage"><div class="name-panel">{from_user_name}</div><div class="des-panel">{text}</div><div class="date-panel">{to_user_name}</div></div></div></div>',
+            listeners:{
+                    painted: function(){
+
+                        $('.clsTrinketFile img').each(function(){
+                            var html="<div class='img-bg' style='background:url(" + $(this).attr('src')+ ");''></div>"
+                            $(html).insertBefore($(this));
+                            $(this).remove();
+                        });
+                    }
+                },
             store: 'Messages'
         }
         ]

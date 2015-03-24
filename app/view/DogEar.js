@@ -4,21 +4,17 @@ Ext.define('ttapp.view.DogEar', {
     config: {
             ui: 'neutral',
             docked: 'top',
-            style: 'opacity:0.2;',
             scrollable: null,
-            defaults: {
-                ui: 'plain'
-            },
+            cls:'top-bar',
             items: [
-                {
-                    xtype: 'button',
-                    iconCls: 'speedometer',
-                    docked: 'left'
-                },
-                {
-                    xtype: 'button',
-                    iconCls: 'mail',
-                    docked: 'right'
+                   {
+                    xtype:'button',
+                    cls:'top-btn btn-tink flip-design-left',
+                    docked:'left'
+                },{
+                    xtype:'button',
+                    cls:'top-btn btn-mail current',
+                    docked:'right',
                 }
             ]
     }

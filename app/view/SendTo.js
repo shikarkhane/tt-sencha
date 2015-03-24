@@ -5,59 +5,71 @@ Ext.define('ttapp.view.SendTo', {
     config: {
     	itemId: 'choose-recepients',
     	fullscreen: true,
+    	cls:'bg-transparent-white',
     	layout: 'vbox',
     	items: [{
-    		itemId: 'contactsListToChoose',
-    		xtype: 'list',
-    		flex: 3,
-            scrollable: {
-                direction: 'vertical'
-            },
-            itemTpl: '{first_name} ({phone_number})',
-            store: 'phonecontacts',
-	        items: [
-	                {
-	                    xtype: 'toolbar',
-	                    docked: 'top',
-
-	                    items: [
-	                    
-	                        {
+                    xtype: 'toolbar',
+                    docked: 'top',
+                    cls:'top-bar',
+                    items: [{ 
+                        	xtype: 'button',
+                        	cls: 'top-btn btn-delete',
+                        	docked: 'right'
+                        }]
+                },{
+                	xtype:'panel',
+                	cls:'search-panel',
+                	items:[{
+		    		itemId: 'contactsListToChoose',
+		    		id:'contactsListToChoose',
+		    		xtype: 'list',
+		    		height:'30%',
+		    		cls:'search-list-sec',
+		            scrollable: {
+		                direction: 'vertical'
+		            },
+		            itemTpl: '<div>{first_name} {last_name}</div> <div><span>{phone_type }</span> {phone_number}</div>',
+		            store: '',
+			        items: [{
 	                            xtype: 'searchfield',
-	                            cls: 'searchContactsField',
+	                            cls:'search-contacts-field',
+	                            clearIcon:false,
+	                            docked:'top',
+	                            itemID:'searchBox',
 	                            placeHolder: 'Search...',
-	                            docked: 'left'
-	                        },
-	                        { 
-	                        	xtype: 'button',
-	                        	iconCls: 'delete',
-	                        	docked: 'right'
+	                            label:'To',
 	                        }
 	                    ]
-	                }
-	                ]
-	            },
+	                
+	               
+	            }]
+	        },
 	            {xtype: 'spacer', flex: 1},
 	            {
 	            	xtype: 'container',
-	            	layout: 'float',
-	            	cls: 'clsPreviewSelection',
+	            	cls: 'message-box',
 	            	//styleHtmlCls : 'clsPreviewSelection',
 	            	//styleHtmlContent : true,
-	            	flex: 1.4,
+	            	//flex: 1.4,
 	            	items:[
-	            		{xtype: 'image', height:100, width: 100, itemId: 'previewTrinket'},
+	            		{
+	            			xtype: 'image',
+	            			itemId: 'previewTrinket', 
+	            			src:'resources/images/others/tink_design.png',
+	            			cls:'preview-trinket'
+	            		},
 	            		{
 	            			xtype: 'label', 
 	            			itemId: 'previewSeconds', 
-	            			cls: 'clsSecondsSentPreview', 
-	            			width: 100, 
-	            			height:100, 
-	            			zIndex: 1, 
-	            			left: 0, 
-	            			top: 0
+	            			cls: 'seconds-preview'
 	            		},
-	            		{xtype: 'textareafield', left: 100, maxRows: 4, placeHolder: "Add a message!", itemId: 'previewTextMsg'}
+	            		{
+	            			xtype: 'textareafield',
+	            			placeHolder: "Add a message!", 
+	            			itemId: 'previewTextMsg',
+	            			cls:'text-msg-preview',
+	            			clearIcon:false,
+	            		}
 	            	]
 	            },
 	            {xtype: 'spacer', flex: 1},
@@ -68,7 +80,7 @@ Ext.define('ttapp.view.SendTo', {
 		            	{xtype: 'spacer'},
 		            	{
 			            	xtype: 'button',
-			            	cls: 'clsSendTink',	            	
+			            	cls: 'clsSendTink form-btn send-btn',	            	
 			            	text: 'Send',
 			            	ui: 'ttButton'
 		            	},

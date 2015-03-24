@@ -4,27 +4,29 @@ Ext.define('ttapp.view.Authenticate', {
 	requires: ['Ext.field.Number'],
 	config:{
 		fullscreen: true,
-		styleHtmlContent: true,	
-		cls: 'cls-tt-landing',	
+		cls: 'bg-transparent',	
 		items: 
-		  [
-	        {
+		  [{
+		  	xtype:'panel',
+		  	cls:'authenticate-page',
+		  	items:[{
 	        	xtype: 'panel',
-	            html: '<h1>Verify - phone number</h1>'
-	        },
-	        {
-	        	id: 'myPhoneNumber',
-                xtype: 'textfield',
-                name: 'verify-phone-number',
-                placeHolder: '+46705432112',
-                maxLength: 15,
-                minLength: 10                
-	        },
-	        {
-                xtype: 'button',
-                text: "Send code!",
-                ui: 'confirm-round'
-	        }	
-    	]
+	        	cls:'page-title',
+	            html: 'Verify - phone number'
+		        },
+		        {
+		        	id: 'myPhoneNumber',
+	                xtype: 'textfield',
+	                name: 'verify-phone-number',
+	                placeHolder: '+46705432112',
+	                cls:'form-field',
+	                clearIcon:false             
+		        },
+		        {
+	                xtype: 'button',
+	                text: "Send code!",
+	                cls:'form-btn'
+		        }]
+		  }]
 	}
  });

@@ -66,13 +66,6 @@ Ext.define('ttapp.store.Trinkets', {
             'label': "Fishing",
             'thumbnail_path': "http://pix.iemoji.com/sbemojix2/0343.png",
             'file_path': 'fish.html'
-        },
-        {
-            'trinket_id': "10",
-            'name': "coke",
-            'label': "Coca cola",
-            'thumbnail_path': "http://www.coca-cola.com/template1/global/images/coke_disc.png",
-            'file_path': 'coke.html'
         }
         ]
     },

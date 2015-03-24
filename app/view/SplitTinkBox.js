@@ -7,8 +7,8 @@ Ext.define('ttapp.view.SplitTinkBox', {
         items:
             [
                 {
-                    xtype: 'label',
-                    html: '<h1>Tinkbox</h1>'
+                    xtype: 'button',
+                    html: 'Tinkbox'
                 }
             ],
         listeners: {

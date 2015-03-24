@@ -14,10 +14,10 @@ Ext.define('ttapp.controller.DogEar', {
             }
         }
     },
-    goToTink: function(){
-        Ext.Viewport.setActiveItem('tink','slide');
+    goToTink: function() {
+        Ext.Viewport.setActiveItem('tink', 'slide');
     },
-    goToFeed: function(){
-        Ext.Viewport.setActiveItem('feed','slide');
+    goToFeed: function() {
+        Ext.Viewport.setActiveItem('feed', 'slide');
     }
 });
