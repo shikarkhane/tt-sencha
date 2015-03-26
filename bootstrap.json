@@ -4,4 +4,4 @@
  * combination of content from app.json, and all required package's package.json
  * files.  Customizations should be placed in app.json.
  */
-{"id":"57b65e54-0b4c-4895-b9db-b26c79ab7904","js":[{"path":"https://www.gstatic.com/swiffy/v7.1/runtime.js","update":"delta"},{"path":"touch/sencha-touch.js","isSdk":true},{"path":"bootstrap.js"},{"path":"jquery.min.js"},{"path":"app.js","update":"delta"}],"css":[{"path":"resources/css/app.css","update":"delta"},{"path":"resources/css/style.css"}]}
+{"id":"57b65e54-0b4c-4895-b9db-b26c79ab7904","js":[{"path":"https://www.gstatic.com/swiffy/v7.1/runtime.js","update":"delta"},{"path":"touch/sencha-touch.js","isSdk":true},{"path":"bootstrap.js"},{"path":"jquery.min.js"},{"path":"app.js","update":"delta"}],"css":[{"path":"resources/css/app.css","update":"delta"}]}
