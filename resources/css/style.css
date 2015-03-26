@@ -735,7 +735,49 @@ margin-bottom: 30px;
 }
 
 
+@media (max-width: 420px){
 
+	.landing-page{
+		top: 50%;
+		margin-top: -68px;
+	}
+	.landing-page .logo{
+		height: 95px;
+		background-size: 220px;
+	}
+	.landing-page .x-button.clsBegin{
+		min-height: 40px;
+		width: 120px;
+	}
+	.landing-page .x-button.clsBegin .x-button-label{
+		font-size: 20px;
+		line-height: 30px;
+	}
+	.authenticate-page{
+		margin-top: -85px;
+	}
+	.form-field{
+		min-height: 40px;
+		margin-bottom: 30px
+	}
+	.form-field .x-input-el{
+		min-height: 40px;
+		font-size: 15px;
+	}
+	.form-field .x-input-el[placeholder]::-webkit-input-placeholder{
+		font-size: 15px;
+	}
+	.form-btn.x-button{
+		min-height: 40px;
+		width: 160px;
+	}
+	.form-btn.x-button .x-button-label{
+		font-size: 20px;
+		line-height: 30px;
+	}
+
+
+}
 
 
  @media (min-height: 620px){
