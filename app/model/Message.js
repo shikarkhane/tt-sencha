@@ -18,7 +18,7 @@
                     type: 'string'
                 }, {
                     name: 'send_timestamp',
-                    type: 'int'
+                    type: 'string'
                 }, {
                     name: 'trinket_file_path',
                     type: 'string'

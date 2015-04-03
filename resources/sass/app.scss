@@ -139,9 +139,6 @@ body{
     background-color: transparent;
     background: none;
 }
-.bg-transparent-white{
-    background: rgba(255,255,255,0.3);
-}
 .cls-tt-landing {
     background-image:url("../images/background/landing.jpg");
     background-size:cover;
@@ -166,7 +163,7 @@ body{
 }
 .landing-page .x-button.clsBegin{
     color:#FFFFFF;
-    background:#e85e4f;
+    background:#E55845;
     min-height:50px;
     width:200px;
     -webkit-border-radius:10px;
@@ -184,19 +181,54 @@ body{
     font-size:24px;
     line-height: 40px;
 }
-.authenticate-page{
+.verify-page{
     position: absolute; 
     top: 50%; 
     left: 0; 
     right: 0; 
-    margin-top: -97px;
+    margin-top: -150px;
     padding: 0 25px; 
 }
-.authenticate-page .page-title{
-    font-size: 24px;
+.verify-page .page-title{
+    font-size: 25px;
     color: #fff; 
     text-align: center;
     margin-bottom: 25px;
+}
+.verify-page .help-text{
+    font-size: 20px;
+    color: #fff; 
+    text-align: center;
+    margin-bottom: 25px;
+    line-height: 25px;
+}
+.verify-page .help-text-sm{
+    font-size: 16px;
+    color: #fff; 
+    text-align: center;
+    margin-top: 20px;
+    line-height: 20px;
+}
+.verify-page .help-text-sm span{
+    font-weight: 600;
+    border-bottom: solid 1px #fff;
+}
+.send-again-btn.x-button{
+    background-image:none;
+    background-color:rgba(107,107,107,0.6);
+    min-height:50px;
+    border-radius:0px;
+    border:none;
+    color:#fff;
+}
+.send-again-btn.x-button.x-button-pressing{
+    background-color: #6B6B6B;
+}
+.send-again-btn.x-button .x-button-label{
+    font-weight: normal;
+    font-family:"nexalight";
+    font-size:24px;
+    line-height: 40px;
 }
 .form-field{
     background: none;
@@ -215,6 +247,7 @@ body{
     font-size: 16px;
     min-height: 50px;
     padding: 0 10px;
+    -webkit-text-fill-color: white;
 }
 .form-field .x-input-el[placeholder]::-webkit-input-placeholder{
     color: #fff;
@@ -222,7 +255,7 @@ body{
 }
 .form-btn.x-button{
     color:#FFFFFF;
-    background:#e85e4f;
+    background:#E55845;
     min-height:50px;
     width:200px;
     -webkit-border-radius:10px;
@@ -257,7 +290,6 @@ body{
 .trinket-list .x-list-normal .x-list-item{
     margin: 5px;
     border: 2px solid #ffffff;
-    border-top: 2px solid #ffffff;
     float: left !important;
     width: 96px;
     height: 96px;
@@ -269,6 +301,16 @@ body{
     position: relative;
     overflow: hidden;
 }
+.trinket-list .x-list-normal .x-list-item.x-item-pressed{
+    background-color:transparent !important;
+    background:none !important;
+    border-top-color:#fff !important;
+}
+.trinket-list .x-list-normal .x-list-item.x-item-selected{
+    background-color:transparent !important;
+    background:none !important;
+    border-top-color:#fff !important;
+}
 .trinket-list .x-list-item-tpl .img-bg{
     background-size: cover !important; 
     background-position: center;
@@ -277,6 +319,11 @@ body{
     bottom: 0; 
     right: 0; 
     left: 0;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    -ms-border-radius: 12px;
+    -o-border-radius: 12px;
+    border-radius: 12px;
 }
 .top-bar.x-docked-top{
     background-image: none;
@@ -286,6 +333,15 @@ body{
     border-bottom: none;
     overflow: inherit;
 
+}
+.top-bar.x-docked-top .x-title {
+    color: #FFFFFF;
+    text-shadow: none;
+    font-weight: 100;
+    font-size: 28px;
+    margin: 0;
+    padding: 0;
+    line-height: 42px; 
 }
 .top-bar.x-toolbar-dark.x-docked-top{
     background-image: none;
@@ -327,7 +383,7 @@ body{
     background-image: url(../images/icons/mail.png);
     background-color:transparent;
 }
-.top-bar .top-btn.btn-mail.x-button.current:before{
+.top-bar .top-btn.btn-mail.x-button.show-notification:before{
     content: "";
     position: absolute;
     width: 10px;
@@ -345,7 +401,7 @@ body{
     background-image: url(../images/icons/delete.png);
     background-color:transparent;
 }
-.bg-transparent-white.flip-design-right{
+.bg-transparent-white.flip-design-right .x-dock{
     background-image: url(../images/others/flip_design_right1.png);
     background-position: top right;
     background-size: 35px;
@@ -384,6 +440,9 @@ body{
     background-position-y: 2px;
     background-color: transparent;
 }
+.tink-page .x-dock-body{
+    overflow: inherit;
+}
 .tinkanimation{
     width:100%;
     height:100%; 
@@ -393,11 +452,14 @@ body{
     border:none; 
     background: none;
 }
+.show-full-frame .x-dock-body{
+    z-index:1 !important;
+}
 .x-button-normal.x-button.clsTinkButton.x-layout-box-item.x-stretched {
 background-image: url("../images/others/tink.png");
 background-size: 100% 100%;
-width: 60px;
-height: 60px;
+width: 80px;
+height: 80px;
 background-color: transparent;
 margin: 0 auto;
 border: none;
@@ -426,6 +488,11 @@ margin-bottom: 30px;
     right: 0;
     padding-left: 15px;
     display:none;
+    background:rgba(255,255,255,0.60);
+}
+
+.search-list-sec.show-list .x-dock.x-unsized>.x-dock-body{
+    display:block;
 }
 
 .search-list-sec.x-list-normal .x-list-item.x-list-item-tpl{
@@ -450,14 +517,17 @@ margin-bottom: 30px;
 .search-panel .search-contacts-field .x-input-search{
     background: none;
     color: #fff;
-    font-size: 16px;
-    min-height: 45px;
+    font-size: 18px;
+    min-height: 40px;
     margin-left: 0;
-    padding: 0 10px;
+    padding: 11px 10px 10px;
+    -webkit-text-fill-color: white;
+    line-height: 25px;
 }
 .search-panel .search-contacts-field .x-input-search[placeholder]::-webkit-input-placeholder{
     color:#fff;
     font-size: 18px;
+    line-height: 25px;
 }
 .search-panel .x-field-search .x-field-input:before{
     display: none;
@@ -473,6 +543,7 @@ margin-bottom: 30px;
     text-align: center;
     font-weight: normal;
     margin: 7px 0px;
+    line-height: 30px;
 }
 .message-box {
     border:2px solid white;
@@ -490,7 +561,7 @@ margin-bottom: 30px;
 .message-box .preview-trinket{
     width: 100px;
     height: 100px;
-    background-size: 80%;
+    background-size: cover;
     background-color: #333;
     border-radius: 10px;
     border: solid 2px #fff;
@@ -512,14 +583,16 @@ margin-bottom: 30px;
     min-height: 96px;
     margin: 0;
     color: #fff;
+    -webkit-text-fill-color: white;
+    font-size:18px;
 }
 .message-box .text-msg-preview textarea[placeholder]::-webkit-input-placeholder{
     color: #fff;
-    font-size: 16px;
+    font-size: 18px;
     line-height: 78px;
 }
 .message-box .seconds-preview {
-    background-color: rgba(173, 174, 158, 0.3);
+    background-color: rgba(173, 174, 158, 0.5);
     font-size: 20px;
     text-align: center;
     top: 0;
@@ -529,6 +602,7 @@ margin-bottom: 30px;
     width: 98px;
     border-radius: 10px;
     line-height: 95px;
+    font-size: 36px;
 }
 .form-btn.send-btn.x-button{
     width: auto;
@@ -576,9 +650,10 @@ margin-bottom: 30px;
 .split-page .cls-tt-split-left .x-container .x-button .x-button-label{
     white-space: inherit;
     color: #fff;
-    font-size: 35px;
-    font-weight: normal;
+    font-size: 26px;
+    font-weight: 100;
     font-family:"nexalight";
+    text-transform: uppercase;
 }
 .split-page .cls-tt-split-right .x-container{
     height: 100%;
@@ -592,32 +667,33 @@ margin-bottom: 30px;
 .split-page .cls-tt-split-right .x-container .x-button .x-button-label{
     white-space: inherit;
     color: #fff;
-    font-size: 35px;
-    font-weight: normal;
+    font-size: 26px;
+    font-weight: 100;
     font-family:"nexalight";
+    text-transform: uppercase;
 }
 .split-page .prev-trinket {
-    border:2px solid white;
     -webkit-border-radius:15px;
     -moz-border-radius:15px;
     -ms-border-radius:15px;
     -o-border-radius:15px;
     border-radius:15px;
     position: absolute;
-    top: 15%;
+    top: 12%;
     left:50%;
+    margin-left:-50px;
+    margin-top:-50px;
     width: 100px;
     height: 100px;
     z-index: 9;
-    margin-left: -50px;
-    margin-top: -74px;
-    background-size: 80%;
+    background-size:cover;
     background-color: #333;
     opacity: 0.8;
+    border: solid 3px #ACBCC4;
 }
 .split-page .prev-trinket .clsSentTrinket {
     position:absolute;
-    top:110px;
+    top:112px;
     text-transform: uppercase;
     font-size:25px;
     color: #fff;
@@ -632,32 +708,68 @@ margin-bottom: 30px;
     display:-webkit-box;
     display:box;
     margin-top:15px;
+    
+}
+.clsFeed .x-list-item .left-true{
     margin-right:10%;
 }
-
-.clsFeed .x-list-item .true{
-    border:3px solid #ed4f35    ;
+.clsFeed .x-list-item .left-false{
+    margin-left:10%;
+}
+.clsFeed .x-list-item .left-true .true{
+    border:3px solid #E55845;
     -moz-border-radius-topright:10px;
     -webkit-border-top-right-radius:10px;
     border-top-right-radius:10px;
     -moz-border-radius-bottomright:10px;
     -webkit-border-bottom-right-radius:10px;
     border-bottom-right-radius:10px;
-    border-left: none;
     padding: 5px;
 }
+.clsFeed .x-list-item .left-true .false{
+    -moz-border-radius-topright:10px;
+    -webkit-border-top-right-radius:10px;
+    border-top-right-radius:10px;
+    -moz-border-radius-bottomright:10px;
+    -webkit-border-bottom-right-radius:10px;
+    border-bottom-right-radius:10px;
+    background-color: #8BA59A;
+    padding: 5px;
+}
+.clsFeed .x-list-item .left-true .clsTrinketMessage {
+    float:right;
+    margin-left:10px;
+}
+.clsFeed .x-list-item .left-true .clsMessageme{
+    padding-left:20px;
+}
+.clsFeed .x-list-item .left-false .false{
+    -moz-border-radius-topright:10px;
+    -webkit-border-top-left-radius:10px;
+    border-top-left-radius:10px;
+    -moz-border-radius-bottomleft:10px;
+    -webkit-border-bottom-left-radius:10px;
+    border-bottom-left-radius:10px;
+    background-color: #6a899b;
+    padding: 5px;
+}
+.clsFeed .x-list-item .left-false .clsTrinketMessage {
+    float:left;
+    margin-right:10px;
+}
+.clsFeed .x-list-item .left-false .clsMessageme{
+    padding-right:20px;
+}
+
+.clsFeed .x-list-item .clsTrinketMessage{
+    width: 94px;
+    height: 94px;
+    position: relative;
+    border-radius: 10px;
+}
+
 .clsFeed .x-list-item .true .clsSeconds{
     display: none;
-}
-.clsFeed .x-list-item .false{   ;
-    -moz-border-radius-topright:10px;
-    -webkit-border-top-right-radius:10px;
-    border-top-right-radius:10px;
-    -moz-border-radius-bottomright:10px;
-    -webkit-border-bottom-right-radius:10px;
-    border-bottom-right-radius:10px;
-    background-color: #91afad;
-    padding: 5px;
 }
 .clsTextMessage {
     overflow: hidden;
@@ -666,21 +778,19 @@ margin-bottom: 30px;
 .clsTextMessage .name-panel{
     font-size: 20px;
     font-weight: normal;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 34px;
 }
 .clsTextMessage .des-panel{
-    font-size: 14px;
+    font-size: 15px;
     font-weight: normal;
     min-height: 46px
 }
 .clsTextMessage .date-panel{
     font-size: 12px;
     font-weight: normal;
-}
-.clsTrinketMessage {
-    float:right;
-    width: 85px;
-    height: 85px;
-    position: relative;
 }
 .clsTrinketMessage .clsTrinketFile{
     position: absolute;
@@ -714,14 +824,53 @@ margin-bottom: 30px;
     z-index: 9;
     font-family:"nexalight";
     font-weight: normal;
-    line-height: 90px;
+    line-height: 100px;
 }
 .clsTrinketMessage .clsSeconds span{
     font-size: 25px;
 }
 
 
-@media (max-width: 420px){
+
+
+
+ @media (min-height: 620px){
+
+    .trinket-list .x-scroll-scroller{
+        margin-top: -180px;
+        margin-left: -180px;
+        max-height: 360px;
+        max-width: 360px;
+    }
+    .trinket-list .x-list-normal .x-list-item{
+        width: 110px;
+        height: 110px;
+    }
+
+ }
+
+ @media (min-height: 800px){
+
+    .trinket-list .x-scroll-scroller{
+        margin-top: -195px;
+        margin-left: -195px;
+        max-height: 480px;
+        max-width: 480px;
+    }
+    .trinket-list .x-list-normal .x-list-item{
+        width: 150px;
+        height: 150px;
+    }
+}
+ 
+
+@media (max-height: 480px){
+
+
+
+ }
+
+ @media (max-width: 380px){
 
     .landing-page{
         top: 50%;
@@ -764,42 +913,31 @@ margin-bottom: 30px;
     .form-btn.send-btn.x-button{
         min-height: 75px;
     }
-
-}
-
-
- @media (min-height: 620px){
-
     .trinket-list .x-scroll-scroller{
-        margin-top: -180px;
-        margin-left: -180px;
-        max-height: 360px;
-        max-width: 360px;
+        margin-top: -159px;
+        margin-left: -159px;
+        max-height: 318px;
+        max-width: 318px;
     }
     .trinket-list .x-list-normal .x-list-item{
-        width: 110px;
-        height: 110px;
+        width: 96px;
+        height: 96px;
     }
 
- }
-
- @media (min-height: 800px){
-
-    .trinket-list .x-scroll-scroller{
-        margin-top: -195px;
-        margin-left: -195px;
-        max-height: 480px;
-        max-width: 480px;
+    .verify-page .help-text{
+    font-size: 18px;
+    line-height: 25px;
     }
-    .trinket-list .x-list-normal .x-list-item{
-        width: 150px;
-        height: 150px;
+    .verify-page .help-text-sm{
+        font-size: 14px;
+        line-height: 20px;
     }
+    .send-again-btn.x-button{
+        min-height:40px;
+    }
+    .send-again-btn.x-button .x-button-label{
+        font-size:20px;
+        line-height: 35px;
+    }
+
 }
- 
-
-@media (max-height: 480px){
-
-
-
- }

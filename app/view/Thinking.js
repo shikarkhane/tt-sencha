@@ -13,7 +13,9 @@ Ext.define('ttapp.view.Thinking', {
             {
                 
                 xtype: 'button',                
-                cls: 'clsTinkButton'
+                cls: 'clsTinkButton',
+                id:'clsTinkButtonPressed',
+                
             }
         ]
     }

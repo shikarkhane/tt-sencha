@@ -8,7 +8,7 @@ Ext.define('ttapp.view.SplitNewTink', {
             [
                 {
                     xtype: 'button',
-                    html: 'New Tink'
+                    html: 'Send Another'
                 }
             ],
         listeners: {

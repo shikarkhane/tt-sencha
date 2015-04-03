@@ -6,14 +6,18 @@ Ext.define('ttapp.view.DogEar', {
             docked: 'top',
             scrollable: null,
             cls:'top-bar',
+            title: 'tinkbox',
             items: [
                    {
                     xtype:'button',
                     cls:'top-btn btn-tink flip-design-left',
-                    docked:'left'
+                    docked:'left',
+                    handler: function (){
+                        Ext.Viewport.animateActiveItem('trinket',{type:'slide', direction: 'right'});  
+                    }
                 },{
                     xtype:'button',
-                    cls:'top-btn btn-mail current',
+                    cls:'top-btn btn-mail show-notification',
                     docked:'right',
                 }
             ]

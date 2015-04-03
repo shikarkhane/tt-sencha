@@ -14,11 +14,17 @@ Ext.define('ttapp.view.Split', {
             items:[{
                 xtype:'button',
                 cls:'top-btn btn-tink',
-                docked:'left'
+                docked:'left',
+                handler: function (){
+                        Ext.Viewport.animateActiveItem('tink',{type:'slide', direction: 'right'});  
+                    }
             },{
                 xtype:'button',
-                cls:'top-btn btn-mail current',
+                cls:'top-btn btn-mail show-notification',
                 docked:'right',
+                handler: function (){
+                        Ext.Viewport.animateActiveItem('feed',{type:'slide', direction: 'left'}); 
+                    }
             }]
 
         
@@ -34,13 +40,11 @@ Ext.define('ttapp.view.Split', {
         },
         {
             xtype: 'container',
-            //flex: 1,
             layout: 'vbox',
             cls: 'cls-tt-split-left',
             items:
             [ {
                     xtype: 'splitnewtink',
-                    //flex: 1,
                     style: 'text-align:center;'
                 },
             ]
@@ -48,13 +52,11 @@ Ext.define('ttapp.view.Split', {
         {
             xtype: 'container',
             layout: 'vbox',
-            //flex: 1,
             cls: 'cls-tt-split-right',
             items:
             [
                 {
                     xtype: 'splittinkbox',
-                    //flex: 1,
                     style: 'text-align:center;'
                 },
             ]

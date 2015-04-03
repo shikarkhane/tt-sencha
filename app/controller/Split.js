@@ -19,10 +19,10 @@ Ext.define('ttapp.controller.Split', {
         this.showSentTrinketThumbnail();
     },
     onNewTink: function(){
-         Ext.Viewport.setActiveItem('tink','slide');
+         Ext.Viewport.animateActiveItem('tink',{type:'slide', direction: 'right'});
     },
     onTinkBox: function(){
-        Ext.Viewport.setActiveItem('feed','slide');
+        Ext.Viewport.animateActiveItem('feed',{type:'slide', direction: 'left'});
     },
     showSentTrinketThumbnail: function(imgUrl){
         var trinketName = Ext.getStore('profilestore').getActiveTrinket();
@@ -33,7 +33,7 @@ Ext.define('ttapp.controller.Split', {
 
         var pt = Ext.ComponentQuery.query('#sentTrinket')[0];
         pt.setSrc(activeTrinketThumbnailPath);
-        pt.setTop((ttapp.config.Config.getHeight()/4));
-        pt.setLeft((ttapp.config.Config.getWidth()/2)-50);
+        // pt.setTop((ttapp.config.Config.getHeight()/4)-50);
+        // pt.setLeft((ttapp.config.Config.getWidth()/2)-50);
     }
 });

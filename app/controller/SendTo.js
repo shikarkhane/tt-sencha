@@ -33,10 +33,10 @@ Ext.define('ttapp.controller.SendTo', {
         var secSent = Ext.ComponentQuery.query('#previewSeconds')[0];
         console.log(this.seconds_sent);
         if(this.seconds_sent == null){
-            secSent.setHtml('--s');
+            secSent.setHtml('--');
         }
         else{
-            secSent.setHtml(this.seconds_sent);
+            secSent.setHtml(this.seconds_sent+"s");
         }
 
         var activeTrinketThumbnailPath = Ext.getStore('trinketstore').getThumbnailPath(this.trinket_name);
@@ -49,7 +49,7 @@ Ext.define('ttapp.controller.SendTo', {
             Ext.getStore('phonecontacts').clearFilter();
             Ext.getCmp('contactsListToChoose').setStore('');
             Ext.getCmp('contactsListToChoose').setHeight('0px');
-            $(".search-list-sec .x-dock.x-unsized>.x-dock-body").css({"background":"none","display":"none"});
+            Ext.getCmp('contactsListToChoose').removeCls('show-list');
         },
         10);
     },
@@ -63,11 +63,11 @@ Ext.define('ttapp.controller.SendTo', {
         Ext.getStore('phonecontacts').clearFilter();
         Ext.getCmp('contactsListToChoose').setStore('');
         Ext.getCmp('contactsListToChoose').setHeight('0px');
-        $(".search-list-sec .x-dock.x-unsized>.x-dock-body").css({"background":"none","display":"none"});
+        Ext.getCmp('contactsListToChoose').removeCls('show-list');
     },
     returnToTink: function(){
-        this.closeMe();
         this.showTink();
+        this.closeMe();
     },
     onSearchKeyUp : function(field){
         var value = field.getValue(),
@@ -78,11 +78,13 @@ Ext.define('ttapp.controller.SendTo', {
         if (field.getValue() == '') {
             Ext.getCmp('contactsListToChoose').setStore('');
             Ext.getCmp('contactsListToChoose').setHeight('0px');
-            $(".search-list-sec .x-dock.x-unsized>.x-dock-body").css({"display":"none"});
+            Ext.getCmp('contactsListToChoose').removeCls('show-list');
+            // $(".search-list-sec .x-dock.x-unsized>.x-dock-body").css({"display":"none"});
         } else {
             Ext.getCmp('contactsListToChoose').setStore('phonecontacts');
             Ext.getCmp('contactsListToChoose').setHeight('100%'); 
-            $(".search-list-sec .x-dock.x-unsized>.x-dock-body").css({"background":"rgba(233,233,233,0.85)","display":"block"} );
+            // $(".search-list-sec .x-dock.x-unsized>.x-dock-body").css({"background":"rgba(233,233,233,0.85)","display":"block"} );
+            Ext.getCmp('contactsListToChoose').addCls('show-list');
         }
         //check if a value is set first, as if it isnt we dont have to do anything
         if (value) {
@@ -127,7 +129,11 @@ Ext.define('ttapp.controller.SendTo', {
     },
     closeMe: function(){
         var cs = Ext.ComponentQuery.query('#choose-recepients')[0];
-        cs.destroy();
+        setTimeout(function(){
+            cs.destroy();
+            console.log("destroy");     
+        },300);
+        
     },
     inviteViaSms: function(){
         //console.log(this.phoneNumber);
@@ -146,11 +152,7 @@ Ext.define('ttapp.controller.SendTo', {
             sms.send(sConf.number, sConf.message, sConf.intent, sConf.success, sConf.error);
         }
     },
-    composeTink : function(list, idx, target, record, evt){        
-        var from_user = Ext.getStore('profilestore').getPhoneNumber();
-        var prevTextMsg = Ext.ComponentQuery.query('#previewTextMsg')[0];
-
-        //is a receipient chosen
+    composeTink : function(list, idx, target, record, evt){
         if( this.phoneNumber){
             //is receipient on tinktime
             if (Ext.getStore('phonecontacts').isOnTinkTime(this.phoneNumber)){
@@ -211,7 +213,7 @@ Ext.define('ttapp.controller.SendTo', {
         //Ext.ComponentQuery.query('#options')[0].setActiveItem(2, 'slide');
     },
     showTink: function(){
-        Ext.Viewport.setActiveItem('tink','slide');
+        Ext.Viewport.animateActiveItem('tink',{type:'fade'});
         //Ext.ComponentQuery.query('#options')[0].setActiveItem(1, 'slide');
     },
     showSendTo: function(tinkView, seconds_sent, trinket_name){

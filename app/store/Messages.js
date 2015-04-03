@@ -54,7 +54,8 @@ Ext.define('ttapp.util.FeedProxy', {
                                     'text': text,
                                     'seconds_sent': secondsSent,
                                     'for_inbox': forInbox,
-                                    'unread': unread
+                                    'unread': unread,
+                                    'type':type
                                 });
                             	messageStore.add(messageModel);
                             });
@@ -64,74 +65,62 @@ Ext.define('ttapp.util.FeedProxy', {
     }
 });
 
+
 Ext.define('ttapp.store.Messages', {
     extend: 'Ext.data.Store',
 
     config: {
         model: 'ttapp.model.Message',
-        data:[{
-            'to_user_name': 'Jan 7, 2014',
-            'from_user_name': 'Eddy Huang',
-            'text':'All the best on your b\'day.',
-            'seconds_sent': 10,
-            'type':'receive',
-            'unread':true,
-            'trinket_file_path':'resources/images/others/tink.png'
-        },
-        {
-            'to_user_name': 'Jan 7, 2014',
-            'from_user_name': 'Eddy Huang',
-            'text':'All the best on your b\'day.',
-            'seconds_sent': 10,
-            'type':'receive',
-            'unread':true,
-            'trinket_file_path':'resources/images/others/tink.png'
-        },
-        {
-            'to_user_name': 'Jan 7, 2014',
-            'from_user_name': 'Eddy Huang',
-            'text':'All the best on your b\'day.',
-            'seconds_sent': 10,
-            'type':'sent',
-            'unread':false,
-            'trinket_file_path':'resources/images/others/tink_design.png'
-        },
-        {
-            'to_user_name': 'Jan 7, 2014',
-            'from_user_name': 'Eddy Huang',
-            'text':'All the best on your b\'day.',
-            'seconds_sent': 10,
-            'type':'sent',
-            'unread':false,
-            'trinket_file_path':'resources/images/others/tink_design.png'
-        },
-        {
-            'to_user_name': 'Jan 7, 2014',
-            'from_user_name': 'Eddy Huang',
-            'text':'All the best on your b\'day.',
-            'seconds_sent': 10,
-            'type':'receive',
-            'unread':true,
-            'trinket_file_path':'resources/images/others/tink.png'
-        },
-        {
-            'to_user_name': 'Jan 7, 2014',
-            'from_user_name': 'Eddy Huang',
-            'text':'All the best on your b\'day.',
-            'seconds_sent': 10,
-            'type':'receive',
-            'unread':true,
-            'trinket_file_path':'resources/images/others/tink.png'
-        },
-        {
-            'to_user_name': 'Jan 7, 2014',
-            'from_user_name': 'Eddy Huang',
-            'text':'All the best on your b\'day.',
-            'seconds_sent': 10,
-            'type':'receive',
-            'unread':false,
-            'trinket_file_path':'resources/images/others/tink_design.png'
-        }]
+        data:[
+            {
+                'from_user_name': 'tim',
+                'to_user_name': 'me',
+                'from_user': 'Ben Furoku',
+                'to_user': 'Rajesh Gehlawat',
+                'send_timestamp': 'Jan 8, 2014',
+                'trinket_file_path': 'resources/images/others/tink.png',
+                'text': '',
+                'seconds_sent': 10,
+                'for_inbox': true,
+                'unread': true,
+            },
+            {
+                'from_user_name': 'tim',
+                'to_user_name': 'me',
+                'from_user': 'Clara Cooper',
+                'to_user': 'Rajesh Gehlawat',
+                'send_timestamp': 'Jan 7, 2014',
+                'trinket_file_path': 'resources/images/others/tink.png',
+                'text': '',
+                'seconds_sent': 10,
+                'for_inbox': true,
+                'unread': true
+            },
+            {
+                'from_user_name': 'me',
+                'to_user_name': 'eddy',
+                'from_user': 'Eddie Huang',
+                'to_user': 'Eddy Huang',
+                'send_timestamp': 'Jan 7, 2014',
+                'trinket_file_path': 'resources/images/others/tink_design.png',
+                'text': 'All the best on your birthday, xoxo',
+                'seconds_sent': 42,
+                'for_inbox': false,
+                'unread': false
+            },
+            {
+                'from_user_name': 'tim',
+                'to_user_name': 'me',
+                'from_user': 'Noah Morrisson',
+                'to_user': 'Rajesh Gehlawat',
+                'send_timestamp': 'Jan 5, 2014',
+                'trinket_file_path': 'resources/images/others/tink_design.png',
+                'text': 'Get well soon',
+                'seconds_sent': 10,
+                'for_inbox': true,
+                'unread': false
+            }
+        ]
     },
     getLastRecord: function(){
         this.load();
