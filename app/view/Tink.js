@@ -5,8 +5,9 @@ Ext.define('ttapp.view.Tink', {
         'ttapp.view.Thinking', 'ttapp.view.TimerClock'
     ],
     config: {
+        id:'tinkScreen',
         itemId: 'tinkPage',
-        cls: 'bg-transparent-white flip-design-right',
+        cls: 'bg-transparent-white flip-design-right tink-page split-page cls-tt-tinking',
         layout: {
                 type: 'vbox',
                 align: 'middle'
@@ -19,11 +20,17 @@ Ext.define('ttapp.view.Tink', {
                 items:[{
                     xtype:'button',
                     cls:'top-btn btn-tink',
-                    docked:'left'
+                    docked:'left',
+                    handler: function (){
+                        Ext.Viewport.animateActiveItem('trinket',{type:'slide', direction: 'right'});  
+                    }
                 },{
                     xtype:'button',
-                    cls:'top-btn btn-mail current flip-design-right',
+                    cls:'top-btn btn-mail show-notification flip-design-right',
                     docked:'right',
+                    handler: function (){
+                        Ext.Viewport.animateActiveItem('feed',{type:'slide'});  
+                    }
                 }]
             },
             {
@@ -42,6 +49,7 @@ Ext.define('ttapp.view.Tink', {
                             element: 'element',
                             fn: function(){
                                 this.fireEvent("choosetrinket", this);
+
                             }
                          }
                     }
@@ -57,6 +65,7 @@ Ext.define('ttapp.view.Tink', {
                 //flex: 1,                
                 xtype: 'thinkingbutton',
                 docked:'bottom',
+
             }
         ]
 

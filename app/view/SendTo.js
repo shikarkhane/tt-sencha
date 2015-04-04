@@ -5,7 +5,7 @@ Ext.define('ttapp.view.SendTo', {
     config: {
     	itemId: 'choose-recepients',
     	fullscreen: true,
-    	cls:'bg-transparent-white',
+    	cls:'bg-transparent-white cls-tt-tinking',
     	layout: 'vbox',
     	items: [{
                     xtype: 'toolbar',
@@ -14,7 +14,10 @@ Ext.define('ttapp.view.SendTo', {
                     items: [{ 
                         	xtype: 'button',
                         	cls: 'top-btn btn-delete',
-                        	docked: 'right'
+                        	docked: 'right',
+                        	handler: function (){
+                        		ttapp.app.getController('ttapp.controller.SendTo').returnToTink(); 
+                        	}
                         }]
                 },{
                 	xtype:'panel',
@@ -29,7 +32,7 @@ Ext.define('ttapp.view.SendTo', {
 		                direction: 'vertical'
 		            },
 		            itemTpl: '<div>{first_name} {last_name}</div> <div><span>{phone_type }</span> {phone_number}</div>',
-		            store: '',
+		            store: 'phonecontacts',
 			        items: [{
 	                            xtype: 'searchfield',
 	                            cls:'search-contacts-field',
@@ -37,7 +40,7 @@ Ext.define('ttapp.view.SendTo', {
 	                            docked:'top',
 	                            itemID:'searchBox',
 	                            placeHolder: 'Search...',
-	                            label:'To',
+	                            label:'To'
 	                        }
 	                    ]
 	                
@@ -68,7 +71,7 @@ Ext.define('ttapp.view.SendTo', {
 	            			placeHolder: "Add a message!", 
 	            			itemId: 'previewTextMsg',
 	            			cls:'text-msg-preview',
-	            			clearIcon:false,
+	            			clearIcon:false
 	            		}
 	            	]
 	            },

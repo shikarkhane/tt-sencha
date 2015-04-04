@@ -10,6 +10,6 @@ Ext.define('ttapp.controller.Feed', {
         }
     },
     onShowTinkInFeed: function(){
-        Ext.Viewport.setActiveItem('replaytink','slide');
+        Ext.Viewport.setActiveItem('replaytink',{type:'slide'});
     }
 });

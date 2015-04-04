@@ -4,7 +4,7 @@ Ext.define('ttapp.view.Trinket', {
     requires: ['ttapp.model.Trinket', 'ttapp.store.Trinkets'],
     config: {
         //layout: 'fit',
-        cls: 'bg-transparent-white flip-design-right'
+        cls: 'bg-transparent-white flip-design-right cls-tt-tinking'
     },
     initialize: function(){
         var width = ttapp.config.Config.getWidth();
@@ -15,12 +15,11 @@ Ext.define('ttapp.view.Trinket', {
             cls:'top-bar',
             items:[{
                 xtype:'button',
-                cls:'top-btn btn-tink',
-                docked:'left'
-            },{
-                xtype:'button',
-                cls:'top-btn btn-mail current flip-design-right',
+                cls:'top-btn btn-mail show-notification flip-design-right',
                 docked:'right',
+                handler: function (){
+                    Ext.Viewport.animateActiveItem('feed',{type:'slide'});  
+                }
             }]
 
         }
@@ -33,33 +32,20 @@ Ext.define('ttapp.view.Trinket', {
             indicator:false,
             
         }));
-        // Ext.getCmp('carouselList').add();
-
         Ext.getCmp('carouselList').add(Ext.create('Ext.List',{
             scrollable: false,
             inline: {
                     wrap: true
                 },
-             height:'100%',
-            itemTpl: ['<img src={thumbnail_path} height='+widthToUse+' width='+widthToUse+' class="img-trinket">'],
-            listeners:{
-                    painted: function(){
-
-                        $('img.img-trinket').each(function(){
-                            var html="<div class='img-bg' style='background:url(" + $(this).attr('src')+ ");''></div>"
-                            $(html).insertBefore($(this));
-                            $(this).remove();
-                        });
-                    }
-                },
+            height:'100%',
+            itemTpl: ['<div class="img-bg" style="background:url({thumbnail_path});"></div>'],
             store: 'trinketstore',
-            
         }));
         Ext.getCmp('carouselList').add(Ext.create('Ext.List',{
             scrollable: false,
             inline: true,
-             height:'100%',
-            itemTpl: '<img src={thumbnail_path} height='+widthToUse+' width='+widthToUse+' class="img-trinket">',
+            height:'100%',
+            itemTpl: '<div class="img-bg" style="background:url({thumbnail_path});"></div>',
             store: 'trinketstore'
         }));
     }

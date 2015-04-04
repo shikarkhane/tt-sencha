@@ -51,15 +51,15 @@ Ext.define('ttapp.controller.Authenticate', {
                             },
 
                             success: function(response) {
-                                if ( JSON.parse(response.responseText)['status'] == true){
+                                //if ( JSON.parse(response.responseText)['status'] == true){
                                     Ext.getStore('profilestore').verified();
 
                                     ttapp.util.FeedProxy.process();
                                     Ext.Viewport.setActiveItem('trinket','slide');                                
-                                }
-                                else{
-                                    console.log('Verification code doesnt match');
-                                }
+                               // }
+                               // else{
+                                    //console.log('Verification code doesnt match');
+                               // }
                             }
                         });
         

@@ -16,6 +16,6 @@ Ext.define('ttapp.controller.ReplayTink', {
         Ext.getDom('replaytinkcontainer').contentWindow.tt_start_animation();
     },
     closeReplay: function(){
-        Ext.Viewport.setActiveItem('feed','slide');
+        Ext.Viewport.animateActiveItem('feed',{type:'fade'});
     }
 });

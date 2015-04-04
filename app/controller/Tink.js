@@ -20,12 +20,14 @@ Ext.define('ttapp.controller.Tink', {
         }
     },
     onChooseTrinket: function(){
-        Ext.Viewport.setActiveItem('trinket');
+        // Ext.Viewport.setActiveItem('trinket');
+        Ext.Viewport.animateActiveItem('trinket',{type:'slide', direction: 'right'}); 
     },
     onThinking : function(){
         this.hideActiveTrinketThumbnail();
         this.getClock().start();
         Ext.getDom('tinkcontainer').contentWindow.tt_start_animation();
+        Ext.getCmp('tinkScreen').addCls('show-full-frame');
 
     },
     onStoppedThinking : function(){
@@ -35,6 +37,7 @@ Ext.define('ttapp.controller.Tink', {
         var periodInSeconds = this.getClock().getDuration();
         var trinketName = Ext.getStore('profilestore').getActiveTrinket();
         this.getApplication().getController('SendTo').showSendTo(this, periodInSeconds, trinketName);
+        Ext.getCmp('tinkScreen').removeCls('show-full-frame');
     },
     onShow: function(){
         this.resetTimerClock();
@@ -43,8 +46,8 @@ Ext.define('ttapp.controller.Tink', {
     showActiveTrinketThumbnail: function(imgUrl){
         var pt = Ext.ComponentQuery.query('#placeholderTrinket')[0];
         pt.setSrc(imgUrl);
-        pt.setTop((ttapp.config.Config.getHeight()/3));
-        pt.setLeft((ttapp.config.Config.getWidth()/2)-50);
+        pt.setTop((ttapp.config.Config.getHeight()/3)+50);
+        // pt.setLeft((ttapp.config.Config.getWidth()/2)-50);
         pt.setHidden(false);
     },
     hideActiveTrinketThumbnail: function(imgUrl){
@@ -72,7 +75,7 @@ Ext.define('ttapp.controller.Tink', {
 
         this.showActiveTrinketThumbnail(activeTrinketThumbnailPath);
 
-        trinketArea.setHtml('<iframe id="tinkcontainer" style="width:' + width +'px;height:' + height + 'px;" src="resources/tinks/swiffy/' + activeTrinketFilePath + '"></iframe>');
+        trinketArea.setHtml('<iframe id="tinkcontainer" class="tinkanimation" style="" src="resources/tinks/swiffy/' + activeTrinketFilePath + '"></iframe>');
     }
 
 });

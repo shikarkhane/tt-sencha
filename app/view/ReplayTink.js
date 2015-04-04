@@ -3,34 +3,36 @@ Ext.define('ttapp.view.ReplayTink', {
     xtype: 'replaytink',
     config: {
         itemId: 'replayTinkPage',
-        cls: 'cls-tt-replaytink',
+        cls: 'cls-tt-tinkbox cls-tt-replaytink',
         layout: {
         type: 'vbox',
         align: 'middle'
         },
         items: [
         {
-                        xtype: 'toolbar',
-                        docked: 'top',
-
-                        items: [
-                        
-                            { 
-                                xtype: 'button',
-                                iconCls: 'delete',
-                                docked: 'right'
+                    xtype: 'toolbar',
+                    docked: 'top',
+                    cls:'top-bar',
+                    items: [{ 
+                            xtype: 'button',
+                            cls: 'top-btn btn-delete',
+                            docked: 'right',
+                            handler: function (){
+                                ttapp.app.getController('ttapp.controller.ReplayTink').closeReplay(); 
                             }
-                        ]
-                    },
+                        }]
+                },
         {
             xtype: 'panel',
+            cls:'clsTimerClock',
+            style:'z-index:9',
             flex: 1,
-            html: '<h2>13 sec</h2>'
+            html: '13 sec'
         },
             {
                 xtype: 'panel',
                 flex: 5,
-                html: '<iframe id="replaytinkcontainer" style="width:320px;height:480px;" src="resources/tinks/swiffy/default.html"></iframe>'                
+                html: '<iframe id="replaytinkcontainer" class="tinkanimation" src="resources/tinks/swiffy/default.html"></iframe>'                
             },
             {
                 xtype: 'panel',
