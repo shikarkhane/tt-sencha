@@ -49,7 +49,7 @@ Ext.define('ttapp.controller.SendTo', {
         setTimeout(function() {
             Ext.getStore('phonecontacts').clearFilter();
             Ext.getCmp('contactsListToChoose').setStore('');
-            Ext.getCmp('contactsListToChoose').setHeight('0px');
+            Ext.getCmp('contactsListToChoose').setHeight('0px');    
             Ext.getCmp('contactsListToChoose').removeCls('show-list');
         },
         10);
@@ -156,7 +156,7 @@ Ext.define('ttapp.controller.SendTo', {
     composeTink : function(list, idx, target, record, evt){
         var from_user = Ext.getStore('profilestore').getPhoneNumber();
         var prevTextMsg = Ext.ComponentQuery.query('#previewTextMsg')[0];
-        
+
         if( this.phoneNumber){
             //is receipient on tinktime
             if (Ext.getStore('phonecontacts').isOnTinkTime(this.phoneNumber)){
@@ -204,7 +204,8 @@ Ext.define('ttapp.controller.SendTo', {
                                 "send_timestamp": send_timestamp, 
                                 "trinket_name": trinket_name, 
                                 "text" : text,
-                                "seconds_sent": seconds_sent
+                                "seconds_sent": seconds_sent,
+                                "read": false
                             },
 
                             success: function(response) {
