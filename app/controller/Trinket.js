@@ -6,6 +6,9 @@ Ext.define('ttapp.controller.Trinket', {
         control: {
             'trinket dataview': {
                 itemtap: 'onTrinketSelection'
+            },
+            'trinket carousel': {
+                
             }
         }
     },

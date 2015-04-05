@@ -15,7 +15,7 @@ Ext.define('ttapp.util.FeedProxy', {
                         disableCaching: false,
                         
                         success: function(response) {
-                            var messages = Ext.JSON.decode(response.responseText.trim());                            
+                            var messages = Ext.JSON.decode(response.responseText.trim()); 
                             Ext.Array.each( messages, function(message) {
                                 var fromUserName,
                                     toUserName,

@@ -32,7 +32,7 @@ Ext.define('ttapp.view.ReplayTink', {
             {
                 xtype: 'panel',
                 flex: 5,
-                html: '<iframe id="replaytinkcontainer" class="tinkanimation" src="resources/tinks/swiffy/default.html"></iframe>'                
+                html: '<iframe id="replaytinkcontainer" class="tinkanimation" src="resources/tinks/swiffy/cute-dancing-guy.html"></iframe>'                
             },
             {
                 xtype: 'panel',

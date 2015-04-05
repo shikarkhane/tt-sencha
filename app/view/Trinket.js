@@ -47,7 +47,7 @@ Ext.define('ttapp.view.Trinket', {
             itemTpl: ['<div class="img-bg" style="background:url({thumbnail_path});"></div>'],
             store: 'trinketstore',
         }));
-        store.clearFilter();
+        /*store.clearFilter();
         store.filter(function(record) {
             if ( record.get('trinket_id') >= 10 )
                 return true;
@@ -58,6 +58,6 @@ Ext.define('ttapp.view.Trinket', {
             height:'100%',
             itemTpl: '<div class="img-bg" style="background:url({thumbnail_path});"></div>',
             store: 'trinketstore'
-        }));
+        }));*/
     }
 });
