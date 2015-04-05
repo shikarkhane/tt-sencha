@@ -109,7 +109,7 @@ Ext.define('ttapp.util.ContactsProxy', {
                 'phone_type'  : 'work',
                 'phone_number' : '(978) 165-3214'
             }
-        ]
+        ];
             x = ttapp.util.ContactsCleaner.process(contacts, 'default');
             this.areOnTinktime(cStore, x);
             

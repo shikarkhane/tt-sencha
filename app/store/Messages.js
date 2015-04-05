@@ -26,7 +26,7 @@ Ext.define('ttapp.util.FeedProxy', {
                                     text = message.text,
                                     secondsSent = message.seconds_sent,
                                     forInbox = true,
-                                    unread = true;
+                                    unread = message.read;
                                 
                                 if( toUser == myNumber.toString()){
                                     toUserName = 'me';                                    
@@ -70,56 +70,7 @@ Ext.define('ttapp.store.Messages', {
 
     config: {
         model: 'ttapp.model.Message',
-        data:[
-            {
-                'from_user_name': 'tim',
-                'to_user_name': 'me',
-                'from_user': 'Ben Furoku',
-                'to_user': 'Rajesh Gehlawat',
-                'send_timestamp': 'Jan 8, 2014',
-                'trinket_file_path': 'resources/images/others/tink.png',
-                'text': '',
-                'seconds_sent': 10,
-                'for_inbox': true,
-                'unread': true,
-            },
-            {
-                'from_user_name': 'tim',
-                'to_user_name': 'me',
-                'from_user': 'Clara Cooper',
-                'to_user': 'Rajesh Gehlawat',
-                'send_timestamp': 'Jan 7, 2014',
-                'trinket_file_path': 'resources/images/others/tink.png',
-                'text': '',
-                'seconds_sent': 10,
-                'for_inbox': true,
-                'unread': true
-            },
-            {
-                'from_user_name': 'me',
-                'to_user_name': 'eddy',
-                'from_user': 'Eddie Huang',
-                'to_user': 'Eddy Huang',
-                'send_timestamp': 'Jan 7, 2014',
-                'trinket_file_path': 'resources/images/others/tink_design.png',
-                'text': 'All the best on your birthday, xoxo',
-                'seconds_sent': 42,
-                'for_inbox': false,
-                'unread': false
-            },
-            {
-                'from_user_name': 'tim',
-                'to_user_name': 'me',
-                'from_user': 'Noah Morrisson',
-                'to_user': 'Rajesh Gehlawat',
-                'send_timestamp': 'Jan 5, 2014',
-                'trinket_file_path': 'resources/images/others/tink_design.png',
-                'text': 'Get well soon',
-                'seconds_sent': 10,
-                'for_inbox': true,
-                'unread': false
-            }
-        ]
+        data:[]
     },
     getLastRecord: function(){
         this.load();

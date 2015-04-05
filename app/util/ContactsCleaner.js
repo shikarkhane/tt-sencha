@@ -26,7 +26,7 @@ Ext.define('ttapp.util.ContactsCleaner', {
     },
     deviceSpecificFormat: function(d, i){
         if( d == 'default'){
-            return [i.first_name, i.last_name, i.phone_number]
+            return [i.first_name, i.last_name, i.phoneNumbers[0].value]
         }
         if(d == 'ios'){
             if (i.phoneNumbers){

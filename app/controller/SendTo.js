@@ -44,6 +44,7 @@ Ext.define('ttapp.controller.SendTo', {
     },
     saveTappedContact: function(list, idx, target, record, evt){
         this.fullName = record.data.first_name + ' '+ record.data.last_name;
+        this.phoneNumber = record.data.phone_number;
         this.getSearchContactsField().setValue(this.fullName);
         setTimeout(function() {
             Ext.getStore('phonecontacts').clearFilter();
@@ -54,7 +55,7 @@ Ext.define('ttapp.controller.SendTo', {
         10);
     },
     clearAll: function(){
-        var sf = Ext.ComponentQuery.query('searchfield[cls~=searchContactsField]')[0];
+        var sf = Ext.ComponentQuery.query('searchfield[cls~=search-contacts-field]')[0];
         sf.reset();
         this.onSearchClearIconTap();
     },
@@ -153,6 +154,9 @@ Ext.define('ttapp.controller.SendTo', {
         }
     },
     composeTink : function(list, idx, target, record, evt){
+        var from_user = Ext.getStore('profilestore').getPhoneNumber();
+        var prevTextMsg = Ext.ComponentQuery.query('#previewTextMsg')[0];
+        
         if( this.phoneNumber){
             //is receipient on tinktime
             if (Ext.getStore('phonecontacts').isOnTinkTime(this.phoneNumber)){
