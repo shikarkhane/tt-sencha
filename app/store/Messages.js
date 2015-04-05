@@ -54,8 +54,7 @@ Ext.define('ttapp.util.FeedProxy', {
                                     'text': text,
                                     'seconds_sent': secondsSent,
                                     'for_inbox': forInbox,
-                                    'unread': unread,
-                                    'type':type
+                                    'unread': unread    
                                 });
                             	messageStore.add(messageModel);
                             });

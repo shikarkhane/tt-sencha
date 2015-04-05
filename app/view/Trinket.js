@@ -32,6 +32,12 @@ Ext.define('ttapp.view.Trinket', {
             indicator:false,
             
         }));
+        var store = Ext.getStore('trinketstore');
+        store.clearFilter();
+        store.filter(function(record) {
+            if ( record.get('trinket_id') < 10 )
+                return true;
+        });
         Ext.getCmp('carouselList').add(Ext.create('Ext.List',{
             scrollable: false,
             inline: {
@@ -41,6 +47,11 @@ Ext.define('ttapp.view.Trinket', {
             itemTpl: ['<div class="img-bg" style="background:url({thumbnail_path});"></div>'],
             store: 'trinketstore',
         }));
+        store.clearFilter();
+        store.filter(function(record) {
+            if ( record.get('trinket_id') >= 10 )
+                return true;
+        });
         Ext.getCmp('carouselList').add(Ext.create('Ext.List',{
             scrollable: false,
             inline: true,

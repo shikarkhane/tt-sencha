@@ -2,7 +2,6 @@ Ext.define('ttapp.util.ContactsProxy', {
     singleton: true,
     requires: ['Ext.device.Contacts', 'ttapp.util.ContactsCleaner'],
     areOnTinktime: function(cStore, contacts){
-        console.log(device);
         Ext.Ajax.request({
             url:  ttapp.config.Config.getBaseURL() + '/are-on-network/',
             method: 'POST',
