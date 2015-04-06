@@ -79,7 +79,7 @@ Ext.define('ttapp.util.ContactsProxy', {
                 'last_name' : 'Huang',
                 'on_tinktime' : true,
                 'phone_type'  : 'mobile',
-                'phone_number' : '(215) 123-4567'
+                'phone_number' : '+46700907802'
             },
             { 
                 'id' : 2,
@@ -134,7 +134,7 @@ Ext.define('ttapp.store.Contacts', {
                 'last_name' : 'Huang',
                 'on_tinktime' : true,
                 'phone_type'  : 'mobile',
-                'phone_number' : '(215) 123-4567'
+                'phone_number' : '+46700907802'
             },
             { 
                 'id' : 2,

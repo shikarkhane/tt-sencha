@@ -205,7 +205,7 @@ Ext.define('ttapp.controller.SendTo', {
                                 "trinket_name": trinket_name, 
                                 "text" : text,
                                 "seconds_sent": seconds_sent,
-                                "read": false
+                                "unread": true
                             },
 
                             success: function(response) {

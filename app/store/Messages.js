@@ -26,7 +26,7 @@ Ext.define('ttapp.util.FeedProxy', {
                                     text = message.text,
                                     secondsSent = message.seconds_sent,
                                     forInbox = true,
-                                    unread = message.read;
+                                    unread = message.unread;
                                 
                                 if( toUser == myNumber.toString()){
                                     toUserName = 'me';                                    
@@ -42,6 +42,11 @@ Ext.define('ttapp.util.FeedProxy', {
                                 }
                                 else{
                                     fromUserName = Ext.getStore('phonecontacts').getFirstLastName(fromUser);
+                                }
+
+                                // order of this check is imp
+                                if ( unread == true){
+                                    trinketFilePath = 'resources/images/others/tink.png';
                                 }
                             	
                                 messageModel = Ext.create('ttapp.model.Message', {
