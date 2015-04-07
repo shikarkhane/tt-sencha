@@ -9,7 +9,33 @@ Ext.define('ttapp.controller.Feed', {
             }
         }
     },
-    onShowTinkInFeed: function(){
+    onShowTinkInFeed: function(list, idx, target, record, evt){
+        var from_user = Ext.getStore('profilestore').getPhoneNumber();
+        if ((from_user != record.data.from_user) && (record.data.unread)){
+            this.tinkRead(record);    
+        }
+        
         Ext.Viewport.setActiveItem('replaytink',{type:'slide'});
+    },
+    tinkRead: function(record){
+          Ext.Ajax.request({
+                            url:  ttapp.config.Config.getBaseURL() + '/message-read/',
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json'},
+                            disableCaching: false,
+                            jsonData: {
+                                "from_user" : record.data.from_user,
+                                "to_user" : record.data.to_user, 
+                                "send_timestamp": record.data.send_timestamp, 
+                                "trinket_name": record.data.trinket_name, 
+                                "text" : record.data.text,
+                                "seconds_sent": record.data.seconds_sent,
+                                "unread": false
+                            },
+
+                            success: function(response) {
+                                console.log(response.responseText);
+                            }
+                        });
     }
 });

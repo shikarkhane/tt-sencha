@@ -55,6 +55,7 @@ Ext.define('ttapp.util.FeedProxy', {
                                     'from_user': fromUser,
                                     'to_user': toUser,
                                     'send_timestamp': sendTimestamp,
+                                    'trinket_name' : message.trinket_name,
                                     'trinket_file_path': trinketFilePath,
                                     'text': text,
                                     'seconds_sent': secondsSent,
