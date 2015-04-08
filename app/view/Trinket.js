@@ -29,7 +29,7 @@ Ext.define('ttapp.view.Trinket', {
             id:'carouselList',
             cls:'trinket-list',
             height:'100%',
-            indicator:false,
+            //indicator:false,
             
         }));
         Ext.getCmp('carouselList').add(Ext.create('Ext.List',{
