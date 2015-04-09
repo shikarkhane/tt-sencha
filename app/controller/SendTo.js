@@ -178,14 +178,13 @@ Ext.define('ttapp.controller.SendTo', {
                         if (buttonId === 'yes') {
                             this.inviteViaSms();
                         }
-                    },
-                    this
+                    }, this
                 );
 
             }
         }
         else{
-            Ext.Msg.alert('Receiver?', 'Please choose a receipient.', Ext.emptyFn);
+            Ext.Msg.alert('Receiver?', 'Please choose a recipient.', Ext.emptyFn);
         }
     },
     sendTink: function(from_user, to_user, send_timestamp, trinket_name, text, seconds_sent){

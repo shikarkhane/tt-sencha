@@ -16,6 +16,7 @@ Ext.define('ttapp.util.FeedProxy', {
                         
                         success: function(response) {
                             var messages = Ext.JSON.decode(response.responseText.trim());                            
+                            
                             Ext.Array.each( messages, function(message) {
                                 var formatted_date = ttapp.app.getController('ttapp.controller.Feed').returnFormattedDate(message.send_timestamp);
                                 var fromUserName,
@@ -72,7 +73,7 @@ Ext.define('ttapp.store.Messages', {
 
     config: {
         model: 'ttapp.model.Message',
-        data:[
+        /*data:[
             {
                 'from_user_name': 'tim',
                 'to_user_name': 'me',
@@ -100,7 +101,7 @@ Ext.define('ttapp.store.Messages', {
             {
                 'from_user_name': 'me',
                 'to_user_name': 'eddy',
-                'from_user': 'Eddie Huang',
+                'from_user': 'Rajesh Gehlawt',
                 'to_user': 'Eddy Huang',
                 'send_timestamp': 'Jan 7, 2014',
                 'trinket_file_path': 'resources/images/others/tink_design.png',
@@ -121,7 +122,7 @@ Ext.define('ttapp.store.Messages', {
                 'for_inbox': true,
                 'unread': false
             }
-        ]
+        ]*/
     },
     getLastRecord: function(){
         this.load();

@@ -4,6 +4,9 @@
                 fields: [{
                     name: 'trinket_id',
                     type: 'int'
+                },{
+                    name: 'group_id',
+                    type: 'string'
                 }, {
                     name: 'name',
                     type: 'string'
