@@ -15,13 +15,14 @@ Ext.define('ttapp.util.FeedProxy', {
                         disableCaching: false,
                         
                         success: function(response) {
-                            var messages = Ext.JSON.decode(response.responseText.trim()); 
+                            var messages = Ext.JSON.decode(response.responseText.trim());                            
                             Ext.Array.each( messages, function(message) {
+                                var formatted_date = ttapp.app.getController('ttapp.controller.Feed').returnFormattedDate(message.send_timestamp);
                                 var fromUserName,
                                     toUserName,
                                     fromUser = message.from_user,
                                     toUser = message.to_user,
-                                    sendTimestamp = message.send_timestamp,
+                                    sendTimestamp = formatted_date,
                                     trinketFilePath = Ext.getStore('trinketstore').getThumbnailPath(message.trinket_name),
                                     text = message.text,
                                     secondsSent = message.seconds_sent,

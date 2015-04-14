@@ -105,7 +105,7 @@ Ext.define('ttapp.util.ContactsProxy', {
                 'phoneNumbers': [{'value': '0101010101'}],
                 'first_name' : 'Emanuel',
                 'last_name' : 'Lindberg',
-                'on_tinktime' : true,
+                'on_tinktime' : false,
                 'phone_type'  : 'work',
                 'phone_number' : '(978) 165-3214'
             }
@@ -160,7 +160,7 @@ Ext.define('ttapp.store.Contacts', {
                 'phoneNumbers': [{'value': '0101010101'}],
                 'first_name' : 'Emanuel',
                 'last_name' : 'Lindberg',
-                'on_tinktime' : true,
+                'on_tinktime' : false,
                 'phone_type'  : 'work',
                 'phone_number' : '(978) 165-3214'
             }],
