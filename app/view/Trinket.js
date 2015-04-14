@@ -32,29 +32,6 @@ Ext.define('ttapp.view.Trinket', {
             height:'100%',
             //indicator:false,
         }));
-<<<<<<< HEAD
-        var store = Ext.getStore('trinketstore');
-        store.clearFilter();
-        store.filter(function(record) {
-            if ( record.get('trinket_id') < 10 )
-                return true;
-        });
-        Ext.getCmp('carouselList').add(Ext.create('Ext.List',{
-            scrollable: false,
-            inline: {
-                    wrap: true
-                },
-            height:'100%',
-            itemTpl: ['<div class="img-bg" style="background:url({thumbnail_path});"></div>'],
-            store: 'trinketstore',
-        }));
-        /*store.clearFilter();
-        store.filter(function(record) {
-            if ( record.get('trinket_id') >= 10 )
-                return true;
-        });
-        Ext.getCmp('carouselList').add(Ext.create('Ext.List',{
-=======
 
         var store_data = Ext.getStore('trinketstore');
         var group_count = Math.ceil((store_data.data.all.length)/9);
@@ -97,64 +74,5 @@ Ext.define('ttapp.view.Trinket', {
         }
 
 
-        /*Ext.getCmp('carouselList').add(Ext.create('Ext.List',{
-                scrollable: false,
-                inline: {
-                    wrap: true
-                },
-                height:'100%',
-                itemTpl: [
-                    '<div class="img-bg" style="background:url({thumbnail_path});"></div>'
-                ],
-                store: store_data_display,
-            }));
-        ,
-        listeners:{
-            load: function(){
-                var all = store.data.all;
-                aStore.setData(all.slice(0,8));
-            }
-        }
-        */
-        /*for(var i=1; i<=group_count; i++){
-            var store_data_display = Ext.getStore('trinketstore');
-            
-            // store_data_display.filter("group_id", 1);
-
-            Ext.getCmp('carouselList').add(Ext.create('Ext.List',{
-                scrollable: false,
-                inline: {
-                    wrap: true
-                },
-                height:'100%',
-                // itemTpl: [
-                //     '<tpl if=\'trinket_id <= "9"\'>',
-                //         '<div class="img-bg" style="background:url({thumbnail_path});"></div>',
-                //     '<tpl else>',
-                //         '<div class="row"><span class="date-sec">{date}</span><div class="title-sec">{title}</div></div><div class="des">{description}</div>',
-                //     '</tpl>'
-                // ],
-
-                itemTpl: [
-                    '<div class="img-bg" style="background:url({thumbnail_path});"></div>'
-                ],
-                store: store_data_display,
-            }));
-        }*/
-        //this.add(carousel);
-        /*Ext.getCmp('carouselList').add(Ext.create('Ext.List',{
->>>>>>> bd2b4f8e9c982b2d4f724e10ef657618557c142c
-            scrollable: false,
-            inline: true,
-            height:'100%',
-            itemTpl: '<div class="img-bg" style="background:url({thumbnail_path});"></div>',
-<<<<<<< HEAD
-            store: 'trinketstore'
-        }));*/
-=======
-            store: store_data
-        }));*/
-
->>>>>>> bd2b4f8e9c982b2d4f724e10ef657618557c142c
     }
 });
