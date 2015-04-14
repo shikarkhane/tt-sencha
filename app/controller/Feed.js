@@ -37,6 +37,8 @@ Ext.define('ttapp.controller.Feed', {
                                 console.log(response.responseText);
                             }
                         });
+
+    },
     returnFormattedDate: function(timestamp){
         var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
         var d = new Date(timestamp);
