@@ -6,6 +6,7 @@ Ext.define('ttapp.store.Trinkets', {
         data: [
         {
             'trinket_id': "1",
+            'group_id':1,
             'name': "default",
             'label': "Cute dancing guy",
             'thumbnail_path': "/resources/images/tinks/cute-dancing-guy.png",
@@ -13,6 +14,7 @@ Ext.define('ttapp.store.Trinkets', {
         },
         {
             'trinket_id': "2",
+            'group_id':1,
             'name': "ice-cream",
             'label': "Ice-cream",
             'thumbnail_path': "/resources/images/tinks/ice-cream.png",
@@ -20,6 +22,7 @@ Ext.define('ttapp.store.Trinkets', {
         },
         {
             'trinket_id': "3",
+            'group_id':1,
             'name': "scrabble-love",
             'label': "Scrabble love",
             'thumbnail_path': "/resources/images/tinks/scrabble-love.png",
@@ -27,6 +30,7 @@ Ext.define('ttapp.store.Trinkets', {
         },
         {
             'trinket_id': "4",
+            'group_id':1,
             'name': "bubble-gum-cat",
             'label': "Bubble gum cat",
             'thumbnail_path': "/resources/images/tinks/bubble-gum-cat.png",
@@ -34,6 +38,7 @@ Ext.define('ttapp.store.Trinkets', {
         },
         {
             'trinket_id': "5",
+            'group_id':1,
             'name': "cute-kissing-guy",
             'label': "Cute kissing guy",
             'thumbnail_path': "/resources/images/tinks/cute-kissing-guy.png",
@@ -41,6 +46,7 @@ Ext.define('ttapp.store.Trinkets', {
         },
         {
             'trinket_id': "6",
+            'group_id':1,
             'name': "kisses",
             'label': "Kisses",
             'thumbnail_path': "/resources/images/tinks/kisses.png",
@@ -48,6 +54,7 @@ Ext.define('ttapp.store.Trinkets', {
         },
         {
             'trinket_id': "7",
+            'group_id':1,
             'name': "singing-cat",
             'label': "Singing cat",
             'thumbnail_path': "/resources/images/tinks/singing-cat.png",
@@ -55,6 +62,7 @@ Ext.define('ttapp.store.Trinkets', {
         },
         {
             'trinket_id': "8",
+            'group_id':1,
             'name': "bunny-flowers",
             'label': "Bunny flowers",
             'thumbnail_path': "/resources/images/tinks/bunny-flowers.png",
@@ -62,6 +70,7 @@ Ext.define('ttapp.store.Trinkets', {
         },
         {
             'trinket_id': "9",
+            'group_id':1,
             'name': "good-luck-cat",
             'label': "Good luck cat",
             'thumbnail_path': "/resources/images/tinks/good-luck-cat.png",
@@ -69,6 +78,7 @@ Ext.define('ttapp.store.Trinkets', {
         },
         {
             'trinket_id': "10",
+            'group_id':2,
             'name': "panda-balloon-hat",
             'label': "Panda balloon hat",
             'thumbnail_path': "/resources/images/tinks/panda-balloon-hat.png",
@@ -76,6 +86,7 @@ Ext.define('ttapp.store.Trinkets', {
         },
         {
             'trinket_id': "11",
+            'group_id':2,
             'name': "singing-panda",
             'label': "Singing panda",
             'thumbnail_path': "/resources/images/tinks/singing-panda.png",
@@ -83,6 +94,7 @@ Ext.define('ttapp.store.Trinkets', {
         },
         {
             'trinket_id': "12",
+            'group_id':2,
             'name': "cats-peek",
             'label': "Cats peek",
             'thumbnail_path': "/resources/images/tinks/cats-peek.png",
@@ -90,6 +102,7 @@ Ext.define('ttapp.store.Trinkets', {
         },
         {
             'trinket_id': "13",
+            'group_id':2,
             'name': "hedgehog-hug",
             'label': "Hedgehog hug",
             'thumbnail_path': "/resources/images/tinks/hedgehog-hug.png",
@@ -97,6 +110,7 @@ Ext.define('ttapp.store.Trinkets', {
         },
         {
             'trinket_id': "14",
+            'group_id':2,
             'name': "panda-umbrella",
             'label': "Panda umbrella",
             'thumbnail_path': "/resources/images/tinks/panda-umbrella.png",
@@ -104,6 +118,7 @@ Ext.define('ttapp.store.Trinkets', {
         },
         {
             'trinket_id': "15",
+            'group_id':2,
             'name': "sleeping-bear",
             'label': "Sleeping bear",
             'thumbnail_path': "/resources/images/tinks/sleeping-bear.png",
@@ -111,6 +126,7 @@ Ext.define('ttapp.store.Trinkets', {
         },
         {
             'trinket_id': "16",
+            'group_id':2,
             'name': "cherry-blossom",
             'label': "Cherry blossom",
             'thumbnail_path': "/resources/images/tinks/cherry-blossom.png",
@@ -118,6 +134,7 @@ Ext.define('ttapp.store.Trinkets', {
         },
         {
             'trinket_id': "17",
+            'group_id':2,
             'name': "hugs",
             'label': "hugs",
             'thumbnail_path': "/resources/images/tinks/hugs.png",
@@ -125,6 +142,7 @@ Ext.define('ttapp.store.Trinkets', {
         },
         {
             'trinket_id': "18",
+            'group_id':2,
             'name': "rabbit-umbrella-hearts",
             'label': "Rabbit umbrella hearts",
             'thumbnail_path': "/resources/images/tinks/rabbit-umbrella-hearts.png",
@@ -132,6 +150,7 @@ Ext.define('ttapp.store.Trinkets', {
         },
         {
             'trinket_id': "19",
+            'group_id':3,
             'name': "surprise-party",
             'label': "Surprise party",
             'thumbnail_path': "/resources/images/tinks/surprise-party.png",
@@ -139,11 +158,11 @@ Ext.define('ttapp.store.Trinkets', {
         }
         ]
     },
+    
     getDefaultTrinket: function(){
         this.load();
         return this.getAt(0).get('name');
-    }
-    ,
+    },
     getTrinketId: function(name){
         this.load();
         var i = this.find('name', name);
