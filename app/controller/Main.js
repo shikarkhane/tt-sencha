@@ -10,9 +10,7 @@ Ext.define('ttapp.controller.Main', {
     },
     launch: function(){
         // when app comes to foreground
-        console.log('setup resume listener');
         document.addEventListener("resume", this.onResume, false);
-        console.log('after setup resume listener');
     },
     onResume: function(){
         console.log('on resume');

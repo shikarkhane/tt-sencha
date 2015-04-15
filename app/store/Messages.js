@@ -1,12 +1,13 @@
 Ext.define('ttapp.util.FeedProxy', {
     singleton: true,
-    // requires: ['Ext.data.JsonP'],
+    requires: ['ttapp.util.Common'],
 
     process: function() {
         var messageStore = Ext.getStore('Messages'),
             messageModel,
-           	myNumber = Ext.getStore('profilestore').getPhoneNumber();
-           	
+           	myNumber = Ext.getStore('profilestore').getPhoneNumber(),
+            unreadRedDot = false;
+
             if(myNumber){
 			 Ext.Ajax.request({
                         url:  ttapp.config.Config.getBaseURL() + '/feed/' + myNumber + '/',
@@ -48,6 +49,7 @@ Ext.define('ttapp.util.FeedProxy', {
                                 // order of this check is imp
                                 if ( unread == true){
                                     trinketFilePath = 'resources/images/others/tink.png';
+                                    unreadRedDot = true;
                                 }
                             	
                                 messageModel = Ext.create('ttapp.model.Message', {
@@ -68,6 +70,9 @@ Ext.define('ttapp.util.FeedProxy', {
                         }
                     });
             }
+
+            //change the red dot on email icon
+            ttapp.util.Common.updateNotifySymbol(unreadRedDot);
     }
 });
 

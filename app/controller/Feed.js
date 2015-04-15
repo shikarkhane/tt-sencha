@@ -18,6 +18,8 @@ Ext.define('ttapp.controller.Feed', {
         Ext.Viewport.setActiveItem('replaytink',{type:'slide'});
     },
     tinkRead: function(record){
+        //todo: mark tink is read in localstore
+        //mark the tink as read on the server 
           Ext.Ajax.request({
                             url:  ttapp.config.Config.getBaseURL() + '/message-read/',
                             method: 'POST',
@@ -37,6 +39,8 @@ Ext.define('ttapp.controller.Feed', {
                                 console.log(response.responseText);
                             }
                         });
+           //change the red dot on email icon
+            ttapp.util.Common.updateNotifySymbol(false);
 
     },
     returnFormattedDate: function(timestamp){

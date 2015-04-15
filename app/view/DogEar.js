@@ -11,13 +11,10 @@ Ext.define('ttapp.view.DogEar', {
                    {
                     xtype:'button',
                     cls:'top-btn btn-tink flip-design-left',
-                    docked:'left',
-                    handler: function (){
-                        Ext.Viewport.animateActiveItem('trinket',{type:'slide', direction: 'right'});  
-                    }
+                    docked:'left'
                 },{
                     xtype:'button',
-                    cls:'top-btn btn-mail show-notification',
+                    cls:'top-btn btn-mail',
                     docked:'right',
                 }
             ]

@@ -16,11 +16,8 @@ Ext.define('ttapp.view.Trinket', {
             items: [
                 {
                     xtype:'button',
-                    cls:'top-btn btn-mail show-notification flip-design-right',
-                    docked:'right',
-                    handler: function() {
-                        Ext.Viewport.animateActiveItem('feed',{type:'slide'});  
-                    }
+                    cls:'top-btn btn-mail flip-design-right',
+                    docked:'right'
                 }
             ]
         }));

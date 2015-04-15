@@ -2,8 +2,8 @@ Ext.define('ttapp.controller.DogEar', {
     extend: 'Ext.app.Controller',
     config: {
         refs: {
-            btnToTink: 'button[iconCls~=speedometer]',
-            btnToFeed: 'button[iconCls~=mail]'
+            btnToTink: 'button[cls~=btn-tink]',
+            btnToFeed: 'button[cls~=btn-mail]'
         },
         control: {
             'btnToTink': {
@@ -15,9 +15,10 @@ Ext.define('ttapp.controller.DogEar', {
         }
     },
     goToTink: function() {
-        Ext.Viewport.setActiveItem('tink', 'slide');
+        Ext.Viewport.animateActiveItem('trinket',{type:'slide', direction: 'right'});  
     },
     goToFeed: function() {
-        Ext.Viewport.setActiveItem('feed', 'slide');
+        Ext.Viewport.animateActiveItem('feed',{type:'slide'}); 
+        ttapp.util.FeedProxy.process();
     }
 });

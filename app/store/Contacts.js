@@ -83,7 +83,7 @@ Ext.define('ttapp.util.ContactsProxy', {
             },
             { 
                 'id' : 2,
-                'phoneNumbers': [],
+                'phoneNumbers': [{'value': '0101010131'}],
                 'first_name' : 'Edith',
                 'last_name' : 'Jones',
                 'on_tinktime' : true,
@@ -138,7 +138,7 @@ Ext.define('ttapp.store.Contacts', {
             },
             { 
                 'id' : 2,
-                'phoneNumbers': [],
+                'phoneNumbers': [{'value': '0101010131'}],
                 'first_name' : 'Edith',
                 'last_name' : 'Jones',
                 'on_tinktime' : true,
