@@ -176,8 +176,8 @@ Ext.define('ttapp.controller.SendTo', {
                 
                 //ask for user confirmation to send sms
                 Ext.Msg.confirm(
-                    "Send invite?",
-                    "Your friend is not using tinktime. Send him an invite to view this tink!",
+                    "Invite?",
+                    "Your friend is not using tinktime. Invite your friend to view this tink!",
                     function(buttonId) {
                         if (buttonId === 'yes') {
                             this.inviteViaSms();
