@@ -8,6 +8,8 @@ Ext.define('ttapp.util.FeedProxy', {
            	myNumber = Ext.getStore('profilestore').getPhoneNumber(),
             unreadRedDot = false;
 
+            messageStore.removeAll();
+
             if(myNumber){
 			 Ext.Ajax.request({
                         url:  ttapp.config.Config.getBaseURL() + '/feed/' + myNumber + '/',

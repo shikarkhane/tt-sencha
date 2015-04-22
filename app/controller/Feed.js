@@ -15,7 +15,7 @@ Ext.define('ttapp.controller.Feed', {
             this.tinkRead(record);    
         }
         
-        Ext.Viewport.setActiveItem('replaytink',{type:'slide'});
+        this.getApplication().getController("ttapp.controller.ReplayTink").addReplay();
     },
     tinkRead: function(record){
         //todo: mark tink is read in localstore
