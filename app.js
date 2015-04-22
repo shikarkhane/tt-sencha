@@ -45,6 +45,7 @@ Ext.application({
         '1496x2048': 'resources/startup/1496x2048.png'
     },
 
+    
     launch: function() {
         // Destroy the #appLoadingIndicator element
         Ext.fly('appLoadingIndicator').destroy();
