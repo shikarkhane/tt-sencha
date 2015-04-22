@@ -15,15 +15,18 @@ Ext.define('ttapp.controller.ReplayTink', {
         }
     },
     startReplay: function(){
+        var task = Ext.create('Ext.util.DelayedTask', function() {
+             Ext.getDom('replaytinkcontainer').contentWindow.tt_start_animation();
+        });
 
-        console.log('startReplay');
+        task.delay(1000);
     },
     closeReplay: function(){
-        debugger;
-        Ext.getDom('replaytinkcontainer').contentWindow.tt_start_animation();
-       // Ext.Viewport.animateActiveItem('feed',{type:'fade'});
+        Ext.ComponentQuery.query('#replayTinkPage')[0].destroy();
+
+        Ext.Viewport.animateActiveItem('feed',{type:'fade'});
     },
-    addReplay: function(){
+    addReplay: function(seconds, text, trinket_name){
         r = Ext.create('Ext.Container',{
                     xtype: 'replaytink',
                     itemId: 'replayTinkPage',
@@ -48,18 +51,18 @@ Ext.define('ttapp.controller.ReplayTink', {
                         cls:'clsTimerClock',
                         zIndex:9,
                         flex: 1,
-                        html: '13 sec'
+                        html: seconds + ' sec'
                     },
                         {
                             xtype: 'panel',
                             itemId: 'replaycomponent',
                             flex: 5,
-                            html: '<iframe id="replaytinkcontainer" class="tinkanimation" src="resources/tinks/swiffy/cute-dancing-guy.html"></iframe>'                
+                            html: '<iframe id="replaytinkcontainer" class="tinkanimation" src="resources/tinks/swiffy/'+ trinket_name + '.html"></iframe>'                
                         },
                         {
                             xtype: 'panel',
                             flex: 1,
-                            html: '<h2>thinking abt you!</h2>'
+                            html: '<h2>'+ text + '</h2>'
                         }
                     ]
 

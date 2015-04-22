@@ -15,7 +15,7 @@ Ext.define('ttapp.controller.Feed', {
             this.tinkRead(record);    
         }
         
-        this.getApplication().getController("ttapp.controller.ReplayTink").addReplay();
+        this.getApplication().getController("ttapp.controller.ReplayTink").addReplay(record.data.seconds_sent, record.data.text, record.data.trinket_name );
     },
     tinkRead: function(record){
         //todo: mark tink is read in localstore
