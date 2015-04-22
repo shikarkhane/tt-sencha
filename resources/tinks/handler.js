@@ -16,7 +16,7 @@ document.body.appendChild(d);
 })();
 
 function tt_start_animation(){
-	//console.log('start animation');
+	console.log('start animation');
     stage.start();
 };
 function tt_stop_animation(){

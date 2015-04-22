@@ -15,10 +15,13 @@ Ext.define('ttapp.controller.ReplayTink', {
         }
     },
     startReplay: function(){
-        Ext.getDom('replaytinkcontainer').contentWindow.tt_start_animation();
+
+        console.log('startReplay');
     },
     closeReplay: function(){
-        Ext.Viewport.animateActiveItem('feed',{type:'fade'});
+        debugger;
+        Ext.getDom('replaytinkcontainer').contentWindow.tt_start_animation();
+       // Ext.Viewport.animateActiveItem('feed',{type:'fade'});
     },
     addReplay: function(){
         r = Ext.create('Ext.Container',{
