@@ -24,11 +24,18 @@ Ext.define('ttapp.util.ContactsCleaner', {
             return null;    
         }        
     },
-    deviceSpecificFormat: function(d, i){
-        if( d == 'default'){
+    deviceSpecificFormat: function(i){
+        if( Ext.os.is.Other){
             return [i.first_name, i.last_name, i.phoneNumbers[0].value]
         }
-        if(d == 'ios'){
+        if(Ext.os.is.iOS){
+            if (i.phoneNumbers){
+                if(i.phoneNumbers.length > 0){
+                    return [i.name.givenName, i.name.familyName, i.phoneNumbers[0].value];    
+                }
+            }
+        }
+        if(Ext.os.is.Android){
             if (i.phoneNumbers){
                 if(i.phoneNumbers.length > 0){
                     return [i.name.givenName, i.name.familyName, i.phoneNumbers[0].value];    
@@ -37,13 +44,13 @@ Ext.define('ttapp.util.ContactsCleaner', {
         }
         return null;
     },
-    process: function(contacts, device){
+    process: function(contacts){
         var c = {};
         var c_array = [];
 
         //Ext.Array.each(contacts, function(item, index, contacts_itself){
         for (var i = 0, l = contacts.length; i < l; i++) {
-            ds = ttapp.util.ContactsCleaner.deviceSpecificFormat( device, contacts[i]);
+            ds = ttapp.util.ContactsCleaner.deviceSpecificFormat( contacts[i]);
             if(ds){
                 var phn = ttapp.util.ContactsCleaner.cleanPhoneNumber(ds[2]);
                 if (phn){

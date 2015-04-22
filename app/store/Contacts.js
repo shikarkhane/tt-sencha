@@ -53,9 +53,7 @@ Ext.define('ttapp.util.ContactsProxy', {
                 success: function(contacts){
                     
                     if ( contacts.length > 0){
-                        //Ext.Msg.alert('Contacts', contacts.length, Ext.emptyFn);   
-                        x = ttapp.util.ContactsCleaner.process(contacts, 'ios');
-                        //Ext.Msg.alert('Count', x.length, Ext.emptyFn);   
+                        x = ttapp.util.ContactsCleaner.process(contacts);
                         ttapp.util.ContactsProxy.areOnTinktime(cStore, x);
                    }
                 },

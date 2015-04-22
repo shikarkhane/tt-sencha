@@ -112,7 +112,16 @@ Ext.define('ttapp.controller.SendTo', {
                 //loop through each of the regular expressions
                 for (i = 0; i < regexps.length; i++) {
                     var search = regexps[i],
-                        didMatch = record.get('first_name').match(search) || record.get('last_name').match(search) || record.get('phone_number').match(search);
+                        didMatch;
+                    if ( record.get('first_name') ){
+                        didMatch = record.get('first_name').match(search)
+                    }
+                    if ( record.get('last_name') && !didMatch ){
+                        didMatch = record.get('last_name').match(search)
+                    }
+                    if ( record.get('phone_number') && !didMatch){
+                        didMatch = record.get('phone_number').match(search)
+                    }
 
                     //if it matched the first or last name, push it into the matches array
                     matched.push(didMatch);
