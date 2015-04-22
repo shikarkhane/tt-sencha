@@ -74,7 +74,7 @@ Ext.define('ttapp.util.ContactsProxy', {
             { 
                 'id' : 1,
                 'name': { 'givenName': 'nike', 'familyName': 'shikari'},
-                'phoneNumbers': [{'value': '0101010101'}],
+                'phoneNumbers': [{'value': '+0101010101'}],
                 'first_name' : 'Eddie',
                 'last_name' : 'Huang',
                 'on_tinktime' : true,
@@ -83,7 +83,7 @@ Ext.define('ttapp.util.ContactsProxy', {
             },
             { 
                 'id' : 2,
-                'phoneNumbers': [{'value': '0101010131'}],
+                'phoneNumbers': [{'value': '+0101010131'}],
                 'first_name' : 'Edith',
                 'last_name' : 'Jones',
                 'on_tinktime' : true,
@@ -93,7 +93,7 @@ Ext.define('ttapp.util.ContactsProxy', {
             { 
                 'id' : 3,
                 'name': { 'givenName': 'nike', 'familyName': 'shikari'},
-                'phoneNumbers': [{'value': '0101010101'}],
+                'phoneNumbers': [{'value': '+0101010101'}],
                 'first_name' : 'Elijah',
                 'last_name' : 'Talinger',
                 'on_tinktime' : true,
@@ -102,7 +102,7 @@ Ext.define('ttapp.util.ContactsProxy', {
             },{ 
                 'id' : 4,
                 'name': { 'givenName': 'nike', 'familyName': 'shikari'},
-                'phoneNumbers': [{'value': '0101010101'}],
+                'phoneNumbers': [{'value': '+0101010101'}],
                 'first_name' : 'Emanuel',
                 'last_name' : 'Lindberg',
                 'on_tinktime' : false,
@@ -110,6 +110,7 @@ Ext.define('ttapp.util.ContactsProxy', {
                 'phone_number' : '(978) 165-3214'
             }
         ];
+        
             x = ttapp.util.ContactsCleaner.process(contacts, 'default');
             this.areOnTinktime(cStore, x);
             

@@ -3,7 +3,7 @@ Ext.define('ttapp.controller.ReplayTink', {
     config: {
         refs: {
             replaypage: 'container[cls~=cls-tt-replaytink]',
-            closereplay: 'button[cls~=btn-delete]'
+            closereplay: 'button[cls~=replay-tink-close-btn]'
         },
         control: {
             replaypage: {
@@ -42,7 +42,7 @@ Ext.define('ttapp.controller.ReplayTink', {
                                 cls:'top-bar',
                                 items: [{ 
                                         xtype: 'button',
-                                        cls: 'top-btn btn-delete',
+                                        cls: 'top-btn btn-delete replay-tink-close-btn',
                                         docked: 'right'
                                     }]
                             },

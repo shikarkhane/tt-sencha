@@ -71,6 +71,7 @@ Ext.define('ttapp.controller.SendTo', {
         this.closeMe();
     },
     onSearchKeyUp : function(field){
+        //debugger;
         var value = field.getValue(),
             store = Ext.getStore('phonecontacts');
 
@@ -111,7 +112,7 @@ Ext.define('ttapp.controller.SendTo', {
                 //loop through each of the regular expressions
                 for (i = 0; i < regexps.length; i++) {
                     var search = regexps[i],
-                        didMatch = record.get('first_name').match(search) || record.get('last_name').match(search) || record.get('phone_type').match(search) || record.get('phone_number').match(search);
+                        didMatch = record.get('first_name').match(search) || record.get('last_name').match(search) || record.get('phone_number').match(search);
 
                     //if it matched the first or last name, push it into the matches array
                     matched.push(didMatch);

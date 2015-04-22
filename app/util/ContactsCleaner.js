@@ -41,8 +41,9 @@ Ext.define('ttapp.util.ContactsCleaner', {
         var c = {};
         var c_array = [];
 
-        Ext.Array.each(contacts, function(item, index, contacts_itself){
-            ds = ttapp.util.ContactsCleaner.deviceSpecificFormat( device, item);
+        //Ext.Array.each(contacts, function(item, index, contacts_itself){
+        for (var i = 0, l = contacts.length; i < l; i++) {
+            ds = ttapp.util.ContactsCleaner.deviceSpecificFormat( device, contacts[i]);
             if(ds){
                 var phn = ttapp.util.ContactsCleaner.cleanPhoneNumber(ds[2]);
                 if (phn){
@@ -54,7 +55,7 @@ Ext.define('ttapp.util.ContactsCleaner', {
                     c_array.push(c);                                    
                 }
             }
-            });
+        };
     return c_array;
     }
 });
