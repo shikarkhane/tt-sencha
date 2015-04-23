@@ -25,23 +25,18 @@ Ext.define('ttapp.util.ContactsCleaner', {
         }        
     },
     deviceSpecificFormat: function(i){
-        if( Ext.os.is.Other){
+        
+        if(Ext.os.is.Desktop){
             return [i.first_name, i.last_name, i.phoneNumbers[0].value]
         }
-        if(Ext.os.is.iOS){
+        else{
             if (i.phoneNumbers){
                 if(i.phoneNumbers.length > 0){
                     return [i.name.givenName, i.name.familyName, i.phoneNumbers[0].value];    
                 }
             }
         }
-        if(Ext.os.is.Android){
-            if (i.phoneNumbers){
-                if(i.phoneNumbers.length > 0){
-                    return [i.name.givenName, i.name.familyName, i.phoneNumbers[0].value];    
-                }
-            }
-        }
+        
         return null;
     },
     process: function(contacts){
