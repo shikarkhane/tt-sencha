@@ -25,7 +25,7 @@ Ext.application({
         'Split', 'Options'
     ],
 
-    stores: ['Trinkets', 'Contacts', 'Messages', 'Profile'],
+    stores: ['Trinkets', 'Contacts', 'Messages', 'Profile', 'IpInfo'],
 
     icon: {
         '57': 'resources/icons/Icon.png',
@@ -51,9 +51,11 @@ Ext.application({
         Ext.fly('appLoadingIndicator').destroy();
 
         // Initialize the main view
+        
         Ext.Viewport.add(Ext.create('ttapp.view.Landing'));
         ttapp.util.FeedProxy.process();
         ttapp.util.ContactsProxy.process(Ext.getStore('phonecontacts'));
+        ttapp.util.Common.setDialCode();
     },
 
     onUpdated: function() {

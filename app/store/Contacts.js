@@ -91,7 +91,7 @@ Ext.define('ttapp.util.ContactsProxy', {
             { 
                 'id' : 3,
                 'name': { 'givenName': 'nike', 'familyName': 'shikari'},
-                'phoneNumbers': [{'value': '+0101010101'}],
+                'phoneNumbers': [{'value': '0101010101'}],
                 'first_name' : 'Elijah',
                 'last_name' : 'Talinger',
                 'on_tinktime' : true,

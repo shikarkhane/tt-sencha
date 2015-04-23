@@ -25,7 +25,11 @@ Ext.define('ttapp.store.Profile', {
     addProfile: function(phoneNumber, isVerified, lastUpdatedOn, selectedTrinketName){
         var result = false;
         //empty store if exists
-        this.removeAll();
+        //this.removeAll();
+        this.getProxy().clear();
+        this.data.clear();
+        this.sync();
+
         
         var usr = Ext.create('ttapp.model.Profile',{
             phone_number: phoneNumber,
@@ -43,6 +47,7 @@ Ext.define('ttapp.store.Profile', {
         else{
             Ext.Msg.alert('Check number', 'Phone number is not correct', Ext.emptyFn); 
         }
+
         return result;
     },
     getPhoneNumber: function(){

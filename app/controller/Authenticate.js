@@ -13,17 +13,6 @@ Ext.define('ttapp.controller.Authenticate', {
             }
         }
     },
-    getIpInfo: function(){
-        Ext.Ajax.request({
-                            url: 'ipinfo.io',
-                            method: 'GET',
-                            headers: { 'Content-Type': 'application/json'},
-                            disableCaching: false,
-                            success: function(response) {
-                                console.log(response);
-                            }
-                        });
-    },
     sendConfirmationCode: function(){
         var phoneNumber = Ext.getCmp('myPhoneNumber').getValue();
         this.myPhoneNumber = phoneNumber;
