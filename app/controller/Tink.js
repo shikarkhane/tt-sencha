@@ -34,7 +34,10 @@ Ext.define('ttapp.controller.Tink', {
 
         Ext.getDom('tinkcontainer').contentWindow.tt_stop_animation();
         this.getClock().pause();
+        
         var periodInSeconds = this.getClock().getDuration();
+        if ( periodInSeconds < 1) { periodInSeconds = 1;}
+
         var trinketName = Ext.getStore('profilestore').getActiveTrinket();
         this.getApplication().getController('SendTo').showSendTo(this, periodInSeconds, trinketName);
         Ext.getCmp('tinkScreen').removeCls('show-full-frame');
