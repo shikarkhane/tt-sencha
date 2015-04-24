@@ -102,7 +102,7 @@ body {
 .x-msgbox .x-button.x-button-pressing{background: #f0f0f0 !important;}
 .x-msgbox .x-button .x-button-label{font-weight: 100; font-size: 16px !important; color: #686868; opacity: 1; -webkit-text-fill-color: #686868; text-overflow: initial; font-family:"nexalight"; opacity: 1 !important;}
 .x-msgbox .x-button:last-child{border-right: none !important;}
-.x-msgbox .x-button.x-stretched{width: 100%; padding: 0; margin: 0; min-height: 46px; border-radius: 0 0 10px 10px;}
+.x-msgbox .x-button.x-stretched{ padding: 0; margin: 0; min-height: 46px; border-radius: 0 0 10px 10px;}
 .x-msgbox .x-field{min-height: 40px; margin:15px 0; padding:0 15px 15px 15px; background-color: transparent;}
 .x-msgbox .x-field .x-input-el{min-height: 40px; box-shadow: inset 1px 1px 3px rgba(0,0,0,0.3); border-radius: 10px; border: solid 1px #ccc;}
 .x-msgbox .x-clear-icon{display: none !important;}
@@ -942,3 +942,10 @@ margin-bottom: 30px;
 
 }
 
+.on-tinktime-true{
+    color: green;
+}
+
+.on-tinktime-false{
+    color: red;
+}

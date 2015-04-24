@@ -40,7 +40,7 @@ Ext.define('ttapp.view.SendTo', {
 			            scrollable: {
 			                direction: 'vertical'
 			            },
-			            itemTpl: '<div>{first_name} {last_name}</div> <div><span>{phone_type }</span> {phone_number}</div>',
+			            itemTpl: '<div class="on-tinktime-{on_tinktime}"><div>{first_name} {last_name}</div> <div><span>{phone_type }</span> {phone_number}</div></div>',
 			            store: 'phonecontacts',
 		        		items: [
 		        			{
