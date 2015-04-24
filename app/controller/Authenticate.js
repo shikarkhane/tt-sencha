@@ -3,15 +3,40 @@ Ext.define('ttapp.controller.Authenticate', {
     requires: ['ttapp.config.Config'],
     config: {
         refs: {
+            sendAgainButton: 'button[cls~=send-again-btn]',
+            confirmCodeButton: 'button[cls~=cls-confirm-code-btn]'
         },
         control: {
+            'authenticate': {
+                show: 'clearLocalStores'
+            }, 
+            'confirmphonenumber': {
+                show: 'showPhoneNumber'
+            },
+            sendAgainButton: {
+                tap: 'sendCodeAgain'
+            },
             'authenticate button': {
                 tap: 'sendConfirmationCode'
             },
-            'confirmphonenumber button': {
+            confirmCodeButton: {
                 tap: 'confirmCode'
             }
         }
+    },
+    sendCodeAgain: function(){
+        this.sendCode(this.myPhoneNumber);
+    },
+    showPhoneNumber: function(){
+        console.log('show phone number');
+        var pn = Ext.ComponentQuery.query('#entered_mobile_number')[0];
+        pn.setHtml(this.myPhoneNumber);
+    },
+    clearLocalStores: function(){
+        var ps = Ext.getStore('profilestore');
+        ps.getProxy().clear();
+        ps.data.clear();
+        ps.sync();
     },
     sendConfirmationCode: function(){
         var phoneNumber = Ext.getCmp('myPhoneNumber').getValue();
@@ -21,6 +46,12 @@ Ext.define('ttapp.controller.Authenticate', {
         if (Ext.getStore('profilestore').addProfile(phoneNumber,false, (new Date()).valueOf(),
             Ext.getStore('trinketstore').getDefaultTrinket())){
 
+            this.sendCode(phoneNumber);
+
+            Ext.Viewport.animateActiveItem('confirmphonenumber',{type:'slide'}); 
+        }
+    },
+    sendCode: function(phoneNumber){
             Ext.Ajax.request({
                 url: ttapp.config.Config.getBaseURL() + '/sms-code/',
                 method: 'POST',
@@ -34,8 +65,7 @@ Ext.define('ttapp.controller.Authenticate', {
                     console.log(response.responseText);
                 }
             });
-            Ext.Viewport.animateActiveItem('confirmphonenumber',{type:'slide'}); 
-        }
+
     },
     confirmCode: function(){
         var code = Ext.getCmp('myVerificationCode').getValue();

@@ -22,7 +22,7 @@ Ext.application({
     views: [
         'Landing', 'Feed', 'Tink', 'SendTo', 'Trinket',
         'Authenticate', 'ConfirmPhoneNumber', 'DogEar',
-        'Split', 'Options'
+        'Split', 'Options', 'PrivacyPolicy'
     ],
 
     stores: ['Trinkets', 'Contacts', 'Messages', 'Profile', 'IpInfo'],

@@ -17,7 +17,7 @@ Ext.define('ttapp.view.ConfirmPhoneNumber', {
 		  	items:[{
 	        	xtype: 'panel',
 	        	cls:'help-text',
-	            html: 'Please Enter the 6-digit verification code.'
+	            html: 'Please Enter the 5-digit verification code.'
 		        },
 		        {
 		        	id: 'myVerificationCode',
@@ -30,12 +30,31 @@ Ext.define('ttapp.view.ConfirmPhoneNumber', {
 		        {
 	                xtype: 'button',
 	                text: "Confirm code!",
-	                cls:'form-btn'
+	                cls:'form-btn cls-confirm-code-btn'
 		        },{
 		        	xtype:'panel',
 		        	cls:'help-text-sm',
 		        	html:'We will not display your phone number to other people',
 		        },{
+		        	xtype:'panel',
+		        	cls:'help-text-sm',
+		        	itemId: 'entered_mobile_number',
+		        	html:'+010100101',
+		        },
+		        {
+		        	xtype:'panel',
+		        	cls:'help-text-sm',		 
+		        	html:'To change phone number, <span class="change_phone_number">click here</span>',
+		        	listeners:[{
+		        		element: 'element',
+                        delegate: 'span.change_phone_number',
+                        event: 'tap',
+                        fn: function(){
+                        	Ext.Viewport.animateActiveItem('authenticate',{type:'fade'});
+                        }
+		        	}]
+		        },
+		        {
 		        	xtype:'panel',
 		        	cls:'help-text-sm',
 		        	html:'Read our <span class="privacy_policy">Privacy Policy</span> to learn more.',
@@ -53,10 +72,7 @@ Ext.define('ttapp.view.ConfirmPhoneNumber', {
 		  	xtype:'button',
 		  	cls:'send-again-btn',
 		  	text:'Send Code Again',
-		  	docked:'bottom',
-		  	handler: function (){
-        		Ext.Msg.alert('Sent', 'Verification Code Sent', Ext.emptyFn); 
-        	}
+		  	docked:'bottom'
 		  }
     	]
 	}
