@@ -151,7 +151,7 @@ Ext.define('ttapp.controller.SendTo', {
         if (Ext.os.deviceType == 'Phone'){
             var sConf = {
                 number: this.phoneNumber,
-                message: "I have sent you a tink. Download tinktime app to view it.(http://tinktime.com/)",
+                message: "Join me on tinktime. Download app at http://tinktime.com/",
                 intent: "INTENT",
                 success: function(){ 
                     Ext.Viewport.setActiveItem('split','slide');
