@@ -17,8 +17,8 @@ Ext.define('ttapp.util.ContactsProxy', {
                 // remove all existing contacts
                 cStore.removeAll(true);
                 Ext.Array.each(Ext.JSON.decode(response.responseText), function(item, index, contacts_itself){
-                    var lname = item.last_name,
-                        fname = item.first_name,
+                    var lname = ttapp.util.ContactsCleaner.decode_utf8(item.last_name),
+                        fname = ttapp.util.ContactsCleaner.decode_utf8(item.first_name),
                         pnumber = item.phone_number,
                         pType = item.phone_type,
                         onTinkTime = item.on_tinktime;
@@ -73,7 +73,7 @@ Ext.define('ttapp.util.ContactsProxy', {
                 'id' : 1,
                 'name': { 'givenName': 'nike', 'familyName': 'shikari'},
                 'phoneNumbers': [{'value': '+46705438947'}],
-                'first_name' : 'Eddie',
+                'first_name' : 'Eddåäöie',
                 'last_name' : 'Huang',
                 'on_tinktime' : true,
                 'phone_type'  : 'mobile',
