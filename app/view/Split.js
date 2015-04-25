@@ -20,7 +20,7 @@ Ext.define('ttapp.view.Split', {
                     }
             },{
                 xtype:'button',
-                cls:'top-btn btn-mail show-notification',
+                cls:'top-btn btn-mail',
                 docked:'right',
                 handler: function (){
                         Ext.Viewport.animateActiveItem('feed',{type:'slide', direction: 'left'}); 
