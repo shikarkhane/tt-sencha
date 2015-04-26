@@ -174,8 +174,6 @@ Ext.define('ttapp.controller.SendTo', {
                 this.sendTink(from_user, this.phoneNumber, (new Date()).valueOf(), 
                     this.trinket_name, prevTextMsg.getValue(), this.seconds_sent);
 
-                // ajax load the feed
-                ttapp.util.FeedProxy.process();
                 //reset before leaving
                 this.clearAll();
                 this.closeMe();

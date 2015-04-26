@@ -17,6 +17,9 @@ Ext.define('ttapp.controller.Split', {
     },
     onShow: function(){
         this.showSentTrinketThumbnail();
+        // ajax load the feed
+        ttapp.util.FeedProxy.process();
+
     },
     onNewTink: function(){
          Ext.Viewport.animateActiveItem('tink',{type:'slide', direction: 'right'});
