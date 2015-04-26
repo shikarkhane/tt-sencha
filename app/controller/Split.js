@@ -19,7 +19,11 @@ Ext.define('ttapp.controller.Split', {
         this.showSentTrinketThumbnail();
         // ajax load the feed
         ttapp.util.FeedProxy.process();
-
+        this.updateNotifyRedDot();
+    },
+    updateNotifyRedDot: function(){
+        var unreadRedDot = ttapp.config.Config.getUnreadMessage();
+        ttapp.util.Common.updateNotifySymbol(unreadRedDot);
     },
     onNewTink: function(){
          Ext.Viewport.animateActiveItem('tink',{type:'slide', direction: 'right'});

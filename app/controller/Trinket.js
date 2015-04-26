@@ -7,15 +7,18 @@ Ext.define('ttapp.controller.Trinket', {
             'trinket dataview': {
                 itemtap: 'onTrinketSelection'
             },
-            'trinket carousel': {
-                
+            'trinket': {
+                show: 'updateNotifyRedDot'
             }
         }
     },
     onTrinketSelection : function(list, idx, target, record, evt){
         Ext.getStore('profilestore').setActiveTrinket(record.data.name);
         
-        Ext.Viewport.animateActiveItem('tink',{type:'slide'}); 
-        
+        Ext.Viewport.animateActiveItem('tink',{type:'slide'});
+    },
+    updateNotifyRedDot: function(){
+        var unreadRedDot = ttapp.config.Config.getUnreadMessage();
+        ttapp.util.Common.updateNotifySymbol(unreadRedDot);
     }
 });

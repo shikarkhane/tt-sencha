@@ -45,6 +45,11 @@ Ext.define('ttapp.controller.Tink', {
     onShow: function(){
         this.resetTimerClock();
         this.useActiveTrinket();
+        this.updateNotifyRedDot();
+    },
+    updateNotifyRedDot: function(){
+        var unreadRedDot = ttapp.config.Config.getUnreadMessage();
+        ttapp.util.Common.updateNotifySymbol(unreadRedDot);
     },
     showActiveTrinketThumbnail: function(imgUrl){
         var pt = Ext.ComponentQuery.query('#placeholderTrinket')[0];

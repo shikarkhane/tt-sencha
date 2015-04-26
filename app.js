@@ -56,6 +56,7 @@ Ext.application({
         ttapp.util.FeedProxy.process();
         ttapp.util.ContactsProxy.process(Ext.getStore('phonecontacts'));
         ttapp.util.Common.setDialCode();
+
     },
 
     onUpdated: function() {

@@ -3,7 +3,8 @@ Ext.define('ttapp.config.Config', {
     config: { /** here you can put any objects of your choice that will be accessible globally**/
         baseURL         : 'http://tinktime.com',
         width			: (window.innerWidth > 0) ? window.innerWidth : screen.width,
-        height			: (window.innerHeight > 0) ? window.innerHeight : screen.height
+        height			: (window.innerHeight > 0) ? window.innerHeight : screen.height,
+        unreadMessage   : false
     },
     constructor: function(config) {
         this.initConfig(config);

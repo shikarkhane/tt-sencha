@@ -49,6 +49,7 @@ Ext.define('ttapp.util.FeedProxy', {
                                     fromUserName = Ext.getStore('phonecontacts').getFirstLastName(fromUser);
                                 }
 
+                                
                                 // order of this check is imp
                                 if ( unread == true){
                                     trinketFilePath = 'resources/images/others/tink.png';
@@ -71,12 +72,12 @@ Ext.define('ttapp.util.FeedProxy', {
                                 });
                             	messageStore.add(messageModel);
                             });
+                        //change the red dot on email icon
+                        ttapp.util.Common.updateNotifySymbol(unreadRedDot);
                         }
                     });
             }
 
-            //change the red dot on email icon
-            ttapp.util.Common.updateNotifySymbol(unreadRedDot);
     }
 });
 

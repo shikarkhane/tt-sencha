@@ -1,6 +1,8 @@
 Ext.define('ttapp.util.Common', {
     singleton: true,
     updateNotifySymbol: function(make_visible){
+        //debugger;
+        ttapp.config.Config.setUnreadMessage(make_visible);
         var m = Ext.ComponentQuery.query('button[cls~=btn-mail]');
         if (m){
             for (var i = 0, l = m.length; i < l; i++) {
