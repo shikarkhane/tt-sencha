@@ -21,12 +21,27 @@ Ext.define('ttapp.view.Authenticate', {
 	            html: 'Please verify your phone number... so we know it\'s real!'
 		        },
 		        {
-		        	id: 'myPhoneNumber',
-	                xtype: 'textfield',
-	                name: 'verify-phone-number',
-	                placeHolder: '+46705432112',
-	                cls:'form-field',
-	                clearIcon:false             
+		        	xtype: 'container',
+		        	layout: 'hbox',
+		        	items: [
+			        	{
+							itemId: 'myDialCode',
+			                xtype: 'textfield',
+			                placeHolder: '+1',
+			                cls:'form-field',
+			                clearIcon:false ,
+			                flex:1            			        			
+			        	},
+			        	{
+				        	id: 'myPhoneNumber',
+			                xtype: 'textfield',
+			                name: 'verify-phone-number',
+			                placeHolder: '705432112',
+			                cls:'form-field',
+			                clearIcon:false,
+			                flex: 9             
+			        }
+		        	]
 		        },
 		        {
 	                xtype: 'button',

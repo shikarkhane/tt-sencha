@@ -32,11 +32,17 @@ Ext.define('ttapp.controller.Authenticate', {
         var pn = Ext.ComponentQuery.query('#entered_mobile_number')[0];
         pn.setHtml(this.myPhoneNumber);
     },
+    setDialcode: function(){
+        var m = Ext.ComponentQuery.query('#myDialCode')[0];
+        m.setValue(Ext.getStore('ipinfostore').getDialCode());
+    },
     clearLocalStores: function(){
         var ps = Ext.getStore('profilestore');
         ps.getProxy().clear();
         ps.data.clear();
         ps.sync();
+
+        this.setDialcode();
     },
     sendConfirmationCode: function(){
         var phoneNumber = Ext.getCmp('myPhoneNumber').getValue();

@@ -49,7 +49,7 @@ Ext.application({
     launch: function() {
         // Destroy the #appLoadingIndicator element
         Ext.fly('appLoadingIndicator').destroy();
-debugger;
+
         // check on server, if user is verified
         ttapp.util.Common.isUserVerifiedOnServer();
 
