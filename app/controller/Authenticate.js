@@ -30,7 +30,8 @@ Ext.define('ttapp.controller.Authenticate', {
     showPhoneNumber: function(){
         console.log('show phone number');
         var pn = Ext.ComponentQuery.query('#entered_mobile_number')[0];
-        pn.setHtml(this.myPhoneNumber);
+        var dc = Ext.getStore('ipinfostore').getDialCode();
+        pn.setHtml(dc + this.myPhoneNumber);
     },
     setDialcode: function(){
         var m = Ext.ComponentQuery.query('#myDialCode')[0];
@@ -45,7 +46,7 @@ Ext.define('ttapp.controller.Authenticate', {
         this.setDialcode();
     },
     sendConfirmationCode: function(){
-        var phoneNumber = Ext.getCmp('myPhoneNumber').getValue();
+        var phoneNumber = Ext.getStore('ipinfostore').getDialCode() + Ext.getCmp('myPhoneNumber').getValue();
         this.myPhoneNumber = phoneNumber;
         
         // store user profile locally
