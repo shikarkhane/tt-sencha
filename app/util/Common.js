@@ -22,16 +22,19 @@ Ext.define('ttapp.util.Common', {
         if (!user){ return false};
         
         Ext.Ajax.request({
-                            url: ttapp.config.Config.getBaseURL() + '/message-queue/',
+                            url: ttapp.config.Config.getBaseURL() + '/is-user-verified/' + user + '/',
                             method: 'GET',
                             headers: { 'Content-Type': 'application/json'},
                             disableCaching: false,
-                            jsonData: {
-                                "user" : user
-                            },
                             success: function(response) {
                                 cc = Ext.JSON.decode(response.responseText);
-                                console.log(cc);
+                                debugger;
+                                if (!cc.status){
+                                        var ps = Ext.getStore('profilestore');
+                                        ps.getProxy().clear();
+                                        ps.data.clear();
+                                        ps.sync();
+                                    }
                                 }
                             });
     },

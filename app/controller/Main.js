@@ -14,11 +14,13 @@ Ext.define('ttapp.controller.Main', {
     },
     onResume: function(){
         console.log('on resume');
+        ttapp.util.Common.isUserVerifiedOnServer();
         // refresh push token
         ttapp.util.Push.takeUserPermissionForPushNotify();
         //refresh feed 
         ttapp.util.FeedProxy.process();
         // refresh contacts list
         ttapp.util.ContactsProxy.process(Ext.getStore('phonecontacts'));
+
     }
 });

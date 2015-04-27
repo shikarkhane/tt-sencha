@@ -49,12 +49,20 @@ Ext.application({
     launch: function() {
         // Destroy the #appLoadingIndicator element
         Ext.fly('appLoadingIndicator').destroy();
+debugger;
+        // check on server, if user is verified
+        ttapp.util.Common.isUserVerifiedOnServer();
 
         // Initialize the main view
-        
         Ext.Viewport.add(Ext.create('ttapp.view.Landing'));
+
+        // get tinkbox content
         ttapp.util.FeedProxy.process();
+
+        // get contacts from device
         ttapp.util.ContactsProxy.process(Ext.getStore('phonecontacts'));
+
+        // set user's country dial code based on ip-address
         ttapp.util.Common.setDialCode();
 
     },
