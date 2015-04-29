@@ -61,6 +61,7 @@ Ext.define('ttapp.controller.ReplayTink', {
                         },
                         {
                             xtype: 'panel',
+                            cls: 'clsReplayTextMessage',    
                             flex: 1,
                             html: '<h2>'+ text + '</h2>'
                         }

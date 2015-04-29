@@ -36,6 +36,7 @@ Ext.define('ttapp.view.ReplayTink', {
             },
             {
                 xtype: 'panel',
+                cls: 'clsReplayTextMessage',
                 flex: 1,
                 html: '<h2>thinking abt you!</h2>'
             }

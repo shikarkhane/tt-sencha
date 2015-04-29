@@ -831,7 +831,15 @@ margin-bottom: 30px;
     font-size: 25px;
 }
 
-
+.clsTimerClock, .clsReplayTextMessage{
+    .x-innerhtml{
+        background-color: rgba(173, 174, 158, 0.7);   
+        font-weight: bolder;
+        padding: 10px;
+        -moz-border-radius:10px;
+        -webkit-border-radius:10px;
+        }
+}
 
 
 
