@@ -79,6 +79,7 @@ Ext.define('ttapp.view.SendTo', {
 	        			placeHolder: "Add a message!", 
 	        			itemId: 'previewTextMsg',
 	        			cls:'text-msg-preview',
+	        			maxLength: 140,
 	        			clearIcon:false
 	        		}
 	        	]
