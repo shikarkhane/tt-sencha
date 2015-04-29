@@ -13,6 +13,7 @@ Ext.define('ttapp.view.Trinket', {
         this.add(Ext.create('Ext.Toolbar',{
             docked:'top',
             cls:'top-bar',
+            title:'Tink gallery',  
             items: [
                 {
                     xtype:'button',
