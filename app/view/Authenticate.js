@@ -30,7 +30,7 @@ Ext.define('ttapp.view.Authenticate', {
 			                placeHolder: '+1',
 			                cls:'form-field',
 			                clearIcon:false ,
-			                flex:1            			        			
+			                flex:3            			        			
 			        	},
 			        	{
 				        	id: 'myPhoneNumber',
@@ -39,7 +39,7 @@ Ext.define('ttapp.view.Authenticate', {
 			                placeHolder: '705432112',
 			                cls:'form-field',
 			                clearIcon:false,
-			                flex: 9             
+			                flex: 7             
 			        }
 		        	]
 		        },

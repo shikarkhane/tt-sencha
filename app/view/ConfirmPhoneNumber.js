@@ -25,6 +25,7 @@ Ext.define('ttapp.view.ConfirmPhoneNumber', {
 	                name: 'verify-phone-number',
 	                cls:'form-field',
 	                placeHolder: 'Verification code',
+	                maxLength: 5,
 	                clearIcon:false             
 		        },
 		        {

@@ -241,18 +241,19 @@ body{
     color: #fff;
     font-family:"nexalight";
     margin-bottom: 35px;
+    font-size: 25px;
 }
 .form-field .x-input-el{
     background:none;
     color: #fff;
-    font-size: 16px;
+    font-size: 25px;
     min-height: 50px;
     padding: 0 10px;
     -webkit-text-fill-color: white;
 }
 .form-field .x-input-el[placeholder]::-webkit-input-placeholder{
     color: #fff;
-    font-size: 16px;
+    font-size: 25px;
 }
 .form-btn.x-button{
     color:#FFFFFF;
@@ -910,10 +911,10 @@ margin-bottom: 30px;
     }
     .form-field .x-input-el{
         min-height: 40px;
-        font-size: 15px;
+        font-size: 25px;
     }
     .form-field .x-input-el[placeholder]::-webkit-input-placeholder{
-        font-size: 15px;
+        font-size: 25px;
     }
     .form-btn.x-button{
         min-height: 40px;
