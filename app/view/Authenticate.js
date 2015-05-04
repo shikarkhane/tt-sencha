@@ -9,7 +9,7 @@ Ext.define('ttapp.view.Authenticate', {
 		  [{
             xtype: 'toolbar',
             docked:'top',
-            cls:'top-bar',
+            cls:'top-bar top-x-top-bar',
             title:'Verify Number'  
             },{
 		  	xtype:'panel',

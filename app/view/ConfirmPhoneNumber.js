@@ -9,7 +9,7 @@ Ext.define('ttapp.view.ConfirmPhoneNumber', {
 		  [{
             xtype: 'toolbar',
             docked:'top',
-            cls:'top-bar',
+            cls:'top-bar top-x-top-bar',
             title:'Verification code'  
             },{
 			xtype:'panel',

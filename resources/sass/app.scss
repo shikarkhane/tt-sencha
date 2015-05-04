@@ -201,6 +201,7 @@ body{
     text-align: center;
     margin-bottom: 25px;
     line-height: 25px;
+    font-weight: bold;
 }
 .verify-page .help-text-sm{
     font-size: 16px;
@@ -342,6 +343,9 @@ body{
     margin: 0;
     padding: 0;
     line-height: 42px; 
+}
+.top-x-top-bar{
+    top: 20px;
 }
 .top-bar.x-toolbar-dark.x-docked-top{
     background-image: none;
