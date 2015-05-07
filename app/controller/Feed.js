@@ -19,6 +19,7 @@ Ext.define('ttapp.controller.Feed', {
     },
     tinkRead: function(record){
         //todo: mark tink is read in localstore
+        
         //mark the tink as read on the server 
           Ext.Ajax.request({
                             url:  ttapp.config.Config.getBaseURL() + '/message-read/',

@@ -5,6 +5,7 @@ Ext.define('ttapp.controller.SendTo', {
         refs: {
             searchContactsField: 'searchfield[cls~=search-contacts-field]',
             btnSendTink: 'button[cls~=clsSendTink]',
+            textMsg: 'textareafield[cls~=text-msg-preview]'
         },
         control: {
             'searchContactsField': {
@@ -22,8 +23,23 @@ Ext.define('ttapp.controller.SendTo', {
             },
             'sendto': {
                 show: 'onShowSendTo'
+            },
+            textMsg: {
+                blur: 'hideKeyboard'
             }
         }
+    },
+    hideKeyboard: function(callback, scope) {
+        var activeElement = document.activeElement;
+        activeElement.setAttribute('readonly', 'readonly'); // Force keyboard to hide on input field.
+        activeElement.setAttribute('disabled', 'true'); // Force keyboard to hide on textarea field.
+        Ext.defer(function() {
+            activeElement.blur();
+            // Remove readonly attribute after keyboard is hidden.
+            activeElement.removeAttribute('readonly');
+            activeElement.removeAttribute('disabled');
+            
+        }, 100);
     },
     onShowSendTo: function(){
         this.setPreviewItems();
@@ -194,6 +210,9 @@ Ext.define('ttapp.controller.SendTo', {
                 );
 
             }
+
+            //clear phonenumber
+            this.phoneNumber = null;
         }
         else{
             Ext.Msg.alert('Receiver?', 'Please choose a recipient.', Ext.emptyFn);
