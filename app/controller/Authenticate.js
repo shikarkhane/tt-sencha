@@ -31,7 +31,7 @@ Ext.define('ttapp.controller.Authenticate', {
         console.log('show phone number');
         var pn = Ext.ComponentQuery.query('#entered_mobile_number')[0];
         var dc = Ext.getStore('ipinfostore').getDialCode();
-        pn.setHtml(dc + this.myPhoneNumber);
+        pn.setHtml(this.myPhoneNumber);
     },
     setDialcode: function(){
         var m = Ext.ComponentQuery.query('#myDialCode')[0];
