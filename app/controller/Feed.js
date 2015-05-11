@@ -10,15 +10,18 @@ Ext.define('ttapp.controller.Feed', {
         }
     },
     onShowTinkInFeed: function(list, idx, target, record, evt){
+        var element = Ext.get(evt.target);
         var from_user = Ext.getStore('profilestore').getPhoneNumber();
         if ((from_user != record.data.from_user) && (record.data.unread)){
-            this.tinkRead(record);    
+            this.tinkRead(element, record);    
         }
         
         this.getApplication().getController("ttapp.controller.ReplayTink").addReplay(record.data.seconds_sent, record.data.text, record.data.trinket_name );
     },
-    tinkRead: function(record){
-        //todo: mark tink is read in localstore
+    tinkRead: function(element, record){
+        //just mark it read locally, next refresh from server will get get correct values anyways
+        element.parent('.read-or-not').removeCls('true').addCls('false');
+        //element.parent('.read-or-not').getFirstChild('.img-bg').setStyle('background', 'url('+ record.data.original_trinket_file_path + ');');
         
         //mark the tink as read on the server 
           Ext.Ajax.request({

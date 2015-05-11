@@ -26,6 +26,9 @@
                     name: 'trinket_name',
                     type: 'string'
                 }, {
+                    name: 'original_trinket_file_path',
+                    type: 'string'
+                }, {
                     name: 'trinket_file_path',
                     type: 'string'
                 }, {
