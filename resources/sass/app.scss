@@ -402,6 +402,12 @@ body{
     background-image: url(../images/icons/delete.png); 
     background-size: 30px;
 }
+.top-bar .top-btn.btn-delete.x-button.replay-tink-close-btn{
+    background-color: rgba(173, 174, 158, 0.7);   
+    padding: 10px;
+    -moz-border-radius:10px;
+    -webkit-border-radius:10px;
+}
 .top-bar .top-btn.btn-delete.x-button.x-button-pressing{
     background-image: url(../images/icons/delete.png);
     background-color:transparent;
