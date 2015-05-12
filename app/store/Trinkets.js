@@ -7,7 +7,7 @@ Ext.define('ttapp.store.Trinkets', {
         {
             'trinket_id': "1",
             'group_id':1,
-            'name': "default",
+            'name': "cute-dancing-guy",
             'label': "Cute dancing guy",
             'thumbnail_path': "http://tinktime.com/static/img/tinks/cute-dancing-guy.png",
             'file_path': 'cute-dancing-guy.html'

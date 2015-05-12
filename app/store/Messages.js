@@ -6,7 +6,8 @@ Ext.define('ttapp.util.FeedProxy', {
         var messageStore = Ext.getStore('Messages'),
             messageModel,
            	myNumber = Ext.getStore('profilestore').getPhoneNumber(),
-            unreadRedDot = false;
+            unreadRedDot = false,
+            logoTrinketFilePath = 'resources/images/others/tink.png';
 
             messageStore.removeAll();
 
@@ -53,7 +54,7 @@ Ext.define('ttapp.util.FeedProxy', {
                                 
                                 // order of this check is imp
                                 if ( unread == true){
-                                    trinketFilePath = 'resources/images/others/tink.png';
+                                    trinketFilePath = logoTrinketFilePath;
                                     unreadRedDot = true;
                                 }
                             	
@@ -74,6 +75,28 @@ Ext.define('ttapp.util.FeedProxy', {
                                 });
                             	messageStore.add(messageModel);
                             });
+                            
+                        if ( messageStore.getAllCount() == 0 )
+                            {
+                                messageModel = Ext.create('ttapp.model.Message', {
+                                        'from_user_name': "Mia, from tinktime",
+                                        'to_user_name': "me",
+                                        'from_user': "0",
+                                        'to_user': "0",
+                                        'send_timestamp': 0,
+                                        'formatted_timestamp': "few secs ago",
+                                        'trinket_name' : "cute-dancing-guy",
+                                        'trinket_file_path': logoTrinketFilePath,
+                                        'original_trinket_file_path': logoTrinketFilePath,
+                                        'text': "Go ahead, click to view your first tink!",
+                                        'seconds_sent': 7,
+                                        'for_inbox': true,
+                                        'unread': true    
+                                    });
+                                messageStore.add(messageModel);
+                                unreadRedDot = true;
+                        }
+
                         //change the red dot on email icon
                         ttapp.util.Common.updateNotifySymbol(unreadRedDot);
                         }
