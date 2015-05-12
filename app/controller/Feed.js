@@ -21,8 +21,8 @@ Ext.define('ttapp.controller.Feed', {
     tinkRead: function(element, record){
         //just mark it read locally, next refresh from server will get get correct values anyways
         element.parent('.read-or-not').removeCls('true').addCls('false');
-
-        element.parent('.read-or-not').query('.img-bg')[0].set('background', 'url('+ record.data.original_trinket_file_path + ');');
+        
+        element.parent('.read-or-not').query('.img-bg')[0].style.background = 'url('+ record.data.original_trinket_file_path + ')';
         
         //mark the tink as read on the server 
           Ext.Ajax.request({

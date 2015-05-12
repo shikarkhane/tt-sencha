@@ -87,7 +87,7 @@ Ext.define('ttapp.util.FeedProxy', {
                                         'formatted_timestamp': "few secs ago",
                                         'trinket_name' : "cute-dancing-guy",
                                         'trinket_file_path': logoTrinketFilePath,
-                                        'original_trinket_file_path': logoTrinketFilePath,
+                                        'original_trinket_file_path': Ext.getStore('trinketstore').getThumbnailPath("cute-dancing-guy"),
                                         'text': "Go ahead, click to view your first tink!",
                                         'seconds_sent': 7,
                                         'for_inbox': true,
