@@ -53,21 +53,25 @@ Ext.define('ttapp.controller.ReplayTink', {
                         flex: 1,
                         html: seconds + ' sec'
                     },
-                        {
-                            xtype: 'panel',
-                            itemId: 'replaycomponent',
-                            flex: 5,
-                            html: '<iframe id="replaytinkcontainer" class="tinkanimation" src="resources/tinks/swiffy/'+ trinket_name + '.html"></iframe>'                
-                        },
-                        {
-                            xtype: 'panel',
-                            cls: 'clsReplayTextMessage',    
-                            flex: 1,
-                            html: '<h2>'+ text + '</h2>'
-                        }
+                    {
+                        xtype: 'panel',
+                        itemId: 'replaycomponent',
+                        flex: 5,
+                        html: '<iframe id="replaytinkcontainer" class="tinkanimation" src="resources/tinks/swiffy/'+ trinket_name + '.html"></iframe>'                
+                    }
                     ]
 
             });
+        
+        if ( text.length > 0){
+            r.add({
+                    xtype: 'panel',
+                    cls: 'clsReplayTextMessage',    
+                    flex: 1,
+                    html: '<h2>'+ text + '</h2>'
+                });
+        }
+
         Ext.Viewport.animateActiveItem(r,{type:'slide', direction: 'right'}); 
     }
 });
