@@ -18,7 +18,7 @@ Ext.define('ttapp.controller.Split', {
     onShow: function(){
         this.showSentTrinketThumbnail();
         // ajax load the feed
-        ttapp.util.FeedProxy.process();
+        ttapp.util.FeedProxy.process(true);
         this.updateNotifyRedDot();
     },
     updateNotifyRedDot: function(){

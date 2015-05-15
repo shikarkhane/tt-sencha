@@ -19,6 +19,6 @@ Ext.define('ttapp.controller.DogEar', {
     },
     goToFeed: function() {
         Ext.Viewport.animateActiveItem('feed',{type:'slide'}); 
-        ttapp.util.FeedProxy.process();
+        ttapp.util.FeedProxy.process(true);
     }
 });

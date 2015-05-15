@@ -91,7 +91,7 @@ Ext.define('ttapp.controller.Authenticate', {
                                 //if ( JSON.parse(response.responseText)['status'] == true){
                                     Ext.getStore('profilestore').verified();
 
-                                    ttapp.util.FeedProxy.process();
+                                    ttapp.util.FeedProxy.process(true);
                                     Ext.Viewport.setActiveItem('trinket','slide');                                
                                // }
                                // else{

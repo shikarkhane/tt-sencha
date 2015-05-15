@@ -1,7 +1,7 @@
 Ext.define('ttapp.view.Feed', {
     extend: 'Ext.Container',
     xtype: 'feed',
-    requires: ['ttapp.model.Message','Ext.dataview.List', 'Ext.ProgressIndicator'],
+    requires: ['ttapp.model.Message','Ext.dataview.List'],
     config: {
     	layout: 'vbox',
         cls: 'cls-tt-tinkbox bg-transparent-colored flip-design-left',

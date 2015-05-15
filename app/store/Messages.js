@@ -2,18 +2,23 @@ Ext.define('ttapp.util.FeedProxy', {
     singleton: true,
     requires: ['ttapp.util.Common'],
 
-    process: function() {
+    process: function(clearAll) {
         var messageStore = Ext.getStore('Messages'),
             messageModel,
            	myNumber = Ext.getStore('profilestore').getPhoneNumber(),
             unreadRedDot = false,
-            logoTrinketFilePath = 'resources/images/others/tink.png';
+            logoTrinketFilePath = 'resources/images/others/tink.png',
+            page_number = ttapp.config.Config.getCurrentFeedPageNumber(),
+            page_size = ttapp.config.Config.getFeedPageSize();
 
-            messageStore.removeAll();
+            if(clearAll){
+                messageStore.removeAll();
+            }
 
             if(myNumber){
 			 Ext.Ajax.request({
                         url:  ttapp.config.Config.getBaseURL() + '/feed/' + myNumber + '/',
+                        //url:  ttapp.config.Config.getBaseURL() + '/feed/' + myNumber + '/page/' + page_number + '/size/' + page_size + '/',
                         method: 'GET',
                         headers: { 'Content-Type': 'application/json'},
                         disableCaching: false,
@@ -21,6 +26,10 @@ Ext.define('ttapp.util.FeedProxy', {
                         success: function(response) {
                             var messages = Ext.JSON.decode(response.responseText.trim());                            
                             Ext.Array.each( messages, function(message) {
+                                // increment pagenumber if msgs were received
+                                var page_number = ttapp.config.Config.getCurrentFeedPageNumber() + 1;
+                                ttapp.config.Config.setCurrentFeedPageNumber(page_number);
+
                                 var formatted_date = ttapp.app.getController('ttapp.controller.Feed').returnFormattedDate(message.send_timestamp);
                                 var fromUserName,
                                     toUserName,
