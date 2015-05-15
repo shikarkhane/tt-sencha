@@ -972,8 +972,8 @@ margin-bottom: 30px;
 
 
 .button_white {
-    width: 209px;
-    height: 208px;
+    width: 109px;
+    height: 108px;
     background: url('../images/others/button_white.png');
     position:relative;  
     cursor: pointer;
@@ -991,11 +991,14 @@ margin-bottom: 30px;
     -ms-transition: all 0.4s ease;
     -o-transition: all 0.4s ease;
     transition: all 0.4s ease;
+
+    background-size: cover !important; 
+    background-position: center;
 }
 
 .button_red {
-    width: 209px;
-    height: 208px;
+    width: 109px;
+    height: 108px;
     background: url('../images/others/button_red.png');
     position:relative;  
 
