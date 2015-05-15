@@ -62,9 +62,11 @@ Ext.define('ttapp.view.Tink', {
                 html: '<iframe id="tinkcontainer" class="tinkanimation" style="" src="resources/tinks/swiffy/default.html"></iframe>'                
             },
             {
-                //flex: 1,                
-                xtype: 'thinkingbutton',
-                docked:'bottom',
+                //flex: 1,               
+                //xtype: 'thinkingbutton',
+                id: 'thinkbutton',
+                cls: 'clsTinkButton button_white',
+                docked:'bottom'
 
             }
         ]
@@ -79,9 +81,11 @@ Ext.define('ttapp.view.Tink', {
         thinkElement.on(['touchend'], 'onStopThinkingEvent', this);
     },
     onStartThinkingEvent: function(e, target, options, eventController) {
+        Ext.get('thinkbutton').toggleCls('button_red');
         this.fireEvent("startedthinking", this);
     },
     onStopThinkingEvent: function(e, target, options, eventController) {
+        Ext.get('thinkbutton').toggleCls('button_red');
         this.fireEvent("stoppedthinking", this);
     }
 

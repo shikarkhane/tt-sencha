@@ -466,11 +466,11 @@ body{
 .show-full-frame .x-dock-body{
     z-index:1 !important;
 }
-.x-button-normal.x-button.clsTinkButton.x-layout-box-item.x-stretched {
-background-image: url("../images/others/tink.png");
+.clsTinkButton {
+z-index: 2 !important;
 background-size: 100% 100%;
-width: 80px;
-height: 80px;
+width: 120px;
+height:120px;
 background-color: transparent;
 margin: 0 auto;
 border: none;
@@ -968,4 +968,52 @@ margin-bottom: 30px;
 
 .on-tinktime-false{
     color: red;
+}
+
+
+.button_white {
+    width: 209px;
+    height: 208px;
+    background: url('../images/others/button_white.png');
+    position:relative;  
+    cursor: pointer;
+
+    -webkit-border-radius: 50px;
+    border-radius: 50px;
+
+    -webkit-box-shadow:  0px 2px 0px rgba(0,0,0,0.3), 0px 9px 0px 0px rgba(0,0,0,0.3), 0px 12px 7px #999;
+    -moz-box-shadow:  0px 2px 0px rgba(0,0,0,0.3), 0px 9px 0px 0px rgba(0,0,0,0.3), 0px 12px 7px #999;
+    -o-box-shadow:  0px 2px 0px rgba(0,0,0,0.3), 0px 9px 0px 0px rgba(0,0,0,0.3), 0px 12px 7px #999;
+    box-shadow:  0px 2px 0px rgba(0,0,0,0.3), 0px 9px 0px 0px rgba(0,0,0,0.3), 0px 12px 7px #999;
+
+    -webkit-transition: all 0.4s ease;
+    -moz-transition: all 0.4s ease;
+    -ms-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+}
+
+.button_red {
+    width: 209px;
+    height: 208px;
+    background: url('../images/others/button_red.png');
+    position:relative;  
+
+    -moz-transform: translateX(0px) translateY(7px);
+    -webkit-transform: translateX(0px) translateY(7px);
+    -o-transform: translateX(0px) translateY(7px);
+    -ms-transform: translateX(0px) translateY(7px);
+    transform: translateX(0px) translateY(7px);
+
+    -webkit-box-shadow:  0px 0px 0px rgba(0,0,0,0.3), 0px 0px 0px 0px rgba(0,0,0,0.3), 0px 0px 0px #999, inset 0px 0px 0px 0px rgba(0,0,0,0.4);
+    -moz-box-shadow:  0px 0px 0px rgba(0,0,0,0.3), 0px 0px 0px 0px rgba(0,0,0,0.3), 0px 0px 0px #999, inset 0px 0px 0px 0px rgba(0,0,0,0.4);
+    -o-box-shadow:  0px 0px 0px rgba(0,0,0,0.3), 0px 0px 0px 0px rgba(0,0,0,0.3), 0px 0px 0px #999, inset 0px 0px 0px 0px rgba(0,0,0,0.4);
+    box-shadow:  0px 0px 0px rgba(0,0,0,0.3), 0px 0px 0px 0px rgba(0,0,0,0.3), 0px 0px 0px #999, inset 0px 0px 0px 0px rgba(0,0,0,0.4);
+}
+
+
+.thinking-container{
+    width: 1170px;
+    margin: 300px auto;
+    text-align: center;
 }
