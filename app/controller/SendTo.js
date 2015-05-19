@@ -68,7 +68,7 @@ Ext.define('ttapp.controller.SendTo', {
             Ext.getCmp('contactsListToChoose').setHeight('0px');    
             Ext.getCmp('contactsListToChoose').removeCls('show-list');
         },
-        10);
+        5);
     },
     clearAll: function(){
         var sf = Ext.ComponentQuery.query('searchfield[cls~=search-contacts-field]')[0];
@@ -96,6 +96,18 @@ Ext.define('ttapp.controller.SendTo', {
         
         //check if a value is set first, as if it isnt we dont have to do anything
         if (value) {
+
+             var thisRegEx = new RegExp(value, "i");
+               store.filterBy(function(record) {
+                if (thisRegEx.test(record.get('first_name')) ||
+                  thisRegEx.test(record.get('last_name')) ||
+                  thisRegEx.test(record.get('phone_number'))) {
+                 return true;
+                };
+                return false;
+               });
+        }
+/*
             //the user could have entered spaces, so we must split them so we can loop through them all
             var searches = value.split(' '),
                 regexps = [],
@@ -143,7 +155,7 @@ Ext.define('ttapp.controller.SendTo', {
             });
 
         }
-
+*/
         
         if (field.getValue() == '') {
             Ext.getCmp('contactsListToChoose').setStore('');
