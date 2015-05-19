@@ -93,17 +93,7 @@ Ext.define('ttapp.controller.SendTo', {
 
         //first clear any current filters on thes tore
         store.clearFilter();
-        if (field.getValue() == '') {
-            Ext.getCmp('contactsListToChoose').setStore('');
-            Ext.getCmp('contactsListToChoose').setHeight('0px');
-            Ext.getCmp('contactsListToChoose').removeCls('show-list');
-            // $(".search-list-sec .x-dock.x-unsized>.x-dock-body").css({"display":"none"});
-        } else {
-            Ext.getCmp('contactsListToChoose').setStore('phonecontacts');
-            Ext.getCmp('contactsListToChoose').setHeight('100%'); 
-            // $(".search-list-sec .x-dock.x-unsized>.x-dock-body").css({"background":"rgba(233,233,233,0.85)","display":"block"} );
-            Ext.getCmp('contactsListToChoose').addCls('show-list');
-        }
+        
         //check if a value is set first, as if it isnt we dont have to do anything
         if (value) {
             //the user could have entered spaces, so we must split them so we can loop through them all
@@ -152,6 +142,17 @@ Ext.define('ttapp.controller.SendTo', {
                 }
             });
 
+        }
+
+        
+        if (field.getValue() == '') {
+            Ext.getCmp('contactsListToChoose').setStore('');
+            Ext.getCmp('contactsListToChoose').setHeight('0px');
+            Ext.getCmp('contactsListToChoose').removeCls('show-list');
+        } else {
+            Ext.getCmp('contactsListToChoose').setStore('phonecontacts');
+            Ext.getCmp('contactsListToChoose').setHeight('100%'); 
+            Ext.getCmp('contactsListToChoose').addCls('show-list');
         }
     },
     closeMe: function(){

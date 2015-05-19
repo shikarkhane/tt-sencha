@@ -24,7 +24,7 @@ Ext.define('ttapp.controller.ReplayTink', {
     closeReplay: function(){
         Ext.ComponentQuery.query('#replayTinkPage')[0].destroy();
 
-        Ext.Viewport.animateActiveItem('feed',{type:'fade'});
+        Ext.Viewport.setActiveItem('feed');
     },
     addReplay: function(seconds, text, trinket_name){
         r = Ext.create('Ext.Container',{
