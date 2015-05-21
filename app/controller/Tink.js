@@ -82,7 +82,6 @@ Ext.define('ttapp.controller.Tink', {
         this.showActiveTrinketThumbnail(activeTrinketThumbnailPath);
     },
     runAnimation: function(swiffyobject){
-        var trinketName = Ext.getStore('profilestore').getActiveTrinket();
         var width = ttapp.config.Config.getWidth(),
         height = ttapp.config.Config.getHeight();
 
@@ -103,7 +102,9 @@ Ext.define('ttapp.controller.Tink', {
             disableCaching: false,
             
             success: function(response) {        
-                var swiffyobject = JSON.parse(response.text);
+                debugger;
+                var swiffyobject = JSON.parse(response.responseText);
+
                 ttapp.app.getController('ttapp.controller.Tink').runAnimation(swiffyobject);
             }
         });
