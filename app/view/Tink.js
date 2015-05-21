@@ -59,7 +59,7 @@ Ext.define('ttapp.view.Tink', {
                 xtype: 'panel',
                 id: "swiffydiv",
                 //flex: 5,
-                html: '<iframe id="tinkcontainer" class="tinkanimation" style="" src="resources/tinks/swiffy/default.html"></iframe>'                
+                html: '<div id="swiffycontainer" style="height:100%;width:100%;"> </div>'                
             },
             {
                 //flex: 1,               

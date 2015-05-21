@@ -26,13 +26,15 @@ Ext.define('ttapp.controller.Tink', {
     onThinking : function(){
         this.hideActiveTrinketThumbnail();
         this.getClock().start();
-        Ext.getDom('tinkcontainer').contentWindow.tt_start_animation();
+        this.getSwiffyObject('newall');
+        //this.runAnimation();
+        //Ext.getDom('tinkcontainer').contentWindow.tt_start_animation();
         Ext.getCmp('tinkScreen').addCls('show-full-frame');
 
     },
     onStoppedThinking : function(){
-
-        Ext.getDom('tinkcontainer').contentWindow.tt_stop_animation();
+        this.stopAnimation();
+        //Ext.getDom('tinkcontainer').contentWindow.tt_stop_animation();
         this.getClock().pause();
         
         var periodInSeconds = this.getClock().getDuration();
@@ -46,6 +48,7 @@ Ext.define('ttapp.controller.Tink', {
         this.resetTimerClock();
         this.useActiveTrinket();
         this.updateNotifyRedDot();
+        
     },
     updateNotifyRedDot: function(){
         var unreadRedDot = ttapp.config.Config.getUnreadMessage();
@@ -73,17 +76,40 @@ Ext.define('ttapp.controller.Tink', {
         });
     },
     useActiveTrinket : function(){
-        var trinketArea = Ext.get('swiffydiv');
         var trinketName = Ext.getStore('profilestore').getActiveTrinket();
-        var activeTrinketFilePath = Ext.getStore('trinketstore').getFilePath(trinketName);
         var activeTrinketThumbnailPath = Ext.getStore('trinketstore').getThumbnailPath(trinketName);
 
+        this.showActiveTrinketThumbnail(activeTrinketThumbnailPath);
+    },
+    runAnimation: function(swiffyobject){
+        var trinketName = Ext.getStore('profilestore').getActiveTrinket();
         var width = ttapp.config.Config.getWidth(),
         height = ttapp.config.Config.getHeight();
 
-        this.showActiveTrinketThumbnail(activeTrinketThumbnailPath);
-
-        trinketArea.setHtml('<iframe id="tinkcontainer" class="tinkanimation" style="" src="resources/tinks/swiffy/' + activeTrinketFilePath + '"></iframe>');
+        var c = document.getElementById('swiffycontainer');
+        c.setAttribute("style","display:block;width:"+ width +"px;height:"+ height + "px");
+        c.style.width=width+'px';
+        c.style.height = height+'px';
+        
+        this.stage = new swiffy.Stage(c, swiffyobject, {  });
+        this.stage.start();
+        
+    },
+    getSwiffyObject: function(trinketname){
+        Ext.Ajax.request({
+            url:  ttapp.config.Config.getBaseURL() + '/trinket-swiffy/' + trinketname + '/',
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json'},
+            disableCaching: false,
+            
+            success: function(response) {        
+                var swiffyobject = JSON.parse(response.text);
+                ttapp.app.getController('ttapp.controller.Tink').runAnimation(swiffyobject);
+            }
+        });
+    },
+    stopAnimation: function(){
+        this.stage.destroy();
     }
 
 });

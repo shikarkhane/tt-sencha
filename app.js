@@ -54,7 +54,7 @@ Ext.application({
         ttapp.util.Common.isUserVerifiedOnServer();
 
         // Initialize the main view
-        Ext.Viewport.add(Ext.create('ttapp.view.Landing'));
+        Ext.Viewport.add(Ext.create('ttapp.view.Tink'));
 
         // get tinkbox content
         ttapp.util.FeedProxy.process();
