@@ -24,6 +24,10 @@ Ext.define('ttapp.util.FeedProxy', {
                         disableCaching: false,
                         
                         success: function(response) {
+                            // if nothing has changed dont re-render feed
+                            if ( response.status != 200 ){
+                                return 0;
+                            }
                             var messages = Ext.JSON.decode(response.responseText.trim());                            
                             Ext.Array.each( messages, function(message) {
                                 // increment pagenumber if msgs were received
