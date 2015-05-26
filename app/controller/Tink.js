@@ -26,7 +26,7 @@ Ext.define('ttapp.controller.Tink', {
     onThinking : function(){
         this.hideActiveTrinketThumbnail();
         this.getClock().start();
-        this.getSwiffyObject('newall');
+        this.getSwiffy('newall');
         //this.runAnimation();
         //Ext.getDom('tinkcontainer').contentWindow.tt_start_animation();
         Ext.getCmp('tinkScreen').addCls('show-full-frame');
@@ -76,12 +76,13 @@ Ext.define('ttapp.controller.Tink', {
         });
     },
     useActiveTrinket : function(){
-        var trinketName = Ext.getStore('profilestore').getActiveTrinket();
-        var activeTrinketThumbnailPath = Ext.getStore('trinketstore').getThumbnailPath(trinketName);
+        this.activeTrinketName = Ext.getStore('profilestore').getActiveTrinket();
+        var activeTrinketThumbnailPath = Ext.getStore('trinketstore').getThumbnailPath(this.activeTrinketName);
 
         this.showActiveTrinketThumbnail(activeTrinketThumbnailPath);
     },
-    runAnimation: function(swiffyobject){
+    runAnimation: function(){
+        var swiffyobject = Ext.getStore('trinketstore').getSwiffyObject(this.activeTrinketname);
         var width = ttapp.config.Config.getWidth(),
         height = ttapp.config.Config.getHeight();
 
@@ -94,18 +95,15 @@ Ext.define('ttapp.controller.Tink', {
         this.stage.start();
         
     },
-    getSwiffyObject: function(trinketname){
+    getSwiffy: function(trinketname){
         Ext.Ajax.request({
             url:  ttapp.config.Config.getBaseURL() + '/trinket-swiffy/' + trinketname + '/',
             method: 'GET',
             headers: { 'Content-Type': 'application/json'},
             disableCaching: false,
             
-            success: function(response) {        
-                debugger;
-                var swiffyobject = JSON.parse(response.responseText);
-
-                ttapp.app.getController('ttapp.controller.Tink').runAnimation(swiffyobject);
+            success: function(response) {                        
+                Ext.getStore('trinketstore').setSwiffyString(this.activeTrinketname, response.responseText);
             }
         });
     },

@@ -16,8 +16,9 @@
                 },{
                     name: 'thumbnail_path',
                     type: 'string'
-                },{
-                    name: 'file_path',
+                },
+                {
+                    name: 'swiffy_string',
                     type: 'string'
                 }]
             }
