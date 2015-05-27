@@ -3,13 +3,12 @@ Ext.define('ttapp.util.TrinketProxy', {
     requires: ['ttapp.util.Common'],
 
     process: function(clearAll) {
-        var tStore = Ext.getStore('Trinkets'),
-            tModel;
+        var tStore = Ext.getStore('Trinkets');
 
         if(clearAll){
             tStore.removeAll();
         }
-
+        debugger;
         Ext.Ajax.request({
             url:  ttapp.config.Config.getBaseURL() + '/trinket-list/',
             method: 'GET',
@@ -22,6 +21,8 @@ Ext.define('ttapp.util.TrinketProxy', {
                     return 0;
                 }
                 var ts = Ext.JSON.decode(response.responseText.trim());                            
+                var tStore = Ext.getStore('Trinkets');
+
                 Ext.Array.each( ts, function(t) {
                     tStore.addTrinket(t.trinketId, t.groupId, t.name, t.label, thumbnailPath, '');
                     tStore.sync();
