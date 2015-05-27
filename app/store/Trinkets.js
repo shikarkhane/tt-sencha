@@ -77,6 +77,7 @@ Ext.define('ttapp.store.Trinkets', {
         return this.getAt(i).get('file_path');
     },
     getThumbnailPath: function(name){
+        debugger;
         this.load();
         var i = this.find('name', name);
         return this.getAt(i).get('thumbnail_path');
