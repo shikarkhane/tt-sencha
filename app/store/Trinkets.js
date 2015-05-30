@@ -3,7 +3,7 @@ Ext.define('ttapp.util.TrinketProxy', {
     requires: ['ttapp.util.Common'],
 
     process: function(clearAll) {
-        var tStore = Ext.getStore('Trinkets');
+        var tStore = Ext.getStore('trinketstore');
 
         if(clearAll){
             tStore.removeAll();
@@ -22,7 +22,7 @@ Ext.define('ttapp.util.TrinketProxy', {
                 }
                 var ts = Ext.JSON.decode(response.responseText.trim());                            
                 var tStore = Ext.getStore('trinketstore');
-debugger;
+
                 Ext.Array.each( ts, function(t) {
                     tStore.addTrinket(t.trinketId, t.groupId, t.name, t.label, t.thumbnailPath, '');
                     tStore.sync();
@@ -77,7 +77,7 @@ Ext.define('ttapp.store.Trinkets', {
         return this.getAt(i).get('file_path');
     },
     getThumbnailPath: function(name){
-        debugger;
+        //debugger;
         this.load();
         var i = this.find('name', name);
         return this.getAt(i).get('thumbnail_path');
@@ -90,6 +90,7 @@ Ext.define('ttapp.store.Trinkets', {
     setSwiffyString: function(name, swiffy_string){
         this.load();
         var i = this.find('name', name);
+        //debugger;
         this.getAt(i).set('swiffy_string', swiffy_string);
         this.sync();
     }

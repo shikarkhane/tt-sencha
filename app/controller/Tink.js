@@ -25,9 +25,8 @@ Ext.define('ttapp.controller.Tink', {
     },
     onThinking : function(){
         this.hideActiveTrinketThumbnail();
-        this.getClock().start();
-        this.getSwiffy('newall');
-        //this.runAnimation();
+        this.getClock().start();        
+        this.runAnimation();
         //Ext.getDom('tinkcontainer').contentWindow.tt_start_animation();
         Ext.getCmp('tinkScreen').addCls('show-full-frame');
 
@@ -79,10 +78,12 @@ Ext.define('ttapp.controller.Tink', {
         this.activeTrinketName = Ext.getStore('profilestore').getActiveTrinket();
         var activeTrinketThumbnailPath = Ext.getStore('trinketstore').getThumbnailPath(this.activeTrinketName);
 
+        this.getSwiffy(this.activeTrinketName);
+
         this.showActiveTrinketThumbnail(activeTrinketThumbnailPath);
     },
     runAnimation: function(){
-        var swiffyobject = Ext.getStore('trinketstore').getSwiffyObject(this.activeTrinketname);
+        var swiffyobject = Ext.getStore('trinketstore').getSwiffyObject(this.activeTrinketName);
         var width = ttapp.config.Config.getWidth(),
         height = ttapp.config.Config.getHeight();
 
@@ -101,9 +102,11 @@ Ext.define('ttapp.controller.Tink', {
             method: 'GET',
             headers: { 'Content-Type': 'application/json'},
             disableCaching: false,
+            params: {"trinketname": trinketname},
             
-            success: function(response) {                        
-                Ext.getStore('trinketstore').setSwiffyString(this.activeTrinketname, response.responseText);
+            success: function(response, opts) {           
+                debugger;             
+                Ext.getStore('trinketstore').setSwiffyString(opts.params.trinketname, response.responseText);
             }
         });
     },

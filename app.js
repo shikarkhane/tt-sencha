@@ -60,7 +60,7 @@ Ext.application({
         ttapp.util.FeedProxy.process(true);
 
         // get tinkbox content
-        ttapp.util.TrinketProxy.process();
+        ttapp.util.TrinketProxy.process(true);
 
         // get contacts from device
         ttapp.util.ContactsProxy.process(Ext.getStore('phonecontacts'));
