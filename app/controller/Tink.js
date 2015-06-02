@@ -87,13 +87,14 @@ Ext.define('ttapp.controller.Tink', {
         var width = ttapp.config.Config.getWidth(),
         height = ttapp.config.Config.getHeight();
 
-        var c = document.getElementById('swiffycontainer');
-        c.setAttribute("style","display:block;width:"+ width +"px;height:"+ height + "px");
-        c.style.width=width+'px';
-        c.style.height = height+'px';
+        //var c = document.getElementById('swiffycontainer');
+        //c.setAttribute("style","display:block;width:"+ width +"px;height:"+ height + "px");
+        //c.style.width=width+'px';
+        //c.style.height = height+'px';
         
-        this.stage = new swiffy.Stage(c, swiffyobject, {  });
-        this.stage.start();
+        Ext.getDom('tinkcontainer').contentWindow.tt_start_animation(swiffyobject);
+        //this.stage = new swiffy.Stage(c, swiffyobject, {  });
+        //this.stage.start();
         
     },
     getSwiffy: function(trinketname){
@@ -105,13 +106,15 @@ Ext.define('ttapp.controller.Tink', {
             params: {"trinketname": trinketname},
             
             success: function(response, opts) {           
-                debugger;             
+                //debugger;             
                 Ext.getStore('trinketstore').setSwiffyString(opts.params.trinketname, response.responseText);
             }
         });
     },
     stopAnimation: function(){
-        this.stage.destroy();
+        //this.stage.destroy();
+        Ext.getDom('tinkcontainer').contentWindow.tt_stop_animation();
+
     }
 
 });

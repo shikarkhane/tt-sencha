@@ -9,13 +9,13 @@ var stage;
 	c.style.width = (window.innerWidth > 0) ? window.innerWidth : screen.width + 'px';
 
 	stage = new swiffy.Stage(c, swiffyobject, {  });
-	var d = document.createElement("div");
+	//var d = document.createElement("div");
 	//this.style.height = (window.innerHeight > 0) ? window.innerHeight : screen.height + 'px';
 	//this.style.width = (window.innerWidth > 0) ? window.innerWidth : screen.width + 'px';
-document.body.appendChild(d);  
+//document.body.appendChild(d);  
 })();
 
-function tt_start_animation(){
+function tt_start_animation(so){
 	console.log('start animation');
     stage.start();
 };
