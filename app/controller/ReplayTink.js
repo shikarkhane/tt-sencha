@@ -27,6 +27,7 @@ Ext.define('ttapp.controller.ReplayTink', {
         Ext.Viewport.setActiveItem('feed');
     },
     addReplay: function(seconds, text, trinket_name){
+        var activeTrinketSwiffyPath = Ext.getStore('trinketstore').getSwiffyPath(trinket_name);
         r = Ext.create('Ext.Container',{
                     xtype: 'replaytink',
                     itemId: 'replayTinkPage',
@@ -57,7 +58,7 @@ Ext.define('ttapp.controller.ReplayTink', {
                         xtype: 'panel',
                         itemId: 'replaycomponent',
                         flex: 5,
-                        html: '<iframe id="replaytinkcontainer" class="tinkanimation" src="resources/tinks/swiffy/'+ trinket_name + '.html"></iframe>'                
+                        html: '<iframe id="replaytinkcontainer" class="tinkanimation" src="'+ activeTrinketSwiffyPath + '"></iframe>'                
                     }
                     ]
 
