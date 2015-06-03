@@ -24,7 +24,7 @@ Ext.define('ttapp.util.TrinketProxy', {
                 var tStore = Ext.getStore('trinketstore');
 
                 Ext.Array.each( ts, function(t) {
-                    tStore.addTrinket(t.trinketId, t.groupId, t.name, t.label, t.thumbnailPath, '');
+                    tStore.addTrinket(t.trinketId, t.groupId, t.name, t.label, t.thumbnailPath, t.swiffyPath);
                     tStore.sync();
                 });
                 
@@ -50,14 +50,14 @@ Ext.define('ttapp.store.Trinkets', {
         this.data.clear();
         this.sync();      
     },
-    addTrinket: function(trinketId, groupId, name, label, thumbnailPath, swiffyString){
+    addTrinket: function(trinketId, groupId, name, label, thumbnailPath, swiffyPath){
         var t = Ext.create('ttapp.model.Trinket',{
             trinket_id: trinketId,
             group_id: groupId,
             name: name,
             label: label,
             thumbnail_path: thumbnailPath,
-            swiffy_string: swiffyString
+            swiffy_path: swiffyPath
             });
 
         this.add(t);
@@ -82,16 +82,9 @@ Ext.define('ttapp.store.Trinkets', {
         var i = this.find('name', name);
         return this.getAt(i).get('thumbnail_path');
     },
-    getSwiffyObject: function(name){
+    getSwiffyPath: function(name){
         this.load();
         var i = this.find('name', name);
-        return JSON.parse(this.getAt(i).get('swiffy_string'));
-    },
-    setSwiffyString: function(name, swiffy_string){
-        this.load();
-        var i = this.find('name', name);
-        //debugger;
-        this.getAt(i).set('swiffy_string', swiffy_string);
-        this.sync();
+        return this.getAt(i).get('swiffy_path');
     }
  });

@@ -18,7 +18,7 @@
                     type: 'string'
                 },
                 {
-                    name: 'swiffy_string',
+                    name: 'swiffy_path',
                     type: 'string'
                 }]
             }

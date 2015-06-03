@@ -77,39 +77,17 @@ Ext.define('ttapp.controller.Tink', {
     useActiveTrinket : function(){
         this.activeTrinketName = Ext.getStore('profilestore').getActiveTrinket();
         var activeTrinketThumbnailPath = Ext.getStore('trinketstore').getThumbnailPath(this.activeTrinketName);
-
-        this.getSwiffy(this.activeTrinketName);
+        var activeTrinketSwiffyPath = Ext.getStore('trinketstore').getSwiffyPath(this.activeTrinketName);
 
         this.showActiveTrinketThumbnail(activeTrinketThumbnailPath);
-    },
-    runAnimation: function(){
-        var swiffyobject = Ext.getStore('trinketstore').getSwiffyObject(this.activeTrinketName);
-        var width = ttapp.config.Config.getWidth(),
-        height = ttapp.config.Config.getHeight();
 
-        //var c = document.getElementById('swiffycontainer');
-        //c.setAttribute("style","display:block;width:"+ width +"px;height:"+ height + "px");
-        //c.style.width=width+'px';
-        //c.style.height = height+'px';
-        
-        Ext.getDom('tinkcontainer').contentWindow.tt_start_animation(swiffyobject);
-        //this.stage = new swiffy.Stage(c, swiffyobject, {  });
-        //this.stage.start();
-        
+        var trinketArea = Ext.get('swiffydiv');
+
+        trinketArea.setHtml('<iframe id="tinkcontainer" class="tinkanimation" style="" src="' + activeTrinketSwiffyPath + '"></iframe>');
+    
     },
-    getSwiffy: function(trinketname){
-        Ext.Ajax.request({
-            url:  ttapp.config.Config.getBaseURL() + '/trinket-swiffy/' + trinketname + '/',
-            method: 'GET',
-            headers: { 'Content-Type': 'application/json'},
-            disableCaching: false,
-            params: {"trinketname": trinketname},
-            
-            success: function(response, opts) {           
-                //debugger;             
-                Ext.getStore('trinketstore').setSwiffyString(opts.params.trinketname, response.responseText);
-            }
-        });
+    runAnimation: function(){        
+        Ext.getDom('tinkcontainer').contentWindow.tt_start_animation();        
     },
     stopAnimation: function(){
         //this.stage.destroy();
