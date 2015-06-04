@@ -180,8 +180,10 @@ Ext.define('ttapp.store.Contacts', {
     },
     isOnTinkTime: function(phoneNumber){
         
-        var result = false
-        var i = this.find('phone_number', phoneNumber);
+        var result = false;
+        var v="^"+ phoneNumber + "$"; 
+        var nv=new RegExp(v);
+        var i = this.find('phone_number', nv);
         
         if ( i > -1){
             result = this.getAt(i).get('on_tinktime');
