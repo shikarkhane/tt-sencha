@@ -1,6 +1,9 @@
  Ext.define('ttapp.model.Message', {
             extend: 'Ext.data.Model',
             config: {
+                 identifier: {
+                    type: 'uuid'
+                },
                 fields: [
                 {
                     name: 'from_user_name',

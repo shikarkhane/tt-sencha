@@ -2,6 +2,9 @@ Ext.define('ttapp.model.Profile', {
     extend: 'Ext.data.Model',
 
     config: {
+         identifier: {
+                    type: 'uuid'
+                },
         fields: [
             'phone_number',
             'is_verified',

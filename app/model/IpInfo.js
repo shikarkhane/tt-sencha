@@ -2,6 +2,10 @@ Ext.define('ttapp.model.IpInfo', {
     extend: 'Ext.data.Model',
 
     config: {
+
+         identifier: {
+                    type: 'uuid'
+                },
         fields: [
              "ip",
             "hostname",
