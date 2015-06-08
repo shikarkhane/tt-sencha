@@ -4,7 +4,7 @@ Ext.define('ttapp.controller.Landing', {
     //, 'Ext.device.Push', 'Ext.device.Device'
     config: {
         refs: {
-            btnBegin: 'button[cls~=clsBegin]',
+            btnBegin: 'button[cls~=clsBegin]'
         },
         control: {
             'btnBegin': {
@@ -20,7 +20,7 @@ Ext.define('ttapp.controller.Landing', {
             Ext.Viewport.setActiveItem('trinket','slide');
         }
         else{
-            Ext.Viewport.animateActiveItem('authenticate',{type:'slide'});   
+            Ext.Viewport.animateActiveItem('authenticate',{type:'slide'});
         }
     }
 });

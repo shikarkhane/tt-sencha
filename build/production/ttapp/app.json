@@ -1,1 +1,1 @@
-{"id":"57b65e54-0b4c-4895-b9db-b26c79ab7904","js":[{"path":"app.js","update":"delta","version":"b96552dcd17f041a51a89bda0c3e62fd43044cc7"}],"css":[{"path":"resources/css/app.css","update":"delta","version":"f18c041e8b471123f07a49e233606387211f1add"}]}
+{"id":"57b65e54-0b4c-4895-b9db-b26c79ab7904","js":[{"path":"https://www.gstatic.com/swiffy/v7.1/runtime.js","update":"delta"},{"path":"app.js","update":"delta","version":"3bd2f05a3f27150c17d6cdb1ee0864ee8e75d3cd"}],"css":[{"path":"resources/css/app.css","update":"delta","version":"c27e3b0d91bfb1896b9513117c4d6106056fd71a"}]}

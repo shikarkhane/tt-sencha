@@ -15,7 +15,7 @@ Ext.define('ttapp.view.DogEar', {
                 },{
                     xtype:'button',
                     cls:'top-btn btn-mail',
-                    docked:'right',
+                    docked:'right'
                 }
             ]
     }

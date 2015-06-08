@@ -4,13 +4,13 @@ Ext.define('ttapp.view.Authenticate', {
 	requires: ['Ext.field.Number'],
 	config:{
 		fullscreen: true,
-		cls: 'bg-transparent',	
-		items: 
+		cls: 'bg-transparent',
+		items:
 		  [{
             xtype: 'toolbar',
             docked:'top',
             cls:'top-bar top-x-top-bar',
-            title:'Verify Number'  
+            title:'Verify Number'
             },{
 		  	xtype:'panel',
 		  	cls:'verify-page',
@@ -30,7 +30,7 @@ Ext.define('ttapp.view.Authenticate', {
 			                placeHolder: '+1',
 			                cls:'form-field',
 			                clearIcon:false ,
-			                flex:3            			        			
+			                flex:3
 			        	},
 			        	{
 				        	id: 'myPhoneNumber',
@@ -39,7 +39,7 @@ Ext.define('ttapp.view.Authenticate', {
 			                placeHolder: '705432112',
 			                cls:'form-field',
 			                clearIcon:false,
-			                flex: 7             
+			                flex: 7
 			        }
 		        	]
 		        },
@@ -50,7 +50,7 @@ Ext.define('ttapp.view.Authenticate', {
 		        },{
 		        	xtype:'panel',
 		        	cls:'help-text-sm',
-		        	html:'We will not display your phone number to other people',
+		        	html:'We will not display your phone number to other people'
 		        },{
 		        	xtype:'panel',
 		        	cls:'help-text-sm',
