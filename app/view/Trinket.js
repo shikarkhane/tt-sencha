@@ -13,7 +13,7 @@ Ext.define('ttapp.view.Trinket', {
         this.add(Ext.create('Ext.Toolbar',{
             docked:'top',
             cls:'top-bar',
-            title:'Tink gallery',  
+            title:'Tink gallery',
             items: [
                 {
                     xtype:'button',
@@ -27,7 +27,7 @@ Ext.define('ttapp.view.Trinket', {
         this.add(Ext.create('Ext.Carousel',{
             id:'carouselList',
             cls:'trinket-list',
-            height:'100%',
+            height:'100%'
             //indicator:false,
         }));
 
@@ -38,7 +38,7 @@ Ext.define('ttapp.view.Trinket', {
         var offset_start = 0;
         var offset_end = 0;
         for(var i=0; i<group_count; i++){
-           
+
 
            //store_data.filter("group_id", i);
 
@@ -51,7 +51,7 @@ Ext.define('ttapp.view.Trinket', {
 
             offset_start = (i*9);
             offset_end = offset_start + 9;
-            
+
             store.setData(all.slice(offset_start, offset_end));
 
 
@@ -67,7 +67,7 @@ Ext.define('ttapp.view.Trinket', {
                     '<div class="img-bg" style="background:url({thumbnail_path});"></div>'
                 ],
                 store: Ext.getStore('trinketstore_'+i)
-                
+
             }));
         }
 

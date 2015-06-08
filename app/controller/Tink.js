@@ -83,7 +83,13 @@ Ext.define('ttapp.controller.Tink', {
 
         this.showActiveTrinketThumbnail(activeTrinketThumbnailPath);
 
-        trinketArea.setHtml('<iframe id="tinkcontainer" class="tinkanimation" style="" src="resources/tinks/swiffy/' + activeTrinketFilePath + '"></iframe>');
+        trinketArea.setHtml('<iframe id="tinkcontainer" class="tinkanimation" style="opacity:0;" src="resources/tinks/swiffy/' + activeTrinketFilePath + '"></iframe>');
+        setTimeout(function() {
+            var el = Ext.Element.get('tinkcontainer');
+            if (el) {
+                el.setStyle('opacity', '1');
+            }
+        }, 150);
     }
 
 });

@@ -3,10 +3,10 @@ Ext.define('ttapp.view.Landing', {
 	xtype: 'landing',
 	requires: ['Ext.Label'],
 	config:{
-		fullscreen: true,		
+		fullscreen: true,
 		layout: 'vbox',
 		cls: 'bg-transparent',
-		items: 
+		items:
 		  [{
 		  	xtype:'panel',
 		  	cls:'landing-page',

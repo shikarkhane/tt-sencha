@@ -534,17 +534,6 @@ Ext.ClassManager.addNameAlternateMappings({
   "Ext.layout.wrapper.BoxDock": [],
   "Ext.layout.wrapper.Dock": [],
   "Ext.layout.wrapper.Inner": [],
-  "Ext.log.Base": [],
-  "Ext.log.Logger": [],
-  "Ext.log.filter.Filter": [],
-  "Ext.log.filter.Priority": [],
-  "Ext.log.formatter.Default": [],
-  "Ext.log.formatter.Formatter": [],
-  "Ext.log.formatter.Identity": [],
-  "Ext.log.writer.Console": [],
-  "Ext.log.writer.DocumentTitle": [],
-  "Ext.log.writer.Remote": [],
-  "Ext.log.writer.Writer": [],
   "Ext.mixin.Bindable": [],
   "Ext.mixin.Filterable": [],
   "Ext.mixin.Mixin": [],
@@ -672,27 +661,37 @@ Ext.ClassManager.addNameAlternateMappings({
   "ttapp.config.Config": [],
   "ttapp.controller.Authenticate": [],
   "ttapp.controller.DogEar": [],
+  "ttapp.controller.Feed": [],
   "ttapp.controller.Landing": [],
+  "ttapp.controller.Main": [],
+  "ttapp.controller.ReplayTink": [],
   "ttapp.controller.SendTo": [],
   "ttapp.controller.Split": [],
   "ttapp.controller.Tink": [],
   "ttapp.controller.Trinket": [],
   "ttapp.model.Contact": [],
+  "ttapp.model.IpInfo": [],
   "ttapp.model.Message": [],
   "ttapp.model.Profile": [],
   "ttapp.model.Trinket": [],
   "ttapp.store.Contacts": [],
+  "ttapp.store.IpInfo": [],
   "ttapp.store.Messages": [],
   "ttapp.store.Profile": [],
   "ttapp.store.Trinkets": [],
+  "ttapp.util.Common": [],
+  "ttapp.util.ContactsCleaner": [],
   "ttapp.util.ContactsProxy": [],
   "ttapp.util.FeedProxy": [],
+  "ttapp.util.Push": [],
   "ttapp.view.Authenticate": [],
   "ttapp.view.ConfirmPhoneNumber": [],
   "ttapp.view.DogEar": [],
   "ttapp.view.Feed": [],
   "ttapp.view.Landing": [],
   "ttapp.view.Options": [],
+  "ttapp.view.PrivacyPolicy": [],
+  "ttapp.view.ReplayTink": [],
   "ttapp.view.SendTo": [],
   "ttapp.view.Split": [],
   "ttapp.view.SplitNewTink": [],
@@ -1281,17 +1280,6 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.layout.wrapper.BoxDock": [],
   "Ext.layout.wrapper.Dock": [],
   "Ext.layout.wrapper.Inner": [],
-  "Ext.log.Base": [],
-  "Ext.log.Logger": [],
-  "Ext.log.filter.Filter": [],
-  "Ext.log.filter.Priority": [],
-  "Ext.log.formatter.Default": [],
-  "Ext.log.formatter.Formatter": [],
-  "Ext.log.formatter.Identity": [],
-  "Ext.log.writer.Console": [],
-  "Ext.log.writer.DocumentTitle": [],
-  "Ext.log.writer.Remote": [],
-  "Ext.log.writer.Writer": [],
   "Ext.mixin.Bindable": [],
   "Ext.mixin.Filterable": [],
   "Ext.mixin.Mixin": [],
@@ -1435,27 +1423,37 @@ Ext.ClassManager.addNameAliasMappings({
   "ttapp.config.Config": [],
   "ttapp.controller.Authenticate": [],
   "ttapp.controller.DogEar": [],
+  "ttapp.controller.Feed": [],
   "ttapp.controller.Landing": [],
-  "ttapp.controller.SendTo": [
-    "widget.sendto"
+  "ttapp.controller.Main": [
+    "widget.main"
   ],
+  "ttapp.controller.ReplayTink": [],
+  "ttapp.controller.SendTo": [],
   "ttapp.controller.Split": [],
   "ttapp.controller.Tink": [],
   "ttapp.controller.Trinket": [
     "widget.trinketselection"
   ],
   "ttapp.model.Contact": [],
+  "ttapp.model.IpInfo": [],
   "ttapp.model.Message": [],
   "ttapp.model.Profile": [],
   "ttapp.model.Trinket": [],
   "ttapp.store.Contacts": [],
+  "ttapp.store.IpInfo": [
+    "store.IpInfo"
+  ],
   "ttapp.store.Messages": [],
   "ttapp.store.Profile": [
     "store.Profile"
   ],
   "ttapp.store.Trinkets": [],
+  "ttapp.util.Common": [],
+  "ttapp.util.ContactsCleaner": [],
   "ttapp.util.ContactsProxy": [],
   "ttapp.util.FeedProxy": [],
+  "ttapp.util.Push": [],
   "ttapp.view.Authenticate": [
     "widget.authenticate"
   ],
@@ -1473,6 +1471,12 @@ Ext.ClassManager.addNameAliasMappings({
   ],
   "ttapp.view.Options": [
     "widget.options"
+  ],
+  "ttapp.view.PrivacyPolicy": [
+    "widget.privacypolicy"
+  ],
+  "ttapp.view.ReplayTink": [
+    "widget.replaytink"
   ],
   "ttapp.view.SendTo": [
     "widget.sendto"
