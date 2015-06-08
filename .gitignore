@@ -3,3 +3,4 @@ npm-debug.log
 .DS_Store
 ._.DS_Store
 .sass-cache
+build/production/ttapp/archive
