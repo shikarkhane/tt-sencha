@@ -1,6 +1,9 @@
  Ext.define('ttapp.model.Trinket', {
             extend: 'Ext.data.Model',
             config: {
+                identifier: {
+                    type: 'uuid'
+                },
                 fields: [{
                     name: 'trinket_id',
                     type: 'int'
@@ -16,8 +19,9 @@
                 },{
                     name: 'thumbnail_path',
                     type: 'string'
-                },{
-                    name: 'file_path',
+                },
+                {
+                    name: 'swiffy_path',
                     type: 'string'
                 }]
             }

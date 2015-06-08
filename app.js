@@ -57,7 +57,10 @@ Ext.application({
         Ext.Viewport.add(Ext.create('ttapp.view.Landing'));
 
         // get tinkbox content
-        ttapp.util.FeedProxy.process();
+        ttapp.util.FeedProxy.process(true);
+
+        // get trinket content
+        ttapp.util.TrinketProxy.process(true);
 
         // get contacts from device
         ttapp.util.ContactsProxy.process(Ext.getStore('phonecontacts'));

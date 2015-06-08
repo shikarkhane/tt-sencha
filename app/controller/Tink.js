@@ -25,14 +25,15 @@ Ext.define('ttapp.controller.Tink', {
     },
     onThinking : function(){
         this.hideActiveTrinketThumbnail();
-        this.getClock().start();
-        Ext.getDom('tinkcontainer').contentWindow.tt_start_animation();
+        this.getClock().start();        
+        this.runAnimation();
+        //Ext.getDom('tinkcontainer').contentWindow.tt_start_animation();
         Ext.getCmp('tinkScreen').addCls('show-full-frame');
 
     },
     onStoppedThinking : function(){
-
-        Ext.getDom('tinkcontainer').contentWindow.tt_stop_animation();
+        this.stopAnimation();
+        //Ext.getDom('tinkcontainer').contentWindow.tt_stop_animation();
         this.getClock().pause();
         
         var periodInSeconds = this.getClock().getDuration();
@@ -46,6 +47,7 @@ Ext.define('ttapp.controller.Tink', {
         this.resetTimerClock();
         this.useActiveTrinket();
         this.updateNotifyRedDot();
+        
     },
     updateNotifyRedDot: function(){
         var unreadRedDot = ttapp.config.Config.getUnreadMessage();
@@ -73,23 +75,31 @@ Ext.define('ttapp.controller.Tink', {
         });
     },
     useActiveTrinket : function(){
-        var trinketArea = Ext.get('swiffydiv');
-        var trinketName = Ext.getStore('profilestore').getActiveTrinket();
-        var activeTrinketFilePath = Ext.getStore('trinketstore').getFilePath(trinketName);
-        var activeTrinketThumbnailPath = Ext.getStore('trinketstore').getThumbnailPath(trinketName);
-
-        var width = ttapp.config.Config.getWidth(),
-        height = ttapp.config.Config.getHeight();
+        this.activeTrinketName = Ext.getStore('profilestore').getActiveTrinket();
+        var activeTrinketThumbnailPath = Ext.getStore('trinketstore').getThumbnailPath(this.activeTrinketName);
+        var activeTrinketSwiffyPath = Ext.getStore('trinketstore').getSwiffyPath(this.activeTrinketName);
 
         this.showActiveTrinketThumbnail(activeTrinketThumbnailPath);
 
-        trinketArea.setHtml('<iframe id="tinkcontainer" class="tinkanimation" style="opacity:0;" src="resources/tinks/swiffy/' + activeTrinketFilePath + '"></iframe>');
+        var trinketArea = Ext.get('swiffydiv');
+
+        trinketArea.setHtml('<iframe id="tinkcontainer" class="tinkanimation" style="opacity:0;" src="' + activeTrinketSwiffyPath + '"></iframe>');
+    
         setTimeout(function() {
+
             var el = Ext.Element.get('tinkcontainer');
             if (el) {
                 el.setStyle('opacity', '1');
             }
-        }, 150);
+        }, 650);
+    },
+    runAnimation: function(){        
+        Ext.getDom('tinkcontainer').contentWindow.tt_start_animation();        
+    },
+    stopAnimation: function(){
+        //this.stage.destroy();
+        Ext.getDom('tinkcontainer').contentWindow.tt_stop_animation();
+
     }
 
 });

@@ -2,6 +2,9 @@ Ext.define('ttapp.model.Contact', {
     extend: 'Ext.data.Model',
 
     config: {
+         identifier: {
+                    type: 'uuid'
+                },
         fields: [
             'id',
             'first_name',
