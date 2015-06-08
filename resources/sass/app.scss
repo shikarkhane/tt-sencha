@@ -39,11 +39,12 @@ body {
     background-color:black
 }
 .cls-tt-tinking {
-    background-image:url("../images/background/tink.jpg");
+    background-color:#B1C2CD;
+    background-image:inline-image("background/tink.jpg");
     background-size:cover;
 }
 .cls-tt-tinkbox {
-    background-image:url("../images/background/tinkbox.jpg");
+    background-image:inline-image("background/tinkbox.jpg");
     background-size:cover;
 }
 
