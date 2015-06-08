@@ -3,14 +3,14 @@ Ext.define('ttapp.view.ConfirmPhoneNumber', {
 	xtype: 'confirmphonenumber',
 	requires: ['Ext.field.Number'],
 	config:{
-		fullscreen: true,	
-		cls: 'bg-transparent',	
-		items: 
+		fullscreen: true,
+		cls: 'bg-transparent',
+		items:
 		  [{
             xtype: 'toolbar',
             docked:'top',
             cls:'top-bar top-x-top-bar',
-            title:'Verification code'  
+            title:'Verification code'
             },{
 			xtype:'panel',
 		  	cls:'verify-page',
@@ -26,7 +26,7 @@ Ext.define('ttapp.view.ConfirmPhoneNumber', {
 	                cls:'form-field',
 	                placeHolder: 'Verification code',
 	                maxLength: 5,
-	                clearIcon:false             
+	                clearIcon:false
 		        },
 		        {
 	                xtype: 'button',
@@ -35,16 +35,16 @@ Ext.define('ttapp.view.ConfirmPhoneNumber', {
 		        },{
 		        	xtype:'panel',
 		        	cls:'help-text-sm',
-		        	html:'We will not display your phone number to other people',
+		        	html:'We will not display your phone number to other people'
 		        },{
 		        	xtype:'panel',
 		        	cls:'help-text-sm',
 		        	itemId: 'entered_mobile_number',
-		        	html:'+010100101',
+		        	html:'+010100101'
 		        },
 		        {
 		        	xtype:'panel',
-		        	cls:'help-text-sm',		 
+		        	cls:'help-text-sm',
 		        	html:'To change phone number, <span class="change_phone_number">click here</span>',
 		        	listeners:[{
 		        		element: 'element',
@@ -68,7 +68,7 @@ Ext.define('ttapp.view.ConfirmPhoneNumber', {
                         }
 		        	}]
 		        }]
-		  
+
 		  },{
 		  	xtype:'button',
 		  	cls:'send-again-btn',

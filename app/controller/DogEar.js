@@ -15,10 +15,10 @@ Ext.define('ttapp.controller.DogEar', {
         }
     },
     goToTink: function() {
-        Ext.Viewport.animateActiveItem('trinket',{type:'slide', direction: 'right'});  
+        Ext.Viewport.animateActiveItem('trinket',{type:'slide', direction: 'right'});
     },
     goToFeed: function() {
-        Ext.Viewport.animateActiveItem('feed',{type:'slide'}); 
+        Ext.Viewport.animateActiveItem('feed',{type:'slide'});
         ttapp.util.FeedProxy.process(true);
     }
 });

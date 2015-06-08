@@ -1,54 +1,11 @@
 <!DOCTYPE HTML>
 <html manifest="cache.appcache" lang="en-US">
 <head>
+<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
     <meta charset="UTF-8">
+    <meta name="format-detection" content="telephone=no">
     <title>ttapp</title>
-    <style type="text/css">
-         /**
-         * Example of an initial loading indicator.
-         * It is recommended to keep this as minimal as possible to provide instant feedback
-         * while other resources are still being loaded for the first time
-         */
-        html, body {
-            height: 100%;
-            background-color: #1985D0
-        }
-
-        #appLoadingIndicator {
-            position: absolute;
-            top: 50%;
-            margin-top: -15px;
-            text-align: center;
-            width: 100%;
-            height: 30px;
-            -webkit-animation-name: appLoadingIndicator;
-            -webkit-animation-duration: 0.5s;
-            -webkit-animation-iteration-count: infinite;
-            -webkit-animation-direction: linear;
-        }
-
-        #appLoadingIndicator > * {
-            background-color: #FFFFFF;
-            display: inline-block;
-            height: 30px;
-            -webkit-border-radius: 15px;
-            margin: 0 5px;
-            width: 30px;
-            opacity: 0.8;
-        }
-
-        @-webkit-keyframes appLoadingIndicator{
-            0% {
-                opacity: 0.8
-            }
-            50% {
-                opacity: 0
-            }
-            100% {
-                opacity: 0.8
-            }
-        }
-    </style>
+   
     <!-- The line below must be kept intact for Sencha Command to build your application -->
     <script type="text/javascript">(function(k){function t(b){function c(a,b){var f=a.length,j,d;for(j=0;j<f;j++){d=a[j];var c=a,e=j,q=void 0;"string"==typeof d&&(d={path:d});d.shared?(d.version=d.shared,q=d.shared+d.path):(G.href=d.path,q=G.href);d.uri=q;d.key=g+"-"+q;h[q]=d;c[e]=d;d.type=b;d.index=j;d.collection=a;d.ready=!1;d.evaluated=!1}return a}var f;"string"==typeof b?(f=b,b=H(f)):f=JSON.stringify(b);var g=b.id,e=g+"-"+I+r,h={};this.key=e;this.css=c(b.css,"css");this.js=c(b.js,"js");l.microloaded=!0;var n=window.Ext.filterPlatform=
 function(a){function b(a){var d=/Mobile(\/|\s)/.test(a);return/(iPhone|iPod)/.test(a)||!/(Silk)/.test(a)&&/(Android)/.test(a)&&(/(Android 2)/.test(a)||d)||/(BlackBerry|BB)/.test(a)&&d||/(Windows Phone)/.test(a)}function f(a){return!b(a)&&(/iPad/.test(a)||/Android|Silk/.test(a)||/(RIM Tablet OS)/.test(a)||/MSIE 10/.test(a)&&/; Touch/.test(a))}var j=!1,d=navigator.userAgent,c,h;a=[].concat(a);c=window.location.search.substr(1).split("\x26");h={};var g;for(g=0;g<c.length;g++){var e=c[g].split("\x3d");
@@ -68,9 +25,11 @@ k.Ext={};l.blink=function(b){var c=x(b.id+"-"+I+r);B("viewport","width\x3ddevice
 </head>
 <body>
     <div id="appLoadingIndicator">
+    <div class="inside">
         <div></div>
         <div></div>
         <div></div>
+    </div>
     </div>
 </body>
 </html>
