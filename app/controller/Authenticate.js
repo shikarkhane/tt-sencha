@@ -77,17 +77,17 @@ Ext.define('ttapp.controller.Authenticate', {
     confirmCode: function(){
         var code = Ext.getCmp('myVerificationCode').getValue();
 
-        // Ext.Ajax.request({
-        //     url: ttapp.config.Config.getBaseURL() + '/verify-user/',
-        //     method: 'POST',
-        //     headers: { 'Content-Type': 'application/json'},
-        //     disableCaching: false,
-        //     jsonData: {
-        //         "to_user": this.myPhoneNumber,
-        //         "code" : code
-        //     },
-        //
-        //     success: function(response) {
+        Ext.Ajax.request({
+            url: ttapp.config.Config.getBaseURL() + '/verify-user/',
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json'},
+            disableCaching: false,
+            jsonData: {
+                "to_user": this.myPhoneNumber,
+                "code" : code
+            },
+
+            success: function(response) {
                 //if ( JSON.parse(response.responseText)['status'] == true){
                     Ext.getStore('profilestore').verified();
 
@@ -97,8 +97,8 @@ Ext.define('ttapp.controller.Authenticate', {
                // else{
                     //console.log('Verification code doesnt match');
                // }
-            // }
-        // });
+            }
+        });
 
     }
 });
