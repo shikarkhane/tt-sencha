@@ -5,72 +5,68 @@ Ext.define('ttapp.view.Tink', {
         'ttapp.view.Thinking', 'ttapp.view.TimerClock'
     ],
     config: {
-        id:'tinkScreen',
+        id: 'tinkScreen',
         itemId: 'tinkPage',
         cls: 'bg-transparent-white flip-design-right tink-page split-page cls-tt-tinking',
         layout: {
-                type: 'vbox',
-                align: 'middle'
-            },
-        items: [
-            {
-                xtype: 'toolbar',
-                docked:'top',
-                cls:'top-bar',
-                items:[{
-                    xtype:'button',
-                    cls:'top-btn btn-tink',
-                    docked:'left',
-                    handler: function (){
-                        Ext.Viewport.animateActiveItem('trinket',{type:'slide', direction: 'right'});  
+            type: 'vbox',
+            align: 'middle'
+        },
+        items: [{
+            xtype: 'toolbar',
+            docked: 'top',
+            cls: 'top-bar',
+            items: [{
+                xtype: 'button',
+                cls: 'top-btn btn-tink',
+                docked: 'left',
+                handler: function() {
+                    Ext.Viewport.animateActiveItem('trinket', {
+                        type: 'slide',
+                        direction: 'right'
+                    });
+                }
+            }, {
+                xtype: 'button',
+                cls: 'top-btn btn-mail flip-design-right',
+                docked: 'right',
+                handler: function() {
+                    Ext.Viewport.animateActiveItem('feed', {
+                        type: 'slide'
+                    });
+                }
+            }]
+        }, {
+            itemId: 'tinkTimerClock',
+            xtype: 'timerClock'
+        }, {
+            xtype: 'image',
+            itemId: 'placeholderTrinket',
+            width: 100,
+            height: 100,
+            hidden: true,
+            cls: 'prev-trinket',
+            listeners: {
+                tap: {
+                    element: 'element',
+                    fn: function() {
+                        this.fireEvent("choosetrinket", this);
                     }
-                },{
-                    xtype:'button',
-                    cls:'top-btn btn-mail flip-design-right',
-                    docked:'right',
-                    handler: function (){
-                        Ext.Viewport.animateActiveItem('feed',{type:'slide'});  
-                    }
-                }]
-            },
-            {
-                itemId: 'tinkTimerClock',
-                xtype: 'timerClock'   
-            },
-            {
-                xtype: 'image',
-                itemId: 'placeholderTrinket',
-                width: 100,
-                height: 100,
-                hidden: true,
-                cls: 'prev-trinket',
-                listeners: {
-                        tap : {
-                            element: 'element',
-                            fn: function(){
-                                this.fireEvent("choosetrinket", this);
-
-                            }
-                         }
-                    }
-            },
-            {
-                title: 'swiffy',
-                xtype: 'panel',
-                id: "swiffydiv",
-                //flex: 5,
-                html: '<iframe id="tinkcontainer" class="tinkanimation" style="" ></iframe>'  
-             },
-            {
-                //flex: 1,               
-                //xtype: 'thinkingbutton',
-                id: 'thinkbutton',
-                cls: 'clsTinkButton button_white',
-                docked:'bottom'
-
+                }
             }
-        ]
-
+        }, {
+            title: 'swiffy',
+            xtype: 'panel',
+            id: "swiffydiv",
+            //flex: 5,
+            html: '<iframe id="tinkcontainer" class="tinkanimation" style="" ></iframe>'
+        }, {
+            //flex: 1,
+            //xtype: 'thinkingbutton',
+            id: 'thinkbutton',
+            cls: 'clsTinkButton button_white',
+            docked: 'bottom'
+        }]
     },
     initialize: function() {
         this.callParent(arguments);
@@ -88,6 +84,4 @@ Ext.define('ttapp.view.Tink', {
         Ext.get('thinkbutton').toggleCls('button_red');
         this.fireEvent("stoppedthinking", this);
     }
-
 });
-

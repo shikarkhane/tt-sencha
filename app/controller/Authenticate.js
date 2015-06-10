@@ -24,20 +24,20 @@ Ext.define('ttapp.controller.Authenticate', {
             }
         }
     },
-    sendCodeAgain: function(){
+    sendCodeAgain: function() {
         this.sendCode(this.myPhoneNumber);
     },
-    showPhoneNumber: function(){
+    showPhoneNumber: function() {
         console.log('show phone number');
         var pn = Ext.ComponentQuery.query('#entered_mobile_number')[0];
         var dc = Ext.getStore('ipinfostore').getDialCode();
         pn.setHtml(this.myPhoneNumber);
     },
-    setDialcode: function(){
+    setDialcode: function() {
         var m = Ext.ComponentQuery.query('#myDialCode')[0];
         m.setValue(Ext.getStore('ipinfostore').getDialCode());
     },
-    clearLocalStores: function(){
+    clearLocalStores: function() {
         var ps = Ext.getStore('profilestore');
         ps.getProxy().clear();
         ps.data.clear();
@@ -45,60 +45,65 @@ Ext.define('ttapp.controller.Authenticate', {
 
         this.setDialcode();
     },
-    sendConfirmationCode: function(){
-        var m = Ext.ComponentQuery.query('#myDialCode')[0];
+    sendConfirmationCode: function() {
+        var me = this,
+            m = Ext.ComponentQuery.query('#myDialCode')[0];
 
         var phoneNumber = m.getValue() + Ext.getCmp('myPhoneNumber').getValue();
-        this.myPhoneNumber = phoneNumber;
+        me.myPhoneNumber = phoneNumber;
 
         // store user profile locally
-        if (Ext.getStore('profilestore').addProfile(phoneNumber,false, (new Date()).valueOf(),
-            Ext.getStore('trinketstore').getDefaultTrinket())){
+        Ext.getStore('trinketstore').getDefaultTrinket(function(trinketName) {
+            if (Ext.getStore('profilestore').addProfile(phoneNumber, false, (new Date()).valueOf(), trinketName)) {
+                me.sendCode(phoneNumber);
 
-            this.sendCode(phoneNumber);
-
-            Ext.Viewport.animateActiveItem('confirmphonenumber',{type:'slide'});
-        }
+                Ext.Viewport.animateActiveItem('confirmphonenumber', {
+                    type: 'slide'
+                });
+            }
+        });
     },
-    sendCode: function(phoneNumber){
-            Ext.Ajax.request({
-                url: ttapp.config.Config.getBaseURL() + '/sms-code/',
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json'},
-                disableCaching: false,
-                jsonData: {
-                    "to_user": phoneNumber
-                },
-
-                success: function(response) {
-                    console.log(response.responseText);
-                }
-            });
-
+    sendCode: function(phoneNumber) {
+        Ext.Ajax.request({
+            url: ttapp.config.Config.getBaseURL() + '/sms-code/',
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            disableCaching: false,
+            jsonData: {
+                "to_user": phoneNumber
+            },
+            success: function(response) {
+                console.log(response.responseText);
+            }
+        });
     },
-    confirmCode: function(){
+    confirmCode: function() {
         var code = Ext.getCmp('myVerificationCode').getValue();
 
         Ext.Ajax.request({
             url: ttapp.config.Config.getBaseURL() + '/verify-user/',
             method: 'POST',
-            headers: { 'Content-Type': 'application/json'},
+            headers: {
+                'Content-Type': 'application/json'
+            },
             disableCaching: false,
             jsonData: {
                 "to_user": this.myPhoneNumber,
-                "code" : code
+                "code": code
             },
 
             success: function(response) {
                 //if ( JSON.parse(response.responseText)['status'] == true){
-                    Ext.getStore('profilestore').verified();
+                Ext.getStore('profilestore').verified();
 
-                    ttapp.util.FeedProxy.process(true);
-                    Ext.Viewport.setActiveItem('trinket','slide');
-               // }
-               // else{
-                    //console.log('Verification code doesnt match');
-               // }
+                ttapp.util.FeedProxy.process(true);
+                Ext.Viewport.setActiveItem('trinket', 'slide');
+                // }
+                // else{
+                //console.log('Verification code doesnt match');
+                // }
             }
         });
 

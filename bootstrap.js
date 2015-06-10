@@ -34,7 +34,8 @@ Ext.Loader.addClassPathMappings({
   "Ext.device.sqlite.SQLTransaction": "touch/src/device/sqlite/Sencha.js",
   "ttapp": "app",
   "ttapp.util.ContactsProxy": "app/store/Contacts.js",
-  "ttapp.util.FeedProxy": "app/store/Messages.js"
+  "ttapp.util.FeedProxy": "app/store/Messages.js",
+  "ttapp.util.TrinketProxy": "app/store/Trinkets.js"
 });
 
 Ext.ClassManager.addNameAlternateMappings({
@@ -534,6 +535,17 @@ Ext.ClassManager.addNameAlternateMappings({
   "Ext.layout.wrapper.BoxDock": [],
   "Ext.layout.wrapper.Dock": [],
   "Ext.layout.wrapper.Inner": [],
+  "Ext.log.Base": [],
+  "Ext.log.Logger": [],
+  "Ext.log.filter.Filter": [],
+  "Ext.log.filter.Priority": [],
+  "Ext.log.formatter.Default": [],
+  "Ext.log.formatter.Formatter": [],
+  "Ext.log.formatter.Identity": [],
+  "Ext.log.writer.Console": [],
+  "Ext.log.writer.DocumentTitle": [],
+  "Ext.log.writer.Remote": [],
+  "Ext.log.writer.Writer": [],
   "Ext.mixin.Bindable": [],
   "Ext.mixin.Filterable": [],
   "Ext.mixin.Mixin": [],
@@ -674,6 +686,8 @@ Ext.ClassManager.addNameAlternateMappings({
   "ttapp.model.Message": [],
   "ttapp.model.Profile": [],
   "ttapp.model.Trinket": [],
+  "ttapp.overrides.PaintMonitor": [],
+  "ttapp.overrides.SizeMonitor": [],
   "ttapp.store.Contacts": [],
   "ttapp.store.IpInfo": [],
   "ttapp.store.Messages": [],
@@ -684,6 +698,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "ttapp.util.ContactsProxy": [],
   "ttapp.util.FeedProxy": [],
   "ttapp.util.Push": [],
+  "ttapp.util.TrinketProxy": [],
   "ttapp.view.Authenticate": [],
   "ttapp.view.ConfirmPhoneNumber": [],
   "ttapp.view.DogEar": [],
@@ -1280,6 +1295,17 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.layout.wrapper.BoxDock": [],
   "Ext.layout.wrapper.Dock": [],
   "Ext.layout.wrapper.Inner": [],
+  "Ext.log.Base": [],
+  "Ext.log.Logger": [],
+  "Ext.log.filter.Filter": [],
+  "Ext.log.filter.Priority": [],
+  "Ext.log.formatter.Default": [],
+  "Ext.log.formatter.Formatter": [],
+  "Ext.log.formatter.Identity": [],
+  "Ext.log.writer.Console": [],
+  "Ext.log.writer.DocumentTitle": [],
+  "Ext.log.writer.Remote": [],
+  "Ext.log.writer.Writer": [],
   "Ext.mixin.Bindable": [],
   "Ext.mixin.Filterable": [],
   "Ext.mixin.Mixin": [],
@@ -1440,6 +1466,8 @@ Ext.ClassManager.addNameAliasMappings({
   "ttapp.model.Message": [],
   "ttapp.model.Profile": [],
   "ttapp.model.Trinket": [],
+  "ttapp.overrides.PaintMonitor": [],
+  "ttapp.overrides.SizeMonitor": [],
   "ttapp.store.Contacts": [],
   "ttapp.store.IpInfo": [
     "store.IpInfo"
@@ -1454,6 +1482,7 @@ Ext.ClassManager.addNameAliasMappings({
   "ttapp.util.ContactsProxy": [],
   "ttapp.util.FeedProxy": [],
   "ttapp.util.Push": [],
+  "ttapp.util.TrinketProxy": [],
   "ttapp.view.Authenticate": [
     "widget.authenticate"
   ],

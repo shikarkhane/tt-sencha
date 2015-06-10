@@ -14,7 +14,8 @@ Ext.application({
     name: 'ttapp',
 
     requires: [
-        'Ext.MessageBox', 'Ext.device.Contacts'
+        'Ext.MessageBox', 'Ext.device.Contacts',
+        'ttapp.overrides.SizeMonitor', 'ttapp.overrides.PaintMonitor'
     ],
     controllers: ['Main', 'Tink', 'SendTo', 'Landing', 'Authenticate',
     'Trinket', 'DogEar', 'Split', 'Feed', 'ReplayTink'],
@@ -45,7 +46,7 @@ Ext.application({
         '1496x2048': 'resources/startup/1496x2048.png'
     },
 
-    
+
     launch: function() {
         // Destroy the #appLoadingIndicator element
         Ext.fly('appLoadingIndicator').destroy();
@@ -67,7 +68,6 @@ Ext.application({
 
         // set user's country dial code based on ip-address
         ttapp.util.Common.setDialCode();
-
     },
 
     onUpdated: function() {

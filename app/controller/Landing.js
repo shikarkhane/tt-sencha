@@ -12,15 +12,19 @@ Ext.define('ttapp.controller.Landing', {
             }
         }
     },
-    onUserAction: function(){
-        if (Ext.os.deviceType == 'Phone'){
-                ttapp.util.Push.takeUserPermissionForPushNotify();
+    onUserAction: function() {
+        if (Ext.os.deviceType == 'Phone') {
+            ttapp.util.Push.takeUserPermissionForPushNotify();
+        }
+
+        Ext.getStore('profilestore').isUserVerified(function(success) {
+            if (success === true) {
+                Ext.Viewport.setActiveItem('trinket', 'slide');
+            } else {
+                Ext.Viewport.animateActiveItem('authenticate', {
+                    type: 'slide'
+                });
             }
-        if ( Ext.getStore('profilestore').isUserVerified() === true){
-            Ext.Viewport.setActiveItem('trinket','slide');
-        }
-        else{
-            Ext.Viewport.animateActiveItem('authenticate',{type:'slide'});
-        }
+        });
     }
 });
