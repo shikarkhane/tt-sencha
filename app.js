@@ -45,7 +45,7 @@ Ext.application({
         '1496x2048': 'resources/startup/1496x2048.png'
     },
 
-    
+
     launch: function() {
         // Destroy the #appLoadingIndicator element
         Ext.fly('appLoadingIndicator').destroy();
@@ -67,7 +67,6 @@ Ext.application({
 
         // set user's country dial code based on ip-address
         ttapp.util.Common.setDialCode();
-
     },
 
     onUpdated: function() {
@@ -80,5 +79,29 @@ Ext.application({
                 }
             }
         );
+    }
+});
+
+Ext.define('Override.util.PaintMonitor', {
+    override : 'Ext.util.PaintMonitor',
+
+    constructor : function(config) {
+        return new Ext.util.paintmonitor.CssAnimation(config);
+    }
+});
+
+Ext.define('Override.util.SizeMonitor', {
+    override : 'Ext.util.SizeMonitor',
+
+    constructor : function(config) {
+        var namespace = Ext.util.sizemonitor;
+
+        if (Ext.browser.is.Firefox) {
+            return new namespace.OverflowChange(config);
+        } else if (Ext.browser.is.WebKit || Ext.browser.is.IE11) {
+            return new namespace.Scroll(config);
+        } else {
+            return new namespace.Default(config);
+        }
     }
 });
