@@ -18,7 +18,7 @@ Ext.define('ttapp.util.Common', {
         // if user is not verified on server, clear local profile and make him authenticate again
         Ext.getStore('profilestore').getPhoneNumber(function(user) {
             if (!user) {
-                return false
+                return false;
             }
 
             Ext.Ajax.request({

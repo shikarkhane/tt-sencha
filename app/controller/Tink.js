@@ -95,7 +95,17 @@ Ext.define('ttapp.controller.Tink', {
                     me.showActiveTrinketThumbnail(activeTrinketThumbnailPath);
 
                     var trinketArea = Ext.get('swiffydiv');
-                    trinketArea.setHtml('<iframe id="tinkcontainer" class="tinkanimation" allowtransparence="true" src="' + activeTrinketSwiffyPath + '"></iframe>');
+                    trinketArea.setHtml('<iframe id="tinkcontainer" class="tinkanimation" allowtransparence="true"></iframe>');
+
+                    var iframe = trinketArea.child('iframe');
+                    iframe.dom.style.opacity = 0;
+
+                    iframe.dom.onload = function() {
+                        iframe.dom.style.opacity = 1;
+                        iframe.dom.onload = null;
+                    };
+
+                    iframe.dom.src = activeTrinketSwiffyPath;
                 });
             });
         });
