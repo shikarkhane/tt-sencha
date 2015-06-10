@@ -4,3 +4,4 @@ npm-debug.log
 ._.DS_Store
 .sass-cache
 build/production/ttapp/archive
+build/production/ttapp/deltas

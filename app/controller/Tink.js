@@ -5,7 +5,7 @@ Ext.define('ttapp.controller.Tink', {
     ],
     config: {
         refs: {
-            clock : 'timerClock'
+            clock: 'timerClock'
         },
         control: {
             'tink': {
@@ -14,59 +14,69 @@ Ext.define('ttapp.controller.Tink', {
                 show: 'onShow',
                 resetTinkOnActivate: 'onShow'
             },
-            'tink image':{
+            'tink image': {
                 choosetrinket: 'onChooseTrinket'
             }
         }
     },
-    onChooseTrinket: function(){
+    onChooseTrinket: function() {
         // Ext.Viewport.setActiveItem('trinket');
-        Ext.Viewport.animateActiveItem('trinket',{type:'slide', direction: 'right'}); 
+        Ext.Viewport.animateActiveItem('trinket', {
+            type: 'slide',
+            direction: 'right'
+        });
     },
-    onThinking : function(){
+    onThinking: function() {
         this.hideActiveTrinketThumbnail();
-        this.getClock().start();        
+        this.getClock().start();
         this.runAnimation();
         //Ext.getDom('tinkcontainer').contentWindow.tt_start_animation();
         Ext.getCmp('tinkScreen').addCls('show-full-frame');
 
     },
-    onStoppedThinking : function(){
-        this.stopAnimation();
-        //Ext.getDom('tinkcontainer').contentWindow.tt_stop_animation();
-        this.getClock().pause();
-        
-        var periodInSeconds = this.getClock().getDuration();
-        if ( periodInSeconds < 1) { periodInSeconds = 1;}
+    onStoppedThinking: function() {
+        var me = this;
 
-        var trinketName = Ext.getStore('profilestore').getActiveTrinket();
-        this.getApplication().getController('SendTo').showSendTo(this, periodInSeconds, trinketName);
-        Ext.getCmp('tinkScreen').removeCls('show-full-frame');
+        me.stopAnimation();
+        //Ext.getDom('tinkcontainer').contentWindow.tt_stop_animation();
+        me.getClock().pause();
+
+        var periodInSeconds = me.getClock().getDuration();
+        if (periodInSeconds < 1) {
+            periodInSeconds = 1;
+        }
+
+        Ext.getStore('profilestore').getActiveTrinket(function(trinketName) {
+            var trinketName = Ext.getStore('profilestore').getActiveTrinket();
+            me.getApplication().getController('SendTo').showSendTo(me, periodInSeconds, trinketName);
+            Ext.getCmp('tinkScreen').removeCls('show-full-frame');
+        });
     },
-    onShow: function(){
+    onShow: function() {
         this.resetTimerClock();
         this.useActiveTrinket();
         this.updateNotifyRedDot();
-        
+
     },
-    updateNotifyRedDot: function(){
+    updateNotifyRedDot: function() {
         var unreadRedDot = ttapp.config.Config.getUnreadMessage();
         ttapp.util.Common.updateNotifySymbol(unreadRedDot);
     },
-    showActiveTrinketThumbnail: function(imgUrl){
+    showActiveTrinketThumbnail: function(imgUrl) {
         var pt = Ext.ComponentQuery.query('#placeholderTrinket')[0];
         pt.setSrc(imgUrl);
-        pt.setTop((ttapp.config.Config.getHeight()/3)+50);
+        pt.setTop((ttapp.config.Config.getHeight() / 3) + 50);
         // pt.setLeft((ttapp.config.Config.getWidth()/2)-50);
         pt.setHidden(false);
     },
-    hideActiveTrinketThumbnail: function(imgUrl){
+    hideActiveTrinketThumbnail: function(imgUrl) {
         var pt = Ext.ComponentQuery.query('#placeholderTrinket')[0];
         pt.setHidden(true);
     },
-    resetTimerClock: function(){
+    resetTimerClock: function() {
         var tc = Ext.ComponentQuery.query('#tinkTimerClock')[0];
         tc.destroy();
+
         var tp = Ext.ComponentQuery.query('#tinkPage')[0];
         tp.add({
             itemId: 'tinkTimerClock',
@@ -74,29 +84,26 @@ Ext.define('ttapp.controller.Tink', {
             cls: 'clsTimerClock'
         });
     },
-    useActiveTrinket : function(){
-        this.activeTrinketName = Ext.getStore('profilestore').getActiveTrinket();
-        var activeTrinketThumbnailPath = Ext.getStore('trinketstore').getThumbnailPath(this.activeTrinketName);
-        var activeTrinketSwiffyPath = Ext.getStore('trinketstore').getSwiffyPath(this.activeTrinketName);
+    useActiveTrinket: function() {
+        var me = this;
 
-        this.showActiveTrinketThumbnail(activeTrinketThumbnailPath);
+        Ext.getStore('profilestore').getActiveTrinket(function(trinketName) {
+            me.activeTrinketName = trinketName;
 
-        var trinketArea = Ext.get('swiffydiv');
+            var activeTrinketThumbnailPath = Ext.getStore('trinketstore').getThumbnailPath(me.activeTrinketName);
+            var activeTrinketSwiffyPath = Ext.getStore('trinketstore').getSwiffyPath(me.activeTrinketName);
 
-        trinketArea.setHtml('<iframe id="tinkcontainer" class="tinkanimation" style="opacity:0;" src="' + activeTrinketSwiffyPath + '"></iframe>');
-    
-        setTimeout(function() {
+            me.showActiveTrinketThumbnail(activeTrinketThumbnailPath);
 
-            var el = Ext.Element.get('tinkcontainer');
-            if (el) {
-                el.setStyle('opacity', '1');
-            }
-        }, 650);
+            var trinketArea = Ext.get('swiffydiv');
+
+            trinketArea.setHtml('<iframe id="tinkcontainer" class="tinkanimation" allowtransparence="true" src="' + activeTrinketSwiffyPath + '"></iframe>');
+        });
     },
-    runAnimation: function(){        
-        Ext.getDom('tinkcontainer').contentWindow.tt_start_animation();        
+    runAnimation: function() {
+        Ext.getDom('tinkcontainer').contentWindow.tt_start_animation();
     },
-    stopAnimation: function(){
+    stopAnimation: function() {
         //this.stage.destroy();
         Ext.getDom('tinkcontainer').contentWindow.tt_stop_animation();
 

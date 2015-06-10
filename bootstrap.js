@@ -34,7 +34,8 @@ Ext.Loader.addClassPathMappings({
   "Ext.device.sqlite.SQLTransaction": "touch/src/device/sqlite/Sencha.js",
   "ttapp": "app",
   "ttapp.util.ContactsProxy": "app/store/Contacts.js",
-  "ttapp.util.FeedProxy": "app/store/Messages.js"
+  "ttapp.util.FeedProxy": "app/store/Messages.js",
+  "ttapp.util.TrinketProxy": "app/store/Trinkets.js"
 });
 
 Ext.ClassManager.addNameAlternateMappings({
@@ -684,6 +685,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "ttapp.util.ContactsProxy": [],
   "ttapp.util.FeedProxy": [],
   "ttapp.util.Push": [],
+  "ttapp.util.TrinketProxy": [],
   "ttapp.view.Authenticate": [],
   "ttapp.view.ConfirmPhoneNumber": [],
   "ttapp.view.DogEar": [],
@@ -1454,6 +1456,7 @@ Ext.ClassManager.addNameAliasMappings({
   "ttapp.util.ContactsProxy": [],
   "ttapp.util.FeedProxy": [],
   "ttapp.util.Push": [],
+  "ttapp.util.TrinketProxy": [],
   "ttapp.view.Authenticate": [
     "widget.authenticate"
   ],
