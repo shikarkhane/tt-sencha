@@ -64,7 +64,6 @@ Ext.define('ttapp.controller.Authenticate', {
         });
     },
     sendCode: function(phoneNumber) {
-        return;
         Ext.Ajax.request({
             url: ttapp.config.Config.getBaseURL() + '/sms-code/',
             method: 'POST',

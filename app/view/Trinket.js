@@ -47,7 +47,6 @@ Ext.define('ttapp.view.Trinket', {
 
             store.setData(all.slice(offset_start, offset_end));
 
-            // console.log(store);
             carousel.add(Ext.create('Ext.List', {
                 scrollable: false,
                 id: 'p_' + i,

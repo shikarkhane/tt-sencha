@@ -14,25 +14,12 @@ Ext.define('ttapp.store.Profile', {
         }
     },
     isUserVerified: function(callback) {
-        var fn = function(success) {
-            var record = this.getAt(0);
-            if (success && record) {
-                callback(m.get('is_verified'));
-            } else {
-                callback(false);
-            }
-        };
-
-        if (this.loaded) {
-            return fn.call(this, true);
+        var record = this.getAt(0);
+        if (record) {
+            callback(m.get('is_verified'));
+        } else {
+            callback(false);
         }
-
-        this.load({
-            callback: function(records, operation, success) {
-                fn(success);
-            },
-            scope: this
-        });
     },
     addProfile: function(phoneNumber, isVerified, lastUpdatedOn, selectedTrinketName) {
         var result = false;
@@ -53,6 +40,7 @@ Ext.define('ttapp.store.Profile', {
         if (errors.isValid()) {
             this.add(usr);
             this.sync();
+
             result = true;
         } else {
             Ext.Msg.alert('Check number', 'Phone number is not correct', Ext.emptyFn);
@@ -61,51 +49,31 @@ Ext.define('ttapp.store.Profile', {
         return result;
     },
     getPhoneNumber: function(callback) {
-        this.load({
-            scope: this,
-            callback: function() {
-                var record = this.getAt(0);
-                if (record) {
-                    callback(record.get('phone_number'));
-                } else {
-                    callback(false);
-                }
-            }
-        });
+        var record = this.getAt(0);
+        if (record) {
+            callback(record.get('phone_number'));
+        } else {
+            callback(false);
+        }
     },
     verified: function() {
-        this.load({
-            scope: this,
-            callback: function() {
-                var record = this.getAt(0);
-                if (record) {
-                    record.set('is_verified', true);
-                }
+        var record = this.getAt(0);
+        if (record) {
+            record.set('is_verified', true);
+        }
 
-                this.sync();
-            }
-        });
+        this.sync();
     },
     setActiveTrinket: function(trinket_name) {
-        this.load({
-            scope: this,
-            callback: function() {
-                var record = this.getAt(0);
-                if (record) {
-                    record.set('selected_trinket_name', trinket_name);
-                }
+        var record = this.getAt(0);
+        if (record) {
+            record.set('selected_trinket_name', trinket_name);
+        }
 
-                this.sync();
-            }
-        });
+        this.sync();
     },
     getActiveTrinket: function(callback) {
-        this.load({
-            scope: this,
-            callback: function() {
-                var record = this.getAt(0);
-                callback(record ? record.get('selected_trinket_name') : false);
-            }
-        });
+        var record = this.getAt(0);
+        callback(record ? record.get('selected_trinket_name') : false);
     }
 });
