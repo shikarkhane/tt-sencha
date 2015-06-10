@@ -51,7 +51,6 @@ Ext.define('ttapp.view.Tink', {
                     element: 'element',
                     fn: function() {
                         this.fireEvent("choosetrinket", this);
-
                     }
                 }
             }
@@ -67,9 +66,7 @@ Ext.define('ttapp.view.Tink', {
             id: 'thinkbutton',
             cls: 'clsTinkButton button_white',
             docked: 'bottom'
-
         }]
-
     },
     initialize: function() {
         this.callParent(arguments);

@@ -70,7 +70,6 @@ Ext.define('ttapp.util.FeedProxy', {
                             fromUserName = Ext.getStore('phonecontacts').getFirstLastName(fromUser);
                         }
 
-
                         // order of this check is imp
                         if (unread == true) {
                             trinketFilePath = logoTrinketFilePath;
@@ -92,6 +91,7 @@ Ext.define('ttapp.util.FeedProxy', {
                             'for_inbox': forInbox,
                             'unread': unread
                         });
+
                         messageStore.add(messageModel);
                     });
 

@@ -47,16 +47,16 @@ Ext.define('ttapp.controller.Tink', {
         }
 
         Ext.getStore('profilestore').getActiveTrinket(function(trinketName) {
-            var trinketName = Ext.getStore('profilestore').getActiveTrinket();
-            me.getApplication().getController('SendTo').showSendTo(me, periodInSeconds, trinketName);
-            Ext.getCmp('tinkScreen').removeCls('show-full-frame');
+            Ext.getStore('profilestore').getActiveTrinket(function(trinketName) {
+                me.getApplication().getController('SendTo').showSendTo(me, periodInSeconds, trinketName);
+                Ext.getCmp('tinkScreen').removeCls('show-full-frame');
+            });
         });
     },
     onShow: function() {
         this.resetTimerClock();
         this.useActiveTrinket();
         this.updateNotifyRedDot();
-
     },
     updateNotifyRedDot: function() {
         var unreadRedDot = ttapp.config.Config.getUnreadMessage();
@@ -90,14 +90,14 @@ Ext.define('ttapp.controller.Tink', {
         Ext.getStore('profilestore').getActiveTrinket(function(trinketName) {
             me.activeTrinketName = trinketName;
 
-            var activeTrinketThumbnailPath = Ext.getStore('trinketstore').getThumbnailPath(me.activeTrinketName);
-            var activeTrinketSwiffyPath = Ext.getStore('trinketstore').getSwiffyPath(me.activeTrinketName);
+            Ext.getStore('trinketstore').getThumbnailPath(me.activeTrinketName, function(activeTrinketThumbnailPath) {
+                Ext.getStore('trinketstore').getSwiffyPath(me.activeTrinketName, function(activeTrinketSwiffyPath) {
+                    me.showActiveTrinketThumbnail(activeTrinketThumbnailPath);
 
-            me.showActiveTrinketThumbnail(activeTrinketThumbnailPath);
-
-            var trinketArea = Ext.get('swiffydiv');
-
-            trinketArea.setHtml('<iframe id="tinkcontainer" class="tinkanimation" allowtransparence="true" src="' + activeTrinketSwiffyPath + '"></iframe>');
+                    var trinketArea = Ext.get('swiffydiv');
+                    trinketArea.setHtml('<iframe id="tinkcontainer" class="tinkanimation" allowtransparence="true" src="' + activeTrinketSwiffyPath + '"></iframe>');
+                });
+            });
         });
     },
     runAnimation: function() {
@@ -106,7 +106,5 @@ Ext.define('ttapp.controller.Tink', {
     stopAnimation: function() {
         //this.stage.destroy();
         Ext.getDom('tinkcontainer').contentWindow.tt_stop_animation();
-
     }
-
 });

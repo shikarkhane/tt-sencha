@@ -45,29 +45,30 @@ Ext.define('ttapp.controller.SendTo', {
         this.setPreviewItems();
     },
     setPreviewItems: function() {
-        var prevTrinket = Ext.ComponentQuery.query('#previewTrinket')[0];
-        var secSent = Ext.ComponentQuery.query('#previewSeconds')[0];
-        console.log(this.seconds_sent);
+        var prevTrinket = Ext.ComponentQuery.query('#previewTrinket')[0],
+            secSent = Ext.ComponentQuery.query('#previewSeconds')[0];
+
         if (this.seconds_sent == null) {
             secSent.setHtml('--');
         } else {
             secSent.setHtml(this.seconds_sent + "s");
         }
 
-        var activeTrinketThumbnailPath = Ext.getStore('trinketstore').getThumbnailPath(this.trinket_name);
-        prevTrinket.setSrc(activeTrinketThumbnailPath);
+        Ext.getStore('trinketstore').getThumbnailPath(this.trinket_name, function(activeTrinketThumbnailPath) {
+            prevTrinket.setSrc(activeTrinketThumbnailPath);
+        });
     },
     saveTappedContact: function(list, idx, target, record, evt) {
         this.fullName = record.data.first_name + ' ' + record.data.last_name;
         this.phoneNumber = record.data.phone_number;
         this.getSearchContactsField().setValue(this.fullName);
+
         setTimeout(function() {
-                Ext.getStore('phonecontacts').clearFilter();
-                Ext.getCmp('contactsListToChoose').setStore('');
-                Ext.getCmp('contactsListToChoose').setHeight('0px');
-                Ext.getCmp('contactsListToChoose').removeCls('show-list');
-            },
-            5);
+            Ext.getStore('phonecontacts').clearFilter();
+            Ext.getCmp('contactsListToChoose').setStore('');
+            Ext.getCmp('contactsListToChoose').setHeight('0px');
+            Ext.getCmp('contactsListToChoose').removeCls('show-list');
+        }, 5);
     },
     clearAll: function() {
         var sf = Ext.ComponentQuery.query('searchfield[cls~=search-contacts-field]')[0];

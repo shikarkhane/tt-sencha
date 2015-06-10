@@ -5,33 +5,34 @@ Ext.define('ttapp.util.TrinketProxy', {
     process: function(clearAll) {
         var tStore = Ext.getStore('trinketstore');
 
-        if(clearAll){
+        if (clearAll) {
             tStore.removeAll();
         }
-        
+
         Ext.Ajax.request({
-            url:  ttapp.config.Config.getBaseURL() + '/trinket-list/',
+            url: ttapp.config.Config.getBaseURL() + '/trinket-list/',
             method: 'GET',
-            headers: { 'Content-Type': 'application/json'},
+            headers: {
+                'Content-Type': 'application/json'
+            },
             disableCaching: false,
-            
             success: function(response) {
                 // if nothing has changed dont re-render feed
-                if ( response.status != 200 ){
+                if (response.status != 200) {
                     return 0;
                 }
-                var ts = Ext.JSON.decode(response.responseText.trim());                            
+                var ts = Ext.JSON.decode(response.responseText.trim());
                 var tStore = Ext.getStore('trinketstore');
 
-                Ext.Array.each( ts, function(t) {
+                Ext.Array.each(ts, function(t) {
                     tStore.addTrinket(t.trinketId, t.groupId, t.name, t.label, t.thumbnailPath, t.swiffyPath);
                     tStore.sync();
                 });
-                
             }
         });
     }
 });
+
 Ext.define('ttapp.store.Trinkets', {
     extend: 'Ext.data.Store',
     requires: [
@@ -39,53 +40,93 @@ Ext.define('ttapp.store.Trinkets', {
     ],
     config: {
         storeId: 'trinketstore',
-    	model: 'ttapp.model.Trinket',
+        model: 'ttapp.model.Trinket',
         proxy: {
             type: 'localstorage',
             id: 'trinketstoreproxy'
-        }        
+        }
     },
-    removeAll: function(){
+    removeAll: function() {
         this.getProxy().clear();
         this.data.clear();
-        this.sync();      
+        this.sync();
     },
-    addTrinket: function(trinketId, groupId, name, label, thumbnailPath, swiffyPath){
-        var t = Ext.create('ttapp.model.Trinket',{
+    addTrinket: function(trinketId, groupId, name, label, thumbnailPath, swiffyPath) {
+        var t = Ext.create('ttapp.model.Trinket', {
             trinket_id: trinketId,
             group_id: groupId,
             name: name,
             label: label,
             thumbnail_path: thumbnailPath,
             swiffy_path: swiffyPath
-            });
+        });
 
         this.add(t);
     },
-    getDefaultTrinket: function(){
-        this.load();
-        return this.getAt(0).get('name');
+    getDefaultTrinket: function(callback) {
+        this.load({
+            scope: this,
+            callback: function() {
+                var record = this.getAt(0);
+                callback(record ? record.get('name') : null);
+            }
+        });
     },
-    getTrinketId: function(name){
-        this.load();
-        var v="^"+ name + "$"; 
-        var nv=new RegExp(v);
-        var i = this.find('name', nv);
-        return this.getAt(i).get('trinket_id');
+    // getTrinketId: function(name) {
+    //     this.load();
+    //     var v = "^" + name + "$";
+    //     var nv = new RegExp(v);
+    //     var i = this.find('name', nv);
+    //     return this.getAt(i).get('trinket_id');
+    // },
+    getThumbnailPath: function(name, callback) {
+        var record = null;
+
+        if (this.loaded) {
+            var v = "^" + name + "$",
+                nv = new RegExp(v),
+                i = this.find('name', nv);
+
+            if (i != -1) {
+                record = this.getAt(i).get('thumbnail_path');
+            }
+        }
+
+        if (callback) {
+            this.load({
+                scope: this,
+                callback: function() {
+                    var v = "^" + name + "$",
+                        nv = new RegExp(v),
+                        i = this.find('name', nv);
+
+                    if (i != -1) {
+                        callback(this.getAt(i).get('thumbnail_path'));
+                    }
+                    else {
+                        callback(null);
+                    }
+                }
+            });
+        }
+
+        return record;
     },
-    getThumbnailPath: function(name){
-        //debugger;
-        this.load();
-        var v="^"+ name + "$"; 
-        var nv=new RegExp(v);
-        var i = this.find('name', nv);
-        return this.getAt(i).get('thumbnail_path');
-    },
-    getSwiffyPath: function(name){
-        this.load();
-        var v="^"+ name + "$"; 
-        var nv=new RegExp(v);
-        var i = this.find('name', nv);
-        return this.getAt(i).get('swiffy_path');
+    getSwiffyPath: function(name, callback) {
+        this.load({
+            scope: this,
+            callback: function() {
+                var v = "^" + name + "$",
+                    nv = new RegExp(v),
+                    i = this.find('name', nv);
+
+                if (i != -1) {
+                    callback(this.getAt(i).get('swiffy_path'));
+                }
+                else {
+                    callback(null);
+                }
+            }
+        });
     }
- });
+});

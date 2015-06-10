@@ -46,23 +46,25 @@ Ext.define('ttapp.controller.Authenticate', {
         this.setDialcode();
     },
     sendConfirmationCode: function() {
-        var m = Ext.ComponentQuery.query('#myDialCode')[0];
+        var me = this,
+            m = Ext.ComponentQuery.query('#myDialCode')[0];
 
         var phoneNumber = m.getValue() + Ext.getCmp('myPhoneNumber').getValue();
-        this.myPhoneNumber = phoneNumber;
+        me.myPhoneNumber = phoneNumber;
 
         // store user profile locally
-        if (Ext.getStore('profilestore').addProfile(phoneNumber, false, (new Date()).valueOf(),
-                Ext.getStore('trinketstore').getDefaultTrinket())) {
+        Ext.getStore('trinketstore').getDefaultTrinket(function(trinketName) {
+            if (Ext.getStore('profilestore').addProfile(phoneNumber, false, (new Date()).valueOf(), trinketName)) {
+                me.sendCode(phoneNumber);
 
-            this.sendCode(phoneNumber);
-
-            Ext.Viewport.animateActiveItem('confirmphonenumber', {
-                type: 'slide'
-            });
-        }
+                Ext.Viewport.animateActiveItem('confirmphonenumber', {
+                    type: 'slide'
+                });
+            }
+        });
     },
     sendCode: function(phoneNumber) {
+        return;
         Ext.Ajax.request({
             url: ttapp.config.Config.getBaseURL() + '/sms-code/',
             method: 'POST',
@@ -73,12 +75,10 @@ Ext.define('ttapp.controller.Authenticate', {
             jsonData: {
                 "to_user": phoneNumber
             },
-
             success: function(response) {
                 console.log(response.responseText);
             }
         });
-
     },
     confirmCode: function() {
         var code = Ext.getCmp('myVerificationCode').getValue();
