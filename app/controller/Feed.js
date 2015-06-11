@@ -9,19 +9,20 @@ Ext.define('ttapp.controller.Feed', {
         }
     },
     onShowTinkInFeed: function(list, idx, target, record, evt) {
-        var element = Ext.get(evt.target);
+        var element = Ext.get(evt.target),
+            me = this;
+
         Ext.getStore('profilestore').getPhoneNumber(function(from_user) {
             if ((from_user != record.data.from_user) && (record.data.unread)) {
-                this.tinkRead(element, record);
+                me.tinkRead(element, record);
             }
 
-            this.getApplication().getController("ttapp.controller.ReplayTink").addReplay(record.data.seconds_sent, record.data.text, record.data.trinket_name);
+            me.getApplication().getController("ttapp.controller.ReplayTink").addReplay(record.data.seconds_sent, record.data.text, record.data.trinket_name);
         });
     },
     tinkRead: function(element, record) {
         //just mark it read locally, next refresh from server will get get correct values anyways
         element.parent('.read-or-not').removeCls('true').addCls('false');
-
         element.parent('.read-or-not').query('.img-bg')[0].style.background = 'url(' + record.data.original_trinket_file_path + ')';
 
         //mark the tink as read on the server
@@ -46,9 +47,9 @@ Ext.define('ttapp.controller.Feed', {
                 console.log(response.responseText);
             }
         });
+
         //change the red dot on email icon
         ttapp.util.Common.updateNotifySymbol(false);
-
     },
     returnFormattedDate: function(timestamp) {
         var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];

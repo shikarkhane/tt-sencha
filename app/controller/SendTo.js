@@ -38,7 +38,6 @@ Ext.define('ttapp.controller.SendTo', {
             // Remove readonly attribute after keyboard is hidden.
             activeElement.removeAttribute('readonly');
             activeElement.removeAttribute('disabled');
-
         }, 100);
     },
     onShowSendTo: function() {
@@ -96,7 +95,6 @@ Ext.define('ttapp.controller.SendTo', {
 
         //check if a value is set first, as if it isnt we dont have to do anything
         if (value) {
-
             var thisRegEx = new RegExp(value, "i");
             store.filterBy(function(record) {
                 if (thisRegEx.test(record.get('first_name')) ||
@@ -144,33 +142,35 @@ Ext.define('ttapp.controller.SendTo', {
         }
     },
     composeTink: function(list, idx, target, record, evt) {
+        var me = this;
+
         Ext.getStore('profilestore').getPhoneNumber(function(from_user) {
             var prevTextMsg = Ext.ComponentQuery.query('#previewTextMsg')[0];
 
-            if (this.phoneNumber) {
+            if (me.phoneNumber) {
                 //is receipient on tinktime
-                if (Ext.getStore('phonecontacts').isOnTinkTime(this.phoneNumber)) {
-                    this.sendTink(from_user, this.phoneNumber, (new Date()).valueOf(), this.trinket_name, prevTextMsg.getValue(), this.seconds_sent);
+                if (Ext.getStore('phonecontacts').isOnTinkTime(me.phoneNumber)) {
+                    me.sendTink(from_user, me.phoneNumber, (new Date()).valueOf(), me.trinket_name, prevTextMsg.getValue(), me.seconds_sent);
 
                     //reset before leaving
-                    this.clearAll();
-                    this.closeMe();
-                    this.showSplit();
+                    me.clearAll();
+                    me.closeMe();
+                    me.showSplit();
                 } else {
                     //ask for user confirmation to send sms
                     Ext.Msg.confirm(
                         "Invite?",
-                        "Your friend is not using tinktime. Invite your friend to view this tink!",
+                        "Your friend is not using tinktime. Invite your friend to view me tink!",
                         function(buttonId) {
                             if (buttonId === 'yes') {
-                                this.inviteViaSms();
+                                me.inviteViaSms();
                             }
-                        }, this
+                        }, me
                     );
                 }
 
                 //clear phonenumber
-                this.phoneNumber = null;
+                me.phoneNumber = null;
             } else {
                 Ext.Msg.alert('Receiver?', 'Please choose a recipient.', Ext.emptyFn);
             }
