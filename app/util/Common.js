@@ -29,8 +29,8 @@ Ext.define('ttapp.util.Common', {
                 },
                 disableCaching: false,
                 success: function(response) {
-                    cc = Ext.JSON.decode(response.responseText);
-                    if (!cc.status) {
+                    var json = Ext.JSON.decode(response.responseText);
+                    if (!json.status) {
                         var ps = Ext.getStore('profilestore');
                         ps.getProxy().clear();
                         ps.data.clear();

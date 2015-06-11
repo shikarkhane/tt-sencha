@@ -95,15 +95,19 @@ Ext.define('ttapp.controller.Authenticate', {
             },
 
             success: function(response) {
-                //if ( JSON.parse(response.responseText)['status'] == true){
-                Ext.getStore('profilestore').verified();
+                try {
+                    var json = JSON.parse(response.responseText);
+                    if (json && json.success === true) {
+                        Ext.getStore('profilestore').verified();
 
-                ttapp.util.FeedProxy.process(true);
-                Ext.Viewport.setActiveItem('trinket', 'slide');
-                // }
-                // else{
-                //console.log('Verification code doesnt match');
-                // }
+                        ttapp.util.FeedProxy.process(true);
+                        Ext.Viewport.setActiveItem('trinket', 'slide');
+                    } else {
+                        console.log('Verification code doesnt match');
+                    }
+                } catch(e) {
+
+                }
             }
         });
 

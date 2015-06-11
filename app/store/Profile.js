@@ -8,6 +8,7 @@ Ext.define('ttapp.store.Profile', {
     config: {
         model: 'ttapp.model.Profile',
         storeId: 'profilestore',
+        autoLoad: true,
         proxy: {
             type: 'localstorage',
             id: 'profilestoreproxy'
@@ -16,7 +17,7 @@ Ext.define('ttapp.store.Profile', {
     isUserVerified: function(callback) {
         var record = this.getAt(0);
         if (record) {
-            callback(m.get('is_verified'));
+            callback(record.get('is_verified'));
         } else {
             callback(false);
         }
