@@ -95,7 +95,6 @@ Ext.define('ttapp.controller.Authenticate', {
             },
 
             success: function(response) {
-
                 try {
                     var json = JSON.parse(response.responseText);
                     if (json && json.status === true) {

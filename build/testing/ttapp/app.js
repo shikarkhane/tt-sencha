@@ -1,4 +1,4 @@
-function _a198efba59921ed4a8c283042394f1431676c177(){};//@tag foundation,core
+function _299f2217bab0203df9756216414110935889aa72(){};//@tag foundation,core
 //@define Ext
 /**
  * @class Ext
@@ -61449,8 +61449,8 @@ Ext.define('ttapp.util.Common', {
                 },
                 disableCaching: false,
                 success: function(response) {
-                    cc = Ext.JSON.decode(response.responseText);
-                    if (!cc.status) {
+                    var json = Ext.JSON.decode(response.responseText);
+                    if (!json.status) {
                         var ps = Ext.getStore('profilestore');
                         ps.getProxy().clear();
                         ps.data.clear();
@@ -63400,6 +63400,7 @@ Ext.define('ttapp.store.Profile', {
     config: {
         model: 'ttapp.model.Profile',
         storeId: 'profilestore',
+        autoLoad: true,
         proxy: {
             type: 'localstorage',
             id: 'profilestoreproxy'
@@ -63408,7 +63409,7 @@ Ext.define('ttapp.store.Profile', {
     isUserVerified: function(callback) {
         var record = this.getAt(0);
         if (record) {
-            callback(m.get('is_verified'));
+            callback(record.get('is_verified'));
         } else {
             callback(false);
         }
@@ -63427,13 +63428,13 @@ Ext.define('ttapp.store.Profile', {
                 selected_trinket_name: selectedTrinketName
             });
         var errors = usr.validate();
-        // if (errors.isValid()) {
-        this.add(usr);
-        this.sync();
-        result = true;
-        // } else {
-        //     Ext.Msg.alert('Check number', 'Phone number is not correct', Ext.emptyFn);
-        // }
+        if (errors.isValid()) {
+            this.add(usr);
+            this.sync();
+            result = true;
+        } else {
+            Ext.Msg.alert('Check number', 'Phone number is not correct', Ext.emptyFn);
+        }
         return result;
     },
     getPhoneNumber: function(callback) {
@@ -63637,7 +63638,7 @@ Ext.define('ttapp.controller.Main', {
         ttapp.util.Common.isUserVerifiedOnServer();
         // refresh push token
         ttapp.util.Push.takeUserPermissionForPushNotify();
-        //refresh feed 
+        //refresh feed
         ttapp.util.FeedProxy.process(true);
         // refresh contacts list
         ttapp.util.ContactsProxy.process(Ext.getStore('phonecontacts'));
@@ -63968,26 +63969,27 @@ Ext.define('ttapp.controller.SendTo', {
         }
     },
     composeTink: function(list, idx, target, record, evt) {
+        var me = this;
         Ext.getStore('profilestore').getPhoneNumber(function(from_user) {
             var prevTextMsg = Ext.ComponentQuery.query('#previewTextMsg')[0];
-            if (this.phoneNumber) {
+            if (me.phoneNumber) {
                 //is receipient on tinktime
-                if (Ext.getStore('phonecontacts').isOnTinkTime(this.phoneNumber)) {
-                    this.sendTink(from_user, this.phoneNumber, (new Date()).valueOf(), this.trinket_name, prevTextMsg.getValue(), this.seconds_sent);
+                if (Ext.getStore('phonecontacts').isOnTinkTime(me.phoneNumber)) {
+                    me.sendTink(from_user, me.phoneNumber, (new Date()).valueOf(), me.trinket_name, prevTextMsg.getValue(), me.seconds_sent);
                     //reset before leaving
-                    this.clearAll();
-                    this.closeMe();
-                    this.showSplit();
+                    me.clearAll();
+                    me.closeMe();
+                    me.showSplit();
                 } else {
                     //ask for user confirmation to send sms
-                    Ext.Msg.confirm("Invite?", "Your friend is not using tinktime. Invite your friend to view this tink!", function(buttonId) {
+                    Ext.Msg.confirm("Invite?", "Your friend is not using tinktime. Invite your friend to view me tink!", function(buttonId) {
                         if (buttonId === 'yes') {
-                            this.inviteViaSms();
+                            me.inviteViaSms();
                         }
-                    }, this);
+                    }, me);
                 }
                 //clear phonenumber
-                this.phoneNumber = null;
+                me.phoneNumber = null;
             } else {
                 Ext.Msg.alert('Receiver?', 'Please choose a recipient.', Ext.emptyFn);
             }
@@ -64122,7 +64124,6 @@ Ext.define('ttapp.controller.Authenticate', {
         });
     },
     sendCode: function(phoneNumber) {
-        return;
         Ext.Ajax.request({
             url: ttapp.config.Config.getBaseURL() + '/sms-code/',
             method: 'POST',
@@ -64152,18 +64153,20 @@ Ext.define('ttapp.controller.Authenticate', {
                 "code": code
             },
             success: function(response) {
-                //if ( JSON.parse(response.responseText)['status'] == true){
-                Ext.getStore('profilestore').verified();
-                ttapp.util.FeedProxy.process(true);
-                Ext.Viewport.setActiveItem('trinket', 'slide');
+                try {
+                    var json = JSON.parse(response.responseText);
+                    if (json && json.status === true) {
+                        Ext.getStore('profilestore').verified();
+                        ttapp.util.FeedProxy.process(true);
+                        Ext.Viewport.setActiveItem('trinket', 'slide');
+                    } else {
+                        Ext.Msg.alert('Problem', 'Verification code doesnt match', Ext.emptyFn);
+                    }
+                } catch (e) {}
             }
         });
     }
 });
-// }
-// else{
-//console.log('Verification code doesnt match');
-// }
 
 Ext.define('ttapp.controller.Trinket', {
     extend: Ext.app.Controller,
@@ -64283,12 +64286,13 @@ Ext.define('ttapp.controller.Feed', {
         }
     },
     onShowTinkInFeed: function(list, idx, target, record, evt) {
-        var element = Ext.get(evt.target);
+        var element = Ext.get(evt.target),
+            me = this;
         Ext.getStore('profilestore').getPhoneNumber(function(from_user) {
             if ((from_user != record.data.from_user) && (record.data.unread)) {
-                this.tinkRead(element, record);
+                me.tinkRead(element, record);
             }
-            this.getApplication().getController("ttapp.controller.ReplayTink").addReplay(record.data.seconds_sent, record.data.text, record.data.trinket_name);
+            me.getApplication().getController("ttapp.controller.ReplayTink").addReplay(record.data.seconds_sent, record.data.text, record.data.trinket_name);
         });
     },
     tinkRead: function(element, record) {
@@ -64350,27 +64354,21 @@ Ext.define('ttapp.controller.ReplayTink', {
             closereplay: 'button[cls~=replay-tink-close-btn]'
         },
         control: {
-            replaypage: {
-                show: 'startReplay'
-            },
             closereplay: {
                 tap: 'closeReplay'
             }
         }
     },
-    startReplay: function() {
-        var task = Ext.create('Ext.util.DelayedTask', function() {
-                Ext.getDom('replaytinkcontainer').contentWindow.tt_start_animation();
-            });
-        task.delay(1000);
-    },
     closeReplay: function() {
         Ext.ComponentQuery.query('#replayTinkPage')[0].destroy();
-        Ext.Viewport.setActiveItem('feed');
+        Ext.Viewport.setActiveItem('feed', {
+            type: 'fade'
+        });
     },
     addReplay: function(seconds, text, trinket_name) {
         Ext.getStore('trinketstore').getSwiffyPath(trinket_name, function(activeTrinketSwiffyPath) {
             var r = Ext.create('Ext.Container', {
+                    modal: true,
                     xtype: 'replaytink',
                     itemId: 'replayTinkPage',
                     cls: 'cls-tt-tinkbox cls-tt-replaytink',
@@ -64402,7 +64400,7 @@ Ext.define('ttapp.controller.ReplayTink', {
                             xtype: 'panel',
                             itemId: 'replaycomponent',
                             flex: 5,
-                            html: '<iframe id="replaytinkcontainer" class="tinkanimation" src="' + activeTrinketSwiffyPath + '"></iframe>'
+                            html: '<iframe id="replaytinkcontainer" class="tinkanimation" allowtransparence="true"></iframe>'
                         }
                     ]
                 });
@@ -64414,10 +64412,22 @@ Ext.define('ttapp.controller.ReplayTink', {
                     html: '<h2>' + text + '</h2>'
                 });
             }
-            Ext.Viewport.animateActiveItem(r, {
-                type: 'slide',
-                direction: 'right'
+            var trinketArea = r.child('#replaycomponent'),
+                iframe = trinketArea.element.down('iframe');
+            Ext.Viewport.mask({
+                xtype: 'loadmask'
             });
+            Ext.Viewport.add(r);
+            r.show();
+            r.element.setStyle('opacity', '0');
+            iframe.dom.onload = function() {
+                Ext.Viewport.unmask();
+                r.element.setStyle('opacity', '1');
+                iframe.dom.onload = null;
+                Ext.Viewport.setActiveItem(r);
+                iframe.dom.contentWindow.tt_start_animation();
+            };
+            iframe.dom.src = activeTrinketSwiffyPath;
         });
     }
 });
@@ -64530,12 +64540,7 @@ Ext.define('ttapp.view.Tink', {
                     {
                         xtype: 'button',
                         cls: 'top-btn btn-mail flip-design-right',
-                        docked: 'right',
-                        handler: function() {
-                            Ext.Viewport.animateActiveItem('feed', {
-                                type: 'slide'
-                            });
-                        }
+                        docked: 'right'
                     }
                 ]
             },
