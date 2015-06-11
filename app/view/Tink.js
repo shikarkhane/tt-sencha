@@ -29,12 +29,7 @@ Ext.define('ttapp.view.Tink', {
             }, {
                 xtype: 'button',
                 cls: 'top-btn btn-mail flip-design-right',
-                docked: 'right',
-                handler: function() {
-                    Ext.Viewport.animateActiveItem('feed', {
-                        type: 'slide'
-                    });
-                }
+                docked: 'right'
             }]
         }, {
             itemId: 'tinkTimerClock',

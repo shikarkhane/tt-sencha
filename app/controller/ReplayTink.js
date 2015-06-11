@@ -6,29 +6,22 @@ Ext.define('ttapp.controller.ReplayTink', {
             closereplay: 'button[cls~=replay-tink-close-btn]'
         },
         control: {
-            replaypage: {
-                show: 'startReplay'
-            },
             closereplay: {
                 tap: 'closeReplay'
             }
         }
     },
-    startReplay: function() {
-        var task = Ext.create('Ext.util.DelayedTask', function() {
-            Ext.getDom('replaytinkcontainer').contentWindow.tt_start_animation();
-        });
-
-        task.delay(1000);
-    },
     closeReplay: function() {
         Ext.ComponentQuery.query('#replayTinkPage')[0].destroy();
 
-        Ext.Viewport.setActiveItem('feed');
+        Ext.Viewport.setActiveItem('feed', {
+            type: 'fade'
+        });
     },
     addReplay: function(seconds, text, trinket_name) {
         Ext.getStore('trinketstore').getSwiffyPath(trinket_name, function(activeTrinketSwiffyPath) {
             var r = Ext.create('Ext.Container', {
+                modal: true,
                 xtype: 'replaytink',
                 itemId: 'replayTinkPage',
                 cls: 'cls-tt-tinkbox cls-tt-replaytink',
@@ -55,7 +48,7 @@ Ext.define('ttapp.controller.ReplayTink', {
                     xtype: 'panel',
                     itemId: 'replaycomponent',
                     flex: 5,
-                    html: '<iframe id="replaytinkcontainer" class="tinkanimation" src="' + activeTrinketSwiffyPath + '"></iframe>'
+                    html: '<iframe id="replaytinkcontainer" class="tinkanimation" allowtransparence="true"></iframe>'
                 }]
             });
 
@@ -68,10 +61,29 @@ Ext.define('ttapp.controller.ReplayTink', {
                 });
             }
 
-            Ext.Viewport.animateActiveItem(r, {
-                type: 'slide',
-                direction: 'right'
+            var trinketArea = r.child('#replaycomponent'),
+                iframe = trinketArea.element.down('iframe');
+
+            Ext.Viewport.mask({
+                xtype: 'loadmask'
             });
+
+            Ext.Viewport.add(r);
+            r.show();
+            r.element.setStyle('opacity', '0');
+
+            iframe.dom.onload = function() {
+                Ext.Viewport.unmask();
+
+                r.element.setStyle('opacity', '1');
+                iframe.dom.onload = null;
+
+                Ext.Viewport.setActiveItem(r);
+
+                iframe.dom.contentWindow.tt_start_animation();
+            };
+
+            iframe.dom.src = activeTrinketSwiffyPath;
         });
     }
 });
