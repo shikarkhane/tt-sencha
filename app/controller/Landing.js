@@ -19,7 +19,19 @@ Ext.define('ttapp.controller.Landing', {
 
         Ext.getStore('profilestore').isUserVerified(function(success) {
             if (success === true) {
-                Ext.Viewport.setActiveItem('trinket', 'slide');
+                var item = Ext.Viewport.add({
+                    xtype: 'trinket'
+                });
+
+                item.element.setStyle('opacity', '0')
+                item.element.show();
+
+                setTimeout(function() {
+                    item.element.hide();
+                    item.element.setStyle('opacity', '1')
+
+                    Ext.Viewport.animateActiveItem(item, 'slide');
+                }, 180);
             } else {
                 Ext.Viewport.animateActiveItem('authenticate', {
                     type: 'slide'
