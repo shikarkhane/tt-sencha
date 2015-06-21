@@ -5,3 +5,4 @@ npm-debug.log
 .sass-cache
 build/production/ttapp/archive
 build/production/ttapp/deltas
+build/temp
