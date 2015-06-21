@@ -1,4 +1,4 @@
-function _d003d371d5b5bf4ff95227f0582600d1206d055d(){};//@tag foundation,core
+function _7b57d5b598d9aec9cb443d2aaf34413f7c5a6ecb(){};//@tag foundation,core
 //@define Ext
 /**
  * @class Ext
@@ -64504,6 +64504,8 @@ Ext.define('ttapp.view.Feed', {
                 flex: 5,
                 baseCls: 'clsFeed',
                 itemCls: 'clsMessageItem',
+                infinite: true,
+                itemHeight: 50,
                 //style: 'opacity:0.5;',
                 pinHeaders: false,
                 scrollable: {
