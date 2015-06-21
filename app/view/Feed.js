@@ -26,6 +26,24 @@ Ext.define('ttapp.view.Feed', {
                 '</tpl>'
             ],
             store: 'Messages'
+        }, {
+            layout: {
+                type: 'hbox',
+                align: 'stretch'
+            },
+            defaults: {
+                flex: 1
+            },
+            items: [{
+                xtype: 'button',
+                text: 'previous',
+                itemId: 'previous',
+                disabled: true
+            },{
+                xtype: 'button',
+                text: 'next',
+                itemId: 'next'
+            }]
         }]
     }
 });

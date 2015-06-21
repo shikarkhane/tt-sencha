@@ -1,4 +1,4 @@
-function _630c051136d95fe10b61c1531f35e59157e6a3bf(){};//@tag foundation,core
+function _e510818ab9982b29fbce037f0427a92c4883ee47(){};//@tag foundation,core
 //@define Ext
 /**
  * @class Ext
@@ -63252,13 +63252,13 @@ Ext.define('ttapp.model.Message', {
 
 Ext.define('ttapp.util.FeedProxy', {
     singleton: true,
-    process: function(clearAll) {
+    process: function(clearAll, callback, scope) {
         var me = this;
         Ext.getStore('profilestore').getPhoneNumber(function(myNumber) {
-            me._process.call(me, clearAll, myNumber);
+            me._process.call(me, clearAll, myNumber, callback, scope);
         });
     },
-    _process: function(clearAll, myNumber) {
+    _process: function(clearAll, myNumber, callback, scope) {
         var messageStore = Ext.getStore('Messages'),
             messageModel,
             unreadRedDot = false,
@@ -63354,6 +63354,9 @@ Ext.define('ttapp.util.FeedProxy', {
                     }
                     //change the red dot on email icon
                     ttapp.util.Common.updateNotifySymbol(unreadRedDot);
+                    if (callback) {
+                        callback.call(scope || this);
+                    }
                 }
             });
         }
@@ -64315,12 +64318,53 @@ Ext.define('ttapp.controller.Split', {
 Ext.define('ttapp.controller.Feed', {
     extend: Ext.app.Controller,
     config: {
-        refs: {},
+        refs: {
+            previousBtn: 'feed #previous',
+            nextBtn: 'feed #next'
+        },
         control: {
             'feed list': {
-                itemtap: 'onShowTinkInFeed'
+                itemtap: 'onShowTinkInFeed',
+                activate: 'onFeedShow'
+            },
+            'previousBtn': {
+                tap: 'onPrevious'
+            },
+            'nextBtn': {
+                tap: 'onNext'
             }
         }
+    },
+    onFeedShow: function() {},
+    // var config = ttapp.config.Config;
+    //
+    // ttapp.util.FeedProxy.process(true, function() {
+    //     this.getPreviousBtn().setDisabled(config.getCurrentFeedPageNumber() < 1);
+    //     // this.getNextBtn().setDisabled(Ext.getStore('Messages').getCount() < config.getFeedPageSize());
+    // }, this);
+    onPrevious: function() {
+        var config = ttapp.config.Config,
+            previous = config.getCurrentFeedPageNumber();
+        this.getPreviousBtn().setDisabled(true);
+        if (previous == 0) {
+            return;
+        }
+        this.getNextBtn().setDisabled(true);
+        config.setCurrentFeedPageNumber(previous - 1);
+        ttapp.util.FeedProxy.process(true, function() {
+            this.getPreviousBtn().setDisabled(config.getCurrentFeedPageNumber() < 1);
+            this.getNextBtn().setDisabled(Ext.getStore('Messages').getCount() < config.getFeedPageSize());
+        }, this);
+    },
+    onNext: function() {
+        this.getPreviousBtn().setDisabled(true);
+        this.getNextBtn().setDisabled(true);
+        var config = ttapp.config.Config;
+        config.setCurrentFeedPageNumber(config.getCurrentFeedPageNumber() + 1);
+        ttapp.util.FeedProxy.process(true, function() {
+            this.getPreviousBtn().setDisabled(false);
+            this.getNextBtn().setDisabled(Ext.getStore('Messages').getCount() < config.getFeedPageSize());
+        }, this);
     },
     onShowTinkInFeed: function(list, idx, target, record, evt) {
         var element = Ext.get(evt.target),
@@ -64523,6 +64567,28 @@ Ext.define('ttapp.view.Feed', {
                     '</tpl>'
                 ],
                 store: 'Messages'
+            },
+            {
+                layout: {
+                    type: 'hbox',
+                    align: 'stretch'
+                },
+                defaults: {
+                    flex: 1
+                },
+                items: [
+                    {
+                        xtype: 'button',
+                        text: 'previous',
+                        itemId: 'previous',
+                        disabled: true
+                    },
+                    {
+                        xtype: 'button',
+                        text: 'next',
+                        itemId: 'next'
+                    }
+                ]
             }
         ]
     }
