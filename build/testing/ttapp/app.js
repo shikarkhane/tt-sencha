@@ -1,4 +1,4 @@
-function _8a97a9c1541b82c2345008ac0c544bbf1a960eb9(){};//@tag foundation,core
+function _d003d371d5b5bf4ff95227f0582600d1206d055d(){};//@tag foundation,core
 //@define Ext
 /**
  * @class Ext
@@ -64076,7 +64076,16 @@ Ext.define('ttapp.controller.Landing', {
         }
         Ext.getStore('profilestore').isUserVerified(function(success) {
             if (success === true) {
-                Ext.Viewport.setActiveItem('trinket', 'slide');
+                var item = Ext.Viewport.add({
+                        xtype: 'trinket'
+                    });
+                item.element.setStyle('opacity', '0');
+                item.element.show();
+                setTimeout(function() {
+                    item.element.hide();
+                    item.element.setStyle('opacity', '1');
+                    Ext.Viewport.animateActiveItem(item, 'slide');
+                }, 180);
             } else {
                 Ext.Viewport.animateActiveItem('authenticate', {
                     type: 'slide'
@@ -64553,13 +64562,7 @@ Ext.define('ttapp.view.Tink', {
                     {
                         xtype: 'button',
                         cls: 'top-btn btn-tink',
-                        docked: 'left',
-                        handler: function() {
-                            Ext.Viewport.animateActiveItem('trinket', {
-                                type: 'slide',
-                                direction: 'right'
-                            });
-                        }
+                        docked: 'left'
                     },
                     {
                         xtype: 'button',
@@ -64762,11 +64765,7 @@ Ext.define('ttapp.view.Trinket', {
                 }
             ]
         }));
-        var carousel = Ext.create('Ext.Carousel', {
-                id: 'carouselList',
-                cls: 'trinket-list'
-            });
-        this.add(carousel);
+        var carouselItems = [];
         var store_data = Ext.getStore('trinketstore'),
             group_count = Math.ceil((store_data.data.all.length) / 9),
             offset_start = 0,
@@ -64780,7 +64779,8 @@ Ext.define('ttapp.view.Trinket', {
             offset_start = (i * 9);
             offset_end = offset_start + 9;
             store.setData(all.slice(offset_start, offset_end));
-            carousel.add(Ext.create('Ext.List', {
+            carouselItems.push({
+                xtype: 'list',
                 scrollable: false,
                 id: 'p_' + i,
                 inline: {
@@ -64791,8 +64791,14 @@ Ext.define('ttapp.view.Trinket', {
                     '<div class="img-bg" style="background:url({thumbnail_path});"></div>'
                 ],
                 store: Ext.getStore('trinketstore_' + i)
-            }));
+            });
         }
+        var carousel = Ext.create('Ext.Carousel', {
+                id: 'carouselList',
+                cls: 'trinket-list',
+                items: carouselItems
+            });
+        this.add(carousel);
     }
 });
 
