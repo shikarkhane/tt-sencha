@@ -22,11 +22,10 @@ Ext.define('ttapp.util.ContactsCleaner', {
                 return dialcode + n;
             }
         } else {
-            return null;
+            return n;
         }
     },
     deviceSpecificFormat: function(i) {
-
         if (Ext.os.is.Desktop) {
             return [i.first_name, i.last_name, i.phoneNumbers[0].value]
         } else {
