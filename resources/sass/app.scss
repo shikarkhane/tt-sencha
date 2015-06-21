@@ -1019,3 +1019,8 @@ margin-bottom: 30px;
     margin: 300px auto;
     text-align: center;
 }
+
+.x-scroll-indicator.rounded > :nth-child(2) {
+    background: #333;
+    content: '';
+}
