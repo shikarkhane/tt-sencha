@@ -1,4 +1,4 @@
-function _4cfb7512bff4a9befb1641bf0be03f2088dd51d3(){};//@tag foundation,core
+function _8a97a9c1541b82c2345008ac0c544bbf1a960eb9(){};//@tag foundation,core
 //@define Ext
 /**
  * @class Ext
@@ -62885,7 +62885,7 @@ Ext.define('ttapp.util.ContactsCleaner', {
                 return dialcode + n;
             }
         } else {
-            return null;
+            return n;
         }
     },
     deviceSpecificFormat: function(i) {
@@ -63770,7 +63770,7 @@ Ext.define('ttapp.controller.Tink', {
         try {
             navigator.notification.vibrate(1000);
         } catch (e) {
-            alert('failure trying to vibrate...');
+            console.log('failure trying to vibrate...');
         }
     },
     onStoppedThinking: function() {
@@ -63840,7 +63840,14 @@ Ext.define('ttapp.controller.Tink', {
         });
     },
     runAnimation: function() {
-        Ext.getDom('tinkcontainer').contentWindow.tt_start_animation();
+        var me = this;
+        try {
+            Ext.getDom('tinkcontainer').contentWindow.tt_start_animation();
+        } catch (e) {
+            setTimeout(function() {
+                me.runAnimation();
+            }, 500);
+        }
     },
     stopAnimation: function() {
         //this.stage.destroy();
@@ -64654,7 +64661,7 @@ Ext.define('ttapp.view.SendTo', {
                         scrollable: {
                             direction: 'vertical'
                         },
-                        itemTpl: '<div class="on-tinktime-{on_tinktime}"><div>{first_name} {last_name}</div> <div><span>{phone_type }</span> {phone_number}</div></div>',
+                        itemTpl: '<div class="on-tinktime-{on_tinktime}"><div>{first_name} {last_name}</div> <div><span>{phone_type}</span> {phone_number}</div></div>',
                         store: 'phonecontacts',
                         items: [
                             {

@@ -116,7 +116,15 @@ Ext.define('ttapp.controller.Tink', {
         });
     },
     runAnimation: function() {
-        Ext.getDom('tinkcontainer').contentWindow.tt_start_animation();
+        var me = this;
+
+        try {
+            Ext.getDom('tinkcontainer').contentWindow.tt_start_animation();
+        } catch(e) {
+            setTimeout(function() {
+                me.runAnimation();
+            }, 500);
+        }
     },
     stopAnimation: function() {
         //this.stage.destroy();
