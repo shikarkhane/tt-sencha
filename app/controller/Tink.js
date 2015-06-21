@@ -33,6 +33,7 @@ Ext.define('ttapp.controller.Tink', {
         //Ext.getDom('tinkcontainer').contentWindow.tt_start_animation();
         Ext.getCmp('tinkScreen').addCls('show-full-frame');
 
+        navigator.notification.vibrate(1000);
     },
     onStoppedThinking: function() {
         var me = this;
