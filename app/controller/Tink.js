@@ -33,7 +33,11 @@ Ext.define('ttapp.controller.Tink', {
         //Ext.getDom('tinkcontainer').contentWindow.tt_start_animation();
         Ext.getCmp('tinkScreen').addCls('show-full-frame');
 
-        navigator.notification.vibrate(1000);
+        try {
+            navigator.notification.vibrate(1000);
+        } catch(e) {
+            console.log('failure trying to vibrate...');
+        }
     },
     onStoppedThinking: function() {
         var me = this;
