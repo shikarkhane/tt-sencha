@@ -12,8 +12,8 @@ Ext.define('ttapp.view.Feed', {
             flex: 5,
             baseCls: 'clsFeed',
             itemCls: 'clsMessageItem',
-            infinite: true,
-            itemHeight: 50,
+            // infinite: true,
+            // itemHeight: 50,
             //style: 'opacity:0.5;',
             pinHeaders: false,
             scrollable: {

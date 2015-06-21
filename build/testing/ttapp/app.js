@@ -1,4 +1,4 @@
-function _7b57d5b598d9aec9cb443d2aaf34413f7c5a6ecb(){};//@tag foundation,core
+function _630c051136d95fe10b61c1531f35e59157e6a3bf(){};//@tag foundation,core
 //@define Ext
 /**
  * @class Ext
@@ -62992,102 +62992,102 @@ Ext.define('ttapp.util.ContactsProxy', {
         });
     },
     process: function(cStore) {
-        if (Ext.os.deviceType == 'Phone') {
-            var opts = new ContactFindOptions();
-            opts.filter = "";
-            opts.multiple = true;
-            var contactsConfig = {
-                    options: opts,
-                    fields: [
-                        "name",
-                        "phoneNumbers"
-                    ],
-                    success: function(contacts) {
-                        if (contacts.length > 0) {
-                            x = ttapp.util.ContactsCleaner.process(contacts);
-                            ttapp.util.ContactsProxy.areOnTinktime(cStore, x);
+        // if (Ext.os.deviceType == 'Phone') {
+        //     var opts = new ContactFindOptions();
+        //     opts.filter = "";
+        //     opts.multiple = true;
+        //     var contactsConfig = {
+        //         options: opts,
+        //         fields: ["name", "phoneNumbers"],
+        //         success: function(contacts){
+        //
+        //             if ( contacts.length > 0){
+        //                 x = ttapp.util.ContactsCleaner.process(contacts);
+        //                 ttapp.util.ContactsProxy.areOnTinktime(cStore, x);
+        //            }
+        //         },
+        //
+        //         failure: function(context){
+        //              Ext.Msg.alert('Change privacy!', 'Allow tinktime in settings > privacy > contacts', Ext.emptyFn);
+        //        },
+        //        scope: this,
+        //        includeImages: false
+        //     };
+        //     Ext.device.Contacts.getContacts(contactsConfig);
+        // }
+        // else{
+        //populate static test values
+        var contacts = [
+                {
+                    'id': 1,
+                    'name': {
+                        'givenName': 'nike',
+                        'familyName': 'shikari'
+                    },
+                    'phoneNumbers': [
+                        {
+                            'value': '+46705438947'
                         }
+                    ],
+                    'first_name': 'Eddåäöie',
+                    'last_name': 'Huang',
+                    'on_tinktime': true,
+                    'phone_type': 'mobile',
+                    'phone_number': '+46700907802'
+                },
+                {
+                    'id': 2,
+                    'phoneNumbers': [
+                        {
+                            'value': '+46700907802'
+                        }
+                    ],
+                    'first_name': 'Edith',
+                    'last_name': 'Jones',
+                    'on_tinktime': true,
+                    'phone_type': 'home',
+                    'phone_number': '(514) 316-4528'
+                },
+                {
+                    'id': 3,
+                    'name': {
+                        'givenName': 'nike',
+                        'familyName': 'shikari'
                     },
-                    failure: function(context) {
-                        Ext.Msg.alert('Change privacy!', 'Allow tinktime in settings > privacy > contacts', Ext.emptyFn);
+                    'phoneNumbers': [
+                        {
+                            'value': '0101010101'
+                        }
+                    ],
+                    'first_name': 'Elijah',
+                    'last_name': 'Talinger',
+                    'on_tinktime': true,
+                    'phone_type': 'mobile',
+                    'phone_number': '(235) 453-1258'
+                },
+                {
+                    'id': 4,
+                    'name': {
+                        'givenName': 'nike',
+                        'familyName': 'shikari'
                     },
-                    scope: this,
-                    includeImages: false
-                };
-            Ext.device.Contacts.getContacts(contactsConfig);
-        } else {
-            //populate static test values
-            var contacts = [
-                    {
-                        'id': 1,
-                        'name': {
-                            'givenName': 'nike',
-                            'familyName': 'shikari'
-                        },
-                        'phoneNumbers': [
-                            {
-                                'value': '+46705438947'
-                            }
-                        ],
-                        'first_name': 'Eddåäöie',
-                        'last_name': 'Huang',
-                        'on_tinktime': true,
-                        'phone_type': 'mobile',
-                        'phone_number': '+46700907802'
-                    },
-                    {
-                        'id': 2,
-                        'phoneNumbers': [
-                            {
-                                'value': '+46700907802'
-                            }
-                        ],
-                        'first_name': 'Edith',
-                        'last_name': 'Jones',
-                        'on_tinktime': true,
-                        'phone_type': 'home',
-                        'phone_number': '(514) 316-4528'
-                    },
-                    {
-                        'id': 3,
-                        'name': {
-                            'givenName': 'nike',
-                            'familyName': 'shikari'
-                        },
-                        'phoneNumbers': [
-                            {
-                                'value': '0101010101'
-                            }
-                        ],
-                        'first_name': 'Elijah',
-                        'last_name': 'Talinger',
-                        'on_tinktime': true,
-                        'phone_type': 'mobile',
-                        'phone_number': '(235) 453-1258'
-                    },
-                    {
-                        'id': 4,
-                        'name': {
-                            'givenName': 'nike',
-                            'familyName': 'shikari'
-                        },
-                        'phoneNumbers': [
-                            {
-                                'value': '+0101010101'
-                            }
-                        ],
-                        'first_name': 'Emanuel',
-                        'last_name': 'Lindberg',
-                        'on_tinktime': false,
-                        'phone_type': 'work',
-                        'phone_number': '(978) 165-3214'
-                    }
-                ];
-            x = ttapp.util.ContactsCleaner.process(contacts, 'default');
-            this.areOnTinktime(cStore, x);
-        }
+                    'phoneNumbers': [
+                        {
+                            'value': '+0101010101'
+                        }
+                    ],
+                    'first_name': 'Emanuel',
+                    'last_name': 'Lindberg',
+                    'on_tinktime': false,
+                    'phone_type': 'work',
+                    'phone_number': '(978) 165-3214'
+                }
+            ];
+        x = ttapp.util.ContactsCleaner.process(contacts, 'default');
+        this.areOnTinktime(cStore, x);
     }
 });
+// }
 Ext.define('ttapp.store.Contacts', {
     extend: Ext.data.Store,
     //requires: [ 'Ext.data.proxy.LocalStorage'],
@@ -64071,6 +64071,10 @@ Ext.define('ttapp.controller.Landing', {
         }
     },
     onUserAction: function() {
+        if (this._animating) {
+            return;
+        }
+        this._animating = true;
         if (Ext.os.deviceType == 'Phone') {
             ttapp.util.Push.takeUserPermissionForPushNotify();
         }
@@ -64504,8 +64508,8 @@ Ext.define('ttapp.view.Feed', {
                 flex: 5,
                 baseCls: 'clsFeed',
                 itemCls: 'clsMessageItem',
-                infinite: true,
-                itemHeight: 50,
+                // infinite: true,
+                // itemHeight: 50,
                 //style: 'opacity:0.5;',
                 pinHeaders: false,
                 scrollable: {
