@@ -1,4 +1,4 @@
-function _7a715303ffd9d54eadbc81b9b38a82eca7978199(){};//@tag foundation,core
+function _5b56b943af13e1fa861174238a47fca85038fb53(){};//@tag foundation,core
 //@define Ext
 /**
  * @class Ext
@@ -63507,8 +63507,6 @@ Ext.define('ttapp.store.IpInfo', {
         me.load({
             scope: me,
             callback: function(records, osmething, success) {
-                alert(records.length);
-                alert(success);
                 if (me.getAt(0)) {
                     callback(me.getAt(0).get('country_dial_code'));
                 } else {
@@ -64131,7 +64129,7 @@ Ext.define('ttapp.controller.Authenticate', {
         // store user profile locally
         Ext.getStore('trinketstore').getDefaultTrinket(function(trinketName) {
             if (Ext.getStore('profilestore').addProfile(phoneNumber, false, (new Date()).valueOf(), trinketName)) {
-                // me.sendCode(phoneNumber);
+                me.sendCode(phoneNumber);
                 Ext.Viewport.animateActiveItem('confirmphonenumber', {
                     type: 'slide'
                 });
@@ -64150,7 +64148,7 @@ Ext.define('ttapp.controller.Authenticate', {
                 "to_user": phoneNumber
             },
             success: function(response) {
-                alert(response.responseText);
+                console.log(response.responseText);
             }
         });
     },

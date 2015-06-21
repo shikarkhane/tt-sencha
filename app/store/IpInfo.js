@@ -27,8 +27,6 @@ Ext.define('ttapp.store.IpInfo', {
         me.load({
             scope: me,
             callback: function(records, osmething, success) {
-                alert(records.length);
-                alert(success);
                 if (me.getAt(0)) {
                     callback(me.getAt(0).get('country_dial_code'));
                 }
