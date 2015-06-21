@@ -1,3 +1,9 @@
+body{
+    background-image:inline-image("background/landing.jpg");
+    background-size:cover;
+    overflow: hidden;
+}
+
 // The following two lines import the default Sencha Touch theme. If you are building
 // a new theme, remove them and the add your own CSS on top of the base CSS (which
 // is already included in your app.json file).
@@ -109,12 +115,6 @@ body {
 
 /********************New CSS************************/
 
-body{
-    background-image:url("../images/background/landing.jpg");
-    background-size:cover;
-    overflow: hidden;
-}
-
 #appLoadingIndicator {
     height: 100%;
     position:relative;
@@ -139,7 +139,7 @@ body{
     background: none;
 }
 .cls-tt-landing {
-    background-image:url("../images/background/landing.jpg");
+    background-image:inline-image("background/landing.jpg");
     background-size:cover;
 }
 .landing-page{

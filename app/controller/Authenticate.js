@@ -30,12 +30,14 @@ Ext.define('ttapp.controller.Authenticate', {
     showPhoneNumber: function() {
         console.log('show phone number');
         var pn = Ext.ComponentQuery.query('#entered_mobile_number')[0];
-        var dc = Ext.getStore('ipinfostore').getDialCode();
         pn.setHtml(this.myPhoneNumber);
     },
     setDialcode: function() {
         var m = Ext.ComponentQuery.query('#myDialCode')[0];
-        m.setValue(Ext.getStore('ipinfostore').getDialCode());
+
+        Ext.getStore('ipinfostore').getDialCode(function(dc) {
+            m.setValue(dc);
+        });
     },
     clearLocalStores: function() {
         var ps = Ext.getStore('profilestore');
@@ -55,7 +57,7 @@ Ext.define('ttapp.controller.Authenticate', {
         // store user profile locally
         Ext.getStore('trinketstore').getDefaultTrinket(function(trinketName) {
             if (Ext.getStore('profilestore').addProfile(phoneNumber, false, (new Date()).valueOf(), trinketName)) {
-                me.sendCode(phoneNumber);
+                // me.sendCode(phoneNumber);
 
                 Ext.Viewport.animateActiveItem('confirmphonenumber', {
                     type: 'slide'
@@ -75,7 +77,7 @@ Ext.define('ttapp.controller.Authenticate', {
                 "to_user": phoneNumber
             },
             success: function(response) {
-                console.log(response.responseText);
+                alert(response.responseText);
             }
         });
     },
@@ -105,7 +107,7 @@ Ext.define('ttapp.controller.Authenticate', {
                     } else {
                         Ext.Msg.alert('Problem', 'Verification code doesnt match', Ext.emptyFn);
                     }
-                } catch(e) {
+                } catch (e) {
 
                 }
             }
