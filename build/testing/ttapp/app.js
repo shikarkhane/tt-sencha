@@ -1,4 +1,4 @@
-function _299f2217bab0203df9756216414110935889aa72(){};//@tag foundation,core
+function _8a97a9c1541b82c2345008ac0c544bbf1a960eb9(){};//@tag foundation,core
 //@define Ext
 /**
  * @class Ext
@@ -62885,7 +62885,7 @@ Ext.define('ttapp.util.ContactsCleaner', {
                 return dialcode + n;
             }
         } else {
-            return null;
+            return n;
         }
     },
     deviceSpecificFormat: function(i) {
@@ -63496,13 +63496,24 @@ Ext.define('ttapp.store.IpInfo', {
             id: 'ipinfostoreproxy'
         }
     },
-    getDialCode: function() {
-        this.load();
-        if (this.getAt(0)) {
-            return this.getAt(0).get('country_dial_code');
-        } else {
-            return false;
+    getDialCode: function(callback) {
+        var me = this;
+        if (!callback) {
+            if (me.getAt(0)) {
+                return me.getAt(0).get('country_dial_code');
+            }
+            return null;
         }
+        me.load({
+            scope: me,
+            callback: function(records, osmething, success) {
+                if (me.getAt(0)) {
+                    callback(me.getAt(0).get('country_dial_code'));
+                } else {
+                    callback("+1");
+                }
+            }
+        });
     }
 });
 
@@ -63756,6 +63767,11 @@ Ext.define('ttapp.controller.Tink', {
         this.runAnimation();
         //Ext.getDom('tinkcontainer').contentWindow.tt_start_animation();
         Ext.getCmp('tinkScreen').addCls('show-full-frame');
+        try {
+            navigator.notification.vibrate(1000);
+        } catch (e) {
+            console.log('failure trying to vibrate...');
+        }
     },
     onStoppedThinking: function() {
         var me = this;
@@ -63824,7 +63840,14 @@ Ext.define('ttapp.controller.Tink', {
         });
     },
     runAnimation: function() {
-        Ext.getDom('tinkcontainer').contentWindow.tt_start_animation();
+        var me = this;
+        try {
+            Ext.getDom('tinkcontainer').contentWindow.tt_start_animation();
+        } catch (e) {
+            setTimeout(function() {
+                me.runAnimation();
+            }, 500);
+        }
     },
     stopAnimation: function() {
         //this.stage.destroy();
@@ -64094,12 +64117,13 @@ Ext.define('ttapp.controller.Authenticate', {
     showPhoneNumber: function() {
         console.log('show phone number');
         var pn = Ext.ComponentQuery.query('#entered_mobile_number')[0];
-        var dc = Ext.getStore('ipinfostore').getDialCode();
         pn.setHtml(this.myPhoneNumber);
     },
     setDialcode: function() {
         var m = Ext.ComponentQuery.query('#myDialCode')[0];
-        m.setValue(Ext.getStore('ipinfostore').getDialCode());
+        Ext.getStore('ipinfostore').getDialCode(function(dc) {
+            m.setValue(dc);
+        });
     },
     clearLocalStores: function() {
         var ps = Ext.getStore('profilestore');
@@ -64637,7 +64661,7 @@ Ext.define('ttapp.view.SendTo', {
                         scrollable: {
                             direction: 'vertical'
                         },
-                        itemTpl: '<div class="on-tinktime-{on_tinktime}"><div>{first_name} {last_name}</div> <div><span>{phone_type }</span> {phone_number}</div></div>',
+                        itemTpl: '<div class="on-tinktime-{on_tinktime}"><div>{first_name} {last_name}</div> <div><span>{phone_type}</span> {phone_number}</div></div>',
                         store: 'phonecontacts',
                         items: [
                             {

@@ -33,6 +33,11 @@ Ext.define('ttapp.controller.Tink', {
         //Ext.getDom('tinkcontainer').contentWindow.tt_start_animation();
         Ext.getCmp('tinkScreen').addCls('show-full-frame');
 
+        try {
+            navigator.notification.vibrate(1000);
+        } catch(e) {
+            console.log('failure trying to vibrate...');
+        }
     },
     onStoppedThinking: function() {
         var me = this;
@@ -111,7 +116,15 @@ Ext.define('ttapp.controller.Tink', {
         });
     },
     runAnimation: function() {
-        Ext.getDom('tinkcontainer').contentWindow.tt_start_animation();
+        var me = this;
+
+        try {
+            Ext.getDom('tinkcontainer').contentWindow.tt_start_animation();
+        } catch(e) {
+            setTimeout(function() {
+                me.runAnimation();
+            }, 500);
+        }
     },
     stopAnimation: function() {
         //this.stage.destroy();
