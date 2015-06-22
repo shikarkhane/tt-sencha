@@ -12,8 +12,8 @@ Ext.define('ttapp.view.Feed', {
             flex: 5,
             baseCls: 'clsFeed',
             itemCls: 'clsMessageItem',
-            infinite: true,
-            itemHeight: 50,
+            // infinite: true,
+            // itemHeight: 50,
             //style: 'opacity:0.5;',
             pinHeaders: false,
             scrollable: {
@@ -26,6 +26,24 @@ Ext.define('ttapp.view.Feed', {
                 '</tpl>'
             ],
             store: 'Messages'
+        }, {
+            layout: {
+                type: 'hbox',
+                align: 'stretch'
+            },
+            defaults: {
+                flex: 1
+            },
+            items: [{
+                xtype: 'button',
+                text: 'previous',
+                itemId: 'previous',
+                disabled: true
+            },{
+                xtype: 'button',
+                text: 'next',
+                itemId: 'next'
+            }]
         }]
     }
 });

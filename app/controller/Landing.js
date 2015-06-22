@@ -13,6 +13,12 @@ Ext.define('ttapp.controller.Landing', {
         }
     },
     onUserAction: function() {
+        if (this._animating) {
+            return;
+        }
+
+        this._animating = true;
+
         if (Ext.os.deviceType == 'Phone') {
             ttapp.util.Push.takeUserPermissionForPushNotify();
         }

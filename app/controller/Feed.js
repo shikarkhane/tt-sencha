@@ -1,12 +1,59 @@
 Ext.define('ttapp.controller.Feed', {
     extend: 'Ext.app.Controller',
     config: {
-        refs: {},
+        refs: {
+            previousBtn: 'feed #previous',
+            nextBtn: 'feed #next',
+        },
         control: {
             'feed list': {
-                itemtap: 'onShowTinkInFeed'
+                itemtap: 'onShowTinkInFeed',
+                activate: 'onFeedShow'
+            },
+            'previousBtn': {
+                tap: 'onPrevious'
+            },
+            'nextBtn': {
+                tap: 'onNext'
             }
         }
+    },
+    onFeedShow: function() {
+        // var config = ttapp.config.Config;
+        //
+        // ttapp.util.FeedProxy.process(true, function() {
+        //     this.getPreviousBtn().setDisabled(config.getCurrentFeedPageNumber() < 1);
+        //     // this.getNextBtn().setDisabled(Ext.getStore('Messages').getCount() < config.getFeedPageSize());
+        // }, this);
+    },
+    onPrevious: function() {
+        var config = ttapp.config.Config,
+            previous = config.getCurrentFeedPageNumber();
+
+        this.getPreviousBtn().setDisabled(true);
+
+        if (previous == 0) {
+            return;
+        }
+
+        this.getNextBtn().setDisabled(true);
+
+        config.setCurrentFeedPageNumber(previous - 1);
+        ttapp.util.FeedProxy.process(true, function() {
+            this.getPreviousBtn().setDisabled(config.getCurrentFeedPageNumber() < 1);
+            this.getNextBtn().setDisabled(Ext.getStore('Messages').getCount() < config.getFeedPageSize());
+        }, this);
+    },
+    onNext: function() {
+        this.getPreviousBtn().setDisabled(true);
+        this.getNextBtn().setDisabled(true);
+
+        var config = ttapp.config.Config;
+        config.setCurrentFeedPageNumber(config.getCurrentFeedPageNumber() + 1);
+        ttapp.util.FeedProxy.process(true, function() {
+            this.getPreviousBtn().setDisabled(false);
+            this.getNextBtn().setDisabled(Ext.getStore('Messages').getCount() < config.getFeedPageSize());
+        }, this);
     },
     onShowTinkInFeed: function(list, idx, target, record, evt) {
         var element = Ext.get(evt.target),

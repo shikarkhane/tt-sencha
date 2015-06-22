@@ -2,14 +2,15 @@ Ext.define('ttapp.util.FeedProxy', {
     singleton: true,
     requires: ['ttapp.util.Common'],
 
-    process: function(clearAll) {
+    process: function(clearAll, callback, scope) {
         var me = this;
+
         Ext.getStore('profilestore').getPhoneNumber(function(myNumber) {
-            me._process.call(me, clearAll, myNumber);
+            me._process.call(me, clearAll, myNumber, callback, scope);
         });
     },
 
-    _process: function(clearAll, myNumber) {
+    _process: function(clearAll, myNumber, callback, scope) {
         var messageStore = Ext.getStore('Messages'),
             messageModel,
             unreadRedDot = false,
@@ -36,6 +37,7 @@ Ext.define('ttapp.util.FeedProxy', {
                     if (response.status != 200) {
                         return 0;
                     }
+
                     var messages = Ext.JSON.decode(response.responseText.trim());
                     Ext.Array.each(messages, function(message) {
                         // increment pagenumber if msgs were received
@@ -117,6 +119,10 @@ Ext.define('ttapp.util.FeedProxy', {
 
                     //change the red dot on email icon
                     ttapp.util.Common.updateNotifySymbol(unreadRedDot);
+
+                    if (callback) {
+                        callback.call(scope || this);
+                    }
                 }
             });
         }
