@@ -18,12 +18,12 @@ Ext.define('ttapp.view.SendTo', {
 	            docked: 'top',
 	            cls:'top-bar',
 	            items: [
-	            	{ 
+	            	{
 	                	xtype: 'button',
 	                	cls: 'top-btn btn-delete',
 	                	docked: 'right',
 	                	handler: function (){
-	                		ttapp.app.getController('ttapp.controller.SendTo').returnToTink(); 
+	                		ttapp.app.getController('ttapp.controller.SendTo').returnToTink();
 	                	}
 	                }
 	            ]
@@ -40,7 +40,7 @@ Ext.define('ttapp.view.SendTo', {
 			            scrollable: {
 			                direction: 'vertical'
 			            },
-			            itemTpl: '<div class="on-tinktime-{on_tinktime}"><div>{first_name} {last_name}</div> <div><span>{phone_type }</span> {phone_number}</div></div>',
+			            itemTpl: '<div class="on-tinktime-{on_tinktime}"><div>{first_name} {last_name}</div> <div><span>{phone_type}</span> {phone_number}</div></div>',
 			            store: 'phonecontacts',
 		        		items: [
 		        			{
@@ -56,7 +56,7 @@ Ext.define('ttapp.view.SendTo', {
 	        		}
 	        	]
 	        }, {
-	        	xtype: 'spacer', 
+	        	xtype: 'spacer',
 	        	flex: 1
 	        }, {
 	        	xtype: 'container',
@@ -67,16 +67,16 @@ Ext.define('ttapp.view.SendTo', {
 	        	items:[
 	        		{
 	        			xtype: 'image',
-	        			itemId: 'previewTrinket', 
+	        			itemId: 'previewTrinket',
 	        			src:'resources/images/others/tink_design.png',
 	        			cls:'preview-trinket'
 	        		}, {
-	        			xtype: 'label', 
-	        			itemId: 'previewSeconds', 
+	        			xtype: 'label',
+	        			itemId: 'previewSeconds',
 	        			cls: 'seconds-preview'
 	        		}, {
 	        			xtype: 'textareafield',
-	        			placeHolder: "Add a message!", 
+	        			placeHolder: "Add a message!",
 	        			itemId: 'previewTextMsg',
 	        			cls:'text-msg-preview',
 	        			maxLength: 140,
@@ -93,7 +93,7 @@ Ext.define('ttapp.view.SendTo', {
 	            		xtype: 'spacer'
 	            	}, {
 		            	xtype: 'button',
-		            	cls: 'clsSendTink form-btn send-btn',	            	
+		            	cls: 'clsSendTink form-btn send-btn',
 		            	text: 'Send',
 		            	ui: 'ttButton'
 	            	}, {

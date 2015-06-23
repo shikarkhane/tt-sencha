@@ -194,7 +194,6 @@ Ext.define('ttapp.controller.SendTo', {
                 "seconds_sent": seconds_sent,
                 "unread": true
             },
-
             success: function(response) {
                 console.log(response.responseText);
             }

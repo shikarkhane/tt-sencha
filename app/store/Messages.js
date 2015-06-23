@@ -4,6 +4,7 @@ Ext.define('ttapp.util.FeedProxy', {
 
     process: function(clearAll, callback, scope) {
         var me = this;
+
         Ext.getStore('profilestore').getPhoneNumber(function(myNumber) {
             me._process.call(me, clearAll, myNumber, callback, scope);
         });
@@ -36,6 +37,7 @@ Ext.define('ttapp.util.FeedProxy', {
                     if (response.status != 200) {
                         return 0;
                     }
+
                     var messages = Ext.JSON.decode(response.responseText.trim());
                     Ext.Array.each(messages, function(message) {
                         // increment pagenumber if msgs were received

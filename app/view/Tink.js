@@ -19,13 +19,7 @@ Ext.define('ttapp.view.Tink', {
             items: [{
                 xtype: 'button',
                 cls: 'top-btn btn-tink',
-                docked: 'left',
-                handler: function() {
-                    Ext.Viewport.animateActiveItem('trinket', {
-                        type: 'slide',
-                        direction: 'right'
-                    });
-                }
+                docked: 'left'
             }, {
                 xtype: 'button',
                 cls: 'top-btn btn-mail flip-design-right',
