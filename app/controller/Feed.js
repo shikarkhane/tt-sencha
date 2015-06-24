@@ -30,29 +30,29 @@ Ext.define('ttapp.controller.Feed', {
         var config = ttapp.config.Config,
             previous = config.getCurrentFeedPageNumber();
 
-        this.getPreviousBtn().setDisabled(true);
+        this.getPreviousBtn().setHidden(true);
 
         if (previous == 0) {
             return;
         }
 
-        this.getNextBtn().setDisabled(true);
+        this.getNextBtn().setHidden(true);
 
         config.setCurrentFeedPageNumber(previous - 1);
         ttapp.util.FeedProxy.process(true, function() {
-            this.getPreviousBtn().setDisabled(config.getCurrentFeedPageNumber() < 1);
-            this.getNextBtn().setDisabled(Ext.getStore('Messages').getCount() < config.getFeedPageSize());
+            this.getPreviousBtn().setHidden(config.getCurrentFeedPageNumber() < 1);
+            this.getNextBtn().setHidden(Ext.getStore('Messages').getCount() < config.getFeedPageSize());
         }, this);
     },
     onNext: function() {
-        this.getPreviousBtn().setDisabled(true);
-        this.getNextBtn().setDisabled(true);
+        this.getPreviousBtn().setHidden(true);
+        this.getNextBtn().setHidden(true);
 
         var config = ttapp.config.Config;
         config.setCurrentFeedPageNumber(config.getCurrentFeedPageNumber() + 1);
         ttapp.util.FeedProxy.process(true, function() {
-            this.getPreviousBtn().setDisabled(false);
-            this.getNextBtn().setDisabled(Ext.getStore('Messages').getCount() < config.getFeedPageSize());
+            this.getPreviousBtn().setHidden(false);
+            this.getNextBtn().setHidden(Ext.getStore('Messages').getCount() < config.getFeedPageSize());
         }, this);
     },
     onShowTinkInFeed: function(list, idx, target, record, evt) {

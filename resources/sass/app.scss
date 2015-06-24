@@ -710,6 +710,11 @@ margin-bottom: 30px;
 }
 .clsFeed{
     margin-top: 35px;
+
+    .x-scroll-container,
+    .x-scroll-scroller {
+        position: relative !important;
+    }
 }
 .clsFeed .x-list-item {
     position:relative;

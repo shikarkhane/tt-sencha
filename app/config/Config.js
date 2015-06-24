@@ -6,7 +6,7 @@ Ext.define('ttapp.config.Config', {
         height			: (window.innerHeight > 0) ? window.innerHeight : screen.height,
         unreadMessage   : false,
         currentFeedPageNumber : 0,
-        feedPageSize       : 9
+        feedPageSize       : 8
     },
     constructor: function(config) {
         this.initConfig(config);
