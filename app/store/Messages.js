@@ -38,8 +38,9 @@ Ext.define('ttapp.util.FeedProxy', {
                         return 0;
                     }
 
-                    var messages = Ext.JSON.decode(response.responseText.trim());
-                    Ext.Array.each(messages, function(message) {
+                    var resp = Ext.JSON.decode(response.responseText.trim());
+                    console.log("total messages: " + resp.totalcount);
+                    Ext.Array.each(resp.messages, function(message) {
                         // increment pagenumber if msgs were received
                         //var page_number = ttapp.config.Config.getCurrentFeedPageNumber() + 1;
                         //ttapp.config.Config.setCurrentFeedPageNumber(page_number);
