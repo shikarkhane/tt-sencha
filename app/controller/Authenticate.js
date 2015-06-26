@@ -56,7 +56,7 @@ Ext.define('ttapp.controller.Authenticate', {
 
         // store user profile locally
         Ext.getStore('trinketstore').getDefaultTrinket(function(trinketName) {
-            if (Ext.getStore('profilestore').addProfile(phoneNumber, false, (new Date()).valueOf(), trinketName)) {
+            if (Ext.getStore('profilestore').addProfile(phoneNumber, false, (new Date()).valueOf(), trinketName), 0) {
                 me.sendCode(phoneNumber);
 
                 Ext.Viewport.animateActiveItem('confirmphonenumber', {

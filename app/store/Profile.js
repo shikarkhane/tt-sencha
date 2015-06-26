@@ -22,7 +22,7 @@ Ext.define('ttapp.store.Profile', {
             callback(false);
         }
     },
-    addProfile: function(phoneNumber, isVerified, lastUpdatedOn, selectedTrinketName) {
+    addProfile: function(phoneNumber, isVerified, lastUpdatedOn, selectedTrinketName, lastSecondsSent) {
         var result = false;
         //empty store if exists
         //this.removeAll();
@@ -34,7 +34,8 @@ Ext.define('ttapp.store.Profile', {
             phone_number: phoneNumber,
             is_verified: isVerified,
             last_updated_on: lastUpdatedOn,
-            selected_trinket_name: selectedTrinketName
+            selected_trinket_name: selectedTrinketName,
+            last_seconds_sent: lastSecondsSent
         });
 
         var errors = usr.validate();
@@ -73,8 +74,21 @@ Ext.define('ttapp.store.Profile', {
 
         this.sync();
     },
+    setLastSecondsSent: function(seconds) {
+        var record = this.getAt(0);
+        if (record) {
+            record.set('last_seconds_sent', seconds);
+        }
+
+        this.sync();
+    },
     getActiveTrinket: function(callback) {
         var record = this.getAt(0);
         callback(record ? record.get('selected_trinket_name') : false);
+    },
+    getLastSentSeconds: function(callback) {
+        var record = this.getAt(0);
+        callback(record ? record.get('last_seconds_sent') : false);
     }
+
 });
