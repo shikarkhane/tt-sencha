@@ -703,10 +703,22 @@ margin-bottom: 30px;
 }
 .split-page .prev-trinket .clsSentTrinket {
     position:absolute;
-    top:112px;
     text-transform: uppercase;
     font-size:25px;
     color: #fff;
+}
+.split-page .prev-trinket .clsSentTrinket .clsSplitDone{
+    top:112px;
+}
+.split-page .prev-trinket .clsSentTrinket .clsSplitSeconds{
+	position:relative;
+    background-color: rgba(173, 174, 158, 0.7);
+    text-align: center;
+    width: 98px;
+    border-radius: 10px;
+    line-height: 95px;
+    font-size: 36px;
+    font-weight:bolder;
 }
 .clsFeed{
     margin-top: 35px;
