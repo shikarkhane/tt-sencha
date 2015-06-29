@@ -43,30 +43,30 @@ Ext.define('ttapp.util.ContactsProxy', {
         });
     },
     process: function(cStore) {
-        // if (Ext.os.deviceType == 'Phone') {
-        //     var opts = new ContactFindOptions();
-        //     opts.filter = "";
-        //     opts.multiple = true;
-        //     var contactsConfig = {
-        //         options: opts,
-        //         fields: ["name", "phoneNumbers"],
-        //         success: function(contacts){
-        //
-        //             if ( contacts.length > 0){
-        //                 x = ttapp.util.ContactsCleaner.process(contacts);
-        //                 ttapp.util.ContactsProxy.areOnTinktime(cStore, x);
-        //            }
-        //         },
-        //
-        //         failure: function(context){
-        //              Ext.Msg.alert('Change privacy!', 'Allow tinktime in settings > privacy > contacts', Ext.emptyFn);
-        //        },
-        //        scope: this,
-        //        includeImages: false
-        //     };
-        //     Ext.device.Contacts.getContacts(contactsConfig);
-        // }
-        // else{
+        if (Ext.os.deviceType == 'Phone') {
+            var opts = new ContactFindOptions();
+            opts.filter = "";
+            opts.multiple = true;
+            var contactsConfig = {
+                options: opts,
+                fields: ["name", "phoneNumbers"],
+                success: function(contacts){
+        
+                    if ( contacts.length > 0){
+                        x = ttapp.util.ContactsCleaner.process(contacts);
+                        ttapp.util.ContactsProxy.areOnTinktime(cStore, x);
+                   }
+                },
+        
+                failure: function(context){
+                     Ext.Msg.alert('Change privacy!', 'Allow tinktime in settings > privacy > contacts', Ext.emptyFn);
+               },
+               scope: this,
+               includeImages: false
+            };
+            Ext.device.Contacts.getContacts(contactsConfig);
+        }
+        else{
             //populate static test values
             var contacts = [
             {
@@ -92,7 +92,7 @@ Ext.define('ttapp.util.ContactsProxy', {
                 'id' : 3,
                 'name': { 'givenName': 'nike', 'familyName': 'shikari'},
                 'phoneNumbers': [{'value': '0101010101'}],
-                'first_name' : 'Elijah',
+                'first_name' : null,
                 'last_name' : 'Talinger',
                 'on_tinktime' : true,
                 'phone_type'  : 'mobile',
@@ -113,7 +113,7 @@ Ext.define('ttapp.util.ContactsProxy', {
             this.areOnTinktime(cStore, x);
 
         }
-    // }
+     }
 });
 Ext.define('ttapp.store.Contacts', {
     extend: 'Ext.data.Store',
@@ -148,7 +148,7 @@ Ext.define('ttapp.store.Contacts', {
                 'id' : 3,
                 'name': { 'givenName': 'nike', 'familyName': 'shikari'},
                 'phoneNumbers': [{'value': '0101010101'}],
-                'first_name' : 'Elijah',
+                'first_name' : null,
                 'last_name' : 'Talinger',
                 'on_tinktime' : true,
                 'phone_type'  : 'mobile',
@@ -174,7 +174,7 @@ Ext.define('ttapp.store.Contacts', {
     	if ( i === -1){
     		return phoneNumber;
     	}
-    	else{
+    	else{ 
     		return this.getAt(i).get('first_name') + ' ' + this.getAt(i).get('last_name');
     	}
     },

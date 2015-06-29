@@ -1,9 +1,11 @@
 Ext.define('ttapp.util.ContactsCleaner', {
     singleton: true,
     encode_utf8: function(s) {
+        if (s === null){ return null;}
         return unescape(encodeURIComponent(s));
     },
     decode_utf8: function(s) {
+        if (s === null){ return null;}
         return decodeURIComponent(escape(s));
     },
     cleanPhoneNumber: function(dialcode, n) {
@@ -49,6 +51,7 @@ Ext.define('ttapp.util.ContactsCleaner', {
             if (ds) {
                 var phn = ttapp.util.ContactsCleaner.cleanPhoneNumber(dc, ds[2]);
                 if (phn) {
+                    
                     c = {
                         "first_name": ttapp.util.ContactsCleaner.encode_utf8(ds[0]),
                         "last_name": ttapp.util.ContactsCleaner.encode_utf8(ds[1]),
