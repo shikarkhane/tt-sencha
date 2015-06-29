@@ -2,6 +2,7 @@ Ext.define('ttapp.view.Intro', {
     extend: 'Ext.Container',
     xtype: 'intro',
     config: {
+        itemId: 'introPage',
         layout: {
             type: 'vbox',
             align: 'middle'
@@ -12,12 +13,11 @@ Ext.define('ttapp.view.Intro', {
             cls: 'top-bar',
             items: [{
                 xtype: 'button',
-                cls: 'top-btn btn-delete',
+                cls: 'top-btn btn-delete close-intro-goto-auth',
                 docked: 'right'
             }]
         }, {
             xtype: 'panel',
-            id: "swiffydiv",
             html: '<iframe class="tinkanimation" src="http://tinktime.com/static/common/introduction.html" ></iframe>'
         }]
     }

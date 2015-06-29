@@ -4,13 +4,24 @@ Ext.define('ttapp.controller.Landing', {
     //, 'Ext.device.Push', 'Ext.device.Device'
     config: {
         refs: {
-            btnBegin: 'button[cls~=clsBegin]'
+            btnBegin: 'button[cls~=clsBegin]',
+            closeintro: 'button[cls~=close-intro-goto-auth]'
         },
         control: {
             'btnBegin': {
                 tap: 'onUserAction'
+            },
+            closeintro: {
+                tap: 'onCloseIntro'
             }
         }
+    },
+    onCloseIntro: function(){
+        Ext.ComponentQuery.query('#introPage')[0].destroy();
+
+        Ext.Viewport.setActiveItem('authenticate', {
+            type: 'fade'
+        });      
     },
     onUserAction: function() {
         if (this._animating) {
@@ -39,9 +50,11 @@ Ext.define('ttapp.controller.Landing', {
                     Ext.Viewport.animateActiveItem(item, 'slide');
                 }, 180);
             } else {
-                Ext.Viewport.animateActiveItem('authenticate', {
-                    type: 'slide'
-                });
+                setTimeout(function() {
+                    Ext.Viewport.animateActiveItem('intro', {
+                        type: 'fade'
+                    });
+                }, 400);
             }
         });
     }

@@ -7,7 +7,8 @@ Ext.define('ttapp.view.PrivacyPolicy', {
 		items: 
 		  [{
             xtype: 'titlebar',
-            docked:'top',
+            docked:'top',           
+            zIndex: 3, 
             cls:'top-bar',
             title:'Privacy Policy',
             items:[
@@ -22,9 +23,8 @@ Ext.define('ttapp.view.PrivacyPolicy', {
             ] 
 	        },
             {
-                xtype: 'panel',
-                fullscreen: true,
-                html: '<iframe style="width:100%; height:100%;" src="http://tinktime.com/static/common/privacy.html"> </iframe>'
+                xtype: 'panel',                
+                html: '<iframe class="tinkanimation" src="http://tinktime.com/static/common/privacy.html"> </iframe>'
             }]
 		}
 });
