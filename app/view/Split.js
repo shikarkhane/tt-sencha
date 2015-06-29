@@ -37,7 +37,7 @@ Ext.define('ttapp.view.Split', {
             itemId: 'sentTrinket',
             src: 'resources/images/others/tink_design.png',
             cls: 'prev-trinket',
-            html: 'Done!',
+            html: '<div class="clsSplitSeconds">1 S</div><div class="clsSplitDone">Done!</div>',
             styleHtmlCls: 'clsSentTrinket',
             styleHtmlContent: true
         }, {

@@ -32,11 +32,13 @@ Ext.define('ttapp.controller.Split', {
         Ext.Viewport.animateActiveItem('feed',{type:'slide', direction: 'left'});
     },
     showSentTrinketThumbnail: function(){
-        debugger;
+        
         Ext.getStore('profilestore').getLastSentSeconds(function(secondsSent) {
             Ext.getStore('profilestore').getActiveTrinket(function(trinketName) {
                 Ext.getStore('trinketstore').getThumbnailPath( trinketName, function(activeTrinketThumbnailPath) {
                     console.log(secondsSent);
+                    var sendSec = Ext.select('.clsSplitSeconds');
+                    sendSec.setHtml(secondsSent + ' S');
 
                     var width = ttapp.config.Config.getWidth(),
                     height = ttapp.config.Config.getHeight();
