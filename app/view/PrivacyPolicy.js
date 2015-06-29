@@ -20,6 +20,11 @@ Ext.define('ttapp.view.PrivacyPolicy', {
                 	}
                 }
             ] 
-	        }]
+	        },
+            {
+                xtype: 'panel',
+                fullscreen: true,
+                html: '<iframe style="width:100%; height:100%;" src="http://tinktime.com/static/common/privacy.html"> </iframe>'
+            }]
 		}
 });
