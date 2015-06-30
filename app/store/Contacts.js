@@ -175,7 +175,18 @@ Ext.define('ttapp.store.Contacts', {
     		return phoneNumber;
     	}
     	else{ 
-    		return this.getAt(i).get('first_name') + ' ' + this.getAt(i).get('last_name');
+            var fn = this.getAt(i).get('first_name'),
+                ln =  this.getAt(i).get('last_name'),
+                fullname='';
+            
+            if (!Ext.isString(fn)){
+                fullname = fn + ' ';
+            }
+            if (!Ext.isString(ln)){
+                fullname = fullname + ln;
+            }
+            
+    		return  fullname;
     	}
     },
     isOnTinkTime: function(phoneNumber){
