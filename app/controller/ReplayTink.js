@@ -32,6 +32,8 @@ Ext.define('ttapp.controller.ReplayTink', {
                 items: [{
                     xtype: 'toolbar',
                     docked: 'top',
+                    html: seconds + ' sec',
+                    zIndex: 2,
                     cls: 'top-bar',
                     items: [{
                         xtype: 'button',
@@ -40,24 +42,19 @@ Ext.define('ttapp.controller.ReplayTink', {
                     }]
                 }, {
                     xtype: 'panel',
-                    cls: 'clsTimerClock',
-                    zIndex: 9,
-                    flex: 1,
-                    html: seconds + ' sec'
-                }, {
-                    xtype: 'panel',
                     itemId: 'replaycomponent',
-                    flex: 5,
+                    //flex: 5,
                     html: '<iframe id="replaytinkcontainer" class="tinkanimation" allowtransparence="true"></iframe>'
                 }]
             });
 
             if (text.length > 0) {
                 r.add({
-                    xtype: 'panel',
-                    cls: 'clsReplayTextMessage',
+                    xtype: 'toolbar',
+                    docked: 'bottom',
+                    //cls: 'clsReplayTextMessage',
                     flex: 1,
-                    html: '<h2>' + text + '</h2>'
+                    title:  text 
                 });
             }
 
