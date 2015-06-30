@@ -588,13 +588,13 @@ margin-bottom: 30px;
     vertical-align: middle;
 }
 .message-box .text-msg-preview textarea{
-    background: none;
+    background: #6a899b;
     vertical-align: middle;
     min-height: 96px;
     margin: 0;
     color: #fff;
     -webkit-text-fill-color: white;
-    font-size:18px;
+    font-size:15px;
 }
 .message-box .text-msg-preview textarea[placeholder]::-webkit-input-placeholder{
     color: #fff;

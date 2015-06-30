@@ -14,7 +14,7 @@ Ext.define('ttapp.view.Feed', {
             },
             items: [{
                 xtype: 'button',
-                text: 'previous',
+                text: 'back',
                 itemId: 'previous',
                 hidden: true
             }, {
@@ -32,7 +32,7 @@ Ext.define('ttapp.view.Feed', {
                 store: 'Messages'
             }, {
                 xtype: 'button',
-                text: 'next',
+                text: 'show more',
                 itemId: 'next'
             }]
         }]
