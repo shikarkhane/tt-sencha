@@ -179,10 +179,10 @@ Ext.define('ttapp.store.Contacts', {
                 ln =  this.getAt(i).get('last_name'),
                 fullname='';
             
-            if (!Ext.isString(fn)){
+            if (Ext.isString(fn)){
                 fullname = fn + ' ';
             }
-            if (!Ext.isString(ln)){
+            if (Ext.isString(ln)){
                 fullname = fullname + ln;
             }
             
