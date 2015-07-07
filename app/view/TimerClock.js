@@ -5,8 +5,7 @@ Ext.define('ttapp.view.TimerClock', {
     paused: false,
     clockIntervalHook: undefined,
     config: {
-        left: 0,
-        top: 0
+        itemId: 'runningClock'
     },
     start: function () {
         var me = this,
@@ -20,8 +19,6 @@ Ext.define('ttapp.view.TimerClock', {
                     me.stop();
                 }
             };
-        this.setTop(ttapp.config.Config.getHeight() * 0.05);
-        this.setLeft((ttapp.config.Config.getWidth() - 42)/2);
         me.clockIntervalHook = setInterval(updateClock, 1000);
         return me;
     },

@@ -34,7 +34,7 @@ Ext.define('ttapp.controller.ReplayTink', {
                     docked: 'top',
                     html: seconds + ' sec',
                     zIndex: 2,
-                    cls: 'top-bar',
+                    cls: 'replay-top-bar',
                     items: [{
                         xtype: 'button',
                         cls: 'top-btn btn-delete replay-tink-close-btn',
@@ -51,8 +51,9 @@ Ext.define('ttapp.controller.ReplayTink', {
             if (text.length > 0) {
                 r.add({
                     xtype: 'toolbar',
+
                     docked: 'bottom',
-                    //cls: 'clsReplayTextMessage',
+                    cls: 'clsReplayTextMessage',
                     flex: 1,
                     title:  text 
                 });

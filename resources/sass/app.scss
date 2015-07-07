@@ -64,7 +64,14 @@ body {
 .clsTimerClock {
     color:#FFFFFF;
     font-family:"nexalight";
-    font-size:20pt
+    font-size:20pt;
+    top: 5%;
+    left:50%;
+    margin-left: -45px;
+    position: absolute;
+    width: 90px;
+    height: 50px;
+   
 }
 
 .img-trinket {
@@ -858,14 +865,25 @@ margin-bottom: 30px;
     font-size: 25px;
 }
 
-.clsTimerClock, .clsReplayTextMessage{
+.clsTimerClock{
     .x-innerhtml{
         background-color: rgba(173, 174, 158, 0.7);
         font-weight: bolder;
         padding: 10px;
-        -moz-border-radius:10px;
-        -webkit-border-radius:10px;
+         -moz-border-radius:10px;
+         -webkit-border-radius:10px;
+        
         }
+}
+
+.replay-top-bar, .clsReplayTextMessage{
+	background-color: rgba(173, 174, 158, 0.7);
+	background-image: none;
+}
+.replay-top-bar{
+    .x-innerhtml{
+    	width: 100px;
+	}	
 }
 
 
