@@ -64,7 +64,6 @@ Ext.define('ttapp.controller.SendTo', {
 
         setTimeout(function() {
             Ext.getStore('phonecontacts').clearFilter();
-            Ext.getCmp('contactsListToChoose').setStore('');
             Ext.getCmp('contactsListToChoose').setHeight('0px');
             Ext.getCmp('contactsListToChoose').removeCls('show-list');
         }, 5);
@@ -77,7 +76,6 @@ Ext.define('ttapp.controller.SendTo', {
     onSearchClearIconTap: function() {
         //call the clearFilter method on the store instance
         Ext.getStore('phonecontacts').clearFilter();
-        Ext.getCmp('contactsListToChoose').setStore('');
         Ext.getCmp('contactsListToChoose').setHeight('0px');
         Ext.getCmp('contactsListToChoose').removeCls('show-list');
     },
@@ -101,13 +99,12 @@ Ext.define('ttapp.controller.SendTo', {
                     thisRegEx.test(record.get('last_name')) ||
                     thisRegEx.test(record.get('phone_number'))) {
                     return true;
-                };
+                }
                 return false;
             });
         }
 
-        if (field.getValue() == '') {
-            Ext.getCmp('contactsListToChoose').setStore('');
+        if (field.getValue() === '') {
             Ext.getCmp('contactsListToChoose').setHeight('0px');
             Ext.getCmp('contactsListToChoose').removeCls('show-list');
         } else {

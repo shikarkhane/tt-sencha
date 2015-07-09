@@ -3,11 +3,24 @@ Ext.define('ttapp.util.FeedProxy', {
     requires: ['ttapp.util.Common'],
 
     process: function(clearAll, callback, scope) {
-        var me = this;
+        var me = this,
+            contacts = Ext.getStore('phonecontacts'),
+            fn;
 
-        Ext.getStore('profilestore').getPhoneNumber(function(myNumber) {
-            me._process.call(me, clearAll, myNumber, callback, scope);
-        });
+        fn = function() {
+            Ext.getStore('profilestore').getPhoneNumber(function(myNumber) {
+                me._process.call(me, clearAll, myNumber, callback, scope);
+            });
+        };
+
+        if (!contacts._processed) {
+            contacts.on('processed', function() {
+                fn();
+            }, this);
+        }
+        else {
+            fn();
+        }
     },
 
     _process: function(clearAll, myNumber, callback, scope) {

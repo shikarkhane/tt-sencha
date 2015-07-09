@@ -55,14 +55,18 @@ Ext.define('ttapp.controller.Tink', {
             Ext.getStore('profilestore').getActiveTrinket(function(trinketName) {
 
                 Ext.getStore('profilestore').setLastSecondsSent(periodInSeconds);
-                
+
                 me.getApplication().getController('SendTo').showSendTo(me, periodInSeconds, trinketName);
-                
+
                 Ext.getCmp('tinkScreen').removeCls('show-full-frame');
             });
         });
     },
     onShow: function() {
+        Ext.Viewport.mask({
+            xtype: 'loadmask'
+        });
+
         this.resetTimerClock();
         this.useActiveTrinket();
         this.updateNotifyRedDot();
@@ -112,6 +116,8 @@ Ext.define('ttapp.controller.Tink', {
                     iframe.dom.onload = function() {
                         iframe.dom.style.opacity = 1;
                         iframe.dom.onload = null;
+
+                        Ext.Viewport.unmask();
                     };
 
                     iframe.dom.src = activeTrinketSwiffyPath;
