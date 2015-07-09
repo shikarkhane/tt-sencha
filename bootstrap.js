@@ -703,6 +703,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "ttapp.view.ConfirmPhoneNumber": [],
   "ttapp.view.DogEar": [],
   "ttapp.view.Feed": [],
+  "ttapp.view.Intro": [],
   "ttapp.view.Landing": [],
   "ttapp.view.Options": [],
   "ttapp.view.PrivacyPolicy": [],
@@ -1494,6 +1495,9 @@ Ext.ClassManager.addNameAliasMappings({
   ],
   "ttapp.view.Feed": [
     "widget.feed"
+  ],
+  "ttapp.view.Intro": [
+    "widget.intro"
   ],
   "ttapp.view.Landing": [
     "widget.landing"
