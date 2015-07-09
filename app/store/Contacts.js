@@ -40,6 +40,9 @@ Ext.define('ttapp.util.ContactsProxy', {
                 }
 
                 cStore.sync();
+
+                cStore._processed = true;
+                cStore.fireEvent('processed', this);
             },
             failure: function(response, opts) {
                 Ext.Msg.alert('Is on netwk', "error", Ext.emptyFn);
@@ -66,6 +69,7 @@ Ext.define('ttapp.util.ContactsProxy', {
                 scope: this,
                 includeImages: false
             };
+
             Ext.device.Contacts.getContacts(contactsConfig);
         } else {
             //populate static test values
