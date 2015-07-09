@@ -1,4 +1,4 @@
-function _f0d1d66f633195e252f8588af47862f72cd82173(){};//@tag foundation,core
+function _bbc88a01b3b15d00a238ccd857ba14d81727cebf(){};//@tag foundation,core
 //@define Ext
 
 /**
@@ -71599,11 +71599,24 @@ Ext.define('ttapp.util.FeedProxy', {
                                     
 
     process: function(clearAll, callback, scope) {
-        var me = this;
+        var me = this,
+            contacts = Ext.getStore('phonecontacts'),
+            fn;
 
-        Ext.getStore('profilestore').getPhoneNumber(function(myNumber) {
-            me._process.call(me, clearAll, myNumber, callback, scope);
-        });
+        fn = function() {
+            Ext.getStore('profilestore').getPhoneNumber(function(myNumber) {
+                me._process.call(me, clearAll, myNumber, callback, scope);
+            });
+        };
+
+        if (!contacts._processed) {
+            contacts.on('processed', function() {
+                fn();
+            }, this);
+        }
+        else {
+            fn();
+        }
     },
 
     _process: function(clearAll, myNumber, callback, scope) {
@@ -71990,45 +72003,52 @@ Ext.define('ttapp.model.Contact', {
 Ext.define('ttapp.util.ContactsProxy', {
     singleton: true,
                                                                     
-    areOnTinktime: function(cStore, contacts){
+    areOnTinktime: function(cStore, contacts) {
         Ext.Ajax.request({
-            url:  ttapp.config.Config.getBaseURL() + '/are-on-network/',
+            url: ttapp.config.Config.getBaseURL() + '/are-on-network/',
             method: 'POST',
-            headers: { 'Content-Type': 'application/json'},
+            headers: {
+                'Content-Type': 'application/json'
+            },
             disableCaching: false,
             jsonData: {
-                "contacts" : contacts
+                "contacts": contacts
             },
-
             success: function(response) {
                 var cModel;
 
                 // remove all existing contacts
                 cStore.removeAll(true);
-                Ext.Array.each(Ext.JSON.decode(response.responseText), function(item, index, contacts_itself){
+
+                var json = Ext.JSON.decode(response.responseText);
+
+                for (var i = 0; i < json.length; i++) {
+                    var item = json[i];
+
                     var lname = ttapp.util.ContactsCleaner.decode_utf8(item.last_name),
                         fname = ttapp.util.ContactsCleaner.decode_utf8(item.first_name),
                         pnumber = item.phone_number,
                         pType = item.phone_type,
                         onTinkTime = item.on_tinktime;
 
-                // item.name.familyName, item.name.givenName, item.phoneNumbers[0].value
-                    cModel = Ext.create('ttapp.model.Contact', {
-                            id: index,
-                            first_name: fname,
-                            last_name: lname,
-                            on_tinktime: onTinkTime,
-                            phone_type: pType,
-                            phone_number: pnumber
-                        });
-                    cStore.add(cModel);
-                    cStore.sync();
-                });
-            },
-                failure: function(response, opts) {
-                    Ext.Msg.alert('Is on netwk', "error", Ext.emptyFn);
-
+                    cStore.add({
+                        id: i,
+                        first_name: fname,
+                        last_name: lname,
+                        on_tinktime: onTinkTime,
+                        phone_type: pType,
+                        phone_number: pnumber
+                    });
                 }
+
+                cStore.sync();
+
+                cStore._processed = true;
+                cStore.fireEvent('processed', this);
+            },
+            failure: function(response, opts) {
+                Ext.Msg.alert('Is on netwk', "error", Ext.emptyFn);
+            }
         });
     },
     process: function(cStore) {
@@ -72039,71 +72059,82 @@ Ext.define('ttapp.util.ContactsProxy', {
             var contactsConfig = {
                 options: opts,
                 fields: ["name", "phoneNumbers"],
-                success: function(contacts){
-        
-                    if ( contacts.length > 0){
+                success: function(contacts) {
+                    if (contacts.length > 0) {
                         x = ttapp.util.ContactsCleaner.process(contacts);
                         ttapp.util.ContactsProxy.areOnTinktime(cStore, x);
-                   }
+                    }
                 },
-        
-                failure: function(context){
-                     Ext.Msg.alert('Change privacy!', 'Allow tinktime in settings > privacy > contacts', Ext.emptyFn);
-               },
-               scope: this,
-               includeImages: false
+                failure: function(context) {
+                    Ext.Msg.alert('Change privacy!', 'Allow tinktime in settings > privacy > contacts', Ext.emptyFn);
+                },
+                scope: this,
+                includeImages: false
             };
+
             Ext.device.Contacts.getContacts(contactsConfig);
-        }
-        else{
+        } else {
             //populate static test values
-            var contacts = [
-            {
-                'id' : 1,
-                'name': { 'givenName': 'nike', 'familyName': 'shikari'},
-                'phoneNumbers': [{'value': '+46705438947'}],
-                'first_name' : 'Eddåäöie',
-                'last_name' : 'Huang',
-                'on_tinktime' : true,
-                'phone_type'  : 'mobile',
-                'phone_number' : '+46700907802'
-            },
-            {
-                'id' : 2,
-                'phoneNumbers': [{'value': '+46700907802'}],
-                'first_name' : 'Edith',
-                'last_name' : 'Jones',
-                'on_tinktime' : true,
-                'phone_type'  : 'home',
-                'phone_number' : '(514) 316-4528'
-            },
-            {
-                'id' : 3,
-                'name': { 'givenName': 'nike', 'familyName': 'shikari'},
-                'phoneNumbers': [{'value': '0101010101'}],
-                'first_name' : null,
-                'last_name' : 'Talinger',
-                'on_tinktime' : true,
-                'phone_type'  : 'mobile',
-                'phone_number' : '(235) 453-1258'
-            },{
-                'id' : 4,
-                'name': { 'givenName': 'nike', 'familyName': 'shikari'},
-                'phoneNumbers': [{'value': '+0101010101'}],
-                'first_name' : 'Emanuel',
-                'last_name' : 'Lindberg',
-                'on_tinktime' : false,
-                'phone_type'  : 'work',
-                'phone_number' : '(978) 165-3214'
-            }
-        ];
+            var contacts = [{
+                'id': 1,
+                'name': {
+                    'givenName': 'nike',
+                    'familyName': 'shikari'
+                },
+                'phoneNumbers': [{
+                    'value': '+46705438947'
+                }],
+                'first_name': 'Eddåäöie',
+                'last_name': 'Huang',
+                'on_tinktime': true,
+                'phone_type': 'mobile',
+                'phone_number': '+46700907802'
+            }, {
+                'id': 2,
+                'phoneNumbers': [{
+                    'value': '+46700907802'
+                }],
+                'first_name': 'Edith',
+                'last_name': 'Jones',
+                'on_tinktime': true,
+                'phone_type': 'home',
+                'phone_number': '(514) 316-4528'
+            }, {
+                'id': 3,
+                'name': {
+                    'givenName': 'nike',
+                    'familyName': 'shikari'
+                },
+                'phoneNumbers': [{
+                    'value': '0101010101'
+                }],
+                'first_name': null,
+                'last_name': 'Talinger',
+                'on_tinktime': true,
+                'phone_type': 'mobile',
+                'phone_number': '(235) 453-1258'
+            }, {
+                'id': 4,
+                'name': {
+                    'givenName': 'nike',
+                    'familyName': 'shikari'
+                },
+                'phoneNumbers': [{
+                    'value': '+0101010101'
+                }],
+                'first_name': 'Emanuel',
+                'last_name': 'Lindberg',
+                'on_tinktime': false,
+                'phone_type': 'work',
+                'phone_number': '(978) 165-3214'
+            }];
 
             x = ttapp.util.ContactsCleaner.process(contacts, 'default');
             this.areOnTinktime(cStore, x);
-
         }
-     }
+    }
 });
+
 Ext.define('ttapp.store.Contacts', {
     extend:  Ext.data.Store ,
     //requires: [ 'Ext.data.proxy.LocalStorage'],
@@ -72114,81 +72145,93 @@ Ext.define('ttapp.store.Contacts', {
         //     type: 'localstorage',
         //     id: 'contactstoreproxy'
         // },
-        data:[{
-                'id' : 1,
-                'name': { 'givenName': 'nike', 'familyName': 'shikari'},
-                'phoneNumbers': [{'value': '0101010101'}],
-                'first_name' : 'Eddie',
-                'last_name' : 'Huang',
-                'on_tinktime' : true,
-                'phone_type'  : 'mobile',
-                'phone_number' : '+46700907802'
+        data: [{
+            'id': 1,
+            'name': {
+                'givenName': 'nike',
+                'familyName': 'shikari'
             },
-            {
-                'id' : 2,
-                'phoneNumbers': [{'value': '0101010131'}],
-                'first_name' : 'Edith',
-                'last_name' : 'Jones',
-                'on_tinktime' : true,
-                'phone_type'  : 'home',
-                'phone_number' : '(514) 316-4528'
-            },
-            {
-                'id' : 3,
-                'name': { 'givenName': 'nike', 'familyName': 'shikari'},
-                'phoneNumbers': [{'value': '0101010101'}],
-                'first_name' : null,
-                'last_name' : 'Talinger',
-                'on_tinktime' : true,
-                'phone_type'  : 'mobile',
-                'phone_number' : '(235) 453-1258'
-            },{
-                'id' : 4,
-                'name': { 'givenName': 'nike', 'familyName': 'shikari'},
-                'phoneNumbers': [{'value': '0101010101'}],
-                'first_name' : 'Emanuel',
-                'last_name' : 'Lindberg',
-                'on_tinktime' : false,
-                'phone_type'  : 'work',
-                'phone_number' : '(978) 165-3214'
+            'phoneNumbers': [{
+                'value': '0101010101'
             }],
-    	//sort the store using the lastname field
+            'first_name': 'Eddie',
+            'last_name': 'Huang',
+            'on_tinktime': true,
+            'phone_type': 'mobile',
+            'phone_number': '+46700907802'
+        }, {
+            'id': 2,
+            'phoneNumbers': [{
+                'value': '0101010131'
+            }],
+            'first_name': 'Edith',
+            'last_name': 'Jones',
+            'on_tinktime': true,
+            'phone_type': 'home',
+            'phone_number': '(514) 316-4528'
+        }, {
+            'id': 3,
+            'name': {
+                'givenName': 'nike',
+                'familyName': 'shikari'
+            },
+            'phoneNumbers': [{
+                'value': '0101010101'
+            }],
+            'first_name': null,
+            'last_name': 'Talinger',
+            'on_tinktime': true,
+            'phone_type': 'mobile',
+            'phone_number': '(235) 453-1258'
+        }, {
+            'id': 4,
+            'name': {
+                'givenName': 'nike',
+                'familyName': 'shikari'
+            },
+            'phoneNumbers': [{
+                'value': '0101010101'
+            }],
+            'first_name': 'Emanuel',
+            'last_name': 'Lindberg',
+            'on_tinktime': false,
+            'phone_type': 'work',
+            'phone_number': '(978) 165-3214'
+        }],
+        //sort the store using the lastname field
         sorters: 'lastName',
 
         //group the store using the lastName field
         groupField: 'lastName'
     },
-    getFirstLastName: function(phoneNumber){
-    	var i = this.find('phone_number', phoneNumber);
-    	if ( i === -1){
-    		return phoneNumber;
-    	}
-    	else{ 
+    getFirstLastName: function(phoneNumber) {
+        var i = this.find('phone_number', phoneNumber);
+        if (i === -1) {
+            return phoneNumber;
+        } else {
             var fn = this.getAt(i).get('first_name'),
-                ln =  this.getAt(i).get('last_name'),
-                fullname='';
-            
-            if (Ext.isString(fn)){
+                ln = this.getAt(i).get('last_name'),
+                fullname = '';
+
+            if (Ext.isString(fn)) {
                 fullname = fn + ' ';
             }
-            if (Ext.isString(ln)){
+            if (Ext.isString(ln)) {
                 fullname = fullname + ln;
             }
-            
-    		return  fullname;
-    	}
-    },
-    isOnTinkTime: function(phoneNumber){
 
+            return fullname;
+        }
+    },
+    isOnTinkTime: function(phoneNumber) {
         var result = false;
         var i = this.find('phone_number', phoneNumber);
 
-        if ( i > -1){
+        if (i > -1) {
             result = this.getAt(i).get('on_tinktime');
         }
-        return result
+        return result;
     }
-
 });
 
 Ext.define('ttapp.util.Push', {
@@ -72453,14 +72496,18 @@ Ext.define('ttapp.controller.Tink', {
             Ext.getStore('profilestore').getActiveTrinket(function(trinketName) {
 
                 Ext.getStore('profilestore').setLastSecondsSent(periodInSeconds);
-                
+
                 me.getApplication().getController('SendTo').showSendTo(me, periodInSeconds, trinketName);
-                
+
                 Ext.getCmp('tinkScreen').removeCls('show-full-frame');
             });
         });
     },
     onShow: function() {
+        Ext.Viewport.mask({
+            xtype: 'loadmask'
+        });
+
         this.resetTimerClock();
         this.useActiveTrinket();
         this.updateNotifyRedDot();
@@ -72510,6 +72557,8 @@ Ext.define('ttapp.controller.Tink', {
                     iframe.dom.onload = function() {
                         iframe.dom.style.opacity = 1;
                         iframe.dom.onload = null;
+
+                        Ext.Viewport.unmask();
                     };
 
                     iframe.dom.src = activeTrinketSwiffyPath;
@@ -72600,7 +72649,6 @@ Ext.define('ttapp.controller.SendTo', {
 
         setTimeout(function() {
             Ext.getStore('phonecontacts').clearFilter();
-            Ext.getCmp('contactsListToChoose').setStore('');
             Ext.getCmp('contactsListToChoose').setHeight('0px');
             Ext.getCmp('contactsListToChoose').removeCls('show-list');
         }, 5);
@@ -72613,7 +72661,6 @@ Ext.define('ttapp.controller.SendTo', {
     onSearchClearIconTap: function() {
         //call the clearFilter method on the store instance
         Ext.getStore('phonecontacts').clearFilter();
-        Ext.getCmp('contactsListToChoose').setStore('');
         Ext.getCmp('contactsListToChoose').setHeight('0px');
         Ext.getCmp('contactsListToChoose').removeCls('show-list');
     },
@@ -72637,13 +72684,12 @@ Ext.define('ttapp.controller.SendTo', {
                     thisRegEx.test(record.get('last_name')) ||
                     thisRegEx.test(record.get('phone_number'))) {
                     return true;
-                };
+                }
                 return false;
             });
         }
 
-        if (field.getValue() == '') {
-            Ext.getCmp('contactsListToChoose').setStore('');
+        if (field.getValue() === '') {
             Ext.getCmp('contactsListToChoose').setHeight('0px');
             Ext.getCmp('contactsListToChoose').removeCls('show-list');
         } else {
@@ -73328,7 +73374,7 @@ Ext.define('ttapp.controller.ReplayTink', {
                     docked: 'bottom',
                     cls: 'clsReplayTextMessage',
                     flex: 1,
-                    title:  text 
+                    html:  text 
                 });
             }
 
@@ -73628,6 +73674,8 @@ Ext.define('ttapp.view.SendTo', {
 			            },
 			            itemTpl: '<div class="on-tinktime-{on_tinktime}"><div>{first_name} {last_name}</div> <div><span>{phone_type}</span> {phone_number}</div></div>',
 			            store: 'phonecontacts',
+                        infinite: true,
+                        itemHeight: 62,
 		        		items: [
 		        			{
 		                        xtype: 'searchfield',
@@ -73709,8 +73757,8 @@ Ext.define('ttapp.view.Trinket', {
 
         this.add(Ext.create('Ext.Toolbar', {
             docked: 'top',
-            cls: 'top-bar',
-            title: 'Tink gallery',
+            cls: 'top-bar gallery-title',
+            title: 'gallery',
             items: [{
                 xtype: 'button',
                 cls: 'top-btn btn-mail flip-design-right',
@@ -73802,7 +73850,7 @@ Ext.define('ttapp.view.Authenticate', {
 			                xtype: 'numberfield',
 			                name: 'verify-phone-number',
 			                placeHolder: '705432112',
-			                cls:'form-field',
+			                cls:'form-field clsAuthenticatePhoneNumber',
 			                clearIcon:false,
 			                flex: 7
 			        }
