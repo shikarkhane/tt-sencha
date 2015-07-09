@@ -55,7 +55,7 @@ Ext.define('ttapp.controller.ReplayTink', {
                     docked: 'bottom',
                     cls: 'clsReplayTextMessage',
                     flex: 1,
-                    title:  text 
+                    html:  text 
                 });
             }
 
