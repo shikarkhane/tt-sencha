@@ -42,6 +42,8 @@ Ext.define('ttapp.view.SendTo', {
 			            },
 			            itemTpl: '<div class="on-tinktime-{on_tinktime}"><div>{first_name} {last_name}</div> <div><span>{phone_type}</span> {phone_number}</div></div>',
 			            store: 'phonecontacts',
+                        infinite: true,
+                        itemHeight: 62,
 		        		items: [
 		        			{
 		                        xtype: 'searchfield',
