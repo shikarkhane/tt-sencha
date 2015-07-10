@@ -33,7 +33,8 @@ Ext.define('ttapp.view.Feed', {
             }, {
                 xtype: 'button',
                 text: 'show more',
-                itemId: 'next'
+                itemId: 'next',
+                hidden: true
             }]
         }]
     }
