@@ -20,8 +20,11 @@ Ext.define('ttapp.util.ContactsCleaner', {
         if (n.match(/[0-9]+/)) {
             if (f == 1) {
                 return '+' + n;
-            } else {
+            } else if (dialcode) {
                 return dialcode + n;
+            }
+            else {
+                return n;
             }
         } else {
             return n;
@@ -35,7 +38,7 @@ Ext.define('ttapp.util.ContactsCleaner', {
                 if (i.phoneNumbers.length > 0) {
                     var results = [];
                     for (var j = 0; j < i.phoneNumbers.length; j++) {
-                        results.push([[i.name.givenName, i.name.familyName, i.phoneNumbers[0].value, i.phoneNumbers[j].type]]);
+                        results.push([i.name.givenName, i.name.familyName, i.phoneNumbers[0].value, i.phoneNumbers[j].type]);
                     }
                     return results;
                 }
@@ -49,13 +52,15 @@ Ext.define('ttapp.util.ContactsCleaner', {
             dc = Ext.getStore('ipinfostore').getDialCode();
 
         //Ext.Array.each(contacts, function(item, index, contacts_itself){
-        for (var i = 0, l = contacts.length; i < l; i++) {
+        for (var i = 0; i < contacts.length; i++) {
             ds = ttapp.util.ContactsCleaner.deviceSpecificFormat(contacts[i]);
 
             if (ds) {
                 for (var j = 0; j < ds.length; j++) {
                     var value = ds[j],
                         phn = ttapp.util.ContactsCleaner.cleanPhoneNumber(dc, value[2]);
+
+                        console.log(value[2]);
 
                     if (phn) {
                         c = {
