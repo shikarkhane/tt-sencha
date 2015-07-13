@@ -35,7 +35,7 @@ Ext.define('ttapp.view.Feed', {
                 xtype: 'button',
                 text: 'show more',
                 itemId: 'next',
-                cls: 'clsPagingButton'
+                cls: 'clsPagingButton',
                 hidden: true
             }]
         }]
