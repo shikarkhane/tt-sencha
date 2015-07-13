@@ -29,15 +29,18 @@ Ext.define('ttapp.util.ContactsCleaner', {
     },
     deviceSpecificFormat: function(i) {
         if (Ext.os.is.Desktop) {
-            return [i.first_name, i.last_name, i.phoneNumbers[0].value]
+            return [[i.first_name, i.last_name, i.phoneNumbers[0].value]];
         } else {
             if (i.phoneNumbers) {
                 if (i.phoneNumbers.length > 0) {
-                    return [i.name.givenName, i.name.familyName, i.phoneNumbers[0].value];
+                    var results = [];
+                    for (var j = 0; j < i.phoneNumbers.length; j++) {
+                        results.push([[i.name.givenName, i.name.familyName, i.phoneNumbers[0].value, i.phoneNumbers[j].type]]);
+                    }
+                    return results;
                 }
             }
         }
-
         return null;
     },
     process: function(contacts) {
@@ -48,19 +51,24 @@ Ext.define('ttapp.util.ContactsCleaner', {
         //Ext.Array.each(contacts, function(item, index, contacts_itself){
         for (var i = 0, l = contacts.length; i < l; i++) {
             ds = ttapp.util.ContactsCleaner.deviceSpecificFormat(contacts[i]);
+
             if (ds) {
-                var phn = ttapp.util.ContactsCleaner.cleanPhoneNumber(dc, ds[2]);
-                if (phn) {
-                    
-                    c = {
-                        "first_name": ttapp.util.ContactsCleaner.encode_utf8(ds[0]),
-                        "last_name": ttapp.util.ContactsCleaner.encode_utf8(ds[1]),
-                        "phone_number": phn
-                    };
-                    c_array.push(c);
+                for (var j = 0; j < ds.length; j++) {
+                    var value = ds[j],
+                        phn = ttapp.util.ContactsCleaner.cleanPhoneNumber(dc, value[2]);
+
+                    if (phn) {
+                        c = {
+                            "first_name": ttapp.util.ContactsCleaner.encode_utf8(value[0]),
+                            "last_name": ttapp.util.ContactsCleaner.encode_utf8(value[1]),
+                            "phone_number": phn,
+                            "phone_type": (value[3] && value[3] !== "") ? value[3] : null
+                        };
+                        c_array.push(c);
+                    }
                 }
             }
-        };
+        }
         return c_array;
     }
 });
