@@ -4,11 +4,15 @@ Ext.define('ttapp.controller.Feed', {
         refs: {
             previousBtn: 'feed #previous',
             nextBtn: 'feed #next',
+            list: 'feed list',
+            view: 'feed'
         },
         control: {
-            'feed list': {
-                itemtap: 'onShowTinkInFeed',
+            'feed': {
                 activate: 'onFeedShow'
+            },
+            'feed list': {
+                itemtap: 'onShowTinkInFeed'
             },
             'previousBtn': {
                 tap: 'onPrevious'
@@ -19,12 +23,17 @@ Ext.define('ttapp.controller.Feed', {
         }
     },
     onFeedShow: function() {
-        // var config = ttapp.config.Config;
-        //
-        // ttapp.util.FeedProxy.process(true, function() {
-        //     this.getPreviousBtn().setDisabled(config.getCurrentFeedPageNumber() < 1);
-        //     // this.getNextBtn().setDisabled(Ext.getStore('Messages').getCount() < config.getFeedPageSize());
-        // }, this);
+        var store = Ext.getStore('Messages');
+        if (store.getCount() > 0) {
+            this.getNextBtn().show();
+        }
+        else {
+            store.on('load', function() {
+                if (store.getCount() > 0) {
+                    this.getNextBtn().show();
+                }
+            }, this);
+        }
     },
     onPrevious: function() {
         var config = ttapp.config.Config,
@@ -32,14 +41,22 @@ Ext.define('ttapp.controller.Feed', {
 
         this.getPreviousBtn().setHidden(true);
 
-        if (previous == 0) {
+        if (previous === 0) {
             return;
         }
 
         this.getNextBtn().setHidden(true);
+        this.getList().setHidden(true);
+
+        this.getView().mask({
+            xtype: 'loadmask'
+        });
 
         config.setCurrentFeedPageNumber(previous - 1);
         ttapp.util.FeedProxy.process(true, function() {
+            this.getView().unmask();
+
+            this.getList().setHidden(false);
             this.getPreviousBtn().setHidden(config.getCurrentFeedPageNumber() < 1);
             this.getNextBtn().setHidden(Ext.getStore('Messages').getCount() < config.getFeedPageSize());
         }, this);
@@ -47,10 +64,18 @@ Ext.define('ttapp.controller.Feed', {
     onNext: function() {
         this.getPreviousBtn().setHidden(true);
         this.getNextBtn().setHidden(true);
+        this.getList().setHidden(true);
+
+        this.getView().mask({
+            xtype: 'loadmask'
+        });
 
         var config = ttapp.config.Config;
         config.setCurrentFeedPageNumber(config.getCurrentFeedPageNumber() + 1);
         ttapp.util.FeedProxy.process(true, function() {
+            this.getView().unmask();
+
+            this.getList().setHidden(false);
             this.getPreviousBtn().setHidden(false);
             this.getNextBtn().setHidden(Ext.getStore('Messages').getCount() < config.getFeedPageSize());
         }, this);
