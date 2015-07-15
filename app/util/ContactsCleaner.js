@@ -60,8 +60,6 @@ Ext.define('ttapp.util.ContactsCleaner', {
                     var value = ds[j],
                         phn = ttapp.util.ContactsCleaner.cleanPhoneNumber(dc, value[2]);
 
-                        console.log(value[2]);
-
                     if (phn) {
                         c = {
                             "first_name": ttapp.util.ContactsCleaner.encode_utf8(value[0]),

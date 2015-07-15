@@ -14,10 +14,13 @@ Ext.define('ttapp.util.Common', {
             }
         }
     },
-    isUserVerifiedOnServer: function() {
+    isUserVerifiedOnServer: function(callback) {
         // if user is not verified on server, clear local profile and make him authenticate again
         Ext.getStore('profilestore').getPhoneNumber(function(user) {
             if (!user) {
+                if (callback) {
+                    callback(false);
+                }
                 return false;
             }
 
@@ -35,6 +38,15 @@ Ext.define('ttapp.util.Common', {
                         ps.getProxy().clear();
                         ps.data.clear();
                         ps.sync();
+
+                        if (callback) {
+                            callback(false);
+                        }
+                    }
+                    else {
+                        if (callback) {
+                            callback(true);
+                        }
                     }
                 }
             });

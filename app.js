@@ -48,20 +48,29 @@ Ext.application({
 
 
     launch: function() {
-        // Destroy the #appLoadingIndicator element
-        Ext.fly('appLoadingIndicator').destroy();
-
-        // check on server, if user is verified
-        ttapp.util.Common.isUserVerifiedOnServer();
-
-        // Initialize the main view
-        Ext.Viewport.add(Ext.create('ttapp.view.Landing'));
-
         // get tinkbox content
         ttapp.util.FeedProxy.process(true);
 
         // get trinket content
-        ttapp.util.TrinketProxy.process(true);
+        ttapp.util.TrinketProxy.process(true, function() {
+            // check on server, if user is verified
+            ttapp.util.Common.isUserVerifiedOnServer(function(success) {
+                // Destroy the #appLoadingIndicator element
+                Ext.fly('appLoadingIndicator').destroy();
+
+                // Initialize the main view
+                if (success) {
+                    Ext.Viewport.add({
+                        cls: 'bg-transparent'
+                    });
+
+                    ttapp.app.getController('Landing').onUserAction(true);
+                }
+                else {
+                    Ext.Viewport.add(Ext.create('ttapp.view.Landing'));
+                }
+            });
+        });
 
         // get contacts from device
         ttapp.util.ContactsProxy.process(Ext.getStore('phonecontacts'));
