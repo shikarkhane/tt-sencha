@@ -1,4 +1,4 @@
-function _bbc88a01b3b15d00a238ccd857ba14d81727cebf(){};//@tag foundation,core
+function _55ee97fa53b801d4937160d9369f33146cea835b(){};//@tag foundation,core
 //@define Ext
 
 /**
@@ -70460,29 +70460,6 @@ Ext.define('Ext.viewport.Viewport', {
  * you should **not** use {@link Ext#onReady}.
  */
 
-Ext.define('ttapp.view.Landing', {
-    extend:  Ext.Container ,
-    xtype: 'landing',
-                            
-    config: {
-        fullscreen: true,
-        layout: 'vbox',
-        cls: 'bg-transparent',
-        items: [{
-            xtype: 'panel',
-            cls: 'landing-page',
-            items: [{
-                xtype: 'panel',
-                cls: 'logo'
-            }, {
-                xtype: 'button',
-                text: "begin",
-                cls: "clsBegin"
-            }]
-        }]
-    }
-});
-
 Ext.define('ttapp.util.Common', {
     singleton: true,
     updateNotifySymbol: function(make_visible) {
@@ -70499,10 +70476,13 @@ Ext.define('ttapp.util.Common', {
             }
         }
     },
-    isUserVerifiedOnServer: function() {
+    isUserVerifiedOnServer: function(callback) {
         // if user is not verified on server, clear local profile and make him authenticate again
         Ext.getStore('profilestore').getPhoneNumber(function(user) {
             if (!user) {
+                if (callback) {
+                    callback(false);
+                }
                 return false;
             }
 
@@ -70520,6 +70500,15 @@ Ext.define('ttapp.util.Common', {
                         ps.getProxy().clear();
                         ps.data.clear();
                         ps.sync();
+
+                        if (callback) {
+                            callback(false);
+                        }
+                    }
+                    else {
+                        if (callback) {
+                            callback(true);
+                        }
                     }
                 }
             });
@@ -71786,7 +71775,7 @@ Ext.define('ttapp.util.TrinketProxy', {
     singleton: true,
                                     
 
-    process: function(clearAll) {
+    process: function(clearAll, callback) {
         var tStore = Ext.getStore('trinketstore');
 
         if (clearAll) {
@@ -71812,6 +71801,10 @@ Ext.define('ttapp.util.TrinketProxy', {
                     tStore.addTrinket(t.trinketId, t.groupId, t.name, t.label, t.thumbnailPath, t.swiffyPath);
                     tStore.sync();
                 });
+
+                if (callback) {
+                    callback();
+                }
             }
         });
     }
@@ -71915,6 +71908,29 @@ Ext.define('ttapp.store.Trinkets', {
     }
 });
 
+Ext.define('ttapp.view.Landing', {
+    extend:  Ext.Container ,
+    xtype: 'landing',
+                            
+    config: {
+        fullscreen: true,
+        layout: 'vbox',
+        cls: 'bg-transparent',
+        items: [{
+            xtype: 'panel',
+            cls: 'landing-page',
+            items: [{
+                xtype: 'panel',
+                cls: 'logo'
+            }, {
+                xtype: 'button',
+                text: "begin",
+                cls: "clsBegin"
+            }]
+        }]
+    }
+});
+
 Ext.define('ttapp.util.ContactsCleaner', {
     singleton: true,
     encode_utf8: function(s) {
@@ -71937,8 +71953,11 @@ Ext.define('ttapp.util.ContactsCleaner', {
         if (n.match(/[0-9]+/)) {
             if (f == 1) {
                 return '+' + n;
-            } else {
+            } else if (dialcode) {
                 return dialcode + n;
+            }
+            else {
+                return n;
             }
         } else {
             return n;
@@ -71946,15 +71965,18 @@ Ext.define('ttapp.util.ContactsCleaner', {
     },
     deviceSpecificFormat: function(i) {
         if (Ext.os.is.Desktop) {
-            return [i.first_name, i.last_name, i.phoneNumbers[0].value]
+            return [[i.first_name, i.last_name, i.phoneNumbers[0].value]];
         } else {
             if (i.phoneNumbers) {
                 if (i.phoneNumbers.length > 0) {
-                    return [i.name.givenName, i.name.familyName, i.phoneNumbers[0].value];
+                    var results = [];
+                    for (var j = 0; j < i.phoneNumbers.length; j++) {
+                        results.push([i.name.givenName, i.name.familyName, i.phoneNumbers[j].value, i.phoneNumbers[j].type]);
+                    }
+                    return results;
                 }
             }
         }
-
         return null;
     },
     process: function(contacts) {
@@ -71963,21 +71985,26 @@ Ext.define('ttapp.util.ContactsCleaner', {
             dc = Ext.getStore('ipinfostore').getDialCode();
 
         //Ext.Array.each(contacts, function(item, index, contacts_itself){
-        for (var i = 0, l = contacts.length; i < l; i++) {
+        for (var i = 0; i < contacts.length; i++) {
             ds = ttapp.util.ContactsCleaner.deviceSpecificFormat(contacts[i]);
+
             if (ds) {
-                var phn = ttapp.util.ContactsCleaner.cleanPhoneNumber(dc, ds[2]);
-                if (phn) {
-                    
-                    c = {
-                        "first_name": ttapp.util.ContactsCleaner.encode_utf8(ds[0]),
-                        "last_name": ttapp.util.ContactsCleaner.encode_utf8(ds[1]),
-                        "phone_number": phn
-                    };
-                    c_array.push(c);
+                for (var j = 0; j < ds.length; j++) {
+                    var value = ds[j],
+                        phn = ttapp.util.ContactsCleaner.cleanPhoneNumber(dc, value[2]);
+
+                    if (phn) {
+                        c = {
+                            "first_name": ttapp.util.ContactsCleaner.encode_utf8(value[0]),
+                            "last_name": ttapp.util.ContactsCleaner.encode_utf8(value[1]),
+                            "phone_number": phn,
+                            "phone_type": (value[3] && value[3] !== "") ? value[3] : null
+                        };
+                        c_array.push(c);
+                    }
                 }
             }
-        };
+        }
         return c_array;
     }
 });
@@ -72719,7 +72746,7 @@ Ext.define('ttapp.controller.SendTo', {
                 error: function() {
                     Ext.Msg.alert('Cancelled', 'Sms not sent!', Ext.emptyFn);
                 }
-            }
+            };
             sms.send(sConf.number, sConf.message, sConf.intent, sConf.success, sConf.error);
         }
     },
@@ -72940,9 +72967,9 @@ Ext.define('ttapp.controller.Landing', {
 
         Ext.Viewport.setActiveItem('authenticate', {
             type: 'fade'
-        });      
+        });
     },
-    onUserAction: function() {
+    onUserAction: function(fade) {
         if (this._animating) {
             return;
         }
@@ -72959,14 +72986,14 @@ Ext.define('ttapp.controller.Landing', {
                     xtype: 'trinket'
                 });
 
-                item.element.setStyle('opacity', '0')
+                item.element.setStyle('opacity', '0');
                 item.element.show();
 
                 setTimeout(function() {
                     item.element.hide();
-                    item.element.setStyle('opacity', '1')
+                    item.element.setStyle('opacity', '1');
 
-                    Ext.Viewport.animateActiveItem(item, 'slide');
+                    Ext.Viewport.animateActiveItem(item, fade === true ? 'fade' : 'slide');
                 }, 180);
             } else {
                 setTimeout(function() {
@@ -73211,11 +73238,15 @@ Ext.define('ttapp.controller.Feed', {
         refs: {
             previousBtn: 'feed #previous',
             nextBtn: 'feed #next',
+            list: 'feed list',
+            view: 'feed'
         },
         control: {
-            'feed list': {
-                itemtap: 'onShowTinkInFeed',
+            'feed': {
                 activate: 'onFeedShow'
+            },
+            'feed list': {
+                itemtap: 'onShowTinkInFeed'
             },
             'previousBtn': {
                 tap: 'onPrevious'
@@ -73226,12 +73257,17 @@ Ext.define('ttapp.controller.Feed', {
         }
     },
     onFeedShow: function() {
-        // var config = ttapp.config.Config;
-        //
-        // ttapp.util.FeedProxy.process(true, function() {
-        //     this.getPreviousBtn().setDisabled(config.getCurrentFeedPageNumber() < 1);
-        //     // this.getNextBtn().setDisabled(Ext.getStore('Messages').getCount() < config.getFeedPageSize());
-        // }, this);
+        var store = Ext.getStore('Messages');
+        if (store.getCount() > 0) {
+            this.getNextBtn().show();
+        }
+        else {
+            store.on('load', function() {
+                if (store.getCount() > 0) {
+                    this.getNextBtn().show();
+                }
+            }, this);
+        }
     },
     onPrevious: function() {
         var config = ttapp.config.Config,
@@ -73239,14 +73275,22 @@ Ext.define('ttapp.controller.Feed', {
 
         this.getPreviousBtn().setHidden(true);
 
-        if (previous == 0) {
+        if (previous === 0) {
             return;
         }
 
         this.getNextBtn().setHidden(true);
+        this.getList().setHidden(true);
+
+        this.getView().mask({
+            xtype: 'loadmask'
+        });
 
         config.setCurrentFeedPageNumber(previous - 1);
         ttapp.util.FeedProxy.process(true, function() {
+            this.getView().unmask();
+
+            this.getList().setHidden(false);
             this.getPreviousBtn().setHidden(config.getCurrentFeedPageNumber() < 1);
             this.getNextBtn().setHidden(Ext.getStore('Messages').getCount() < config.getFeedPageSize());
         }, this);
@@ -73254,10 +73298,18 @@ Ext.define('ttapp.controller.Feed', {
     onNext: function() {
         this.getPreviousBtn().setHidden(true);
         this.getNextBtn().setHidden(true);
+        this.getList().setHidden(true);
+
+        this.getView().mask({
+            xtype: 'loadmask'
+        });
 
         var config = ttapp.config.Config;
         config.setCurrentFeedPageNumber(config.getCurrentFeedPageNumber() + 1);
         ttapp.util.FeedProxy.process(true, function() {
+            this.getView().unmask();
+
+            this.getList().setHidden(false);
             this.getPreviousBtn().setHidden(false);
             this.getNextBtn().setHidden(Ext.getStore('Messages').getCount() < config.getFeedPageSize());
         }, this);
@@ -73507,6 +73559,7 @@ Ext.define('ttapp.view.Feed', {
                 xtype: 'button',
                 text: 'back',
                 itemId: 'previous',
+                cls: 'clsPagingButton',
                 hidden: true
             }, {
                 xtype: 'list',
@@ -73524,7 +73577,9 @@ Ext.define('ttapp.view.Feed', {
             }, {
                 xtype: 'button',
                 text: 'show more',
-                itemId: 'next'
+                itemId: 'next',
+                cls: 'clsPagingButton',
+                hidden: true
             }]
         }]
     }
@@ -73672,7 +73727,7 @@ Ext.define('ttapp.view.SendTo', {
 			            scrollable: {
 			                direction: 'vertical'
 			            },
-			            itemTpl: '<div class="on-tinktime-{on_tinktime}"><div>{first_name} {last_name}</div> <div><span>{phone_type}</span> {phone_number}</div></div>',
+			            itemTpl: '<div class="on-tinktime-{on_tinktime}"><div>{first_name} {last_name}</div> <div><tpl if="phone_type"><span>{phone_type}</span> </tpl>{phone_number}</div></div>',
 			            store: 'phonecontacts',
                         infinite: true,
                         itemHeight: 62,
@@ -74228,20 +74283,29 @@ Ext.application({
 
 
     launch: function() {
-        // Destroy the #appLoadingIndicator element
-        Ext.fly('appLoadingIndicator').destroy();
-
-        // check on server, if user is verified
-        ttapp.util.Common.isUserVerifiedOnServer();
-
-        // Initialize the main view
-        Ext.Viewport.add(Ext.create('ttapp.view.Landing'));
-
         // get tinkbox content
         ttapp.util.FeedProxy.process(true);
 
         // get trinket content
-        ttapp.util.TrinketProxy.process(true);
+        ttapp.util.TrinketProxy.process(true, function() {
+            // check on server, if user is verified
+            ttapp.util.Common.isUserVerifiedOnServer(function(success) {
+                // Destroy the #appLoadingIndicator element
+                Ext.fly('appLoadingIndicator').destroy();
+
+                // Initialize the main view
+                if (success) {
+                    Ext.Viewport.add({
+                        cls: 'bg-transparent'
+                    });
+
+                    ttapp.app.getController('Landing').onUserAction(true);
+                }
+                else {
+                    Ext.Viewport.add(Ext.create('ttapp.view.Landing'));
+                }
+            });
+        });
 
         // get contacts from device
         ttapp.util.ContactsProxy.process(Ext.getStore('phonecontacts'));

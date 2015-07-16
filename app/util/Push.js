@@ -57,9 +57,9 @@ Ext.define('ttapp.util.Push', {
                 //change the red dot on email icon
                 ttapp.util.Common.updateNotifySymbol(true);
                 // this is the actual push notification. its format depends on the data model from the push server
-                Ext.Msg.alert('Update!', e.message, Ext.emptyFn);
+                //Ext.Msg.alert('Update!', e.message, Ext.emptyFn);
 
-                Ext.Viewport.setActiveItem('feed', 'slide');
+                //Ext.Viewport.setActiveItem('feed', 'slide');
                 break;
 
             case 'error':
