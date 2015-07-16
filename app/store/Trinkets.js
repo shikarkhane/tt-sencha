@@ -2,7 +2,7 @@ Ext.define('ttapp.util.TrinketProxy', {
     singleton: true,
     requires: ['ttapp.util.Common'],
 
-    process: function(clearAll) {
+    process: function(clearAll, callback) {
         var tStore = Ext.getStore('trinketstore');
 
         if (clearAll) {
@@ -28,6 +28,10 @@ Ext.define('ttapp.util.TrinketProxy', {
                     tStore.addTrinket(t.trinketId, t.groupId, t.name, t.label, t.thumbnailPath, t.swiffyPath);
                     tStore.sync();
                 });
+
+                if (callback) {
+                    callback();
+                }
             }
         });
     }

@@ -21,9 +21,9 @@ Ext.define('ttapp.controller.Landing', {
 
         Ext.Viewport.setActiveItem('authenticate', {
             type: 'fade'
-        });      
+        });
     },
-    onUserAction: function() {
+    onUserAction: function(fade) {
         if (this._animating) {
             return;
         }
@@ -40,14 +40,14 @@ Ext.define('ttapp.controller.Landing', {
                     xtype: 'trinket'
                 });
 
-                item.element.setStyle('opacity', '0')
+                item.element.setStyle('opacity', '0');
                 item.element.show();
 
                 setTimeout(function() {
                     item.element.hide();
-                    item.element.setStyle('opacity', '1')
+                    item.element.setStyle('opacity', '1');
 
-                    Ext.Viewport.animateActiveItem(item, 'slide');
+                    Ext.Viewport.animateActiveItem(item, fade === true ? 'fade' : 'slide');
                 }, 180);
             } else {
                 setTimeout(function() {
