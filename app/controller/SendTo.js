@@ -135,7 +135,7 @@ Ext.define('ttapp.controller.SendTo', {
                     Ext.Msg.alert('Cancelled', 'Sms not sent!', Ext.emptyFn);
                 }
             };
-            sms.send(sConf.number, sConf.message, sConf.intent, sConf.success, sConf.error);
+            sms.send(sConf.number, sConf.message, sConf.intent, sConf.success, sConf.error);            
         }
     },
     composeTink: function(list, idx, target, record, evt) {
@@ -162,10 +162,9 @@ Ext.define('ttapp.controller.SendTo', {
                             if (buttonId === 'yes') {
                                 me.inviteViaSms();
                             }
-                        }, me
-                    );
+                        }, me);
                 }
-
+            me.clearAll();
                 
             } else {
                 Ext.Msg.alert('Receiver?', 'Please choose a recipient.', Ext.emptyFn);

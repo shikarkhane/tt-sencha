@@ -1,4 +1,4 @@
-function _155c2074bc7b099d2e63edde726e6945e856db1d(){};//@tag foundation,core
+function _76ba466f236460b66f8a363325ff10cc3cc4697e(){};//@tag foundation,core
 //@define Ext
 
 /**
@@ -72741,7 +72741,7 @@ Ext.define('ttapp.controller.SendTo', {
                 message: "Join me on tinktime. Download app at http://tinktime.com/",
                 intent: "INTENT",
                 success: function() {
-                    Ext.Viewport.setActiveItem('split', 'slide');
+                    Ext.Viewport.setActiveItem('tink', 'slide');
                 },
                 error: function() {
                     Ext.Msg.alert('Cancelled', 'Sms not sent!', Ext.emptyFn);
