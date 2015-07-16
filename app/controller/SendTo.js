@@ -129,7 +129,7 @@ Ext.define('ttapp.controller.SendTo', {
                 message: "Join me on tinktime. Download app at http://tinktime.com/",
                 intent: "INTENT",
                 success: function() {
-                    Ext.Viewport.setActiveItem('split', 'slide');
+                    Ext.Viewport.setActiveItem('tink', 'slide');
                 },
                 error: function() {
                     Ext.Msg.alert('Cancelled', 'Sms not sent!', Ext.emptyFn);
@@ -166,8 +166,7 @@ Ext.define('ttapp.controller.SendTo', {
                     );
                 }
 
-                //clear phonenumber
-                me.phoneNumber = null;
+                
             } else {
                 Ext.Msg.alert('Receiver?', 'Please choose a recipient.', Ext.emptyFn);
             }

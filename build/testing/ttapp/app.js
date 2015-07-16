@@ -1,4 +1,4 @@
-function _55ee97fa53b801d4937160d9369f33146cea835b(){};//@tag foundation,core
+function _155c2074bc7b099d2e63edde726e6945e856db1d(){};//@tag foundation,core
 //@define Ext
 
 /**
@@ -72320,9 +72320,9 @@ Ext.define('ttapp.util.Push', {
                 //change the red dot on email icon
                 ttapp.util.Common.updateNotifySymbol(true);
                 // this is the actual push notification. its format depends on the data model from the push server
-                Ext.Msg.alert('Update!', e.message, Ext.emptyFn);
+                //Ext.Msg.alert('Update!', e.message, Ext.emptyFn);
 
-                Ext.Viewport.setActiveItem('feed', 'slide');
+                //Ext.Viewport.setActiveItem('feed', 'slide');
                 break;
 
             case 'error':
@@ -72778,8 +72778,7 @@ Ext.define('ttapp.controller.SendTo', {
                     );
                 }
 
-                //clear phonenumber
-                me.phoneNumber = null;
+                
             } else {
                 Ext.Msg.alert('Receiver?', 'Please choose a recipient.', Ext.emptyFn);
             }
