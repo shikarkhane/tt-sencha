@@ -49,7 +49,7 @@
      *          "remote": true              // (Optional)
      *                                      // - Defaults to undefined (falsey) to signal a local file which will be copied
      *                                      // - Specify true if this file is a remote file which will not to be copied
-     *          "update": "delta"           // (Optional)
+     *          "update": "full"           // (Optional)
      *                                      //  - If not specified, this file will only be loaded once, and
      *                                      //    cached inside localStorage until this value is changed.
      *                                      //  - "delta" to enable over-the-air delta update for this file
@@ -64,15 +64,17 @@
     "js": [
         {
             "path": "https://www.gstatic.com/swiffy/v7.1/runtime.js",
-            "update": "delta"
+            "update": "full"
         },
         {
             "path": "touch/sencha-touch.js",
-            "x-bootstrap": true
+            "x-bootstrap": true,
+            "update": "full"
         },
         {
             "path": "bootstrap.js",
-            "x-bootstrap": true
+            "x-bootstrap": true,
+            "update": "full"
         },
         {
             "path": "app.js",
