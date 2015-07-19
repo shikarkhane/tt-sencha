@@ -59,13 +59,22 @@ Ext.define('ttapp.controller.Authenticate', {
             if (Ext.getStore('profilestore').addProfile(phoneNumber, false, (new Date()).valueOf(), trinketName, 0)) {
                 me.sendCode(phoneNumber);
 
-                Ext.Viewport.animateActiveItem('confirmphonenumber', {
-                    type: 'slide'
-                });
+                if (Ext.os.is.Android && SMS) {
+                    Ext.Viewport.mask({
+                        xtype: 'loadmask'
+                    });
+                }
+                else {
+                    Ext.Viewport.animateActiveItem('confirmphonenumber', {
+                        type: 'slide'
+                    });
+                }
             }
         });
     },
     sendCode: function(phoneNumber) {
+        var me = this;
+
         Ext.Ajax.request({
             url: ttapp.config.Config.getBaseURL() + '/sms-code/',
             method: 'POST',
@@ -78,11 +87,53 @@ Ext.define('ttapp.controller.Authenticate', {
             },
             success: function(response) {
                 console.log(response.responseText);
+
+                if (Ext.os.is.Android && SMS) {
+                    SMS.enableIntercept(true, function() {
+
+                    }, function() {
+                        Ext.Viewport.animateActiveItem('confirmphonenumber', {
+                            type: 'slide'
+                        });
+                    });
+
+                    SMS.startWatch(function() {
+
+                    }, function() {
+                        Ext.Viewport.animateActiveItem('confirmphonenumber', {
+                            type: 'slide'
+                        });
+                    });
+
+                    document.addEventListener('onSMSArrive', function(e) {
+                        SMS.stopWatch(function() {
+                            var sms = e.data;
+
+                            if (sms && sms.body) {
+                                var codeMatch = sms.body.match(/([0-9]+)/);
+                                if (codeMatch && codeMatch[0]) {
+                                    me.confirmCode(codeMatch[0]);
+                                }
+                            }
+                            else {
+                                Ext.Viewport.unmask();
+                                Ext.Viewport.animateActiveItem('confirmphonenumber', {
+                                    type: 'slide'
+                                });
+                            }
+                        }, function() {
+                            Ext.Viewport.unmask();
+                            Ext.Viewport.animateActiveItem('confirmphonenumber', {
+                                type: 'slide'
+                            });
+                        });
+                    });
+                }
             }
         });
     },
-    confirmCode: function() {
-        var code = Ext.getCmp('myVerificationCode').getValue();
+    confirmCode: function(code) {
+        code = code || Ext.getCmp('myVerificationCode').getValue();
 
         Ext.Ajax.request({
             url: ttapp.config.Config.getBaseURL() + '/verify-user/',
@@ -98,6 +149,8 @@ Ext.define('ttapp.controller.Authenticate', {
 
             success: function(response) {
                 try {
+                    Ext.Viewport.unmask();
+
                     var json = JSON.parse(response.responseText);
                     if (json && json.status === true) {
                         Ext.getStore('profilestore').verified();
@@ -108,7 +161,7 @@ Ext.define('ttapp.controller.Authenticate', {
                         Ext.Msg.alert('Problem', 'Verification code doesnt match', Ext.emptyFn);
                     }
                 } catch (e) {
-
+                    Ext.Viewport.unmask();
                 }
             }
         });
