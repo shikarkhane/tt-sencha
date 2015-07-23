@@ -67,7 +67,7 @@ Ext.define('ttapp.controller.Authenticate', {
                     // set timeout for 15 seconds
                     me._androidTimeout = setTimeout(function() {
                         Ext.Viewport.unmask();
-                        
+
                         Ext.Viewport.animateActiveItem('confirmphonenumber', {
                             type: 'slide'
                         });
@@ -151,10 +151,6 @@ Ext.define('ttapp.controller.Authenticate', {
         this.confirmCode(code);
     },
     confirmCode: function(code) {
-        if (typeof code != "string") {
-            code = Ext.getCmp('myVerificationCode').getValue();
-        }
-
         Ext.Ajax.request({
             url: ttapp.config.Config.getBaseURL() + '/verify-user/',
             method: 'POST',
