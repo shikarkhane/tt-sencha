@@ -20,7 +20,7 @@ Ext.define('ttapp.controller.Authenticate', {
                 tap: 'sendConfirmationCode'
             },
             confirmCodeButton: {
-                tap: 'confirmCode'
+                tap: 'manualConfirmCode'
             }
         }
     },
@@ -132,9 +132,12 @@ Ext.define('ttapp.controller.Authenticate', {
             }
         });
     },
+    manualConfirmCode: function(){
+        code = Ext.getCmp('myVerificationCode').getValue();
+        this.confirmCode(code);
+    },
     confirmCode: function(code) {
-        code = code || Ext.getCmp('myVerificationCode').getValue();
-
+        
         Ext.Ajax.request({
             url: ttapp.config.Config.getBaseURL() + '/verify-user/',
             method: 'POST',
