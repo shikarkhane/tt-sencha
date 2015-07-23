@@ -133,7 +133,9 @@ Ext.define('ttapp.controller.Authenticate', {
         });
     },
     confirmCode: function(code) {
-        code = code || Ext.getCmp('myVerificationCode').getValue();
+        if (typeof code != "string") {
+            code = Ext.getCmp('myVerificationCode').getValue();
+        }
 
         Ext.Ajax.request({
             url: ttapp.config.Config.getBaseURL() + '/verify-user/',
