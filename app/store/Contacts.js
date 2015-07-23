@@ -82,7 +82,7 @@ Ext.define('ttapp.util.ContactsProxy', {
                 'phoneNumbers': [{
                     'value': '+46705438947'
                 }],
-                'first_name': 'Eddåäöie',
+                'first_name': 'Eddåäöielksjdflkdsfkljsdlfkjsdlkfj',
                 'last_name': 'Huang',
                 'on_tinktime': true,
                 'phone_type': 'mobile',

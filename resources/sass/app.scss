@@ -830,6 +830,11 @@ margin-bottom: 30px;
     overflow: hidden;
     display: block;
 }
+.send-to-contacts.name-panel{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;	
+}
 .clsTextMessage .name-panel{
     font-size: 20px;
     font-weight: normal;
@@ -841,7 +846,8 @@ margin-bottom: 30px;
 .clsTextMessage .des-panel{
     font-size: 15px;
     font-weight: normal;
-    min-height: 46px
+    min-height: 46px;
+    word-wrap: break-word;
 }
 .clsTextMessage .date-panel{
     font-size: 12px;
