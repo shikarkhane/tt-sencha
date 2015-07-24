@@ -2,7 +2,13 @@ Ext.define('ttapp.util.FeedProxy', {
     singleton: true,
     requires: ['ttapp.util.Common'],
 
+    isLoading: false,
+
     process: function(clearAll, callback, scope) {
+        Ext.getStore('Messages').fireEvent('beforeproxyload', this);
+
+        this.isLoading = true;
+
         var me = this,
             contacts = Ext.getStore('phonecontacts'),
             fn;
@@ -24,7 +30,8 @@ Ext.define('ttapp.util.FeedProxy', {
     },
 
     _process: function(clearAll, myNumber, callback, scope) {
-        var messageStore = Ext.getStore('Messages'),
+        var me = this,
+            messageStore = Ext.getStore('Messages'),
             messageModel,
             unreadRedDot = false,
             logoTrinketFilePath = 'resources/images/others/tink.png',
@@ -111,7 +118,7 @@ Ext.define('ttapp.util.FeedProxy', {
                         messageStore.add(messageModel);
                     });
 
-                    if (messageStore.getAllCount() == 0) {
+                    if (messageStore.getAllCount() === 0) {
                         messageModel = Ext.create('ttapp.model.Message', {
                             'from_user_name': "Mia, from tinktime",
                             'to_user_name': "me",
@@ -133,6 +140,10 @@ Ext.define('ttapp.util.FeedProxy', {
 
                     //change the red dot on email icon
                     ttapp.util.Common.updateNotifySymbol(unreadRedDot);
+
+                    me.isLoading = false;
+
+                    messageStore.fireEvent('proxyload', this);
 
                     if (callback) {
                         callback.call(scope || this);

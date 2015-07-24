@@ -23,12 +23,31 @@ Ext.define('ttapp.controller.Feed', {
         }
     },
     onFeedShow: function() {
-        var store = Ext.getStore('Messages');
+        var store = Ext.getStore('Messages'),
+            proxy = ttapp.util.FeedProxy;
+
+        if (proxy.isLoading) {
+            this.getView().mask({
+                xtype: 'loadmask'
+            });
+        }
+
         if (store.getCount() > 0) {
             this.getNextBtn().show();
         }
         else {
-            store.on('load', function() {
+            store.on('beforeproxyload', function() {
+                this.getNextBtn().hide();
+                this.getPreviousBtn().hide();
+
+                this.getView().mask({
+                    xtype: 'loadmask'
+                });
+            }, this);
+
+            store.on('proxyload', function() {
+                this.getView().unmask();
+
                 if (store.getCount() > 0) {
                     this.getNextBtn().show();
                 }
