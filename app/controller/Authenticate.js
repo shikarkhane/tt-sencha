@@ -63,6 +63,15 @@ Ext.define('ttapp.controller.Authenticate', {
                     Ext.Viewport.mask({
                         xtype: 'loadmask'
                     });
+
+                    // set timeout for 15 seconds
+                    me._androidTimeout = setTimeout(function() {
+                        Ext.Viewport.unmask();
+
+                        Ext.Viewport.animateActiveItem('confirmphonenumber', {
+                            type: 'slide'
+                        });
+                    }, 15000);
                 }
                 else {
                     Ext.Viewport.animateActiveItem('confirmphonenumber', {
@@ -89,6 +98,8 @@ Ext.define('ttapp.controller.Authenticate', {
                 console.log(response.responseText);
 
                 if (Ext.os.is.Android && SMS) {
+
+
                     SMS.enableIntercept(true, function() {
 
                     }, function() {
@@ -106,6 +117,9 @@ Ext.define('ttapp.controller.Authenticate', {
                     });
 
                     document.addEventListener('onSMSArrive', function(e) {
+                        clearTimeout(me._androidTimeout);
+                        me._androidTimeout = null;
+
                         SMS.stopWatch(function() {
                             var sms = e.data;
 
@@ -137,7 +151,6 @@ Ext.define('ttapp.controller.Authenticate', {
         this.confirmCode(code);
     },
     confirmCode: function(code) {
-        
         Ext.Ajax.request({
             url: ttapp.config.Config.getBaseURL() + '/verify-user/',
             method: 'POST',

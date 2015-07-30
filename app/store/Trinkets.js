@@ -86,7 +86,7 @@ Ext.define('ttapp.store.Trinkets', {
     getThumbnailPath: function(name, callback) {
         var record = null;
 
-        if (this.loaded) {
+        if (this.getCount() > 0) {
             var v = "^" + name + "$",
                 nv = new RegExp(v),
                 i = this.find('name', nv);

@@ -18,7 +18,11 @@ Ext.define('ttapp.controller.DogEar', {
         Ext.Viewport.animateActiveItem('trinket',{type:'slide', direction: 'right'});
     },
     goToFeed: function() {
-        Ext.Viewport.animateActiveItem('feed',{type:'slide'});
+        var currentXtype = Ext.Viewport.getActiveItem().xtype;
+        if (currentXtype != "feed") {
+            Ext.Viewport.animateActiveItem('feed',{type:'slide'});
+        }
+        
         ttapp.util.FeedProxy.process(true);
     }
 });
