@@ -7,12 +7,12 @@ Ext.define('ttapp.view.Tink', {
     config: {
         id: 'tinkScreen',
         itemId: 'tinkPage',
-        cls: 'bg-transparent-white flip-design-right tink-page split-page cls-tt-tinking',
+        cls: 'bg-transparent flip-design-right tink-page split-page',
         layout: {
             type: 'vbox',
             align: 'middle'
         },
-        items: [{
+        items: [/*{
             xtype: 'toolbar',
             docked: 'top',
             cls: 'top-bar',
@@ -25,16 +25,31 @@ Ext.define('ttapp.view.Tink', {
                 cls: 'top-btn btn-mail flip-design-right',
                 docked: 'right'
             }]
-        }, {
+        },*/ {
+                xtype: 'panel',
+                docked: 'top',
+                cls: 'new-header send-to-header',
+                items: [
+                    {
+                        xtype: 'button',
+                        cls: 'back-btn-icon',
+                        docked: 'left',
+                        handler: function() {
+                            Ext.Viewport.animateActiveItem('trinket', {
+                                type: 'slide',
+                                direction: 'right'
+                            });
+                        }
+                    }, 
+                ]
+            }, {
             itemId: 'tinkTimerClock',
             xtype: 'timerClock'
         }, {
             xtype: 'image',
             itemId: 'placeholderTrinket',
-            width: 100,
-            height: 100,
             hidden: true,
-            cls: 'prev-trinket',
+            cls: 'prev-trinket msg-box-img',
             listeners: {
                 tap: {
                     element: 'element',
@@ -51,10 +66,11 @@ Ext.define('ttapp.view.Tink', {
             html: '<iframe id="tinkcontainer" class="tinkanimation" style="" ></iframe>'
         }, {
             //flex: 1,
-            //xtype: 'thinkingbutton',
+            xtype: 'image',
             id: 'thinkbutton',
-            cls: 'clsTinkButton button_white',
-            docked: 'bottom'
+            cls: 'clsTinkButton rotate-image',
+            docked: 'bottom',
+            src:'resources/images/circle-icon-blank.png',
         }]
     },
     initialize: function() {

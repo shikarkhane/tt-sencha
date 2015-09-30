@@ -10,24 +10,31 @@ Ext.define('ttapp.view.SendTo', {
     config: {
     	itemId: 'choose-recepients',
     	fullscreen: true,
-    	cls:'bg-transparent-white cls-tt-tinking',
+    	cls:'bg-light-gray',
     	layout: 'vbox',
     	items: [
-    		{
-	            xtype: 'toolbar',
-	            docked: 'top',
-	            cls:'top-bar',
-	            items: [
-	            	{
-	                	xtype: 'button',
-	                	cls: 'top-btn btn-delete',
-	                	docked: 'right',
-	                	handler: function (){
-	                		ttapp.app.getController('ttapp.controller.SendTo').returnToTink();
-	                	}
-	                }
-	            ]
-	        },{
+			{
+                xtype: 'panel',
+                docked: 'top',
+                cls: 'new-header',
+                items: [
+                    {
+                        xtype: 'panel',
+                        cls: 'tinktime-logo',
+                        docked: 'top',
+                        items:[
+                        	{
+			                	xtype: 'button',
+			                	cls: 'close-gray-btn',
+			                	docked: 'right',
+			                	handler: function (){
+			                		ttapp.app.getController('ttapp.controller.SendTo').returnToTink();
+			                	}
+			                }
+                        ]
+                    }
+                ]
+            },  /*{
 	        	xtype:'panel',
 	        	cls:'search-panel',
 	        	items: [
@@ -57,12 +64,28 @@ Ext.define('ttapp.view.SendTo', {
 	                	]
 	        		}
 	        	]
-	        }, {
-	        	xtype: 'spacer',
-	        	flex: 1
+	        },*/ {
+	        	xtype: 'container',
+	        	cls:'tinktime-user-sec',
+	        	items:[
+	        		{
+	        			xtype:'image',
+	        			cls:'user-img',
+	        			src:'resources/images/user-icon.png',
+	        			mode:'image'
+	        		}, {
+	        			xtype: 'label',
+	        			cls: 'user-name',
+	        			html:'User Name'
+	        		}, {
+	        			xtype: 'label',
+	        			itemId: 'previewSeconds',
+	        			cls: 'seconds-preview'
+	        		},
+	        	]
 	        }, {
 	        	xtype: 'container',
-	        	cls: 'message-box',
+	        	cls: 'message-box custom-msgbox',
 	        	//styleHtmlCls : 'clsPreviewSelection',
 	        	//styleHtmlContent : true,
 	        	//flex: 1.4,
@@ -71,16 +94,18 @@ Ext.define('ttapp.view.SendTo', {
 	        			xtype: 'image',
 	        			itemId: 'previewTrinket',
 	        			src:'resources/images/others/tink_design.png',
-	        			cls:'preview-trinket'
-	        		}, {
+	        			cls:'preview-trinket msg-box-img'
+	        		}, /*{
 	        			xtype: 'label',
 	        			itemId: 'previewSeconds',
 	        			cls: 'seconds-preview'
-	        		}, {
+	        		},*/ {
 	        			xtype: 'textareafield',
-	        			placeHolder: "Add a message!",
+	        			//placeHolder: "Add a message!",
+	        			label: "Add Message",
+	        			labelAlign: 'top',
 	        			itemId: 'previewTextMsg',
-	        			cls:'text-msg-preview',
+	        			cls:'text-msg-preview edit-text-area',
 	        			maxLength: 140,
 	        			clearIcon:false
 	        		}
@@ -95,7 +120,7 @@ Ext.define('ttapp.view.SendTo', {
 	            		xtype: 'spacer'
 	            	}, {
 		            	xtype: 'button',
-		            	cls: 'clsSendTink form-btn send-btn',
+		            	cls: 'clsSendTink form-btn send-new-button',
 		            	text: 'Send',
 		            	ui: 'ttButton'
 	            	}, {
@@ -107,5 +132,8 @@ Ext.define('ttapp.view.SendTo', {
 	        	flex: 1
 	       	}
         ]
-    }
+    },
+    initialize: function() {
+		this.add(ttapp.util.Common.createMenuButton());
+	}
 });

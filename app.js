@@ -18,14 +18,14 @@ Ext.application({
         'ttapp.overrides.SizeMonitor', 'ttapp.overrides.PaintMonitor'
     ],
     controllers: ['Main', 'Tink', 'SendTo', 'Landing', 'Authenticate',
-    'Trinket', 'DogEar', 'Split', 'Feed', 'ReplayTink'],
+    'Trinket', 'DogEar', 'Split', 'Feed', 'ReplayTink', 'TinkChat'],
 
     views: [
         'Landing', 'Feed', 'Tink', 'SendTo', 'Trinket',
         'Authenticate', 'ConfirmPhoneNumber', 'DogEar',
-        'Split', 'Options', 'PrivacyPolicy', 'Intro'
+        'Split', 'Options', 'PrivacyPolicy', 'Intro', 'PhoneContacts', 'TinkoMeter', 'TinkBox', 'TinkChat'
     ],
-
+    
     stores: ['Trinkets', 'Contacts', 'Messages', 'Profile', 'IpInfo'],
 
     icon: {
@@ -67,7 +67,9 @@ Ext.application({
                     ttapp.app.getController('Landing').onUserAction(true);
                 }
                 else {
-                    Ext.Viewport.add(Ext.create('ttapp.view.Landing'));
+                    /*previous code*/
+                    //Ext.Viewport.add(Ext.create('ttapp.view.Landing'));
+                    Ext.Viewport.add(Ext.create('ttapp.view.Authenticate'));
                 }
             });
         });

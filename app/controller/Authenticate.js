@@ -24,6 +24,9 @@ Ext.define('ttapp.controller.Authenticate', {
             }
         }
     },
+    test: function() {
+        console.log(123);
+    },
     sendCodeAgain: function() {
         this.sendCode(this.myPhoneNumber);
     },
@@ -35,7 +38,8 @@ Ext.define('ttapp.controller.Authenticate', {
     setDialcode: function() {
         var m = Ext.ComponentQuery.query('#myDialCode')[0];
 
-        Ext.getStore('ipinfostore').getDialCode(function(dc) {
+        Ext.getStore('ipinfostore').getDialCode(function(dc, cd) {
+            Ext.getCmp('selectCountry').setValue(cd.toString());
             m.setValue(dc);
         });
     },
@@ -172,7 +176,10 @@ Ext.define('ttapp.controller.Authenticate', {
                         Ext.getStore('profilestore').verified();
 
                         ttapp.util.FeedProxy.process(true);
-                        Ext.Viewport.setActiveItem('trinket', 'slide');
+                        /*old code*/
+                        //Ext.Viewport.setActiveItem('trinket', 'slide');
+
+                        Ext.Viewport.setActiveItem('phoneContacts', 'slide');                        
                     } else {
                         Ext.Msg.alert('Problem', 'Verification code doesnt match', Ext.emptyFn);
                     }

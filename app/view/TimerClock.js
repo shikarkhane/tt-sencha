@@ -59,6 +59,6 @@ Ext.define('ttapp.view.TimerClock', {
         minutes = minutes <= 9 ? "0" + minutes : minutes;
         seconds %= 60;
         seconds = seconds <= 9 ? "0" + seconds : seconds;
-        return minutes + ":" + seconds
+        return hours + ":" + minutes + ":" + seconds
     }
 });
