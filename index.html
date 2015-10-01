@@ -9,6 +9,58 @@
 
     <!-- The line below must be kept intact for Sencha Command to build your application -->
     <script id="microloader" type="text/javascript" src="touch/microloader/development.js"></script>
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="jquery.js"></script>
+
+    <script>
+        function resizeHeight(){
+            var bxWidth = $(".trinket-new-list .img-bg").width();
+            $(".trinket-new-list .img-bg").css("height",bxWidth);
+        }
+        /*function resizeHeight(){
+            var bxWidth = $(".trinket-new-list .x-list-normal .x-list-item").width();
+            $(".trinket-new-list .x-list-normal .x-list-item").css("height",bxWidth);
+        }*/
+        function resizeDiv(){
+            resizeHeight();
+            setTimeout(resizeDiv,20);
+        }
+        $(window).resize(function(){
+            resizeHeight();
+        });
+    </script>
+    <script>
+       function changeCircle(id){
+          var $ppc = $('#progress-pie-chart-'+id),
+            percent = parseInt($ppc.data('percent')),
+            deg = 360*percent/100;
+          if (percent > 50) {
+            $ppc.addClass('gt-50');
+          }
+          $('#ppc-progress-fill-'+id).css('transform','rotate('+ deg +'deg)');
+          $('#ppc-percents-'+id +'span').html(percent+'%');
+        } 
+    </script>
+    <script>
+        function testCircleCss(id, radius, width, percent) {
+            function shuffle(o){ //v1.0
+                for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+                return o;
+            }
+
+            var circles = [];
+
+            var child = document.getElementById(id),
+                percentage = percent ;
+
+            circles.push(Circles.create({
+                id:         child.id,
+                value:      percentage,
+                radius:     radius,
+                width:      width
+            }));
+        }
+    </script>
 </head>
 <body>
     <div id="appLoadingIndicator">
@@ -17,6 +69,8 @@
         <div></div>
         <div></div>
     </div>
+    <div class="default-loader"><img src="resources/images/white-loader.png" alt="loader"><span>Loading...</span></div>
     </div>
+    <script type="text/javascript" src="circles.min.js"></script>
 </body>
 </html>

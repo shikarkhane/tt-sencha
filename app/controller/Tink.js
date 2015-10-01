@@ -48,23 +48,23 @@ Ext.define('ttapp.controller.Tink', {
 
         var periodInSeconds = me.getClock().getDuration();
         if (periodInSeconds < 1) {
-            periodInSeconds = 1;
+            periodInSeconds = '00'+':'+'00'+':'+'01';
+        } else {
+            periodInSeconds = me.getClock().formatTime(periodInSeconds)
         }
 
         Ext.getStore('profilestore').getActiveTrinket(function(trinketName) {
             Ext.getStore('profilestore').getActiveTrinket(function(trinketName) {
-
                 Ext.getStore('profilestore').setLastSecondsSent(periodInSeconds);
-
                 me.getApplication().getController('SendTo').showSendTo(me, periodInSeconds, trinketName);
-
                 Ext.getCmp('tinkScreen').removeCls('show-full-frame');
             });
         });
     },
     onShow: function() {
         Ext.Viewport.mask({
-            xtype: 'loadmask'
+            xtype: 'loadmask',
+            html: '<img src="resources/images/green-loader.png" alt="loader">'
         });
 
         this.resetTimerClock();

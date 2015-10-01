@@ -52,7 +52,7 @@ Ext.define('ttapp.util.Common', {
             });
         });
     },
-    setDialCode: function() {
+    setDialCode: function(params) {
         var c = [{
             "name": "Afghanistan",
             "dial_code": "+93",
@@ -1019,6 +1019,10 @@ Ext.define('ttapp.util.Common', {
             "code": "AX"
         }];
 
+        if(!Ext.isEmpty(params)) {
+            return c;
+        }
+
         Ext.Ajax.request({
             url: 'http://ipinfo.io/json',
             method: 'GET',
@@ -1028,7 +1032,6 @@ Ext.define('ttapp.util.Common', {
             disableCaching: false,
             success: function(response) {
                 cc = Ext.JSON.decode(response.responseText);
-
                 if (cc.country) {
                     for (var i = 0, l = c.length; i < l; i++) {
                         if (c[i].code == cc.country) {
@@ -1064,5 +1067,93 @@ Ext.define('ttapp.util.Common', {
                 //return '';
             }
         });
+    },
+    createMenuButton: function() {
+        var button = Ext.create('Ext.Button', {
+            cls:'add-option-btn',
+            html:'<img class="option-add-icon animated rotateOut" src="resources/images/add_icon.png" />',
+            listeners: {
+                tap: {
+                    fn: function() {
+                        btnPanel = Ext.getCmp('btn-panel');
+
+                        if (!btnPanel) {
+                            Ext.Viewport.add ({
+                                xtype:'panel',
+                                centered : true,
+                                width:'100%',
+                                height:'100%',
+                                id:'btn-panel',
+                                hideAnimation: {type: 'fadeOut', duration: 200, easing: 'ease-out'},
+                                cls:'option-overlay clickable',
+                                modal:true,
+                                html: '<div class="option-btn-grp">' +
+                                '<div class="btn tink-meter slideInUp3"><span id="tinkometer" class="icon"></span><span class="title">Tinkometer</span></div>' +
+                                '<div class="btn tink-box slideInUp2"><span id="tinkbox" class="icon"></span><span class="title">Tinkbox</span></div>' +
+                                '<div class="btn tink slideInUp1"><span id="tink" class="icon"></span><span class="title">Tink</span></div>' +
+                                '</div>'
+                            }).show();
+        
+        /*'<div class="btn profile slideInUp4"><span id="settingsProfile" class="icon"></span><span class="title">Settings & Profile</span></div>' +*/
+
+                            $('.icon').on('click', function() {
+                                var anim = {type: 'fade', direction: 'up', duration: 500, easing: 'ease-out'};
+                                switch(this.id) {
+                                    case 'settingsProfile':
+                                        break;
+                                    case 'tinkometer':
+                                        Ext.Viewport.animateActiveItem('tinkometer', anim);
+                                        break;
+                                    case 'tinkbox':
+                                        Ext.Viewport.animateActiveItem('tinkbox', anim);
+                                        break;
+                                    case 'tink':
+                                        $("body").removeClass("option-mask");
+                                        $(".add-option-btn").removeClass("btn-close");
+                                        var item;
+                                        if(Ext.isEmpty(item)) {
+                                            item = Ext.Viewport.add({
+                                                xtype: 'trinket'
+                                            });
+                                            Ext.Viewport.animateActiveItem(item, anim);
+                                        } else {
+                                            Ext.Viewport.animateActiveItem(item, anim);
+                                        }
+                                        break;
+                                    default:    
+                                }
+                            });
+
+                            $(".btn").addClass("slide-animation animated");
+                            $(".add-option-btn").addClass("btn-close");
+                            $("body").addClass("option-mask");
+                        } else {
+                            $("body").removeClass("option-mask");
+                            $(".add-option-btn").removeClass("btn-close");
+                            $("body").addClass("mask-fade-effect");
+                            
+                            Ext.getCmp('btn-panel').hide();
+                            setTimeout(function() {
+                                $("body").removeClass("mask-fade-effect");
+                                Ext.getCmp('btn-panel').destroy();
+                            }, 300);
+                        }
+
+                        $('.clickable').on('click', function() {
+                            $("body").removeClass("option-mask");
+                            $(".add-option-btn").removeClass("btn-close");
+                            $("body").addClass("mask-fade-effect");
+                            
+                            Ext.getCmp('btn-panel').hide();
+                            setTimeout(function() {
+                                $("body").removeClass("mask-fade-effect");
+                                Ext.getCmp('btn-panel').destroy();
+                            }, 300);
+                        });
+                    }
+                }
+            }
+        });
+        return button;
     }
 });

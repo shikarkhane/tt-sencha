@@ -36,8 +36,13 @@ Ext.define('ttapp.controller.Landing', {
 
         Ext.getStore('profilestore').isUserVerified(function(success) {
             if (success === true) {
+                /*old code*/
+                // var item = Ext.Viewport.add({
+                //     xtype: 'trinket'
+                // });
+
                 var item = Ext.Viewport.add({
-                    xtype: 'trinket'
+                    xtype: 'phoneContacts'
                 });
 
                 item.element.setStyle('opacity', '0');

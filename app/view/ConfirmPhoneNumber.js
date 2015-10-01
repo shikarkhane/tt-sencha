@@ -6,32 +6,39 @@ Ext.define('ttapp.view.ConfirmPhoneNumber', {
 		fullscreen: true,
 		cls: 'bg-transparent',
 		items:
-		  [{
+		  [/*{
             xtype: 'toolbar',
             docked:'top',
             cls:'top-bar top-x-top-bar',
             title:'Verification code'
-            },{
+            },*/{
+	            xtype: 'panel',
+	            cls: 'landing-page top-20-p',
+	            items: [{
+	                xtype: 'panel',
+	                cls: 'logo'
+	            }]
+	        },{
 			xtype:'panel',
-		  	cls:'verify-page',
+		  	cls:'verify-page new-verify',
 		  	items:[{
 	        	xtype: 'panel',
 	        	cls:'help-text',
-	            html: 'Please Enter the 5-digit verification code.'
+	            html: 'a message was sent to your phone number, please enter your four-digit code'
 		        },
 		        {
 		        	id: 'myVerificationCode',
 	                xtype: 'numberfield',
 	                name: 'verify-phone-number',
-	                cls:'form-field',
-	                placeHolder: 'Verification code',
+	                cls:'form-field enter-code-icon',
+	                placeHolder: 'ENTER CODE',
 	                maxLength: 5,
 	                clearIcon:false
 		        },
 		        {
 	                xtype: 'button',
-	                text: "Confirm code!",
-	                cls:'form-btn cls-confirm-code-btn'
+	                text: "Send",
+	                cls:'cls-confirm-code-btn white-button margin_top80'
 		        },{
 		        	xtype:'panel',
 		        	cls:'help-text-sm',
@@ -55,7 +62,7 @@ Ext.define('ttapp.view.ConfirmPhoneNumber', {
                         }
 		        	}]
 		        },
-		        {
+		        /*{
 		        	xtype:'panel',
 		        	cls:'help-text-sm',
 		        	html:'Read our <span class="privacy_policy">Privacy Policy</span> to learn more.',
@@ -67,7 +74,7 @@ Ext.define('ttapp.view.ConfirmPhoneNumber', {
                         	Ext.Viewport.animateActiveItem('privacypolicy',{type:'fade'});
                         }
 		        	}]
-		        }]
+		        }*/]
 
 		  },{
 		  	xtype:'button',
