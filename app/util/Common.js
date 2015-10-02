@@ -1094,11 +1094,14 @@ Ext.define('ttapp.util.Common', {
                                 '</div>'
                             }).show();
         
-        /*'<div class="btn profile slideInUp4"><span id="settingsProfile" class="icon"></span><span class="title">Settings & Profile</span></div>' +*/
+        /*'<div class="btn profile slideInUp4"><span id="settingsProfile" class="icon"></span><span class="title">Settings & Profile</span></div>' +*/      
+                            if(Ext.Viewport.getActiveItem().config.xtype == 'phoneContacts') {
+                                Ext.select('.tink').hide();
+                            }
 
-                            $('.icon').on('click', function() {
+                            $('.btn').on('click', function() {
                                 var anim = {type: 'fade', direction: 'up', duration: 500, easing: 'ease-out'};
-                                switch(this.id) {
+                                switch(this.children[0].id) {
                                     case 'settingsProfile':
                                         break;
                                     case 'tinkometer':
@@ -1110,15 +1113,17 @@ Ext.define('ttapp.util.Common', {
                                     case 'tink':
                                         $("body").removeClass("option-mask");
                                         $(".add-option-btn").removeClass("btn-close");
-                                        var item;
-                                        if(Ext.isEmpty(item)) {
-                                            item = Ext.Viewport.add({
-                                                xtype: 'trinket'
-                                            });
-                                            Ext.Viewport.animateActiveItem(item, anim);
-                                        } else {
-                                            Ext.Viewport.animateActiveItem(item, anim);
-                                        }
+                                        Ext.Viewport.animateActiveItem('phoneContacts', anim);
+                                        // var item;
+                                        // if(Ext.isEmpty(item)) {
+                                        //     /*item = Ext.Viewport.add({
+                                        //         xtype: 'phoneContacts'
+                                        //     });*/
+                                        //     item: 'phoneContacts';
+                                        //     Ext.Viewport.animateActiveItem('phoneContacts', anim);
+                                        // } else {
+                                        //     Ext.Viewport.animateActiveItem(item, anim);
+                                        // }
                                         break;
                                     default:    
                                 }

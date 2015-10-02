@@ -5,9 +5,13 @@ Ext.define('ttapp.controller.SendTo', {
         refs: {
             searchContactsField: 'searchfield[cls~=search-contacts-field]',
             btnSendTink: 'button[cls~=clsSendTink]',
-            textMsg: 'textareafield[cls~=text-msg-preview]'
+            textMsg: 'textareafield[cls~=text-msg-preview]',
+            setUserName: 'label[cls~=user-name]'
         },
         control: {
+            setUserName: {
+                show: 'renderUserName'
+            },
             'searchContactsField': {
                 keyup: 'onSearchKeyUp',
                 clearicontap: 'onSearchClearIconTap'
@@ -29,6 +33,10 @@ Ext.define('ttapp.controller.SendTo', {
             }
         }
     },
+    renderUserName: function() {
+        conaole.log('sadfsdf');
+        this.setHtml(window.contactSelected.data.first_name+' '+window.contactSelected.data.last_name);
+    },
     hideKeyboard: function(callback, scope) {
         var activeElement = document.activeElement;
         activeElement.setAttribute('readonly', 'readonly'); // Force keyboard to hide on input field.
@@ -41,7 +49,9 @@ Ext.define('ttapp.controller.SendTo', {
         }, 100);
     },
     onShowSendTo: function() {
+        this.phoneNumber = window.contactSelected.data.phone_number;
         this.setPreviewItems();
+        Ext.select('.user-name').setHtml(window.contactSelected.data.first_name+' '+window.contactSelected.data.last_name);
     },
     setPreviewItems: function() {
         var prevTrinket = Ext.ComponentQuery.query('#previewTrinket')[0],
@@ -60,9 +70,11 @@ Ext.define('ttapp.controller.SendTo', {
         });
     },
     saveTappedContact: function(list, idx, target, record, evt) {
+        console.log(this);
         this.fullName = record.data.first_name + ' ' + record.data.last_name;
         this.phoneNumber = record.data.phone_number;
         this.getSearchContactsField().setValue(this.fullName);
+        console.log(this);
 
         setTimeout(function() {
             Ext.getStore('phonecontacts').clearFilter();
@@ -142,18 +154,16 @@ Ext.define('ttapp.controller.SendTo', {
     },
     composeTink: function(list, idx, target, record, evt) {
         var me = this;
-
         Ext.getStore('profilestore').getPhoneNumber(function(from_user) {
             var prevTextMsg = Ext.ComponentQuery.query('#previewTextMsg')[0];
-
             if (me.phoneNumber) {
                 //is receipient on tinktime
                 if (Ext.getStore('phonecontacts').isOnTinkTime(me.phoneNumber)) {
                     me.sendTink(from_user, me.phoneNumber, (new Date()).valueOf(), me.trinket_name, prevTextMsg.getValue(), me.seconds_sent);
 
                     //reset before leaving
-                    me.clearAll();
-                    me.closeMe();
+                    //me.clearAll();
+                    //me.closeMe();
                     me.showSplit();
                 } else {
                     //ask for user confirmation to send sms
@@ -166,8 +176,7 @@ Ext.define('ttapp.controller.SendTo', {
                             }
                         }, me);
                 }
-            me.clearAll();
-                
+                //me.clearAll();   
             } else {
                 Ext.Msg.alert('Receiver?', 'Please choose a recipient.', Ext.emptyFn);
             }

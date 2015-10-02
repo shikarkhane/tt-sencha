@@ -1,6 +1,7 @@
 Ext.define('ttapp.util.ContactsProxy', {
     singleton: true,
     requires: ['Ext.device.Contacts', 'ttapp.util.ContactsCleaner'],
+    
     areOnTinktime: function(cStore, contacts) {
         Ext.Ajax.request({
             url: ttapp.config.Config.getBaseURL() + '/are-on-network/',
@@ -106,7 +107,7 @@ Ext.define('ttapp.util.ContactsProxy', {
                 'phoneNumbers': [{
                     'value': '0101010101'
                 }],
-                'first_name': null,
+                'first_name': 'Nikhil',
                 'last_name': 'Talinger',
                 'on_tinktime': true,
                 'phone_type': 'mobile',
@@ -125,6 +126,20 @@ Ext.define('ttapp.util.ContactsProxy', {
                 'on_tinktime': false,
                 'phone_type': 'work',
                 'phone_number': '(978) 165-3214'
+            }, {
+                'id': 5,
+                'name': {
+                    'givenName': 'nike',
+                    'familyName': 'shikari'
+                },
+                'phoneNumbers': [{
+                    'value': '+0101010101'
+                }],
+                'first_name': 'Rishabh',
+                'last_name': 'Mathur',
+                'on_tinktime': false,
+                'phone_type': 'work',
+                'phone_number': '+918764429457'
             }];
 
             x = ttapp.util.ContactsCleaner.process(contacts, 'default');
@@ -176,7 +191,7 @@ Ext.define('ttapp.store.Contacts', {
             'phoneNumbers': [{
                 'value': '0101010101'
             }],
-            'first_name': null,
+            'first_name': 'Nikhil',
             'last_name': 'Talinger',
             'on_tinktime': true,
             'phone_type': 'mobile',
@@ -197,10 +212,10 @@ Ext.define('ttapp.store.Contacts', {
             'phone_number': '(978) 165-3214'
         }],
         //sort the store using the lastname field
-        sorters: 'lastName',
+        sorters: 'first_name'/*'lastName'*/,
 
         //group the store using the lastName field
-        groupField: 'lastName'
+        //groupField: 'lastName'
     },
     getFirstLastName: function(phoneNumber) {
         var i = this.find('phone_number', phoneNumber);
