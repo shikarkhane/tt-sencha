@@ -34,7 +34,6 @@ Ext.define('ttapp.controller.SendTo', {
         }
     },
     renderUserName: function() {
-        conaole.log('sadfsdf');
         this.setHtml(window.contactSelected.data.first_name+' '+window.contactSelected.data.last_name);
     },
     hideKeyboard: function(callback, scope) {
@@ -48,10 +47,11 @@ Ext.define('ttapp.controller.SendTo', {
             activeElement.removeAttribute('disabled');
         }, 100);
     },
-    onShowSendTo: function() {
+    onShowSendTo: function(component) {
+        component.add(ttapp.util.Common.createMenuButton());
         this.phoneNumber = window.contactSelected.data.phone_number;
         this.setPreviewItems();
-        Ext.select('.user-name').setHtml(window.contactSelected.data.first_name+' '+window.contactSelected.data.last_name);
+        //Ext.select('.user-name').setHtml(window.contactSelected.data.first_name+' '+window.contactSelected.data.last_name);
     },
     setPreviewItems: function() {
         var prevTrinket = Ext.ComponentQuery.query('#previewTrinket')[0],

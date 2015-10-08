@@ -12,6 +12,10 @@ Ext.define('ttapp.view.SendTo', {
     	fullscreen: true,
     	cls:'bg-light-gray',
     	layout: 'vbox',
+    	scrollable: {
+    		direction: 'vertical',
+    		directionLock: true
+    	},
     	items: [
 			{
                 xtype: 'panel',
@@ -111,29 +115,20 @@ Ext.define('ttapp.view.SendTo', {
 	        		}
 	        	]
 	        }, {
-	        	xtype: 'spacer', flex: 1
+	        	xtype: 'spacer', 
+	        	cls:'height-space'
 	        }, {
 	        	xtype: 'container',
 	        	layout: 'hbox',
 	        	items: [
-	            	{
-	            		xtype: 'spacer'
-	            	}, {
+	            	 {
 		            	xtype: 'button',
 		            	cls: 'clsSendTink form-btn send-new-button',
 		            	text: 'Send',
 		            	ui: 'ttButton'
-	            	}, {
-	            		xtype: 'spacer'
-	            	}
+	            	} 
 	        	]
-	        }, {
-	        	xtype: 'spacer',
-	        	flex: 1
-	       	}
+	        }
         ]
-    },
-    initialize: function() {
-		this.add(ttapp.util.Common.createMenuButton());
-	}
+    }
 });

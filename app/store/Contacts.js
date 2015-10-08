@@ -51,6 +51,10 @@ Ext.define('ttapp.util.ContactsProxy', {
         });
     },
     process: function(cStore) {
+        Ext.Viewport.mask({
+            xtype: 'loadmask',
+            html: '<img src="resources/images/green-loader.png" alt="loader">'
+        });
         if (Ext.os.deviceType == 'Phone') {
             var opts = new ContactFindOptions();
             opts.filter = "";
@@ -59,12 +63,14 @@ Ext.define('ttapp.util.ContactsProxy', {
                 options: opts,
                 fields: ["name", "phoneNumbers"],
                 success: function(contacts) {
+                    Ext.Viewport.setMasked(false);
                     if (contacts.length > 0) {
                         x = ttapp.util.ContactsCleaner.process(contacts);
                         ttapp.util.ContactsProxy.areOnTinktime(cStore, x);
                     }
                 },
                 failure: function(context) {
+                    Ext.Viewport.setMasked(false);
                     Ext.Msg.alert('Change privacy!', 'Allow tinktime in settings > privacy > contacts', Ext.emptyFn);
                 },
                 scope: this,
@@ -144,6 +150,7 @@ Ext.define('ttapp.util.ContactsProxy', {
 
             x = ttapp.util.ContactsCleaner.process(contacts, 'default');
             this.areOnTinktime(cStore, x);
+            Ext.Viewport.setMasked(false);
         }
     }
 });

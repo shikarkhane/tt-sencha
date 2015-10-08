@@ -78,7 +78,6 @@ body{
     font-family: 'gotham_xlightregular';
     src: url('../fonts/ufonts.com_gotham-xlight-opentype-webfont.eot');
     src: url('../fonts/ufonts.com_gotham-xlight-opentype-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/ufonts.com_gotham-xlight-opentype-webfont.woff2') format('woff2'),
          url('../fonts/ufonts.com_gotham-xlight-opentype-webfont.woff') format('woff'),
          url('../fonts/ufonts.com_gotham-xlight-opentype-webfont.ttf') format('truetype'),
          url('../fonts/ufonts.com_gotham-xlight-opentype-webfont.svg#gotham_xlightregular') format('svg');
@@ -86,6 +85,7 @@ body{
     font-style: normal;
 
 }
+/* url('../fonts/ufonts.com_gotham-xlight-opentype-webfont.woff2') format('woff2'), */
 
 // Custom code goes here..
 
@@ -1106,7 +1106,7 @@ margin-bottom: 30px;
         margin-bottom: 30px
     }
     .form-field .x-input-el{
-        min-height: 40px;
+        min-height: 50px;
         font-size: 25px;
     }
     .form-field .x-input-el[placeholder]::-webkit-input-placeholder{
@@ -1344,7 +1344,7 @@ margin-bottom: 30px;
 
 .new-header{
     width: 100%;
-    padding: 15px 0;
+    padding: 5px 0;
     background-color: transparent;
 }
 .new-header .logo-green{
@@ -1452,7 +1452,7 @@ margin-bottom: 30px;
 .option-btn-grp .profile .icon{background:url(../images/profile-icon.png) no-repeat center #45a18e; background-size: 20px;}
 .option-btn-grp .btn.slide-animation{opacity: 1;}
 
-.animated {-webkit-animation-duration: 0.3s; animation-duration: 0.3s; -webkit-animation-fill-mode: both; animation-fill-mode: both;}
+.animated {-webkit-animation-duration: 0.5s; animation-duration: 0.5s; -webkit-animation-fill-mode: both; animation-fill-mode: both;}
 
 @-webkit-keyframes slideInUp1 {
   0% {
@@ -1680,7 +1680,7 @@ margin-bottom: 30px;
 .trinket-new-list .x-list-item{
     border: 0px solid;
     width: 33.33%;
-    padding: 0px 1px 0;
+    padding: 0px 1px 1px;
 }
 .trinket-new-list .x-list-item.x-list-item-tpl{
     border: 0px solid;
@@ -1700,7 +1700,10 @@ margin-bottom: 30px;
 }
 .trinket-new-list .x-list-item .img-bg img{
     width: 100%;
-    height: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    vertical-align: middle;
 }
 /* Phone contact css */
 .new-header .tinktime-logo{
@@ -1727,7 +1730,11 @@ margin-bottom: 30px;
 .contact-search{
     width: 100%;
     padding: 0 15px;
-    margin: 10px 0;
+    margin: 10px 0 0;
+}
+.x-android .x-field-search.contact-search .x-field-input{
+    padding-left: 0px !important;
+    padding-right: 0px !important;
 }
 .contact-search .x-input-search{
     background: #f0f0f0;
@@ -1740,6 +1747,7 @@ margin-bottom: 30px;
     font-family: 'gotham_xlightregular';
     margin-left: 0 !important;
     color: #939393;
+    padding: 0 35px;
 }
 .contact-search .x-field-input:before{
     font-family: 'gotham_xlightregular';
@@ -1748,9 +1756,9 @@ margin-bottom: 30px;
     height: 20px;
     background-size: 18px;
     text-indent: -10000px;
-    left: 15px;
+    left: 10px;
     top: 50%;
-    margin-top: -8px;
+    margin-top: -10px;
 }
 .phone-contact-list{
     width: 100%;
@@ -1762,6 +1770,12 @@ margin-bottom: 30px;
     background-color: #fff;
     border-top: 1px solid #c5c4c4 !important;
     padding: 0;
+}
+.phone-contact-list .x-list-item.x-list-item-first{
+    margin-top: 15px;
+}
+.phone-contact-list .x-list-item:last-child{
+    margin-bottom: 140px;
 }
 .phone-contact-list .x-innerhtml{
     padding: 0px;
@@ -1808,6 +1822,7 @@ margin-bottom: 30px;
     vertical-align: middle;
     line-height: 28px;
     color: #2d2d2d;
+    word-break: break-all;
 }
 .phone-contact-list .inner-list .invite-btn-sec{
     display: table-cell;
@@ -1890,7 +1905,7 @@ margin-bottom: 30px;
     -o-border-radius: 0px;
     border-radius: 0px; 
     border: 0px solid;
-    margin-top: -95px;
+    margin-top: -120px;
 }
 .custom-msgbox.message-box{
     width: 80%;
@@ -1899,8 +1914,8 @@ margin-bottom: 30px;
     border-radius: 0px;
 }
 .custom-msgbox.message-box .preview-trinket.msg-box-img {
-    width: 220px;
-    height: 170px;
+    width: 160px;
+    height: 110px;
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
     -ms-border-radius: 0px;
@@ -1909,7 +1924,7 @@ margin-bottom: 30px;
     border: 0px solid;
     background-size: cover;
     background-position: center center; 
-    margin: 0 auto 15px;
+    margin: 0 auto 10px;
     background-color: #b3b3b3;
 }
 .custom-msgbox.message-box .text-msg-preview.edit-text-area{
@@ -1925,7 +1940,7 @@ margin-bottom: 30px;
     border: 2px solid #f2f7f9;
     vertical-align: top;
     color: #2d2d2d;
-    min-height: 160px;
+    min-height: 110px;
     resize: none;
 }
 .custom-msgbox.message-box .text-msg-preview.edit-text-area textarea[placeholder]::-webkit-input-placeholder{
@@ -1934,14 +1949,14 @@ margin-bottom: 30px;
     line-height: 24px;
 }
 .custom-msgbox .text-msg-preview .x-form-label{
-    padding: 10px 5px;
+    padding: 5px;
     background-color: transparent;
     color: #2d2d2d;
     font-size: 20px;
     font-family: 'gotham_xlightregular';
 }
 .custom-msgbox .text-msg-preview .x-form-label span{
-    font-size: 20px;
+    font-size: 17px;
     font-family: 'gotham_xlightregular';
     font-weight: normal;
 }
@@ -1974,8 +1989,8 @@ margin-bottom: 30px;
     overflow: hidden;
 }
 .tinktime-user-sec .user-img{
-    width: 80px;
-    height: 80px;
+    width: 70px;
+    height: 70px;
     margin: 0 auto;
     overflow: hidden;
 }
@@ -1988,14 +2003,14 @@ margin-bottom: 30px;
     width: 100%;
     text-align: center;
     padding: 10px 30px;
-    font-size: 18px;
+    font-size: 16px;
     color: #292929;
     font-family: 'gotham_xlightregular';
 }
 .tinktime-user-sec .seconds-preview{
     width: 100%;
     text-align: center;
-    font-size: 16px;
+    font-size: 14px;
     color: #2d2d2d;
     font-family: 'gotham_bookregular';
 }
@@ -2004,7 +2019,7 @@ margin-bottom: 30px;
     display: inline-block;
     border: 1px solid #878787;
     width: auto;
-    margin: 15px 0 25px;
+    margin: 10px 0 20px;
 }
 
 
@@ -2019,11 +2034,11 @@ margin-bottom: 30px;
     width: 100%; 
     text-align: center;
     display: block;
-    margin: 20px 0 40px;
+    margin: 20px 0 25px;
 }
 .tinkometer-section .tinko-user img{
-    width: 130px;
-    height: 130px;
+    width: 100px;
+    height: 100px;
     border-radius:50%;
     -webkit-border-radius:50%;
     border: 0px;
@@ -2033,12 +2048,12 @@ margin-bottom: 30px;
 .tinkometer-section .tinko-discription{
     width: 100%;
     padding: 0 30px;  
-    margin: 15px 0 60px;
+    margin: 15px 0 40px;
     display: block;
 }
 .tinkometer-section .tinko-discription .x-innerhtml{
     text-align: center;
-    font-size: 16px;
+    font-size: 14px;
     color: #939393;
     font-family: 'gotham_bookregular';
     font-weight: normal;
@@ -2080,14 +2095,14 @@ margin-bottom: 30px;
 }
 .tink-in-out .in-out-list .tink-in .heading{
     display: block;
-    font-size: 18px;
+    font-size: 16px;
     font-family: 'gotham_mediumregular';
     color: #6f6d6d;
     margin-bottom: 5px;
 }
 .tink-in-out .in-out-list .tink-in .time{
     display: block;
-    font-size: 20px;
+    font-size: 18px;
     font-family: 'gotham_bookregular';
     color: #222222;
 }
@@ -2101,7 +2116,7 @@ margin-bottom: 30px;
     text-align: center;
     display: block;
     clear: both;
-    margin-top: 80px;
+    margin-top: 60px;
 }
 .social-section .social-icon{
     display: inline-block;
@@ -2154,6 +2169,7 @@ margin-bottom: 30px;
 }
 .tinkbox-section .x-list-item:last-child{
     border: 0px solid;
+    margin-bottom: 0;
 }
 .tinkbox-section .list-box{
     width: 100%;
@@ -2284,6 +2300,7 @@ margin-bottom: 30px;
     margin-top: 16px;
     text-align: center;
     padding: 0 60px;
+    letter-spacing: -1px;
 }
 .header-user-img{
     position: absolute;
@@ -2319,13 +2336,13 @@ margin-bottom: 30px;
 }
 .tink-in-out.tinkchat-page .in-out-list .tink-in .heading{
     display: block;
-    font-size: 15px;
+    font-size: 13px;
     font-family: 'gotham_bookregular';
     color: #222222;
     margin-bottom: 5px;
 }
 .tink-in-out.tinkchat-page .in-out-list .tink-in .time{
-    font-size: 14px;
+    font-size: 12px;
     font-family: 'gotham_mediumregular';
     color: #6f6d6d;
 }
@@ -2337,7 +2354,7 @@ margin-bottom: 30px;
 
 .tinkchat-list{
     width: 100%;
-    padding: 10px;
+    padding: 0 10px 10px;
     display: block;
     clear: both;
     background-color: #f0f0f0;
@@ -2362,6 +2379,11 @@ margin-bottom: 30px;
     border: 0px solid;
     border-bottom: 1px solid #c6c5c5;
 }
+
+.tinkchat-list .x-list-item.x-list-item-tpl.x-list-item-last {
+    padding-bottom: 60px !important;
+} 
+
 .tinkchat-list .chat-list{
     width: 100%;
     display: table;
@@ -2372,6 +2394,7 @@ margin-bottom: 30px;
     vertical-align: middle;
     position: relative;
     color: #696969;
+    font-size: 12px;
 }
 .tinkchat-list .chat-list .left-sec:before{
     position: absolute;
@@ -2391,6 +2414,7 @@ margin-bottom: 30px;
     vertical-align: middle;
     position: relative;
     color: #696969;
+    font-size: 12px;
 }
 .tinkchat-list .chat-list.receive-chat .left-sec:before{
     position: absolute;
@@ -2406,10 +2430,10 @@ margin-bottom: 30px;
 .tinkchat-list .chat-list .right-sec{
     display: table-cell;
     text-align: center;
-    width: 100px;
+    width: 88px;
 }
 .tinkchat-list .chat-list .right-sec .seconds{
-    font-size: 16px;
+    font-size: 14px;
     color: #696969;
     font-family: 'gotham_bookregular';
     display: block;
@@ -2428,14 +2452,14 @@ margin-bottom: 30px;
 }
 .tinkchat-list .chat-list .right-sec .img img{
     width: 70%;
-    height: 64px;
+    height: 58px;
 }
 .new-header.send-to-header{
    height: 70px; 
 }
 
 .tinkchat-list .chat-list.receive-chat .open{
-    font-size: 16px;
+    font-size: 14px;
     color: #45a18e;
     font-family: 'gotham_bookregular';
     display: block;
@@ -2528,4 +2552,47 @@ margin-bottom: 30px;
 }
 .x-mask.x-loading-mask .x-loading-spinner .x-loading-bottom{
     display: none;
+}
+
+/*  select box  */
+.x-picker .x-picker-mask:before{content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 50%; background: rgba(255,255,255,0.8); margin-top: -25px;}
+.x-picker .x-picker-mask:after{content: ""; position: absolute; bottom: 0; left: 0; width: 100%; height: 50%; background: rgba(255,255,255,0.8); margin-bottom: -25px;}
+.x-picker .x-toolbar-dark{background: #fff; border: none; font-size: 16px; text-shadow: none; padding:0; min-height: 45px; border-bottom: 1px solid #333;}
+.x-picker .x-toolbar .x-button, .x-picker .x-toolbar .x-button.x-button-action{font-size: 16px; color: #333; background: none; border: none; background-image: none; min-height: 45px; padding: 0 10px; margin: 0px; border-radius: 0px;}
+.x-picker .x-toolbar .x-button .x-button-label, .x-picker .x-toolbar .x-button.x-button-action .x-button-label{color: #333; font-size: 16px; font-weight: normal;}
+.x-picker .x-toolbar .x-button.x-button-pressing, .x-picker .x-toolbar .x-button.x-button-action.x-button-pressing{background-color: #fff; background-image:none; }
+
+.x-picker-slot .x-dataview-item{color: #333;}
+.x-picker-mask .x-picker-bar{border: none; background-color: transparent; background-image: none; box-shadow: none;}
+.x-picker .x-dock-body .x-picker-inner{background-color: #fff; background-image: none; border-radius: 0px; margin: 0px;}
+.x-picker-slot .x-dataview-item{text-align: center;}
+.x-picker .x-picker-slot{border-left:none;}
+.x-picker .x-picker-slot:before{content: ""; position: absolute; height: 1px; background: #ccc; top: 50%; left: 5px; right: 5px; margin-top: 22px;}
+.x-body .x-select-overlay{
+    left: 0px !important;
+    right: 0px !important;
+    margin: 0 auto !important;
+}
+
+/* end */
+
+.header-chat.new-header .back-btn-icon{
+    margin-top: -15px;
+}
+.header-chat.new-header .header-user-img{
+    margin-top: -15px;
+}
+.header-chat.new-header .user-title{
+    margin-top: 25px;
+}
+.x-webkit .x-layout-box-item.x-flexed.height-space{
+    width: 100%;
+    position: relative;
+    clear: both;
+    display: block !important;
+    height: 50px !important; 
+    -webkit-box-flex:0 !important;
+}
+.x-webkit .x-layout-box.x-vertical > .x-layout-box-item.x-flexed.height-space{
+    height: 50px !important; 
 }

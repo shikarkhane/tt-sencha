@@ -39,8 +39,30 @@ Ext.define('ttapp.view.TinkoMeter', {
                         listeners: {
                             'painted': {
                                 fn: function(element) {
-                                    // (id, radius, border-width, percent)
-                                    testCircleCss(element.dom.firstChild.firstChild.firstChild.id, 60, 10, 70); 
+                                    Ext.getStore('profilestore').getPhoneNumber(function(user) {
+                                        if (!user) {
+                                            if (callback) {
+                                                callback(false);
+                                            }
+                                            return false;
+                                        }
+                                        Ext.Ajax.request({
+                                            url: ttapp.config.Config.getBaseURL()+'/time-split/'+user+'/',
+                                            method: 'GET',
+                                            disableCaching: false,
+                                            success: function(response) {
+                                                obj = Ext.decode(response.responseText);
+                                                total_time = obj.time_in + obj.time_out;
+                                                percent = (obj.time_out/total_time)*100;
+                                                console.log(Math.ceil(percent));
+                                                // (id, radius, border-width, percent)
+                                                testCircleCss(element.dom.firstChild.firstChild.firstChild.id, 50, 10, Math.ceil(percent));
+                                            },
+                                            failure: function() {
+
+                                            }
+                                        });
+                                    });
                                 }
                             }
                         }

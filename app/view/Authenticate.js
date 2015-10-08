@@ -5,6 +5,10 @@ Ext.define('ttapp.view.Authenticate', {
 	config:{
 		fullscreen: true,
 		cls: 'bg-transparent',
+		scrollable : {
+		      direction     : 'vertical',
+		      directionLock : true
+		},
 		items:
 		  [/*{
             xtype: 'toolbar',

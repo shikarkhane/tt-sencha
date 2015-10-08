@@ -39,7 +39,6 @@ Ext.define('ttapp.controller.PhoneContact', {
     },
 
     addContactList: function(component) {
-
         var searchfield = Ext.create('Ext.field.Search', {
             id: 'searchPhoneContact',
             cls:'contact-search',
@@ -139,9 +138,26 @@ Ext.define('ttapp.controller.PhoneContact', {
 
     contactTap: function(list, idx, target, record, evt) {
         window.contactSelected = record;
-        Ext.Viewport.animateActiveItem('trinket', {type: 'fade', direction: 'up', duration: 500, easing: 'ease-out'});
-        Ext.getStore("phonecontacts").clearFilter();
-        list.destroy();
-        Ext.getCmp('searchPhoneContact').destroy();
+        if(evt.target.className == "invite-btn" && record.data.on_tinktime) {
+            if (Ext.os.deviceType == 'Phone') {
+                var sConf = {
+                    number: record.data.phone_number,
+                    message: "Join me on tinktime. Download app at http://tinktime.com/",
+                    intent: "INTENT",
+                    success: function() {
+                        Ext.Viewport.setActiveItem('tink', 'slide');
+                    },
+                    error: function() {
+                        Ext.Msg.alert('Cancelled', 'Sms not sent!', Ext.emptyFn);
+                    }
+                };
+                sms.send(sConf.number, sConf.message, sConf.intent, sConf.success, sConf.error);            
+            }
+        } else {
+            Ext.Viewport.animateActiveItem('trinket', {type: 'fade', direction: 'up', duration: 500, easing: 'ease-out'});
+            Ext.getStore("phonecontacts").clearFilter();
+            list.destroy();
+            Ext.getCmp('searchPhoneContact').destroy();
+        }
     }
 });

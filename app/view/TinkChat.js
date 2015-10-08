@@ -7,7 +7,7 @@ Ext.define('ttapp.view.TinkChat', {
 			{
                 xtype: 'panel',
                 docked: 'top',
-                cls: 'new-header',
+                cls: 'new-header header-chat',
                 items: [
                     {
 						xtype: 'button',
@@ -107,6 +107,20 @@ Ext.define('ttapp.view.TinkChat', {
 						img   : 'resources/images/chat-open-icon.png',
 						date    : 'Thu. 29 Sep',
 						unread: 1
+					}, {	
+						send    : 1,
+						message : 'Dolor sit amet Ut enim ad minim veniam, quis nostrud exer',
+						second  : '10 sec',
+						img   : 'resources/images/chat-icon.png',
+						date    : 'Thu. 29 Sep',
+						unread: 0
+					}, {	
+						send    : 1,
+						message : 'Dolor sit amet Ut enim ad minim veniam, quis nostrud exer',
+						second  : '10 sec',
+						img   : 'resources/images/chat-icon.png',
+						date    : 'Thu. 29 Sep',
+						unread: 0
 					}, {	
 						send    : 1,
 						message : 'Dolor sit amet Ut enim ad minim veniam, quis nostrud exer',

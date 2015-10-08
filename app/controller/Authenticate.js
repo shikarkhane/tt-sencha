@@ -65,7 +65,8 @@ Ext.define('ttapp.controller.Authenticate', {
 
                 if (Ext.os.is.Android && SMS) {
                     Ext.Viewport.mask({
-                        xtype: 'loadmask'
+                        xtype: 'loadmask',
+                        html: '<img src="resources/images/green-loader.png" alt="loader">'
                     });
 
                     // set timeout for 15 seconds
