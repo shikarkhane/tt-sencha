@@ -180,7 +180,10 @@ Ext.define('ttapp.controller.Authenticate', {
                         /*old code*/
                         //Ext.Viewport.setActiveItem('trinket', 'slide');
 
-                        Ext.Viewport.setActiveItem('phoneContacts', 'slide');                        
+                        /*code done by wedigtech*/
+                        /*Ext.Viewport.setActiveItem('phoneContacts', 'slide');*/
+
+                        Ext.Viewport.setActiveItem('tinkometer', 'slide');                        
                     } else {
                         Ext.Msg.alert('Problem', 'Verification code doesnt match', Ext.emptyFn);
                     }

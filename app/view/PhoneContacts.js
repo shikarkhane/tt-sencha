@@ -5,6 +5,7 @@ Ext.define('ttapp.view.PhoneContacts', {
         'ttapp.util.Common'
     ],
 	config: {
+        fullscreen: true,
         cls: 'bg-white-color',
 		items: [
 			{

@@ -11,7 +11,9 @@ Ext.define('ttapp.model.Contact', {
             'last_name',
             'on_tinktime',
             'phone_number',
-            'phone_type'
+            'phone_type',
+            'time_split',
+            'photo'
         ]
     }
 });

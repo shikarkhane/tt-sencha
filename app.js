@@ -18,7 +18,7 @@ Ext.application({
         'ttapp.overrides.SizeMonitor', 'ttapp.overrides.PaintMonitor'
     ],
     controllers: ['Main', 'Tink', 'SendTo', 'Landing', 'Authenticate',
-    'Trinket', 'DogEar', 'Split', 'Feed', 'ReplayTink', 'TinkChat', 'PhoneContact'],
+    'Trinket', 'DogEar', 'Split', 'Feed', 'ReplayTink', 'TinkChat', 'PhoneContact', 'TinkBox'],
 
     views: [
         'Landing', 'Feed', 'Tink', 'SendTo', 'Trinket',

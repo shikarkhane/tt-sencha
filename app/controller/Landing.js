@@ -41,8 +41,13 @@ Ext.define('ttapp.controller.Landing', {
                 //     xtype: 'trinket'
                 // });
 
-                var item = Ext.Viewport.add({
+                /*code done by wedigtech*/
+                /*var item = Ext.Viewport.add({
                     xtype: 'phoneContacts'
+                });*/
+
+                var item = Ext.Viewport.add({
+                    xtype: 'tinkometer'
                 });
 
                 item.element.setStyle('opacity', '0');

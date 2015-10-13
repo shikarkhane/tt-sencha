@@ -12,10 +12,6 @@ Ext.define('ttapp.view.SendTo', {
     	fullscreen: true,
     	cls:'bg-light-gray',
     	layout: 'vbox',
-    	scrollable: {
-    		direction: 'vertical',
-    		directionLock: true
-    	},
     	items: [
 			{
                 xtype: 'panel',

@@ -5,6 +5,7 @@ Ext.define('ttapp.view.Tink', {
         'ttapp.view.Thinking', 'ttapp.view.TimerClock'
     ],
     config: {
+        fullscreen: true,
         id: 'tinkScreen',
         itemId: 'tinkPage',
         cls: 'bg-transparent flip-design-right tink-page split-page',
@@ -49,6 +50,7 @@ Ext.define('ttapp.view.Tink', {
             xtype: 'image',
             itemId: 'placeholderTrinket',
             hidden: true,
+            top:'50%',
             cls: 'prev-trinket msg-box-img',
             listeners: {
                 tap: {

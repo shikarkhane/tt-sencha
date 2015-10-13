@@ -48,10 +48,10 @@ Ext.define('ttapp.controller.SendTo', {
         }, 100);
     },
     onShowSendTo: function(component) {
-        component.add(ttapp.util.Common.createMenuButton());
         this.phoneNumber = window.contactSelected.data.phone_number;
         this.setPreviewItems();
-        //Ext.select('.user-name').setHtml(window.contactSelected.data.first_name+' '+window.contactSelected.data.last_name);
+        component.add(ttapp.util.Common.createMenuButton());
+        Ext.select('.user-name').setHtml(window.contactSelected.data.first_name+' '+window.contactSelected.data.last_name);
     },
     setPreviewItems: function() {
         var prevTrinket = Ext.ComponentQuery.query('#previewTrinket')[0],
@@ -96,6 +96,7 @@ Ext.define('ttapp.controller.SendTo', {
     returnToTink: function() {
         this.showTink();
         this.closeMe();
+        Ext.ComponentQuery.query('#previewTextMsg')[0].setValue('');
     },
     onSearchKeyUp: function(field) {
         //debugger;
@@ -164,6 +165,7 @@ Ext.define('ttapp.controller.SendTo', {
                     //reset before leaving
                     //me.clearAll();
                     //me.closeMe();
+                    Ext.ComponentQuery.query('#previewTextMsg')[0].setValue('');
                     me.showSplit();
                 } else {
                     //ask for user confirmation to send sms
@@ -206,7 +208,10 @@ Ext.define('ttapp.controller.SendTo', {
         });
     },
     showSplit: function() {
-        Ext.Viewport.setActiveItem('split', 'slide');
+        /*old code*/
+        /*Ext.Viewport.setActiveItem('split', 'slide');*/
+
+        Ext.Viewport.setActiveItem('tinkbox', 'slide');
         //Ext.ComponentQuery.query('#options')[0].setActiveItem(2, 'slide');
     },
     showTink: function() {
