@@ -14,6 +14,7 @@ Ext.define('ttapp.util.Common', {
             }
         }
     },
+    
     isUserVerifiedOnServer: function(callback) {
         // if user is not verified on server, clear local profile and make him authenticate again
         Ext.getStore('profilestore').getPhoneNumber(function(user) {
@@ -52,6 +53,7 @@ Ext.define('ttapp.util.Common', {
             });
         });
     },
+    
     setDialCode: function(params) {
         var c = [{
             "name": "Afghanistan",
@@ -1068,6 +1070,7 @@ Ext.define('ttapp.util.Common', {
             }
         });
     },
+    
     createMenuButton: function() {
         var button = Ext.create('Ext.Button', {
             cls:'add-option-btn',
@@ -1160,5 +1163,30 @@ Ext.define('ttapp.util.Common', {
             }
         });
         return button;
+    },
+    
+    animationThumbnail: function() {
+        var store = Ext.getStore('trinketstore').getData();
+        var storeLength = store.length - 1;
+        var random = Math.floor((Math.random() * storeLength) + 0);
+        var imagePath = Ext.getStore('trinketstore').getData().all[random].data.thumbnail_path;
+
+        return imagePath;
+    },
+
+    userDescription: function() {
+        var arr = [
+            {
+                text: 'Failure will never overtake me if my determination to succeed is strong enough.'
+            }, {
+                text: 'What you do today can improve all your tomorrows.'
+            }, {
+                text: 'In order to succeed, we must first believe that we can.'
+            }, {
+                text: 'Aim for the moon. If you miss, you may hit a star.'
+            }
+        ];
+
+        return arr[Math.floor((Math.random() * arr.length) + 0)].text;
     }
 });

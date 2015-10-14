@@ -174,14 +174,15 @@ body {
 .x-msgbox .x-body{font-family: 'gotham_bookregular'; font-weight: 300; font-size: 20px; min-height: 28px; padding: 10px 0;}
 .x-msgbox .x-msgbox-title .x-innerhtml{color: #18386d; font-family: 'gotham_bookregular'; font-weight: 100; text-shadow: none; text-transform: uppercase; font-size: 17px;}
 .x-msgbox .x-title{font-size: 16px;}
-.x-msgbox .x-msgbox-buttons .x-inner{border-top: solid 2px #ccc;}
+.x-msgbox .x-msgbox-buttons .x-inner{border-top: solid 1px #ccc;}
 .x-msgbox {background: #fff !important; border: none !important; padding: 0px !important;}
-.x-msgbox .x-msgbox-text{padding:10px 10px 10px 10px; min-height: 46px; font-family: 'gotham_bookregular'; color: #686868; font-weight: 100; font-size: 15px; text-shadow: none; color: #686868 !important;}
-.x-msgbox .x-toolbar.x-docked-bottom{border-top: solid 1px #ccc; padding: 0px;}
+.x-msgbox .x-msgbox-text{padding:10px 10px 30px 10px; min-height: 46px; font-family: 'gotham_bookregular'; color: #686868; font-weight: 100; font-size: 15px; text-shadow: none; color: #686868 !important;}
+.x-msgbox .x-toolbar.x-docked-bottom{border-top: solid 0px #ccc; padding: 0px;}
 .x-msgbox .x-button{background: none !important; background-image: none !important; border-radius: 0px; color: #333 !important; border: none !important; font-family: 'gotham_bookregular'; border-right: solid 1px #ccc !important; margin: 0px;  width: 50%;}
 .x-msgbox .x-button.x-button-pressing{background: #f0f0f0 !important;}
 .x-msgbox .x-button .x-button-label{font-weight: 100; font-size: 16px !important; color: #686868; opacity: 1; -webkit-text-fill-color: #686868; text-overflow: initial; font-family: 'gotham_bookregular'; opacity: 1 !important;}
 .x-msgbox .x-button:last-child{border-right: none !important;}
+.x-msgbox .x-button.x-stretched:first-child{ border-radius: 0 0 0 10px;}
 .x-msgbox .x-button.x-stretched{ padding: 0; margin: 0; min-height: 46px; border-radius: 0 0 10px 10px;}
 .x-msgbox .x-field{min-height: 40px; margin:15px 0; padding:0 15px 15px 15px; background-color: transparent;}
 .x-msgbox .x-field .x-input-el{min-height: 40px; box-shadow: inset 1px 1px 3px rgba(0,0,0,0.3); border-radius: 10px; border: solid 1px #ccc;}
@@ -319,7 +320,7 @@ body {
     margin-bottom: 25px;
 }
 .verify-page .help-text{
-    font-size: 20px;
+    font-size: 16px;
     color: #fff;
     text-align: center;
     margin-bottom: 25px;
@@ -1135,7 +1136,7 @@ margin-bottom: 30px;
     }
 
     .verify-page .help-text{
-    font-size: 18px;
+    font-size: 16px;
     line-height: 25px;
     }
     .verify-page .help-text-sm{
@@ -1224,6 +1225,9 @@ margin-bottom: 30px;
 .margin_top80{
     margin-top: 80px !important;
 }
+.margin_top50{
+    margin-top: 50px !important;
+}
 .text-center{
 	text-align: center !important;
 }
@@ -1300,8 +1304,8 @@ margin-bottom: 30px;
 }
 .new-verify .help-text{
 	text-transform: uppercase;
-	margin-bottom: 15% !important;
-	font-size: 20px;
+	margin-bottom: 10% !important;
+	font-size: 16px;
 	line-height: 28px;
     font-family: 'gotham_bookregular';
     font-weight: normal;
@@ -1436,7 +1440,7 @@ margin-bottom: 30px;
 .option-mask .option-overlay.x-panel.x-floating{background: rgba(255,255,255,0.8);}
 .option-mask .x-mask{display: none;}
 
-.add-option-btn.x-button{position: absolute; z-index: 99; right: 15px; bottom: 20px; border-radius:99px; width:45px; height:45px; margin-bottom: -5px; background:#45a18e; left: auto; top: auto; border: none; box-shadow: 0px 3px 3px rgba(0,0,0,0.1); padding: 0; text-align: center;}
+.add-option-btn.x-button{position: absolute; z-index: 999; right: 15px; bottom: 20px; border-radius:99px; width:45px; height:45px; margin-bottom: -5px; background:#45a18e; left: auto; top: auto; border: none; box-shadow: 0px 3px 3px rgba(0,0,0,0.1); padding: 0; text-align: center;}
 .add-option-btn.x-button.x-button-pressing{background:#45a18e;}
 .add-option-btn.x-button img{width: 22px; vertical-align: middle;}
 .add-option-btn.x-button.btn-close{background-color: #f24848;}
@@ -1795,13 +1799,14 @@ margin-bottom: 30px;
     width: 100%;
     position: relative;
     overflow: hidden;
-    padding: 24px 0;
+    padding: 0 0;
     display: table;
 }
 .phone-contact-list .inner-list .img-name{
     width: 100%;
     position: relative;
     vertical-align: middle;
+    padding: 25px 0;
 }
 .phone-contact-list .inner-list .img-name img{
     width: 40px;
@@ -1828,7 +1833,8 @@ margin-bottom: 30px;
     display: table-cell;
     vertical-align: middle;
     text-align: center;
-    width: 84px;
+    width: 95px;
+    padding-left: 10px;
 }
 .phone-contact-list .inner-list .invite-btn{
     background: #fff;
@@ -1850,17 +1856,16 @@ margin-bottom: 30px;
     width: 70px;
 }
 .phone-contact-list .inner-list.p-bar{
-    padding: 15px 0;
+    padding: 0;
 }
 .phone-contact-list .inner-list.p-bar .img-name span{
-    line-height: 48px;
+    line-height: 24px;
 }
 .phone-contact-list .inner-list.p-bar .circle{
-    display: inline-block;
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    margin-top: -20px;
+    display: table-cell;
+    vertical-align: middle;
+    width: 70px;
+    text-align: center;
 }
 
 /* screen scroll hide */
@@ -1896,8 +1901,8 @@ margin-bottom: 30px;
 @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } } */
 
 .split-page .prev-trinket.msg-box-img{
-    width: 250px;
-    height: 190px;
+    width: 240px;
+    height: 160px;
     margin-left: -125px;
     -webkit-border-radius: 0px;
     -moz-border-radius: 0px;
@@ -1905,7 +1910,7 @@ margin-bottom: 30px;
     -o-border-radius: 0px;
     border-radius: 0px; 
     border: 0px solid;
-    margin-top: -120px;
+    margin-top: -95px;
 }
 .custom-msgbox.message-box{
     width: 80%;
@@ -1942,11 +1947,13 @@ margin-bottom: 30px;
     color: #2d2d2d;
     min-height: 110px;
     resize: none;
+    -webkit-text-fill-color: #2d2d2d;
 }
 .custom-msgbox.message-box .text-msg-preview.edit-text-area textarea[placeholder]::-webkit-input-placeholder{
     color: #2d2d2d;
     font-size: 18px;
     line-height: 24px;
+    -webkit-text-fill-color: #2d2d2d;
 }
 .custom-msgbox .text-msg-preview .x-form-label{
     padding: 5px;
@@ -2036,11 +2043,32 @@ margin-bottom: 30px;
     display: block;
     margin: 20px 0 25px;
 }
-.tinkometer-section .tinko-user img{
+.tinkometer-section .tinko-user .tinko-user-img{
+    width: 100px;
+    margin: 0 auto;
+    position: relative;
+}
+.tinkometer-section .tinko-user .tinko-user-img .img-sec{
     width: 100px;
     height: 100px;
+    overflow: hidden;
+    display: inline-block;
+    margin: 0 auto;
     border-radius:50%;
     -webkit-border-radius:50%;
+}
+.tinkometer-section .tinko-user .tinko-user-img .edit-icon{
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: 3px;
+    right: 0px;
+    background:url(../images/edit-icon.png) no-repeat center center;
+    background-size: 30px; 
+}
+.tinkometer-section .tinko-user .tinko-user-img .img-sec img{
+    max-width: 100%;
+    width: 100%;
     border: 0px;
     float: none;
     text-align: center;
@@ -2161,8 +2189,13 @@ margin-bottom: 30px;
     background-image: none;
     border: 0px solid;
 }
+.tinkbox-section .x-list-item.x-item-selected.x-list-item-tpl{
+    background-color: transparent;
+    background-image: none;
+    background: none;
+}
 .tinkbox-section .x-list-item.x-list-item-tpl{
-    border: 0px solid;
+    border: 0px solid !important;
 }
 .tinkbox-section .x-list-item:first-child{
     border: 0px solid;
@@ -2180,6 +2213,7 @@ margin-bottom: 30px;
     background: #f0f0f0;
     background-color: #f0f0f0;
     padding: 15px;
+    background-size: cover !important
 }
 .tinkbox-section .list-box .over-lay{
     position: absolute;
@@ -2197,7 +2231,7 @@ margin-bottom: 30px;
     color: #2d2d2d;
     font-family: 'gotham_xlightregular';
     padding: 0 15px 15px;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
     text-align: center;
 }
 .tinkbox-section .list-box .inner-detail{
@@ -2380,9 +2414,9 @@ margin-bottom: 30px;
     border-bottom: 1px solid #c6c5c5;
 }
 
-.tinkchat-list .x-list-item.x-list-item-tpl.x-list-item-last {
+/* .tinkchat-list .x-list-item.x-list-item-tpl.x-list-item-last {
     padding-bottom: 60px !important;
-} 
+}  */
 
 .tinkchat-list .chat-list{
     width: 100%;
@@ -2584,6 +2618,8 @@ margin-bottom: 30px;
 }
 .header-chat.new-header .user-title{
     margin-top: 25px;
+    -ms-word-break: break-all;
+    word-break: break-all;
 }
 .x-webkit .x-layout-box-item.x-flexed.height-space{
     width: 100%;

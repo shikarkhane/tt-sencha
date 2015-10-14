@@ -11,6 +11,7 @@
     <script id="microloader" type="text/javascript" src="touch/microloader/development.js"></script>
     <script type="text/javascript" src="jquery.min.js"></script>
     <script type="text/javascript" src="jquery.js"></script>
+    <script type="text/javascript" src="moment.js"></script>
 
     <script>
         function resizeHeight(){
@@ -30,7 +31,7 @@
         });
     </script>
     <script>
-       function changeCircle(id){
+        function changeCircle(id){
           var $ppc = $('#progress-pie-chart-'+id),
             percent = parseInt($ppc.data('percent')),
             deg = 360*percent/100;
@@ -39,6 +40,78 @@
           }
           $('#ppc-progress-fill-'+id).css('transform','rotate('+ deg +'deg)');
           $('#ppc-percents-'+id +'span').html(percent+'%');
+        }
+
+        function displaytimer(millis){
+            var  millis = millis * 1000;
+            
+            var hours = Math.floor(millis / 36e5),
+                mins = Math.floor((millis % 36e5) / 6e4),
+                secs = Math.floor((millis % 6e4) / 1000);
+            
+            if(hours == 0) {
+                return (mins+'m'+' '+secs+'s');
+            } else {
+                return (hours+'h'+' '+mins+'m'+' '+secs+'s');
+            }
+        }
+
+        function showTinkTime(millis){
+            var  millis = millis * 1000;
+            
+            var hours = Math.floor(millis / 36e5),
+                mins = Math.floor((millis % 36e5) / 6e4),
+                secs = Math.floor((millis % 6e4) / 1000);
+            
+            hours = hours>10?hours:'0'+hours;
+            minutes = mins>10?mins:'0'+mins;
+            seconds = secs>10?secs:'0'+secs;
+
+            return hours+':'+minutes+':'+seconds;
+        }
+
+        function getName(num) {
+            var storeData = Ext.getStore('phonecontacts').findRecord('phone_number', num);
+            var firstname, lastname;
+            
+            if(Ext.isEmpty(storeData)) {
+                return num;
+            } else {
+                if(!Ext.isEmpty(storeData.data.first_name)) {
+                    firstname = storeData.data.first_name;
+                } else {
+                    firstname = "";
+                }
+
+                if(!Ext.isEmpty(storeData.data.last_name)) {
+                    lastname = storeData.data.last_name;
+                } else {
+                    lastname = "";
+                }
+
+                var name = firstname+' '+lastname
+                return name;
+            }
+        }
+
+        function getBackgroundImage(number) {
+            if(Ext.os.deviceType == 'Phone') {
+                var options      = new ContactFindOptions();
+                options.filter   = number;
+                options.multiple = true;
+                var fields       = ["name", "photo", "phoneNumbers"];
+                
+                navigator.contacts.find(fields, function(s){
+                    if(!Ext.isEmpty(s.photos)) {
+                        return s.photos[0].value;
+                    }
+                }, 
+                function(s){
+                    return;
+                }, options);
+            } else {
+                return ttapp.util.Common.animationThumbnail();
+            }
         } 
     </script>
     <script>

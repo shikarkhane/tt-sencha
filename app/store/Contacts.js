@@ -3,7 +3,59 @@ Ext.define('ttapp.util.ContactsProxy', {
     requires: ['Ext.device.Contacts', 'ttapp.util.ContactsCleaner'],
     
     areOnTinktime: function(cStore, contacts) {
-        Ext.Ajax.request({
+        Ext.getStore('profilestore').getPhoneNumber(function(num){
+            Ext.Ajax.request({
+                url: ttapp.config.Config.getBaseURL() + '/are-on-network-plus-timesplit/' + num + '/',
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                disableCaching: false,
+                jsonData: {
+                    "contacts": contacts
+                },
+                success: function(response) {
+                    var cModel;
+
+                    // remove all existing contacts
+                    cStore.removeAll(true);
+
+                    var json = Ext.JSON.decode(response.responseText);
+
+                    for (var i = 0; i < json.length; i++) {
+                        var item = json[i];
+
+                        var lname = ttapp.util.ContactsCleaner.decode_utf8(item.last_name),
+                            fname = ttapp.util.ContactsCleaner.decode_utf8(item.first_name),
+                            pnumber = item.phone_number,
+                            pType = item.phone_type,
+                            onTinkTime = item.on_tinktime,
+                            time_split = item.time_split;
+
+                        cStore.add({
+                            id: i,
+                            first_name: fname,
+                            last_name: lname,
+                            on_tinktime: onTinkTime,
+                            phone_type: pType,
+                            phone_number: pnumber,
+                            time_split: time_split
+                        });
+                    }
+
+                    cStore.sync();
+
+                    cStore._processed = true;
+                    cStore.fireEvent('processed', this);
+                    //ttapp.app.getController('PhoneContact').showCircles();
+                },
+                failure: function(response, opts) {
+                    Ext.Msg.alert('Is on netwk', "error", Ext.emptyFn);
+                }
+            });
+        });
+        /*old code*/
+        /*Ext.Ajax.request({
             url: ttapp.config.Config.getBaseURL() + '/are-on-network/',
             method: 'POST',
             headers: {
@@ -48,7 +100,7 @@ Ext.define('ttapp.util.ContactsProxy', {
             failure: function(response, opts) {
                 Ext.Msg.alert('Is on netwk', "error", Ext.emptyFn);
             }
-        });
+        });*/
     },
     process: function(cStore) {
         Ext.Viewport.mask({
@@ -61,7 +113,7 @@ Ext.define('ttapp.util.ContactsProxy', {
             opts.multiple = true;
             var contactsConfig = {
                 options: opts,
-                fields: ["name", "phoneNumbers"],
+                fields: ["name", "phoneNumbers", "photos"],
                 success: function(contacts) {
                     Ext.Viewport.setMasked(false);
                     if (contacts.length > 0) {
@@ -74,79 +126,71 @@ Ext.define('ttapp.util.ContactsProxy', {
                     Ext.Msg.alert('Change privacy!', 'Allow tinktime in settings > privacy > contacts', Ext.emptyFn);
                 },
                 scope: this,
-                includeImages: false
+                includeImages: true
             };
 
             Ext.device.Contacts.getContacts(contactsConfig);
         } else {
             //populate static test values
-            var contacts = [{
-                'id': 1,
-                'name': {
-                    'givenName': 'nike',
-                    'familyName': 'shikari'
-                },
-                'phoneNumbers': [{
-                    'value': '+46705438947'
-                }],
-                'first_name': 'Eddåäöielksjdflkdsfkljsdlfkjsdlkfj',
-                'last_name': 'Huang',
-                'on_tinktime': true,
-                'phone_type': 'mobile',
-                'phone_number': '+46700907802'
-            }, {
-                'id': 2,
-                'phoneNumbers': [{
-                    'value': '+46700907802'
-                }],
-                'first_name': 'Edith',
-                'last_name': 'Jones',
-                'on_tinktime': true,
-                'phone_type': 'home',
-                'phone_number': '(514) 316-4528'
-            }, {
-                'id': 3,
-                'name': {
-                    'givenName': 'nike',
-                    'familyName': 'shikari'
-                },
-                'phoneNumbers': [{
-                    'value': '0101010101'
-                }],
-                'first_name': 'Nikhil',
-                'last_name': 'Talinger',
-                'on_tinktime': true,
-                'phone_type': 'mobile',
-                'phone_number': '(235) 453-1258'
-            }, {
-                'id': 4,
-                'name': {
-                    'givenName': 'nike',
-                    'familyName': 'shikari'
-                },
-                'phoneNumbers': [{
-                    'value': '+0101010101'
-                }],
-                'first_name': 'Emanuel',
-                'last_name': 'Lindberg',
-                'on_tinktime': false,
-                'phone_type': 'work',
-                'phone_number': '(978) 165-3214'
-            }, {
-                'id': 5,
-                'name': {
-                    'givenName': 'nike',
-                    'familyName': 'shikari'
-                },
-                'phoneNumbers': [{
-                    'value': '+0101010101'
-                }],
-                'first_name': 'Rishabh',
-                'last_name': 'Mathur',
-                'on_tinktime': false,
-                'phone_type': 'work',
-                'phone_number': '+918764429457'
-            }];
+            if (Ext.os.deviceType != 'Phone') {
+                var contacts = [{
+                    'id': 1,
+                    'name': {
+                        'givenName': 'nike',
+                        'familyName': 'shikari'
+                    },
+                    'phoneNumbers': [{
+                        'value': '+46705438947'
+                    }],
+                    'first_name': 'Eddåäöielksjdflkdsfkljsdlfkjsdlkfj',
+                    'last_name': 'Huang',
+                    'on_tinktime': true,
+                    'phone_type': 'mobile',
+                    'phone_number': '+46700907802',
+                    'photo': ''
+                }, {
+                    'id': 2,
+                    'phoneNumbers': [{
+                        'value': '+46700907802'
+                    }],
+                    'first_name': 'Edith',
+                    'last_name': 'Jones',
+                    'on_tinktime': true,
+                    'phone_type': 'home',
+                    'phone_number': '(514) 316-4528',
+                    'photo': ''
+                }, {
+                    'id': 3,
+                    'name': {
+                        'givenName': 'nike',
+                        'familyName': 'shikari'
+                    },
+                    'phoneNumbers': [{
+                        'value': '0101010101'
+                    }],
+                    'first_name': 'Nikhil',
+                    'last_name': 'Talinger',
+                    'on_tinktime': true,
+                    'phone_type': 'mobile',
+                    'phone_number': '(235) 453-1258',
+                    'photo': ''
+                }, {
+                    'id': 4,
+                    'name': {
+                        'givenName': 'nike',
+                        'familyName': 'shikari'
+                    },
+                    'phoneNumbers': [{
+                        'value': '+0101010101'
+                    }],
+                    'first_name': 'Emanuel',
+                    'last_name': 'Lindberg',
+                    'on_tinktime': false,
+                    'phone_type': 'work',
+                    'phone_number': '(978) 165-3214',
+                    'photo': ''
+                }];
+            }
 
             x = ttapp.util.ContactsCleaner.process(contacts, 'default');
             this.areOnTinktime(cStore, x);

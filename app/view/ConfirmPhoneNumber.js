@@ -38,7 +38,7 @@ Ext.define('ttapp.view.ConfirmPhoneNumber', {
 		        {
 	                xtype: 'button',
 	                text: "Send",
-	                cls:'cls-confirm-code-btn white-button margin_top80'
+	                cls:'cls-confirm-code-btn white-button margin_top50'
 		        },{
 		        	xtype:'panel',
 		        	cls:'help-text-sm',
