@@ -82,17 +82,24 @@ Ext.define('ttapp.view.TinkoMeter', {
                                             method: 'GET',
                                             disableCaching: false,
                                             success: function(response) {
-                                                obj = Ext.decode(response.responseText);
-                                                total_time = obj.time_in + obj.time_out;
-                                                percent = (obj.time_out/total_time)*100;
-                                                // (id, radius, border-width, percent)
-                                                testCircleCss(element.dom.firstChild.firstChild.firstChild.id, 50, 10, Math.ceil(percent));
-
-                                                Ext.select('.tink-out-user').setHtml(showTinkTime(obj.time_out));
-                                                Ext.select('.tink-in-user').setHtml(showTinkTime(obj.time_in));
+                                                if(Ext.isEmpty(response.responseText)) {
+                                                    // (id, radius, border-width, percent)
+                                                    testCircleCss(element.dom.firstChild.firstChild.firstChild.id, 50, 10, 100);
+                                                    Ext.select('.tink-out-user').setHtml('00:00:00');
+                                                    Ext.select('.tink-in-user').setHtml('00:00:00');
+                                                    return;
+                                                } else {
+                                                    obj = Ext.decode(response.responseText);
+                                                    total_time = obj.time_in + obj.time_out;
+                                                    percent = (obj.time_out/total_time)*100;
+                                                    // (id, radius, border-width, percent)
+                                                    testCircleCss(element.dom.firstChild.firstChild.firstChild.id, 50, 10, Math.ceil(percent));
+                                                    Ext.select('.tink-out-user').setHtml(showTinkTime(obj.time_out));
+                                                    Ext.select('.tink-in-user').setHtml(showTinkTime(obj.time_in));
+                                                }
                                             },
                                             failure: function() {
-
+                                                
                                             }
                                         });
                                     });
