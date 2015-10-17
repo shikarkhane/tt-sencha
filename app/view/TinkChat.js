@@ -43,6 +43,12 @@ Ext.define('ttapp.view.TinkChat', {
             			html: '<div class="tink-in"><span class="heading">Tink Out</span><span class="time tink-out-friend"></span></div>'/*06:21:30*/
             		}
             	]
+            }, {
+                title: 'swiffy',
+                xtype: 'panel',
+                id: "swiffydivtinkchat",
+                //flex: 5,
+                html: '<iframe id="tinkcontainer_tinkchat" class="tinkanimation" style="" ></iframe>'
             }
 		]
 	}

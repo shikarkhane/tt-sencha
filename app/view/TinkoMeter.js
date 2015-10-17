@@ -8,34 +8,92 @@ Ext.define('ttapp.view.TinkoMeter', {
                 xtype: 'panel',
                 flex: 1,
                 docked: 'top',
-                cls: 'new-header',
+                cls: 'new-header tinko-meter-header',
                 items: [
                     {
                         xtype: 'panel',
                         cls: 'tinkometer-logo',
-                        docked: 'top'
-                    }
+                        docked: 'top',
+                        items:[
+                            {
+                                xtype: 'button',
+                                cls: 'next-btn-icon',
+                                docked: 'right',
+                                handler: function() {
+                                    Ext.Viewport.animateActiveItem('phoneContacts', { type: 'slide' });
+                                }
+                            }
+                        ]
+                    } 
                 ]
             }, {
             	xtype: 'panel',
                 cls:'tinko-user',
                 flex: 2,
-                html:'<div class="tinko-user-img"><div class="img-sec"><img id="user_img" src="resources/images/user-img.png" alt="img"></div><div class="edit-icon"></div></div>',
+                //html:'<div class="tinko-user-img"><div class="img-sec"><img id="user_img" src="resources/images/user-img.png" alt="img"></div><div class="edit-icon"></div></div>',
+                html:'<div class="tinko-user-img"><div class="img-sec" id="user_img" style="background-image:url(resources/images/user-img.png);     background-size: cover;"></div><div class="edit-icon"></div></div>',
                 listeners: {
                     'tap': {
                         element: 'element',
                         delegate: 'div.edit-icon',
                         fn: function() {
                             function onSuccess(imageURI) {
+                                if(Ext.os.is('Android')) {
+                                    window.FilePath.resolveNativePath(imageURI, function(response) {
+                                        console.log("success__"+JSON.stringify(response));
+                                    }, function(response) {
+                                        console.log("fail__"+JSON.stringify(response));
+                                    }); 
+                                }
+                                
                                 console.log('imageURI_'+imageURI);
-                                document.getElementById('user_img').src = "data:image/jpeg;base64,"+imageURI;
+
+                                Ext.Viewport.mask({
+                                    xtype: 'loadmask',
+                                    html: '<img src="resources/images/green-loader.png" alt="loader">'
+                                });
+
+                                document.getElementById('user_img').style.backgroundImage = "url("+imageURI+")";
+
+                                var win = function(r) {
+                                    console.log(JSON.stringify(r));
+                                    console.log("Code = " + r.responseCode);
+                                    console.log("Response = " + r.response);
+                                    console.log("Sent = " + r.bytesSent);
+                                    Ext.Viewport.setMasked(false);
+                                }
+
+                                var fail = function(error) {
+                                    console.log("upload error source " + error.source);
+                                    console.log("upload error target " + error.target);
+                                    Ext.Viewport.setMasked(false);
+                                    Ext.Msg.alert("Error", "An error has occurred. Please try again.");
+                                }
+
+                                var options = new FileUploadOptions();
+                                options.fileKey = "profile-picture";
+                                options.fileName = imageURI.substr(imageURI.lastIndexOf('/') + 1);
+                                options.mimeType = "image/jpeg";
+
+                                var headers = {
+                                    'contentType': 'multipart/form-data'
+                                };
+
+                                options.headers = headers;
+
+                                var ft = new FileTransfer();
+
+                                Ext.getStore('profilestore').getPhoneNumber(function(num){
+                                   console.log(num);
+                                    ft.upload(imageURI, encodeURI(ttapp.config.Config.getBaseURL()+"/profile-picture/"+num+"/"), win, fail, options);
+                                });
                             }
 
                             function onFailure() {
                                 Ext.Msg.alert("Warning","Unable to access this image, please choose from 'Gallery' again.");
                             }
 
-                            navigator.camera.getPicture(onSuccess, onFailure, { sourceType: Camera.PictureSourceType.PHOTOLIBRARY, correctOrientation: true, quality: 50, destinationType: Camera.DestinationType.DATA_URL
+                            navigator.camera.getPicture(onSuccess, onFailure, { sourceType: Camera.PictureSourceType.PHOTOLIBRARY, correctOrientation: true, quality: 50, destinationType: Camera.DestinationType.NATIVE_URI
                             });
                         }
                     }

@@ -48,6 +48,7 @@ Ext.define('ttapp.controller.SendTo', {
         }, 100);
     },
     onShowSendTo: function(component) {
+        console.log(this);
         this.phoneNumber = window.contactSelected.data.phone_number;
         this.setPreviewItems();
         component.add(ttapp.util.Common.createMenuButton());
@@ -186,6 +187,10 @@ Ext.define('ttapp.controller.SendTo', {
 
     },
     sendTink: function(from_user, to_user, send_timestamp, trinket_name, text, seconds_sent) {
+        seconds_sent = seconds_sent.split(":");
+        total_seconds = (parseInt(seconds_sent[0])*3600) + (parseInt(seconds_sent[1])*60) + (parseInt(seconds_sent[2]));
+        total_seconds = total_seconds < 1? 1 : total_seconds;
+
         Ext.Ajax.request({
             url: ttapp.config.Config.getBaseURL() + '/message-queue/',
             method: 'POST',
@@ -199,7 +204,7 @@ Ext.define('ttapp.controller.SendTo', {
                 "send_timestamp": send_timestamp,
                 "trinket_name": trinket_name,
                 "text": text,
-                "seconds_sent": seconds_sent,
+                "seconds_sent": total_seconds,
                 "unread": true
             },
             success: function(response) {

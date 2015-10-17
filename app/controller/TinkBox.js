@@ -13,6 +13,33 @@ Ext.define('ttapp.controller.TinkBox', {
 
 	getTinkBoxData: function(component) {
 		console.log('in tink box');
+
+        Ext.getStore('profilestore').getPhoneNumber(function(num){
+            Ext.Ajax.request({
+                url: ttapp.config.Config.getBaseURL() + '/groupedfeed/' + num + '/',
+                method: 'GET',
+                disableCaching: false,
+                success: function(response) {
+                    var json = Ext.JSON.decode(response.responseText);
+                    for (i=0; i<json.groups.length; i++) {
+                        Ext.getStore('tinkBoxStore').add({
+                            'tink_in': displaytimer(json.groups[i].tink_in),
+                            'tink_out': displaytimer(json.groups[i].tink_out),
+                            'unread': json.groups[i].unread,
+                            'user': getName(json.groups[i].user),
+                            'img': ttapp.util.Common.animationThumbnail(),
+                            'background': getBackgroundImage(json.groups[i].user),
+                            'number': json.groups[i].user,
+                            'inout': json.groups[i].tink_in+"-"+json.groups[i].tink_out
+                        });
+                    }
+                },
+                failure: function(error) {
+
+                }
+            });
+        });
+
 		var list = Ext.create('Ext.List', {
             height: '100%',
             cls: 'tinkbox-section',
@@ -25,43 +52,19 @@ Ext.define('ttapp.controller.TinkBox', {
                 '<tpl else>',
                     '<div class="list-box" style="background:url({background}) no-repeat 50% 50%">',
                         '<div class="over-lay"></div>',
-                        '<span class="inner-detail"><span class="user-name">{user}</span><span class="info"><span class="circle active"><span class="notification-icon"></span><img src={img} ></span><span class="time">16m 18s</span><span class="tinkinout">Tink in</span></span><span class="info right"><span class="circle"><img src={img} ></span><span class="time">20m 18s</span><span class="tinkinout">Tink out</span></span><span class="arrow"></span></span>',
+                        '<span class="inner-detail"><span class="user-name">{user}</span><span class="info"><span class="circle active"><span class="notification-icon"></span><img src={img} ></span><span class="time">{tink_in}</span><span class="tinkinout">Tink in</span></span><span class="info right"><span class="circle"><img src={img} ></span><span class="time">{tink_out}</span><span class="tinkinout">Tink out</span></span><span class="arrow"></span></span>',
                     '</div>',
                 '</tpl>',
             ],
             store: {
                 id: 'tinkBoxStore',
-                fields: ['id', 'tink_in', 'tink_out', 'unread', 'user', 'img', 'background', 'number']
+                autoLoad: true,
+                fields: ['id', 'tink_in', 'tink_out', 'unread', 'user', 'img', 'background', 'number', 'inout']
             }
         });
 
         component.add(list);
 		component.add(ttapp.util.Common.createMenuButton());
-
-		Ext.getStore('profilestore').getPhoneNumber(function(num){
-			Ext.Ajax.request({
-				url: ttapp.config.Config.getBaseURL() + '/groupedfeed/' + num + '/',
-	            method: 'GET',
-	            disableCaching: false,
-	            success: function(response) {
-	            	var json = Ext.JSON.decode(response.responseText);
-	            	for (i=0; i<json.groups.length; i++) {
-	            		Ext.getStore('tinkBoxStore').add({
-	            			'tink_in': displaytimer(json.groups[i].tink_in),
-	            			'tink_out': displaytimer(json.groups[i].tink_out),
-	            			'unread': json.groups[i].unread,
-	            			'user': getName(json.groups[i].user),
-	            			'img': ttapp.util.Common.animationThumbnail(),
-	            			'background': getBackgroundImage(json.groups[i].user),
-	            			'number': json.groups[i].user
-	            		});
-	            	}
-	            },
-	            failure: function(error) {
-
-	            }
-			});
-		});
 	},
 
 	onTinkBoxSelect: function(target, index, e, record, eOpts) {
@@ -79,6 +82,17 @@ Ext.define('ttapp.controller.TinkBox', {
                     Ext.Viewport.setMasked(false);
                     message = Ext.decode(response.responseText);
 
+                    Ext.Viewport.animateActiveItem('tinkchat', {type: 'slide', direction: 'left'});
+                    Ext.select('.user-title').setHtml(getName(record.data.number));
+                    
+                    Ext.select('.tink-in-friend').setHtml(showTinkTime(record.data.inout.split("-")[0]));
+                    Ext.select('.tink-out-friend').setHtml(showTinkTime(record.data.inout.split("-")[1]));
+
+                    total_time = record.data.inout.split("-")[0] + record.data.inout.split("-")[1];
+                    percent = (record.data.inout.split("-")[1]/total_time)*100;
+                    // (id, radius, border-width, percent)
+                    testCircleCss('tinkChatCircle', 25, 5, Math.ceil(percent));
+
                     function formatted_date(timestamp) {
                         var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
                         var dayNames = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
@@ -93,6 +107,13 @@ Ext.define('ttapp.controller.TinkBox', {
                         //return month + ' ' + date + ', ' + year;
                     }
                     window.arr = [];
+                    
+                    var store = Ext.getStore('TinkChatStore');
+                    store.load();
+                    store.removeAll();
+                    store.getProxy().clear();
+                    store.sync();
+                    
                     for(i=0; i<message.messages.length; i++) {
                         var fromUserName,
                             toUserName,
@@ -122,12 +143,12 @@ Ext.define('ttapp.controller.TinkBox', {
                         }
 
                         // order of this check is imp
-                        if (unread == true) {
-                            trinketFilePath = logoTrinketFilePath;
+                        if (unread === true) {
+                            //trinketFilePath = logoTrinketFilePath;
                             unreadRedDot = true;
                         }
 
-                        Ext.getStore('TinkChatStore').add({
+                        store.add({
                             'from_user_name': fromUserName,
                             'to_user_name': toUserName,
                             'from_user': fromUser,
@@ -142,34 +163,13 @@ Ext.define('ttapp.controller.TinkBox', {
                             'for_inbox': forInbox,
                             'unread': unread
                         });
+
+                        store.sync();
                     }
                 },
                 failure: function(error) {
                     Ext.Viewport.setMasked(false);
                     Ext.Msg.alert('', 'Error');
-                }
-            });
-            
-            console.log(record);
-
-            Ext.Viewport.animateActiveItem('tinkchat', {type: 'slide', direction: 'left'});
-            Ext.select('.user-title').setHtml(getName(record.data.number));
-
-            Ext.Ajax.request({
-                url: ttapp.config.Config.getBaseURL()+'/time-split/'+userNum+'/',
-                method: 'GET',
-                disableCaching: false,
-                success: function(response) {
-                    obj = Ext.decode(response.responseText);
-                    total_time = obj.time_in + obj.time_out;
-                    percent = (obj.time_out/total_time)*100;
-                    // (id, radius, border-width, percent)
-                    testCircleCss('tinkChatCircle', 25, 5, Math.ceil(percent));
-                    Ext.select('.tink-in-friend').setHtml(showTinkTime(obj.time_in));
-                    Ext.select('.tink-out-friend').setHtml(showTinkTime(obj.time_out));
-                },
-                failure: function() {
-
                 }
             });
         });
