@@ -45,12 +45,10 @@ Ext.define('ttapp.controller.PhoneContact', {
             if(store[i].data.on_tinktime !== false) {
                 if(!Ext.isEmpty(store[i].data.time_split)) {
                     total_time = store[i].data.time_split.time_in + store[i].data.time_split.time_out;
-                
                     percent = (store[i].data.time_split.time_out/total_time)*100;
                     //console.log(Math.ceil(percent));
                     // (id, radius, border-width, percent)
                     //testCircleCss(element.dom.firstChild.firstChild.firstChild.id, 50, 10, Math.ceil(percent));
-                    console.log(store[i].data.id);
                     if(store[i].data.time_split.time_out == 0) {
                         testCircleCss(store[i].data.id, 20, 4, 100);
                     } else {

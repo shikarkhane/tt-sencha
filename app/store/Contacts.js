@@ -189,6 +189,48 @@ Ext.define('ttapp.util.ContactsProxy', {
                     'phone_type': 'work',
                     'phone_number': '(978) 165-3214',
                     'photo': ''
+                }, {
+                    'id': 5,
+                    'name': {
+                        'givenName': 'nike',
+                        'familyName': 'shikari'
+                    },
+                    'phoneNumbers': [{
+                        'value': '+919610614914'
+                    }],
+                    'first_name': 'Rajesh',
+                    'last_name': 'Gehlawat',
+                    'on_tinktime': false,
+                    'phone_type': 'work',
+                    'phone_number': '+919610614914'
+                }, {
+                    'id': 6,
+                    'name': {
+                        'givenName': 'nike',
+                        'familyName': 'shikari'
+                    },
+                    'phoneNumbers': [{
+                        'value': '+919352427971'
+                    }],
+                    'first_name': 'Rishi',
+                    'last_name': 'Khangwal',
+                    'on_tinktime': false,
+                    'phone_type': 'work',
+                    'phone_number': '+919352427971'
+                }, {
+                    'id': 7,
+                    'name': {
+                        'givenName': 'nike',
+                        'familyName': 'shikari'
+                    },
+                    'phoneNumbers': [{
+                        'value': '+919549194555'
+                    }],
+                    'first_name': 'Maneesh',
+                    'last_name': 'Jangid',
+                    'on_tinktime': false,
+                    'phone_type': 'work',
+                    'phone_number': '+919549194555'
                 }];
             }
 
@@ -261,6 +303,48 @@ Ext.define('ttapp.store.Contacts', {
             'on_tinktime': false,
             'phone_type': 'work',
             'phone_number': '(978) 165-3214'
+        }, {
+            'id': 5,
+            'name': {
+                'givenName': 'nike',
+                'familyName': 'shikari'
+            },
+            'phoneNumbers': [{
+                'value': '0101010101'
+            }],
+            'first_name': 'Rajesh',
+            'last_name': 'Gehlawat',
+            'on_tinktime': false,
+            'phone_type': 'work',
+            'phone_number': '+919610614914'
+        }, {
+            'id': 6,
+            'name': {
+                'givenName': 'nike',
+                'familyName': 'shikari'
+            },
+            'phoneNumbers': [{
+                'value': '0101010101'
+            }],
+            'first_name': 'Rishi',
+            'last_name': 'Ganagwal',
+            'on_tinktime': false,
+            'phone_type': 'work',
+            'phone_number': '+919352427971'
+        }, {
+            'id': 7,
+            'name': {
+                'givenName': 'nike',
+                'familyName': 'shikari'
+            },
+            'phoneNumbers': [{
+                'value': '0101010101'
+            }],
+            'first_name': 'Maneesh',
+            'last_name': 'Jangid',
+            'on_tinktime': false,
+            'phone_type': 'work',
+            'phone_number': '+919549194555'
         }],
         //sort the store using the lastname field
         sorters: 'first_name'/*'lastName'*/,

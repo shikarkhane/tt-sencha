@@ -1719,7 +1719,7 @@ margin-bottom: 30px;
 }
 .new-header .tinkometer-logo{
     background: url(../images/others/tinkometer-logo.png) no-repeat 50% 50%;
-    background-size: 120px;
+    background-size: 140px;
     width: 100%;
     position: relative;;
     height: 70px;
@@ -1866,6 +1866,9 @@ margin-bottom: 30px;
     vertical-align: middle;
     width: 70px;
     text-align: center;
+}
+.phone-contact-list .inner-list.p-bar .circle .circles-wrp .circles-text{
+    display: none !important;
 }
 
 /* screen scroll hide */
@@ -2414,9 +2417,9 @@ margin-bottom: 30px;
     border-bottom: 1px solid #c6c5c5;
 }
 
-/* .tinkchat-list .x-list-item.x-list-item-tpl.x-list-item-last {
-    padding-bottom: 60px !important;
-}  */
+.tinkchat-list .x-list-item.x-list-item-tpl.x-list-item-last {
+    margin-bottom: 60px !important;
+}
 
 .tinkchat-list .chat-list{
     width: 100%;
@@ -2631,4 +2634,22 @@ margin-bottom: 30px;
 }
 .x-webkit .x-layout-box.x-vertical > .x-layout-box-item.x-flexed.height-space{
     height: 50px !important; 
+}
+
+.new-header.tinko-meter-header{
+    position: relative;
+}
+.new-header.tinko-meter-header .next-btn-icon{
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    width: 40px;
+    height: 40px;
+    background: url(../images/icons/next-icon.png) no-repeat #45a18e 50% 50%;
+    -webkit-border-radius:50%;
+    border-radius:50%;
+    background-size: 25px;
+    margin-top: -20px;
+    z-index: 1;
+    border: 0px solid;
 }

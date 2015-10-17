@@ -14,7 +14,10 @@ Ext.define('ttapp.controller.ReplayTink', {
     closeReplay: function() {
         Ext.ComponentQuery.query('#replayTinkPage')[0].destroy();
 
-        Ext.Viewport.setActiveItem('feed', {
+        /*Ext.Viewport.setActiveItem('feed', {
+            type: 'fade'
+        });*/
+        Ext.Viewport.setActiveItem('tinkchat', {
             type: 'fade'
         });
     },
@@ -63,7 +66,8 @@ Ext.define('ttapp.controller.ReplayTink', {
                 iframe = trinketArea.element.down('iframe');
 
             Ext.Viewport.mask({
-                xtype: 'loadmask'
+                xtype: 'loadmask',
+                html: '<img src="resources/images/green-loader.png" alt="loader">'
             });
 
             Ext.Viewport.add(r);
