@@ -3,7 +3,8 @@ Ext.define('ttapp.controller.PhoneContact', {
 	config: {
 		control: {
 			'phoneContacts': {
-                show: 'addContactList'
+                show: 'addContactList',
+                hide: 'removeList'
             },
             'phoneContacts searchfield': {
                 keyup: 'searchPhoneContact',
@@ -14,6 +15,15 @@ Ext.define('ttapp.controller.PhoneContact', {
             }
 		}
 	},
+
+    removeList: function(list, eOpts) {
+        if(!Ext.isEmpty(Ext.getCmp('contactsList'))) {
+            Ext.getCmp('contactsList').destroy();
+        }
+        if(!Ext.isEmpty(Ext.getCmp('searchPhoneContact'))) {
+            Ext.getCmp('searchPhoneContact').destroy();
+        }
+    },
     
 	searchPhoneContact: function(textfield, e, eOpts) {
 		if (textfield.id == 'searchPhoneContact') {
@@ -25,22 +35,25 @@ Ext.define('ttapp.controller.PhoneContact', {
                 storelist.filterBy(function(record) {
                     if (thisRegEx.test(record.get('first_name'))) {
                         return true;
-                    } 
-                    return false;
+                    } else {
+                        return false;
+                    }
                 });
             }
+            ttapp.app.getController('PhoneContact').showCircles();
         }
 	},
 
-	clear: function(textfield, e, eOpts) {
-        if (textfield.id == 'searchPhoneContact') {
-            var store = Ext.getStore("phonecontacts");
-            store.clearFilter();
-        }
-    },
+	// clear: function(textfield, e, eOpts) {
+ //        console.log('clear');
+ //        if (textfield.id == 'searchPhoneContact') {
+ //            var store = Ext.getStore("phonecontacts");
+ //            store.clearFilter();
+ //        }
+ //    },
 
     showCircles: function() {
-        store = Ext.getStore('phonecontacts').getData().all;
+        store = Ext.getStore('phonecontacts').getData().items;
         for(i=0; i<store.length; i++) {
             if(store[i].data.on_tinktime !== false) {
                 if(!Ext.isEmpty(store[i].data.time_split)) {
@@ -72,6 +85,7 @@ Ext.define('ttapp.controller.PhoneContact', {
 
         var list = Ext.create('Ext.List', {
             cls:'phone-contact-list',
+            id:'contactsList',
             emptyText: 'No contacts',
             height: '100%',
             itemTpl: [

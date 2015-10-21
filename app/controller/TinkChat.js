@@ -45,7 +45,7 @@ Ext.define('ttapp.controller.TinkChat', {
 					/*'<tpl if="unread == 1">',*/
 					'<tpl if=\'unread == true\'>',
 						'<div class="chat-list receive-chat">',
-							'<span class="right-sec"><span class="open">Open it!</span><span class="img"><img class="tink-new" src="{original_trinket_file_path}"></span><span class="date">{formatted_timestamp}</span></span><span class="left-sec">{text}</span>',
+							'<span class="right-sec"><span class="open">Open it!</span><span class="img"><span class="overlay-video"></span><img class="tink-new" src="{original_trinket_file_path}"></span><span class="date">{formatted_timestamp}</span></span><span class="left-sec">{text}</span>',
 						'</div>',
 					'<tpl else>',
 						'<div class="chat-list receive-chat">',
@@ -57,6 +57,10 @@ Ext.define('ttapp.controller.TinkChat', {
 			store: {
 				id: 'TinkChatStore',
 				fields: ['id', 'from_user_name', 'to_user_name', 'from_user', 'formatted_timestamp', 'to_user', 'send_timestamp', 'trinket_name', 'trinket_file_path', 'original_trinket_file_path', 'text', 'seconds_sent', 'for_inbox', 'unread'],
+				sorters: {
+                    property: 'send_timestamp',
+                    direction: 'DESC'
+                },
 				data: []
 			}
 		});
@@ -67,7 +71,8 @@ Ext.define('ttapp.controller.TinkChat', {
 	
 	onChatSelect: function(target, index, e, record, eOpts) {
 		console.log(record);
-		if(eOpts.target.className == "tink-new") {
+		console.log(eOpts);
+		if(eOpts.target.className == "tink-new" || eOpts.target.className == "overlay-video") {
 			Ext.Ajax.request({
 	            url: ttapp.config.Config.getBaseURL()+'/message-read-v2/',
 	            method: 'POST',
@@ -88,13 +93,22 @@ Ext.define('ttapp.controller.TinkChat', {
 	            }
 	        });
 		}
-		var element = Ext.get(eOpts.target),
-            me = this;
+
+		if(eOpts.target.className == "overlay-video") {
+			var element = eOpts.target.nextSibling;	
+		} else {
+			var element = Ext.get(eOpts.target);
+		}
+		
+        var me = this;
 
         window.fromTinkReplay = 1;
 
         Ext.getStore('profilestore').getPhoneNumber(function(from_user) {
+            console.log(from_user);
             if ((from_user != record.data.from_user) && (record.data.unread)) {
+            	console.log(element);
+            	console.log(record);
                 me.tinkRead(element, record);
             }
 
