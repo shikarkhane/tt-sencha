@@ -148,8 +148,8 @@ Ext.define('ttapp.view.TinkoMeter', {
                                                     return;
                                                 } else {
                                                     obj = Ext.decode(response.responseText);
-                                                    total_time = obj.time_in + obj.time_out;
-                                                    percent = (obj.time_out/total_time)*100;
+                                                    total_time = parseInt(obj.time_in) + parseInt(obj.time_out);
+                                                    percent = (parseInt(obj.time_out)/total_time)*100;
                                                     // (id, radius, border-width, percent)
                                                     testCircleCss(element.dom.firstChild.firstChild.firstChild.id, 50, 10, Math.ceil(percent));
                                                     Ext.select('.tink-out-user').setHtml(showTinkTime(obj.time_out));

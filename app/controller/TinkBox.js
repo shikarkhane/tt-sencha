@@ -3,13 +3,20 @@ Ext.define('ttapp.controller.TinkBox', {
 	config: {
 		control: {
 			'tinkbox': {
-				show: 'getTinkBoxData'
+				show: 'getTinkBoxData',
+                hide: 'removeTinkBoxList'
 			},
 			'tinkbox dataview': {
 				itemtap: 'onTinkBoxSelect'
 			}
 		}
 	},
+
+    removeTinkBoxList: function(list, eOpts) {
+        if(!Ext.isEmpty(Ext.getCmp('tinkBoxList'))) {
+            Ext.getCmp('tinkBoxList').destroy();
+        }
+    },
 
 	getTinkBoxData: function(component) {
 		console.log('in tink box');
@@ -42,6 +49,7 @@ Ext.define('ttapp.controller.TinkBox', {
 
 		var list = Ext.create('Ext.List', {
             height: '100%',
+            id: 'tinkBoxList',
             cls: 'tinkbox-section',
             itemTpl: [
                 '<tpl if="unread == 0">',
@@ -88,8 +96,10 @@ Ext.define('ttapp.controller.TinkBox', {
                     Ext.select('.tink-in-friend').setHtml(showTinkTime(record.data.inout.split("-")[0]));
                     Ext.select('.tink-out-friend').setHtml(showTinkTime(record.data.inout.split("-")[1]));
 
-                    total_time = record.data.inout.split("-")[0] + record.data.inout.split("-")[1];
-                    percent = (record.data.inout.split("-")[1]/total_time)*100;
+                    total_time = parseInt(record.data.inout.split("-")[0]) + parseInt(record.data.inout.split("-")[1]);
+                    console.log("total_time__"+total_time);
+                    percent = (parseInt(record.data.inout.split("-")[0])/total_time)*100;
+                    console.log("percent__"+percent);
                     // (id, radius, border-width, percent)
                     testCircleCss('tinkChatCircle', 25, 5, Math.ceil(percent));
 
