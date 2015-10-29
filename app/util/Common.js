@@ -1190,3 +1190,107 @@ Ext.define('ttapp.util.Common', {
         return arr[Math.floor((Math.random() * arr.length) + 0)].text;
     }
 });
+
+function displaytimer(millis){
+    var  millis = millis * 1000;
+    
+    var hours = Math.floor(millis / 36e5),
+        mins = Math.floor((millis % 36e5) / 6e4),
+        secs = Math.floor((millis % 6e4) / 1000);
+    
+    if(hours == 0) {
+        return (mins+'m'+' '+secs+'s');
+    } else {
+        return (hours+'h'+' '+mins+'m'+' '+secs+'s');
+    }
+}
+
+function showTinkTime(millis){
+    var  millis = millis * 1000;
+    
+    var hours = Math.floor(millis / 36e5),
+        mins = Math.floor((millis % 36e5) / 6e4),
+        secs = Math.floor((millis % 6e4) / 1000);
+    
+    hours = hours>=10?hours:'0'+hours;
+    minutes = mins>=10?mins:'0'+mins;
+    seconds = secs>=10?secs:'0'+secs;
+
+    return hours+':'+minutes+':'+seconds;
+}
+
+function getName(num) {
+    var storeData = Ext.getStore('phonecontacts').findRecord('phone_number', num);
+    var firstname, lastname;
+    
+    if(Ext.isEmpty(storeData)) {
+        return num;
+    } else {
+        if(!Ext.isEmpty(storeData.data.first_name)) {
+            firstname = storeData.data.first_name;
+        } else {
+            firstname = "";
+        }
+
+        if(!Ext.isEmpty(storeData.data.last_name)) {
+            lastname = storeData.data.last_name;
+        } else {
+            lastname = "";
+        }
+
+        var name = firstname+' '+lastname
+        return name;
+    }
+}
+
+function getBackgroundImage(number) {
+    console.log(number);
+    if(Ext.os.deviceType == 'Phone') {
+        var options      = new ContactFindOptions();
+        options.filter   = number;
+        options.multiple = true;
+        var fields       = [ "name", "photo", "phoneNumbers" ];
+        
+        navigator.contacts.find(fields, function(s){
+            if(!Ext.isEmpty(s.photos)) {
+                return s.photos[0].value;
+            }
+        }, 
+        function(s){
+            return;
+        }, options);
+    } else {
+        return ttapp.util.Common.animationThumbnail();
+    }
+} 
+
+function testCircleCss(id, radius, width, percent) {
+    function shuffle(o){ //v1.0
+        for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+        return o;
+    }
+
+    var circles = [];
+    var child = document.getElementById(id),
+        percentage = parseFloat(percent);
+    circles.push(Circles.create({
+        id:         child.id,
+        value:      percentage,
+        radius:     radius,
+        width:      width
+    }));
+}
+
+function resizeHeight(){
+    var bxWidth = $(".trinket-new-list .img-bg").width();
+    $(".trinket-new-list .img-bg").css("height",bxWidth);
+}
+
+function resizeDiv(){
+    resizeHeight();
+    setTimeout(resizeDiv, 20);
+}
+
+$(window).resize(function(){
+    resizeHeight();
+});

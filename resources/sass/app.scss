@@ -1808,7 +1808,7 @@ margin-bottom: 30px;
     vertical-align: middle;
     padding: 25px 0;
 }
-.phone-contact-list .inner-list .img-name img{
+.phone-contact-list .inner-list .img-name .contact-img{
     width: 40px;
     height: 40px;
     border-radius: 50%;
@@ -1818,6 +1818,11 @@ margin-bottom: 30px;
     top: 50%;
     margin-top: -20px;
     left: 10px;
+    overflow: hidden;
+}
+.phone-contact-list .inner-list .img-name img{
+    height: 100%;
+    vertical-align: middle;
 }
 .phone-contact-list .inner-list .img-name span{
     display: table-cell;
@@ -2351,12 +2356,11 @@ margin-bottom: 30px;
     margin-top: -20px;
     z-index: 2;
     border: 0px solid;
+    overflow: hidden;
 }
 .header-user-img img{
-    width: 100%;
+    vertical-align: middle;
     height: 100%;
-    -webkit-border-radius:50%;
-    border-radius:50%;
 }
 
 .tink-in-out.tinkchat-page{
@@ -2665,3 +2669,17 @@ margin-bottom: 30px;
     z-index: 1;
     border: 0px solid;
 }
+
+@media (max-height: 568px){
+    .custom-msgbox.message-box .preview-trinket.msg-box-img{
+        height: 80px;
+    }
+    .custom-msgbox.message-box .text-msg-preview.edit-text-area textarea{
+        min-height: 50px;
+    }
+    .x-webkit .x-layout-box.x-vertical > .x-layout-box-item.x-flexed.height-space{
+    height: 26px !important; 
+}
+
+
+ }

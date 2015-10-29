@@ -16,7 +16,7 @@ Ext.define('ttapp.controller.PhoneContact', {
 		}
 	},
 
-    removeList: function(list, eOpts) {
+    removeList: function(component) {
         if(!Ext.isEmpty(Ext.getCmp('contactsList'))) {
             Ext.getCmp('contactsList').destroy();
         }
@@ -33,7 +33,7 @@ Ext.define('ttapp.controller.PhoneContact', {
             if (queryString) {
                 var thisRegEx = new RegExp(queryString, 'i');
                 storelist.filterBy(function(record) {
-                    if (thisRegEx.test(record.get('first_name'))) {
+                    if (thisRegEx.test(record.get('first_name')) || thisRegEx.test(record.get('last_name'))) {
                         return true;
                     } else {
                         return false;
@@ -97,11 +97,11 @@ Ext.define('ttapp.controller.PhoneContact', {
 
                 '<tpl if="on_tinktime == false">',/*\'false\'*/
                     '<div class="inner-list">',
-                        '<div class="img-name"><img src="resources/images/user-icon.png"> <span>{first_name} {last_name}</span></div> <div class="invite-btn-sec"><div class="invite-btn">Invite</div></div>',
+                        '<div class="img-name"><div class="contact-img"><img src={photo}></div> <span>{first_name} {last_name}</span></div> <div class="invite-btn-sec"><div class="invite-btn">Invite</div></div>',
                     '</div>',
                 '<tpl else>',
                     '<div class="inner-list p-bar">',
-                        '<div class="img-name"><img src="resources/images/user-icon.png"> <span>{first_name} {last_name}</span></div> <div class="circle" id={id}></div>',
+                        '<div class="img-name"><div class="contact-img"><img src={photo}></div> <span>{first_name} {last_name}</span></div> <div class="circle" id={id}></div>',
                     '</div>',
                 '</tpl>'
                 /*'<tpl if="status == 0">',
@@ -118,10 +118,56 @@ Ext.define('ttapp.controller.PhoneContact', {
                     '</div>',*/
                 //'</tpl>'
             ],
-            store: Ext.getStore('phonecontacts')
+            store: Ext.getStore('phonecontacts'),
+            listeners: {
+                refresh: function(list, eOpts) {
+                    var store = Ext.getStore('phonecontacts').getData().all;
+                    if(!Ext.isEmpty(store)) {
+                        var counter = 0;
+                        function imageExists(url, callback, timeout) {
+                            timeout = timeout || 3000;
+                            var timedOut = false, timer;
+                            var img = new Image();
+                            img.onerror = img.onabort = function() {
+                                if (!timedOut) {
+                                    clearTimeout(timer);
+                                    callback("error");
+                                }
+                            };
+                            img.onload = function() {
+                                if (!timedOut) {
+                                    clearTimeout(timer);
+                                    callback("success");
+                                }
+                            };
+                            img.src = url;
+                            timer = setTimeout(function() {
+                                timedOut = true;
+                                callback("timeout");
+                            }, timeout);
+                        }
+
+                        function recursiveStore(counter) {
+                            if(!Ext.isEmpty(store[counter])) {
+                                imageExists(ttapp.config.Config.getBaseURL()+'/static/img/user_profile/'+store[counter].data.phone_number+'.jpeg', function(exists) {
+                                    console.log(exists);
+                                    if(exists === 'success') {
+                                        store[counter].data.photo = ttapp.config.Config.getBaseURL()+'/static/img/user_profile/'+store[counter].data.phone_number+'.jpeg'/*'resources/images/user-icon.png'*/;
+                                        store[counter].set('photo', store[counter].data.photo);
+                                    }
+                                    counter++;
+                                    recursiveStore(counter);
+                                });
+                            } else {
+                                ttapp.app.getController('PhoneContact').showCircles();
+                            }
+                        }
+                        recursiveStore(counter);
+                    }
+                }
+            }
         });
         component.add(list);
-        ttapp.app.getController('PhoneContact').showCircles();
     },
 
     contactTap: function(list, idx, target, record, evt) {
@@ -147,7 +193,7 @@ Ext.define('ttapp.controller.PhoneContact', {
             Ext.Viewport.animateActiveItem('trinket', {type: 'fade', direction: 'up', duration: 500, easing: 'ease-out'});
             Ext.getStore("phonecontacts").clearFilter();
             list.destroy();
-            Ext.getCmp('searchPhoneContact').destroy();
+            //Ext.getCmp('searchPhoneContact').destroy();
         }
     }
 });

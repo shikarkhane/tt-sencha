@@ -8,6 +8,7 @@ Ext.define('ttapp.view.SendTo', {
     	'Ext.Toolbar'
     ],
     config: {
+    	scrollable: true,
     	itemId: 'choose-recepients',
     	fullscreen: true,
     	cls:'bg-light-gray',
@@ -72,6 +73,7 @@ Ext.define('ttapp.view.SendTo', {
 	        			xtype:'image',
 	        			cls:'user-img',
 	        			src:'resources/images/user-icon.png',
+	        			id: 'sendToImage',
 	        			mode:'image'
 	        		}, {
 	        			xtype: 'label',

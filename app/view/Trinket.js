@@ -18,22 +18,24 @@ Ext.define('ttapp.view.Trinket', {
                         items:[
                             {
                                 xtype: 'button',
-                                cls: 'back-btn-icon',
+                                cls: 'back-btn-icon trinket-back-btn',
                                 docked: 'top',
                                 listeners: [
                                     {
                                         element: 'element',
                                         event: 'tap',
                                         fn: function() {
-                                            var item;
-                                            if(Ext.isEmpty(item)) {
-                                                item = Ext.Viewport.add({
-                                                    xtype: 'phoneContacts'
-                                                });
-                                                Ext.Viewport.animateActiveItem(item, {type: 'slide', direction: 'right'});
-                                            } else {
-                                                Ext.Viewport.animateActiveItem(item, {type: 'slide', direction: 'right'});
-                                            }
+                                            //var item;
+                                            Ext.Viewport.animateActiveItem('phoneContacts', {type: 'slide', direction: 'right'});
+                                            return false;
+                                            // if(Ext.isEmpty(item)) {
+                                            //     item = Ext.Viewport.add({
+                                            //         xtype: 'phoneContacts'
+                                            //     });
+                                            //     Ext.Viewport.animateActiveItem(item, {type: 'slide', direction: 'right'});
+                                            // } else {
+                                            //     Ext.Viewport.animateActiveItem(item, {type: 'slide', direction: 'right'});
+                                            // }
                                         }
                                     }
                                 ]

@@ -2,7 +2,8 @@ Ext.define('ttapp.controller.TinkChat', {
 	extend: 'Ext.app.Controller',
 	config: {
 		refs: {
-            backBtn: 'button[cls~=back-btn-icon]'
+            backBtn: 'button[cls~=back-btn-icon]',
+            image: 'image[cls~=header-user-img]'
         },
 		control: {
 			'tinkchat': {
@@ -14,8 +15,48 @@ Ext.define('ttapp.controller.TinkChat', {
 			},
 			'backBtn': {
 				tap: 'backToTinkBox'
+			},
+			'image': {
+				load: 'changeImage'
 			}
 		}
+	},
+
+	changeImage: function( element, eOpts ) {
+		console.log(element.getSrc());
+		function imageExistsForTinkChat(url, callback, timeout) {
+            timeout = timeout || 3000;
+            var timedOut = false, timer;
+            var img = new Image();
+            img.onerror = img.onabort = function() {
+                if (!timedOut) {
+                    clearTimeout(timer);
+                    callback("error");
+                }
+            };
+            img.onload = function() {
+                if (!timedOut) {
+                    clearTimeout(timer);
+                    callback("success");
+                }
+            };
+            img.src = url;
+            timer = setTimeout(function() {
+                timedOut = true;
+                callback("timeout");
+            }, timeout);
+        }
+
+        function recursiveStoreForTinkChat() {
+            imageExistsForTinkChat(element.getSrc(), function(exists) {
+                console.log(exists);
+                if(exists != 'success') {
+                	element.setSrc('resources/images/avatar.png');
+                }
+            });
+        }
+        
+        recursiveStoreForTinkChat();
 	},
 
 	removeList: function() {

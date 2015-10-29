@@ -35,7 +35,7 @@ Ext.define('ttapp.controller.TinkBox', {
                             'unread': json.groups[i].unread,
                             'user': getName(json.groups[i].user),
                             'img': ttapp.util.Common.animationThumbnail(),
-                            'background': getBackgroundImage(json.groups[i].user),
+                            'background': ttapp.config.Config.getBaseURL()+'/static/img/user_profile/'+json.groups[i].user+'.jpeg',/*getBackgroundImage(json.groups[i].user),*/
                             'number': json.groups[i].user,
                             'inout': json.groups[i].tink_in+"-"+json.groups[i].tink_out
                         });
@@ -67,7 +67,55 @@ Ext.define('ttapp.controller.TinkBox', {
             store: {
                 id: 'tinkBoxStore',
                 autoLoad: true,
-                fields: ['id', 'tink_in', 'tink_out', 'unread', 'user', 'img', 'background', 'number', 'inout']
+                fields: ['tink_in', 'tink_out', 'unread', 'user', 'img', 'background', 'number', 'inout']
+            },
+            listeners: {
+                refresh: function(list, eOpts) {
+                    var store = Ext.getStore('tinkBoxStore').getData().all;
+                    console.log(store);
+                    if(!Ext.isEmpty(store)) {
+                        var counter = 0;
+                        function imageExistsForTinkBox(url, callback, timeout) {
+                            timeout = timeout || 3000;
+                            var timedOut = false, timer;
+                            var img = new Image();
+                            img.onerror = img.onabort = function() {
+                                if (!timedOut) {
+                                    clearTimeout(timer);
+                                    callback("error");
+                                }
+                            };
+                            img.onload = function() {
+                                if (!timedOut) {
+                                    clearTimeout(timer);
+                                    callback("success");
+                                }
+                            };
+                            img.src = url;
+                            timer = setTimeout(function() {
+                                timedOut = true;
+                                callback("timeout");
+                            }, timeout);
+                        }
+
+                        function recursiveStoreForTinkBox(counter) {
+                            console.log(counter);
+                            if(!Ext.isEmpty(store[counter])) {
+                                imageExistsForTinkBox(store[counter].data.background, function(exists) {
+                                    console.log(exists);
+                                    if(exists != 'success') {
+                                        store[counter].data.background = getBackgroundImage(store[counter].data.number);
+                                        store[counter].set('background', store[counter].data.background);
+                                    }
+                                    counter++;
+                                    recursiveStoreForTinkBox(counter);
+                                });
+                            }
+                        }
+                        
+                        recursiveStoreForTinkBox(counter);
+                    }
+                }
             }
         });
 
@@ -91,6 +139,7 @@ Ext.define('ttapp.controller.TinkBox', {
                     message = Ext.decode(response.responseText);
 
                     Ext.Viewport.animateActiveItem('tinkchat', {type: 'slide', direction: 'left'});
+                    Ext.getCmp('tinkchatimage').setSrc(ttapp.config.Config.getBaseURL()+'/static/img/user_profile/'+record.data.number+'.jpeg');
                     Ext.select('.user-title').setHtml(getName(record.data.number));
                     
                     Ext.select('.tink-in-friend').setHtml(showTinkTime(record.data.inout.split("-")[0]));
@@ -98,7 +147,7 @@ Ext.define('ttapp.controller.TinkBox', {
 
                     total_time = parseInt(record.data.inout.split("-")[0]) + parseInt(record.data.inout.split("-")[1]);
                     console.log("total_time__"+total_time);
-                    percent = (parseInt(record.data.inout.split("-")[0])/total_time)*100;
+                    percent = (parseInt(record.data.inout.split("-")[1])/total_time)*100;
                     console.log("percent__"+percent);
                     // (id, radius, border-width, percent)
                     testCircleCss('tinkChatCircle', 25, 5, Math.ceil(percent));

@@ -39,7 +39,8 @@ Ext.define('ttapp.util.ContactsProxy', {
                             on_tinktime: onTinkTime,
                             phone_type: pType,
                             phone_number: pnumber,
-                            time_split: time_split
+                            time_split: time_split,
+                            photo: 'resources/images/user-icon.png'/*ttapp.config.Config.getBaseURL()+'/static/img/user_profile/'+pnumber+'.jpeg'*/
                         });
                     }
 
@@ -147,7 +148,7 @@ Ext.define('ttapp.util.ContactsProxy', {
                     'on_tinktime': true,
                     'phone_type': 'mobile',
                     'phone_number': '+46700907802',
-                    'photo': ''
+                    'photo': ttapp.config.Config.getBaseURL()+'/static/img/user_profile/+46705438947.jpeg'
                 }, {
                     'id': 2,
                     'phoneNumbers': [{
@@ -166,7 +167,7 @@ Ext.define('ttapp.util.ContactsProxy', {
                         'familyName': 'shikari'
                     },
                     'phoneNumbers': [{
-                        'value': '0101010101'
+                        'value': '(235) 453-1258'
                     }],
                     'first_name': 'Nikhil',
                     'last_name': 'Talinger',
@@ -185,7 +186,7 @@ Ext.define('ttapp.util.ContactsProxy', {
                     }],
                     'first_name': 'Emanuel',
                     'last_name': 'Lindberg',
-                    'on_tinktime': false,
+                    'on_tinktime': true,
                     'phone_type': 'work',
                     'phone_number': '(978) 165-3214',
                     'photo': ''
@@ -202,7 +203,8 @@ Ext.define('ttapp.util.ContactsProxy', {
                     'last_name': 'Gehlawat',
                     'on_tinktime': false,
                     'phone_type': 'work',
-                    'phone_number': '+919610614914'
+                    'phone_number': '+919610614914',
+                    'photo': ''
                 }, {
                     'id': 6,
                     'name': {
@@ -216,7 +218,8 @@ Ext.define('ttapp.util.ContactsProxy', {
                     'last_name': 'Khangwal',
                     'on_tinktime': false,
                     'phone_type': 'work',
-                    'phone_number': '+919352427971'
+                    'phone_number': '+919352427971',
+                    'photo': ''
                 }, {
                     'id': 7,
                     'name': {
@@ -230,7 +233,8 @@ Ext.define('ttapp.util.ContactsProxy', {
                     'last_name': 'Jangid',
                     'on_tinktime': false,
                     'phone_type': 'work',
-                    'phone_number': '+919549194555'
+                    'phone_number': '+919549194555',
+                    'photo': ''
                 }];
             }
 
