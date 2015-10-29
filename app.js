@@ -49,7 +49,7 @@ Ext.application({
 
     launch: function() {
         // get tinkbox content
-        ttapp.util.FeedProxy.process(true);
+        //ttapp.util.FeedProxy.process(true);
 
         // get trinket content
         ttapp.util.TrinketProxy.process(true, function() {
