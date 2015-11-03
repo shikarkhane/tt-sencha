@@ -65,7 +65,7 @@ Ext.define('ttapp.controller.PhoneContact', {
                     if(store[i].data.time_split.time_out == 0) {
                         testCircleCss(store[i].data.id, 20, 4, 100);
                     } else {
-                        testCircleCss(store[i].data.id, 20, 4, percent);
+                        testCircleCss(store[i].data.id, 20, 4, Math.ceil(percent));
                     }
                 }
             }
@@ -74,7 +74,6 @@ Ext.define('ttapp.controller.PhoneContact', {
 
     addContactList: function(component) {
         component.add(ttapp.util.Common.createMenuButton());
-
         var searchfield = Ext.create('Ext.field.Search', {
             id: 'searchPhoneContact',
             cls:'contact-search',
@@ -89,81 +88,72 @@ Ext.define('ttapp.controller.PhoneContact', {
             emptyText: 'No contacts',
             height: '100%',
             itemTpl: [
-                /*'<tpl>',
-                    '<div class="inner-list">',
-                        '<div class="img-name"><img src="resources/images/user-icon.png"> <span>{first_name} {last_name}</span></div> <div class="invite-btn-sec"><div class="invite-btn">Invite</div></div>',
-                    '</div>',                    
-                '</tpl>'*/
-
                 '<tpl if="on_tinktime == false">',/*\'false\'*/
                     '<div class="inner-list">',
-                        '<div class="img-name"><div class="contact-img"><img src={photo}></div> <span>{first_name} {last_name}</span></div> <div class="invite-btn-sec"><div class="invite-btn">Invite</div></div>',
+                        '<div class="img-name"><div class="contact-img" style="background:url(resources/images/user-icon.png)"></div> <span>{first_name} {last_name}</span></div> <div class="invite-btn-sec"><div class="invite-btn">Invite</div></div>',
                     '</div>',
                 '<tpl else>',
-                    '<div class="inner-list p-bar">',
-                        '<div class="img-name"><div class="contact-img"><img src={photo}></div> <span>{first_name} {last_name}</span></div> <div class="circle" id={id}></div>',
-                    '</div>',
+                    '<tpl if="profile_url != null">',
+                        '<div class="inner-list p-bar">',
+                            '<div class="img-name"><div class="contact-img" style="background:url({profile_url})"></div> <span>{first_name} {last_name}</span></div> <div class="circle" id={id}></div>',
+                        '</div>',
+                    '<tpl else>',
+                        '<div class="inner-list p-bar">',
+                            '<div class="img-name"><div class="contact-img" style="background:url(resources/images/user-icon.png)"></div> <span>{first_name} {last_name}</span></div> <div class="circle" id={id}></div>',
+                        '</div>',
+                    '</tpl>',
                 '</tpl>'
-                /*'<tpl if="status == 0">',
-                    '<div class="inner-list">',
-                        '<div class="img-name"><img src={avatar}> <span>{name}</span></div> <div class="invite-btn-sec"><div class="invite-btn">Invite</div></div>',
-                    '</div>',
-                '<tpl else>',
-                    '<div class="inner-list p-bar">',
-                        '<div class="img-name"><img src={avatar}> <span>{name}</span></div> <div class="circle" id={id}></div>',
-                    '</div>',*/
-                    /* old */
-                    /*'<div class="inner-list p-bar">',
-                        '<div class="img-name"><img src={avatar}> <span>{name}</span></div> <div class="progress-pie-chart" id="progress-pie-chart-{id}" data-percent={percent}><div class="ppc-progress" id="ppc-progress-{id}"><div class="ppc-progress-fill" id="ppc-progress-fill-{id}"></div></div><div class="ppc-percents" id="ppc-percents-{id}"><div class="pcc-percents-wrapper"><span>%</span></div></div></div></div>',
-                    '</div>',*/
-                //'</tpl>'
             ],
             store: Ext.getStore('phonecontacts'),
             listeners: {
-                refresh: function(list, eOpts) {
+                painted: function(list, eOpts) {
                     var store = Ext.getStore('phonecontacts').getData().all;
                     if(!Ext.isEmpty(store)) {
-                        var counter = 0;
-                        function imageExists(url, callback, timeout) {
-                            timeout = timeout || 3000;
-                            var timedOut = false, timer;
-                            var img = new Image();
-                            img.onerror = img.onabort = function() {
-                                if (!timedOut) {
-                                    clearTimeout(timer);
-                                    callback("error");
-                                }
-                            };
-                            img.onload = function() {
-                                if (!timedOut) {
-                                    clearTimeout(timer);
-                                    callback("success");
-                                }
-                            };
-                            img.src = url;
-                            timer = setTimeout(function() {
-                                timedOut = true;
-                                callback("timeout");
-                            }, timeout);
-                        }
-
-                        function recursiveStore(counter) {
-                            if(!Ext.isEmpty(store[counter])) {
-                                imageExists(ttapp.config.Config.getBaseURL()+'/static/img/user_profile/'+store[counter].data.phone_number+'.jpeg', function(exists) {
-                                    console.log(exists);
-                                    if(exists === 'success') {
-                                        store[counter].data.photo = ttapp.config.Config.getBaseURL()+'/static/img/user_profile/'+store[counter].data.phone_number+'.jpeg'/*'resources/images/user-icon.png'*/;
-                                        store[counter].set('photo', store[counter].data.photo);
-                                    }
-                                    counter++;
-                                    recursiveStore(counter);
-                                });
-                            } else {
-                                ttapp.app.getController('PhoneContact').showCircles();
-                            }
-                        }
-                        recursiveStore(counter);
+                        ttapp.app.getController('PhoneContact').showCircles();
                     }
+                    // var store = Ext.getStore('phonecontacts').getData().all;
+                    // if(!Ext.isEmpty(store)) {
+                    //     var counter = 0;
+                    //     function imageExists(url, callback, timeout) {
+                    //         timeout = timeout || 3000;
+                    //         var timedOut = false, timer;
+                    //         var img = new Image();
+                    //         img.onerror = img.onabort = function() {
+                    //             if (!timedOut) {
+                    //                 clearTimeout(timer);
+                    //                 callback("error");
+                    //             }
+                    //         };
+                    //         img.onload = function() {
+                    //             if (!timedOut) {
+                    //                 clearTimeout(timer);
+                    //                 callback("success");
+                    //             }
+                    //         };
+                    //         img.src = url;
+                    //         timer = setTimeout(function() {
+                    //             timedOut = true;
+                    //             callback("timeout");
+                    //         }, timeout);
+                    //     }
+
+                    //     function recursiveStore(counter) {
+                    //         if(!Ext.isEmpty(store[counter])) {
+                    //             imageExists(ttapp.config.Config.getBaseURL()+'/static/img/user_profile/'+store[counter].data.phone_number+'.jpeg', function(exists) {
+                    //                 console.log(exists);
+                    //                 if(exists === 'success') {
+                    //                     store[counter].data.photo = ttapp.config.Config.getBaseURL()+'/static/img/user_profile/'+store[counter].data.phone_number+'.jpeg'/*'resources/images/user-icon.png'*/;
+                    //                     store[counter].set('photo', store[counter].data.photo);
+                    //                 }
+                    //                 counter++;
+                    //                 recursiveStore(counter);
+                    //             });
+                    //         } else {
+                    //             ttapp.app.getController('PhoneContact').showCircles();
+                    //         }
+                    //     }
+                    //     recursiveStore(counter);
+                    // }
                 }
             }
         });

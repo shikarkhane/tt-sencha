@@ -52,7 +52,22 @@ Ext.define('ttapp.controller.SendTo', {
         this.phoneNumber = window.contactSelected.data.phone_number;
         this.setPreviewItems();
         component.add(ttapp.util.Common.createMenuButton());
-        Ext.getCmp('sendToImage').setSrc(ttapp.config.Config.getBaseURL()+'/static/img/user_profile/'+window.contactSelected.data.phone_number+'.jpeg');
+        Ext.getCmp('sendToImage').setStyle({'background':'url(resources/images/user-icon.png)'});
+        function checkImage(imageUrl) {
+            var http = new XMLHttpRequest();
+            http.open('HEAD',imageUrl, false);
+            http.send();
+            if(http.status === 200) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        if(checkImage(ttapp.config.Config.getBaseURL()+'/static/img/user_profile/'+window.contactSelected.data.phone_number+'.jpeg')) {
+            Ext.getCmp('sendToImage').setStyle({'background':'url('+ttapp.config.Config.getBaseURL()+'/static/img/user_profile/'+window.contactSelected.data.phone_number+'.jpeg)'});
+        }
+        
         Ext.select('.user-name').setHtml(window.contactSelected.data.first_name+' '+window.contactSelected.data.last_name);
     },
     setPreviewItems: function() {

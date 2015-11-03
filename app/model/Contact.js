@@ -13,7 +13,7 @@ Ext.define('ttapp.model.Contact', {
             'phone_number',
             'phone_type',
             'time_split',
-            'photo'
+            'profile_url'
         ]
     }
 });

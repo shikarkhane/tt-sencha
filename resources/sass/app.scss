@@ -1819,6 +1819,9 @@ margin-bottom: 30px;
     margin-top: -20px;
     left: 10px;
     overflow: hidden;
+    background-size: cover !important;
+    background-position: center center !important;
+    background-repeat: no-repeat;
 }
 .phone-contact-list .inner-list .img-name img{
     height: 100%;
@@ -2008,9 +2011,13 @@ margin-bottom: 30px;
     height: 70px;
     margin: 0 auto;
     overflow: hidden;
+    border-radius: 99px;
+    -webkit-border-radius: 99px;
+    background-size: cover !important;
+    background-position: center center !important;
+    background-repeat: no-repeat;
 }
 .tinktime-user-sec .user-img img{
-    width: 100%;
     height: 100%;
 }
 
@@ -2064,6 +2071,7 @@ margin-bottom: 30px;
     margin: 0 auto;
     border-radius:50%;
     -webkit-border-radius:50%;
+    background-position: center center !important;
 }
 .tinkometer-section .tinko-user .tinko-user-img .edit-icon{
     position: absolute;
@@ -2080,6 +2088,7 @@ margin-bottom: 30px;
     border: 0px;
     float: none;
     text-align: center;
+    background-repeat: no-repeat;
 }
 .tinkometer-section .tinko-discription{
     width: 100%;
@@ -2357,6 +2366,9 @@ margin-bottom: 30px;
     z-index: 2;
     border: 0px solid;
     overflow: hidden;
+    background-size: cover !important;
+    background-position: center center !important;
+    background-repeat: no-repeat;
 }
 .header-user-img img{
     vertical-align: middle;

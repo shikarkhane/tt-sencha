@@ -17,8 +17,10 @@ Ext.define('ttapp.view.TinkChat', {
 						xtype: 'image',
 						mode: 'image',
 						cls:'header-user-img',
+                        setStyleHtmlContent: true,
+                        style: 'background:url(resources/images/user-icon.png)',
                         id: 'tinkchatimage',
-						src: 'resources/images/user-icon.png',
+						//src: 'resources/images/user-icon.png',
 						docked: 'right',
 					}, {
                         xtype: 'panel',

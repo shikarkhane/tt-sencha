@@ -72,7 +72,9 @@ Ext.define('ttapp.view.SendTo', {
 	        		{
 	        			xtype:'image',
 	        			cls:'user-img',
-	        			src:'resources/images/user-icon.png',
+	        			setStyleHtmlContent: true,
+	        			style: 'background:url(resources/images/user-icon.png)',
+	        			//src:'resources/images/user-icon.png',
 	        			id: 'sendToImage',
 	        			mode:'image'
 	        		}, {
