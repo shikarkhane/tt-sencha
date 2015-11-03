@@ -30,7 +30,8 @@ Ext.define('ttapp.util.ContactsProxy', {
                             pnumber = item.phone_number,
                             pType = item.phone_type,
                             onTinkTime = item.on_tinktime,
-                            time_split = item.time_split;
+                            time_split = item.time_split,
+                            profile_url = item.profile_url;
 
                         cStore.add({
                             id: i,
@@ -40,7 +41,7 @@ Ext.define('ttapp.util.ContactsProxy', {
                             phone_type: pType,
                             phone_number: pnumber,
                             time_split: time_split,
-                            photo: 'resources/images/user-icon.png'/*ttapp.config.Config.getBaseURL()+'/static/img/user_profile/'+pnumber+'.jpeg'*/
+                            profile_url: profile_url/*ttapp.config.Config.getBaseURL()+'/static/img/user_profile/'+pnumber+'.jpeg'*/
                         });
                     }
 

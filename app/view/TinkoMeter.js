@@ -148,6 +148,7 @@ Ext.define('ttapp.view.TinkoMeter', {
                                             success: function(response) {
                                                 if(Ext.isEmpty(response.responseText)) {
                                                     // (id, radius, border-width, percent)
+                                                    console.log(element.dom.firstChild.firstChild.firstChild.id);
                                                     testCircleCss(element.dom.firstChild.firstChild.firstChild.id, 50, 10, 100);
                                                     Ext.select('.tink-out-user').setHtml('00:00:00');
                                                     Ext.select('.tink-in-user').setHtml('00:00:00');
