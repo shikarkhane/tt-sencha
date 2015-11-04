@@ -21,6 +21,11 @@ Ext.define('ttapp.controller.TinkBox', {
 	getTinkBoxData: function(component) {
 		console.log('in tink box');
 
+        Ext.Viewport.mask({
+            xtype: 'loadmask',
+            html: '<img src="resources/images/green-loader.png" alt="loader">'
+        });
+
         Ext.getStore('profilestore').getPhoneNumber(function(num){
             Ext.Ajax.request({
                 url: ttapp.config.Config.getBaseURL() + '/groupedfeed/' + num + '/',
@@ -40,9 +45,11 @@ Ext.define('ttapp.controller.TinkBox', {
                             'inout': json.groups[i].tink_in+"-"+json.groups[i].tink_out
                         });
                     }
+                    Ext.Viewport.setMasked(false);
                 },
                 failure: function(error) {
-
+                    Ext.Viewport.setMasked(false);
+                    Ext.Msg.alert('Error', 'Unable to fetch data.');
                 }
             });
         });

@@ -65,6 +65,11 @@ Ext.define('ttapp.controller.TinkChat', {
 	},
 
 	renderList: function(component) {
+        Ext.Viewport.mask({
+            xtype: 'loadmask',
+            html: '<img src="resources/images/green-loader.png" alt="loader">'
+        });
+        
 		Ext.getStore('profilestore').getPhoneNumber(function(userNum) {
             Ext.Ajax.request({
                 url: ttapp.config.Config.getBaseURL() + '/conversation/' + window.selectedTinkBoxItem.data.number + '/between/' + userNum + '/page/0/size/9/',
