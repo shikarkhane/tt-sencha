@@ -37,6 +37,11 @@ Ext.define('ttapp.view.TinkoMeter', {
                         delegate: 'div.edit-icon',
                         fn: function() {
                             function onSuccess(imageURI) {
+                                Ext.Viewport.mask({
+                                    xtype: 'loadmask',
+                                    html: '<img src="resources/images/green-loader.png" alt="loader">'
+                                });
+                                
                                 if(Ext.os.is('Android')) {
                                     window.FilePath.resolveNativePath(imageURI, function(response) {
                                         console.log("success__"+JSON.stringify(response));
@@ -141,11 +146,18 @@ Ext.define('ttapp.view.TinkoMeter', {
                                             }
                                             return false;
                                         }
+                                        
+                                        Ext.Viewport.mask({
+                                            xtype: 'loadmask',
+                                            html: '<img src="resources/images/green-loader.png" alt="loader">'
+                                        });
+
                                         Ext.Ajax.request({
                                             url: ttapp.config.Config.getBaseURL()+'/time-split/'+user+'/',
                                             method: 'GET',
                                             disableCaching: false,
                                             success: function(response) {
+                                                Ext.Viewport.setMasked(false);
                                                 if(Ext.isEmpty(response.responseText)) {
                                                     // (id, radius, border-width, percent)
                                                     console.log(element.dom.firstChild.firstChild.firstChild.id);
