@@ -77,6 +77,22 @@
             "update": "full"
         },
         {
+            "path": "jquery.min.js",
+            "update": "full"
+        },
+        {
+            "path": "jquery.js",
+            "update": "full"
+        },
+        {
+            "path": "moment.js",
+            "update": "full"
+        },
+        {
+            "path": "circles.min.js",
+            "update": "full"
+        },
+        {
             "path": "app.js",
             "bundle": true,  /* Indicates that all class dependencies are concatenated into this file when build */
             "update": "full"
@@ -135,7 +151,8 @@
         "resources/images",
         "resources/icons",
         "resources/startup",
-        "resources/tinks"
+        "resources/tinks",
+        "resources/fonts"
     ],
 
     /**

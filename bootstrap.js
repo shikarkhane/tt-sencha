@@ -676,10 +676,13 @@ Ext.ClassManager.addNameAlternateMappings({
   "ttapp.controller.Feed": [],
   "ttapp.controller.Landing": [],
   "ttapp.controller.Main": [],
+  "ttapp.controller.PhoneContact": [],
   "ttapp.controller.ReplayTink": [],
   "ttapp.controller.SendTo": [],
   "ttapp.controller.Split": [],
   "ttapp.controller.Tink": [],
+  "ttapp.controller.TinkBox": [],
+  "ttapp.controller.TinkChat": [],
   "ttapp.controller.Trinket": [],
   "ttapp.model.Contact": [],
   "ttapp.model.IpInfo": [],
@@ -706,6 +709,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "ttapp.view.Intro": [],
   "ttapp.view.Landing": [],
   "ttapp.view.Options": [],
+  "ttapp.view.PhoneContacts": [],
   "ttapp.view.PrivacyPolicy": [],
   "ttapp.view.ReplayTink": [],
   "ttapp.view.SendTo": [],
@@ -715,6 +719,9 @@ Ext.ClassManager.addNameAlternateMappings({
   "ttapp.view.Thinking": [],
   "ttapp.view.TimerClock": [],
   "ttapp.view.Tink": [],
+  "ttapp.view.TinkBox": [],
+  "ttapp.view.TinkChat": [],
+  "ttapp.view.TinkoMeter": [],
   "ttapp.view.Trinket": []
 });
 
@@ -1455,10 +1462,13 @@ Ext.ClassManager.addNameAliasMappings({
   "ttapp.controller.Main": [
     "widget.main"
   ],
+  "ttapp.controller.PhoneContact": [],
   "ttapp.controller.ReplayTink": [],
   "ttapp.controller.SendTo": [],
   "ttapp.controller.Split": [],
   "ttapp.controller.Tink": [],
+  "ttapp.controller.TinkBox": [],
+  "ttapp.controller.TinkChat": [],
   "ttapp.controller.Trinket": [
     "widget.trinketselection"
   ],
@@ -1505,6 +1515,9 @@ Ext.ClassManager.addNameAliasMappings({
   "ttapp.view.Options": [
     "widget.options"
   ],
+  "ttapp.view.PhoneContacts": [
+    "widget.phoneContacts"
+  ],
   "ttapp.view.PrivacyPolicy": [
     "widget.privacypolicy"
   ],
@@ -1531,6 +1544,15 @@ Ext.ClassManager.addNameAliasMappings({
   ],
   "ttapp.view.Tink": [
     "widget.tink"
+  ],
+  "ttapp.view.TinkBox": [
+    "widget.tinkbox"
+  ],
+  "ttapp.view.TinkChat": [
+    "widget.tinkchat"
+  ],
+  "ttapp.view.TinkoMeter": [
+    "widget.tinkometer"
   ],
   "ttapp.view.Trinket": [
     "widget.trinket"

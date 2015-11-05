@@ -6,3 +6,6 @@ npm-debug.log
 build/production/ttapp/archive
 build/production/ttapp/deltas
 build/temp
+build/production
+pg-tinktime
+sencha-error-*
