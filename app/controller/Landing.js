@@ -5,24 +5,24 @@ Ext.define('ttapp.controller.Landing', {
     config: {
         refs: {
             btnBegin: 'button[cls~=clsBegin]',
-            closeintro: 'button[cls~=close-intro-goto-auth]'
+            //closeintro: 'button[cls~=close-intro-goto-auth]'
         },
         control: {
             'btnBegin': {
                 tap: 'onUserAction'
-            },
-            closeintro: {
-                tap: 'onCloseIntro'
             }
+            // closeintro: {
+            //     tap: 'onCloseIntro'
+            // }
         }
     },
-    onCloseIntro: function(){
-        Ext.ComponentQuery.query('#introPage')[0].destroy();
+    // onCloseIntro: function(){
+    //     Ext.ComponentQuery.query('#introPage')[0].destroy();
 
-        Ext.Viewport.setActiveItem('authenticate', {
-            type: 'fade'
-        });
-    },
+    //     Ext.Viewport.setActiveItem('authenticate', {
+    //         type: 'fade'
+    //     });
+    // },
     onUserAction: function(fade) {
         if (this._animating) {
             return;
@@ -36,16 +36,6 @@ Ext.define('ttapp.controller.Landing', {
 
         Ext.getStore('profilestore').isUserVerified(function(success) {
             if (success === true) {
-                /*old code*/
-                // var item = Ext.Viewport.add({
-                //     xtype: 'trinket'
-                // });
-
-                /*code done by wedigtech*/
-                /*var item = Ext.Viewport.add({
-                    xtype: 'phoneContacts'
-                });*/
-
                 var item = Ext.Viewport.add({
                     xtype: 'tinkometer'
                 });

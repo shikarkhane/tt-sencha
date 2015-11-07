@@ -22,7 +22,8 @@ Ext.define('ttapp.util.TrinketProxy', {
                     return 0;
                 }
                 var ts = Ext.JSON.decode(response.responseText.trim());
-                var tStore = Ext.getStore('trinketstore');
+                //console.log(ts);
+                //var tStore = Ext.getStore('trinketstore');
 
                 Ext.Array.each(ts, function(t) {
                     tStore.addTrinket(t.trinketId, t.groupId, t.name, t.label, t.thumbnailPath, t.swiffyPath);
@@ -50,6 +51,15 @@ Ext.define('ttapp.store.Trinkets', {
             id: 'trinketstoreproxy'
         }
     },
+    getDefaultTrinket: function(callback) {
+        this.load({
+            scope: this,
+            callback: function() {
+                var record = this.getAt(0);
+                callback(record ? record.get('name') : null);
+            }
+        });
+    },
     removeAll: function() {
         this.getProxy().clear();
         this.data.clear();
@@ -67,22 +77,6 @@ Ext.define('ttapp.store.Trinkets', {
 
         this.add(t);
     },
-    getDefaultTrinket: function(callback) {
-        this.load({
-            scope: this,
-            callback: function() {
-                var record = this.getAt(0);
-                callback(record ? record.get('name') : null);
-            }
-        });
-    },
-    // getTrinketId: function(name) {
-    //     this.load();
-    //     var v = "^" + name + "$";
-    //     var nv = new RegExp(v);
-    //     var i = this.find('name', nv);
-    //     return this.getAt(i).get('trinket_id');
-    // },
     getThumbnailPath: function(name, callback) {
         var record = null;
 
@@ -103,7 +97,6 @@ Ext.define('ttapp.store.Trinkets', {
                     var v = "^" + name + "$",
                         nv = new RegExp(v),
                         i = this.find('name', nv);
-
                     if (i != -1) {
                         callback(this.getAt(i).get('thumbnail_path'));
                     }

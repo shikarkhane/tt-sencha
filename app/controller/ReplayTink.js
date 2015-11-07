@@ -14,9 +14,6 @@ Ext.define('ttapp.controller.ReplayTink', {
     closeReplay: function() {
         Ext.ComponentQuery.query('#replayTinkPage')[0].destroy();
 
-        /*Ext.Viewport.setActiveItem('feed', {
-            type: 'fade'
-        });*/
         Ext.Viewport.setActiveItem('tinkchat', {
             type: 'fade'
         });
@@ -54,7 +51,6 @@ Ext.define('ttapp.controller.ReplayTink', {
             if (text.length > 0) {
                 r.add({
                     xtype: 'toolbar',
-
                     docked: 'bottom',
                     cls: 'clsReplayTextMessage',
                     flex: 1,
