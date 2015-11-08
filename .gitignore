@@ -8,4 +8,5 @@ build/production/ttapp/deltas
 build/temp
 build/production
 pg-tinktime
+pg-tinktime*
 sencha-error-*
