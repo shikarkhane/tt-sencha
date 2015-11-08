@@ -1835,7 +1835,6 @@ Ext.Loader.addClassPathMappings({
   "Ext.device.sqlite.SQLTransaction": "../../touch/src/device/sqlite/Sencha.js",
   "ttapp": "../../app",
   "ttapp.util.ContactsProxy": "../../app/store/Contacts.js",
-  "ttapp.util.FeedProxy": "../../app/store/Messages.js",
   "ttapp.util.TrinketProxy": "../../app/store/Trinkets.js"
 });
 
@@ -2473,8 +2472,6 @@ Ext.ClassManager.addNameAlternateMappings({
   ],
   "ttapp.config.Config": [],
   "ttapp.controller.Authenticate": [],
-  "ttapp.controller.DogEar": [],
-  "ttapp.controller.Feed": [],
   "ttapp.controller.Landing": [],
   "ttapp.controller.Main": [],
   "ttapp.controller.PhoneContact": [],
@@ -2487,29 +2484,22 @@ Ext.ClassManager.addNameAlternateMappings({
   "ttapp.controller.Trinket": [],
   "ttapp.model.Contact": [],
   "ttapp.model.IpInfo": [],
-  "ttapp.model.Message": [],
   "ttapp.model.Profile": [],
   "ttapp.model.Trinket": [],
   "ttapp.overrides.PaintMonitor": [],
   "ttapp.overrides.SizeMonitor": [],
   "ttapp.store.Contacts": [],
   "ttapp.store.IpInfo": [],
-  "ttapp.store.Messages": [],
   "ttapp.store.Profile": [],
   "ttapp.store.Trinkets": [],
   "ttapp.util.Common": [],
   "ttapp.util.ContactsCleaner": [],
   "ttapp.util.ContactsProxy": [],
-  "ttapp.util.FeedProxy": [],
   "ttapp.util.Push": [],
   "ttapp.util.TrinketProxy": [],
   "ttapp.view.Authenticate": [],
   "ttapp.view.ConfirmPhoneNumber": [],
-  "ttapp.view.DogEar": [],
-  "ttapp.view.Feed": [],
-  "ttapp.view.Intro": [],
   "ttapp.view.Landing": [],
-  "ttapp.view.Options": [],
   "ttapp.view.PhoneContacts": [],
   "ttapp.view.PrivacyPolicy": [],
   "ttapp.view.ReplayTink": [],
@@ -3257,8 +3247,6 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.viewport.WindowsPhone": [],
   "ttapp.config.Config": [],
   "ttapp.controller.Authenticate": [],
-  "ttapp.controller.DogEar": [],
-  "ttapp.controller.Feed": [],
   "ttapp.controller.Landing": [],
   "ttapp.controller.Main": [
     "widget.main"
@@ -3275,7 +3263,6 @@ Ext.ClassManager.addNameAliasMappings({
   ],
   "ttapp.model.Contact": [],
   "ttapp.model.IpInfo": [],
-  "ttapp.model.Message": [],
   "ttapp.model.Profile": [],
   "ttapp.model.Trinket": [],
   "ttapp.overrides.PaintMonitor": [],
@@ -3284,7 +3271,6 @@ Ext.ClassManager.addNameAliasMappings({
   "ttapp.store.IpInfo": [
     "store.IpInfo"
   ],
-  "ttapp.store.Messages": [],
   "ttapp.store.Profile": [
     "store.Profile"
   ],
@@ -3292,7 +3278,6 @@ Ext.ClassManager.addNameAliasMappings({
   "ttapp.util.Common": [],
   "ttapp.util.ContactsCleaner": [],
   "ttapp.util.ContactsProxy": [],
-  "ttapp.util.FeedProxy": [],
   "ttapp.util.Push": [],
   "ttapp.util.TrinketProxy": [],
   "ttapp.view.Authenticate": [
@@ -3301,20 +3286,8 @@ Ext.ClassManager.addNameAliasMappings({
   "ttapp.view.ConfirmPhoneNumber": [
     "widget.confirmphonenumber"
   ],
-  "ttapp.view.DogEar": [
-    "widget.dogear"
-  ],
-  "ttapp.view.Feed": [
-    "widget.feed"
-  ],
-  "ttapp.view.Intro": [
-    "widget.intro"
-  ],
   "ttapp.view.Landing": [
     "widget.landing"
-  ],
-  "ttapp.view.Options": [
-    "widget.options"
   ],
   "ttapp.view.PhoneContacts": [
     "widget.phoneContacts"

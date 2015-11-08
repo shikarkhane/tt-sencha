@@ -37556,795 +37556,6 @@ Ext.define('Ext.app.Application', {
 /**
  * @private
  */
-Ext.define('Ext.carousel.Item', {
-    extend: Ext.Decorator,
-    config: {
-        baseCls: 'x-carousel-item',
-        component: null,
-        translatable: true
-    }
-});
-
-/**
- * A private utility class used by Ext.Carousel to create indicators.
- * @private
- */
-Ext.define('Ext.carousel.Indicator', {
-    extend: Ext.Component,
-    xtype: 'carouselindicator',
-    alternateClassName: 'Ext.Carousel.Indicator',
-    config: {
-        /**
-         * @cfg
-         * @inheritdoc
-         */
-        baseCls: Ext.baseCSSPrefix + 'carousel-indicator',
-        direction: 'horizontal'
-    },
-    /**
-     * @event previous
-     * Fires when this indicator is tapped on the left half
-     * @param {Ext.carousel.Indicator} this
-     */
-    /**
-     * @event next
-     * Fires when this indicator is tapped on the right half
-     * @param {Ext.carousel.Indicator} this
-     */
-    initialize: function() {
-        this.callParent();
-        this.indicators = [];
-        this.element.on({
-            tap: 'onTap',
-            scope: this
-        });
-    },
-    updateDirection: function(newDirection, oldDirection) {
-        var baseCls = this.getBaseCls();
-        this.element.replaceCls(oldDirection, newDirection, baseCls);
-        if (newDirection === 'horizontal') {
-            this.setBottom(0);
-            this.setRight(null);
-        } else {
-            this.setRight(0);
-            this.setBottom(null);
-        }
-    },
-    addIndicator: function() {
-        this.indicators.push(this.element.createChild({
-            tag: 'span'
-        }));
-    },
-    removeIndicator: function() {
-        var indicators = this.indicators;
-        if (indicators.length > 0) {
-            indicators.pop().destroy();
-        }
-    },
-    setActiveIndex: function(index) {
-        var indicators = this.indicators,
-            currentActiveIndex = this.activeIndex,
-            currentActiveItem = indicators[currentActiveIndex],
-            activeItem = indicators[index],
-            baseCls = this.getBaseCls();
-        if (currentActiveItem) {
-            currentActiveItem.removeCls(baseCls, null, 'active');
-        }
-        if (activeItem) {
-            activeItem.addCls(baseCls, null, 'active');
-        }
-        this.activeIndex = index;
-        return this;
-    },
-    // @private
-    onTap: function(e) {
-        var touch = e.touch,
-            box = this.element.getPageBox(),
-            centerX = box.left + (box.width / 2),
-            centerY = box.top + (box.height / 2),
-            direction = this.getDirection();
-        if ((direction === 'horizontal' && touch.pageX >= centerX) || (direction === 'vertical' && touch.pageY >= centerY)) {
-            this.fireEvent('next', this);
-        } else {
-            this.fireEvent('previous', this);
-        }
-    },
-    destroy: function() {
-        var indicators = this.indicators,
-            i, ln, indicator;
-        for (i = 0 , ln = indicators.length; i < ln; i++) {
-            indicator = indicators[i];
-            indicator.destroy();
-        }
-        indicators.length = 0;
-        this.callParent();
-    }
-});
-
-/**
- * @private
- */
-Ext.define('Ext.util.TranslatableGroup', {
-    extend: Ext.util.translatable.Abstract,
-    config: {
-        items: [],
-        activeIndex: 0,
-        itemLength: {
-            x: 0,
-            y: 0
-        }
-    },
-    applyItems: function(items) {
-        return Ext.Array.from(items);
-    },
-    doTranslate: function(x, y) {
-        var items = this.getItems(),
-            activeIndex = this.getActiveIndex(),
-            itemLength = this.getItemLength(),
-            itemLengthX = itemLength.x,
-            itemLengthY = itemLength.y,
-            useX = Ext.isNumber(x),
-            useY = Ext.isNumber(y),
-            offset, i, ln, item, translateX, translateY;
-        for (i = 0 , ln = items.length; i < ln; i++) {
-            item = items[i];
-            if (item) {
-                offset = (i - activeIndex);
-                if (useX) {
-                    translateX = x + offset * itemLengthX;
-                }
-                if (useY) {
-                    translateY = y + offset * itemLengthY;
-                }
-                item.translate(translateX, translateY);
-            }
-        }
-    }
-});
-
-/**
- * @class Ext.carousel.Carousel
- * @author Jacky Nguyen <jacky@sencha.com>
- *
- * Carousels, like [tabs](#!/guide/tabs), are a great way to allow the user to swipe through multiple full-screen pages.
- * A Carousel shows only one of its pages at a time but allows you to swipe through with your finger.
- *
- * Carousels can be oriented either horizontally or vertically and are easy to configure - they just work like any other
- * Container. Here's how to set up a simple horizontal Carousel:
- *
- *     @example
- *     Ext.create('Ext.Carousel', {
- *         fullscreen: true,
- *
- *         defaults: {
- *             styleHtmlContent: true
- *         },
- *
- *         items: [
- *             {
- *                 html : 'Item 1',
- *                 style: 'background-color: #5E99CC'
- *             },
- *             {
- *                 html : 'Item 2',
- *                 style: 'background-color: #759E60'
- *             },
- *             {
- *                 html : 'Item 3'
- *             }
- *         ]
- *     });
- *
- * We can also make Carousels orient themselves vertically:
- *
- *     @example preview
- *     Ext.create('Ext.Carousel', {
- *         fullscreen: true,
- *         direction: 'vertical',
- *
- *         defaults: {
- *             styleHtmlContent: true
- *         },
- *
- *         items: [
- *             {
- *                 html : 'Item 1',
- *                 style: 'background-color: #759E60'
- *             },
- *             {
- *                 html : 'Item 2',
- *                 style: 'background-color: #5E99CC'
- *             }
- *         ]
- *     });
- *
- * ### Common Configurations
- * * {@link #ui} defines the style of the carousel
- * * {@link #direction} defines the direction of the carousel
- * * {@link #indicator} defines if the indicator show be shown
- *
- * ### Useful Methods
- * * {@link #next} moves to the next card
- * * {@link #previous} moves to the previous card
- * * {@link #setActiveItem} moves to the passed card
- *
- * ## Further Reading
- *
- * For more information about Carousels see the [Carousel guide](#!/guide/carousel).
- *
- * @aside guide carousel
- * @aside example carousel
- */
-Ext.define('Ext.carousel.Carousel', {
-    extend: Ext.Container,
-    alternateClassName: 'Ext.Carousel',
-    xtype: 'carousel',
-    config: {
-        /**
-         * @cfg layout
-         * Hide layout config in Carousel. It only causes confusion.
-         * @accessor
-         * @private
-         */
-        /**
-         * @cfg
-         * @inheritdoc
-         */
-        baseCls: 'x-carousel',
-        /**
-         * @cfg {String} direction
-         * The direction of the Carousel, either 'horizontal' or 'vertical'.
-         * @accessor
-         */
-        direction: 'horizontal',
-        directionLock: false,
-        animation: {
-            duration: 250,
-            easing: {
-                type: 'ease-out'
-            }
-        },
-        /**
-         * @cfg draggable
-         * @hide
-         */
-        /**
-         * @cfg {Boolean} indicator
-         * Provides an indicator while toggling between child items to let the user
-         * know where they are in the card stack.
-         * @accessor
-         */
-        indicator: true,
-        /**
-         * @cfg {String} ui
-         * Style options for Carousel. Default is 'dark'. 'light' is also available.
-         * @accessor
-         */
-        ui: 'dark',
-        itemConfig: {},
-        bufferSize: 1,
-        itemLength: null
-    },
-    itemLength: 0,
-    offset: 0,
-    flickStartOffset: 0,
-    flickStartTime: 0,
-    dragDirection: 0,
-    count: 0,
-    painted: false,
-    activeIndex: -1,
-    beforeInitialize: function() {
-        this.element.on({
-            dragstart: 'onDragStart',
-            drag: 'onDrag',
-            dragend: 'onDragEnd',
-            scope: this
-        });
-        this.element.on('resize', 'onSizeChange', this);
-        this.carouselItems = [];
-        this.orderedCarouselItems = [];
-        this.inactiveCarouselItems = [];
-        this.hiddenTranslation = 0;
-    },
-    updateBufferSize: function(size) {
-        var ItemClass = Ext.carousel.Item,
-            total = size * 2 + 1,
-            isRendered = this.isRendered(),
-            innerElement = this.innerElement,
-            items = this.carouselItems,
-            ln = items.length,
-            itemConfig = this.getItemConfig(),
-            itemLength = this.getItemLength(),
-            direction = this.getDirection(),
-            setterName = direction === 'horizontal' ? 'setWidth' : 'setHeight',
-            i, item;
-        for (i = ln; i < total; i++) {
-            item = Ext.factory(itemConfig, ItemClass);
-            if (itemLength) {
-                item[setterName].call(item, itemLength);
-            }
-            item.setLayoutSizeFlags(this.LAYOUT_BOTH);
-            items.push(item);
-            innerElement.append(item.renderElement);
-            if (isRendered && item.setRendered(true)) {
-                item.fireEvent('renderedchange', this, item, true);
-            }
-        }
-        this.getTranslatable().setActiveIndex(size);
-    },
-    setRendered: function(rendered) {
-        var wasRendered = this.rendered;
-        if (rendered !== wasRendered) {
-            this.rendered = rendered;
-            var items = this.items.items,
-                carouselItems = this.carouselItems,
-                i, ln, item;
-            for (i = 0 , ln = items.length; i < ln; i++) {
-                item = items[i];
-                if (!item.isInnerItem()) {
-                    item.setRendered(rendered);
-                }
-            }
-            for (i = 0 , ln = carouselItems.length; i < ln; i++) {
-                carouselItems[i].setRendered(rendered);
-            }
-            return true;
-        }
-        return false;
-    },
-    onSizeChange: function() {
-        this.refreshSizing();
-        this.refreshCarouselItems();
-        this.refreshActiveItem();
-    },
-    onItemAdd: function(item, index) {
-        this.callParent(arguments);
-        var innerIndex = this.getInnerItems().indexOf(item),
-            indicator = this.getIndicator();
-        if (indicator && item.isInnerItem()) {
-            indicator.addIndicator();
-        }
-        if (innerIndex <= this.getActiveIndex()) {
-            this.refreshActiveIndex();
-        }
-        if (this.isIndexDirty(innerIndex) && !this.isItemsInitializing) {
-            this.refreshActiveItem();
-        }
-    },
-    doItemLayoutAdd: function(item) {
-        if (item.isInnerItem()) {
-            return;
-        }
-        this.callParent(arguments);
-    },
-    onItemRemove: function(item, index) {
-        this.callParent(arguments);
-        var innerIndex = this.getInnerItems().indexOf(item),
-            indicator = this.getIndicator(),
-            carouselItems = this.carouselItems,
-            i, ln, carouselItem;
-        if (item.isInnerItem() && indicator) {
-            indicator.removeIndicator();
-        }
-        if (innerIndex <= this.getActiveIndex()) {
-            this.refreshActiveIndex();
-        }
-        if (this.isIndexDirty(innerIndex)) {
-            for (i = 0 , ln = carouselItems.length; i < ln; i++) {
-                carouselItem = carouselItems[i];
-                if (carouselItem.getComponent() === item) {
-                    carouselItem.setComponent(null);
-                }
-            }
-            this.refreshActiveItem();
-        }
-    },
-    doItemLayoutRemove: function(item) {
-        if (item.isInnerItem()) {
-            return;
-        }
-        this.callParent(arguments);
-    },
-    onInnerItemMove: function(item, toIndex, fromIndex) {
-        if ((this.isIndexDirty(toIndex) || this.isIndexDirty(fromIndex))) {
-            this.refreshActiveItem();
-        }
-    },
-    doItemLayoutMove: function(item) {
-        if (item.isInnerItem()) {
-            return;
-        }
-        this.callParent(arguments);
-    },
-    isIndexDirty: function(index) {
-        var activeIndex = this.getActiveIndex(),
-            bufferSize = this.getBufferSize();
-        return (index >= activeIndex - bufferSize && index <= activeIndex + bufferSize);
-    },
-    getTranslatable: function() {
-        var translatable = this.translatable;
-        if (!translatable) {
-            this.translatable = translatable = new Ext.util.TranslatableGroup();
-            translatable.setItems(this.orderedCarouselItems);
-            translatable.on('animationend', 'onAnimationEnd', this);
-        }
-        return translatable;
-    },
-    onDragStart: function(e) {
-        var direction = this.getDirection(),
-            absDeltaX = e.absDeltaX,
-            absDeltaY = e.absDeltaY,
-            directionLock = this.getDirectionLock();
-        this.isDragging = true;
-        if (directionLock) {
-            if ((direction === 'horizontal' && absDeltaX > absDeltaY) || (direction === 'vertical' && absDeltaY > absDeltaX)) {
-                e.stopPropagation();
-            } else {
-                this.isDragging = false;
-                return;
-            }
-        }
-        this.getTranslatable().stopAnimation();
-        this.dragStartOffset = this.offset;
-        this.dragDirection = 0;
-    },
-    onDrag: function(e) {
-        if (!this.isDragging) {
-            return;
-        }
-        var startOffset = this.dragStartOffset,
-            direction = this.getDirection(),
-            delta = direction === 'horizontal' ? e.deltaX : e.deltaY,
-            lastOffset = this.offset,
-            flickStartTime = this.flickStartTime,
-            dragDirection = this.dragDirection,
-            now = Ext.Date.now(),
-            currentActiveIndex = this.getActiveIndex(),
-            maxIndex = this.getMaxItemIndex(),
-            lastDragDirection = dragDirection,
-            offset;
-        if ((currentActiveIndex === 0 && delta > 0) || (currentActiveIndex === maxIndex && delta < 0)) {
-            delta *= 0.5;
-        }
-        offset = startOffset + delta;
-        if (offset > lastOffset) {
-            dragDirection = 1;
-        } else if (offset < lastOffset) {
-            dragDirection = -1;
-        }
-        if (dragDirection !== lastDragDirection || (now - flickStartTime) > 300) {
-            this.flickStartOffset = lastOffset;
-            this.flickStartTime = now;
-        }
-        this.dragDirection = dragDirection;
-        this.setOffset(offset);
-    },
-    onDragEnd: function(e) {
-        if (!this.isDragging) {
-            return;
-        }
-        this.onDrag(e);
-        this.isDragging = false;
-        var now = Ext.Date.now(),
-            itemLength = this.itemLength,
-            threshold = itemLength / 2,
-            offset = this.offset,
-            activeIndex = this.getActiveIndex(),
-            maxIndex = this.getMaxItemIndex(),
-            animationDirection = 0,
-            flickDistance = offset - this.flickStartOffset,
-            flickDuration = now - this.flickStartTime,
-            indicator = this.getIndicator(),
-            velocity;
-        if (flickDuration > 0 && Math.abs(flickDistance) >= 10) {
-            velocity = flickDistance / flickDuration;
-            if (Math.abs(velocity) >= 1) {
-                if (velocity < 0 && activeIndex < maxIndex) {
-                    animationDirection = -1;
-                } else if (velocity > 0 && activeIndex > 0) {
-                    animationDirection = 1;
-                }
-            }
-        }
-        if (animationDirection === 0) {
-            if (activeIndex < maxIndex && offset < -threshold) {
-                animationDirection = -1;
-            } else if (activeIndex > 0 && offset > threshold) {
-                animationDirection = 1;
-            }
-        }
-        if (indicator) {
-            indicator.setActiveIndex(activeIndex - animationDirection);
-        }
-        this.animationDirection = animationDirection;
-        this.setOffsetAnimated(animationDirection * itemLength);
-    },
-    applyAnimation: function(animation) {
-        animation.easing = Ext.factory(animation.easing, Ext.fx.easing.EaseOut);
-        return animation;
-    },
-    updateDirection: function(direction) {
-        var indicator = this.getIndicator();
-        this.currentAxis = (direction === 'horizontal') ? 'x' : 'y';
-        if (indicator) {
-            indicator.setDirection(direction);
-        }
-    },
-    /**
-     * @private
-     * @chainable
-     */
-    setOffset: function(offset) {
-        this.offset = offset;
-        if (Ext.isNumber(this.itemOffset)) {
-            this.getTranslatable().translateAxis(this.currentAxis, offset + this.itemOffset);
-        }
-        return this;
-    },
-    /**
-     * @private
-     * @return {Ext.carousel.Carousel} this
-     * @chainable
-     */
-    setOffsetAnimated: function(offset) {
-        var indicator = this.getIndicator();
-        if (indicator) {
-            indicator.setActiveIndex(this.getActiveIndex() - this.animationDirection);
-        }
-        this.offset = offset;
-        this.getTranslatable().translateAxis(this.currentAxis, offset + this.itemOffset, this.getAnimation());
-        return this;
-    },
-    onAnimationEnd: function(translatable) {
-        var currentActiveIndex = this.getActiveIndex(),
-            animationDirection = this.animationDirection,
-            axis = this.currentAxis,
-            currentOffset = translatable[axis],
-            itemLength = this.itemLength,
-            offset;
-        if (animationDirection === -1) {
-            offset = itemLength + currentOffset;
-        } else if (animationDirection === 1) {
-            offset = currentOffset - itemLength;
-        } else {
-            offset = currentOffset;
-        }
-        offset -= this.itemOffset;
-        this.offset = offset;
-        this.setActiveItem(currentActiveIndex - animationDirection);
-    },
-    refresh: function() {
-        this.refreshSizing();
-        this.refreshActiveItem();
-    },
-    refreshSizing: function() {
-        var element = this.element,
-            itemLength = this.getItemLength(),
-            translatableItemLength = {
-                x: 0,
-                y: 0
-            },
-            itemOffset, containerSize;
-        if (this.getDirection() === 'horizontal') {
-            containerSize = element.getWidth();
-        } else {
-            containerSize = element.getHeight();
-        }
-        this.hiddenTranslation = -containerSize;
-        if (itemLength === null) {
-            itemLength = containerSize;
-            itemOffset = 0;
-        } else {
-            itemOffset = (containerSize - itemLength) / 2;
-        }
-        this.itemLength = itemLength;
-        this.itemOffset = itemOffset;
-        translatableItemLength[this.currentAxis] = itemLength;
-        this.getTranslatable().setItemLength(translatableItemLength);
-    },
-    refreshOffset: function() {
-        this.setOffset(this.offset);
-    },
-    refreshActiveItem: function() {
-        this.doSetActiveItem(this.getActiveItem());
-    },
-    /**
-     * Returns the index of the currently active card.
-     * @return {Number} The index of the currently active card.
-     */
-    getActiveIndex: function() {
-        return this.activeIndex;
-    },
-    refreshActiveIndex: function() {
-        this.activeIndex = this.getInnerItemIndex(this.getActiveItem());
-    },
-    refreshCarouselItems: function() {
-        var items = this.carouselItems,
-            i, ln, item;
-        for (i = 0 , ln = items.length; i < ln; i++) {
-            item = items[i];
-            item.getTranslatable().refresh();
-        }
-        this.refreshInactiveCarouselItems();
-    },
-    refreshInactiveCarouselItems: function() {
-        var items = this.inactiveCarouselItems,
-            hiddenTranslation = this.hiddenTranslation,
-            axis = this.currentAxis,
-            i, ln, item;
-        for (i = 0 , ln = items.length; i < ln; i++) {
-            item = items[i];
-            item.translateAxis(axis, hiddenTranslation);
-        }
-    },
-    /**
-     * @private
-     * @return {Number}
-     */
-    getMaxItemIndex: function() {
-        return this.innerItems.length - 1;
-    },
-    /**
-     * @private
-     * @return {Number}
-     */
-    getInnerItemIndex: function(item) {
-        return this.innerItems.indexOf(item);
-    },
-    /**
-     * @private
-     * @return {Object}
-     */
-    getInnerItemAt: function(index) {
-        return this.innerItems[index];
-    },
-    /**
-     * @private
-     * @return {Object}
-     */
-    applyActiveItem: function() {
-        var activeItem = this.callParent(arguments),
-            activeIndex;
-        if (activeItem) {
-            activeIndex = this.getInnerItemIndex(activeItem);
-            if (activeIndex !== -1) {
-                this.activeIndex = activeIndex;
-                return activeItem;
-            }
-        }
-    },
-    doSetActiveItem: function(activeItem) {
-        var activeIndex = this.getActiveIndex(),
-            maxIndex = this.getMaxItemIndex(),
-            indicator = this.getIndicator(),
-            bufferSize = this.getBufferSize(),
-            carouselItems = this.carouselItems.slice(),
-            orderedCarouselItems = this.orderedCarouselItems,
-            visibleIndexes = {},
-            visibleItems = {},
-            visibleItem, component, id, i, index, ln, carouselItem;
-        if (carouselItems.length === 0) {
-            return;
-        }
-        this.callParent(arguments);
-        orderedCarouselItems.length = 0;
-        if (activeItem) {
-            id = activeItem.getId();
-            visibleItems[id] = activeItem;
-            visibleIndexes[id] = bufferSize;
-            if (activeIndex > 0) {
-                for (i = 1; i <= bufferSize; i++) {
-                    index = activeIndex - i;
-                    if (index >= 0) {
-                        visibleItem = this.getInnerItemAt(index);
-                        id = visibleItem.getId();
-                        visibleItems[id] = visibleItem;
-                        visibleIndexes[id] = bufferSize - i;
-                    } else {
-                        break;
-                    }
-                }
-            }
-            if (activeIndex < maxIndex) {
-                for (i = 1; i <= bufferSize; i++) {
-                    index = activeIndex + i;
-                    if (index <= maxIndex) {
-                        visibleItem = this.getInnerItemAt(index);
-                        id = visibleItem.getId();
-                        visibleItems[id] = visibleItem;
-                        visibleIndexes[id] = bufferSize + i;
-                    } else {
-                        break;
-                    }
-                }
-            }
-            for (i = 0 , ln = carouselItems.length; i < ln; i++) {
-                carouselItem = carouselItems[i];
-                component = carouselItem.getComponent();
-                if (component) {
-                    id = component.getId();
-                    if (visibleIndexes.hasOwnProperty(id)) {
-                        carouselItems.splice(i, 1);
-                        i--;
-                        ln--;
-                        delete visibleItems[id];
-                        orderedCarouselItems[visibleIndexes[id]] = carouselItem;
-                    }
-                }
-            }
-            for (id in visibleItems) {
-                if (visibleItems.hasOwnProperty(id)) {
-                    visibleItem = visibleItems[id];
-                    carouselItem = carouselItems.pop();
-                    carouselItem.setComponent(visibleItem);
-                    orderedCarouselItems[visibleIndexes[id]] = carouselItem;
-                }
-            }
-        }
-        this.inactiveCarouselItems.length = 0;
-        this.inactiveCarouselItems = carouselItems;
-        this.refreshOffset();
-        this.refreshInactiveCarouselItems();
-        if (indicator) {
-            indicator.setActiveIndex(activeIndex);
-        }
-    },
-    /**
-     * Switches to the next card.
-     * @return {Ext.carousel.Carousel} this
-     * @chainable
-     */
-    next: function() {
-        this.setOffset(0);
-        if (this.activeIndex === this.getMaxItemIndex()) {
-            return this;
-        }
-        this.animationDirection = -1;
-        this.setOffsetAnimated(-this.itemLength);
-        return this;
-    },
-    /**
-     * Switches to the previous card.
-     * @return {Ext.carousel.Carousel} this
-     * @chainable
-     */
-    previous: function() {
-        this.setOffset(0);
-        if (this.activeIndex === 0) {
-            return this;
-        }
-        this.animationDirection = 1;
-        this.setOffsetAnimated(this.itemLength);
-        return this;
-    },
-    // @private
-    applyIndicator: function(indicator, currentIndicator) {
-        return Ext.factory(indicator, Ext.carousel.Indicator, currentIndicator);
-    },
-    // @private
-    updateIndicator: function(indicator) {
-        if (indicator) {
-            this.insertFirst(indicator);
-            indicator.setUi(this.getUi());
-            indicator.on({
-                next: 'next',
-                previous: 'previous',
-                scope: this
-            });
-        }
-    },
-    destroy: function() {
-        var carouselItems = this.carouselItems.slice();
-        this.carouselItems.length = 0;
-        Ext.destroy(carouselItems, this.getIndicator(), this.translatable);
-        this.callParent();
-        delete this.carouselItems;
-    }
-}, function() {});
-
-/**
- * @private
- */
 Ext.define('Ext.mixin.Sortable', {
     extend: Ext.mixin.Mixin,
     mixinConfig: {
@@ -64476,7 +63687,8 @@ Ext.define('ttapp.util.TrinketProxy', {
                     return 0;
                 }
                 var ts = Ext.JSON.decode(response.responseText.trim());
-                var tStore = Ext.getStore('trinketstore');
+                //console.log(ts);
+                //var tStore = Ext.getStore('trinketstore');
                 Ext.Array.each(ts, function(t) {
                     tStore.addTrinket(t.trinketId, t.groupId, t.name, t.label, t.thumbnailPath, t.swiffyPath);
                     tStore.sync();
@@ -64498,6 +63710,15 @@ Ext.define('ttapp.store.Trinkets', {
             id: 'trinketstoreproxy'
         }
     },
+    getDefaultTrinket: function(callback) {
+        this.load({
+            scope: this,
+            callback: function() {
+                var record = this.getAt(0);
+                callback(record ? record.get('name') : null);
+            }
+        });
+    },
     removeAll: function() {
         this.getProxy().clear();
         this.data.clear();
@@ -64514,22 +63735,6 @@ Ext.define('ttapp.store.Trinkets', {
             });
         this.add(t);
     },
-    getDefaultTrinket: function(callback) {
-        this.load({
-            scope: this,
-            callback: function() {
-                var record = this.getAt(0);
-                callback(record ? record.get('name') : null);
-            }
-        });
-    },
-    // getTrinketId: function(name) {
-    //     this.load();
-    //     var v = "^" + name + "$";
-    //     var nv = new RegExp(v);
-    //     var i = this.find('name', nv);
-    //     return this.getAt(i).get('trinket_id');
-    // },
     getThumbnailPath: function(name, callback) {
         var record = null;
         if (this.getCount() > 0) {
@@ -64707,6 +63912,10 @@ Ext.define('ttapp.util.ContactsProxy', {
                             onTinkTime = item.on_tinktime,
                             time_split = item.time_split,
                             profile_url = item.profile_url;
+                        if (fname == "" && lname == "") {
+                            
+                            continue;
+                        }
                         cStore.add({
                             id: i,
                             first_name: fname,
@@ -65102,211 +64311,6 @@ Ext.define('ttapp.store.Contacts', {
     }
 });
 
-Ext.define('ttapp.model.Message', {
-    extend: Ext.data.Model,
-    config: {
-        identifier: {
-            type: 'uuid'
-        },
-        fields: [
-            {
-                name: 'from_user_name',
-                type: 'string'
-            },
-            {
-                name: 'to_user_name',
-                type: 'string'
-            },
-            {
-                name: 'from_user',
-                type: 'string'
-            },
-            {
-                name: 'to_user',
-                type: 'string'
-            },
-            {
-                name: 'send_timestamp',
-                type: 'string'
-            },
-            {
-                name: 'formatted_timestamp',
-                type: 'string'
-            },
-            {
-                name: 'trinket_name',
-                type: 'string'
-            },
-            {
-                name: 'original_trinket_file_path',
-                type: 'string'
-            },
-            {
-                name: 'trinket_file_path',
-                type: 'string'
-            },
-            {
-                name: 'text',
-                type: 'string'
-            },
-            {
-                name: 'seconds_sent',
-                type: 'int'
-            },
-            {
-                name: 'for_inbox',
-                type: 'boolean'
-            },
-            {
-                name: 'unread',
-                type: 'boolean'
-            }
-        ]
-    }
-});
-
-Ext.define('ttapp.util.FeedProxy', {
-    singleton: true,
-    isLoading: false,
-    process: function(clearAll, callback, scope) {
-        Ext.getStore('Messages').fireEvent('beforeproxyload', this);
-        this.isLoading = true;
-        var me = this,
-            contacts = Ext.getStore('phonecontacts'),
-            fn;
-        fn = function() {
-            Ext.getStore('profilestore').getPhoneNumber(function(myNumber) {
-                me._process.call(me, clearAll, myNumber, callback, scope);
-            });
-        };
-        if (!contacts._processed) {
-            contacts.on('processed', function() {
-                fn();
-            }, this);
-        } else {
-            fn();
-        }
-    },
-    _process: function(clearAll, myNumber, callback, scope) {
-        var me = this,
-            messageStore = Ext.getStore('Messages'),
-            messageModel,
-            unreadRedDot = false,
-            logoTrinketFilePath = 'resources/images/others/tink.png',
-            page_number = ttapp.config.Config.getCurrentFeedPageNumber(),
-            page_size = ttapp.config.Config.getFeedPageSize();
-        if (clearAll) {
-            messageStore.removeAll();
-        }
-        if (myNumber) {
-            Ext.Ajax.request({
-                //url:  ttapp.config.Config.getBaseURL() + '/feed/' + myNumber + '/',
-                url: ttapp.config.Config.getBaseURL() + '/feed/' + myNumber + '/page/' + page_number + '/size/' + page_size + '/',
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                disableCaching: false,
-                success: function(response) {
-                    // if nothing has changed dont re-render feed
-                    if (response.status != 200) {
-                        return 0;
-                    }
-                    var resp = Ext.JSON.decode(response.responseText.trim());
-                    console.log("total messages: " + resp.totalcount);
-                    Ext.Array.each(resp.messages, function(message) {
-                        // increment pagenumber if msgs were received
-                        //var page_number = ttapp.config.Config.getCurrentFeedPageNumber() + 1;
-                        //ttapp.config.Config.setCurrentFeedPageNumber(page_number);
-                        var formatted_date = ttapp.app.getController('ttapp.controller.Feed').returnFormattedDate(message.send_timestamp);
-                        var fromUserName, toUserName,
-                            fromUser = message.from_user,
-                            toUser = message.to_user,
-                            sendTimestamp = message.send_timestamp,
-                            formatted_sendTimestamp = formatted_date,
-                            original_trinketFilePath = Ext.getStore('trinketstore').getThumbnailPath(message.trinket_name),
-                            trinketFilePath = original_trinketFilePath,
-                            text = message.text,
-                            secondsSent = message.seconds_sent,
-                            forInbox = true,
-                            unread = message.unread;
-                        if (toUser == myNumber.toString()) {
-                            toUserName = 'me';
-                        } else {
-                            toUserName = Ext.getStore('phonecontacts').getFirstLastName(toUser);
-                        }
-                        if (fromUser == myNumber.toString()) {
-                            fromUserName = 'me';
-                            forInbox = false;
-                            unread = false;
-                        } else {
-                            fromUserName = Ext.getStore('phonecontacts').getFirstLastName(fromUser);
-                        }
-                        // order of this check is imp
-                        if (unread == true) {
-                            trinketFilePath = logoTrinketFilePath;
-                            unreadRedDot = true;
-                        }
-                        messageModel = Ext.create('ttapp.model.Message', {
-                            'from_user_name': fromUserName,
-                            'to_user_name': toUserName,
-                            'from_user': fromUser,
-                            'to_user': toUser,
-                            'send_timestamp': sendTimestamp,
-                            'formatted_timestamp': formatted_sendTimestamp,
-                            'trinket_name': message.trinket_name,
-                            'trinket_file_path': trinketFilePath,
-                            'original_trinket_file_path': original_trinketFilePath,
-                            'text': text,
-                            'seconds_sent': secondsSent,
-                            'for_inbox': forInbox,
-                            'unread': unread
-                        });
-                        messageStore.add(messageModel);
-                    });
-                    if (messageStore.getAllCount() === 0) {
-                        messageModel = Ext.create('ttapp.model.Message', {
-                            'from_user_name': "Mia, from tinktime",
-                            'to_user_name': "me",
-                            'from_user': "0",
-                            'to_user': "0",
-                            'send_timestamp': 0,
-                            'formatted_timestamp': "few secs ago",
-                            'trinket_name': "cute-dancing-guy",
-                            'trinket_file_path': logoTrinketFilePath,
-                            'original_trinket_file_path': Ext.getStore('trinketstore').getThumbnailPath("cute-dancing-guy"),
-                            'text': "Go ahead, click to view your first tink!",
-                            'seconds_sent': 7,
-                            'for_inbox': true,
-                            'unread': true
-                        });
-                        messageStore.add(messageModel);
-                        unreadRedDot = true;
-                    }
-                    //change the red dot on email icon
-                    ttapp.util.Common.updateNotifySymbol(unreadRedDot);
-                    me.isLoading = false;
-                    messageStore.fireEvent('proxyload', this);
-                    if (callback) {
-                        callback.call(scope || this);
-                    }
-                }
-            });
-        }
-    }
-});
-Ext.define('ttapp.store.Messages', {
-    extend: Ext.data.Store,
-    config: {
-        model: 'ttapp.model.Message',
-        data: []
-    },
-    getLastRecord: function() {
-        this.load();
-        return this.last();
-    }
-});
-
 Ext.define('ttapp.model.Profile', {
     extend: Ext.data.Model,
     config: {
@@ -65648,22 +64652,25 @@ Ext.define('ttapp.util.Push', {
         }
     },
     takeUserPermissionForPushNotify: function() {
-        var pushNotification = window.plugins.pushNotification;
-        var platform = device.platform.toLowerCase();
-        if (platform == 'ios') {
-            pushNotification.register(ttapp.util.Push.tokenHandler, ttapp.util.Push.errorHandler, {
-                badge: true,
-                sound: true,
-                alert: true,
-                ecb: 'ttapp.util.Push.onNotificationAPN'
-            });
-        }
-        if (platform == 'android') {
-            pushNotification.register(ttapp.util.Push.gcmSuccessHandler, ttapp.util.Push.errorHandler, {
-                "senderID": "241347109918",
-                "ecb": "ttapp.util.Push.onNotificationGCM"
-            });
-        }
+        try {
+            var pushNotification = window.plugins.pushNotification;
+            var platform = device.platform.toLowerCase();
+            if (platform == 'ios') {
+                pushNotification.register(ttapp.util.Push.tokenHandler, ttapp.util.Push.errorHandler, {
+                    badge: true,
+                    sound: true,
+                    alert: true,
+                    ecb: 'ttapp.util.Push.onNotificationAPN'
+                });
+            }
+            if (platform == 'android') {
+                pushNotification.register(ttapp.util.Push.gcmSuccessHandler, ttapp.util.Push.errorHandler, {
+                    "senderID": "241347109918",
+                    "ecb": "ttapp.util.Push.onNotificationGCM"
+                });
+            }
+        } catch (e) {}
+        
     },
     constructor: function() {
         return this;
@@ -65686,8 +64693,6 @@ Ext.define('ttapp.controller.Main', {
         ttapp.util.Common.isUserVerifiedOnServer();
         // refresh push token
         ttapp.util.Push.takeUserPermissionForPushNotify();
-        //refresh feed
-        ttapp.util.FeedProxy.process(true);
         // refresh contacts list
         ttapp.util.ContactsProxy.process(Ext.getStore('phonecontacts'));
     }
@@ -65982,8 +64987,6 @@ Ext.define('ttapp.controller.SendTo', {
         } else {
             secSent.setHtml(this.seconds_sent);
         }
-        /*old code*/
-        //secSent.setHtml(this.seconds_sent + "s");
         Ext.getStore('trinketstore').getThumbnailPath(this.trinket_name, function(activeTrinketThumbnailPath) {
             prevTrinket.setSrc(activeTrinketThumbnailPath);
         });
@@ -66141,24 +65144,24 @@ Ext.define('ttapp.controller.Landing', {
     //, 'Ext.device.Push', 'Ext.device.Device'
     config: {
         refs: {
-            btnBegin: 'button[cls~=clsBegin]',
-            closeintro: 'button[cls~=close-intro-goto-auth]'
+            btnBegin: 'button[cls~=clsBegin]'
         },
+        //closeintro: 'button[cls~=close-intro-goto-auth]'
         control: {
             'btnBegin': {
                 tap: 'onUserAction'
-            },
-            closeintro: {
-                tap: 'onCloseIntro'
             }
         }
     },
-    onCloseIntro: function() {
-        Ext.ComponentQuery.query('#introPage')[0].destroy();
-        Ext.Viewport.setActiveItem('authenticate', {
-            type: 'fade'
-        });
-    },
+    // closeintro: {
+    //     tap: 'onCloseIntro'
+    // }
+    // onCloseIntro: function(){
+    //     Ext.ComponentQuery.query('#introPage')[0].destroy();
+    //     Ext.Viewport.setActiveItem('authenticate', {
+    //         type: 'fade'
+    //     });
+    // },
     onUserAction: function(fade) {
         if (this._animating) {
             return;
@@ -66169,14 +65172,6 @@ Ext.define('ttapp.controller.Landing', {
         }
         Ext.getStore('profilestore').isUserVerified(function(success) {
             if (success === true) {
-                /*old code*/
-                // var item = Ext.Viewport.add({
-                //     xtype: 'trinket'
-                // });
-                /*code done by wedigtech*/
-                /*var item = Ext.Viewport.add({
-                    xtype: 'phoneContacts'
-                });*/
                 var item = Ext.Viewport.add({
                         xtype: 'tinkometer'
                     });
@@ -66223,9 +65218,6 @@ Ext.define('ttapp.controller.Authenticate', {
             }
         }
     },
-    test: function() {
-        console.log(123);
-    },
     sendCodeAgain: function() {
         this.sendCode(this.myPhoneNumber);
     },
@@ -66237,7 +65229,7 @@ Ext.define('ttapp.controller.Authenticate', {
     setDialcode: function() {
         var m = Ext.ComponentQuery.query('#myDialCode')[0];
         Ext.getStore('ipinfostore').getDialCode(function(dc, cd) {
-            Ext.getCmp('selectCountry').setValue(cd.toString());
+            Ext.getCmp('selectCountry').setValue(dc.toString());
             m.setValue(dc);
         });
     },
@@ -66351,11 +65343,6 @@ Ext.define('ttapp.controller.Authenticate', {
                     var json = JSON.parse(response.responseText);
                     if (json && json.status === true) {
                         Ext.getStore('profilestore').verified();
-                        ttapp.util.FeedProxy.process(true);
-                        /*old code*/
-                        //Ext.Viewport.setActiveItem('trinket', 'slide');
-                        /*code done by wedigtech*/
-                        /*Ext.Viewport.setActiveItem('phoneContacts', 'slide');*/
                         Ext.Viewport.setActiveItem('tinkometer', 'slide');
                     } else {
                         Ext.Msg.alert('Problem', 'Verification code doesnt match', Ext.emptyFn);
@@ -66387,42 +65374,27 @@ Ext.define('ttapp.controller.Trinket', {
             type: 'slide'
         });
     },
-    updateNotifyRedDot: function() {
+    updateNotifyRedDot: function(component) {
+        var list = Ext.create('Ext.List', {
+                scrollable: {
+                    direction: 'vertical',
+                    directionLock: true
+                },
+                /*id: 'p_' + 1,*/
+                inline: {
+                    wrap: true
+                },
+                height: '100%',
+                cls: 'trinket-new-list',
+                itemTpl: [
+                    '<div class="img-bg"><img src="{thumbnail_path}" alt="img"></div>'
+                ],
+                store: Ext.getStore('trinketstore')
+            });
+        component.add(list);
+        component.add(ttapp.util.Common.createMenuButton());
         var unreadRedDot = ttapp.config.Config.getUnreadMessage();
         ttapp.util.Common.updateNotifySymbol(unreadRedDot);
-    }
-});
-
-Ext.define('ttapp.controller.DogEar', {
-    extend: Ext.app.Controller,
-    config: {
-        refs: {
-            btnToTink: 'button[cls~=btn-tink]',
-            btnToFeed: 'button[cls~=btn-mail]'
-        },
-        control: {
-            'btnToTink': {
-                tap: 'goToTink'
-            },
-            'btnToFeed': {
-                tap: 'goToFeed'
-            }
-        }
-    },
-    goToTink: function() {
-        Ext.Viewport.animateActiveItem('trinket', {
-            type: 'slide',
-            direction: 'right'
-        });
-    },
-    goToFeed: function() {
-        var currentXtype = Ext.Viewport.getActiveItem().xtype;
-        if (currentXtype != "feed") {
-            Ext.Viewport.animateActiveItem('feed', {
-                type: 'slide'
-            });
-        }
-        ttapp.util.FeedProxy.process(true);
     }
 });
 
@@ -66483,153 +65455,6 @@ Ext.define('ttapp.controller.Split', {
 // pt.setTop((ttapp.config.Config.getHeight()/4)-50);
 // pt.setLeft((ttapp.config.Config.getWidth()/2)-50);
 
-Ext.define('ttapp.controller.Feed', {
-    extend: Ext.app.Controller,
-    config: {
-        refs: {
-            previousBtn: 'feed #previous',
-            nextBtn: 'feed #next',
-            list: 'feed list',
-            view: 'feed'
-        },
-        control: {
-            'feed': {
-                activate: 'onFeedShow'
-            },
-            'feed list': {
-                itemtap: 'onShowTinkInFeed'
-            },
-            'previousBtn': {
-                tap: 'onPrevious'
-            },
-            'nextBtn': {
-                tap: 'onNext'
-            }
-        }
-    },
-    onFeedShow: function() {
-        var store = Ext.getStore('Messages'),
-            proxy = ttapp.util.FeedProxy;
-        if (proxy.isLoading) {
-            this.getView().mask({
-                xtype: 'loadmask'
-            });
-        }
-        if (store.getCount() > 0) {
-            this.getNextBtn().show();
-        } else {
-            store.on('beforeproxyload', function() {
-                this.getNextBtn().hide();
-                this.getPreviousBtn().hide();
-                this.getView().mask({
-                    xtype: 'loadmask'
-                });
-            }, this);
-            store.on('proxyload', function() {
-                this.getView().unmask();
-                if (store.getCount() > 0) {
-                    this.getNextBtn().show();
-                }
-            }, this);
-        }
-    },
-    onPrevious: function() {
-        var config = ttapp.config.Config,
-            previous = config.getCurrentFeedPageNumber();
-        this.getPreviousBtn().setHidden(true);
-        if (previous === 0) {
-            return;
-        }
-        this.getNextBtn().setHidden(true);
-        this.getList().setHidden(true);
-        this.getView().mask({
-            xtype: 'loadmask'
-        });
-        config.setCurrentFeedPageNumber(previous - 1);
-        ttapp.util.FeedProxy.process(true, function() {
-            this.getView().unmask();
-            this.getList().setHidden(false);
-            this.getPreviousBtn().setHidden(config.getCurrentFeedPageNumber() < 1);
-            this.getNextBtn().setHidden(Ext.getStore('Messages').getCount() < config.getFeedPageSize());
-        }, this);
-    },
-    onNext: function() {
-        this.getPreviousBtn().setHidden(true);
-        this.getNextBtn().setHidden(true);
-        this.getList().setHidden(true);
-        this.getView().mask({
-            xtype: 'loadmask'
-        });
-        var config = ttapp.config.Config;
-        config.setCurrentFeedPageNumber(config.getCurrentFeedPageNumber() + 1);
-        ttapp.util.FeedProxy.process(true, function() {
-            this.getView().unmask();
-            this.getList().setHidden(false);
-            this.getPreviousBtn().setHidden(false);
-            this.getNextBtn().setHidden(Ext.getStore('Messages').getCount() < config.getFeedPageSize());
-        }, this);
-    },
-    onShowTinkInFeed: function(list, idx, target, record, evt) {
-        var element = Ext.get(evt.target),
-            me = this;
-        Ext.getStore('profilestore').getPhoneNumber(function(from_user) {
-            if ((from_user != record.data.from_user) && (record.data.unread)) {
-                me.tinkRead(element, record);
-            }
-            me.getApplication().getController("ttapp.controller.ReplayTink").addReplay(record.data.seconds_sent, record.data.text, record.data.trinket_name);
-        });
-    },
-    tinkRead: function(element, record) {
-        //just mark it read locally, next refresh from server will get get correct values anyways
-        element.parent('.read-or-not').removeCls('true').addCls('false');
-        element.parent('.read-or-not').query('.img-bg')[0].style.background = 'url(' + record.data.original_trinket_file_path + ')';
-        //mark the tink as read on the server
-        Ext.Ajax.request({
-            url: ttapp.config.Config.getBaseURL() + '/message-read/',
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            disableCaching: false,
-            jsonData: {
-                "from_user": record.data.from_user,
-                "to_user": record.data.to_user,
-                "send_timestamp": record.data.send_timestamp,
-                "trinket_name": record.data.trinket_name,
-                "text": record.data.text,
-                "seconds_sent": record.data.seconds_sent,
-                "unread": false
-            },
-            success: function(response) {
-                console.log(response.responseText);
-            }
-        });
-        //change the red dot on email icon
-        ttapp.util.Common.updateNotifySymbol(false);
-    },
-    returnFormattedDate: function(timestamp) {
-        var monthNames = [
-                "Jan",
-                "Feb",
-                "Mar",
-                "Apr",
-                "May",
-                "Jun",
-                "Jul",
-                "Aug",
-                "Sep",
-                "Oct",
-                "Nov",
-                "Dec"
-            ];
-        var d = new Date(timestamp);
-        var date = d.getDate();
-        var month = monthNames[d.getMonth()];
-        var year = d.getFullYear();
-        return month + ' ' + date + ', ' + year;
-    }
-});
-
 Ext.define('ttapp.controller.ReplayTink', {
     extend: Ext.app.Controller,
     config: {
@@ -66645,9 +65470,6 @@ Ext.define('ttapp.controller.ReplayTink', {
     },
     closeReplay: function() {
         Ext.ComponentQuery.query('#replayTinkPage')[0].destroy();
-        /*Ext.Viewport.setActiveItem('feed', {
-            type: 'fade'
-        });*/
         Ext.Viewport.setActiveItem('tinkchat', {
             type: 'fade'
         });
@@ -67419,81 +66241,6 @@ Ext.define('ttapp.view.Landing', {
     }
 });
 
-Ext.define('ttapp.view.DogEar', {
-    extend: Ext.Toolbar,
-    xtype: 'dogear',
-    config: {
-        ui: 'neutral',
-        docked: 'top',
-        scrollable: null,
-        cls: 'top-bar',
-        title: 'tinkbox',
-        items: [
-            {
-                xtype: 'button',
-                cls: 'top-btn btn-tink flip-design-left',
-                docked: 'left'
-            },
-            {
-                xtype: 'button',
-                cls: 'top-btn btn-mail',
-                docked: 'right'
-            }
-        ]
-    }
-});
-
-Ext.define('ttapp.view.Feed', {
-    extend: Ext.Container,
-    xtype: 'feed',
-    config: {
-        layout: 'fit',
-        cls: 'cls-tt-tinkbox bg-transparent-colored flip-design-left',
-        items: [
-            {
-                xtype: 'dogear'
-            },
-            {
-                layout: 'vbox',
-                scrollable: {
-                    direction: 'vertical'
-                },
-                items: [
-                    {
-                        xtype: 'button',
-                        text: 'back',
-                        itemId: 'previous',
-                        cls: 'clsPagingButton',
-                        hidden: true
-                    },
-                    {
-                        xtype: 'list',
-                        baseCls: 'clsFeed',
-                        itemCls: 'clsMessageItem',
-                        // pinHeaders: false,
-                        scrollable: false,
-                        itemTpl: [
-                            '<tpl if=\'for_inbox == true\'>',
-                            '<div class="left-{for_inbox}"><div class="{unread} read-or-not"><div class="clsMessage{to_user_name}"><div class="clsTrinketMessage"><div class="clsSeconds">{seconds_sent}<span>s</span></div><div class="clsTrinketFile"><div class="img-bg" style="background:url({trinket_file_path});"></div></div></div><div class="clsTextMessage"><div class="name-panel">{from_user_name}</div><div class="des-panel">{text}</div><div class="date-panel">{formatted_timestamp}</div></div></div></div></div>',
-                            '<tpl else>',
-                            '<div class="left-{for_inbox}"><div class="{unread} read-or-not"><div class="clsMessage{to_user_name}"><div class="clsTrinketMessage"><div class="clsSeconds">{seconds_sent}<span>s</span></div><div class="clsTrinketFile"><div class="img-bg" style="background:url({trinket_file_path});"></div></div></div><div class="clsTextMessage"><div class="name-panel">{to_user_name}</div><div class="des-panel">{text}</div><div class="date-panel">{formatted_timestamp}</div></div></div></div></div>',
-                            '</tpl>'
-                        ],
-                        store: 'Messages'
-                    },
-                    {
-                        xtype: 'button',
-                        text: 'show more',
-                        itemId: 'next',
-                        cls: 'clsPagingButton',
-                        hidden: true
-                    }
-                ]
-            }
-        ]
-    }
-});
-
 Ext.define('ttapp.view.Thinking', {
     extend: Ext.Container,
     xtype: 'thinkingbutton',
@@ -67779,7 +66526,6 @@ Ext.define('ttapp.view.Trinket', {
                                         element: 'element',
                                         event: 'tap',
                                         fn: function() {
-                                            //var item;
                                             Ext.Viewport.animateActiveItem('phoneContacts', {
                                                 type: 'slide',
                                                 direction: 'right'
@@ -67791,14 +66537,6 @@ Ext.define('ttapp.view.Trinket', {
                             }
                         ]
                     },
-                    // if(Ext.isEmpty(item)) {
-                    //     item = Ext.Viewport.add({
-                    //         xtype: 'phoneContacts'
-                    //     });
-                    //     Ext.Viewport.animateActiveItem(item, {type: 'slide', direction: 'right'});
-                    // } else {
-                    //     Ext.Viewport.animateActiveItem(item, {type: 'slide', direction: 'right'});
-                    // }
                     {
                         html: 'Choose animation',
                         cls: 'top-text-heading'
@@ -67806,111 +66544,8 @@ Ext.define('ttapp.view.Trinket', {
                 ]
             }
         ]
-    },
-    initialize: function() {
-        /*var width = ttapp.config.Config.getWidth(),
-             maxWidth = 100,
-             widthToUse;
-
-         this.add(Ext.create('Ext.Toolbar', {
-             docked: 'top',
-             cls: 'top-bar gallery-title',
-             title: 'gallery',
-             items: [{
-                 xtype: 'button',
-                 cls: 'top-btn btn-mail flip-design-right',
-                 docked: 'right'
-             }]
-         }));*/
-        //var carouselItems = [];
-        // var store_data = Ext.getStore('trinketstore'),
-        //     group_count = Math.ceil((store_data.data.all.length) / 9),
-        //     offset_start = 0,
-        //     offset_end = 0;
-        // carouselItems.push({
-        //     xtype: 'list',
-        //     scrollable: {
-        //         direction: 'vertical',
-        //         directionLock: true
-        //     },
-        //     id: 'p_' + 1,
-        //     inline: {
-        //         wrap: true
-        //     },
-        //     height: '100%',
-        //     itemTpl: [
-        //         '<div class="img-bg"><img src="{thumbnail_path}" alt="img"></div>'
-        //     ],
-        //     store: Ext.getStore('trinketstore')
-        // });
-        /*for (var i = 0; i < group_count; i++) {
-             var all = store_data.data.all;
-
-             var store = Ext.create('Ext.data.Store', {
-                 model: 'ttapp.model.Trinket',
-                 storeId: 'trinketstore_' + i
-             });
-
-             offset_start = (i * 9);
-             offset_end = offset_start + 9;
-
-             store.setData(all.slice(offset_start, offset_end));
-
-             carouselItems.push({
-                 xtype: 'list',
-                 scrollable: false,
-                 id: 'p_' + i,
-                 inline: {
-                     wrap: true
-                 },
-                 height: '100%',
-                 itemTpl: [
-                     '<div class="img-bg" style="background:url({thumbnail_path});"></div>'
-                 ],
-                 store: Ext.getStore('trinketstore')
-             });
-         }*/
-        var list = Ext.create('Ext.List', {
-                scrollable: {
-                    direction: 'vertical',
-                    directionLock: true
-                },
-                /*id: 'p_' + 1,*/
-                inline: {
-                    wrap: true
-                },
-                height: '100%',
-                cls: 'trinket-new-list',
-                itemTpl: [
-                    '<div class="img-bg"><img src="{thumbnail_path}" alt="img"></div>'
-                ],
-                store: Ext.getStore('trinketstore')
-            });
-        this.add(list);
-        this.add(ttapp.util.Common.createMenuButton());
     }
 });
-/*old code*/
-// xtype: 'list',
-// scrollable: {
-//     direction: 'vertical',
-//     directionLock: true
-// },
-// id: 'p_' + 1,
-// inline: {
-//     wrap: true
-// },
-// height: '100%',
-// itemTpl: [
-//     '<div class="img-bg"><img src="{thumbnail_path}" alt="img"></div>'
-// ],
-// store: Ext.getStore('trinketstore')
-// var carousel = Ext.create('Ext.Carousel', {
-//     id: 'carouselList',
-//     cls: 'trinket-list trinket-new-list',
-//     items: carouselItems
-// });
-// this.add(carousel);
 
 Ext.define('ttapp.view.ConfirmPhoneNumber', {
     extend: Ext.Container,
@@ -68141,40 +66776,6 @@ Ext.define('ttapp.view.Split', {
     }
 });
 
-Ext.define('ttapp.view.Options', {
-    extend: Ext.carousel.Carousel,
-    xtype: 'options',
-    config: {
-        itemId: 'options',
-        fullscreen: true,
-        activeItem: 2,
-        defaults: {
-            styleHtmlContent: true,
-            listeners: {
-                activate: function(newActiveItem) {
-                    if (newActiveItem instanceof ttapp.view.Tink) {
-                        this.fireEvent("resetTinkOnActivate", this);
-                    }
-                }
-            }
-        },
-        items: [
-            {
-                xtype: 'trinket'
-            },
-            {
-                xtype: 'tink'
-            },
-            {
-                xtype: 'split'
-            },
-            {
-                xtype: 'feed'
-            }
-        ]
-    }
-});
-
 Ext.define('ttapp.view.PrivacyPolicy', {
     extend: Ext.Container,
     xtype: 'privacypolicy',
@@ -68204,36 +66805,6 @@ Ext.define('ttapp.view.PrivacyPolicy', {
             {
                 xtype: 'panel',
                 html: '<iframe class="tinkanimation" src="http://tinktime.com/static/common/privacy.html"> </iframe>'
-            }
-        ]
-    }
-});
-
-Ext.define('ttapp.view.Intro', {
-    extend: Ext.Container,
-    xtype: 'intro',
-    config: {
-        itemId: 'introPage',
-        layout: {
-            type: 'vbox',
-            align: 'middle'
-        },
-        items: [
-            {
-                xtype: 'toolbar',
-                docked: 'top',
-                cls: 'top-bar',
-                items: [
-                    {
-                        xtype: 'button',
-                        cls: 'top-btn btn-delete close-intro-goto-auth',
-                        docked: 'right'
-                    }
-                ]
-            },
-            {
-                xtype: 'panel',
-                html: '<iframe class="tinkanimation" src="http://tinktime.com/static/common/introduction.html" ></iframe>'
             }
         ]
     }
@@ -68571,9 +67142,7 @@ Ext.application({
         'Landing',
         'Authenticate',
         'Trinket',
-        'DogEar',
         'Split',
-        'Feed',
         'ReplayTink',
         'TinkChat',
         'PhoneContact',
@@ -68581,17 +67150,13 @@ Ext.application({
     ],
     views: [
         'Landing',
-        'Feed',
         'Tink',
         'SendTo',
         'Trinket',
         'Authenticate',
         'ConfirmPhoneNumber',
-        'DogEar',
         'Split',
-        'Options',
         'PrivacyPolicy',
-        'Intro',
         'PhoneContacts',
         'TinkoMeter',
         'TinkBox',
@@ -68600,7 +67165,6 @@ Ext.application({
     stores: [
         'Trinkets',
         'Contacts',
-        'Messages',
         'Profile',
         'IpInfo'
     ],
@@ -68620,8 +67184,6 @@ Ext.application({
         '1496x2048': 'resources/startup/1496x2048.png'
     },
     launch: function() {
-        // get tinkbox content
-        //ttapp.util.FeedProxy.process(true);
         // get trinket content
         ttapp.util.TrinketProxy.process(true, function() {
             // check on server, if user is verified
@@ -68635,8 +67197,6 @@ Ext.application({
                     });
                     ttapp.app.getController('Landing').onUserAction(true);
                 } else {
-                    /*previous code*/
-                    //Ext.Viewport.add(Ext.create('ttapp.view.Landing'));
                     Ext.Viewport.add(Ext.create('ttapp.view.Authenticate'));
                 }
             });
