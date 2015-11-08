@@ -11,7 +11,6 @@ Installation instructions:
 
 3. Build app
 
-    sencha app build testing
     ./build-phonegap.sh
     cordova run ios
 

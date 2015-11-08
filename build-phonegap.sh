@@ -1,4 +1,6 @@
+sencha app build testing
+
+cp -r build/testing/ttapp/* pg-tinktime/www/
+
 cd pg-tinktime
-rm -fr www
-ln -s ../build/testing/ttapp www
 cordova prepare ios -d
