@@ -73,22 +73,24 @@ Ext.define('ttapp.util.Push', {
     },
 
     takeUserPermissionForPushNotify: function() {
-        var pushNotification = window.plugins.pushNotification;
-        var platform = device.platform.toLowerCase();
-        if (platform == 'ios') {
-            pushNotification.register(ttapp.util.Push.tokenHandler, ttapp.util.Push.errorHandler, {
-                badge: true,
-                sound: true,
-                alert: true,
-                ecb: 'ttapp.util.Push.onNotificationAPN'
-            });
-        }
-        if (platform == 'android') {
-            pushNotification.register(ttapp.util.Push.gcmSuccessHandler, ttapp.util.Push.errorHandler, {
-                "senderID": "241347109918",
-                "ecb": "ttapp.util.Push.onNotificationGCM"
-            });
-        }
+        try {
+          var pushNotification = window.plugins.pushNotification;
+          var platform = device.platform.toLowerCase();
+          if (platform == 'ios') {
+              pushNotification.register(ttapp.util.Push.tokenHandler, ttapp.util.Push.errorHandler, {
+                  badge: true,
+                  sound: true,
+                  alert: true,
+                  ecb: 'ttapp.util.Push.onNotificationAPN'
+              });
+          }
+          if (platform == 'android') {
+              pushNotification.register(ttapp.util.Push.gcmSuccessHandler, ttapp.util.Push.errorHandler, {
+                  "senderID": "241347109918",
+                  "ecb": "ttapp.util.Push.onNotificationGCM"
+              });
+          }
+        } catch(e) {};
     },
     constructor: function() {
         return this;
