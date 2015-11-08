@@ -19,7 +19,6 @@ Ext.define('ttapp.store.IpInfo', {
             if (me.getAt(0)) {
                 return me.getAt(0).get('country_dial_code');
             }
-
             return null;
         }
 

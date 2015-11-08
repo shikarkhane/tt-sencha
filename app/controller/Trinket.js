@@ -14,12 +14,31 @@ Ext.define('ttapp.controller.Trinket', {
     },
     onTrinketSelection: function(list, idx, target, record, evt) {
         Ext.getStore('profilestore').setActiveTrinket(record.data.name);
-
         Ext.Viewport.animateActiveItem('tink', {
             type: 'slide'
         });
     },
-    updateNotifyRedDot: function() {
+    updateNotifyRedDot: function(component) {
+        var list = Ext.create('Ext.List', {
+            scrollable: {
+            direction: 'vertical',
+                directionLock: true
+            },
+            /*id: 'p_' + 1,*/
+            inline: {
+                wrap: true
+            },
+            height: '100%',
+            cls: 'trinket-new-list',
+            itemTpl: [
+                '<div class="img-bg"><img src="{thumbnail_path}" alt="img"></div>'
+            ],
+            store: Ext.getStore('trinketstore')
+        });
+
+        component.add(list);
+        component.add(ttapp.util.Common.createMenuButton());
+
         var unreadRedDot = ttapp.config.Config.getUnreadMessage();
         ttapp.util.Common.updateNotifySymbol(unreadRedDot);
     }
