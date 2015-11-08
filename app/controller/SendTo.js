@@ -78,8 +78,6 @@ Ext.define('ttapp.controller.SendTo', {
             secSent.setHtml('--');
         } else {
             secSent.setHtml(this.seconds_sent);
-            /*old code*/
-            //secSent.setHtml(this.seconds_sent + "s");
         }
 
         Ext.getStore('trinketstore').getThumbnailPath(this.trinket_name, function(activeTrinketThumbnailPath) {

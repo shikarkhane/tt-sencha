@@ -17,8 +17,6 @@ Ext.define('ttapp.controller.Main', {
         ttapp.util.Common.isUserVerifiedOnServer();
         // refresh push token
         ttapp.util.Push.takeUserPermissionForPushNotify();
-        //refresh feed
-        ttapp.util.FeedProxy.process(true);
         // refresh contacts list
         ttapp.util.ContactsProxy.process(Ext.getStore('phonecontacts'));
     }

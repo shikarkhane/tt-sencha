@@ -24,9 +24,6 @@ Ext.define('ttapp.controller.Authenticate', {
             }
         }
     },
-    test: function() {
-        console.log(123);
-    },
     sendCodeAgain: function() {
         this.sendCode(this.myPhoneNumber);
     },
@@ -39,7 +36,7 @@ Ext.define('ttapp.controller.Authenticate', {
         var m = Ext.ComponentQuery.query('#myDialCode')[0];
 
         Ext.getStore('ipinfostore').getDialCode(function(dc, cd) {
-            Ext.getCmp('selectCountry').setValue(cd.toString());
+            Ext.getCmp('selectCountry').setValue(dc.toString());
             m.setValue(dc);
         });
     },
@@ -54,7 +51,7 @@ Ext.define('ttapp.controller.Authenticate', {
     sendConfirmationCode: function() {
         var me = this,
             m = Ext.ComponentQuery.query('#myDialCode')[0];
-
+            
         var phoneNumber = m.getValue() + Ext.getCmp('myPhoneNumber').getValue();
         me.myPhoneNumber = phoneNumber;
 
@@ -88,7 +85,6 @@ Ext.define('ttapp.controller.Authenticate', {
     },
     sendCode: function(phoneNumber) {
         var me = this;
-
         Ext.Ajax.request({
             url: ttapp.config.Config.getBaseURL() + '/sms-code/',
             method: 'POST',
@@ -103,10 +99,7 @@ Ext.define('ttapp.controller.Authenticate', {
                 console.log(response.responseText);
 
                 if (Ext.os.is.Android && SMS) {
-
-
                     SMS.enableIntercept(true, function() {
-
                     }, function() {
                         Ext.Viewport.animateActiveItem('confirmphonenumber', {
                             type: 'slide'
@@ -114,7 +107,6 @@ Ext.define('ttapp.controller.Authenticate', {
                     });
 
                     SMS.startWatch(function() {
-
                     }, function() {
                         Ext.Viewport.animateActiveItem('confirmphonenumber', {
                             type: 'slide'
@@ -167,22 +159,12 @@ Ext.define('ttapp.controller.Authenticate', {
                 "to_user": this.myPhoneNumber,
                 "code": code
             },
-
             success: function(response) {
                 try {
                     Ext.Viewport.unmask();
-
                     var json = JSON.parse(response.responseText);
                     if (json && json.status === true) {
                         Ext.getStore('profilestore').verified();
-
-                        ttapp.util.FeedProxy.process(true);
-                        /*old code*/
-                        //Ext.Viewport.setActiveItem('trinket', 'slide');
-
-                        /*code done by wedigtech*/
-                        /*Ext.Viewport.setActiveItem('phoneContacts', 'slide');*/
-
                         Ext.Viewport.setActiveItem('tinkometer', 'slide');                        
                     } else {
                         Ext.Msg.alert('Problem', 'Verification code doesnt match', Ext.emptyFn);
@@ -192,6 +174,5 @@ Ext.define('ttapp.controller.Authenticate', {
                 }
             }
         });
-
     }
 });

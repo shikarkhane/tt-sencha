@@ -18,15 +18,15 @@ Ext.application({
         'ttapp.overrides.SizeMonitor', 'ttapp.overrides.PaintMonitor'
     ],
     controllers: ['Main', 'Tink', 'SendTo', 'Landing', 'Authenticate',
-    'Trinket', 'DogEar', 'Split', 'Feed', 'ReplayTink', 'TinkChat', 'PhoneContact', 'TinkBox'],
+    'Trinket', 'Split', 'ReplayTink', 'TinkChat', 'PhoneContact', 'TinkBox'],
 
     views: [
-        'Landing', 'Feed', 'Tink', 'SendTo', 'Trinket',
-        'Authenticate', 'ConfirmPhoneNumber', 'DogEar',
-        'Split', 'Options', 'PrivacyPolicy', 'Intro', 'PhoneContacts', 'TinkoMeter', 'TinkBox', 'TinkChat'
+        'Landing', 'Tink', 'SendTo', 'Trinket',
+        'Authenticate', 'ConfirmPhoneNumber',
+        'Split', 'PrivacyPolicy', 'PhoneContacts', 'TinkoMeter', 'TinkBox', 'TinkChat'
     ],
     
-    stores: ['Trinkets', 'Contacts', 'Messages', 'Profile', 'IpInfo'],
+    stores: ['Trinkets', 'Contacts', 'Profile', 'IpInfo'],
 
     icon: {
         '57': 'resources/icons/Icon.png',
@@ -48,9 +48,6 @@ Ext.application({
 
 
     launch: function() {
-        // get tinkbox content
-        //ttapp.util.FeedProxy.process(true);
-
         // get trinket content
         ttapp.util.TrinketProxy.process(true, function() {
             // check on server, if user is verified
@@ -63,12 +60,9 @@ Ext.application({
                     Ext.Viewport.add({
                         cls: 'bg-transparent'
                     });
-
                     ttapp.app.getController('Landing').onUserAction(true);
                 }
                 else {
-                    /*previous code*/
-                    //Ext.Viewport.add(Ext.create('ttapp.view.Landing'));
                     Ext.Viewport.add(Ext.create('ttapp.view.Authenticate'));
                 }
             });
