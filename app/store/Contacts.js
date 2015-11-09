@@ -1,7 +1,7 @@
 Ext.define('ttapp.util.ContactsProxy', {
     singleton: true,
     requires: ['Ext.device.Contacts', 'ttapp.util.ContactsCleaner'],
-    
+
     areOnTinktime: function(cStore, contacts) {
         Ext.getStore('profilestore').getPhoneNumber(function(num){
             Ext.Ajax.request({
@@ -32,6 +32,10 @@ Ext.define('ttapp.util.ContactsProxy', {
                             onTinkTime = item.on_tinktime,
                             time_split = item.time_split,
                             profile_url = item.profile_url;
+
+                        if (fname == "" && lname == "") {
+                          continue;
+                        }
 
                         cStore.add({
                             id: i,
