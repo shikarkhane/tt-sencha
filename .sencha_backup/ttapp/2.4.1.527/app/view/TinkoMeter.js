@@ -199,13 +199,6 @@ Ext.define('ttapp.view.TinkoMeter', {
 		]
 	},
 	initialize: function() {
-        console.log('tinkometer loaded');
-        
 		this.add(ttapp.util.Common.createMenuButton());
-
-        var auth_view = Ext.getCmp('authenticate');
-        if (auth_view){ Ext.Viewport.remove(auth_view, true);  };
-        var confirm_view = Ext.getCmp('confirmphonenumber');
-        if (confirm_view){ Ext.Viewport.remove(confirm_view, true);  };  
 	}
 });
