@@ -24,7 +24,7 @@ Ext.define('ttapp.controller.PhoneContact', {
             Ext.getCmp('searchPhoneContact').destroy();
         }
     },
-    
+
 	searchPhoneContact: function(textfield, e, eOpts) {
 		if (textfield.id == 'searchPhoneContact') {
             var queryString = textfield.getValue();
@@ -163,6 +163,8 @@ Ext.define('ttapp.controller.PhoneContact', {
     contactTap: function(list, idx, target, record, evt) {
         window.contactSelected = record;
         if(evt.target.className == "invite-btn") {
+					ttapp.util.Analytics.trackEvent('Contacts', 'Sent invite');
+
             if (Ext.os.deviceType == 'Phone') {
                 var sConf = {
                     number: record.data.phone_number,
@@ -175,7 +177,7 @@ Ext.define('ttapp.controller.PhoneContact', {
                         Ext.Msg.alert('Cancelled', 'Sms not sent!', Ext.emptyFn);
                     }
                 };
-                sms.send(sConf.number, sConf.message, sConf.intent, sConf.success, sConf.error);            
+                sms.send(sConf.number, sConf.message, sConf.intent, sConf.success, sConf.error);
             } else {
                 console.log('Not on mobile device.');
             }
@@ -184,6 +186,8 @@ Ext.define('ttapp.controller.PhoneContact', {
             Ext.getStore("phonecontacts").clearFilter();
             list.destroy();
             //Ext.getCmp('searchPhoneContact').destroy();
+
+						ttapp.util.Analytics.trackView('Trinket');
         }
     }
 });

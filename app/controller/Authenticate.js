@@ -51,7 +51,7 @@ Ext.define('ttapp.controller.Authenticate', {
     sendConfirmationCode: function() {
         var me = this,
             m = Ext.ComponentQuery.query('#myDialCode')[0];
-            
+
         var phoneNumber = m.getValue() + Ext.getCmp('myPhoneNumber').getValue();
         me.myPhoneNumber = phoneNumber;
 
@@ -69,7 +69,7 @@ Ext.define('ttapp.controller.Authenticate', {
                     // set timeout for 15 seconds
                     me._androidTimeout = setTimeout(function() {
                         Ext.Viewport.unmask();
-
+                        
                         Ext.Viewport.animateActiveItem('confirmphonenumber', {
                             type: 'slide'
                         });
@@ -98,6 +98,8 @@ Ext.define('ttapp.controller.Authenticate', {
             success: function(response) {
                 console.log(response.responseText);
 
+                ttapp.util.Analytics.trackView('Sent SMS');
+
                 if (Ext.os.is.Android && SMS) {
                     SMS.enableIntercept(true, function() {
                     }, function() {
@@ -124,6 +126,8 @@ Ext.define('ttapp.controller.Authenticate', {
                                 var codeMatch = sms.body.match(/([0-9]+)/);
                                 if (codeMatch && codeMatch[0]) {
                                     me.confirmCode(codeMatch[0]);
+
+                                    ttapp.util.Analytics.trackEvent('SMS', 'Automatically confirmed code');
                                 }
                             }
                             else {
@@ -144,10 +148,14 @@ Ext.define('ttapp.controller.Authenticate', {
         });
     },
     manualConfirmCode: function(){
+        ttapp.util.Analytics.trackEvent('SMS', 'Clicked manually confirm code');
+
         code = Ext.getCmp('myVerificationCode').getValue();
         this.confirmCode(code);
     },
     confirmCode: function(code) {
+        ttapp.util.Analytics.trackEvent('SMS', 'Confirming code');
+
         Ext.Ajax.request({
             url: ttapp.config.Config.getBaseURL() + '/verify-user/',
             method: 'POST',
@@ -165,9 +173,11 @@ Ext.define('ttapp.controller.Authenticate', {
                     var json = JSON.parse(response.responseText);
                     if (json && json.status === true) {
                         Ext.getStore('profilestore').verified();
-                        Ext.Viewport.setActiveItem('tinkometer', 'slide');                        
+                        Ext.Viewport.setActiveItem('tinkometer', 'slide');
                     } else {
                         Ext.Msg.alert('Problem', 'Verification code doesnt match', Ext.emptyFn);
+
+                        ttapp.util.Analytics.trackEvent('SMS', 'confirm code doesnt match');
                     }
                 } catch (e) {
                     Ext.Viewport.unmask();

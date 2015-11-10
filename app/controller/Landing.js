@@ -43,6 +43,8 @@ Ext.define('ttapp.controller.Landing', {
                 item.element.setStyle('opacity', '0');
                 item.element.show();
 
+                ttapp.util.Analytics.trackView('Tinkometer');
+
                 setTimeout(function() {
                     item.element.hide();
                     item.element.setStyle('opacity', '1');
@@ -50,6 +52,8 @@ Ext.define('ttapp.controller.Landing', {
                     Ext.Viewport.animateActiveItem(item, fade === true ? 'fade' : 'slide');
                 }, 180);
             } else {
+              ttapp.util.Analytics.trackView('Intro');
+
                 setTimeout(function() {
                     Ext.Viewport.animateActiveItem('intro', {
                         type: 'fade'

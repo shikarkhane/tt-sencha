@@ -14,7 +14,7 @@ Ext.define('ttapp.util.Common', {
             }
         }
     },
-    
+
     isUserVerifiedOnServer: function(callback) {
         // if user is not verified on server, clear local profile and make him authenticate again
         Ext.getStore('profilestore').getPhoneNumber(function(user) {
@@ -53,7 +53,7 @@ Ext.define('ttapp.util.Common', {
             });
         });
     },
-    
+
     setDialCode: function(params) {
         var c = [{
             "name": "Afghanistan",
@@ -1070,7 +1070,7 @@ Ext.define('ttapp.util.Common', {
             }
         });
     },
-    
+
     createMenuButton: function() {
         var button = Ext.create('Ext.Button', {
             cls:'add-option-btn',
@@ -1078,6 +1078,8 @@ Ext.define('ttapp.util.Common', {
             listeners: {
                 tap: {
                     fn: function() {
+                      ttapp.util.Analytics.trackEvent('App', 'Opened menu');
+
                         btnPanel = Ext.getCmp('btn-panel');
 
                         if (!btnPanel) {
@@ -1096,8 +1098,8 @@ Ext.define('ttapp.util.Common', {
                                 '<div class="btn tink slideInUp1"><span id="tink" class="icon"></span><span class="title">Tink</span></div>' +
                                 '</div>'
                             }).show();
-        
-        /*'<div class="btn profile slideInUp4"><span id="settingsProfile" class="icon"></span><span class="title">Settings & Profile</span></div>' +*/      
+
+        /*'<div class="btn profile slideInUp4"><span id="settingsProfile" class="icon"></span><span class="title">Settings & Profile</span></div>' +*/
                             if(Ext.Viewport.getActiveItem().config.xtype == 'phoneContacts') {
                                 Ext.select('.tink').hide();
                             }
@@ -1108,12 +1110,15 @@ Ext.define('ttapp.util.Common', {
                                     case 'settingsProfile':
                                         break;
                                     case 'tinkometer':
+                                    ttapp.util.Analytics.trackView('Tinkometer');
                                         Ext.Viewport.animateActiveItem('tinkometer', anim);
                                         break;
                                     case 'tinkbox':
+                                    ttapp.util.Analytics.trackView('Tinkbox');
                                         Ext.Viewport.animateActiveItem('tinkbox', anim);
                                         break;
                                     case 'tink':
+                                    ttapp.util.Analytics.trackView('Contacts');
                                         $("body").removeClass("option-mask");
                                         $(".add-option-btn").removeClass("btn-close");
                                         Ext.Viewport.animateActiveItem('phoneContacts', anim);
@@ -1128,7 +1133,7 @@ Ext.define('ttapp.util.Common', {
                                         //     Ext.Viewport.animateActiveItem(item, anim);
                                         // }
                                         break;
-                                    default:    
+                                    default:
                                 }
                             });
 
@@ -1139,7 +1144,7 @@ Ext.define('ttapp.util.Common', {
                             $("body").removeClass("option-mask");
                             $(".add-option-btn").removeClass("btn-close");
                             $("body").addClass("mask-fade-effect");
-                            
+
                             Ext.getCmp('btn-panel').hide();
                             setTimeout(function() {
                                 $("body").removeClass("mask-fade-effect");
@@ -1151,7 +1156,7 @@ Ext.define('ttapp.util.Common', {
                             $("body").removeClass("option-mask");
                             $(".add-option-btn").removeClass("btn-close");
                             $("body").addClass("mask-fade-effect");
-                            
+
                             Ext.getCmp('btn-panel').hide();
                             setTimeout(function() {
                                 $("body").removeClass("mask-fade-effect");
@@ -1164,7 +1169,7 @@ Ext.define('ttapp.util.Common', {
         });
         return button;
     },
-    
+
     animationThumbnail: function() {
         var store = Ext.getStore('trinketstore').getData();
         var storeLength = store.length - 1;
@@ -1193,11 +1198,11 @@ Ext.define('ttapp.util.Common', {
 
 function displaytimer(millis){
     var  millis = millis * 1000;
-    
+
     var hours = Math.floor(millis / 36e5),
         mins = Math.floor((millis % 36e5) / 6e4),
         secs = Math.floor((millis % 6e4) / 1000);
-    
+
     if(hours == 0) {
         return (mins+'m'+' '+secs+'s');
     } else {
@@ -1207,11 +1212,11 @@ function displaytimer(millis){
 
 function showTinkTime(millis){
     var  millis = millis * 1000;
-    
+
     var hours = Math.floor(millis / 36e5),
         mins = Math.floor((millis % 36e5) / 6e4),
         secs = Math.floor((millis % 6e4) / 1000);
-    
+
     hours = hours>=10?hours:'0'+hours;
     minutes = mins>=10?mins:'0'+mins;
     seconds = secs>=10?secs:'0'+secs;
@@ -1222,7 +1227,7 @@ function showTinkTime(millis){
 function getName(num) {
     var storeData = Ext.getStore('phonecontacts').findRecord('phone_number', num);
     var firstname, lastname;
-    
+
     if(Ext.isEmpty(storeData)) {
         return num;
     } else {
@@ -1250,19 +1255,19 @@ function getBackgroundImage(number) {
         options.filter   = number;
         options.multiple = true;
         var fields       = [ "name", "photo", "phoneNumbers" ];
-        
+
         navigator.contacts.find(fields, function(s){
             if(!Ext.isEmpty(s.photos)) {
                 return s.photos[0].value;
             }
-        }, 
+        },
         function(s){
             return;
         }, options);
     } else {
         return ttapp.util.Common.animationThumbnail();
     }
-} 
+}
 
 function testCircleCss(id, radius, width, percent) {
     function shuffle(o){ //v1.0

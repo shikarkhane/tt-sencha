@@ -2492,6 +2492,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "ttapp.store.IpInfo": [],
   "ttapp.store.Profile": [],
   "ttapp.store.Trinkets": [],
+  "ttapp.util.Analytics": [],
   "ttapp.util.Common": [],
   "ttapp.util.ContactsCleaner": [],
   "ttapp.util.ContactsProxy": [],
@@ -3275,6 +3276,7 @@ Ext.ClassManager.addNameAliasMappings({
     "store.Profile"
   ],
   "ttapp.store.Trinkets": [],
+  "ttapp.util.Analytics": [],
   "ttapp.util.Common": [],
   "ttapp.util.ContactsCleaner": [],
   "ttapp.util.ContactsProxy": [],

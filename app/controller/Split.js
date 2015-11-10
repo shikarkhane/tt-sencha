@@ -26,13 +26,15 @@ Ext.define('ttapp.controller.Split', {
         ttapp.util.Common.updateNotifySymbol(unreadRedDot);
     },
     onNewTink: function(){
+      ttapp.util.Analytics.trackView('Tink');
          Ext.Viewport.animateActiveItem('tink',{type:'slide', direction: 'right'});
     },
     onTinkBox: function(){
+      ttapp.util.Analytics.trackView('Feed');
         Ext.Viewport.animateActiveItem('feed',{type:'slide', direction: 'left'});
     },
     showSentTrinketThumbnail: function(){
-        
+
         Ext.getStore('profilestore').getLastSentSeconds(function(secondsSent) {
             Ext.getStore('profilestore').getActiveTrinket(function(trinketName) {
                 Ext.getStore('trinketstore').getThumbnailPath( trinketName, function(activeTrinketThumbnailPath) {

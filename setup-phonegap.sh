@@ -13,6 +13,7 @@ cordova plugin add cordova-plugin-file
 cordova plugin add cordova-plugin-file-transfer
 cordova plugin add cordova-sms-plugin
 cordova plugin add cordova-plugin-filepath
+cordova plugin add cordova-plugin-google-analytics
 
 cordova platform add ios
 cordova prepare ios

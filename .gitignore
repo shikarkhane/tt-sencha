@@ -10,3 +10,4 @@ build/production
 pg-tinktime
 pg-tinktime*
 sencha-error-*
+.sencha_backup

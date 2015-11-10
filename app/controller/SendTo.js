@@ -67,7 +67,7 @@ Ext.define('ttapp.controller.SendTo', {
         if(checkImage(ttapp.config.Config.getBaseURL()+'/static/img/user_profile/'+window.contactSelected.data.phone_number+'.jpeg')) {
             Ext.getCmp('sendToImage').setStyle({'background':'url('+ttapp.config.Config.getBaseURL()+'/static/img/user_profile/'+window.contactSelected.data.phone_number+'.jpeg)'});
         }
-        
+
         Ext.select('.user-name').setHtml(window.contactSelected.data.first_name+' '+window.contactSelected.data.last_name);
     },
     setPreviewItems: function() {
@@ -147,7 +147,6 @@ Ext.define('ttapp.controller.SendTo', {
         var cs = Ext.ComponentQuery.query('#choose-recepients')[0];
         setTimeout(function() {
             cs.destroy();
-            console.log("destroy");
         }, 300);
 
     },
@@ -165,11 +164,14 @@ Ext.define('ttapp.controller.SendTo', {
                     Ext.Msg.alert('Cancelled', 'Sms not sent!', Ext.emptyFn);
                 }
             };
-            sms.send(sConf.number, sConf.message, sConf.intent, sConf.success, sConf.error);            
+            sms.send(sConf.number, sConf.message, sConf.intent, sConf.success, sConf.error);
         }
     },
     composeTink: function(list, idx, target, record, evt) {
         var me = this;
+
+        ttapp.util.Analytics.trackEvent('Send Tink', 'Sending new tink');
+
         Ext.getStore('profilestore').getPhoneNumber(function(from_user) {
             var prevTextMsg = Ext.ComponentQuery.query('#previewTextMsg')[0];
             if (me.phoneNumber) {
@@ -193,7 +195,7 @@ Ext.define('ttapp.controller.SendTo', {
                             }
                         }, me);
                 }
-                //me.clearAll();   
+                //me.clearAll();
             } else {
                 Ext.Msg.alert('Receiver?', 'Please choose a recipient.', Ext.emptyFn);
             }
@@ -234,6 +236,8 @@ Ext.define('ttapp.controller.SendTo', {
         //Ext.ComponentQuery.query('#options')[0].setActiveItem(2, 'slide');
     },
     showTink: function() {
+      ttapp.util.Analytics.trackView('Tink');
+
         Ext.Viewport.animateActiveItem('tink', {
             type: 'fade'
         });
@@ -244,5 +248,7 @@ Ext.define('ttapp.controller.SendTo', {
         this.trinket_name = trinket_name;
 
         Ext.Viewport.setActiveItem('sendto', 'slide');
+
+        ttapp.util.Analytics.trackView('Send Tink');
     }
 });

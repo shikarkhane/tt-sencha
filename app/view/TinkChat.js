@@ -11,7 +11,7 @@ Ext.define('ttapp.view.TinkChat', {
                 items: [
                     {
 						xtype: 'button',
-						cls: 'back-btn-icon',
+						cls: 'back-btn-icon back-btn-icon-chat',
 						docked: 'left'
 					}, {
 						xtype: 'image',
@@ -32,9 +32,9 @@ Ext.define('ttapp.view.TinkChat', {
             	layout: 'hbox',
             	cls:'tink-in-out tinkchat-page',
             	items: [
-            		{   
+            		{
                         xtype:'panel',
-                        cls:'in-out-list',  
+                        cls:'in-out-list',
             			html: '<div class="tink-in"><span class="heading">Tink In</span><span class="time tink-in-friend"></span></div>',/*01:08:24*/
             		}, {
                         xtype:'image',

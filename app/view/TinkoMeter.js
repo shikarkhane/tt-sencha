@@ -20,11 +20,12 @@ Ext.define('ttapp.view.TinkoMeter', {
                                 cls: 'next-btn-icon',
                                 docked: 'right',
                                 handler: function() {
+																	ttapp.util.Analytics.trackView('Contacts');
                                     Ext.Viewport.animateActiveItem('phoneContacts', { type: 'slide' });
                                 }
                             }
                         ]
-                    } 
+                    }
                 ]
             }, {
             	xtype: 'panel',
@@ -41,15 +42,15 @@ Ext.define('ttapp.view.TinkoMeter', {
                                     xtype: 'loadmask',
                                     html: '<img src="resources/images/green-loader.png" alt="loader">'
                                 });
-                                
+
                                 if(Ext.os.is('Android')) {
                                     window.FilePath.resolveNativePath(imageURI, function(response) {
                                         console.log("success__"+JSON.stringify(response));
                                     }, function(response) {
                                         console.log("fail__"+JSON.stringify(response));
-                                    }); 
+                                    });
                                 }
-                                
+
                                 console.log('imageURI_'+imageURI);
 
                                 Ext.Viewport.mask({
@@ -104,7 +105,7 @@ Ext.define('ttapp.view.TinkoMeter', {
                     'painted': {
                         fn: function(panel, eOpts) {
                             Ext.getStore('profilestore').getPhoneNumber(function(num){
-                                document.getElementById('user_img').style.backgroundImage = "url("+ttapp.config.Config.getBaseURL()+'/static/img/user_profile/'+num+".jpeg)"; 
+                                document.getElementById('user_img').style.backgroundImage = "url("+ttapp.config.Config.getBaseURL()+'/static/img/user_profile/'+num+".jpeg)";
                             });
                         }
                     }
@@ -126,10 +127,10 @@ Ext.define('ttapp.view.TinkoMeter', {
                 flex: 2,
                 cls:'tink-in-out',
             	items: [
-            		{   
+            		{
                         xtype:'panel',
                         flex: 2,
-                        cls:'in-out-list',  
+                        cls:'in-out-list',
             			html: '<div class="tink-in"><span class="heading">Tink In</span><span class="time tink-in-user">01:08:24</span></div>',
             		}, {
                         xtype:'panel',
@@ -146,7 +147,7 @@ Ext.define('ttapp.view.TinkoMeter', {
                                             }
                                             return false;
                                         }
-                                        
+
                                         Ext.Viewport.mask({
                                             xtype: 'loadmask',
                                             html: '<img src="resources/images/green-loader.png" alt="loader">'
@@ -176,7 +177,7 @@ Ext.define('ttapp.view.TinkoMeter', {
                                                 }
                                             },
                                             failure: function() {
-                                                
+
                                             }
                                         });
                                     });
@@ -200,12 +201,12 @@ Ext.define('ttapp.view.TinkoMeter', {
 	},
 	initialize: function() {
         console.log('tinkometer loaded');
-        
+
 		this.add(ttapp.util.Common.createMenuButton());
 
         var auth_view = Ext.getCmp('authenticate');
         if (auth_view){ Ext.Viewport.remove(auth_view, true);  };
         var confirm_view = Ext.getCmp('confirmphonenumber');
-        if (confirm_view){ Ext.Viewport.remove(confirm_view, true);  };  
+        if (confirm_view){ Ext.Viewport.remove(confirm_view, true);  };
 	}
 });

@@ -26,6 +26,7 @@ Ext.define('ttapp.view.Trinket', {
                                         event: 'tap',
                                         fn: function() {
                                             Ext.Viewport.animateActiveItem('phoneContacts', {type: 'slide', direction: 'right'});
+                                            ttapp.util.Analytics.trackView('Contacts');
                                             return false;
                                         }
                                     }

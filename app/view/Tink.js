@@ -36,12 +36,13 @@ Ext.define('ttapp.view.Tink', {
                         cls: 'back-btn-icon',
                         docked: 'left',
                         handler: function() {
+                          ttapp.util.Analytics.trackView('Trinket');
                             Ext.Viewport.animateActiveItem('trinket', {
                                 type: 'slide',
                                 direction: 'right'
                             });
                         }
-                    }, 
+                    },
                 ]
             }, {
             itemId: 'tinkTimerClock',

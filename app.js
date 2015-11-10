@@ -15,7 +15,8 @@ Ext.application({
 
     requires: [
         'Ext.MessageBox', 'Ext.device.Contacts',
-        'ttapp.overrides.SizeMonitor', 'ttapp.overrides.PaintMonitor'
+        'ttapp.overrides.SizeMonitor', 'ttapp.overrides.PaintMonitor',
+        'ttapp.util.Analytics'
     ],
     controllers: ['Main', 'Tink', 'SendTo', 'Landing', 'Authenticate',
     'Trinket', 'Split', 'ReplayTink', 'TinkChat', 'PhoneContact', 'TinkBox'],
@@ -25,7 +26,7 @@ Ext.application({
         'Authenticate', 'ConfirmPhoneNumber',
         'Split', 'PrivacyPolicy', 'PhoneContacts', 'TinkoMeter', 'TinkBox', 'TinkChat'
     ],
-    
+
     stores: ['Trinkets', 'Contacts', 'Profile', 'IpInfo'],
 
     icon: {
@@ -73,6 +74,8 @@ Ext.application({
 
         // set user's country dial code based on ip-address
         ttapp.util.Common.setDialCode();
+
+        ttapp.util.Analytics.startTracker();
     },
 
     onUpdated: function() {
