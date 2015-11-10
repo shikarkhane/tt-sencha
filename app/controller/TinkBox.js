@@ -19,8 +19,6 @@ Ext.define('ttapp.controller.TinkBox', {
     },
 
 	getTinkBoxData: function(component) {
-		console.log('in tink box');
-
         Ext.Viewport.mask({
             xtype: 'loadmask',
             html: '<img src="resources/images/green-loader.png" alt="loader">'
@@ -79,7 +77,6 @@ Ext.define('ttapp.controller.TinkBox', {
             listeners: {
                 refresh: function(list, eOpts) {
                     var store = Ext.getStore('tinkBoxStore').getData().all;
-                    console.log(store);
                     if(!Ext.isEmpty(store)) {
                         var counter = 0;
                         function imageExistsForTinkBox(url, callback, timeout) {
@@ -106,10 +103,8 @@ Ext.define('ttapp.controller.TinkBox', {
                         }
 
                         function recursiveStoreForTinkBox(counter) {
-                            console.log(counter);
                             if(!Ext.isEmpty(store[counter])) {
                                 imageExistsForTinkBox(store[counter].data.background, function(exists) {
-                                    console.log(exists);
                                     if(exists != 'success') {
                                         store[counter].data.background = getBackgroundImage(store[counter].data.number);
                                         store[counter].set('background', store[counter].data.background);
@@ -119,7 +114,7 @@ Ext.define('ttapp.controller.TinkBox', {
                                 });
                             }
                         }
-                        
+
                         recursiveStoreForTinkBox(counter);
                     }
                 }
@@ -137,5 +132,7 @@ Ext.define('ttapp.controller.TinkBox', {
         });
         window.selectedTinkBoxItem = record;
         Ext.Viewport.animateActiveItem('tinkchat', {type: 'slide', direction: 'left'});
+
+				ttapp.util.Analytics.trackView('Tinkchat');
 	}
 });

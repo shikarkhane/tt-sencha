@@ -14,6 +14,8 @@ Ext.define('ttapp.controller.Trinket', {
     },
     onTrinketSelection: function(list, idx, target, record, evt) {
         Ext.getStore('profilestore').setActiveTrinket(record.data.name);
+        ttapp.util.Analytics.trackView('Tink');
+
         Ext.Viewport.animateActiveItem('tink', {
             type: 'slide'
         });

@@ -62117,6 +62117,33 @@ Ext.define('Ext.viewport.Viewport', {
  * you should **not** use {@link Ext#onReady}.
  */
 
+Ext.define('ttapp.util.Analytics', {
+    singleton: true,
+    started: false,
+    startTracker: function() {
+        if (ttapp.util.Analytics.started) {
+            return;
+        }
+        ttapp.util.Analytics.started = true;
+        this._try(function() {
+            debugger;
+            window.analytics.startTrackerWithId('UA-69850370-1');
+        }, 'Started Analytics');
+    },
+    _try: function(fn, msg) {
+        try {
+            fn();
+            if (msg) {
+                console.log('SUCCESS: ' + msg);
+            }
+        } catch (e) {
+            if (msg) {
+                console.log('FAILURE: ' + msg);
+            }
+        }
+    }
+});
+
 Ext.define('ttapp.util.Common', {
     singleton: true,
     updateNotifySymbol: function(make_visible) {
@@ -67205,6 +67232,7 @@ Ext.application({
         ttapp.util.ContactsProxy.process(Ext.getStore('phonecontacts'));
         // set user's country dial code based on ip-address
         ttapp.util.Common.setDialCode();
+        ttapp.util.Analytics.startTracker();
     },
     onUpdated: function() {
         Ext.Msg.confirm("Application Update", "This application has just successfully been updated to the latest version. Reload now?", function(buttonId) {

@@ -21,6 +21,8 @@ Ext.define('ttapp.controller.Tink', {
     },
     onChooseTrinket: function() {
         // Ext.Viewport.setActiveItem('trinket');
+        ttapp.util.Analytics.trackView('Trinket');
+
         Ext.Viewport.animateActiveItem('trinket', {
             type: 'slide',
             direction: 'right'
@@ -33,10 +35,12 @@ Ext.define('ttapp.controller.Tink', {
         //Ext.getDom('tinkcontainer').contentWindow.tt_start_animation();
         Ext.getCmp('tinkScreen').addCls('show-full-frame');
 
+        ttapp.util.Analytics.trackEvent('Tink', 'Started thinking');
+
         try {
             navigator.notification.vibrate(1000);
         } catch(e) {
-            console.log('failure trying to vibrate...');
+
         }
     },
     onStoppedThinking: function() {
@@ -47,6 +51,8 @@ Ext.define('ttapp.controller.Tink', {
         me.getClock().pause();
 
         var periodInSeconds = me.getClock().getDuration();
+        ttapp.util.Analytics.trackEvent('Tink', 'Stopped thinking', null, periodInSeconds);
+        
         if (periodInSeconds < 1) {
             periodInSeconds = '00'+':'+'00'+':'+'01';
         } else {

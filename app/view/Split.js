@@ -16,6 +16,7 @@ Ext.define('ttapp.view.Split', {
                 cls: 'top-btn btn-tink',
                 docked: 'left',
                 handler: function() {
+                  ttapp.util.Analytics.trackView('Tink');
                     Ext.Viewport.animateActiveItem('tink', {
                         type: 'slide',
                         direction: 'right'
@@ -26,6 +27,7 @@ Ext.define('ttapp.view.Split', {
                 cls: 'top-btn btn-mail',
                 docked: 'right',
                 handler: function() {
+                  ttapp.util.Analytics.trackView('Feed');
                     Ext.Viewport.animateActiveItem('feed', {
                         type: 'slide',
                         direction: 'left'

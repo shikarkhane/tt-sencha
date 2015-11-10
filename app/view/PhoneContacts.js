@@ -23,4 +23,3 @@ Ext.define('ttapp.view.PhoneContacts', {
 		]
 	}
 });
-

@@ -2,7 +2,7 @@ Ext.define('ttapp.controller.TinkChat', {
 	extend: 'Ext.app.Controller',
 	config: {
 		refs: {
-            backBtn: 'button[cls~=back-btn-icon]',
+            backBtn: 'button[cls~=back-btn-icon-chat]',
             image: 'image[cls~=header-user-img]'
         },
 		control: {
@@ -55,7 +55,7 @@ Ext.define('ttapp.controller.TinkChat', {
                 }
             });
         }
-        
+
         recursiveStoreForTinkChat();
 	},
 
@@ -69,7 +69,7 @@ Ext.define('ttapp.controller.TinkChat', {
             xtype: 'loadmask',
             html: '<img src="resources/images/green-loader.png" alt="loader">'
         });
-        
+
 		Ext.getStore('profilestore').getPhoneNumber(function(userNum) {
             Ext.Ajax.request({
                 url: ttapp.config.Config.getBaseURL() + '/conversation/' + window.selectedTinkBoxItem.data.number + '/between/' + userNum + '/page/0/size/9/',
@@ -80,16 +80,16 @@ Ext.define('ttapp.controller.TinkChat', {
                     message = Ext.decode(response.responseText);
 
                     Ext.getCmp('tinkchatimage').setStyle({'background':'url('+ttapp.config.Config.getBaseURL()+'/static/img/user_profile/'+window.selectedTinkBoxItem.data.number+'.jpeg)'});
-                    
+
                     Ext.select('.user-title').setHtml(getName(window.selectedTinkBoxItem.data.number));
-                    
+
                     Ext.select('.tink-in-friend').setHtml(showTinkTime(window.selectedTinkBoxItem.data.inout.split("-")[0]));
                     Ext.select('.tink-out-friend').setHtml(showTinkTime(window.selectedTinkBoxItem.data.inout.split("-")[1]));
 
                     total_time = parseInt(window.selectedTinkBoxItem.data.inout.split("-")[0]) + parseInt(window.selectedTinkBoxItem.data.inout.split("-")[1]);
-                    console.log("total_time__"+total_time);
+                    // console.log("total_time__"+total_time);
                     percent = (parseInt(window.selectedTinkBoxItem.data.inout.split("-")[1])/total_time)*100;
-                    console.log("percent__"+percent);
+                    // console.log("percent__"+percent);
                     // (id, radius, border-width, percent)
                     testCircleCss('tinkChatCircle', 25, 5, Math.ceil(percent));
 
@@ -107,13 +107,13 @@ Ext.define('ttapp.controller.TinkChat', {
                         //return month + ' ' + date + ', ' + year;
                     }
                     window.arr = [];
-                    
+
                     var store = Ext.getStore('TinkChatStore');
                     store.load();
                     store.removeAll();
                     store.getProxy().clear();
                     store.sync();
-                    
+
                     for(i=0; i<message.messages.length; i++) {
                         var fromUserName,
                             toUserName,
@@ -127,7 +127,7 @@ Ext.define('ttapp.controller.TinkChat', {
                             secondsSent = message.messages[i].seconds_sent,
                             forInbox = true,
                             unread = message.messages[i].unread;
-                            
+
                         if (toUser == userNum.toString()) {
                             toUserName = 'me';
                         } else {
@@ -212,11 +212,13 @@ Ext.define('ttapp.controller.TinkChat', {
 		component.add(list);
 		component.add(ttapp.util.Common.createMenuButton());
 	},
-	
+
 	onChatSelect: function(target, index, e, record, eOpts) {
 		console.log(record);
 		console.log(eOpts);
-        
+
+		ttapp.util.Analytics.trackView('View Chat Tink');
+
 		if(eOpts.target.className == "tink-new" || eOpts.target.className == "overlay-video") {
 			// Ext.Ajax.request({
 	  //           url: ttapp.config.Config.getBaseURL()+'/message-read-v2/',
@@ -240,11 +242,11 @@ Ext.define('ttapp.controller.TinkChat', {
 		}
 
 		if(eOpts.target.className == "overlay-video") {
-			var element = eOpts.target.nextSibling;	
+			var element = eOpts.target.nextSibling;
 		} else {
 			var element = Ext.get(eOpts.target);
 		}
-		
+
         var me = this;
 
         //window.fromTinkReplay = 1;
@@ -300,7 +302,7 @@ Ext.define('ttapp.controller.TinkChat', {
   //               failure: function(error) {
   //               }
   //           });
-		// } 
+		// }
 			//{
 			//ttapp.app.getController('Tink').useActiveTrinket();
 			// var me = this;
@@ -332,5 +334,6 @@ Ext.define('ttapp.controller.TinkChat', {
 
 	backToTinkBox: function() {
 		Ext.Viewport.animateActiveItem('tinkbox', {type: 'slide', direction: 'right'});
+		ttapp.util.Analytics.trackView('Tinkbox');
 	}
 });
