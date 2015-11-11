@@ -21,6 +21,9 @@ Ext.define('ttapp.controller.Authenticate', {
             },
             confirmCodeButton: {
                 tap: 'manualConfirmCode'
+            },
+            '#selectCountry': {
+              change: 'selectCountryDidChange'
             }
         }
     },
@@ -36,7 +39,7 @@ Ext.define('ttapp.controller.Authenticate', {
         var m = Ext.ComponentQuery.query('#myDialCode')[0];
 
         Ext.getStore('ipinfostore').getDialCode(function(dc, cd) {
-            Ext.getCmp('selectCountry').setValue(dc.toString());
+            Ext.getCmp('selectCountry').setValue(cd);
             m.setValue(dc);
         });
     },
@@ -69,7 +72,7 @@ Ext.define('ttapp.controller.Authenticate', {
                     // set timeout for 15 seconds
                     me._androidTimeout = setTimeout(function() {
                         Ext.Viewport.unmask();
-                        
+
                         Ext.Viewport.animateActiveItem('confirmphonenumber', {
                             type: 'slide'
                         });
@@ -146,6 +149,17 @@ Ext.define('ttapp.controller.Authenticate', {
                 }
             }
         });
+    },
+    selectCountryDidChange: function() {
+      var countries = ttapp.util.Common.setDialCode('123');
+      var code = Ext.getCmp('selectCountry').getValue();
+      var value = null;
+
+      for (var i = 0; i < countries.length; i++) {
+        if (countries[i].code == code) {
+          Ext.ComponentQuery.query('#myDialCode')[0].setValue(countries[i].dial_code);
+        }
+      }
     },
     manualConfirmCode: function(){
         ttapp.util.Analytics.trackEvent('SMS', 'Clicked manually confirm code');
