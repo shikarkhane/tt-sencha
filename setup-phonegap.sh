@@ -1,4 +1,3 @@
-mv pg-tinktime pg-tinktime-old
 rm -fr pg-tinktime
 cordova create pg-tinktime "com.tinktime.app" "Tinktime"
 
@@ -11,9 +10,12 @@ cordova plugin add cordova-plugin-contacts
 cordova plugin add cordova-plugin-device
 cordova plugin add cordova-plugin-file
 cordova plugin add cordova-plugin-file-transfer
-cordova plugin add cordova-sms-plugin
+cordova plugin add com.rjfun.cordova.sms
 cordova plugin add cordova-plugin-filepath
 cordova plugin add cordova-plugin-google-analytics
 
 cordova platform add ios
 cordova prepare ios
+
+cordova platform add android
+cordova prepare android
