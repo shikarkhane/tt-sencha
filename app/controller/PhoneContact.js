@@ -30,16 +30,19 @@ Ext.define('ttapp.controller.PhoneContact', {
             var queryString = textfield.getValue();
             var storelist = Ext.getStore("phonecontacts");
             storelist.clearFilter();
+
             if (queryString) {
                 var thisRegEx = new RegExp(queryString, 'i');
                 storelist.filterBy(function(record) {
-                    if (thisRegEx.test(record.get('first_name')) || thisRegEx.test(record.get('last_name'))) {
+										var name = record.data.first_name + " " + record.data.last_name;
+                    if (thisRegEx.test(name)) {
                         return true;
                     } else {
                         return false;
                     }
                 });
             }
+						
             ttapp.app.getController('PhoneContact').showCircles();
         }
 	},
