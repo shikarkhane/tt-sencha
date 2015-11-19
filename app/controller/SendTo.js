@@ -188,7 +188,7 @@ Ext.define('ttapp.controller.SendTo', {
                     //ask for user confirmation to send sms
                     Ext.Msg.confirm(
                         "Invite " + window.contactSelected.data.first_name+' '+window.contactSelected.data.last_name,
-                        "Send sms invite to (" + from_user + ").",
+                        "Send sms invite to (" + me.phoneNumber + ").",
                         function(buttonId) {
                             if (buttonId === 'yes') {
                                 me.inviteViaSms();
