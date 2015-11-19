@@ -98,7 +98,7 @@ Ext.define('ttapp.view.TinkoMeter', {
                                 Ext.Msg.alert("Warning","Unable to access this image, please choose from 'Gallery' again.");
                             }
 
-                            navigator.camera.getPicture(onSuccess, onFailure, { sourceType: Camera.PictureSourceType.PHOTOLIBRARY, correctOrientation: true, quality: 50, destinationType: Camera.DestinationType.NATIVE_URI
+                            navigator.camera.getPicture(onSuccess, onFailure, { sourceType: Camera.PictureSourceType.PHOTOLIBRARY, correctOrientation: true, quality: 30, destinationType: Camera.DestinationType.NATIVE_URI
                             });
                         }
                     },
