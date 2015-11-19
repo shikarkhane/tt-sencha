@@ -187,8 +187,8 @@ Ext.define('ttapp.controller.SendTo', {
                 } else {
                     //ask for user confirmation to send sms
                     Ext.Msg.confirm(
-                        "Invite?",
-                        "Your friend is not using tinktime. Invite your friend to view me tink!",
+                        "Invite " + window.contactSelected.data.first_name+' '+window.contactSelected.data.last_name,
+                        "Send sms invite to (" + from_user + ").",
                         function(buttonId) {
                             if (buttonId === 'yes') {
                                 me.inviteViaSms();
@@ -197,7 +197,7 @@ Ext.define('ttapp.controller.SendTo', {
                 }
                 //me.clearAll();
             } else {
-                Ext.Msg.alert('Receiver?', 'Please choose a recipient.', Ext.emptyFn);
+                Ext.Msg.alert('Recipient?', 'Please choose a recipient.', Ext.emptyFn);
             }
         });
 
