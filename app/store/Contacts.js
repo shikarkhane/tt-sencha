@@ -356,7 +356,7 @@ Ext.define('ttapp.store.Contacts', {
             'phone_number': '+919549194555'
         }],
         //sort the store using the lastname field
-        sorters: 'first_name'/*'lastName'*/,
+        //sorters: 'first_name'/*'lastName'*/,
 
         //group the store using the lastName field
         //groupField: 'lastName'
