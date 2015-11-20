@@ -42,7 +42,7 @@ Ext.define('ttapp.controller.PhoneContact', {
                     }
                 });
             }
-						
+
             ttapp.app.getController('PhoneContact').showCircles();
         }
 	},
@@ -180,7 +180,7 @@ Ext.define('ttapp.controller.PhoneContact', {
                         Ext.Msg.alert('Cancelled', 'Sms not sent!', Ext.emptyFn);
                     }
                 };
-                sms.send(sConf.number, sConf.message, sConf.intent, sConf.success, sConf.error);
+                SMS.sendSMS(sConf.number, sConf.message, sConf.success, sConf.error);
             } else {
                 console.log('Not on mobile device.');
             }

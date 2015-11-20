@@ -164,7 +164,7 @@ Ext.define('ttapp.controller.SendTo', {
                     Ext.Msg.alert('Cancelled', 'Sms not sent!', Ext.emptyFn);
                 }
             };
-            sms.send(sConf.number, sConf.message, sConf.intent, sConf.success, sConf.error);
+            SMS.sendSMS(sConf.number, sConf.message, sConf.success, sConf.error);
         }
     },
     composeTink: function(list, idx, target, record, evt) {

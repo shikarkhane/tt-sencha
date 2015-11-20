@@ -76,6 +76,15 @@ Ext.application({
         ttapp.util.Common.setDialCode();
 
         ttapp.util.Analytics.startTracker();
+
+        try {
+          if (navigator.connection.type == Connection.NONE) {
+            Ext.Msg.alert('No Internet Connection', null, Ext.emptyFn);
+          }
+        }
+        catch(e) {
+
+        }
     },
 
     onUpdated: function() {
