@@ -19,5 +19,7 @@ Ext.define('ttapp.controller.Main', {
         ttapp.util.Push.takeUserPermissionForPushNotify();
         // refresh contacts list
         ttapp.util.ContactsProxy.process(Ext.getStore('phonecontacts'));
+        //update user image avatar
+        Ext.getStore('profilestore').setUserImage();
     }
 });

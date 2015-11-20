@@ -61,20 +61,7 @@ Ext.define('ttapp.view.ConfirmPhoneNumber', {
                         	Ext.Viewport.animateActiveItem('authenticate',{type:'fade'});
                         }
 		        	}]
-		        },
-		        /*{
-		        	xtype:'panel',
-		        	cls:'help-text-sm',
-		        	html:'Read our <span class="privacy_policy">Privacy Policy</span> to learn more.',
-		        	listeners:[{
-		        		element: 'element',
-                        delegate: 'span.privacy_policy',
-                        event: 'tap',
-                        fn: function(){
-                        	Ext.Viewport.animateActiveItem('privacypolicy',{type:'fade'});
-                        }
-		        	}]
-		        }*/]
+		        }]
 
 		  },{
 		  	xtype:'button',

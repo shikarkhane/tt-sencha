@@ -68,7 +68,7 @@ Ext.define('ttapp.controller.TinkBox', {
                                 'unread': json.groups[i].unread,
                                 'user': getName(json.groups[i].user),
                                 'img': ttapp.util.Common.animationThumbnail(),
-                                'background': ttapp.config.Config.getBaseURL()+'/static/img/user_profile/'+json.groups[i].user+'.jpeg',/*getBackgroundImage(json.groups[i].user),*/
+                                'background': Ext.getStore('phonecontacts').getUserImage(json.groups[i].user)/*ttapp.config.Config.getBaseURL()+'/static/img/user_profile/'+json.groups[i].user+'.jpeg'*/,/*getBackgroundImage(json.groups[i].user),*/
                                 'number': json.groups[i].user,
                                 'inout': json.groups[i].tink_in+"-"+json.groups[i].tink_out
                             });

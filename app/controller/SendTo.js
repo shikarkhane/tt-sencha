@@ -41,36 +41,17 @@ Ext.define('ttapp.controller.SendTo', {
         }, 100);
     },
     onShowSendTo: function(component) {
+
         //component.add(ttapp.util.Common.createMenuButton());
         this.phoneNumber = window.contactSelected.data.phone_number;
         this.setPreviewItems();
         Ext.getCmp('sendToImage').setStyle({'background':'url(resources/images/user-icon.png)'});
-        function checkImage(imageUrl) {
-            console.log(imageUrl);
-            var http = new XMLHttpRequest();
-            http.open('HEAD',imageUrl, false);
-            http.send();
-            if(http.status === 200) {
-                return true;
-            } else {
-                return false;
-            }
+
+        var profile_url = Ext.getStore('phonecontacts').getUserImage(this.phoneNumber);
+
+        if(!Ext.isEmpty(profile_url)) {
+            Ext.getCmp('sendToImage').setStyle({'background':'url('+profile_url+')'});
         }
-
-        Ext.Ajax.request({
-            url: ttapp.config.Config.getBaseURL()+'/profile-picture/'+window.contactSelected.data.phone_number+'/',
-            method: 'GET',
-            success: function(response) {
-                if(!Ext.isEmpty(response.responseText)) {
-                    if(checkImage(response.responseText)) {
-                        Ext.getCmp('sendToImage').setStyle({'background':'url('+response.responseText+')'});
-                    }
-                }
-            },
-            failure: function(error) {
-
-            }
-        });
         
         Ext.select('.user-name').setHtml(window.contactSelected.data.first_name+' '+window.contactSelected.data.last_name);
     },

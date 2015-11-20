@@ -2,8 +2,7 @@ Ext.define('ttapp.controller.TinkChat', {
 	extend: 'Ext.app.Controller',
 	config: {
 		refs: {
-            backBtn: 'button[cls~=back-btn-icon]',
-            image: 'image[cls~=header-user-img]'
+            backBtn: 'button[cls~=back-btn-icon]'
         },
 		control: {
 			'tinkchat': {
@@ -15,56 +14,16 @@ Ext.define('ttapp.controller.TinkChat', {
 			},
 			'backBtn': {
 				tap: 'backToTinkBox'
-			},
-			'image': {
-				load: 'changeImage'
 			}
 		}
 	},
-
-	changeImage: function( element, eOpts ) {
-		console.log(element.getSrc());
-		function imageExistsForTinkChat(url, callback, timeout) {
-            timeout = timeout || 3000;
-            var timedOut = false, timer;
-            var img = new Image();
-            img.onerror = img.onabort = function() {
-                if (!timedOut) {
-                    clearTimeout(timer);
-                    callback("error");
-                }
-            };
-            img.onload = function() {
-                if (!timedOut) {
-                    clearTimeout(timer);
-                    callback("success");
-                }
-            };
-            img.src = url;
-            timer = setTimeout(function() {
-                timedOut = true;
-                callback("timeout");
-            }, timeout);
-        }
-
-        function recursiveStoreForTinkChat() {
-            imageExistsForTinkChat(element.getSrc(), function(exists) {
-                console.log(exists);
-                if(exists != 'success') {
-                	element.setSrc('resources/images/avatar.png');
-                }
-            });
-        }
-        
-        recursiveStoreForTinkChat();
-	},
-
 	removeList: function() {
         var me = this;
 		me.list.destroy();
 	},
 
 	renderList: function(component) {
+        Ext.getCmp('tinkchatimage').setStyle({'background':'url(resources/images/user-icon.png)'});
         Ext.Viewport.mask({
             xtype: 'loadmask',
             html: '<img src="resources/images/green-loader.png" alt="loader">'
@@ -79,28 +38,10 @@ Ext.define('ttapp.controller.TinkChat', {
                     Ext.Viewport.setMasked(false);
                     message = Ext.decode(response.responseText);
 
-                    Ext.Ajax.request({
-                        url: ttapp.config.Config.getBaseURL()+'/profile-picture/'+window.selectedTinkBoxItem.data.number+'/',
-                        method: 'GET',
-                        success: function(response) {
-                            if(!Ext.isEmpty(response.responseText)) {
-                                if(response.responseText) {
-                                    // Ext.getCmp('sendToImage').setStyle({'background':'url('+response.responseText+')'});
-                                    var http = new XMLHttpRequest();
-                                    http.open('HEAD',response.responseText, false);
-                                    http.send();
-                                    if(http.status === 200) {
-                                        Ext.getCmp('tinkchatimage').setStyle({'background':'url('+response.responseText+')'});
-                                    } else {
-                                        Ext.getCmp('tinkchatimage').setStyle({'background':'url(resources/images/user-icon.png)'});
-                                    }
-                                }
-                            }
-                        },
-                        failure: function(error) {
-
-                        }
-                    });
+                    var profile_url = Ext.getStore('phonecontacts').getUserImage(window.selectedTinkBoxItem.data.number);
+                    if(!Ext.isEmpty(profile_url)) {
+                        Ext.getCmp('tinkchatimage').setStyle({'background':'url('+profile_url+')'});
+                    }
                     
                     Ext.select('.user-title').setHtml(getName(window.selectedTinkBoxItem.data.number));
                     
