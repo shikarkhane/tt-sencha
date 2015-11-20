@@ -104,7 +104,29 @@ Ext.define('ttapp.view.TinkoMeter', {
                     'painted': {
                         fn: function(panel, eOpts) {
                             Ext.getStore('profilestore').getPhoneNumber(function(num){
-                                document.getElementById('user_img').style.backgroundImage = "url("+ttapp.config.Config.getBaseURL()+'/static/img/user_profile/'+num+".jpeg)"; 
+                                
+                                Ext.Ajax.request({
+                                    url: ttapp.config.Config.getBaseURL()+'/profile-picture/'+num+'/',
+                                    method: 'GET',
+                                    success: function(response) {
+                                        if(!Ext.isEmpty(response.responseText)) {
+                                            if(response.responseText) {
+                                                // Ext.getCmp('sendToImage').setStyle({'background':'url('+response.responseText+')'});
+                                                var http = new XMLHttpRequest();
+                                                http.open('HEAD',response.responseText, false);
+                                                http.send();
+                                                if(http.status === 200) {
+                                                    document.getElementById('user_img').style.backgroundImage = "url("+response.responseText+")";
+                                                } else {
+                                                    document.getElementById('user_img').style.backgroundImage = "url(resources/images/user-icon.png)";
+                                                }
+                                            }
+                                        }
+                                    },
+                                    failure: function(error) {
+
+                                    }
+                                });
                             });
                         }
                     }

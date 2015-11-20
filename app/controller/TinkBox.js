@@ -33,17 +33,52 @@ Ext.define('ttapp.controller.TinkBox', {
                 disableCaching: false,
                 success: function(response) {
                     var json = Ext.JSON.decode(response.responseText);
+                    var temp = [];
+                    var topItemData = [];
+
                     for (i=0; i<json.groups.length; i++) {
-                        Ext.getStore('tinkBoxStore').add({
-                            'tink_in': displaytimer(json.groups[i].tink_in),
-                            'tink_out': displaytimer(json.groups[i].tink_out),
-                            'unread': json.groups[i].unread,
-                            'user': getName(json.groups[i].user),
-                            'img': ttapp.util.Common.animationThumbnail(),
-                            'background': ttapp.config.Config.getBaseURL()+'/static/img/user_profile/'+json.groups[i].user+'.jpeg',/*getBackgroundImage(json.groups[i].user),*/
-                            'number': json.groups[i].user,
-                            'inout': json.groups[i].tink_in+"-"+json.groups[i].tink_out
-                        });
+                        if(!Ext.isEmpty(window.afterTinkSent)) {
+                            if(json.groups[i].user == window.contactSelected.data.phone_number) {
+                                topItemData.push({
+                                    'tink_in': displaytimer(json.groups[i].tink_in),
+                                    'tink_out': displaytimer(json.groups[i].tink_out),
+                                    'unread': json.groups[i].unread,
+                                    'user': getName(json.groups[i].user),
+                                    'img': ttapp.util.Common.animationThumbnail(),
+                                    'background': ttapp.config.Config.getBaseURL()+'/static/img/user_profile/'+json.groups[i].user+'.jpeg',/*getBackgroundImage(json.groups[i].user),*/
+                                    'number': json.groups[i].user,
+                                    'inout': json.groups[i].tink_in+"-"+json.groups[i].tink_out
+                                }); 
+                            } else {
+                                temp.push({
+                                    'tink_in': displaytimer(json.groups[i].tink_in),
+                                    'tink_out': displaytimer(json.groups[i].tink_out),
+                                    'unread': json.groups[i].unread,
+                                    'user': getName(json.groups[i].user),
+                                    'img': ttapp.util.Common.animationThumbnail(),
+                                    'background': ttapp.config.Config.getBaseURL()+'/static/img/user_profile/'+json.groups[i].user+'.jpeg',/*getBackgroundImage(json.groups[i].user),*/
+                                    'number': json.groups[i].user,
+                                    'inout': json.groups[i].tink_in+"-"+json.groups[i].tink_out
+                                });        
+                            }
+                        } else {
+                            temp.push({
+                                'tink_in': displaytimer(json.groups[i].tink_in),
+                                'tink_out': displaytimer(json.groups[i].tink_out),
+                                'unread': json.groups[i].unread,
+                                'user': getName(json.groups[i].user),
+                                'img': ttapp.util.Common.animationThumbnail(),
+                                'background': ttapp.config.Config.getBaseURL()+'/static/img/user_profile/'+json.groups[i].user+'.jpeg',/*getBackgroundImage(json.groups[i].user),*/
+                                'number': json.groups[i].user,
+                                'inout': json.groups[i].tink_in+"-"+json.groups[i].tink_out
+                            });
+                        }
+                    }
+                    Ext.getStore('tinkBoxStore').addData(temp);
+
+                    if(!Ext.isEmpty(window.afterTinkSent)) {
+                        Ext.getStore('tinkBoxStore').insert(0, topItemData);
+                        delete window.afterTinkSent;
                     }
                     Ext.Viewport.setMasked(false);
                 },
@@ -60,15 +95,29 @@ Ext.define('ttapp.controller.TinkBox', {
             cls: 'tinkbox-section',
             itemTpl: [
                 '<tpl if="unread == 0">',
-                    '<div class="list-box" style="background:url({background}) no-repeat 50% 50%">',
-                        '<div class="over-lay"></div>',
-                        '<span class="inner-detail"><span class="user-name">{user}</span><span class="info"><span class="circle"><img src={img} ></span><span class="time">{tink_in}</span><span class="tinkinout">Tink in</span></span><span class="info right"><span class="circle"><img src={img} ></span><span class="time">{tink_out}</span><span class="tinkinout">Tink out</span></span><span class="arrow"></span></span>',
-                    '</div>',
+                    '<tpl if="tink_in &gt; tink_out">',
+                        '<div class="list-box" style="background:url({background}) no-repeat 50% 50%">',
+                            '<div class="over-lay"></div>',
+                            '<span class="inner-detail"><span class="user-name">{user}</span><span class="info"><span class="circle"><img src={img} ></span><span class="time">{tink_in}</span><span class="tinkinout">Tink in</span></span><span class="info right"><span class="circle"><img src={img} ></span><span class="time">{tink_out}</span><span class="tinkinout">Tink out</span></span><span class="arrow"></span></span>',
+                        '</div>',
+                    '<tpl else>',
+                        '<div class="list-box" style="background:url({background}) no-repeat 50% 50%">',
+                            '<div class="over-lay"></div>',
+                            '<span class="inner-detail"><span class="user-name">{user}</span><span class="info right"><span class="circle"><img src={img} ></span><span class="time">{tink_in}</span><span class="tinkinout">Tink in</span></span><span class="info"><span class="circle"><img src={img} ></span><span class="time">{tink_out}</span><span class="tinkinout">Tink out</span></span><span class="arrow"></span></span>',
+                        '</div>',
+                    '</tpl>',
                 '<tpl else>',
-                    '<div class="list-box" style="background:url({background}) no-repeat 50% 50%">',
-                        '<div class="over-lay"></div>',
-                        '<span class="inner-detail"><span class="user-name">{user}</span><span class="info"><span class="circle active"><span class="notification-icon"></span><img src={img} ></span><span class="time">{tink_in}</span><span class="tinkinout">Tink in</span></span><span class="info right"><span class="circle"><img src={img} ></span><span class="time">{tink_out}</span><span class="tinkinout">Tink out</span></span><span class="arrow"></span></span>',
-                    '</div>',
+                    '<tpl if="tink_in &gt; tink_out">',
+                        '<div class="list-box" style="background:url({background}) no-repeat 50% 50%">',
+                            '<div class="over-lay"></div>',
+                            '<span class="inner-detail"><span class="user-name">{user}</span><span class="info"><span class="circle active"><span class="notification-icon"></span><img src={img} ></span><span class="time">{tink_in}</span><span class="tinkinout">Tink in</span></span><span class="info right"><span class="circle"><img src={img} ></span><span class="time">{tink_out}</span><span class="tinkinout">Tink out</span></span><span class="arrow"></span></span>',
+                        '</div>',
+                    '<tpl else>',
+                        '<div class="list-box" style="background:url({background}) no-repeat 50% 50%">',
+                            '<div class="over-lay"></div>',
+                            '<span class="inner-detail"><span class="user-name">{user}</span><span class="info right"><span class="circle"><img src={img} ></span><span class="time">{tink_in}</span><span class="tinkinout">Tink in</span></span><span class="info"><span class="circle"><img src={img} ></span><span class="time">{tink_out}</span><span class="tinkinout">Tink out</span></span><span class="arrow"></span></span>',
+                        '</div>',  
+                    '</tpl>',
                 '</tpl>',
             ],
             store: {
@@ -79,7 +128,6 @@ Ext.define('ttapp.controller.TinkBox', {
             listeners: {
                 refresh: function(list, eOpts) {
                     var store = Ext.getStore('tinkBoxStore').getData().all;
-                    console.log(store);
                     if(!Ext.isEmpty(store)) {
                         var counter = 0;
                         function imageExistsForTinkBox(url, callback, timeout) {

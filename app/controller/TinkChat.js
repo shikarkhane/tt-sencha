@@ -79,7 +79,28 @@ Ext.define('ttapp.controller.TinkChat', {
                     Ext.Viewport.setMasked(false);
                     message = Ext.decode(response.responseText);
 
-                    Ext.getCmp('tinkchatimage').setStyle({'background':'url('+ttapp.config.Config.getBaseURL()+'/static/img/user_profile/'+window.selectedTinkBoxItem.data.number+'.jpeg)'});
+                    Ext.Ajax.request({
+                        url: ttapp.config.Config.getBaseURL()+'/profile-picture/'+window.selectedTinkBoxItem.data.number+'/',
+                        method: 'GET',
+                        success: function(response) {
+                            if(!Ext.isEmpty(response.responseText)) {
+                                if(response.responseText) {
+                                    // Ext.getCmp('sendToImage').setStyle({'background':'url('+response.responseText+')'});
+                                    var http = new XMLHttpRequest();
+                                    http.open('HEAD',response.responseText, false);
+                                    http.send();
+                                    if(http.status === 200) {
+                                        Ext.getCmp('tinkchatimage').setStyle({'background':'url('+response.responseText+')'});
+                                    } else {
+                                        Ext.getCmp('tinkchatimage').setStyle({'background':'url(resources/images/user-icon.png)'});
+                                    }
+                                }
+                            }
+                        },
+                        failure: function(error) {
+
+                        }
+                    });
                     
                     Ext.select('.user-title').setHtml(getName(window.selectedTinkBoxItem.data.number));
                     

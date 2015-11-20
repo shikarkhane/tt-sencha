@@ -1096,8 +1096,7 @@ Ext.define('ttapp.util.Common', {
                                 '<div class="btn tink slideInUp1"><span id="tink" class="icon"></span><span class="title">Tink</span></div>' +
                                 '</div>'
                             }).show();
-        
-        /*'<div class="btn profile slideInUp4"><span id="settingsProfile" class="icon"></span><span class="title">Settings & Profile</span></div>' +*/      
+
                             if(Ext.Viewport.getActiveItem().config.xtype == 'phoneContacts') {
                                 Ext.select('.tink').hide();
                             }
@@ -1117,16 +1116,6 @@ Ext.define('ttapp.util.Common', {
                                         $("body").removeClass("option-mask");
                                         $(".add-option-btn").removeClass("btn-close");
                                         Ext.Viewport.animateActiveItem('phoneContacts', anim);
-                                        // var item;
-                                        // if(Ext.isEmpty(item)) {
-                                        //     /*item = Ext.Viewport.add({
-                                        //         xtype: 'phoneContacts'
-                                        //     });*/
-                                        //     item: 'phoneContacts';
-                                        //     Ext.Viewport.animateActiveItem('phoneContacts', anim);
-                                        // } else {
-                                        //     Ext.Viewport.animateActiveItem(item, anim);
-                                        // }
                                         break;
                                     default:    
                                 }
