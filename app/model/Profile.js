@@ -10,7 +10,8 @@ Ext.define('ttapp.model.Profile', {
             'is_verified',
             'last_updated_on',
             'selected_trinket_name',
-            'last_seconds_sent'
+            'last_seconds_sent',
+            'profile_url'
         ],
         validations: [{
             type: 'format',

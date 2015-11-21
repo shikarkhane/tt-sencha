@@ -388,5 +388,14 @@ Ext.define('ttapp.store.Contacts', {
             result = this.getAt(i).get('on_tinktime');
         }
         return result;
+    },
+    getUserImage: function(phoneNumber) {
+        var i = this.find('phone_number', phoneNumber);
+
+        if(i > -1) {
+            return this.getAt(i).get('profile_url');
+        } else {
+            return null;
+        }
     }
 });

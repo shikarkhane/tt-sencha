@@ -85,6 +85,8 @@ Ext.define('ttapp.controller.Authenticate', {
                 }
             }
         });
+
+        Ext.getStore('profilestore').setUserImage();
     },
     sendCode: function(phoneNumber) {
         var me = this;

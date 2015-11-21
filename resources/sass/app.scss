@@ -118,7 +118,7 @@ body {
     background-size:cover;
 }
 .cls-tt-tinkbox {
-    background-image:inline-image("background/tinkbox.jpg");
+    background-image:inline-image("background/bg.jpg");
     background-size:cover;
 }
 
@@ -1440,7 +1440,7 @@ margin-bottom: 30px;
 .option-mask .option-overlay.x-panel.x-floating{background: rgba(255,255,255,0.8);}
 .option-mask .x-mask{display: none;}
 
-.add-option-btn.x-button{position: absolute; z-index: 999; right: 15px; bottom: 20px; border-radius:99px; width:45px; height:45px; margin-bottom: -5px; background:#45a18e; left: auto; top: auto; border: none; box-shadow: 0px 3px 3px rgba(0,0,0,0.1); padding: 0; text-align: center;}
+.add-option-btn.x-button{position: absolute; z-index: 999; right: 15px; bottom: 20px; border-radius:99px; width:54px; height:54px; margin-bottom: -5px; background:#45a18e; left: auto; top: auto; border: none; box-shadow: 0px 3px 3px rgba(0,0,0,0.1); padding: 0; text-align: center;}
 .add-option-btn.x-button.x-button-pressing{background:#45a18e;}
 .add-option-btn.x-button img{width: 22px; vertical-align: middle;}
 .add-option-btn.x-button.btn-close{background-color: #f24848;}
@@ -2680,6 +2680,13 @@ margin-bottom: 30px;
     margin-top: -20px;
     z-index: 1;
     border: 0px solid;
+}
+
+.tink-send-page{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
 }
 
 @media (max-height: 568px){

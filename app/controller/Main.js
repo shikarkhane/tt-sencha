@@ -21,6 +21,8 @@ Ext.define('ttapp.controller.Main', {
             // refresh push token
             ttapp.util.Push.takeUserPermissionForPushNotify();
             
+        //update user image avatar
+        Ext.getStore('profilestore').setUserImage();
             // refresh contacts list
             ttapp.util.ContactsProxy.process(Ext.getStore('phonecontacts'));
         });

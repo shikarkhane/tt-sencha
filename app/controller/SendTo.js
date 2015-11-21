@@ -5,13 +5,9 @@ Ext.define('ttapp.controller.SendTo', {
         refs: {
             searchContactsField: 'searchfield[cls~=search-contacts-field]',
             btnSendTink: 'button[cls~=clsSendTink]',
-            textMsg: 'textareafield[cls~=text-msg-preview]',
-            setUserName: 'label[cls~=user-name]'
+            textMsg: 'textareafield[cls~=text-msg-preview]'
         },
         control: {
-            setUserName: {
-                show: 'renderUserName'
-            },
             'searchContactsField': {
                 keyup: 'onSearchKeyUp',
                 clearicontap: 'onSearchClearIconTap'
@@ -28,13 +24,10 @@ Ext.define('ttapp.controller.SendTo', {
             'sendto': {
                 show: 'onShowSendTo'
             },
-            textMsg: {
+            'textMsg': {
                 blur: 'hideKeyboard'
             }
         }
-    },
-    renderUserName: function() {
-        this.setHtml(window.contactSelected.data.first_name+' '+window.contactSelected.data.last_name);
     },
     hideKeyboard: function(callback, scope) {
         var activeElement = document.activeElement;
@@ -48,24 +41,16 @@ Ext.define('ttapp.controller.SendTo', {
         }, 100);
     },
     onShowSendTo: function(component) {
-        console.log(this);
+
+        //component.add(ttapp.util.Common.createMenuButton());
         this.phoneNumber = window.contactSelected.data.phone_number;
         this.setPreviewItems();
-        component.add(ttapp.util.Common.createMenuButton());
         Ext.getCmp('sendToImage').setStyle({'background':'url(resources/images/user-icon.png)'});
-        function checkImage(imageUrl) {
-            var http = new XMLHttpRequest();
-            http.open('HEAD',imageUrl, false);
-            http.send();
-            if(http.status === 200) {
-                return true;
-            } else {
-                return false;
-            }
-        }
 
-        if(checkImage(ttapp.config.Config.getBaseURL()+'/static/img/user_profile/'+window.contactSelected.data.phone_number+'.jpeg')) {
-            Ext.getCmp('sendToImage').setStyle({'background':'url('+ttapp.config.Config.getBaseURL()+'/static/img/user_profile/'+window.contactSelected.data.phone_number+'.jpeg)'});
+        var profile_url = Ext.getStore('phonecontacts').getUserImage(this.phoneNumber);
+
+        if(!Ext.isEmpty(profile_url)) {
+            Ext.getCmp('sendToImage').setStyle({'background':'url('+profile_url+')'});
         }
 
         Ext.select('.user-name').setHtml(window.contactSelected.data.first_name+' '+window.contactSelected.data.last_name);
@@ -233,6 +218,7 @@ Ext.define('ttapp.controller.SendTo', {
         /*Ext.Viewport.setActiveItem('split', 'slide');*/
 
         Ext.Viewport.setActiveItem('tinkbox', 'slide');
+        window.afterTinkSent = 1;
         //Ext.ComponentQuery.query('#options')[0].setActiveItem(2, 'slide');
     },
     showTink: function() {
