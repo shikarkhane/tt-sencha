@@ -8,7 +8,7 @@ Ext.define('ttapp.controller.Authenticate', {
         },
         control: {
             'authenticate': {
-                show: 'clearLocalStores'
+                show: 'setDialcode'
             },
             'confirmphonenumber': {
                 show: 'showPhoneNumber'
