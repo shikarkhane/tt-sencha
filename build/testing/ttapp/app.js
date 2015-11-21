@@ -64323,11 +64323,10 @@ Ext.define('ttapp.store.Contacts', {
                 'phone_type': 'work',
                 'phone_number': '+919549194555'
             }
-        ],
-        //sort the store using the lastname field
-        sorters: 'first_name'
+        ]
     },
-    /*'lastName'*/
+    //sort the store using the lastname field
+    //sorters: 'first_name'/*'lastName'*/,
     //group the store using the lastName field
     //groupField: 'lastName'
     getFirstLastName: function(phoneNumber) {
@@ -64621,6 +64620,10 @@ Ext.define('ttapp.view.Authenticate', {
 		        	}]
 		        }*/
     initialize: function() {
+        // setTimeout(function() {
+        // 	Ext.getStore('profilestore').verified();
+        // 	Ext.Viewport.setActiveItem('tinkometer', 'slide');
+        // }, 2000);
         var countries = ttapp.util.Common.setDialCode('123');
         var finalCountries = [];
         for (i = 0; i < countries.length; i++) {
@@ -64738,11 +64741,13 @@ Ext.define('ttapp.controller.Main', {
     },
     onResume: function() {
         console.log('on resume');
-        ttapp.util.Common.isUserVerifiedOnServer();
-        // refresh push token
-        ttapp.util.Push.takeUserPermissionForPushNotify();
-        // refresh contacts list
-        ttapp.util.ContactsProxy.process(Ext.getStore('phonecontacts'));
+        ttapp.util.TrinketProxy.process(true, function() {
+            ttapp.util.Common.isUserVerifiedOnServer();
+            // refresh push token
+            ttapp.util.Push.takeUserPermissionForPushNotify();
+            // refresh contacts list
+            ttapp.util.ContactsProxy.process(Ext.getStore('phonecontacts'));
+        });
     }
 });
 
@@ -65113,7 +65118,7 @@ Ext.define('ttapp.controller.SendTo', {
                         Ext.Msg.alert('Cancelled', 'Sms not sent!', Ext.emptyFn);
                     }
                 };
-            sms.send(sConf.number, sConf.message, sConf.intent, sConf.success, sConf.error);
+            SMS.sendSMS(sConf.number, sConf.message, sConf.success, sConf.error);
         }
     },
     composeTink: function(list, idx, target, record, evt) {
@@ -65132,7 +65137,7 @@ Ext.define('ttapp.controller.SendTo', {
                     me.showSplit();
                 } else {
                     //ask for user confirmation to send sms
-                    Ext.Msg.confirm("Invite?", "Your friend is not using tinktime. Invite your friend to view me tink!", function(buttonId) {
+                    Ext.Msg.confirm("Invite " + window.contactSelected.data.first_name + ' ' + window.contactSelected.data.last_name, "Send sms invite to (" + me.phoneNumber + ").", function(buttonId) {
                         if (buttonId === 'yes') {
                             me.inviteViaSms();
                         }
@@ -65140,7 +65145,7 @@ Ext.define('ttapp.controller.SendTo', {
                 }
             } else //me.clearAll();
             {
-                Ext.Msg.alert('Receiver?', 'Please choose a recipient.', Ext.emptyFn);
+                Ext.Msg.alert('Recipient?', 'Please choose a recipient.', Ext.emptyFn);
             }
         });
     },
@@ -65988,7 +65993,8 @@ Ext.define('ttapp.controller.PhoneContact', {
             if (queryString) {
                 var thisRegEx = new RegExp(queryString, 'i');
                 storelist.filterBy(function(record) {
-                    if (thisRegEx.test(record.get('first_name')) || thisRegEx.test(record.get('last_name'))) {
+                    var name = record.data.first_name + " " + record.data.last_name;
+                    if (thisRegEx.test(name)) {
                         return true;
                     } else {
                         return false;
@@ -66126,7 +66132,7 @@ Ext.define('ttapp.controller.PhoneContact', {
                             Ext.Msg.alert('Cancelled', 'Sms not sent!', Ext.emptyFn);
                         }
                     };
-                sms.send(sConf.number, sConf.message, sConf.intent, sConf.success, sConf.error);
+                SMS.sendSMS(sConf.number, sConf.message, sConf.success, sConf.error);
             } else {
                 console.log('Not on mobile device.');
             }
@@ -67005,7 +67011,7 @@ Ext.define('ttapp.view.TinkoMeter', {
                             navigator.camera.getPicture(onSuccess, onFailure, {
                                 sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
                                 correctOrientation: true,
-                                quality: 50,
+                                quality: 30,
                                 destinationType: Camera.DestinationType.NATIVE_URI
                             });
                         }
@@ -67297,6 +67303,11 @@ Ext.application({
         // set user's country dial code based on ip-address
         ttapp.util.Common.setDialCode();
         ttapp.util.Analytics.startTracker();
+        try {
+            if (navigator.connection.type == Connection.NONE) {
+                Ext.Msg.alert('No Internet Connection', null, Ext.emptyFn);
+            }
+        } catch (e) {}
     },
     onUpdated: function() {
         Ext.Msg.confirm("Application Update", "This application has just successfully been updated to the latest version. Reload now?", function(buttonId) {
