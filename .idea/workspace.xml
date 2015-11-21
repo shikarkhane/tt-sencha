@@ -557,7 +557,7 @@
       <created>1418896144135</created>
       <option name="number" value="Default" />
       <updated>1418896144135</updated>
-      <workItem from="1448048411720" duration="1709000" />
+      <workItem from="1448048411720" duration="1728000" />
     </task>
     <task id="LOCAL-00001" summary="changed delay for trinket selection">
       <created>1421067636692</created>
@@ -649,11 +649,17 @@
       <option name="project" value="LOCAL" />
       <updated>1448094625756</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="team india milestone">
+      <created>1448094651203</created>
+      <option name="number" value="00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1448094651203</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1709000" />
+    <option name="totallyTimeSpent" value="1728000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1366" height="741" extended-state="6" />
