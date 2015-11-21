@@ -1,9 +1,293 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ee2d71cb-f5c0-4e88-966b-20e63c269257" name="Default" comment="" />
+    <list default="true" id="ee2d71cb-f5c0-4e88-966b-20e63c269257" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-bold-webfont.eot" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-bold-webfont.eot" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-bold-webfont.ttf" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-bold-webfont.ttf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-bold-webfont.woff" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-bold-webfont.woff" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-bold-webfont.woff2" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-bold-webfont.woff2" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-book_1-webfont.eot" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-book_1-webfont.eot" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-book_1-webfont.ttf" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-book_1-webfont.ttf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-book_1-webfont.woff" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-book_1-webfont.woff" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-book_1-webfont.woff2" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-book_1-webfont.woff2" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-light-webfont.eot" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-light-webfont.eot" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-light-webfont.ttf" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-light-webfont.ttf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-light-webfont.woff" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-light-webfont.woff" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-light-webfont.woff2" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-light-webfont.woff2" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-medium-webfont.eot" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-medium-webfont.eot" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-medium-webfont.ttf" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-medium-webfont.ttf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-medium-webfont.woff" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-medium-webfont.woff" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-medium-webfont.woff2" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-medium-webfont.woff2" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-xlight-opentype-webfont.eot" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-xlight-opentype-webfont.eot" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-xlight-opentype-webfont.ttf" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-xlight-opentype-webfont.ttf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-xlight-opentype-webfont.woff" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-xlight-opentype-webfont.woff" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/icons/Icon.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/icons/Icon.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/icons/Icon@2x.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/icons/Icon@2x.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/icons/Icon_Android36.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/icons/Icon_Android36.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/icons/Icon_Android48.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/icons/Icon_Android48.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/icons/Icon~ipad.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/icons/Icon~ipad.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/icons/Icon~ipad@2x.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/icons/Icon~ipad@2x.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/icons/iTunesArtwork.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/icons/iTunesArtwork.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/icons/icon-spot~ipad.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/icons/icon-spot~ipad.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/add_icon.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/add_icon.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/background/bg.jpg" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/background/bg.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/background/landing.jpg" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/background/landing.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/background/split_left.jpg" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/background/split_left.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/background/split_right.jpg" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/background/split_right.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/background/tink.jpg" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/background/tink.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/background/tinkbox.jpg" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/background/tinkbox.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/chat-icon.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/chat-icon.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/chat-open-icon.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/chat-open-icon.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/circle-icon-blank.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/circle-icon-blank.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/circle-icon.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/circle-icon.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/close-gray-icon.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/close-gray-icon.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/edit-icon.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/edit-icon.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/facebook-icon.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/facebook-icon.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/flags/canada.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/flags/canada.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/flags/india.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/flags/india.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/flags/us.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/flags/us.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/green-loader.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/green-loader.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/icons/arrow.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/icons/arrow.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/icons/back-icon.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/icons/back-icon.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/icons/contact-img.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/icons/contact-img.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/icons/delete.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/icons/delete.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/icons/lock.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/icons/lock.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/icons/mail.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/icons/mail.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/icons/next-icon.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/icons/next-icon.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/icons/phone-icon.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/icons/phone-icon.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/icons/search-icon.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/icons/search-icon.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/icons/tink.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/icons/tink.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/icons/tink_.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/icons/tink_.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/img1.jpg" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/img1.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/img2.jpg" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/img2.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/in-out-bar.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/in-out-bar.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/instagram-icon.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/instagram-icon.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/loader-bg-single-old.gif" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/loader-bg-single-old.gif" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/loader-bg-single.gif" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/loader-bg-single.gif" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/loader-bg.gif" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/loader-bg.gif" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/lucky-cats-waving-hands.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/lucky-cats-waving-hands.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/notification-icon.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/notification-icon.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/old-lady-dancing.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/old-lady-dancing.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/others/bg.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/others/bg.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/others/button_red.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/others/button_red.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/others/button_white.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/others/button_white.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/others/flip_design_left1.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/others/flip_design_left1.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/others/flip_design_left2.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/others/flip_design_left2.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/others/flip_design_right1.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/others/flip_design_right1.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/others/flip_design_right2.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/others/flip_design_right2.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/others/loader-old.gif" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/others/loader-old.gif" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/others/loader.gif" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/others/loader.gif" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/others/logo-green.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/others/logo-green.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/others/logo.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/others/logo.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/others/tink.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/others/tink.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/others/tink_design.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/others/tink_design.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/others/tinkbox-logo.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/others/tinkbox-logo.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/others/tinkometer-logo.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/others/tinkometer-logo.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/others/tinktime-logo.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/others/tinktime-logo.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/profile-icon.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/profile-icon.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/recive-icon.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/recive-icon.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/red-loader.gif" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/red-loader.gif" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/right-arrow.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/right-arrow.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/send-icon.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/send-icon.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/tink-icon.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/tink-icon.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/tinkobox-icon.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/tinkobox-icon.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/tinkometer-icon.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/tinkometer-icon.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/twitter-icon.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/twitter-icon.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/user-icon.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/user-icon.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/user-img.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/user-img.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/video-icon-big.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/video-icon-big.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/video-icon-small.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/video-icon-small.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/video-overlay.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/video-overlay.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/white-loader.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/white-loader.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/startup/1496x2048.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/startup/1496x2048.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/startup/1536x2008.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/startup/1536x2008.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/startup/320x460.jpg" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/startup/320x460.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/startup/640x920.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/startup/640x920.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/startup/748x1024.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/startup/748x1024.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/startup/768x1004.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/startup/768x1004.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package/resources/icons/Icon.png" afterPath="$PROJECT_DIR$/package/resources/icons/Icon.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package/resources/icons/Icon@2x.png" afterPath="$PROJECT_DIR$/package/resources/icons/Icon@2x.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package/resources/icons/Icon_Android36.png" afterPath="$PROJECT_DIR$/package/resources/icons/Icon_Android36.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package/resources/icons/Icon_Android48.png" afterPath="$PROJECT_DIR$/package/resources/icons/Icon_Android48.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package/resources/icons/Icon~ipad.png" afterPath="$PROJECT_DIR$/package/resources/icons/Icon~ipad.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package/resources/icons/Icon~ipad@2x.png" afterPath="$PROJECT_DIR$/package/resources/icons/Icon~ipad@2x.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package/resources/icons/iTunesArtwork.png" afterPath="$PROJECT_DIR$/package/resources/icons/iTunesArtwork.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package/resources/icons/icon-spot~ipad.png" afterPath="$PROJECT_DIR$/package/resources/icons/icon-spot~ipad.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package/resources/images/background/landing.jpg" afterPath="$PROJECT_DIR$/package/resources/images/background/landing.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package/resources/images/background/split_left.jpg" afterPath="$PROJECT_DIR$/package/resources/images/background/split_left.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package/resources/images/background/split_right.jpg" afterPath="$PROJECT_DIR$/package/resources/images/background/split_right.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package/resources/images/background/tink.jpg" afterPath="$PROJECT_DIR$/package/resources/images/background/tink.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package/resources/images/background/tinkbox.jpg" afterPath="$PROJECT_DIR$/package/resources/images/background/tinkbox.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package/resources/images/icons/delete.png" afterPath="$PROJECT_DIR$/package/resources/images/icons/delete.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package/resources/images/icons/mail.png" afterPath="$PROJECT_DIR$/package/resources/images/icons/mail.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package/resources/images/icons/tink.png" afterPath="$PROJECT_DIR$/package/resources/images/icons/tink.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package/resources/images/icons/tink_.png" afterPath="$PROJECT_DIR$/package/resources/images/icons/tink_.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package/resources/images/others/button_red.png" afterPath="$PROJECT_DIR$/package/resources/images/others/button_red.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package/resources/images/others/button_white.png" afterPath="$PROJECT_DIR$/package/resources/images/others/button_white.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package/resources/images/others/flip_design_left1.png" afterPath="$PROJECT_DIR$/package/resources/images/others/flip_design_left1.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package/resources/images/others/flip_design_left2.png" afterPath="$PROJECT_DIR$/package/resources/images/others/flip_design_left2.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package/resources/images/others/flip_design_right1.png" afterPath="$PROJECT_DIR$/package/resources/images/others/flip_design_right1.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package/resources/images/others/flip_design_right2.png" afterPath="$PROJECT_DIR$/package/resources/images/others/flip_design_right2.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package/resources/images/others/logo.png" afterPath="$PROJECT_DIR$/package/resources/images/others/logo.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package/resources/images/others/tink.png" afterPath="$PROJECT_DIR$/package/resources/images/others/tink.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package/resources/images/others/tink_design.png" afterPath="$PROJECT_DIR$/package/resources/images/others/tink_design.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package/resources/startup/1496x2048.png" afterPath="$PROJECT_DIR$/package/resources/startup/1496x2048.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package/resources/startup/1536x2008.png" afterPath="$PROJECT_DIR$/package/resources/startup/1536x2008.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package/resources/startup/320x460.jpg" afterPath="$PROJECT_DIR$/package/resources/startup/320x460.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package/resources/startup/640x920.png" afterPath="$PROJECT_DIR$/package/resources/startup/640x920.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package/resources/startup/748x1024.png" afterPath="$PROJECT_DIR$/package/resources/startup/748x1024.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package/resources/startup/768x1004.png" afterPath="$PROJECT_DIR$/package/resources/startup/768x1004.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-bold-webfont.eot" afterPath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-bold-webfont.eot" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-bold-webfont.ttf" afterPath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-bold-webfont.ttf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-bold-webfont.woff" afterPath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-bold-webfont.woff" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-bold-webfont.woff2" afterPath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-bold-webfont.woff2" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-book_1-webfont.eot" afterPath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-book_1-webfont.eot" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-book_1-webfont.ttf" afterPath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-book_1-webfont.ttf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-book_1-webfont.woff" afterPath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-book_1-webfont.woff" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-book_1-webfont.woff2" afterPath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-book_1-webfont.woff2" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-light-webfont.eot" afterPath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-light-webfont.eot" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-light-webfont.ttf" afterPath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-light-webfont.ttf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-light-webfont.woff" afterPath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-light-webfont.woff" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-light-webfont.woff2" afterPath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-light-webfont.woff2" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-medium-webfont.eot" afterPath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-medium-webfont.eot" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-medium-webfont.ttf" afterPath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-medium-webfont.ttf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-medium-webfont.woff" afterPath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-medium-webfont.woff" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-medium-webfont.woff2" afterPath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-medium-webfont.woff2" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-xlight-opentype-webfont.eot" afterPath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-xlight-opentype-webfont.eot" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-xlight-opentype-webfont.ttf" afterPath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-xlight-opentype-webfont.ttf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-xlight-opentype-webfont.woff" afterPath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-xlight-opentype-webfont.woff" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/add_icon.png" afterPath="$PROJECT_DIR$/resources/images/add_icon.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/background/bg.jpg" afterPath="$PROJECT_DIR$/resources/images/background/bg.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/chat-icon.png" afterPath="$PROJECT_DIR$/resources/images/chat-icon.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/chat-open-icon.png" afterPath="$PROJECT_DIR$/resources/images/chat-open-icon.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/circle-icon-blank.png" afterPath="$PROJECT_DIR$/resources/images/circle-icon-blank.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/circle-icon.png" afterPath="$PROJECT_DIR$/resources/images/circle-icon.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/close-gray-icon.png" afterPath="$PROJECT_DIR$/resources/images/close-gray-icon.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/edit-icon.png" afterPath="$PROJECT_DIR$/resources/images/edit-icon.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/facebook-icon.png" afterPath="$PROJECT_DIR$/resources/images/facebook-icon.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/flags/canada.png" afterPath="$PROJECT_DIR$/resources/images/flags/canada.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/flags/india.png" afterPath="$PROJECT_DIR$/resources/images/flags/india.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/flags/us.png" afterPath="$PROJECT_DIR$/resources/images/flags/us.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/green-loader.png" afterPath="$PROJECT_DIR$/resources/images/green-loader.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/icons/arrow.png" afterPath="$PROJECT_DIR$/resources/images/icons/arrow.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/icons/back-icon.png" afterPath="$PROJECT_DIR$/resources/images/icons/back-icon.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/icons/contact-img.png" afterPath="$PROJECT_DIR$/resources/images/icons/contact-img.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/icons/lock.png" afterPath="$PROJECT_DIR$/resources/images/icons/lock.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/icons/next-icon.png" afterPath="$PROJECT_DIR$/resources/images/icons/next-icon.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/icons/phone-icon.png" afterPath="$PROJECT_DIR$/resources/images/icons/phone-icon.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/icons/search-icon.png" afterPath="$PROJECT_DIR$/resources/images/icons/search-icon.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/img1.jpg" afterPath="$PROJECT_DIR$/resources/images/img1.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/img2.jpg" afterPath="$PROJECT_DIR$/resources/images/img2.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/in-out-bar.png" afterPath="$PROJECT_DIR$/resources/images/in-out-bar.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/instagram-icon.png" afterPath="$PROJECT_DIR$/resources/images/instagram-icon.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/loader-bg-single-old.gif" afterPath="$PROJECT_DIR$/resources/images/loader-bg-single-old.gif" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/loader-bg-single.gif" afterPath="$PROJECT_DIR$/resources/images/loader-bg-single.gif" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/loader-bg.gif" afterPath="$PROJECT_DIR$/resources/images/loader-bg.gif" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/lucky-cats-waving-hands.png" afterPath="$PROJECT_DIR$/resources/images/lucky-cats-waving-hands.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/notification-icon.png" afterPath="$PROJECT_DIR$/resources/images/notification-icon.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/old-lady-dancing.png" afterPath="$PROJECT_DIR$/resources/images/old-lady-dancing.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/others/bg.png" afterPath="$PROJECT_DIR$/resources/images/others/bg.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/others/loader-old.gif" afterPath="$PROJECT_DIR$/resources/images/others/loader-old.gif" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/others/loader.gif" afterPath="$PROJECT_DIR$/resources/images/others/loader.gif" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/others/logo-green.png" afterPath="$PROJECT_DIR$/resources/images/others/logo-green.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/others/tinkbox-logo.png" afterPath="$PROJECT_DIR$/resources/images/others/tinkbox-logo.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/others/tinkometer-logo.png" afterPath="$PROJECT_DIR$/resources/images/others/tinkometer-logo.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/others/tinktime-logo.png" afterPath="$PROJECT_DIR$/resources/images/others/tinktime-logo.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/profile-icon.png" afterPath="$PROJECT_DIR$/resources/images/profile-icon.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/recive-icon.png" afterPath="$PROJECT_DIR$/resources/images/recive-icon.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/red-loader.gif" afterPath="$PROJECT_DIR$/resources/images/red-loader.gif" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/right-arrow.png" afterPath="$PROJECT_DIR$/resources/images/right-arrow.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/send-icon.png" afterPath="$PROJECT_DIR$/resources/images/send-icon.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/tink-icon.png" afterPath="$PROJECT_DIR$/resources/images/tink-icon.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/tinkobox-icon.png" afterPath="$PROJECT_DIR$/resources/images/tinkobox-icon.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/tinkometer-icon.png" afterPath="$PROJECT_DIR$/resources/images/tinkometer-icon.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/twitter-icon.png" afterPath="$PROJECT_DIR$/resources/images/twitter-icon.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/user-icon.png" afterPath="$PROJECT_DIR$/resources/images/user-icon.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/user-img.png" afterPath="$PROJECT_DIR$/resources/images/user-img.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/video-icon-big.png" afterPath="$PROJECT_DIR$/resources/images/video-icon-big.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/video-icon-small.png" afterPath="$PROJECT_DIR$/resources/images/video-icon-small.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/video-overlay.png" afterPath="$PROJECT_DIR$/resources/images/video-overlay.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/white-loader.png" afterPath="$PROJECT_DIR$/resources/images/white-loader.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/tt-sencha.iml" afterPath="$PROJECT_DIR$/.idea/tt-sencha.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.sencha/app/build.properties" afterPath="$PROJECT_DIR$/.sencha/app/build.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.sencha/app/development.properties" afterPath="$PROJECT_DIR$/.sencha/app/development.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.sencha/app/native.properties" afterPath="$PROJECT_DIR$/.sencha/app/native.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.sencha/app/package.properties" afterPath="$PROJECT_DIR$/.sencha/app/package.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.sencha/app/production.properties" afterPath="$PROJECT_DIR$/.sencha/app/production.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.sencha/app/sencha.cfg" afterPath="$PROJECT_DIR$/.sencha/app/sencha.cfg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.sencha/app/testing.properties" afterPath="$PROJECT_DIR$/.sencha/app/testing.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.sencha/workspace/sencha.cfg" afterPath="$PROJECT_DIR$/.sencha/workspace/sencha.cfg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.json" afterPath="$PROJECT_DIR$/app.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controller/Authenticate.js" afterPath="$PROJECT_DIR$/app/controller/Authenticate.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controller/Main.js" afterPath="$PROJECT_DIR$/app/controller/Main.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controller/PhoneContact.js" afterPath="$PROJECT_DIR$/app/controller/PhoneContact.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controller/SendTo.js" afterPath="$PROJECT_DIR$/app/controller/SendTo.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controller/TinkBox.js" afterPath="$PROJECT_DIR$/app/controller/TinkBox.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controller/TinkChat.js" afterPath="$PROJECT_DIR$/app/controller/TinkChat.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/model/Profile.js" afterPath="$PROJECT_DIR$/app/model/Profile.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/overrides/PaintMonitor.js" afterPath="$PROJECT_DIR$/app/overrides/PaintMonitor.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/overrides/SizeMonitor.js" afterPath="$PROJECT_DIR$/app/overrides/SizeMonitor.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/store/Contacts.js" afterPath="$PROJECT_DIR$/app/store/Contacts.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/store/Profile.js" afterPath="$PROJECT_DIR$/app/store/Profile.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/util/Analytics.js" afterPath="$PROJECT_DIR$/app/util/Analytics.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/util/Common.js" afterPath="$PROJECT_DIR$/app/util/Common.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/Authenticate.js" afterPath="$PROJECT_DIR$/app/view/Authenticate.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/ConfirmPhoneNumber.js" afterPath="$PROJECT_DIR$/app/view/ConfirmPhoneNumber.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/PhoneContacts.js" afterPath="$PROJECT_DIR$/app/view/PhoneContacts.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/SendTo.js" afterPath="$PROJECT_DIR$/app/view/SendTo.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/TinkBox.js" afterPath="$PROJECT_DIR$/app/view/TinkBox.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/TinkChat.js" afterPath="$PROJECT_DIR$/app/view/TinkChat.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/TinkoMeter.js" afterPath="$PROJECT_DIR$/app/view/TinkoMeter.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bootstrap.json" afterPath="$PROJECT_DIR$/bootstrap.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/app.js" afterPath="$PROJECT_DIR$/build/testing/ttapp/app.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/cache.appcache" afterPath="$PROJECT_DIR$/build/testing/ttapp/cache.appcache" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/circles.min.js" afterPath="$PROJECT_DIR$/build/testing/ttapp/circles.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/index.html" afterPath="$PROJECT_DIR$/build/testing/ttapp/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/jquery.js" afterPath="$PROJECT_DIR$/build/testing/ttapp/jquery.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/jquery.min.js" afterPath="$PROJECT_DIR$/build/testing/ttapp/jquery.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/moment.js" afterPath="$PROJECT_DIR$/build/testing/ttapp/moment.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/css/app.css" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/css/app.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-bold-webfont.svg" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-bold-webfont.svg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-book_1-demo.html" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-book_1-demo.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-book_1-webfont.svg" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-book_1-webfont.svg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-light-demo.html" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-light-demo.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-light-webfont.svg" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-light-webfont.svg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-medium-webfont.svg" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-medium-webfont.svg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-xlight-opentype-webfont.svg" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-xlight-opentype-webfont.svg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/circles.min.js" afterPath="$PROJECT_DIR$/circles.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jquery.js" afterPath="$PROJECT_DIR$/jquery.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jquery.min.js" afterPath="$PROJECT_DIR$/jquery.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/moment.js" afterPath="$PROJECT_DIR$/moment.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package/app.js" afterPath="$PROJECT_DIR$/package/app.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package/app.json" afterPath="$PROJECT_DIR$/package/app.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package/archive/app.js/603262d003bd75eb631d4ab114e251c4abf6c3fc" afterPath="$PROJECT_DIR$/package/archive/app.js/603262d003bd75eb631d4ab114e251c4abf6c3fc" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package/archive/resources/css/app.css/b2d1e1ce80ba416f1642e1d0863c205fb8603402" afterPath="$PROJECT_DIR$/package/archive/resources/css/app.css/b2d1e1ce80ba416f1642e1d0863c205fb8603402" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package/cache.appcache" afterPath="$PROJECT_DIR$/package/cache.appcache" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package/index.html" afterPath="$PROJECT_DIR$/package/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package/resources/css/app.css" afterPath="$PROJECT_DIR$/package/resources/css/app.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/css/app.css" afterPath="$PROJECT_DIR$/resources/css/app.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-bold-webfont.svg" afterPath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-bold-webfont.svg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-book_1-demo.html" afterPath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-book_1-demo.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-book_1-webfont.svg" afterPath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-book_1-webfont.svg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-light-demo.html" afterPath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-light-demo.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-light-webfont.svg" afterPath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-light-webfont.svg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-medium-webfont.svg" afterPath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-medium-webfont.svg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-xlight-opentype-webfont.svg" afterPath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-xlight-opentype-webfont.svg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/sass/app.scss" afterPath="$PROJECT_DIR$/resources/sass/app.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/sass/config.rb" afterPath="$PROJECT_DIR$/resources/sass/config.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sass/example/bootstrap.js" afterPath="$PROJECT_DIR$/sass/example/bootstrap.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/workspace.json" afterPath="$PROJECT_DIR$/workspace.json" />
+    </list>
     <ignored path="tt-sencha.iws" />
     <ignored path=".idea/workspace.xml" />
+    <ignored path=".idea/dataSources.local.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,19 +299,16 @@
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
-  <component name="DaemonCodeAnalyzer">
-    <disable_hints />
-  </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
     <favorites_list name="tt-sencha" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="Config.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/config/Config.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="671">
+            <state vertical-scroll-proportion="0.0">
               <caret line="0" column="31" selection-start-line="0" selection-start-column="12" selection-end-line="0" selection-end-column="31" />
               <folding />
             </state>
@@ -43,6 +324,11 @@
       </list>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GradleLocalSettings">
+    <option name="externalProjectsViewState">
+      <projects_view />
+    </option>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -74,14 +360,15 @@
       </list>
     </option>
   </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" />
+  <component name="JsBuildToolPackageJson" detection-done="true" />
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1176" />
+    <option name="y" value="23" />
+    <option name="width" value="1366" />
+    <option name="height" value="741" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -104,9 +391,12 @@
       <autoscrollToSource />
       <autoscrollFromSource />
       <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -121,70 +411,23 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="tt-sencha" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tt-sencha" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tt-sencha" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tt-sencha" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tt-sencha" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controller" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tt-sencha" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tt-sencha" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
+              <option name="myItemId" value="tt-app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="recentsLimit" value="5" />
     <property name="FullScreen" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -195,44 +438,395 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
+    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
+      <module name="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="DEPLOY" value="true" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="USE_COMMAND_LINE" value="true" />
+      <option name="COMMAND_LINE" value="" />
+      <option name="WIPE_USER_DATA" value="false" />
+      <option name="DISABLE_BOOT_ANIMATION" value="false" />
+      <option name="NETWORK_SPEED" value="full" />
+      <option name="NETWORK_LATENCY" value="none" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
+      <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="0" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="SELECTED_CLOUD_DEVICE_CONFIGURATION_ID" value="0" />
+      <option name="SELECTED_CLOUD_DEVICE_PROJECT_ID" value="" />
+      <option name="IS_VALID_CLOUD_MATRIX_SELECTION" value="false" />
+      <option name="INVALID_CLOUD_MATRIX_SELECTION_ERROR" value="" />
+      <option name="IS_VALID_CLOUD_DEVICE_SELECTION" value="false" />
+      <option name="INVALID_CLOUD_DEVICE_SELECTION_ERROR" value="" />
+      <option name="CLOUD_DEVICE_SERIAL_NUMBER" value="" />
       <method />
     </configuration>
-    <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
+    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
+      <module name="" />
+      <option name="TESTING_TYPE" value="0" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="USE_COMMAND_LINE" value="true" />
+      <option name="COMMAND_LINE" value="" />
+      <option name="WIPE_USER_DATA" value="false" />
+      <option name="DISABLE_BOOT_ANIMATION" value="false" />
+      <option name="NETWORK_SPEED" value="full" />
+      <option name="NETWORK_LATENCY" value="none" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
+      <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="0" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="SELECTED_CLOUD_DEVICE_CONFIGURATION_ID" value="0" />
+      <option name="SELECTED_CLOUD_DEVICE_PROJECT_ID" value="" />
+      <option name="IS_VALID_CLOUD_MATRIX_SELECTION" value="false" />
+      <option name="INVALID_CLOUD_MATRIX_SELECTION_ERROR" value="" />
+      <option name="IS_VALID_CLOUD_DEVICE_SELECTION" value="false" />
+      <option name="INVALID_CLOUD_DEVICE_SELECTION_ERROR" value="" />
+      <option name="CLOUD_DEVICE_SERIAL_NUMBER" value="" />
       <method />
     </configuration>
-    <configuration default="true" type="JSTestDriver:ConfigurationType" factoryName="JsTestDriver">
-      <setting name="configLocationType" value="CONFIG_FILE" />
-      <setting name="settingsFile" value="" />
-      <setting name="serverType" value="INTERNAL" />
-      <setting name="preferredDebugBrowser" value="Chrome" />
+    <configuration default="true" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
       <method />
     </configuration>
-    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" config-file="">
+    <configuration default="true" type="ArquillianJUnit" factoryName="">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="true" type="ArquillianTestNG" factoryName="">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="myFilePath" />
+      <option name="GLUE" />
+      <option name="myNameFilter" />
+      <option name="myGeneratedName" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="FlashRunConfigurationType" factoryName="Flash App">
+      <option name="BCName" value="" />
+      <option name="IOSSimulatorSdkPath" value="" />
+      <option name="adlOptions" value="" />
+      <option name="airProgramParameters" value="" />
+      <option name="appDescriptorForEmulator" value="Android" />
+      <option name="debugTransport" value="USB" />
+      <option name="debuggerSdkRaw" value="BC SDK" />
+      <option name="emulator" value="NexusOne" />
+      <option name="emulatorAdlOptions" value="" />
+      <option name="fastPackaging" value="true" />
+      <option name="fullScreenHeight" value="0" />
+      <option name="fullScreenWidth" value="0" />
+      <option name="launchUrl" value="false" />
+      <option name="launcherParameters">
+        <LauncherParameters>
+          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
+          <option name="launcherType" value="OSDefault" />
+          <option name="newPlayerInstance" value="false" />
+          <option name="playerPath" value="/Applications/Flash Player Debugger.app" />
+        </LauncherParameters>
+      </option>
+      <option name="mobileRunTarget" value="Emulator" />
+      <option name="moduleName" value="" />
+      <option name="overriddenMainClass" value="" />
+      <option name="overriddenOutputFileName" value="" />
+      <option name="overrideMainClass" value="false" />
+      <option name="runTrusted" value="true" />
+      <option name="screenDpi" value="0" />
+      <option name="screenHeight" value="0" />
+      <option name="screenWidth" value="0" />
+      <option name="url" value="http://" />
+      <option name="usbDebugPort" value="7936" />
+      <method />
+    </configuration>
+    <configuration default="true" type="FlexUnitRunConfigurationType" factoryName="FlexUnit" appDescriptorForEmulator="Android" class_name="" emulatorAdlOptions="" method_name="" package_name="" scope="Class">
+      <option name="BCName" value="" />
+      <option name="launcherParameters">
+        <LauncherParameters>
+          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
+          <option name="launcherType" value="OSDefault" />
+          <option name="newPlayerInstance" value="false" />
+          <option name="playerPath" value="/Applications/Flash Player Debugger.app" />
+        </LauncherParameters>
+      </option>
+      <option name="moduleName" value="" />
+      <option name="trusted" value="true" />
+      <method />
+    </configuration>
+    <configuration default="true" type="GradleRunConfiguration" factoryName="Gradle">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list />
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <method />
+    </configuration>
+    <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails">
+      <module name="" />
+      <setting name="vmparams" value="" />
+      <setting name="cmdLine" value="run-app" />
+      <setting name="depsClasspath" value="false" />
+      <setting name="passParentEnv" value="true" />
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <setting name="launchBrowser" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="true" type="JUnitTestDiscovery" factoryName="JUnit Test Discovery" changeList="All">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="true" type="JarApplication" factoryName="JAR Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="Java Scratch" factoryName="Java Scratch">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="SCRATCH_FILE_ID" value="0" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
       <envs />
       <method />
     </configuration>
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
       <method />
     </configuration>
-    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" working-dir="">
+    <configuration default="true" type="JetRunConfigurationType" factoryName="Kotlin">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="tt-sencha" />
+      <envs />
       <method />
     </configuration>
-    <configuration default="true" type="cucumber.js" factoryName="Cucumber.js">
-      <option name="cucumberJsArguments" value="" />
-      <option name="executablePath" />
-      <option name="filePath" />
+    <configuration default="true" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="TestNGTestDiscovery" factoryName="TestNG Test Discovery" changeList="All">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
       <node-options />
       <gulpfile />
       <tasks />
+      <arguments />
       <pass-parent-envs>true</pass-parent-envs>
       <envs />
       <method />
     </configuration>
-    <list size="0" />
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run-script" />
+      <scripts />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="osgi.bnd.run" factoryName="Run Launcher">
+      <method />
+    </configuration>
+    <configuration default="true" type="osgi.bnd.run" factoryName="Test Launcher (JUnit)">
+      <method />
+    </configuration>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
   <component name="SvnConfiguration">
@@ -244,6 +838,7 @@
       <created>1418896144135</created>
       <option name="number" value="Default" />
       <updated>1418896144135</updated>
+      <workItem from="1448048411720" duration="1210000" />
     </task>
     <task id="LOCAL-00001" summary="changed delay for trinket selection">
       <created>1421067636692</created>
@@ -326,49 +921,58 @@
     <option name="localTasksCounter" value="14" />
     <servers />
   </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="1210000" />
+  </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1176" extended-state="6" />
+    <frame x="0" y="23" width="1366" height="741" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18020834" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32917467" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32917467" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32917467" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32886904" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2284041" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32917467" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32917467" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18020834" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18020834" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
     </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -384,9 +988,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <option name="myTodoPanelSettings">
-      <TodoPanelSettings />
-    </option>
     <MESSAGE value="changed delay for trinket selection" />
     <MESSAGE value="chosen trinket is set in iframe" />
     <MESSAGE value="search on receipients" />
@@ -406,9 +1007,9 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/view/Options.js">
+    <entry file="file://$PROJECT_DIR$/app/config/Config.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="527">
+        <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
@@ -416,370 +1017,231 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controller/SendTo.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1071" max-vertical-offset="2431">
+        <state vertical-scroll-proportion="0.0">
           <caret line="110" column="8" selection-start-line="110" selection-start-column="8" selection-end-line="110" selection-end-column="74" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controller/Trinket.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="459">
+        <state vertical-scroll-proportion="0.0">
           <caret line="15" column="78" selection-start-line="15" selection-start-column="78" selection-end-line="15" selection-end-column="78" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controller/Tink.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="629" max-vertical-offset="1071">
+        <state vertical-scroll-proportion="0.0">
           <caret line="37" column="17" selection-start-line="37" selection-start-column="17" selection-end-line="37" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/view/Tink.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="34" max-vertical-offset="1190">
+        <state vertical-scroll-proportion="0.0">
           <caret line="47" column="50" selection-start-line="47" selection-start-column="50" selection-end-line="47" selection-end-column="50" />
-          <folding>
-            <marker date="1421331876026" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="48" max-vertical-offset="1156">
+        <state vertical-scroll-proportion="0.0">
           <caret line="62" column="0" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="516" max-vertical-offset="2873">
+        <state vertical-scroll-proportion="0.0">
           <caret line="65" column="21" selection-start-line="65" selection-start-column="21" selection-end-line="65" selection-end-column="67" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/runtime.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.31863728" vertical-offset="70181" max-vertical-offset="74341">
+        <state vertical-scroll-proportion="0.31863728">
           <caret line="19021" column="6" selection-start-line="19021" selection-start-column="6" selection-end-line="19021" selection-end-column="6" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5808678" vertical-offset="516" max-vertical-offset="2873">
+        <state vertical-scroll-proportion="0.5808678">
           <caret line="65" column="21" selection-start-line="65" selection-start-column="21" selection-end-line="65" selection-end-column="67" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/bootstrap.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3323398" vertical-offset="355" max-vertical-offset="25279">
+        <state vertical-scroll-proportion="0.3323398">
           <caret line="38" column="37" selection-start-line="38" selection-start-column="37" selection-end-line="38" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/tinks/default.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1001">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/tinks/japanese-art.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1001">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/tinks/retro.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1001">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/tinks/teenage.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1001">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/tinks/money.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1001">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/tinks/elvis.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1001">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/tinks/train.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1001">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/tinks/fish.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1001">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/tinks/coke.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1001">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/tinks/kids.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.10461538" vertical-offset="0" max-vertical-offset="975">
-          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/model/Contact.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1014">
+        <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/model/Message.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5197239" vertical-offset="0" max-vertical-offset="1014">
-          <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/touch/src/data/Store.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.016765285" vertical-offset="33558" max-vertical-offset="43911">
+        <state vertical-scroll-proportion="0.016765285">
           <caret line="1975" column="4" selection-start-line="1975" selection-start-column="4" selection-end-line="1975" selection-end-column="4" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/model/Profile.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.13412228" vertical-offset="0" max-vertical-offset="1014">
+        <state vertical-scroll-proportion="0.13412228">
           <caret line="8" column="30" selection-start-line="8" selection-start-column="30" selection-end-line="8" selection-end-column="30" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/store/Trinkets.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5946349" vertical-offset="944" max-vertical-offset="1683">
+        <state vertical-scroll-proportion="0.5946349">
           <caret line="79" column="20" selection-start-line="79" selection-start-column="20" selection-end-line="79" selection-end-column="20" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/store/Profile.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5186289" vertical-offset="349" max-vertical-offset="1020">
+        <state vertical-scroll-proportion="0.5186289">
           <caret line="41" column="47" selection-start-line="41" selection-start-column="47" selection-end-line="41" selection-end-column="47" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/view/Authenticate.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="561">
+        <state vertical-scroll-proportion="0.0">
           <caret line="14" column="36" selection-start-line="14" selection-start-column="36" selection-end-line="14" selection-end-column="36" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/view/SendTo.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.016765285" vertical-offset="0" max-vertical-offset="1014">
+        <state vertical-scroll-proportion="0.016765285">
           <caret line="1" column="26" selection-start-line="1" selection-start-column="17" selection-end-line="1" selection-end-column="26" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/sass/app.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1014">
+        <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/store/Messages.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.58271235" vertical-offset="0" max-vertical-offset="765">
-          <caret line="23" column="23" selection-start-line="23" selection-start-column="23" selection-end-line="23" selection-end-column="23" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/view/TimerClock.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.93740684" vertical-offset="85" max-vertical-offset="1207">
+        <state vertical-scroll-proportion="0.93740684">
           <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/view/Trinket.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="374">
+        <state vertical-scroll-proportion="0.0">
           <caret line="2" column="19" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/DogEar.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1014">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/view/Landing.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="493">
+        <state vertical-scroll-proportion="0.0">
           <caret line="14" column="19" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/view/SplitTinkBox.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="476">
+        <state vertical-scroll-proportion="0.0">
           <caret line="3" column="12" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/view/Split.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="680">
+        <state vertical-scroll-proportion="0.0">
           <caret line="28" column="45" selection-start-line="28" selection-start-column="45" selection-end-line="28" selection-end-column="45" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/view/SplitNewTink.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="476">
+        <state vertical-scroll-proportion="0.0">
           <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/Feed.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.016765285" vertical-offset="0" max-vertical-offset="1014">
-          <caret line="1" column="3" selection-start-line="1" selection-start-column="3" selection-end-line="2" selection-end-column="18" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1122">
+        <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controller/DogEar.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="493">
-          <caret line="4" column="47" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="47" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controller/Readme.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1014">
+        <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controller/Split.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="459">
+        <state vertical-scroll-proportion="0.0">
           <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/view/Tink.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="34" max-vertical-offset="1190">
+        <state vertical-scroll-proportion="0.0">
           <caret line="47" column="50" selection-start-line="47" selection-start-column="50" selection-end-line="47" selection-end-column="50" />
-          <folding>
-            <marker date="1421331876026" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controller/SendTo.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.10059172" vertical-offset="1071" max-vertical-offset="2431">
+        <state vertical-scroll-proportion="0.10059172">
           <caret line="69" column="38" selection-start-line="69" selection-start-column="38" selection-end-line="69" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/Options.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.06706114" vertical-offset="0" max-vertical-offset="1014">
-          <caret line="4" column="26" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controller/Tink.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1071">
+        <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controller/Trinket.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2514793" vertical-offset="0" max-vertical-offset="1014">
+        <state vertical-scroll-proportion="0.2514793">
           <caret line="15" column="78" selection-start-line="15" selection-start-column="78" selection-end-line="15" selection-end-column="78" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controller/Landing.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.234714" vertical-offset="0" max-vertical-offset="1014">
+        <state vertical-scroll-proportion="0.234714">
           <caret line="14" column="50" selection-start-line="14" selection-start-column="50" selection-end-line="14" selection-end-column="50" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controller/Authenticate.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9664694" vertical-offset="142" max-vertical-offset="1224">
+        <state vertical-scroll-proportion="0.9664694">
           <caret line="66" column="0" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/config/Config.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="272">
+        <state vertical-scroll-proportion="0.0">
           <caret line="0" column="31" selection-start-line="0" selection-start-column="12" selection-end-line="0" selection-end-column="31" />
           <folding />
         </state>

@@ -35,7 +35,8 @@ Ext.define('ttapp.store.Profile', {
             is_verified: isVerified,
             last_updated_on: lastUpdatedOn,
             selected_trinket_name: selectedTrinketName,
-            last_seconds_sent: lastSecondsSent
+            last_seconds_sent: lastSecondsSent,
+            profile_url: null
         });
 
         var errors = usr.validate();
@@ -47,7 +48,6 @@ Ext.define('ttapp.store.Profile', {
         } else {
             Ext.Msg.alert('Check number', 'Phone number is not correct', Ext.emptyFn);
         }
-
         return result;
     },
     getPhoneNumber: function(callback) {
@@ -89,6 +89,28 @@ Ext.define('ttapp.store.Profile', {
     getLastSentSeconds: function(callback) {
         var record = this.getAt(0);
         callback(record ? record.get('last_seconds_sent') : false);
-    }
+    },
 
+    setUserImage: function() {
+        var me = this;
+        var record = this.getAt(0);
+
+        Ext.Ajax.request({
+            url: ttapp.config.Config.getBaseURL()+'/profile-picture/'+record.get('phone_number')+'/',
+            method: 'GET',
+            disableCaching: false,
+            success: function(response) {
+                record.set('profile_url', response.responseText);
+                me.sync();
+            },
+            failure: function(response) {
+
+            }
+        });
+    },
+
+    getUserImage: function(callback) {
+        var record = this.getAt(0);
+        callback(record ? record.get('profile_url') : false);
+    }
 });

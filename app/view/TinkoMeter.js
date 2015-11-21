@@ -45,7 +45,7 @@ Ext.define('ttapp.view.TinkoMeter', {
 
                                 if(Ext.os.is('Android')) {
                                     window.FilePath.resolveNativePath(imageURI, function(response) {
-                                        console.log("success__"+JSON.stringify(response));
+                                        onsole.log("success__"+JSON.stringify(response));
                                     }, function(response) {
                                         console.log("fail__"+JSON.stringify(response));
                                     });
@@ -61,11 +61,12 @@ Ext.define('ttapp.view.TinkoMeter', {
                                 document.getElementById('user_img').style.backgroundImage = "url("+imageURI+")";
 
                                 var win = function(r) {
+                                    Ext.Viewport.setMasked(false);
                                     console.log(JSON.stringify(r));
                                     console.log("Code = " + r.responseCode);
                                     console.log("Response = " + r.response);
                                     console.log("Sent = " + r.bytesSent);
-                                    Ext.Viewport.setMasked(false);
+                                    Ext.getStore('profilestore').setUserImage();
                                 }
 
                                 var fail = function(error) {
@@ -104,8 +105,8 @@ Ext.define('ttapp.view.TinkoMeter', {
                     },
                     'painted': {
                         fn: function(panel, eOpts) {
-                            Ext.getStore('profilestore').getPhoneNumber(function(num){
-                                document.getElementById('user_img').style.backgroundImage = "url("+ttapp.config.Config.getBaseURL()+'/static/img/user_profile/'+num+".jpeg)";
+                            Ext.getStore('profilestore').getUserImage(function(image) {
+                                document.getElementById('user_img').style.backgroundImage = "url("+image+")";
                             });
                         }
                     }
