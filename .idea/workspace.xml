@@ -2,288 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ee2d71cb-f5c0-4e88-966b-20e63c269257" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-bold-webfont.eot" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-bold-webfont.eot" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-bold-webfont.ttf" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-bold-webfont.ttf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-bold-webfont.woff" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-bold-webfont.woff" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-bold-webfont.woff2" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-bold-webfont.woff2" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-book_1-webfont.eot" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-book_1-webfont.eot" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-book_1-webfont.ttf" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-book_1-webfont.ttf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-book_1-webfont.woff" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-book_1-webfont.woff" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-book_1-webfont.woff2" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-book_1-webfont.woff2" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-light-webfont.eot" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-light-webfont.eot" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-light-webfont.ttf" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-light-webfont.ttf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-light-webfont.woff" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-light-webfont.woff" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-light-webfont.woff2" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-light-webfont.woff2" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-medium-webfont.eot" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-medium-webfont.eot" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-medium-webfont.ttf" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-medium-webfont.ttf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-medium-webfont.woff" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-medium-webfont.woff" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-medium-webfont.woff2" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-medium-webfont.woff2" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-xlight-opentype-webfont.eot" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-xlight-opentype-webfont.eot" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-xlight-opentype-webfont.ttf" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-xlight-opentype-webfont.ttf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-xlight-opentype-webfont.woff" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-xlight-opentype-webfont.woff" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/icons/Icon.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/icons/Icon.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/icons/Icon@2x.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/icons/Icon@2x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/icons/Icon_Android36.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/icons/Icon_Android36.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/icons/Icon_Android48.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/icons/Icon_Android48.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/icons/Icon~ipad.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/icons/Icon~ipad.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/icons/Icon~ipad@2x.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/icons/Icon~ipad@2x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/icons/iTunesArtwork.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/icons/iTunesArtwork.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/icons/icon-spot~ipad.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/icons/icon-spot~ipad.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/add_icon.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/add_icon.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/background/bg.jpg" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/background/bg.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/background/landing.jpg" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/background/landing.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/background/split_left.jpg" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/background/split_left.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/background/split_right.jpg" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/background/split_right.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/background/tink.jpg" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/background/tink.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/background/tinkbox.jpg" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/background/tinkbox.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/chat-icon.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/chat-icon.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/chat-open-icon.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/chat-open-icon.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/circle-icon-blank.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/circle-icon-blank.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/circle-icon.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/circle-icon.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/close-gray-icon.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/close-gray-icon.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/edit-icon.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/edit-icon.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/facebook-icon.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/facebook-icon.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/flags/canada.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/flags/canada.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/flags/india.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/flags/india.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/flags/us.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/flags/us.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/green-loader.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/green-loader.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/icons/arrow.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/icons/arrow.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/icons/back-icon.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/icons/back-icon.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/icons/contact-img.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/icons/contact-img.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/icons/delete.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/icons/delete.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/icons/lock.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/icons/lock.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/icons/mail.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/icons/mail.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/icons/next-icon.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/icons/next-icon.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/icons/phone-icon.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/icons/phone-icon.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/icons/search-icon.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/icons/search-icon.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/icons/tink.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/icons/tink.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/icons/tink_.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/icons/tink_.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/img1.jpg" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/img1.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/img2.jpg" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/img2.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/in-out-bar.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/in-out-bar.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/instagram-icon.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/instagram-icon.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/loader-bg-single-old.gif" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/loader-bg-single-old.gif" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/loader-bg-single.gif" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/loader-bg-single.gif" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/loader-bg.gif" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/loader-bg.gif" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/lucky-cats-waving-hands.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/lucky-cats-waving-hands.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/notification-icon.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/notification-icon.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/old-lady-dancing.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/old-lady-dancing.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/others/bg.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/others/bg.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/others/button_red.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/others/button_red.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/others/button_white.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/others/button_white.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/others/flip_design_left1.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/others/flip_design_left1.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/others/flip_design_left2.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/others/flip_design_left2.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/others/flip_design_right1.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/others/flip_design_right1.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/others/flip_design_right2.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/others/flip_design_right2.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/others/loader-old.gif" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/others/loader-old.gif" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/others/loader.gif" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/others/loader.gif" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/others/logo-green.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/others/logo-green.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/others/logo.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/others/logo.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/others/tink.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/others/tink.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/others/tink_design.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/others/tink_design.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/others/tinkbox-logo.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/others/tinkbox-logo.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/others/tinkometer-logo.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/others/tinkometer-logo.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/others/tinktime-logo.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/others/tinktime-logo.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/profile-icon.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/profile-icon.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/recive-icon.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/recive-icon.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/red-loader.gif" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/red-loader.gif" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/right-arrow.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/right-arrow.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/send-icon.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/send-icon.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/tink-icon.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/tink-icon.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/tinkobox-icon.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/tinkobox-icon.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/tinkometer-icon.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/tinkometer-icon.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/twitter-icon.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/twitter-icon.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/user-icon.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/user-icon.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/user-img.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/user-img.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/video-icon-big.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/video-icon-big.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/video-icon-small.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/video-icon-small.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/video-overlay.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/video-overlay.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/images/white-loader.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/images/white-loader.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/startup/1496x2048.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/startup/1496x2048.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/startup/1536x2008.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/startup/1536x2008.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/startup/320x460.jpg" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/startup/320x460.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/startup/640x920.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/startup/640x920.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/startup/748x1024.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/startup/748x1024.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/startup/768x1004.png" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/startup/768x1004.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package/resources/icons/Icon.png" afterPath="$PROJECT_DIR$/package/resources/icons/Icon.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package/resources/icons/Icon@2x.png" afterPath="$PROJECT_DIR$/package/resources/icons/Icon@2x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package/resources/icons/Icon_Android36.png" afterPath="$PROJECT_DIR$/package/resources/icons/Icon_Android36.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package/resources/icons/Icon_Android48.png" afterPath="$PROJECT_DIR$/package/resources/icons/Icon_Android48.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package/resources/icons/Icon~ipad.png" afterPath="$PROJECT_DIR$/package/resources/icons/Icon~ipad.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package/resources/icons/Icon~ipad@2x.png" afterPath="$PROJECT_DIR$/package/resources/icons/Icon~ipad@2x.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package/resources/icons/iTunesArtwork.png" afterPath="$PROJECT_DIR$/package/resources/icons/iTunesArtwork.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package/resources/icons/icon-spot~ipad.png" afterPath="$PROJECT_DIR$/package/resources/icons/icon-spot~ipad.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package/resources/images/background/landing.jpg" afterPath="$PROJECT_DIR$/package/resources/images/background/landing.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package/resources/images/background/split_left.jpg" afterPath="$PROJECT_DIR$/package/resources/images/background/split_left.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package/resources/images/background/split_right.jpg" afterPath="$PROJECT_DIR$/package/resources/images/background/split_right.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package/resources/images/background/tink.jpg" afterPath="$PROJECT_DIR$/package/resources/images/background/tink.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package/resources/images/background/tinkbox.jpg" afterPath="$PROJECT_DIR$/package/resources/images/background/tinkbox.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package/resources/images/icons/delete.png" afterPath="$PROJECT_DIR$/package/resources/images/icons/delete.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package/resources/images/icons/mail.png" afterPath="$PROJECT_DIR$/package/resources/images/icons/mail.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package/resources/images/icons/tink.png" afterPath="$PROJECT_DIR$/package/resources/images/icons/tink.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package/resources/images/icons/tink_.png" afterPath="$PROJECT_DIR$/package/resources/images/icons/tink_.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package/resources/images/others/button_red.png" afterPath="$PROJECT_DIR$/package/resources/images/others/button_red.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package/resources/images/others/button_white.png" afterPath="$PROJECT_DIR$/package/resources/images/others/button_white.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package/resources/images/others/flip_design_left1.png" afterPath="$PROJECT_DIR$/package/resources/images/others/flip_design_left1.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package/resources/images/others/flip_design_left2.png" afterPath="$PROJECT_DIR$/package/resources/images/others/flip_design_left2.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package/resources/images/others/flip_design_right1.png" afterPath="$PROJECT_DIR$/package/resources/images/others/flip_design_right1.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package/resources/images/others/flip_design_right2.png" afterPath="$PROJECT_DIR$/package/resources/images/others/flip_design_right2.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package/resources/images/others/logo.png" afterPath="$PROJECT_DIR$/package/resources/images/others/logo.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package/resources/images/others/tink.png" afterPath="$PROJECT_DIR$/package/resources/images/others/tink.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package/resources/images/others/tink_design.png" afterPath="$PROJECT_DIR$/package/resources/images/others/tink_design.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package/resources/startup/1496x2048.png" afterPath="$PROJECT_DIR$/package/resources/startup/1496x2048.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package/resources/startup/1536x2008.png" afterPath="$PROJECT_DIR$/package/resources/startup/1536x2008.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package/resources/startup/320x460.jpg" afterPath="$PROJECT_DIR$/package/resources/startup/320x460.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package/resources/startup/640x920.png" afterPath="$PROJECT_DIR$/package/resources/startup/640x920.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package/resources/startup/748x1024.png" afterPath="$PROJECT_DIR$/package/resources/startup/748x1024.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package/resources/startup/768x1004.png" afterPath="$PROJECT_DIR$/package/resources/startup/768x1004.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-bold-webfont.eot" afterPath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-bold-webfont.eot" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-bold-webfont.ttf" afterPath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-bold-webfont.ttf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-bold-webfont.woff" afterPath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-bold-webfont.woff" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-bold-webfont.woff2" afterPath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-bold-webfont.woff2" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-book_1-webfont.eot" afterPath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-book_1-webfont.eot" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-book_1-webfont.ttf" afterPath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-book_1-webfont.ttf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-book_1-webfont.woff" afterPath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-book_1-webfont.woff" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-book_1-webfont.woff2" afterPath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-book_1-webfont.woff2" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-light-webfont.eot" afterPath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-light-webfont.eot" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-light-webfont.ttf" afterPath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-light-webfont.ttf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-light-webfont.woff" afterPath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-light-webfont.woff" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-light-webfont.woff2" afterPath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-light-webfont.woff2" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-medium-webfont.eot" afterPath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-medium-webfont.eot" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-medium-webfont.ttf" afterPath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-medium-webfont.ttf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-medium-webfont.woff" afterPath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-medium-webfont.woff" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-medium-webfont.woff2" afterPath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-medium-webfont.woff2" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-xlight-opentype-webfont.eot" afterPath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-xlight-opentype-webfont.eot" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-xlight-opentype-webfont.ttf" afterPath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-xlight-opentype-webfont.ttf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-xlight-opentype-webfont.woff" afterPath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-xlight-opentype-webfont.woff" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/add_icon.png" afterPath="$PROJECT_DIR$/resources/images/add_icon.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/background/bg.jpg" afterPath="$PROJECT_DIR$/resources/images/background/bg.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/chat-icon.png" afterPath="$PROJECT_DIR$/resources/images/chat-icon.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/chat-open-icon.png" afterPath="$PROJECT_DIR$/resources/images/chat-open-icon.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/circle-icon-blank.png" afterPath="$PROJECT_DIR$/resources/images/circle-icon-blank.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/circle-icon.png" afterPath="$PROJECT_DIR$/resources/images/circle-icon.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/close-gray-icon.png" afterPath="$PROJECT_DIR$/resources/images/close-gray-icon.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/edit-icon.png" afterPath="$PROJECT_DIR$/resources/images/edit-icon.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/facebook-icon.png" afterPath="$PROJECT_DIR$/resources/images/facebook-icon.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/flags/canada.png" afterPath="$PROJECT_DIR$/resources/images/flags/canada.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/flags/india.png" afterPath="$PROJECT_DIR$/resources/images/flags/india.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/flags/us.png" afterPath="$PROJECT_DIR$/resources/images/flags/us.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/green-loader.png" afterPath="$PROJECT_DIR$/resources/images/green-loader.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/icons/arrow.png" afterPath="$PROJECT_DIR$/resources/images/icons/arrow.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/icons/back-icon.png" afterPath="$PROJECT_DIR$/resources/images/icons/back-icon.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/icons/contact-img.png" afterPath="$PROJECT_DIR$/resources/images/icons/contact-img.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/icons/lock.png" afterPath="$PROJECT_DIR$/resources/images/icons/lock.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/icons/next-icon.png" afterPath="$PROJECT_DIR$/resources/images/icons/next-icon.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/icons/phone-icon.png" afterPath="$PROJECT_DIR$/resources/images/icons/phone-icon.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/icons/search-icon.png" afterPath="$PROJECT_DIR$/resources/images/icons/search-icon.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/img1.jpg" afterPath="$PROJECT_DIR$/resources/images/img1.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/img2.jpg" afterPath="$PROJECT_DIR$/resources/images/img2.jpg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/in-out-bar.png" afterPath="$PROJECT_DIR$/resources/images/in-out-bar.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/instagram-icon.png" afterPath="$PROJECT_DIR$/resources/images/instagram-icon.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/loader-bg-single-old.gif" afterPath="$PROJECT_DIR$/resources/images/loader-bg-single-old.gif" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/loader-bg-single.gif" afterPath="$PROJECT_DIR$/resources/images/loader-bg-single.gif" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/loader-bg.gif" afterPath="$PROJECT_DIR$/resources/images/loader-bg.gif" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/lucky-cats-waving-hands.png" afterPath="$PROJECT_DIR$/resources/images/lucky-cats-waving-hands.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/notification-icon.png" afterPath="$PROJECT_DIR$/resources/images/notification-icon.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/old-lady-dancing.png" afterPath="$PROJECT_DIR$/resources/images/old-lady-dancing.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/others/bg.png" afterPath="$PROJECT_DIR$/resources/images/others/bg.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/others/loader-old.gif" afterPath="$PROJECT_DIR$/resources/images/others/loader-old.gif" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/others/loader.gif" afterPath="$PROJECT_DIR$/resources/images/others/loader.gif" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/others/logo-green.png" afterPath="$PROJECT_DIR$/resources/images/others/logo-green.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/others/tinkbox-logo.png" afterPath="$PROJECT_DIR$/resources/images/others/tinkbox-logo.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/others/tinkometer-logo.png" afterPath="$PROJECT_DIR$/resources/images/others/tinkometer-logo.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/others/tinktime-logo.png" afterPath="$PROJECT_DIR$/resources/images/others/tinktime-logo.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/profile-icon.png" afterPath="$PROJECT_DIR$/resources/images/profile-icon.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/recive-icon.png" afterPath="$PROJECT_DIR$/resources/images/recive-icon.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/red-loader.gif" afterPath="$PROJECT_DIR$/resources/images/red-loader.gif" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/right-arrow.png" afterPath="$PROJECT_DIR$/resources/images/right-arrow.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/send-icon.png" afterPath="$PROJECT_DIR$/resources/images/send-icon.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/tink-icon.png" afterPath="$PROJECT_DIR$/resources/images/tink-icon.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/tinkobox-icon.png" afterPath="$PROJECT_DIR$/resources/images/tinkobox-icon.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/tinkometer-icon.png" afterPath="$PROJECT_DIR$/resources/images/tinkometer-icon.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/twitter-icon.png" afterPath="$PROJECT_DIR$/resources/images/twitter-icon.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/user-icon.png" afterPath="$PROJECT_DIR$/resources/images/user-icon.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/user-img.png" afterPath="$PROJECT_DIR$/resources/images/user-img.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/video-icon-big.png" afterPath="$PROJECT_DIR$/resources/images/video-icon-big.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/video-icon-small.png" afterPath="$PROJECT_DIR$/resources/images/video-icon-small.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/video-overlay.png" afterPath="$PROJECT_DIR$/resources/images/video-overlay.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/images/white-loader.png" afterPath="$PROJECT_DIR$/resources/images/white-loader.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/tt-sencha.iml" afterPath="$PROJECT_DIR$/.idea/tt-sencha.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.sencha/app/build.properties" afterPath="$PROJECT_DIR$/.sencha/app/build.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.sencha/app/development.properties" afterPath="$PROJECT_DIR$/.sencha/app/development.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.sencha/app/native.properties" afterPath="$PROJECT_DIR$/.sencha/app/native.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.sencha/app/package.properties" afterPath="$PROJECT_DIR$/.sencha/app/package.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.sencha/app/production.properties" afterPath="$PROJECT_DIR$/.sencha/app/production.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.sencha/app/sencha.cfg" afterPath="$PROJECT_DIR$/.sencha/app/sencha.cfg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.sencha/app/testing.properties" afterPath="$PROJECT_DIR$/.sencha/app/testing.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.sencha/workspace/sencha.cfg" afterPath="$PROJECT_DIR$/.sencha/workspace/sencha.cfg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.json" afterPath="$PROJECT_DIR$/app.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controller/Authenticate.js" afterPath="$PROJECT_DIR$/app/controller/Authenticate.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controller/Main.js" afterPath="$PROJECT_DIR$/app/controller/Main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controller/PhoneContact.js" afterPath="$PROJECT_DIR$/app/controller/PhoneContact.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controller/SendTo.js" afterPath="$PROJECT_DIR$/app/controller/SendTo.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controller/TinkBox.js" afterPath="$PROJECT_DIR$/app/controller/TinkBox.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controller/TinkChat.js" afterPath="$PROJECT_DIR$/app/controller/TinkChat.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/model/Profile.js" afterPath="$PROJECT_DIR$/app/model/Profile.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/overrides/PaintMonitor.js" afterPath="$PROJECT_DIR$/app/overrides/PaintMonitor.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/overrides/SizeMonitor.js" afterPath="$PROJECT_DIR$/app/overrides/SizeMonitor.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/store/Contacts.js" afterPath="$PROJECT_DIR$/app/store/Contacts.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/store/Profile.js" afterPath="$PROJECT_DIR$/app/store/Profile.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/util/Analytics.js" afterPath="$PROJECT_DIR$/app/util/Analytics.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/util/Common.js" afterPath="$PROJECT_DIR$/app/util/Common.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/Authenticate.js" afterPath="$PROJECT_DIR$/app/view/Authenticate.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/ConfirmPhoneNumber.js" afterPath="$PROJECT_DIR$/app/view/ConfirmPhoneNumber.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/PhoneContacts.js" afterPath="$PROJECT_DIR$/app/view/PhoneContacts.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/SendTo.js" afterPath="$PROJECT_DIR$/app/view/SendTo.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/TinkBox.js" afterPath="$PROJECT_DIR$/app/view/TinkBox.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/TinkChat.js" afterPath="$PROJECT_DIR$/app/view/TinkChat.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/view/TinkoMeter.js" afterPath="$PROJECT_DIR$/app/view/TinkoMeter.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bootstrap.json" afterPath="$PROJECT_DIR$/bootstrap.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/app.js" afterPath="$PROJECT_DIR$/build/testing/ttapp/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/cache.appcache" afterPath="$PROJECT_DIR$/build/testing/ttapp/cache.appcache" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/circles.min.js" afterPath="$PROJECT_DIR$/build/testing/ttapp/circles.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/index.html" afterPath="$PROJECT_DIR$/build/testing/ttapp/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/jquery.js" afterPath="$PROJECT_DIR$/build/testing/ttapp/jquery.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/jquery.min.js" afterPath="$PROJECT_DIR$/build/testing/ttapp/jquery.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/moment.js" afterPath="$PROJECT_DIR$/build/testing/ttapp/moment.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/css/app.css" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/css/app.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-bold-webfont.svg" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-bold-webfont.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-book_1-demo.html" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-book_1-demo.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-book_1-webfont.svg" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-book_1-webfont.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-light-demo.html" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-light-demo.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-light-webfont.svg" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-light-webfont.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-medium-webfont.svg" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-medium-webfont.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-xlight-opentype-webfont.svg" afterPath="$PROJECT_DIR$/build/testing/ttapp/resources/fonts/ufonts.com_gotham-xlight-opentype-webfont.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/circles.min.js" afterPath="$PROJECT_DIR$/circles.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jquery.js" afterPath="$PROJECT_DIR$/jquery.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/jquery.min.js" afterPath="$PROJECT_DIR$/jquery.min.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/moment.js" afterPath="$PROJECT_DIR$/moment.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package/app.js" afterPath="$PROJECT_DIR$/package/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package/app.json" afterPath="$PROJECT_DIR$/package/app.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package/archive/app.js/603262d003bd75eb631d4ab114e251c4abf6c3fc" afterPath="$PROJECT_DIR$/package/archive/app.js/603262d003bd75eb631d4ab114e251c4abf6c3fc" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package/archive/resources/css/app.css/b2d1e1ce80ba416f1642e1d0863c205fb8603402" afterPath="$PROJECT_DIR$/package/archive/resources/css/app.css/b2d1e1ce80ba416f1642e1d0863c205fb8603402" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package/cache.appcache" afterPath="$PROJECT_DIR$/package/cache.appcache" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package/index.html" afterPath="$PROJECT_DIR$/package/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package/resources/css/app.css" afterPath="$PROJECT_DIR$/package/resources/css/app.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/css/app.css" afterPath="$PROJECT_DIR$/resources/css/app.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-bold-webfont.svg" afterPath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-bold-webfont.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-book_1-demo.html" afterPath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-book_1-demo.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-book_1-webfont.svg" afterPath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-book_1-webfont.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-light-demo.html" afterPath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-light-demo.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-light-webfont.svg" afterPath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-light-webfont.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-medium-webfont.svg" afterPath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-medium-webfont.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-xlight-opentype-webfont.svg" afterPath="$PROJECT_DIR$/resources/fonts/ufonts.com_gotham-xlight-opentype-webfont.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/sass/app.scss" afterPath="$PROJECT_DIR$/resources/sass/app.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/sass/config.rb" afterPath="$PROJECT_DIR$/resources/sass/config.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sass/example/bootstrap.js" afterPath="$PROJECT_DIR$/sass/example/bootstrap.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/workspace.json" afterPath="$PROJECT_DIR$/workspace.json" />
     </list>
     <ignored path="tt-sencha.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -838,7 +557,7 @@
       <created>1418896144135</created>
       <option name="number" value="Default" />
       <updated>1418896144135</updated>
-      <workItem from="1448048411720" duration="1210000" />
+      <workItem from="1448048411720" duration="1709000" />
     </task>
     <task id="LOCAL-00001" summary="changed delay for trinket selection">
       <created>1421067636692</created>
@@ -918,11 +637,23 @@
       <option name="project" value="LOCAL" />
       <updated>1421419119765</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="team india milestone">
+      <created>1448094546051</created>
+      <option name="number" value="00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1448094546051</updated>
+    </task>
+    <task id="LOCAL-00015" summary="team india milestone">
+      <created>1448094625756</created>
+      <option name="number" value="00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1448094625756</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1210000" />
+    <option name="totallyTimeSpent" value="1709000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1366" height="741" extended-state="6" />
@@ -930,6 +661,7 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32917467" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -944,7 +676,6 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32917467" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1000,7 +731,8 @@
     <MESSAGE value="on show reset tink page wip" />
     <MESSAGE value="use centralized config, choose trinket" />
     <MESSAGE value="trying carousel option" />
-    <option name="LAST_COMMIT_MESSAGE" value="trying carousel option" />
+    <MESSAGE value="team india milestone" />
+    <option name="LAST_COMMIT_MESSAGE" value="team india milestone" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1019,6 +751,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="110" column="8" selection-start-line="110" selection-start-column="8" selection-end-line="110" selection-end-column="74" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1047,6 +780,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="62" column="0" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1180,6 +914,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1208,6 +943,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.10059172">
           <caret line="69" column="38" selection-start-line="69" selection-start-column="38" selection-end-line="69" selection-end-column="38" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1236,6 +972,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.9664694">
           <caret line="66" column="0" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
