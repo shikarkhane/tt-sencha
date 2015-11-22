@@ -27,21 +27,44 @@ Ext.define('ttapp.controller.PhoneContact', {
 
 	searchPhoneContact: function(textfield, e, eOpts) {
 		if (textfield.id == 'searchPhoneContact') {
-            var queryString = textfield.getValue();
-            var storelist = Ext.getStore("phonecontacts");
-            storelist.clearFilter();
+            var queryString = textfield.getValue(),
+								list = Ext.getCmp('contactsList');
 
-            if (queryString) {
-                var thisRegEx = new RegExp(queryString, 'i');
-                storelist.filterBy(function(record) {
-										var name = record.data.first_name + " " + record.data.last_name;
-                    if (thisRegEx.test(name)) {
-                        return true;
-                    } else {
-                        return false;
-                    }
-                });
-            }
+						if (queryString) {
+							var thisRegEx = new RegExp(queryString, 'i');
+							this._filteredContacts = this._contacts.filter(function(record) {
+								var name = record.first_name + " " + record.last_name;
+				        if (thisRegEx.test(name)) {
+				            return true;
+				        } else {
+				            return false;
+				        }
+							});
+
+							list.getStore().setData(this._filteredContacts);
+						}
+						else {
+							this._filteredContacts = null;
+							list.getStore().setData(this._contacts);
+						}
+
+
+            // var storelist = Ext.getStore("phonecontacts");
+            // storelist.clearFilter();
+
+            // if (queryString) {
+            //     var thisRegEx = new RegExp(queryString, 'i');
+            //     storelist.filterBy(function(record) {
+						// 				var name = record.data.first_name + " " + record.data.last_name;
+            //         if (thisRegEx.test(name)) {
+            //             return true;
+            //         } else {
+            //             return false;
+            //         }
+            //     });
+            // }
+
+
 
             ttapp.app.getController('PhoneContact').showCircles();
         }
@@ -56,19 +79,22 @@ Ext.define('ttapp.controller.PhoneContact', {
  //    },
 
     showCircles: function() {
-        store = Ext.getStore('phonecontacts').getData().items;
+        // store = Ext.getStore('phonecontacts').getData().items;
+
+				var store = this._filteredContacts || this._contacts;
+
         for(i=0; i<store.length; i++) {
-            if(store[i].data.on_tinktime !== false) {
-                if(!Ext.isEmpty(store[i].data.time_split)) {
-                    total_time = store[i].data.time_split.time_in + store[i].data.time_split.time_out;
-                    percent = (store[i].data.time_split.time_out/total_time)*100;
+            if(store[i].on_tinktime !== false) {
+                if(!Ext.isEmpty(store[i].time_split)) {
+                    total_time = store[i].time_split.time_in + store[i].time_split.time_out;
+                    percent = (store[i].time_split.time_out/total_time)*100;
                     //console.log(Math.ceil(percent));
                     // (id, radius, border-width, percent)
                     //testCircleCss(element.dom.firstChild.firstChild.firstChild.id, 50, 10, Math.ceil(percent));
-                    if(store[i].data.time_split.time_out == 0) {
-                        testCircleCss(store[i].data.id, 20, 4, 100);
+                    if(store[i].time_split.time_out == 0) {
+                        testCircleCss(store[i].id, 20, 4, 100);
                     } else {
-                        testCircleCss(store[i].data.id, 20, 4, Math.ceil(percent));
+                        testCircleCss(store[i].id, 20, 4, Math.ceil(percent));
                     }
                 }
             }
@@ -84,6 +110,14 @@ Ext.define('ttapp.controller.PhoneContact', {
             placeHolder: 'Who are you thinking of?'
         });
         component.add(searchfield);
+
+				this._contacts = [];
+
+				Ext.getStore('phonecontacts').each(function(record) {
+						this._contacts.push(record.data)
+				}, this);
+
+				this._filteredContacts = null;
 
         var list = Ext.create('Ext.List', {
             cls:'phone-contact-list',
@@ -107,7 +141,8 @@ Ext.define('ttapp.controller.PhoneContact', {
                     '</tpl>',
                 '</tpl>'
             ],
-            store: Ext.getStore('phonecontacts'),
+            // store: Ext.getStore('phonecontacts'),
+						data: this._contacts,
             listeners: {
                 painted: function(list, eOpts) {
                     var store = Ext.getStore('phonecontacts').getData().all;
@@ -186,7 +221,7 @@ Ext.define('ttapp.controller.PhoneContact', {
             }
         } else {
             Ext.Viewport.animateActiveItem('trinket', {type: 'fade', direction: 'up', duration: 500, easing: 'ease-out'});
-            Ext.getStore("phonecontacts").clearFilter();
+            // Ext.getStore("phonecontacts").clearFilter();
             list.destroy();
             //Ext.getCmp('searchPhoneContact').destroy();
 
