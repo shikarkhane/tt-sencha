@@ -14,7 +14,7 @@ Ext.define('ttapp.util.Common', {
             }
         }
     },
-
+    
     isUserVerifiedOnServer: function(callback) {
         // if user is not verified on server, clear local profile and make him authenticate again
         Ext.getStore('profilestore').getPhoneNumber(function(user) {
@@ -53,7 +53,7 @@ Ext.define('ttapp.util.Common', {
             });
         });
     },
-
+    
     setDialCode: function(params) {
         var c = [{
             "name": "Afghanistan",
@@ -1070,7 +1070,7 @@ Ext.define('ttapp.util.Common', {
             }
         });
     },
-
+    
     createMenuButton: function() {
         var button = Ext.create('Ext.Button', {
             cls:'add-option-btn',
@@ -1081,8 +1081,8 @@ Ext.define('ttapp.util.Common', {
                       ttapp.util.Analytics.trackEvent('App', 'Opened menu');
 
                         btnPanel = Ext.getCmp('btn-panel');
-
-                        if (!btnPanel) {
+                        console.log(btnPanel);
+                        if (Ext.isEmpty(btnPanel)) {
                             Ext.Viewport.add ({
                                 xtype:'panel',
                                 centered : true,
@@ -1097,29 +1097,42 @@ Ext.define('ttapp.util.Common', {
                                 '<div class="btn tink-box slideInUp2"><span id="tinkbox" class="icon"></span><span class="title">Tinkbox</span></div>' +
                                 '<div class="btn tink slideInUp1"><span id="tink" class="icon"></span><span class="title">Tink</span></div>' +
                                 '</div>'
-                            }).show();
+                            });
+
+                            Ext.getCmp('btn-panel').show();
 
                             if(Ext.Viewport.getActiveItem().config.xtype == 'phoneContacts') {
                                 Ext.select('.tink').hide();
                             }
 
                             $('.btn').on('click', function() {
-                                var anim = {type: 'fade', direction: 'up', duration: 500, easing: 'ease-out'};
+                                var anim = {type: 'fade', direction: 'up', duration: 100, easing: 'ease-out'};
                                 switch(this.children[0].id) {
                                     case 'settingsProfile':
                                         break;
                                     case 'tinkometer':
-                                    ttapp.util.Analytics.trackView('Tinkometer');
+                                        ttapp.util.Analytics.trackView('Tinkometer');
+                                        $("body").removeClass("option-mask");
+                                        $(".add-option-btn").removeClass("btn-close");
+                                        $("body").addClass("mask-fade-effect");
+                                        
+                                        Ext.getCmp('btn-panel').destroy();
                                         Ext.Viewport.animateActiveItem('tinkometer', anim);
                                         break;
                                     case 'tinkbox':
-                                    ttapp.util.Analytics.trackView('Tinkbox');
+                                        ttapp.util.Analytics.trackView('Tinkbox');
+                                        $("body").removeClass("option-mask");
+                                        $(".add-option-btn").removeClass("btn-close");
+                                        $("body").addClass("mask-fade-effect");
+                                        
+                                        Ext.getCmp('btn-panel').destroy();
                                         Ext.Viewport.animateActiveItem('tinkbox', anim);
                                         break;
                                     case 'tink':
-                                    ttapp.util.Analytics.trackView('Contacts');
+                                        ttapp.util.Analytics.trackView('Contacts');
                                         $("body").removeClass("option-mask");
                                         $(".add-option-btn").removeClass("btn-close");
+                                        Ext.getCmp('btn-panel').destroy();
                                         Ext.Viewport.animateActiveItem('phoneContacts', anim);
                                         break;
                                     default:
@@ -1138,20 +1151,20 @@ Ext.define('ttapp.util.Common', {
                             setTimeout(function() {
                                 $("body").removeClass("mask-fade-effect");
                                 Ext.getCmp('btn-panel').destroy();
-                            }, 300);
+                            }, 100);
                         }
 
-                        $('.clickable').on('click', function() {
-                            $("body").removeClass("option-mask");
-                            $(".add-option-btn").removeClass("btn-close");
-                            $("body").addClass("mask-fade-effect");
-
-                            Ext.getCmp('btn-panel').hide();
-                            setTimeout(function() {
-                                $("body").removeClass("mask-fade-effect");
-                                Ext.getCmp('btn-panel').destroy();
-                            }, 300);
-                        });
+                        // $('.clickable').on('click', function() {
+                        //     $("body").removeClass("option-mask");
+                        //     $(".add-option-btn").removeClass("btn-close");
+                        //     $("body").addClass("mask-fade-effect");
+                            
+                        //     Ext.getCmp('btn-panel').hide();
+                        //     setTimeout(function() {
+                        //         $("body").removeClass("mask-fade-effect");
+                        //         Ext.getCmp('btn-panel').destroy();
+                        //     }, 100);
+                        // });
                     }
                 }
             }
@@ -1187,11 +1200,11 @@ Ext.define('ttapp.util.Common', {
 
 function displaytimer(millis){
     var  millis = millis * 1000;
-
+    
     var hours = Math.floor(millis / 36e5),
         mins = Math.floor((millis % 36e5) / 6e4),
         secs = Math.floor((millis % 6e4) / 1000);
-
+    
     if(hours == 0) {
         return (mins+'m'+' '+secs+'s');
     } else {
@@ -1201,11 +1214,11 @@ function displaytimer(millis){
 
 function showTinkTime(millis){
     var  millis = millis * 1000;
-
+    
     var hours = Math.floor(millis / 36e5),
         mins = Math.floor((millis % 36e5) / 6e4),
         secs = Math.floor((millis % 6e4) / 1000);
-
+    
     hours = hours>=10?hours:'0'+hours;
     minutes = mins>=10?mins:'0'+mins;
     seconds = secs>=10?secs:'0'+secs;
@@ -1216,7 +1229,7 @@ function showTinkTime(millis){
 function getName(num) {
     var storeData = Ext.getStore('phonecontacts').findRecord('phone_number', num);
     var firstname, lastname;
-
+    
     if(Ext.isEmpty(storeData)) {
         return num;
     } else {
@@ -1244,19 +1257,19 @@ function getBackgroundImage(number) {
         options.filter   = number;
         options.multiple = true;
         var fields       = [ "name", "photo", "phoneNumbers" ];
-
+        
         navigator.contacts.find(fields, function(s){
             if(!Ext.isEmpty(s.photos)) {
                 return s.photos[0].value;
             }
-        },
+        }, 
         function(s){
             return;
         }, options);
     } else {
         return ttapp.util.Common.animationThumbnail();
     }
-}
+} 
 
 function testCircleCss(id, radius, width, percent) {
     function shuffle(o){ //v1.0
