@@ -19,12 +19,12 @@ Ext.application({
         'ttapp.util.Analytics'
     ],
     controllers: ['Main', 'Tink', 'SendTo', 'Landing', 'Authenticate',
-    'Trinket', 'Split', 'ReplayTink', 'TinkChat', 'PhoneContact', 'TinkBox'],
+    'Trinket', 'ReplayTink', 'TinkChat', 'PhoneContact', 'TinkBox'],
 
     views: [
         'Landing', 'Tink', 'SendTo', 'Trinket',
         'Authenticate', 'ConfirmPhoneNumber',
-        'Split', 'PrivacyPolicy', 'PhoneContacts', 'TinkoMeter', 'TinkBox', 'TinkChat'
+        'PrivacyPolicy', 'PhoneContacts', 'TinkoMeter', 'TinkBox', 'TinkChat'
     ],
 
     stores: ['Trinkets', 'Contacts', 'Profile', 'IpInfo'],
