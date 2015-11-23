@@ -96,11 +96,6 @@ body{
 @include sencha-button-ui('ttButton', #E55845,'glossy');
 
 //images
-$b-landing-img: '../images/background/landing.jpg';
-$b-split-left-img: '../images/background/split_left.jpg';
-$b-split-right-img: '../images/background/split_right.jpg';
-$b-tink-img: '../images/background/tink.jpg';
-$b-tinkbox-img: '../images/background/tinkbox.jpg';
 $i-mail-img: '../images/icons/mail.png';
 $i-tink-img: '../images/icons/tink.png';
 $o-tink-img: '../images/others/tink.png';
@@ -112,11 +107,7 @@ body {
 .cls-tt-replaytink {
     background-color:black
 }
-.cls-tt-tinking {
-    background-color:#B1C2CD;
-    background-image:inline-image("background/tink.jpg");
-    background-size:cover;
-}
+
 .cls-tt-tinkbox {
     background-image:inline-image("background/bg.jpg");
     background-size:cover;
@@ -251,9 +242,24 @@ body {
     background-color: transparent;
     background: none;
 }
-.cls-tt-landing {
-    background-image:inline-image("background/landing.jpg");
+
+.prev-trinket {
+    -webkit-border-radius:15px;
+    -moz-border-radius:15px;
+    -ms-border-radius:15px;
+    -o-border-radius:15px;
+    border-radius:15px;
+    position: absolute;
+    top: 12%;
+    left:50%;
+    margin-left:-50px;
+    margin-top:-50px;
+    width: 100px;
+    height: 100px;
+    z-index: 9;
     background-size:cover;
+    background-color: #333;
+    border: solid 3px #ACBCC4;
 }
 .landing-page{
     position: absolute;
@@ -498,24 +504,6 @@ body {
     margin:0;
     position: relative;
 }
-.top-bar .top-btn.btn-tink.x-button{
-    background-image: url(../images/icons/tink.png);
-    background-size: 30px;
-    overflow: inherit;
-}
-.top-bar .top-btn.btn-tink.x-button.x-button-pressing{
-    background-image: url(../images/icons/tink.png);
-    background-color:transparent;
-}
-.top-bar .top-btn.btn-mail.x-button{
-    background-image: url(../images/icons/mail.png);
-    background-size: 30px;
-    overflow: inherit;
-}
-.top-bar .top-btn.btn-mail.x-button.x-button-pressing{
-    background-image: url(../images/icons/mail.png);
-    background-color:transparent;
-}
 .top-bar .top-btn.btn-mail.x-button.show-notification:before{
     content: "";
     position: absolute;
@@ -753,106 +741,6 @@ margin-bottom: 30px;
     width: auto;
     min-height: 85px;
     text-transform: uppercase;
-}
-.split-page{width: 100%;}
-.split-page .x-html{padding: 0px;}
-.split-page .cls-tt-split-left {
-    background-image:url("../images/background/split_left.jpg");
-    background-size:cover;
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    width: 50%;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-     align-items: center;
-}
-.split-page .cls-tt-split-right {
-    background-image:url("../images/background/split_right.jpg");
-    background-size:cover;
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    width: 50%;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-     align-items: center;
-}
-.split-page .cls-tt-split-left .x-container{
-    height: 100%;
-    background: none;
-    border-radius: 0;
-    border: none;
-}
-.split-page .cls-tt-split-left .x-container .x-button{
-    height: 100%;
-    background: none;
-    border-radius: 0;
-    border: none;
-}
-.split-page .cls-tt-split-left .x-container .x-button .x-button-label{
-    white-space: inherit;
-    color: #fff;
-    font-size: 26px;
-    font-weight: 100;
-    font-family: 'gotham_bookregular';
-    text-transform: uppercase;
-}
-.split-page .cls-tt-split-right .x-container{
-    height: 100%;
-}
-.split-page .cls-tt-split-right .x-container .x-button{
-    height: 100%;
-    background: none;
-    border-radius: 0;
-    border: none;
-}
-.split-page .cls-tt-split-right .x-container .x-button .x-button-label{
-    white-space: inherit;
-    color: #fff;
-    font-size: 26px;
-    font-weight: 100;
-    font-family: 'gotham_bookregular';
-    text-transform: uppercase;
-}
-.split-page .prev-trinket {
-    -webkit-border-radius:15px;
-    -moz-border-radius:15px;
-    -ms-border-radius:15px;
-    -o-border-radius:15px;
-    border-radius:15px;
-    position: absolute;
-    top: 12%;
-    left:50%;
-    margin-left:-50px;
-    margin-top:-50px;
-    width: 100px;
-    height: 100px;
-    z-index: 9;
-    background-size:cover;
-    background-color: #333;
-    border: solid 3px #ACBCC4;
-}
-.split-page .prev-trinket .clsSentTrinket {
-    position:absolute;
-    text-transform: uppercase;
-    font-size:25px;
-    color: #fff;
-}
-.split-page .prev-trinket .clsSentTrinket .clsSplitDone{
-    padding-top:10px;
-}
-.split-page .prev-trinket .clsSentTrinket .clsSplitSeconds{
-	position:relative;
-    background-color: rgba(173, 174, 158, 0.7);
-    text-align: center;
-    width: 98px;
-    border-radius: 10px;
-    line-height: 95px;
-    font-size: 36px;
-    font-weight:bolder;
 }
 .clsFeed{
     margin-top: 35px;
@@ -1911,7 +1799,7 @@ margin-bottom: 30px;
 @-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
 @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } } */
 
-.split-page .prev-trinket.msg-box-img{
+.prev-trinket.msg-box-img{
     width: 240px;
     height: 160px;
     margin-left: -125px;
@@ -1919,7 +1807,7 @@ margin-bottom: 30px;
     -moz-border-radius: 0px;
     -ms-border-radius: 0px;
     -o-border-radius: 0px;
-    border-radius: 0px; 
+    border-radius: 0px;
     border: 0px solid;
     margin-top: -95px;
 }
