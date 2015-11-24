@@ -59,26 +59,39 @@ Ext.define('ttapp.view.SendTo', {
 	                                '<div class="btn tink-box slideInUp2"><span id="tinkbox" class="icon"></span><span class="title">Tinkbox</span></div>' +
 	                                '<div class="btn tink slideInUp1"><span id="tink" class="icon"></span><span class="title">Tink</span></div>' +
 	                                '</div>'
-	                            }).show();
+	                            });
+
+	                            Ext.getCmp('btn-panel').show();
 
 	                            if(Ext.Viewport.getActiveItem().config.xtype == 'phoneContacts') {
 	                                Ext.select('.tink').hide();
 	                            }
 
 	                            $('.btn').on('click', function() {
-	                                var anim = {type: 'fade', direction: 'up', duration: 500, easing: 'ease-out'};
+	                                var anim = {type: 'fade', direction: 'up', duration: 100, easing: 'ease-out'};
 	                                switch(this.children[0].id) {
 	                                    case 'settingsProfile':
 	                                        break;
 	                                    case 'tinkometer':
+	                                        $("body").removeClass("option-mask");
+	                                        $(".add-option-btn").removeClass("btn-close");
+	                                        $("body").addClass("mask-fade-effect");
+	                                        
+	                                        Ext.getCmp('btn-panel').destroy();
 	                                        Ext.Viewport.animateActiveItem('tinkometer', anim);
 	                                        break;
 	                                    case 'tinkbox':
+	                                        $("body").removeClass("option-mask");
+	                                        $(".add-option-btn").removeClass("btn-close");
+	                                        $("body").addClass("mask-fade-effect");
+	                                        
+	                                        Ext.getCmp('btn-panel').destroy();
 	                                        Ext.Viewport.animateActiveItem('tinkbox', anim);
 	                                        break;
 	                                    case 'tink':
 	                                        $("body").removeClass("option-mask");
 	                                        $(".add-option-btn").removeClass("btn-close");
+	                                        Ext.getCmp('btn-panel').destroy();
 	                                        Ext.Viewport.animateActiveItem('phoneContacts', anim);
 	                                        break;
 	                                    default:    
@@ -97,20 +110,20 @@ Ext.define('ttapp.view.SendTo', {
 	                            setTimeout(function() {
 	                                $("body").removeClass("mask-fade-effect");
 	                                Ext.getCmp('btn-panel').destroy();
-	                            }, 300);
+	                            }, 100);
 	                        }
 
-	                        $('.clickable').on('click', function() {
-	                            $("body").removeClass("option-mask");
-	                            $(".add-option-btn").removeClass("btn-close");
-	                            $("body").addClass("mask-fade-effect");
+	                        // $('.clickable').on('click', function() {
+	                        //     $("body").removeClass("option-mask");
+	                        //     $(".add-option-btn").removeClass("btn-close");
+	                        //     $("body").addClass("mask-fade-effect");
 	                            
-	                            Ext.getCmp('btn-panel').hide();
-	                            setTimeout(function() {
-	                                $("body").removeClass("mask-fade-effect");
-	                                Ext.getCmp('btn-panel').destroy();
-	                            }, 300);
-	                        });
+	                        //     Ext.getCmp('btn-panel').hide();
+	                        //     setTimeout(function() {
+	                        //         $("body").removeClass("mask-fade-effect");
+	                        //         Ext.getCmp('btn-panel').destroy();
+	                        //     }, 300);
+	                        // });
 	                    }
 	                }
 	            }
