@@ -11,19 +11,17 @@ Ext.define('ttapp.controller.TinkBox', {
 			}
 		}
 	},
-
     removeTinkBoxList: function(list, eOpts) {
         if(!Ext.isEmpty(Ext.getCmp('tinkBoxList'))) {
             Ext.getCmp('tinkBoxList').destroy();
         }
     },
-
 	getTinkBoxData: function(component) {
+		//console.log('in tink box');
         Ext.Viewport.mask({
             xtype: 'loadmask',
             html: '<img src="resources/images/green-loader.png" alt="loader">'
         });
-
         Ext.getStore('profilestore').getPhoneNumber(function(num){
             Ext.Ajax.request({
                 url: ttapp.config.Config.getBaseURL() + '/groupedfeed/' + num + '/',
