@@ -43,7 +43,9 @@ Ext.define('ttapp.controller.TinkBox', {
                                     'img': ttapp.util.Common.animationThumbnail(),
                                     'background': Ext.getStore('phonecontacts').getUserImage(json.groups[i].user),
                                     'number': json.groups[i].user,
-                                    'inout': json.groups[i].tink_in+"-"+json.groups[i].tink_out
+                                    'inout': json.groups[i].tink_in+"-"+json.groups[i].tink_out,
+                                    'inTime': json.groups[i].tink_in,
+                                    'outTime': json.groups[i].tink_out
                                 }); 
                             } else {
                                 temp.push({
@@ -54,7 +56,9 @@ Ext.define('ttapp.controller.TinkBox', {
                                     'img': ttapp.util.Common.animationThumbnail(),
                                     'background': Ext.getStore('phonecontacts').getUserImage(json.groups[i].user),
                                     'number': json.groups[i].user,
-                                    'inout': json.groups[i].tink_in+"-"+json.groups[i].tink_out
+                                    'inout': json.groups[i].tink_in+"-"+json.groups[i].tink_out,
+                                    'inTime': json.groups[i].tink_in,
+                                    'outTime': json.groups[i].tink_out
                                 });        
                             }
                         } else {
@@ -66,7 +70,9 @@ Ext.define('ttapp.controller.TinkBox', {
                                 'img': ttapp.util.Common.animationThumbnail(),
                                 'background': Ext.getStore('phonecontacts').getUserImage(json.groups[i].user),
                                 'number': json.groups[i].user,
-                                'inout': json.groups[i].tink_in+"-"+json.groups[i].tink_out
+                                'inout': json.groups[i].tink_in+"-"+json.groups[i].tink_out,
+                                'inTime': json.groups[i].tink_in,
+                                'outTime': json.groups[i].tink_out
                             });
                         }
                     }
@@ -90,8 +96,8 @@ Ext.define('ttapp.controller.TinkBox', {
             id: 'tinkBoxList',
             cls: 'tinkbox-section',
             itemTpl: [
-                '<tpl if="unread == 0">',
-                    '<tpl if="tink_in &gt; tink_out">',
+                '<tpl if="unread === 0">',
+                    '<tpl if="inTime &gt; outTime">',
                         '<div class="list-box" style="background:url({background}) no-repeat 50% 50%">',
                             '<div class="over-lay"></div>',
                             '<span class="inner-detail"><span class="user-name">{user}</span><span class="info"><span class="circle"><img src={img} ></span><span class="time">{tink_in}</span><span class="tinkinout">Tink in</span></span><span class="info right"><span class="circle"><img src={img} ></span><span class="time">{tink_out}</span><span class="tinkinout">Tink out</span></span><span class="arrow"></span></span>',
@@ -103,7 +109,7 @@ Ext.define('ttapp.controller.TinkBox', {
                         '</div>',
                     '</tpl>',
                 '<tpl else>',
-                    '<tpl if="tink_in &gt; tink_out">',
+                    '<tpl if="inTime &gt; outTime">',
                         '<div class="list-box" style="background:url({background}) no-repeat 50% 50%">',
                             '<div class="over-lay"></div>',
                             '<span class="inner-detail"><span class="user-name">{user}</span><span class="info"><span class="circle active"><span class="notification-icon"></span><img src={img} ></span><span class="time">{tink_in}</span><span class="tinkinout">Tink in</span></span><span class="info right"><span class="circle"><img src={img} ></span><span class="time">{tink_out}</span><span class="tinkinout">Tink out</span></span><span class="arrow"></span></span>',
@@ -119,7 +125,7 @@ Ext.define('ttapp.controller.TinkBox', {
             store: {
                 id: 'tinkBoxStore',
                 autoLoad: true,
-                fields: ['tink_in', 'tink_out', 'unread', 'user', 'img', 'background', 'number', 'inout']
+                fields: ['tink_in', 'tink_out', 'unread', 'user', 'img', 'background', 'number', 'inout', 'inTime', 'outTime' ]
             },
             listeners: {
                 refresh: function(list, eOpts) {
