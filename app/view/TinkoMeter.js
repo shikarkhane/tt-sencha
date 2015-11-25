@@ -30,7 +30,7 @@ Ext.define('ttapp.view.TinkoMeter', {
             	xtype: 'panel',
                 cls:'tinko-user',
                 flex: 2,
-                html:'<div class="tinko-user-img"><div class="img-sec" id="user_img" style="background-image:url(resources/images/user-img.png);     background-size: cover;"></div><div class="edit-icon"></div></div>',
+                html:'<div class="tinko-user-img"><div class="img-sec" id="user_img" style="background-image:url(resources/images/user-img.png); background-size: cover;"></div><div class="edit-icon"></div></div>',
                 listeners: {
                     'tap': {
                         element: 'element',
@@ -105,7 +105,11 @@ Ext.define('ttapp.view.TinkoMeter', {
                     'painted': {
                         fn: function(panel, eOpts) {
                             Ext.getStore('profilestore').getUserImage(function(image) {
-                                document.getElementById('user_img').style.backgroundImage = "url("+image+")";
+                                if(Ext.isEmpty(image)) {
+                                    document.getElementById('user_img').style.backgroundImage = "url(resources/images/user-img.png)";
+                                } else {
+                                    document.getElementById('user_img').style.backgroundImage = "url("+image+")";
+                                }
                             });
                         }
                     }
