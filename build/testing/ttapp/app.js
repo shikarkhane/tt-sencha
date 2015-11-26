@@ -63475,7 +63475,8 @@ Ext.define('ttapp.util.Common', {
                         fn: function() {
                             ttapp.util.Analytics.trackEvent('App', 'Opened menu');
                             btnPanel = Ext.getCmp('btn-panel');
-                            if (!btnPanel) {
+                            console.log(btnPanel);
+                            if (Ext.isEmpty(btnPanel)) {
                                 Ext.Viewport.add({
                                     xtype: 'panel',
                                     centered: true,
@@ -63490,8 +63491,8 @@ Ext.define('ttapp.util.Common', {
                                     cls: 'option-overlay clickable',
                                     modal: true,
                                     html: '<div class="option-btn-grp">' + '<div class="btn tink-meter slideInUp3"><span id="tinkometer" class="icon"></span><span class="title">Tinkometer</span></div>' + '<div class="btn tink-box slideInUp2"><span id="tinkbox" class="icon"></span><span class="title">Tinkbox</span></div>' + '<div class="btn tink slideInUp1"><span id="tink" class="icon"></span><span class="title">Tink</span></div>' + '</div>'
-                                }).show();
-                                /*'<div class="btn profile slideInUp4"><span id="settingsProfile" class="icon"></span><span class="title">Settings & Profile</span></div>' +*/
+                                });
+                                Ext.getCmp('btn-panel').show();
                                 if (Ext.Viewport.getActiveItem().config.xtype == 'phoneContacts') {
                                     Ext.select('.tink').hide();
                                 }
@@ -63499,7 +63500,7 @@ Ext.define('ttapp.util.Common', {
                                     var anim = {
                                             type: 'fade',
                                             direction: 'up',
-                                            duration: 500,
+                                            duration: 100,
                                             easing: 'ease-out'
                                         };
                                     switch (this.children[0].id) {
@@ -63507,27 +63508,26 @@ Ext.define('ttapp.util.Common', {
                                             break;
                                         case 'tinkometer':
                                             ttapp.util.Analytics.trackView('Tinkometer');
+                                            $("body").removeClass("option-mask");
+                                            $(".add-option-btn").removeClass("btn-close");
+                                            $("body").addClass("mask-fade-effect");
+                                            Ext.getCmp('btn-panel').destroy();
                                             Ext.Viewport.animateActiveItem('tinkometer', anim);
                                             break;
                                         case 'tinkbox':
                                             ttapp.util.Analytics.trackView('Tinkbox');
+                                            $("body").removeClass("option-mask");
+                                            $(".add-option-btn").removeClass("btn-close");
+                                            $("body").addClass("mask-fade-effect");
+                                            Ext.getCmp('btn-panel').destroy();
                                             Ext.Viewport.animateActiveItem('tinkbox', anim);
                                             break;
                                         case 'tink':
                                             ttapp.util.Analytics.trackView('Contacts');
                                             $("body").removeClass("option-mask");
                                             $(".add-option-btn").removeClass("btn-close");
+                                            Ext.getCmp('btn-panel').destroy();
                                             Ext.Viewport.animateActiveItem('phoneContacts', anim);
-                                            // var item;
-                                            // if(Ext.isEmpty(item)) {
-                                            //     /*item = Ext.Viewport.add({
-                                            //         xtype: 'phoneContacts'
-                                            //     });*/
-                                            //     item: 'phoneContacts';
-                                            //     Ext.Viewport.animateActiveItem('phoneContacts', anim);
-                                            // } else {
-                                            //     Ext.Viewport.animateActiveItem(item, anim);
-                                            // }
                                             break;
                                         default:
                                     }
@@ -63543,22 +63543,22 @@ Ext.define('ttapp.util.Common', {
                                 setTimeout(function() {
                                     $("body").removeClass("mask-fade-effect");
                                     Ext.getCmp('btn-panel').destroy();
-                                }, 300);
+                                }, 100);
                             }
-                            $('.clickable').on('click', function() {
-                                $("body").removeClass("option-mask");
-                                $(".add-option-btn").removeClass("btn-close");
-                                $("body").addClass("mask-fade-effect");
-                                Ext.getCmp('btn-panel').hide();
-                                setTimeout(function() {
-                                    $("body").removeClass("mask-fade-effect");
-                                    Ext.getCmp('btn-panel').destroy();
-                                }, 300);
-                            });
                         }
                     }
                 }
             });
+        // $('.clickable').on('click', function() {
+        //     $("body").removeClass("option-mask");
+        //     $(".add-option-btn").removeClass("btn-close");
+        //     $("body").addClass("mask-fade-effect");
+        //     Ext.getCmp('btn-panel').hide();
+        //     setTimeout(function() {
+        //         $("body").removeClass("mask-fade-effect");
+        //         Ext.getCmp('btn-panel').destroy();
+        //     }, 100);
+        // });
         return button;
     },
     animationThumbnail: function() {
@@ -64353,6 +64353,14 @@ Ext.define('ttapp.store.Contacts', {
             result = this.getAt(i).get('on_tinktime');
         }
         return result;
+    },
+    getUserImage: function(phoneNumber) {
+        var i = this.find('phone_number', phoneNumber);
+        if (i > -1) {
+            return this.getAt(i).get('profile_url');
+        } else {
+            return null;
+        }
     }
 });
 
@@ -64367,13 +64375,14 @@ Ext.define('ttapp.model.Profile', {
             'is_verified',
             'last_updated_on',
             'selected_trinket_name',
-            'last_seconds_sent'
+            'last_seconds_sent',
+            'profile_url'
         ],
         validations: [
             {
                 type: 'format',
                 name: 'phone_number',
-                matcher: /^\+[0-9]+$/,
+                matcher: /^\+[0-9]+/,
                 message: "(+) followed by digits only."
             }
         ]
@@ -64412,7 +64421,8 @@ Ext.define('ttapp.store.Profile', {
                 is_verified: isVerified,
                 last_updated_on: lastUpdatedOn,
                 selected_trinket_name: selectedTrinketName,
-                last_seconds_sent: lastSecondsSent
+                last_seconds_sent: lastSecondsSent,
+                profile_url: null
             });
         var errors = usr.validate();
         if (errors.isValid()) {
@@ -64460,6 +64470,24 @@ Ext.define('ttapp.store.Profile', {
     getLastSentSeconds: function(callback) {
         var record = this.getAt(0);
         callback(record ? record.get('last_seconds_sent') : false);
+    },
+    setUserImage: function() {
+        var me = this;
+        var record = this.getAt(0);
+        Ext.Ajax.request({
+            url: ttapp.config.Config.getBaseURL() + '/profile-picture/' + record.get('phone_number') + '/',
+            method: 'GET',
+            disableCaching: false,
+            success: function(response) {
+                record.set('profile_url', response.responseText);
+                me.sync();
+            },
+            failure: function(response) {}
+        });
+    },
+    getUserImage: function(callback) {
+        var record = this.getAt(0);
+        callback(record ? record.get('profile_url') : false);
     }
 });
 
@@ -64517,6 +64545,10 @@ Ext.define('ttapp.store.IpInfo', {
     }
 });
 
+Ext.define('ttapp.view.NumberField', {
+    extend: Ext.field.Text
+});
+
 Ext.define('ttapp.view.Authenticate', {
     extend: Ext.Container,
     xtype: 'authenticate',
@@ -64528,12 +64560,6 @@ Ext.define('ttapp.view.Authenticate', {
             directionLock: true
         },
         items: [
-            /*{
-            xtype: 'toolbar',
-            docked:'top',
-            cls:'top-bar top-x-top-bar',
-            title:'Verify Number'
-            },*/
             {
                 xtype: 'panel',
                 cls: 'landing-page top-20-p',
@@ -64555,7 +64581,6 @@ Ext.define('ttapp.view.Authenticate', {
                     },
                     {
                         xtype: 'container',
-                        //layout: 'hbox',
                         items: [
                             {
                                 xtype: 'selectfield',
@@ -64578,7 +64603,8 @@ Ext.define('ttapp.view.Authenticate', {
                                     },
                                     {
                                         id: 'myPhoneNumber',
-                                        xtype: 'numberfield',
+                                        // xtype: 'numberfield',
+                                        xclass: 'ttapp.view.NumberField',
                                         name: 'verify-phone-number',
                                         placeHolder: '705432112',
                                         cls: 'form-field clsAuthenticatePhoneNumber',
@@ -64602,28 +64628,7 @@ Ext.define('ttapp.view.Authenticate', {
             }
         ]
     },
-    /*,{
-		        	xtype:'panel',
-		        	cls:'help-text-sm',
-		        	html:'We will not display your phone number to other people'
-		        },{
-		        	xtype:'panel',
-		        	cls:'help-text-sm',
-		        	html:'Read our <span class="privacy_policy">Privacy Policy</span> to learn more.',
-		        	listeners:[{
-		        		element: 'element',
-                        delegate: 'span.privacy_policy',
-                        event: 'tap',
-                        fn: function(){
-                        	Ext.Viewport.animateActiveItem('privacypolicy',{type:'fade'});
-                        }
-		        	}]
-		        }*/
     initialize: function() {
-        // setTimeout(function() {
-        // 	Ext.getStore('profilestore').verified();
-        // 	Ext.Viewport.setActiveItem('tinkometer', 'slide');
-        // }, 2000);
         var countries = ttapp.util.Common.setDialCode('123');
         var finalCountries = [];
         for (i = 0; i < countries.length; i++) {
@@ -64745,6 +64750,8 @@ Ext.define('ttapp.controller.Main', {
             ttapp.util.Common.isUserVerifiedOnServer();
             // refresh push token
             ttapp.util.Push.takeUserPermissionForPushNotify();
+            //update user image avatar
+            Ext.getStore('profilestore').setUserImage();
             // refresh contacts list
             ttapp.util.ContactsProxy.process(Ext.getStore('phonecontacts'));
         });
@@ -64964,13 +64971,9 @@ Ext.define('ttapp.controller.SendTo', {
         refs: {
             searchContactsField: 'searchfield[cls~=search-contacts-field]',
             btnSendTink: 'button[cls~=clsSendTink]',
-            textMsg: 'textareafield[cls~=text-msg-preview]',
-            setUserName: 'label[cls~=user-name]'
+            textMsg: 'textareafield[cls~=text-msg-preview]'
         },
         control: {
-            setUserName: {
-                show: 'renderUserName'
-            },
             'searchContactsField': {
                 keyup: 'onSearchKeyUp',
                 clearicontap: 'onSearchClearIconTap'
@@ -64987,13 +64990,10 @@ Ext.define('ttapp.controller.SendTo', {
             'sendto': {
                 show: 'onShowSendTo'
             },
-            textMsg: {
+            'textMsg': {
                 blur: 'hideKeyboard'
             }
         }
-    },
-    renderUserName: function() {
-        this.setHtml(window.contactSelected.data.first_name + ' ' + window.contactSelected.data.last_name);
     },
     hideKeyboard: function(callback, scope) {
         var activeElement = document.activeElement;
@@ -65009,26 +65009,16 @@ Ext.define('ttapp.controller.SendTo', {
         }, 100);
     },
     onShowSendTo: function(component) {
-        console.log(this);
+        //component.add(ttapp.util.Common.createMenuButton());
         this.phoneNumber = window.contactSelected.data.phone_number;
         this.setPreviewItems();
-        component.add(ttapp.util.Common.createMenuButton());
         Ext.getCmp('sendToImage').setStyle({
             'background': 'url(resources/images/user-icon.png)'
         });
-        function checkImage(imageUrl) {
-            var http = new XMLHttpRequest();
-            http.open('HEAD', imageUrl, false);
-            http.send();
-            if (http.status === 200) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-        if (checkImage(ttapp.config.Config.getBaseURL() + '/static/img/user_profile/' + window.contactSelected.data.phone_number + '.jpeg')) {
+        var profile_url = Ext.getStore('phonecontacts').getUserImage(this.phoneNumber);
+        if (!Ext.isEmpty(profile_url)) {
             Ext.getCmp('sendToImage').setStyle({
-                'background': 'url(' + ttapp.config.Config.getBaseURL() + '/static/img/user_profile/' + window.contactSelected.data.phone_number + '.jpeg)'
+                'background': 'url(' + profile_url + ')'
             });
         }
         Ext.select('.user-name').setHtml(window.contactSelected.data.first_name + ' ' + window.contactSelected.data.last_name);
@@ -65178,6 +65168,7 @@ Ext.define('ttapp.controller.SendTo', {
         /*old code*/
         /*Ext.Viewport.setActiveItem('split', 'slide');*/
         Ext.Viewport.setActiveItem('tinkbox', 'slide');
+        window.afterTinkSent = 1;
     },
     //Ext.ComponentQuery.query('#options')[0].setActiveItem(2, 'slide');
     showTink: function() {
@@ -65260,7 +65251,7 @@ Ext.define('ttapp.controller.Authenticate', {
         },
         control: {
             'authenticate': {
-                show: 'clearLocalStores'
+                show: 'setDialcode'
             },
             'confirmphonenumber': {
                 show: 'showPhoneNumber'
@@ -65304,7 +65295,11 @@ Ext.define('ttapp.controller.Authenticate', {
     sendConfirmationCode: function() {
         var me = this,
             m = Ext.ComponentQuery.query('#myDialCode')[0];
-        var phoneNumber = m.getValue() + Ext.getCmp('myPhoneNumber').getValue();
+        var number = Ext.getCmp('myPhoneNumber').getValue();
+        if (number) {
+            number = number.replace(/\s/g, '');
+        }
+        var phoneNumber = m.getValue() + number;
         me.myPhoneNumber = phoneNumber;
         // store user profile locally
         Ext.getStore('trinketstore').getDefaultTrinket(function(trinketName) {
@@ -65329,6 +65324,7 @@ Ext.define('ttapp.controller.Authenticate', {
                 }
             }
         });
+        Ext.getStore('profilestore').setUserImage();
     },
     sendCode: function(phoneNumber) {
         var me = this;
@@ -65475,65 +65471,6 @@ Ext.define('ttapp.controller.Trinket', {
     }
 });
 
-Ext.define('ttapp.controller.Split', {
-    extend: Ext.app.Controller,
-    config: {
-        refs: {},
-        control: {
-            'splittinkbox': {
-                toTinkBox: 'onTinkBox'
-            },
-            'splitnewtink': {
-                toNewTink: 'onNewTink'
-            },
-            'split': {
-                show: 'onShow'
-            }
-        }
-    },
-    onShow: function() {
-        this.showSentTrinketThumbnail();
-        // ajax load the feed
-        ttapp.util.FeedProxy.process(true);
-        this.updateNotifyRedDot();
-    },
-    updateNotifyRedDot: function() {
-        var unreadRedDot = ttapp.config.Config.getUnreadMessage();
-        ttapp.util.Common.updateNotifySymbol(unreadRedDot);
-    },
-    onNewTink: function() {
-        ttapp.util.Analytics.trackView('Tink');
-        Ext.Viewport.animateActiveItem('tink', {
-            type: 'slide',
-            direction: 'right'
-        });
-    },
-    onTinkBox: function() {
-        ttapp.util.Analytics.trackView('Feed');
-        Ext.Viewport.animateActiveItem('feed', {
-            type: 'slide',
-            direction: 'left'
-        });
-    },
-    showSentTrinketThumbnail: function() {
-        Ext.getStore('profilestore').getLastSentSeconds(function(secondsSent) {
-            Ext.getStore('profilestore').getActiveTrinket(function(trinketName) {
-                Ext.getStore('trinketstore').getThumbnailPath(trinketName, function(activeTrinketThumbnailPath) {
-                    console.log(secondsSent);
-                    var sendSec = Ext.select('.clsSplitSeconds');
-                    sendSec.setHtml(secondsSent + ' S');
-                    var width = ttapp.config.Config.getWidth(),
-                        height = ttapp.config.Config.getHeight();
-                    var pt = Ext.ComponentQuery.query('#sentTrinket')[0];
-                    pt.setSrc(activeTrinketThumbnailPath);
-                });
-            });
-        });
-    }
-});
-// pt.setTop((ttapp.config.Config.getHeight()/4)-50);
-// pt.setLeft((ttapp.config.Config.getWidth()/2)-50);
-
 Ext.define('ttapp.controller.ReplayTink', {
     extend: Ext.app.Controller,
     config: {
@@ -65621,8 +65558,7 @@ Ext.define('ttapp.controller.TinkChat', {
     extend: Ext.app.Controller,
     config: {
         refs: {
-            backBtn: 'button[cls~=back-btn-icon-chat]',
-            image: 'image[cls~=header-user-img]'
+            backBtn: 'button[cls~=back-btn-icon]'
         },
         control: {
             'tinkchat': {
@@ -65634,52 +65570,17 @@ Ext.define('ttapp.controller.TinkChat', {
             },
             'backBtn': {
                 tap: 'backToTinkBox'
-            },
-            'image': {
-                load: 'changeImage'
             }
         }
-    },
-    changeImage: function(element, eOpts) {
-        console.log(element.getSrc());
-        function imageExistsForTinkChat(url, callback, timeout) {
-            timeout = timeout || 3000;
-            var timedOut = false,
-                timer;
-            var img = new Image();
-            img.onerror = img.onabort = function() {
-                if (!timedOut) {
-                    clearTimeout(timer);
-                    callback("error");
-                }
-            };
-            img.onload = function() {
-                if (!timedOut) {
-                    clearTimeout(timer);
-                    callback("success");
-                }
-            };
-            img.src = url;
-            timer = setTimeout(function() {
-                timedOut = true;
-                callback("timeout");
-            }, timeout);
-        }
-        function recursiveStoreForTinkChat() {
-            imageExistsForTinkChat(element.getSrc(), function(exists) {
-                console.log(exists);
-                if (exists != 'success') {
-                    element.setSrc('resources/images/avatar.png');
-                }
-            });
-        }
-        recursiveStoreForTinkChat();
     },
     removeList: function() {
         var me = this;
         me.list.destroy();
     },
     renderList: function(component) {
+        Ext.getCmp('tinkchatimage').setStyle({
+            'background': 'url(resources/images/user-icon.png)'
+        });
         Ext.Viewport.mask({
             xtype: 'loadmask',
             html: '<img src="resources/images/green-loader.png" alt="loader">'
@@ -65692,16 +65593,19 @@ Ext.define('ttapp.controller.TinkChat', {
                 success: function(response) {
                     Ext.Viewport.setMasked(false);
                     message = Ext.decode(response.responseText);
-                    Ext.getCmp('tinkchatimage').setStyle({
-                        'background': 'url(' + ttapp.config.Config.getBaseURL() + '/static/img/user_profile/' + window.selectedTinkBoxItem.data.number + '.jpeg)'
-                    });
+                    var profile_url = Ext.getStore('phonecontacts').getUserImage(window.selectedTinkBoxItem.data.number);
+                    if (!Ext.isEmpty(profile_url)) {
+                        Ext.getCmp('tinkchatimage').setStyle({
+                            'background': 'url(' + profile_url + ')'
+                        });
+                    }
                     Ext.select('.user-title').setHtml(getName(window.selectedTinkBoxItem.data.number));
                     Ext.select('.tink-in-friend').setHtml(showTinkTime(window.selectedTinkBoxItem.data.inout.split("-")[0]));
                     Ext.select('.tink-out-friend').setHtml(showTinkTime(window.selectedTinkBoxItem.data.inout.split("-")[1]));
                     total_time = parseInt(window.selectedTinkBoxItem.data.inout.split("-")[0]) + parseInt(window.selectedTinkBoxItem.data.inout.split("-")[1]);
-                    // console.log("total_time__"+total_time);
+                    console.log("total_time__" + total_time);
                     percent = (parseInt(window.selectedTinkBoxItem.data.inout.split("-")[1]) / total_time) * 100;
-                    // console.log("percent__"+percent);
+                    console.log("percent__" + percent);
                     // (id, radius, border-width, percent)
                     testCircleCss('tinkChatCircle', 25, 5, Math.ceil(percent));
                     function formatted_date(timestamp) {
@@ -65851,7 +65755,6 @@ Ext.define('ttapp.controller.TinkChat', {
     onChatSelect: function(target, index, e, record, eOpts) {
         console.log(record);
         console.log(eOpts);
-        ttapp.util.Analytics.trackView('View Chat Tink');
         if (eOpts.target.className == "tink-new" || eOpts.target.className == "overlay-video") {}
         // Ext.Ajax.request({
         //           url: ttapp.config.Config.getBaseURL()+'/message-read-v2/',
@@ -65929,7 +65832,7 @@ Ext.define('ttapp.controller.TinkChat', {
     //               failure: function(error) {
     //               }
     //           });
-    // }
+    // } 
     //{
     //ttapp.app.getController('Tink').useActiveTrinket();
     // var me = this;
@@ -65956,7 +65859,6 @@ Ext.define('ttapp.controller.TinkChat', {
             type: 'slide',
             direction: 'right'
         });
-        ttapp.util.Analytics.trackView('Tinkbox');
     }
 });
 
@@ -65987,20 +65889,36 @@ Ext.define('ttapp.controller.PhoneContact', {
     },
     searchPhoneContact: function(textfield, e, eOpts) {
         if (textfield.id == 'searchPhoneContact') {
-            var queryString = textfield.getValue();
-            var storelist = Ext.getStore("phonecontacts");
-            storelist.clearFilter();
+            var queryString = textfield.getValue(),
+                list = Ext.getCmp('contactsList');
             if (queryString) {
                 var thisRegEx = new RegExp(queryString, 'i');
-                storelist.filterBy(function(record) {
-                    var name = record.data.first_name + " " + record.data.last_name;
+                this._filteredContacts = this._contacts.filter(function(record) {
+                    var name = record.first_name + " " + record.last_name;
                     if (thisRegEx.test(name)) {
                         return true;
                     } else {
                         return false;
                     }
                 });
+                list.getStore().setData(this._filteredContacts);
+            } else {
+                this._filteredContacts = null;
+                list.getStore().setData(this._contacts);
             }
+            // var storelist = Ext.getStore("phonecontacts");
+            // storelist.clearFilter();
+            // if (queryString) {
+            //     var thisRegEx = new RegExp(queryString, 'i');
+            //     storelist.filterBy(function(record) {
+            // 				var name = record.data.first_name + " " + record.data.last_name;
+            //         if (thisRegEx.test(name)) {
+            //             return true;
+            //         } else {
+            //             return false;
+            //         }
+            //     });
+            // }
             ttapp.app.getController('PhoneContact').showCircles();
         }
     },
@@ -66012,19 +65930,20 @@ Ext.define('ttapp.controller.PhoneContact', {
     //        }
     //    },
     showCircles: function() {
-        store = Ext.getStore('phonecontacts').getData().items;
+        // store = Ext.getStore('phonecontacts').getData().items;
+        var store = this._filteredContacts || this._contacts;
         for (i = 0; i < store.length; i++) {
-            if (store[i].data.on_tinktime !== false) {
-                if (!Ext.isEmpty(store[i].data.time_split)) {
-                    total_time = store[i].data.time_split.time_in + store[i].data.time_split.time_out;
-                    percent = (store[i].data.time_split.time_out / total_time) * 100;
+            if (store[i].on_tinktime !== false) {
+                if (!Ext.isEmpty(store[i].time_split)) {
+                    total_time = store[i].time_split.time_in + store[i].time_split.time_out;
+                    percent = (store[i].time_split.time_out / total_time) * 100;
                     //console.log(Math.ceil(percent));
                     // (id, radius, border-width, percent)
                     //testCircleCss(element.dom.firstChild.firstChild.firstChild.id, 50, 10, Math.ceil(percent));
-                    if (store[i].data.time_split.time_out == 0) {
-                        testCircleCss(store[i].data.id, 20, 4, 100);
+                    if (store[i].time_split.time_out == 0) {
+                        testCircleCss(store[i].id, 20, 4, 100);
                     } else {
-                        testCircleCss(store[i].data.id, 20, 4, Math.ceil(percent));
+                        testCircleCss(store[i].id, 20, 4, Math.ceil(percent));
                     }
                 }
             }
@@ -66039,6 +65958,11 @@ Ext.define('ttapp.controller.PhoneContact', {
                 placeHolder: 'Who are you thinking of?'
             });
         component.add(searchfield);
+        this._contacts = [];
+        Ext.getStore('phonecontacts').each(function(record) {
+            this._contacts.push(record.data);
+        }, this);
+        this._filteredContacts = null;
         var list = Ext.create('Ext.List', {
                 cls: 'phone-contact-list',
                 id: 'contactsList',
@@ -66062,7 +65986,8 @@ Ext.define('ttapp.controller.PhoneContact', {
                     '</tpl>',
                     '</tpl>'
                 ],
-                store: Ext.getStore('phonecontacts'),
+                // store: Ext.getStore('phonecontacts'),
+                data: this._contacts,
                 listeners: {
                     painted: function(list, eOpts) {
                         var store = Ext.getStore('phonecontacts').getData().all;
@@ -66132,7 +66057,13 @@ Ext.define('ttapp.controller.PhoneContact', {
                             Ext.Msg.alert('Cancelled', 'Sms not sent!', Ext.emptyFn);
                         }
                     };
-                SMS.sendSMS(sConf.number, sConf.message, sConf.success, sConf.error);
+                sms.send(sConf.number, sConf.message, {
+                    android: {
+                        intent: 'INTENT'
+                    }
+                }, // send SMS with the native android SMS messaging
+                //intent: '' // send SMS without open any other app
+                sConf.success, sConf.error);
             } else {
                 console.log('Not on mobile device.');
             }
@@ -66143,7 +66074,7 @@ Ext.define('ttapp.controller.PhoneContact', {
                 duration: 500,
                 easing: 'ease-out'
             });
-            Ext.getStore("phonecontacts").clearFilter();
+            // Ext.getStore("phonecontacts").clearFilter();
             list.destroy();
             //Ext.getCmp('searchPhoneContact').destroy();
             ttapp.util.Analytics.trackView('Trinket');
@@ -66170,6 +66101,7 @@ Ext.define('ttapp.controller.TinkBox', {
         }
     },
     getTinkBoxData: function(component) {
+        //console.log('in tink box');
         Ext.Viewport.mask({
             xtype: 'loadmask',
             html: '<img src="resources/images/green-loader.png" alt="loader">'
@@ -66181,18 +66113,56 @@ Ext.define('ttapp.controller.TinkBox', {
                 disableCaching: false,
                 success: function(response) {
                     var json = Ext.JSON.decode(response.responseText);
+                    var temp = [];
+                    var topItemData = [];
                     for (i = 0; i < json.groups.length; i++) {
-                        Ext.getStore('tinkBoxStore').add({
-                            'tink_in': displaytimer(json.groups[i].tink_in),
-                            'tink_out': displaytimer(json.groups[i].tink_out),
-                            'unread': json.groups[i].unread,
-                            'user': getName(json.groups[i].user),
-                            'img': ttapp.util.Common.animationThumbnail(),
-                            'background': ttapp.config.Config.getBaseURL() + '/static/img/user_profile/' + json.groups[i].user + '.jpeg',
-                            /*getBackgroundImage(json.groups[i].user),*/
-                            'number': json.groups[i].user,
-                            'inout': json.groups[i].tink_in + "-" + json.groups[i].tink_out
-                        });
+                        if (!Ext.isEmpty(window.afterTinkSent)) {
+                            if (json.groups[i].user == window.contactSelected.data.phone_number) {
+                                topItemData.push({
+                                    'tink_in': displaytimer(json.groups[i].tink_in),
+                                    'tink_out': displaytimer(json.groups[i].tink_out),
+                                    'unread': json.groups[i].unread,
+                                    'user': getName(json.groups[i].user),
+                                    'img': ttapp.util.Common.animationThumbnail(),
+                                    'background': Ext.getStore('phonecontacts').getUserImage(json.groups[i].user),
+                                    'number': json.groups[i].user,
+                                    'inout': json.groups[i].tink_in + "-" + json.groups[i].tink_out,
+                                    'inTime': json.groups[i].tink_in,
+                                    'outTime': json.groups[i].tink_out
+                                });
+                            } else {
+                                temp.push({
+                                    'tink_in': displaytimer(json.groups[i].tink_in),
+                                    'tink_out': displaytimer(json.groups[i].tink_out),
+                                    'unread': json.groups[i].unread,
+                                    'user': getName(json.groups[i].user),
+                                    'img': ttapp.util.Common.animationThumbnail(),
+                                    'background': Ext.getStore('phonecontacts').getUserImage(json.groups[i].user),
+                                    'number': json.groups[i].user,
+                                    'inout': json.groups[i].tink_in + "-" + json.groups[i].tink_out,
+                                    'inTime': json.groups[i].tink_in,
+                                    'outTime': json.groups[i].tink_out
+                                });
+                            }
+                        } else {
+                            temp.push({
+                                'tink_in': displaytimer(json.groups[i].tink_in),
+                                'tink_out': displaytimer(json.groups[i].tink_out),
+                                'unread': json.groups[i].unread,
+                                'user': getName(json.groups[i].user),
+                                'img': ttapp.util.Common.animationThumbnail(),
+                                'background': Ext.getStore('phonecontacts').getUserImage(json.groups[i].user),
+                                'number': json.groups[i].user,
+                                'inout': json.groups[i].tink_in + "-" + json.groups[i].tink_out,
+                                'inTime': json.groups[i].tink_in,
+                                'outTime': json.groups[i].tink_out
+                            });
+                        }
+                    }
+                    Ext.getStore('tinkBoxStore').addData(temp);
+                    if (!Ext.isEmpty(window.afterTinkSent)) {
+                        Ext.getStore('tinkBoxStore').insert(0, topItemData);
+                        delete window.afterTinkSent;
                     }
                     Ext.Viewport.setMasked(false);
                 },
@@ -66207,7 +66177,8 @@ Ext.define('ttapp.controller.TinkBox', {
                 id: 'tinkBoxList',
                 cls: 'tinkbox-section',
                 itemTpl: [
-                    '<tpl if="unread == 0">',
+                    '<tpl if="unread === 0">',
+                    '<tpl if="inTime &gt; outTime">',
                     '<div class="list-box" style="background:url({background}) no-repeat 50% 50%">',
                     '<div class="over-lay"></div>',
                     '<span class="inner-detail"><span class="user-name">{user}</span><span class="info"><span class="circle"><img src={img} ></span><span class="time">{tink_in}</span><span class="tinkinout">Tink in</span></span><span class="info right"><span class="circle"><img src={img} ></span><span class="time">{tink_out}</span><span class="tinkinout">Tink out</span></span><span class="arrow"></span></span>',
@@ -66215,8 +66186,21 @@ Ext.define('ttapp.controller.TinkBox', {
                     '<tpl else>',
                     '<div class="list-box" style="background:url({background}) no-repeat 50% 50%">',
                     '<div class="over-lay"></div>',
+                    '<span class="inner-detail"><span class="user-name">{user}</span><span class="info right"><span class="circle"><img src={img} ></span><span class="time">{tink_in}</span><span class="tinkinout">Tink in</span></span><span class="info"><span class="circle"><img src={img} ></span><span class="time">{tink_out}</span><span class="tinkinout">Tink out</span></span><span class="arrow"></span></span>',
+                    '</div>',
+                    '</tpl>',
+                    '<tpl else>',
+                    '<tpl if="inTime &gt; outTime">',
+                    '<div class="list-box" style="background:url({background}) no-repeat 50% 50%">',
+                    '<div class="over-lay"></div>',
                     '<span class="inner-detail"><span class="user-name">{user}</span><span class="info"><span class="circle active"><span class="notification-icon"></span><img src={img} ></span><span class="time">{tink_in}</span><span class="tinkinout">Tink in</span></span><span class="info right"><span class="circle"><img src={img} ></span><span class="time">{tink_out}</span><span class="tinkinout">Tink out</span></span><span class="arrow"></span></span>',
                     '</div>',
+                    '<tpl else>',
+                    '<div class="list-box" style="background:url({background}) no-repeat 50% 50%">',
+                    '<div class="over-lay"></div>',
+                    '<span class="inner-detail"><span class="user-name">{user}</span><span class="info right"><span class="circle"><img src={img} ></span><span class="time">{tink_in}</span><span class="tinkinout">Tink in</span></span><span class="info"><span class="circle"><img src={img} ></span><span class="time">{tink_out}</span><span class="tinkinout">Tink out</span></span><span class="arrow"></span></span>',
+                    '</div>',
+                    '</tpl>',
                     '</tpl>'
                 ],
                 store: {
@@ -66230,7 +66214,9 @@ Ext.define('ttapp.controller.TinkBox', {
                         'img',
                         'background',
                         'number',
-                        'inout'
+                        'inout',
+                        'inTime',
+                        'outTime'
                     ]
                 },
                 listeners: {
@@ -66448,7 +66434,7 @@ Ext.define('ttapp.view.SendTo', {
     extend: Ext.Container,
     xtype: 'sendto',
     config: {
-        scrollable: true,
+        //scrollable: true,
         itemId: 'choose-recepients',
         fullscreen: true,
         cls: 'bg-light-gray',
@@ -66476,105 +66462,160 @@ Ext.define('ttapp.view.SendTo', {
                     }
                 ]
             },
-            /*{
-	        	xtype:'panel',
-	        	cls:'search-panel',
-	        	items: [
-	        		{
-	        			itemId: 'contactsListToChoose',
-			    		id:'contactsListToChoose',
-			    		xtype: 'list',
-			    		height:'30%',
-			    		cls:'search-list-sec',
-			            scrollable: {
-			                direction: 'vertical'
-			            },
-			            itemTpl: '<div class="on-tinktime-{on_tinktime}"><div class="send-to-contacts name-panel">{first_name} {last_name}</div> <div><tpl if="phone_type"><span>{phone_type}</span> </tpl>{phone_number}</div></div>',
-			            store: 'phonecontacts',
-                        infinite: true,
-                        itemHeight: 62,
-		        		items: [
-		        			{
-		                        xtype: 'searchfield',
-		                        cls:'search-contacts-field',
-		                        clearIcon:false,
-		                        docked:'top',
-		                        itemID:'searchBox',
-		                        placeHolder: 'Search...',
-		                        label:'To'
-	                    	}
-	                	]
-	        		}
-	        	]
-	        },*/
             {
-                xtype: 'container',
-                cls: 'tinktime-user-sec',
-                items: [
-                    {
-                        xtype: 'image',
-                        cls: 'user-img',
-                        setStyleHtmlContent: true,
-                        style: 'background:url(resources/images/user-icon.png)',
-                        //src:'resources/images/user-icon.png',
-                        id: 'sendToImage',
-                        mode: 'image'
-                    },
-                    {
-                        xtype: 'label',
-                        cls: 'user-name',
-                        html: 'User Name'
-                    },
-                    {
-                        xtype: 'label',
-                        itemId: 'previewSeconds',
-                        cls: 'seconds-preview'
+                xtype: 'button',
+                cls: 'add-option-btn',
+                html: '<img class="option-add-icon animated rotateOut" src="resources/images/add_icon.png" />',
+                listeners: {
+                    tap: {
+                        fn: function() {
+                            btnPanel = Ext.getCmp('btn-panel');
+                            if (!btnPanel) {
+                                Ext.Viewport.add({
+                                    xtype: 'panel',
+                                    centered: true,
+                                    width: '100%',
+                                    height: '100%',
+                                    id: 'btn-panel',
+                                    hideAnimation: {
+                                        type: 'fadeOut',
+                                        duration: 200,
+                                        easing: 'ease-out'
+                                    },
+                                    cls: 'option-overlay clickable',
+                                    modal: true,
+                                    html: '<div class="option-btn-grp">' + '<div class="btn tink-meter slideInUp3"><span id="tinkometer" class="icon"></span><span class="title">Tinkometer</span></div>' + '<div class="btn tink-box slideInUp2"><span id="tinkbox" class="icon"></span><span class="title">Tinkbox</span></div>' + '<div class="btn tink slideInUp1"><span id="tink" class="icon"></span><span class="title">Tink</span></div>' + '</div>'
+                                });
+                                Ext.getCmp('btn-panel').show();
+                                if (Ext.Viewport.getActiveItem().config.xtype == 'phoneContacts') {
+                                    Ext.select('.tink').hide();
+                                }
+                                $('.btn').on('click', function() {
+                                    var anim = {
+                                            type: 'fade',
+                                            direction: 'up',
+                                            duration: 100,
+                                            easing: 'ease-out'
+                                        };
+                                    switch (this.children[0].id) {
+                                        case 'settingsProfile':
+                                            break;
+                                        case 'tinkometer':
+                                            $("body").removeClass("option-mask");
+                                            $(".add-option-btn").removeClass("btn-close");
+                                            $("body").addClass("mask-fade-effect");
+                                            Ext.getCmp('btn-panel').destroy();
+                                            Ext.Viewport.animateActiveItem('tinkometer', anim);
+                                            break;
+                                        case 'tinkbox':
+                                            $("body").removeClass("option-mask");
+                                            $(".add-option-btn").removeClass("btn-close");
+                                            $("body").addClass("mask-fade-effect");
+                                            Ext.getCmp('btn-panel').destroy();
+                                            Ext.Viewport.animateActiveItem('tinkbox', anim);
+                                            break;
+                                        case 'tink':
+                                            $("body").removeClass("option-mask");
+                                            $(".add-option-btn").removeClass("btn-close");
+                                            Ext.getCmp('btn-panel').destroy();
+                                            Ext.Viewport.animateActiveItem('phoneContacts', anim);
+                                            break;
+                                        default:
+                                    }
+                                });
+                                $(".btn").addClass("slide-animation animated");
+                                $(".add-option-btn").addClass("btn-close");
+                                $("body").addClass("option-mask");
+                            } else {
+                                $("body").removeClass("option-mask");
+                                $(".add-option-btn").removeClass("btn-close");
+                                $("body").addClass("mask-fade-effect");
+                                Ext.getCmp('btn-panel').hide();
+                                setTimeout(function() {
+                                    $("body").removeClass("mask-fade-effect");
+                                    Ext.getCmp('btn-panel').destroy();
+                                }, 100);
+                            }
+                        }
                     }
-                ]
+                }
             },
+            // $('.clickable').on('click', function() {
+            //     $("body").removeClass("option-mask");
+            //     $(".add-option-btn").removeClass("btn-close");
+            //     $("body").addClass("mask-fade-effect");
+            //     Ext.getCmp('btn-panel').hide();
+            //     setTimeout(function() {
+            //         $("body").removeClass("mask-fade-effect");
+            //         Ext.getCmp('btn-panel').destroy();
+            //     }, 300);
+            // });
             {
-                xtype: 'container',
-                cls: 'message-box custom-msgbox',
-                //styleHtmlCls : 'clsPreviewSelection',
-                //styleHtmlContent : true,
-                //flex: 1.4,
+                scrollable: true,
+                layout: 'vbox',
+                cls: 'tink-send-page',
                 items: [
                     {
-                        xtype: 'image',
-                        itemId: 'previewTrinket',
-                        src: 'resources/images/others/tink_design.png',
-                        cls: 'preview-trinket msg-box-img'
+                        xtype: 'container',
+                        cls: 'tinktime-user-sec',
+                        items: [
+                            {
+                                xtype: 'image',
+                                cls: 'user-img',
+                                setStyleHtmlContent: true,
+                                style: 'background:url(resources/images/user-icon.png)',
+                                id: 'sendToImage',
+                                mode: 'image'
+                            },
+                            {
+                                xtype: 'label',
+                                cls: 'user-name',
+                                html: 'User Name'
+                            },
+                            {
+                                xtype: 'label',
+                                itemId: 'previewSeconds',
+                                cls: 'seconds-preview'
+                            }
+                        ]
                     },
-                    /*{
-	        			xtype: 'label',
-	        			itemId: 'previewSeconds',
-	        			cls: 'seconds-preview'
-	        		},*/
                     {
-                        xtype: 'textareafield',
-                        //placeHolder: "Add a message!",
-                        label: "Add Message",
-                        labelAlign: 'top',
-                        itemId: 'previewTextMsg',
-                        cls: 'text-msg-preview edit-text-area',
-                        maxLength: 140,
-                        clearIcon: false
-                    }
-                ]
-            },
-            {
-                xtype: 'spacer',
-                cls: 'height-space'
-            },
-            {
-                xtype: 'container',
-                layout: 'hbox',
-                items: [
+                        xtype: 'container',
+                        cls: 'message-box custom-msgbox',
+                        items: [
+                            {
+                                xtype: 'image',
+                                itemId: 'previewTrinket',
+                                src: 'resources/images/others/tink_design.png',
+                                cls: 'preview-trinket msg-box-img'
+                            },
+                            {
+                                xtype: 'textareafield',
+                                //placeHolder: "Add a message!",
+                                label: "Add Message",
+                                labelAlign: 'top',
+                                itemId: 'previewTextMsg',
+                                cls: 'text-msg-preview edit-text-area',
+                                maxLength: 140,
+                                clearIcon: false
+                            }
+                        ]
+                    },
                     {
-                        xtype: 'button',
-                        cls: 'clsSendTink form-btn send-new-button',
-                        text: 'Send',
-                        ui: 'ttButton'
+                        xtype: 'spacer',
+                        cls: 'height-space'
+                    },
+                    {
+                        xtype: 'container',
+                        layout: 'hbox',
+                        items: [
+                            {
+                                xtype: 'button',
+                                cls: 'clsSendTink form-btn send-new-button',
+                                text: 'Send',
+                                ui: 'ttButton'
+                            }
+                        ]
                     }
                 ]
             }
@@ -66706,19 +66747,6 @@ Ext.define('ttapp.view.ConfirmPhoneNumber', {
                     }
                 ]
             },
-            /*{
-		        	xtype:'panel',
-		        	cls:'help-text-sm',
-		        	html:'Read our <span class="privacy_policy">Privacy Policy</span> to learn more.',
-		        	listeners:[{
-		        		element: 'element',
-                        delegate: 'span.privacy_policy',
-                        event: 'tap',
-                        fn: function(){
-                        	Ext.Viewport.animateActiveItem('privacypolicy',{type:'fade'});
-                        }
-		        	}]
-		        }*/
             {
                 xtype: 'button',
                 cls: 'send-again-btn',
@@ -66726,138 +66754,6 @@ Ext.define('ttapp.view.ConfirmPhoneNumber', {
                 docked: 'bottom'
             }
         ]
-    }
-});
-
-Ext.define('ttapp.view.SplitNewTink', {
-    extend: Ext.Container,
-    xtype: 'splitnewtink',
-    config: {
-        // styleHtmlContent: true,
-        items: [
-            {
-                xtype: 'button',
-                html: 'Send Another'
-            }
-        ],
-        listeners: {
-            tap: {
-                element: 'element',
-                fn: function() {
-                    this.fireEvent("toNewTink", this);
-                }
-            }
-        }
-    }
-});
-
-Ext.define('ttapp.view.SplitTinkBox', {
-    extend: Ext.Container,
-    xtype: 'splittinkbox',
-    config: {
-        styleHtmlContent: true,
-        items: [
-            {
-                xtype: 'button',
-                html: 'View Tinkbox'
-            }
-        ],
-        listeners: {
-            tap: {
-                element: 'element',
-                fn: function() {
-                    this.fireEvent("toTinkBox", this);
-                }
-            }
-        }
-    }
-});
-
-Ext.define('ttapp.view.Split', {
-    extend: Ext.Container,
-    xtype: 'split',
-    config: {
-        fullscreen: true,
-        layout: 'hbox',
-        cls: 'split-page',
-        items: [
-            {
-                xtype: 'toolbar',
-                docked: 'top',
-                cls: 'top-bar',
-                items: [
-                    {
-                        xtype: 'button',
-                        cls: 'top-btn btn-tink',
-                        docked: 'left',
-                        handler: function() {
-                            ttapp.util.Analytics.trackView('Tink');
-                            Ext.Viewport.animateActiveItem('tink', {
-                                type: 'slide',
-                                direction: 'right'
-                            });
-                        }
-                    },
-                    {
-                        xtype: 'button',
-                        cls: 'top-btn btn-mail',
-                        docked: 'right',
-                        handler: function() {
-                            ttapp.util.Analytics.trackView('Feed');
-                            Ext.Viewport.animateActiveItem('feed', {
-                                type: 'slide',
-                                direction: 'left'
-                            });
-                        }
-                    }
-                ]
-            },
-            {
-                xtype: 'image',
-                itemId: 'sentTrinket',
-                src: 'resources/images/others/tink_design.png',
-                cls: 'prev-trinket',
-                html: '<div class="clsSplitSeconds">1 S</div><div class="clsSplitDone">Done!</div>',
-                styleHtmlCls: 'clsSentTrinket',
-                styleHtmlContent: true
-            },
-            {
-                xtype: 'container',
-                layout: 'vbox',
-                cls: 'cls-tt-split-left',
-                items: [
-                    {
-                        xtype: 'splitnewtink',
-                        style: 'text-align:center;'
-                    }
-                ]
-            },
-            {
-                xtype: 'container',
-                layout: 'vbox',
-                cls: 'cls-tt-split-right',
-                items: [
-                    {
-                        xtype: 'splittinkbox',
-                        style: 'text-align:center;'
-                    }
-                ]
-            }
-        ],
-        listeners: {
-            swipeleft: {
-                element: 'element',
-                fn: function() {
-                    this.fireEvent("toNewTink", this);
-                }
-            },
-            swiperight: {
-                element: 'element',
-                fn: function() {
-                    this.fireEvent("toTinkBox", this);
-                }
-            }
-        }
     }
 });
 
@@ -66954,7 +66850,7 @@ Ext.define('ttapp.view.TinkoMeter', {
                 xtype: 'panel',
                 cls: 'tinko-user',
                 flex: 2,
-                html: '<div class="tinko-user-img"><div class="img-sec" id="user_img" style="background-image:url(resources/images/user-img.png);     background-size: cover;"></div><div class="edit-icon"></div></div>',
+                html: '<div class="tinko-user-img"><div class="img-sec" id="user_img" style="background-image:url(resources/images/user-img.png); background-size: cover;"></div><div class="edit-icon"></div></div>',
                 listeners: {
                     'tap': {
                         element: 'element',
@@ -66967,7 +66863,7 @@ Ext.define('ttapp.view.TinkoMeter', {
                                 });
                                 if (Ext.os.is('Android')) {
                                     window.FilePath.resolveNativePath(imageURI, function(response) {
-                                        console.log("success__" + JSON.stringify(response));
+                                        onsole.log("success__" + JSON.stringify(response));
                                     }, function(response) {
                                         console.log("fail__" + JSON.stringify(response));
                                     });
@@ -66979,11 +66875,12 @@ Ext.define('ttapp.view.TinkoMeter', {
                                 });
                                 document.getElementById('user_img').style.backgroundImage = "url(" + imageURI + ")";
                                 var win = function(r) {
+                                        Ext.Viewport.setMasked(false);
                                         console.log(JSON.stringify(r));
                                         console.log("Code = " + r.responseCode);
                                         console.log("Response = " + r.response);
                                         console.log("Sent = " + r.bytesSent);
-                                        Ext.Viewport.setMasked(false);
+                                        Ext.getStore('profilestore').setUserImage();
                                     };
                                 var fail = function(error) {
                                         console.log("upload error source " + error.source);
@@ -67018,8 +66915,12 @@ Ext.define('ttapp.view.TinkoMeter', {
                     },
                     'painted': {
                         fn: function(panel, eOpts) {
-                            Ext.getStore('profilestore').getPhoneNumber(function(num) {
-                                document.getElementById('user_img').style.backgroundImage = "url(" + ttapp.config.Config.getBaseURL() + '/static/img/user_profile/' + num + ".jpeg)";
+                            Ext.getStore('profilestore').getUserImage(function(image) {
+                                if (Ext.isEmpty(image)) {
+                                    document.getElementById('user_img').style.backgroundImage = "url(resources/images/user-img.png)";
+                                } else {
+                                    document.getElementById('user_img').style.backgroundImage = "url(" + image + ")";
+                                }
                             });
                         }
                     }
@@ -67239,7 +67140,6 @@ Ext.application({
         'Landing',
         'Authenticate',
         'Trinket',
-        'Split',
         'ReplayTink',
         'TinkChat',
         'PhoneContact',
@@ -67252,7 +67152,6 @@ Ext.application({
         'Trinket',
         'Authenticate',
         'ConfirmPhoneNumber',
-        'Split',
         'PrivacyPolicy',
         'PhoneContacts',
         'TinkoMeter',

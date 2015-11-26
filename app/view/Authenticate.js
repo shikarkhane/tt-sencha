@@ -1,7 +1,7 @@
 Ext.define('ttapp.view.Authenticate', {
 	extend: 'Ext.Container',
 	xtype: 'authenticate',
-	requires: ['Ext.field.Number', 'Ext.field.Select'],
+	requires: ['Ext.field.Number', 'Ext.field.Select', 'ttapp.view.NumberField'],
 	config:{
 		fullscreen: true,
 		cls: 'bg-transparent',
@@ -49,7 +49,8 @@ Ext.define('ttapp.view.Authenticate', {
 					        	},
 					        	{
 						        	id: 'myPhoneNumber',
-					                xtype: 'numberfield',
+					                // xtype: 'numberfield',
+													xclass: 'ttapp.view.NumberField',
 					                name: 'verify-phone-number',
 					                placeHolder: '705432112',
 					                cls:'form-field clsAuthenticatePhoneNumber',

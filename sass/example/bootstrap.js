@@ -2477,7 +2477,6 @@ Ext.ClassManager.addNameAlternateMappings({
   "ttapp.controller.PhoneContact": [],
   "ttapp.controller.ReplayTink": [],
   "ttapp.controller.SendTo": [],
-  "ttapp.controller.Split": [],
   "ttapp.controller.Tink": [],
   "ttapp.controller.TinkBox": [],
   "ttapp.controller.TinkChat": [],
@@ -2501,13 +2500,11 @@ Ext.ClassManager.addNameAlternateMappings({
   "ttapp.view.Authenticate": [],
   "ttapp.view.ConfirmPhoneNumber": [],
   "ttapp.view.Landing": [],
+  "ttapp.view.NumberField": [],
   "ttapp.view.PhoneContacts": [],
   "ttapp.view.PrivacyPolicy": [],
   "ttapp.view.ReplayTink": [],
   "ttapp.view.SendTo": [],
-  "ttapp.view.Split": [],
-  "ttapp.view.SplitNewTink": [],
-  "ttapp.view.SplitTinkBox": [],
   "ttapp.view.Thinking": [],
   "ttapp.view.TimerClock": [],
   "ttapp.view.Tink": [],
@@ -3255,7 +3252,6 @@ Ext.ClassManager.addNameAliasMappings({
   "ttapp.controller.PhoneContact": [],
   "ttapp.controller.ReplayTink": [],
   "ttapp.controller.SendTo": [],
-  "ttapp.controller.Split": [],
   "ttapp.controller.Tink": [],
   "ttapp.controller.TinkBox": [],
   "ttapp.controller.TinkChat": [],
@@ -3291,6 +3287,7 @@ Ext.ClassManager.addNameAliasMappings({
   "ttapp.view.Landing": [
     "widget.landing"
   ],
+  "ttapp.view.NumberField": [],
   "ttapp.view.PhoneContacts": [
     "widget.phoneContacts"
   ],
@@ -3302,15 +3299,6 @@ Ext.ClassManager.addNameAliasMappings({
   ],
   "ttapp.view.SendTo": [
     "widget.sendto"
-  ],
-  "ttapp.view.Split": [
-    "widget.split"
-  ],
-  "ttapp.view.SplitNewTink": [
-    "widget.splitnewtink"
-  ],
-  "ttapp.view.SplitTinkBox": [
-    "widget.splittinkbox"
   ],
   "ttapp.view.Thinking": [
     "widget.thinkingbutton"
