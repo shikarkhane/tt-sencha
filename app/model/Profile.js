@@ -16,7 +16,7 @@ Ext.define('ttapp.model.Profile', {
         validations: [{
             type: 'format',
             name: 'phone_number',
-            matcher: /^\+[0-9]+$/,
+            matcher: /^\+[0-9]+/,
             message: "(+) followed by digits only."
         }]
     }
