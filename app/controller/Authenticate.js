@@ -55,7 +55,12 @@ Ext.define('ttapp.controller.Authenticate', {
         var me = this,
             m = Ext.ComponentQuery.query('#myDialCode')[0];
 
-        var phoneNumber = m.getValue() + Ext.getCmp('myPhoneNumber').getValue();
+        var number = Ext.getCmp('myPhoneNumber').getValue();
+        if (number) {
+          number = number.replace(/\s/g, '');
+        }
+
+        var phoneNumber = m.getValue() + number;
         me.myPhoneNumber = phoneNumber;
 
         // store user profile locally

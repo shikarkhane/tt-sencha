@@ -215,7 +215,12 @@ Ext.define('ttapp.controller.PhoneContact', {
                         Ext.Msg.alert('Cancelled', 'Sms not sent!', Ext.emptyFn);
                     }
                 };
-                SMS.sendSMS(sConf.number, sConf.message, sConf.success, sConf.error);
+                sms.send(sConf.number, sConf.message, {
+									android: {
+		                intent: 'INTENT'  // send SMS with the native android SMS messaging
+		                //intent: '' // send SMS without open any other app
+			            }
+								}, sConf.success, sConf.error);
             } else {
                 console.log('Not on mobile device.');
             }
