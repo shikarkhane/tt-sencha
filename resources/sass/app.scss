@@ -8,9 +8,8 @@ body{
 // a new theme, remove them and the add your own CSS on top of the base CSS (which
 // is already included in your app.json file).
 @import 'sencha-touch/default';
-@import 'sencha-touch/default/all';
 
-@import "compass/css3";
+@import 'sencha-touch/default/src/_button.scss';
 
 // inline font-face wasn't working. hacking a fix..
 @font-face {
