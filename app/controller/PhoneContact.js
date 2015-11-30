@@ -225,7 +225,7 @@ Ext.define('ttapp.controller.PhoneContact', {
                 console.log('Not on mobile device.');
             }
         } else {
-            Ext.Viewport.animateActiveItem('trinket', {type: 'fade', direction: 'up', duration: 500, easing: 'ease-out'});
+            Ext.Viewport.animateActiveItem('trinket', {type: 'fade', direction: 'up', easing: 'ease-out'});
             // Ext.getStore("phonecontacts").clearFilter();
             list.destroy();
             //Ext.getCmp('searchPhoneContact').destroy();
