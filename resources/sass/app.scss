@@ -8,8 +8,8 @@ body{
 // a new theme, remove them and the add your own CSS on top of the base CSS (which
 // is already included in your app.json file).
 @import 'sencha-touch/default';
-
-@import 'sencha-touch/default/src/_button.scss';
+@import 'sencha-touch/default/all';
+// @import 'sencha-touch/default/src/_button.scss';
 
 // inline font-face wasn't working. hacking a fix..
 @font-face {
@@ -527,45 +527,6 @@ body {
     background-image: url(../images/icons/delete.png);
     background-color:transparent;
 }
-.bg-transparent-white.flip-design-right .x-dock{
-    background-image: url(../images/others/flip_design_right1.png);
-    background-position: top right;
-    background-size: 35px;
-    background-repeat: no-repeat;
-}
-.top-bar .top-btn.btn-mail.x-button.flip-design-right:after, .top-bar .top-btn.btn-mail.x-button.x-button-pressing.flip-design-right:after{
-    content: "";
-    position: absolute;
-    background-image: url(../images/others/flip_design_right2.png);
-    background-size: 45px;
-    background-repeat: no-repeat;
-    z-index: 9;
-    width: 100px;
-    height: 80px;
-    background-position-x: 2px;
-    background-position-y: 2px;
-    background-color: transparent;
-}
-.bg-transparent-colored.flip-design-left .x-dock{
-    background-image: url(../images/others/flip_design_left1.png);
-    background-position: top left;
-    background-size: 48px;
-    background-repeat: no-repeat;
-    overflow: inherit;
-}
-.top-bar .top-btn.btn-tink.x-button.flip-design-left:after, .top-bar .top-btn.btn-tink.x-button.x-button-pressing.flip-design-left:after{
-    content: "";
-    position: absolute;
-    background-image: url(../images/others/flip_design_left2.png);
-    background-size: 45px;
-    background-repeat: no-repeat;
-    z-index: 9;
-    width: 100px;
-    height: 80px;
-    background-position-x: 2px;
-    background-position-y: 2px;
-    background-color: transparent;
-}
 .tink-page .x-dock-body{
     overflow: inherit;
 }
@@ -1049,48 +1010,6 @@ margin-bottom: 30px;
 }
 
 
-.button_white {
-    width: 109px;
-    height: 108px;
-    background: url('../images/others/button_white.png');
-    position:relative;
-    cursor: pointer;
-
-    -webkit-border-radius: 50px;
-    border-radius: 50px;
-
-    -webkit-box-shadow:  0px 2px 0px rgba(0,0,0,0.3), 0px 9px 0px 0px rgba(0,0,0,0.3), 0px 12px 7px #999;
-    -moz-box-shadow:  0px 2px 0px rgba(0,0,0,0.3), 0px 9px 0px 0px rgba(0,0,0,0.3), 0px 12px 7px #999;
-    -o-box-shadow:  0px 2px 0px rgba(0,0,0,0.3), 0px 9px 0px 0px rgba(0,0,0,0.3), 0px 12px 7px #999;
-    box-shadow:  0px 2px 0px rgba(0,0,0,0.3), 0px 9px 0px 0px rgba(0,0,0,0.3), 0px 12px 7px #999;
-
-    -webkit-transition: all 0.4s ease;
-    -moz-transition: all 0.4s ease;
-    -ms-transition: all 0.4s ease;
-    -o-transition: all 0.4s ease;
-    transition: all 0.4s ease;
-
-    background-size: cover !important;
-    background-position: center;
-}
-
-.button_red {/* 
-    width: 109px;
-    height: 108px;
-    background: url('../images/others/button_red.png'); */
-    position:relative;
-
-    -moz-transform: translateX(0px) translateY(7px);
-    -webkit-transform: translateX(0px) translateY(7px);
-    -o-transform: translateX(0px) translateY(7px);
-    -ms-transform: translateX(0px) translateY(7px);
-    transform: translateX(0px) translateY(7px);
-
-    -webkit-box-shadow:  0px 0px 0px rgba(0,0,0,0.3), 0px 0px 0px 0px rgba(0,0,0,0.3), 0px 0px 0px #999, inset 0px 0px 0px 0px rgba(0,0,0,0.4);
-    -moz-box-shadow:  0px 0px 0px rgba(0,0,0,0.3), 0px 0px 0px 0px rgba(0,0,0,0.3), 0px 0px 0px #999, inset 0px 0px 0px 0px rgba(0,0,0,0.4);
-    -o-box-shadow:  0px 0px 0px rgba(0,0,0,0.3), 0px 0px 0px 0px rgba(0,0,0,0.3), 0px 0px 0px #999, inset 0px 0px 0px 0px rgba(0,0,0,0.4);
-    box-shadow:  0px 0px 0px rgba(0,0,0,0.3), 0px 0px 0px 0px rgba(0,0,0,0.3), 0px 0px 0px #999, inset 0px 0px 0px 0px rgba(0,0,0,0.4);
-}
 
 
 .thinking-container{
