@@ -24,7 +24,7 @@ Ext.define('ttapp.view.TinkChat', {
 						docked: 'right',
 					}, {
                         xtype: 'panel',
-                        html:'<div class="user-title">John Clein</div>',
+                        html:'<div class="user-title"></div>',
                         docked: 'top'
                     }
                 ]
