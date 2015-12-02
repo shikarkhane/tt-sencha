@@ -63,7 +63,7 @@ Ext.define('ttapp.controller.TinkChat', {
                         var date = d.getDate();
                         var month = monthNames[d.getMonth()];
                         var year = d.getFullYear();
-                        var day = dayNames[d.getDay()];
+                        var day = dayNames[d.getDay()-1];
 
                         return day+'. '+date+' '+month;
                         //return month + ' ' + date + ', ' + year;
