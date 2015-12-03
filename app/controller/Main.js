@@ -15,16 +15,24 @@ Ext.define('ttapp.controller.Main', {
     onResume: function(){
         console.log('on resume');
         ttapp.util.TrinketProxy.process(true, function() {
-            
-            ttapp.util.Common.isUserVerifiedOnServer();
-            
-            // refresh push token
-            ttapp.util.Push.takeUserPermissionForPushNotify();
-            
-        //update user image avatar
-        Ext.getStore('profilestore').setUserImage();
-            // refresh contacts list
-            ttapp.util.ContactsProxy.process(Ext.getStore('phonecontacts'));
+
+       ttapp.util.Common.isUserVerifiedOnServer(function(success) {
+            // Initialize the main view
+            if (success) {
+                // refresh push token
+                ttapp.util.Push.takeUserPermissionForPushNotify();
+
+                //update user image avatar
+                Ext.getStore('profilestore').setUserImage();
+
+                // refresh contacts list
+                ttapp.util.ContactsProxy.process(Ext.getStore('phonecontacts'));
+            }
+            else {
+                Ext.Viewport.add(Ext.create('ttapp.view.Authenticate'));
+            }
+        });
+
         });
         
     }
