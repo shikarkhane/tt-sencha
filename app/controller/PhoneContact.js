@@ -124,6 +124,8 @@ Ext.define('ttapp.controller.PhoneContact', {
             id:'contactsList',
             emptyText: 'No contacts',
             height: '100%',
+            itemHeight: 80,
+            infinite: true,
             itemTpl: [
                 '<tpl if="on_tinktime == false">',/*\'false\'*/
                     '<div class="inner-list">',
