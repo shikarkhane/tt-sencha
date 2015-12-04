@@ -153,6 +153,7 @@ Ext.define('ttapp.view.TinkoMeter', {
                                             return false;
                                         }
 
+                                        console.log('SLOWNESS: create mask in tinkometer');
                                         Ext.Viewport.mask({
                                             xtype: 'loadmask',
                                             html: '<img src="resources/images/green-loader.png" alt="loader">'
@@ -163,6 +164,7 @@ Ext.define('ttapp.view.TinkoMeter', {
                                             method: 'GET',
                                             disableCaching: false,
                                             success: function(response) {
+                                                console.log('SLOWNESS: before mask set to false');
                                                 Ext.Viewport.setMasked(false);
                                                 if(Ext.isEmpty(response.responseText)) {
                                                     // (id, radius, border-width, percent)

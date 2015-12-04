@@ -109,22 +109,27 @@ Ext.define('ttapp.util.ContactsProxy', {
         });*/
     },
     process: function(cStore) {
-        Ext.Viewport.mask({
+        console.log('SLOWNESS-CONTACTS: contacts-process starts');
+       /* Ext.Viewport.mask({
             xtype: 'loadmask',
             html: '<img src="resources/images/green-loader.png" alt="loader">'
-        });
+        });*/
         if (Ext.os.deviceType == 'Phone') {
             var opts = new ContactFindOptions();
             opts.filter = "";
             opts.multiple = true;
             var contactsConfig = {
                 options: opts,
-                fields: ["name", "phoneNumbers", "photos"],
+                fields: ["name", "phoneNumbers"],
                 success: function(contacts) {
-                    Ext.Viewport.setMasked(false);
+                    console.log('SLOWNESS-CONTACTS: received contacts');
+                    // Ext.Viewport.setMasked(false);
+                    console.log('SLOWNESS-CONTACTS: remove mask');
                     if (contacts.length > 0) {
                         x = ttapp.util.ContactsCleaner.process(contacts);
+                        console.log('SLOWNESS-CONTACTS: contacts cleaned');
                         ttapp.util.ContactsProxy.areOnTinktime(cStore, x);
+                        console.log('SLOWNESS-CONTACTS: are on tinktime');
                     }
                 },
                 failure: function(context) {
@@ -134,7 +139,7 @@ Ext.define('ttapp.util.ContactsProxy', {
                 scope: this,
                 includeImages: true
             };
-
+            console.log('SLOWNESS-CONTACTS: get contacts');
             Ext.device.Contacts.getContacts(contactsConfig);
         } else {
             //populate static test values
