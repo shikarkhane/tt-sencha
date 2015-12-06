@@ -50,7 +50,11 @@ Ext.define('ttapp.view.Authenticate', {
 					        	{
 						        	id: 'myPhoneNumber',
 					                // xtype: 'numberfield',
-													xclass: 'ttapp.view.NumberField',
+									xclass: 'ttapp.view.NumberField',
+									component: {
+										xtype: 'input',
+										type: 'tel'
+									},
 					                name: 'verify-phone-number',
 					                placeHolder: '705432112',
 					                cls:'form-field clsAuthenticatePhoneNumber',

@@ -24,7 +24,7 @@ Ext.define('ttapp.view.ConfirmPhoneNumber', {
 		  	items:[{
 	        	xtype: 'panel',
 	        	cls:'help-text',
-	            html: 'a message was sent to your phone number, please enter your four-digit code'
+	            html: 'a message was sent to your phone number, please enter your five-digit code'
 		        },
 		        {
 		        	id: 'myVerificationCode',
