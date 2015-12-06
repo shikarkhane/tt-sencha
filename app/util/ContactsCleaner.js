@@ -38,7 +38,7 @@ Ext.define('ttapp.util.ContactsCleaner', {
                 if (i.phoneNumbers.length > 0) {
                     var results = [];
                     for (var j = 0; j < i.phoneNumbers.length; j++) {
-                        results.push([i.name.givenName, i.name.familyName, i.phoneNumbers[j].value, i.phoneNumbers[j].type]);
+                        results.push([i.firstName, i.lastName, i.phoneNumbers[j].number, i.phoneNumbers[j].type]);
                     }
                     return results;
                 }

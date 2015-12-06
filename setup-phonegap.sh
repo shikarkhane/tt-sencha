@@ -12,7 +12,7 @@ cordova prepare android
 cordova plugin add phonegap-plugin-push
 cordova plugin add cordova-plugin-camera
 cordova plugin add cordova-plugin-console
-cordova plugin add cordova-plugin-contacts
+cordova plugin add cordova-plugin-contacts-phonenumbers
 cordova plugin add cordova-plugin-device
 cordova plugin add cordova-plugin-file
 cordova plugin add cordova-plugin-file-transfer
