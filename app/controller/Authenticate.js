@@ -72,6 +72,7 @@ Ext.define('ttapp.controller.Authenticate', {
                     Ext.Viewport.mask({
                         xtype: 'loadmask',
                         html: '<img src="resources/images/green-loader.png" alt="loader">'
+
                     });
 
                     // set timeout for 15 seconds

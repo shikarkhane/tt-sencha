@@ -136,8 +136,7 @@ Ext.define('ttapp.util.ContactsProxy', {
                     Ext.Viewport.setMasked(false);
                     Ext.Msg.alert('Change privacy!', 'Allow tinktime in settings > privacy > contacts', Ext.emptyFn);
                 },
-                scope: this,
-                includeImages: true
+                scope: this
             };
             console.log('SLOWNESS-CONTACTS: get contacts');
             Ext.device.Contacts.getContacts(contactsConfig);
