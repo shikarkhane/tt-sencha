@@ -45,7 +45,7 @@ Ext.define('ttapp.view.TinkoMeter', {
 
                                 if(Ext.os.is('Android')) {
                                     window.FilePath.resolveNativePath(imageURI, function(response) {
-                                        onsole.log("success__"+JSON.stringify(response));
+                                        console.log("success__"+JSON.stringify(response));
                                     }, function(response) {
                                         console.log("fail__"+JSON.stringify(response));
                                     });
@@ -99,7 +99,9 @@ Ext.define('ttapp.view.TinkoMeter', {
                                 Ext.Msg.alert("Warning","Unable to access this image, please choose from 'Gallery' again.");
                             }
 
-                            navigator.camera.getPicture(onSuccess, onFailure, { sourceType: Camera.PictureSourceType.PHOTOLIBRARY, correctOrientation: true, quality: 30, destinationType: Camera.DestinationType.NATIVE_URI
+                            navigator.camera.getPicture(onSuccess, onFailure, { sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+                                correctOrientation: true, quality: 50, destinationType: Camera.DestinationType.NATIVE_URI,
+                                targetWidth: 400, targetHeight: 244
                             });
                         }
                     },
@@ -119,7 +121,7 @@ Ext.define('ttapp.view.TinkoMeter', {
             	xtype: 'panel',
                 cls:'tinko-discription',
                 flex: 1,
-            	html: 'sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut ',
+            	html: 'this time of life my life is unique time of my life.',
                 listeners: {
                     'painted': {
                         fn: function() {
