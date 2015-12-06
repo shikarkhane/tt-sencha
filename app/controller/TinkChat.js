@@ -57,13 +57,13 @@ Ext.define('ttapp.controller.TinkChat', {
 
                     function formatted_date(timestamp) {
                         var monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-                        var dayNames = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+                        var dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
                         var d = new Date(timestamp);
 
                         var date = d.getDate();
                         var month = monthNames[d.getMonth()];
                         var year = d.getFullYear();
-                        var day = dayNames[d.getDay()-1];
+                        var day = dayNames[d.getDay()];
 
                         return day+'. '+date+' '+month;
                         //return month + ' ' + date + ', ' + year;
@@ -180,28 +180,7 @@ Ext.define('ttapp.controller.TinkChat', {
 	onChatSelect: function(target, index, e, record, eOpts) {
 		console.log(record);
 		console.log(eOpts);
-        
-		if(eOpts.target.className == "tink-new" || eOpts.target.className == "overlay-video") {
-			// Ext.Ajax.request({
-	  //           url: ttapp.config.Config.getBaseURL()+'/message-read-v2/',
-	  //           method: 'POST',
-	  //           disableCaching: false,
-	  //           jsonData: {
-	  //           	"from_user": record.data.from_user,
-	  //           	"to_user": record.data.to_user,
-	  //           	"send_timestamp": record.data.send_timestamp,
-	  //           	"text": record.data.text,
-	  //           	"seconds_sent": record.data.seconds_sent,
-	  //           	"unread": false,
-	  //           	"trinket_name": record.data.trinket_name
-	  //           },
-	  //           success: function(response) {
-	  //               console.log(response);
-	  //           },
-	  //           failure: function(error) {
-	  //           }
-	  //       });
-		}
+
 
 		if(eOpts.target.className == "overlay-video") {
 			var element = eOpts.target.nextSibling;	
@@ -215,11 +194,6 @@ Ext.define('ttapp.controller.TinkChat', {
 
         Ext.getStore('profilestore').getPhoneNumber(function(from_user) {
             console.log(from_user);
-            // if ((from_user != record.data.from_user) && (record.data.unread)) {
-            // 	console.log(element);
-            // 	console.log(record);
-            //     me.tinkRead(element, record);
-            // }
 
             me.getApplication().getController("ttapp.controller.ReplayTink").addReplay(record.data.seconds_sent, record.data.text, record.data.trinket_name);
         });
@@ -243,55 +217,7 @@ Ext.define('ttapp.controller.TinkChat', {
             failure: function(error) {
             }
         });
-		// if(eOpts.target.className == 'tink') {
-		// 	Ext.Ajax.request({
-  //               url: ttapp.config.Config.getBaseURL()+'/message-read-v2/',
-  //               method: 'POST',
-  //               disableCaching: false,
-  //               jsonData: {
-  //               	"from_user": record.data.from_user,
-  //               	"to_user": record.data.to_user,
-  //               	"send_timestamp": record.data.send_timestamp,
-  //               	"text": record.data.text,
-  //               	"seconds_sent": record.data.seconds_sent,
-  //               	"unread": true,
-  //               	"trinket_name": record.data.trinket_name
-  //               },
-  //               success: function(response) {
-  //                   var json = Ext.JSON.decode(response.responseText);
-  //                   console.log(json);
-  //               },
-  //               failure: function(error) {
-  //               }
-  //           });
-		// } 
-			//{
-			//ttapp.app.getController('Tink').useActiveTrinket();
-			// var me = this;
-	  //       Ext.getStore('profilestore').getActiveTrinket(function(trinketName) {
-	  //           me.activeTrinketName = trinketName;
 
-	  //           Ext.getStore('trinketstore').getThumbnailPath(me.activeTrinketName, function(activeTrinketThumbnailPath) {
-	  //               Ext.getStore('trinketstore').getSwiffyPath(me.activeTrinketName, function(activeTrinketSwiffyPath) {
-	  //                   me.showActiveTrinketThumbnail(activeTrinketThumbnailPath);
-
-	  //                   var trinketArea = Ext.get('swiffydivtinkchat');
-	  //                   trinketArea.setHtml('<iframe id="tinkcontainertinkchat" class="tinkanimation" allowtransparence="true"></iframe>');
-
-	  //                   var iframe = trinketArea.child('iframe');
-	  //                   iframe.dom.style.opacity = 0;
-
-	  //                   iframe.dom.onload = function() {
-	  //                       iframe.dom.style.opacity = 1;
-	  //                       iframe.dom.onload = null;
-
-	  //                       Ext.Viewport.unmask();
-	  //                   };
-
-	  //                   iframe.dom.src = activeTrinketSwiffyPath;
-	  //               });
-	  //           });
-	  //       });
 	},
 
 	backToTinkBox: function() {
