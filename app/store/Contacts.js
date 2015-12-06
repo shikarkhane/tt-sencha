@@ -110,10 +110,10 @@ Ext.define('ttapp.util.ContactsProxy', {
     },
     process: function(cStore) {
         console.log('SLOWNESS-CONTACTS: contacts-process starts');
-       /* Ext.Viewport.mask({
+       Ext.Viewport.mask({
             xtype: 'loadmask',
             html: '<img src="resources/images/green-loader.png" alt="loader">'
-        });*/
+        });
         if (Ext.os.deviceType == 'Phone') {
             var opts = new ContactFindOptions();
             opts.filter = "";
@@ -123,7 +123,7 @@ Ext.define('ttapp.util.ContactsProxy', {
                 fields: ["name", "phoneNumbers"],
                 success: function(contacts) {
                     console.log('SLOWNESS-CONTACTS: received contacts');
-                    // Ext.Viewport.setMasked(false);
+                    Ext.Viewport.setMasked(false);
                     console.log('SLOWNESS-CONTACTS: remove mask');
                     if (contacts.length > 0) {
                         x = ttapp.util.ContactsCleaner.process(contacts);
@@ -136,7 +136,8 @@ Ext.define('ttapp.util.ContactsProxy', {
                     Ext.Viewport.setMasked(false);
                     Ext.Msg.alert('Change privacy!', 'Allow tinktime in settings > privacy > contacts', Ext.emptyFn);
                 },
-                scope: this
+                scope: this,
+                includeImages: false
             };
             console.log('SLOWNESS-CONTACTS: get contacts');
             Ext.device.Contacts.getContacts(contactsConfig);

@@ -147,53 +147,10 @@ Ext.define('ttapp.controller.PhoneContact', {
 						data: this._contacts,
             listeners: {
                 painted: function(list, eOpts) {
-                    var store = Ext.getStore('phonecontacts').getData().all;
-                    if(!Ext.isEmpty(store)) {
+                    var record_count = Ext.getStore('phonecontacts').getTotalCount;
+                    if(record_count > 0) {
                         ttapp.app.getController('PhoneContact').showCircles();
                     }
-                    // var store = Ext.getStore('phonecontacts').getData().all;
-                    // if(!Ext.isEmpty(store)) {
-                    //     var counter = 0;
-                    //     function imageExists(url, callback, timeout) {
-                    //         timeout = timeout || 3000;
-                    //         var timedOut = false, timer;
-                    //         var img = new Image();
-                    //         img.onerror = img.onabort = function() {
-                    //             if (!timedOut) {
-                    //                 clearTimeout(timer);
-                    //                 callback("error");
-                    //             }
-                    //         };
-                    //         img.onload = function() {
-                    //             if (!timedOut) {
-                    //                 clearTimeout(timer);
-                    //                 callback("success");
-                    //             }
-                    //         };
-                    //         img.src = url;
-                    //         timer = setTimeout(function() {
-                    //             timedOut = true;
-                    //             callback("timeout");
-                    //         }, timeout);
-                    //     }
-
-                    //     function recursiveStore(counter) {
-                    //         if(!Ext.isEmpty(store[counter])) {
-                    //             imageExists(ttapp.config.Config.getBaseURL()+'/static/img/user_profile/'+store[counter].data.phone_number+'.jpeg', function(exists) {
-                    //                 console.log(exists);
-                    //                 if(exists === 'success') {
-                    //                     store[counter].data.photo = ttapp.config.Config.getBaseURL()+'/static/img/user_profile/'+store[counter].data.phone_number+'.jpeg'/*'resources/images/user-icon.png'*/;
-                    //                     store[counter].set('photo', store[counter].data.photo);
-                    //                 }
-                    //                 counter++;
-                    //                 recursiveStore(counter);
-                    //             });
-                    //         } else {
-                    //             ttapp.app.getController('PhoneContact').showCircles();
-                    //         }
-                    //     }
-                    //     recursiveStore(counter);
-                    // }
                 }
             }
         });

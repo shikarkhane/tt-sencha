@@ -141,6 +141,8 @@ Ext.define('ttapp.controller.TinkChat', {
 			cls:'tinkchat-list',
 			useSimpleItems: true,
 			emptyText: 'No chats available.',
+            itemHeight: 115,
+            infinite: true,
 			itemTpl: [
 				/*'<tpl if="send == 1">',*/
 				'<tpl if=\'for_inbox == false\'>',
