@@ -13,6 +13,15 @@ Ext.define('ttapp.controller.Main', {
         document.addEventListener("resume", this.onResume, false);
     },
     onResume: function(){
+        try {
+            if (navigator.connection.type == Connection.NONE) {
+                Ext.Msg.alert('No Internet Connection', null, Ext.emptyFn);
+            }
+        }
+        catch(e) {
+            console.log(e);
+        }
+
         console.log('SLOWNESS: on resume starts');
         ttapp.util.TrinketProxy.process(true, function() {
             console.log('SLOWNESS: get trinket list');

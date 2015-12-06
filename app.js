@@ -34,6 +34,15 @@ Ext.application({
 
 
     launch: function() {
+        try {
+            if (navigator.connection.type == Connection.NONE) {
+                Ext.Msg.alert('No Internet Connection', null, Ext.emptyFn);
+            }
+        }
+        catch(e) {
+            console.log(e);
+        }
+
         // get trinket content
         ttapp.util.TrinketProxy.process(true, function() {
             // check on server, if user is verified
@@ -62,14 +71,6 @@ Ext.application({
 
         ttapp.util.Analytics.startTracker();
 
-        try {
-          if (navigator.connection.type == Connection.NONE) {
-            Ext.Msg.alert('No Internet Connection', null, Ext.emptyFn);
-          }
-        }
-        catch(e) {
-
-        }
     },
 
     onUpdated: function() {
