@@ -19,7 +19,7 @@ Ext.define('ttapp.controller.Main', {
             }
         }
         catch(e) {
-            console.log(e);
+            console.log("NO_INTERNET_CONNECTION: "+ e);
         }
 
         console.log('SLOWNESS: on resume starts');

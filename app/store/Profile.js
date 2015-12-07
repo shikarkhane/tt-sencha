@@ -111,6 +111,7 @@ Ext.define('ttapp.store.Profile', {
 
     getUserImage: function(callback) {
         var record = this.getAt(0);
-        callback(record ? record.get('profile_url') : false);
+        //callback(record ? record.get('profile_url') : false);
+        callback(record ? ttapp.config.Config.getBaseURL()+ '/static/img/user_profile/'+ record.get('phone_number')+ '.jpeg' : false);
     }
 });
