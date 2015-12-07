@@ -14,7 +14,16 @@ Ext.define('ttapp.util.Common', {
             }
         }
     },
-
+    destroyComponentsIfExists: function( array_of_itemIds){
+    for(i=0; i<array_of_itemIds.length; i++){
+        try{
+            Ext.ComponentQuery.query('#'+ array_of_itemIds[i])[0].destroy();
+        }
+        catch(e){
+            console.log(e);
+        }
+    }
+},
     isUserVerifiedOnServer: function(callback) {
         // if user is not verified on server, clear local profile and make him authenticate again
         Ext.getStore('profilestore').getPhoneNumber(function(user) {
@@ -1074,6 +1083,7 @@ Ext.define('ttapp.util.Common', {
     createMenuButton: function() {
         var button = Ext.create('Ext.Button', {
             cls:'add-option-btn',
+            itemId: 'menu-button-bottom-right',
             html:'<img class="option-add-icon animated rotateOut" src="resources/images/add_icon.png" />',
             listeners: {
                 tap: {
@@ -1301,3 +1311,5 @@ function resizeDiv(){
 $(window).resize(function(){
     resizeHeight();
 });
+
+

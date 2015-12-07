@@ -6,8 +6,7 @@ Ext.define('ttapp.controller.TinkChat', {
         },
 		control: {
 			'tinkchat': {
-				show: 'renderList',
-				hide: 'removeList'
+				show: 'renderList'
 			},
 			'tinkchat dataview': {
 				itemtap: 'onChatSelect'
@@ -34,8 +33,16 @@ Ext.define('ttapp.controller.TinkChat', {
                 url: ttapp.config.Config.getBaseURL() + '/conversation/' + window.selectedTinkBoxItem.data.number + '/between/' + userNum + '/page/0/size/9/',
                 method: 'GET',
                 disableCaching: false,
+
                 success: function(response) {
                     Ext.Viewport.setMasked(false);
+
+                    // dont bother if no new data
+                    if ( response.status == 304 ){
+                        console.log('TINKCHAT-NOREFRESH');
+                        return 0;
+                    }
+
                     message = Ext.decode(response.responseText);
 
                     var profile_url = Ext.getStore('phonecontacts').getUserImage(window.selectedTinkBoxItem.data.number);
@@ -136,11 +143,15 @@ Ext.define('ttapp.controller.TinkChat', {
             });
         });
 
+        // clean up old before adding more
+        ttapp.util.Common.destroyComponentsIfExists(['menu-button-bottom-right','tinkchat-listing']);
+
 		var list = Ext.create('Ext.List', {
 			height: '100%',
+            itemId: 'tinkchat-listing',
 			cls:'tinkchat-list',
 			useSimpleItems: true,
-			emptyText: 'No chats available.',
+			emptyText: 'No tinks sent or received',
             itemHeight: 115,
             infinite: true,
 			itemTpl: [
@@ -221,6 +232,7 @@ Ext.define('ttapp.controller.TinkChat', {
 	},
 
 	backToTinkBox: function() {
+        this.removeList();
 		Ext.Viewport.animateActiveItem('tinkbox', {type: 'slide', direction: 'right'});
 	}
 });
