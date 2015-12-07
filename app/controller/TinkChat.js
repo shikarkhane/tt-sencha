@@ -144,7 +144,7 @@ Ext.define('ttapp.controller.TinkChat', {
         });
 
         // clean up old before adding more
-        ttapp.util.Common.destroyComponentsIfExists(['menu-button-bottom-right','tinkchat-listing']);
+        ttapp.util.Common.destroyComponentsIfExists(['tinkchat-listing']);
 
 		var list = Ext.create('Ext.List', {
 			height: '100%',
