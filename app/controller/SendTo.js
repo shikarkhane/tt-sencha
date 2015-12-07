@@ -158,7 +158,8 @@ Ext.define('ttapp.controller.SendTo', {
         ttapp.util.Analytics.trackEvent('Send Tink', 'Sending new tink');
 
         Ext.getStore('profilestore').getPhoneNumber(function(from_user) {
-            var prevTextMsg = Ext.ComponentQuery.query('#previewTextMsg')[0];
+            // no embeded html tags allowed
+            var prevTextMsg = Ext.ComponentQuery.query('#previewTextMsg')[0].replace(/[<|>]/g, '');
             if (me.phoneNumber) {
                 //is receipient on tinktime
                 if (Ext.getStore('phonecontacts').isOnTinkTime(me.phoneNumber)) {
