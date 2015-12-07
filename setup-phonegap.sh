@@ -9,7 +9,7 @@ cordova prepare ios
 cordova platform add android
 cordova prepare android
 
-cordova plugin add cordova-plugin-push
+cordova plugin add phonegap-plugin-push
 cordova plugin add cordova-plugin-camera
 cordova plugin add cordova-plugin-console
 cordova plugin add cordova-plugin-contacts-phonenumbers

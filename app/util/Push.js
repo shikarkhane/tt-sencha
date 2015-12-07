@@ -31,66 +31,46 @@ Ext.define('ttapp.util.Push', {
             });
         });
     },
-    onNotificationAPN: function(event) {
-        console.log('inside onNotificationAPN event' + event);
-    },
     tokenHandler: function(token) {
         console.log(token);
         ttapp.util.Push.storeDeviceInfoOnServer(token);
     },
-    gcmSuccessHandler: function(result) {
-        console.log('GCM registeration result: ' + result);
-    },
-    errorHandler: function(error) {
-        console.log(error);
-    },
-    onNotificationGCM: function(e) {
-        switch (e.event) {
-            case 'registered':
-                if (e.regid.length > 0) {
-                    console.log("Regid " + e.regid);
-                    ttapp.util.Push.storeDeviceInfoOnServer(e.regid);
-                }
-                break;
-
-            case 'message':
-                //change the red dot on email icon
-                ttapp.util.Common.updateNotifySymbol(true);
-                // this is the actual push notification. its format depends on the data model from the push server
-                //Ext.Msg.alert('Update!', e.message, Ext.emptyFn);
-
-                //Ext.Viewport.setActiveItem('feed', 'slide');
-                break;
-
-            case 'error':
-                console.log('GCM error = ' + e.msg);
-                break;
-
-            default:
-                console.log('An unknown GCM event has occurred');
-                break;
-        }
-    },
-
     takeUserPermissionForPushNotify: function() {
         try {
-          var pushNotification = window.plugins.pushNotification;
-          var platform = device.platform.toLowerCase();
-          if (platform == 'ios') {
-              pushNotification.register(ttapp.util.Push.tokenHandler, ttapp.util.Push.errorHandler, {
-                  badge: true,
-                  sound: true,
-                  alert: true,
-                  ecb: 'ttapp.util.Push.onNotificationAPN'
-              });
-          }
-          if (platform == 'android') {
-              pushNotification.register(ttapp.util.Push.gcmSuccessHandler, ttapp.util.Push.errorHandler, {
-                  "senderID": "241347109918",
-                  "ecb": "ttapp.util.Push.onNotificationGCM"
-              });
-          }
-        } catch(e) {};
+
+            var push = PushNotification.init({
+                android: {
+                    senderID: "241347109918"
+                },
+                ios: {
+                    alert: "true",
+                    badge: "true",
+                    sound: "true"
+                },
+                windows: {}
+            });
+
+            var platform = device.platform.toLowerCase();
+
+            push.on('registration', function(data) {
+                console.log('PUSH_'+platform+'_TOKEN:'+ data.registrationId);
+                ttapp.util.Push.tokenHandler(data.registrationId);
+            });
+            push.on('error', function(e) {
+                console.log('PUSH_'+platform+'_ERROR:' + e.message);
+            });
+            push.on('notification', function(data) {
+                console.log('PUSH_'+platform+'_NOTIFICATION');
+                console.log(data.message);
+                console.log(data.title);
+                console.log(data.count);
+                console.log(data.sound);
+                console.log(data.image);
+                console.log(data.additionalData);
+            });
+        } catch(e) {
+            console.log('PUSH_NOTIFY_ERROR:' + e);
+        };
     },
     constructor: function() {
         return this;

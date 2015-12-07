@@ -34,8 +34,6 @@ Ext.application({
 
 
     launch: function() {
-        Ext.Ajax.timeout = 5000;
-
         // get trinket content
         ttapp.util.TrinketProxy.process(true, function() {
             // check on server, if user is verified
