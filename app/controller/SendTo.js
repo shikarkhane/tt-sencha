@@ -159,11 +159,11 @@ Ext.define('ttapp.controller.SendTo', {
 
         Ext.getStore('profilestore').getPhoneNumber(function(from_user) {
             // no embeded html tags allowed
-            var prevTextMsg = Ext.ComponentQuery.query('#previewTextMsg')[0].replace(/[<|>]/g, '');
+            var prevTextMsg = Ext.ComponentQuery.query('#previewTextMsg')[0].getValue().replace(/[<|>]/g, '');
             if (me.phoneNumber) {
                 //is receipient on tinktime
                 if (Ext.getStore('phonecontacts').isOnTinkTime(me.phoneNumber)) {
-                    me.sendTink(from_user, me.phoneNumber, (new Date()).valueOf(), me.trinket_name, prevTextMsg.getValue(), me.seconds_sent);
+                    me.sendTink(from_user, me.phoneNumber, (new Date()).valueOf(), me.trinket_name, prevTextMsg, me.seconds_sent);
 
                     //reset before leaving
                     //me.clearAll();

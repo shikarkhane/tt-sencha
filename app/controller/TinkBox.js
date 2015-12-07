@@ -96,7 +96,7 @@ Ext.define('ttapp.controller.TinkBox', {
             id: 'tinkBoxList',
             cls: 'tinkbox-section',
             itemTpl: [
-                '<tpl if="unread > 0">',
+                '<tpl if="unread &gt; 0">',
                     '<tpl if="inTime &gt; outTime">',
                         '<div class="list-box" style="background:url({background}) no-repeat 50% 50%">',
                             '<div class="over-lay"></div>',
