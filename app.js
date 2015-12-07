@@ -34,14 +34,7 @@ Ext.application({
 
 
     launch: function() {
-        try {
-            if (navigator.connection.type == Connection.NONE) {
-                Ext.Msg.alert('No Internet Connection', null, Ext.emptyFn);
-            }
-        }
-        catch(e) {
-            console.log(e);
-        }
+        Ext.Ajax.timeout = 5000;
 
         // get trinket content
         ttapp.util.TrinketProxy.process(true, function() {
@@ -68,6 +61,15 @@ Ext.application({
 
         // set user's country dial code based on ip-address
         ttapp.util.Common.setDialCode();
+
+        try {
+            if (navigator.connection.type == Connection.NONE) {
+                Ext.Msg.alert('No Internet Connection', null, Ext.emptyFn);
+            }
+        }
+        catch(e) {
+            console.log(e);
+        }
 
         ttapp.util.Analytics.startTracker();
 

@@ -100,18 +100,23 @@ Ext.define('ttapp.store.Profile', {
             method: 'GET',
             disableCaching: false,
             success: function(response) {
-                record.set('profile_url', response.responseText);
+                console.log('SETUSERIMAGE: before');
+                //todo: change this to use CDN
+                //record.set('profile_url', response.responseText);
+                record.set('profile_url', ttapp.config.Config.getBaseURL()+ '/static/img/user_profile/'+
+                    record.get('phone_number')+ '.jpeg?notToCacheThisOneHack='+(new Date()).getTime());
+                console.log('SETUSERIMAGE: after');
                 me.sync();
             },
             failure: function(response) {
-
+                console.log('SETUSERIMAGE:' + response);
             }
         });
     },
 
     getUserImage: function(callback) {
         var record = this.getAt(0);
-        //callback(record ? record.get('profile_url') : false);
-        callback(record ? ttapp.config.Config.getBaseURL()+ '/static/img/user_profile/'+ record.get('phone_number')+ '.jpeg' : false);
+        callback(record ? record.get('profile_url') : false);
+        //callback(record ? ttapp.config.Config.getBaseURL()+ '/static/img/user_profile/'+ record.get('phone_number')+ '.jpeg' : false);
     }
 });
