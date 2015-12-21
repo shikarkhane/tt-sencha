@@ -102,9 +102,9 @@ Ext.define('ttapp.store.Profile', {
             success: function(response) {
                 console.log('SETUSERIMAGE: before');
                 //todo: change this to use CDN
-                //record.set('profile_url', response.responseText);
-                record.set('profile_url', ttapp.config.Config.getBaseURL()+ '/static/img/user_profile/'+
-                    record.get('phone_number')+ '.jpeg?notToCacheThisOneHack='+(new Date()).getTime());
+                record.set('profile_url', response.responseText+ '?notToCacheThisOneHack='+(new Date()).getTime());
+                //record.set('profile_url', ttapp.config.Config.getBaseURL()+ '/static/img/user_profile/'+
+                //    record.get('phone_number')+ '.jpeg?notToCacheThisOneHack='+(new Date()).getTime());
                 console.log('SETUSERIMAGE: after');
                 me.sync();
             },
