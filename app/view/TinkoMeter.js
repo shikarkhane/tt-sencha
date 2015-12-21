@@ -111,7 +111,7 @@ Ext.define('ttapp.view.TinkoMeter', {
                                 if(Ext.isEmpty(image)) {
                                     document.getElementById('user_img').style.backgroundImage = "url(resources/images/user-img.png)";
                                 } else {
-                                    document.getElementById('user_img').style.backgroundImage = "url("+image+")";
+                                    document.getElementById('user_img').style.backgroundImage = "url("+image+"),url(resources/images/user-img.png)";
                                 }
                             });
                         }
