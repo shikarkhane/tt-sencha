@@ -2,7 +2,7 @@ Ext.define('ttapp.controller.TinkChat', {
 	extend: 'Ext.app.Controller',
 	config: {
 		refs: {
-            backBtn: 'button[cls~=back-btn-icon]'
+            backBtn: 'button[cls~=back-btn-icon-chat]'
         },
 		control: {
 			'tinkchat': {
