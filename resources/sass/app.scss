@@ -256,7 +256,7 @@ body {
     width: 100px;
     height: 100px;
     z-index: 9;
-    background-size:100%;
+    background-size:cover;
     background-color: #333;
     border: solid 3px #ACBCC4;
 }
@@ -1728,6 +1728,7 @@ margin-bottom: 30px;
     border-radius: 0px;
     border: 0px solid;
     margin-top: -95px;
+    background-size: 100%;
 }
 .custom-msgbox.message-box{
     width: 80%;
