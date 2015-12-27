@@ -7,6 +7,7 @@ cordova platform add ios
 cordova prepare ios
 
 cordova platform add android
+cordova platform update android@5.0.0
 cordova prepare android
 
 cordova plugin add phonegap-plugin-push
