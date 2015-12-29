@@ -7,11 +7,10 @@ cordova platform add ios
 cordova prepare ios
 
 cordova platform add android
-cordova platform update android@5.0.0
 cordova prepare android
 
 cordova plugin add phonegap-plugin-push
-cordova plugin add https://github.com/apache/cordova-plugin-camera.git
+cordova plugin add cordova-plugin-camera
 cordova plugin add cordova-plugin-console
 cordova plugin add cordova-plugin-contacts-phonenumbers
 cordova plugin add cordova-plugin-device
