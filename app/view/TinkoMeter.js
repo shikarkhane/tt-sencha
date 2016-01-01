@@ -190,6 +190,8 @@ Ext.define('ttapp.view.TinkoMeter', {
                                             }
                                         });
                                     });
+
+                                    ttapp.util.Common.askEULAPermission();
                                 }
                             }
                         }

@@ -122,7 +122,7 @@ Ext.define('ttapp.controller.PhoneContact', {
         this._filteredContacts = null;
 
         if ( this._contacts.length == 0){
-            ttapp.util.Common.askEULAPermission();
+            return 0;
         }
 
         var list = Ext.create('Ext.List', {
