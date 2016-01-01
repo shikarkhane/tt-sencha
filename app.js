@@ -56,11 +56,13 @@ Ext.application({
             });
         });
 
-        if ( ttapp.config.Config.getShowedEULA() == 1)
-        {
-            // get contacts from device
-            ttapp.util.ContactsProxy.process(Ext.getStore('phonecontacts'));
-        }
+        Ext.getStore('profilestore').hasUserAllowedEULAContactsRead(function(success) {
+            if(success){
+                // get contacts from device
+                ttapp.util.ContactsProxy.process(Ext.getStore('phonecontacts'));
+            }
+        });
+
 
         // set user's country dial code based on ip-address
         ttapp.util.Common.setDialCode();
