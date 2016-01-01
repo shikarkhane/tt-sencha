@@ -11,7 +11,9 @@ Ext.define('ttapp.model.Profile', {
             'last_updated_on',
             'selected_trinket_name',
             'last_seconds_sent',
-            'profile_url'
+            'profile_url',
+            'allowedEULAContactsRead',
+            'allowedPushNotification'
         ],
         validations: [{
             type: 'format',

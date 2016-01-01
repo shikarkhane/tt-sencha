@@ -14,6 +14,22 @@ Ext.define('ttapp.store.Profile', {
             id: 'profilestoreproxy'
         }
     },
+    hasUserAllowedEULAContactsRead: function(callback) {
+        var record = this.getAt(0);
+        if (record) {
+            callback(record.get('allowedEULAContactsRead'));
+        } else {
+            callback(false);
+        }
+    },
+    hasUserAllowedPushNotification: function(callback) {
+        var record = this.getAt(0);
+        if (record) {
+            callback(record.get('allowedPushNotification'));
+        } else {
+            callback(false);
+        }
+    },
     isUserVerified: function(callback) {
         var record = this.getAt(0);
         if (record) {
@@ -36,7 +52,9 @@ Ext.define('ttapp.store.Profile', {
             last_updated_on: lastUpdatedOn,
             selected_trinket_name: selectedTrinketName,
             last_seconds_sent: lastSecondsSent,
-            profile_url: null
+            profile_url: null,
+            allowedEULAContactsRead: false,
+            allowedPushNotification: false
         });
 
         var errors = usr.validate();
@@ -62,6 +80,22 @@ Ext.define('ttapp.store.Profile', {
         var record = this.getAt(0);
         if (record) {
             record.set('is_verified', true);
+        }
+
+        this.sync();
+    },
+    userAllowedEULAContactsRead: function() {
+        var record = this.getAt(0);
+        if (record) {
+            record.set('allowedEULAContactsRead', true);
+        }
+
+        this.sync();
+    },
+    userAllowedPushNotification: function() {
+        var record = this.getAt(0);
+        if (record) {
+            record.set('allowedPushNotification', true);
         }
 
         this.sync();

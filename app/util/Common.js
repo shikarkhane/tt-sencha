@@ -15,20 +15,37 @@ Ext.define('ttapp.util.Common', {
         }
     },
     askEULAPermission: function(){
-        if ( ttapp.config.Config.getShowedEULA() == 0)
-        {
-            //ask for user confirmation to send sms
-            Ext.Msg.confirm(
-                "Tinktime wants to read contacts?",
-                "This app needs to read your phone contacts to allow you to send messages and to indicate if your contacts are using Tinktime app or not.",
-                function(buttonId) {
-                    if (buttonId === 'yes') {
-                        //update config showEULA to 1
-                        ttapp.config.Config.setShowedEULA(1);
-                    }
-                }, this);
+        Ext.getStore('profilestore').hasUserAllowedEULAContactsRead(function(success) {
+            if(! success) {
+                //ask for user confirmation to send sms
+                Ext.Msg.confirm(
+                    "Allow access to contacts?",
+                    "In order to connect you with your friends already using Tinktime, a one-time access to your contact " +
+                    "list on this phone will be necessary.Tinktime will not share this list with anyone. Do you accept?",
+                    function (buttonId) {
+                        if (buttonId === 'yes') {
 
-        }
+                            Ext.getStore('profilestore').userAllowedEULAContactsRead();
+                        }
+                    }, this);
+            }
+        });
+    },
+    askPushNotificationPermission: function(){
+        Ext.getStore('profilestore').hasUserAllowedPushNotification(function(success) {
+            if(! success) {
+
+                Ext.Msg.confirm(
+                    "Allow notifications?",
+                    "We can buzz you when you receive a new tink. Allow alerts?",
+                    function (buttonId) {
+                        if (buttonId === 'yes') {
+
+                            Ext.getStore('profilestore').userAllowedPushNotification();
+                        }
+                    }, this);
+            }
+        });
     },
     destroyComponentsIfExists: function( array_of_itemIds){
     for(i=0; i<array_of_itemIds.length; i++){

@@ -29,16 +29,29 @@ Ext.define('ttapp.controller.Main', {
                console.log('SLOWNESS: get is verified on server');
                 // Initialize the main view
                 if (success) {
-                    // refresh push token
-                    ttapp.util.Push.takeUserPermissionForPushNotify();
-                    console.log('SLOWNESS: take permission for push');
+
+                    Ext.getStore('profilestore').hasUserAllowedPushNotification(function(success) {
+                        if(success){
+                            // refresh push token
+                            ttapp.util.Push.takeUserPermissionForPushNotify();
+                            console.log('SLOWNESS: take permission for push');
+                        }
+                        else{
+                            Ext.getStore('profilestore').askPushNotificationPermission();
+                        }
+                    });
+
 
                     //update user image avatar
                     Ext.getStore('profilestore').setUserImage();
                     console.log('SLOWNESS: get user profile url');
 
-                    // refresh contacts list
-                    ttapp.util.ContactsProxy.process(Ext.getStore('phonecontacts'));
+                    Ext.getStore('profilestore').hasUserAllowedEULAContactsRead(function(success) {
+                        if(success){
+                            // get contacts from device
+                            ttapp.util.ContactsProxy.process(Ext.getStore('phonecontacts'));
+                        }
+                    });
                     console.log('SLOWNESS: refresh contacts from phone');
                 }
                 else {
