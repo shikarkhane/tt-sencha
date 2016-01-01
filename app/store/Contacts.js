@@ -91,7 +91,22 @@ Ext.define('ttapp.util.ContactsProxy', {
             });
         } else {
             // test contacts only for desktop testing
-            var contacts = [];
+            var contacts = [{
+                'id': 1,
+                'name': {
+                    'givenName': 'nike',
+                    'familyName': 'shikari'
+                },
+                'phoneNumbers': [{
+                    'value': '+46705438947'
+                }],
+                'first_name': 'Eddåäöielksjdflkdsfkljsdlfkjsdlkfj',
+                'last_name': 'Huang',
+                'on_tinktime': true,
+                'phone_type': 'mobile',
+                'phone_number': '+46700907802',
+                'photo': ttapp.config.Config.getBaseURL()+'/static/img/user_profile/+46705438947.jpeg'
+            }];
             x = ttapp.util.ContactsCleaner.process(contacts, 'default');
             this.areOnTinktime(cStore, x);
             Ext.Viewport.setMasked(false);
