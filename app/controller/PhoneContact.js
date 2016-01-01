@@ -102,6 +102,8 @@ Ext.define('ttapp.controller.PhoneContact', {
     },
 
     addContactList: function(component) {
+        ttapp.util.Common.askEULAPermission();
+
         component.add(ttapp.util.Common.createMenuButton());
         var searchfield = Ext.create('Ext.field.Search', {
             id: 'searchPhoneContact',

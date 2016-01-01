@@ -14,6 +14,22 @@ Ext.define('ttapp.util.Common', {
             }
         }
     },
+    askEULAPermission: function(){
+        if ( ttapp.config.Config.getShowedEULA() == 0)
+        {
+            //ask for user confirmation to send sms
+            Ext.Msg.confirm(
+                "Tinktime wants to read contacts?",
+                "This app needs to read your phone contacts to allow you to send messages and to indicate if your contacts are using Tinktime app or not.",
+                function(buttonId) {
+                    if (buttonId === 'yes') {
+                        //update config showEULA to 1
+                        ttapp.config.Config.setShowedEULA(1);
+                    }
+                }, this);
+
+        }
+    },
     destroyComponentsIfExists: function( array_of_itemIds){
     for(i=0; i<array_of_itemIds.length; i++){
         try{

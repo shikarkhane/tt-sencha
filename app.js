@@ -34,6 +34,8 @@ Ext.application({
 
 
     launch: function() {
+        ttapp.util.Common.askEULAPermission();
+
         // get trinket content
         ttapp.util.TrinketProxy.process(true, function() {
             // check on server, if user is verified
@@ -54,8 +56,11 @@ Ext.application({
             });
         });
 
-        // get contacts from device
-        ttapp.util.ContactsProxy.process(Ext.getStore('phonecontacts'));
+        if ( ttapp.config.Config.getShowedEULA() == 1)
+        {
+            // get contacts from device
+            ttapp.util.ContactsProxy.process(Ext.getStore('phonecontacts'));
+        }
 
         // set user's country dial code based on ip-address
         ttapp.util.Common.setDialCode();
