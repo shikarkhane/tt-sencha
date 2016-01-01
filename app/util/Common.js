@@ -24,8 +24,9 @@ Ext.define('ttapp.util.Common', {
                     "find your friends. Do you accept?",
                     function (buttonId) {
                         if (buttonId === 'yes') {
-
                             Ext.getStore('profilestore').userAllowedEULAContactsRead();
+                            // get contacts from device
+                            ttapp.util.ContactsProxy.process(Ext.getStore('phonecontacts'));
                         }
                     }, this);
             }
@@ -40,8 +41,11 @@ Ext.define('ttapp.util.Common', {
                     "We can buzz you when you receive a new tink. Allow alerts?",
                     function (buttonId) {
                         if (buttonId === 'yes') {
-
                             Ext.getStore('profilestore').userAllowedPushNotification();
+
+                            // refresh push token
+                            ttapp.util.Push.takeUserPermissionForPushNotify();
+                            console.log('SLOWNESS: take permission for push');
                         }
                     }, this);
             }

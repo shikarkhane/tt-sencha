@@ -34,7 +34,6 @@ Ext.application({
 
 
     launch: function() {
-        ttapp.util.Common.askEULAPermission();
 
         // get trinket content
         ttapp.util.TrinketProxy.process(true, function() {
