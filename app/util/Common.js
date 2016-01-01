@@ -20,8 +20,8 @@ Ext.define('ttapp.util.Common', {
                 //ask for user confirmation to send sms
                 Ext.Msg.confirm(
                     "Allow access to contacts?",
-                    "In order to connect you with your friends already using Tinktime, a one-time access to your contact " +
-                    "list on this phone will be necessary.Tinktime will not share this list with anyone. Do you accept?",
+                    "Tinktime would like to access your contacts. Your contacts will be transmitted to our servers and used to " +
+                    "find your friends. Do you accept?",
                     function (buttonId) {
                         if (buttonId === 'yes') {
 

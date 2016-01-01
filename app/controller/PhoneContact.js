@@ -102,7 +102,7 @@ Ext.define('ttapp.controller.PhoneContact', {
     },
 
     addContactList: function(component) {
-        ttapp.util.Common.askEULAPermission();
+        //ttapp.util.Common.askEULAPermission();
 
         component.add(ttapp.util.Common.createMenuButton());
         var searchfield = Ext.create('Ext.field.Search', {
@@ -113,13 +113,18 @@ Ext.define('ttapp.controller.PhoneContact', {
         });
         component.add(searchfield);
 
-				this._contacts = [];
+        this._contacts = [];
 
-				Ext.getStore('phonecontacts').each(function(record) {
-						this._contacts.push(record.data)
-				}, this);
+        Ext.getStore('phonecontacts').each(function(record) {
+                this._contacts.push(record.data)
+        }, this);
 
-				this._filteredContacts = null;
+        this._filteredContacts = null;
+
+        if ( this._contacts.length == 0){
+            ttapp.util.Common.askEULAPermission();
+            return 0;
+        }
 
         var list = Ext.create('Ext.List', {
             cls:'phone-contact-list',

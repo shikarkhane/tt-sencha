@@ -15,7 +15,6 @@ Ext.define('ttapp.util.ContactsProxy', {
                     "contacts": contacts
                 },
                 success: function(response) {
-                    var cModel;
 
                     // remove all existing contacts
                     cStore.removeAll(true);
@@ -63,138 +62,43 @@ Ext.define('ttapp.util.ContactsProxy', {
 
     },
     process: function(cStore) {
+
         console.log('SLOWNESS-CONTACTS: contacts-process starts');
-       Ext.Viewport.mask({
+        Ext.Viewport.mask({
             xtype: 'loadmask',
             html: '<img src="resources/images/green-loader.png" alt="loader">'
         });
         if (Ext.os.deviceType == 'Phone') {
-
-
             navigator.contactsPhoneNumbers.list(function(contacts) {
+
                 console.log('SLOWNESS-CONTACTS: received contacts');
+
                 Ext.Viewport.setMasked(false);
+
                 console.log('ONLYPHONENUMBER: ' + contacts.length + ' contacts found');
+
                 if (contacts.length > 0) {
                     x = ttapp.util.ContactsCleaner.process(contacts);
+
                     console.log('SLOWNESS-CONTACTS: contacts cleaned');
+
                     ttapp.util.ContactsProxy.areOnTinktime(cStore, x);
+
                     console.log('SLOWNESS-CONTACTS: are on tinktime');
                 }
             }, function(error) {
                 console.log(error);
             });
         } else {
-            //populate static test values
-            if (Ext.os.deviceType != 'Phone') {
-                var contacts = [{
-                    'id': 1,
-                    'name': {
-                        'givenName': 'nike',
-                        'familyName': 'shikari'
-                    },
-                    'phoneNumbers': [{
-                        'value': '+46705438947'
-                    }],
-                    'first_name': 'Eddåäöielksjdflkdsfkljsdlfkjsdlkfj',
-                    'last_name': 'Huang',
-                    'on_tinktime': true,
-                    'phone_type': 'mobile',
-                    'phone_number': '+46700907802',
-                    'photo': ttapp.config.Config.getBaseURL()+'/static/img/user_profile/+46705438947.jpeg'
-                }, {
-                    'id': 2,
-                    'phoneNumbers': [{
-                        'value': '+46700907802'
-                    }],
-                    'first_name': 'Edith',
-                    'last_name': 'Jones',
-                    'on_tinktime': true,
-                    'phone_type': 'home',
-                    'phone_number': '(514) 316-4528',
-                    'photo': ''
-                }, {
-                    'id': 3,
-                    'name': {
-                        'givenName': 'nike',
-                        'familyName': 'shikari'
-                    },
-                    'phoneNumbers': [{
-                        'value': '(235) 453-1258'
-                    }],
-                    'first_name': 'Nikhil',
-                    'last_name': 'Talinger',
-                    'on_tinktime': true,
-                    'phone_type': 'mobile',
-                    'phone_number': '(235) 453-1258',
-                    'photo': ''
-                }, {
-                    'id': 4,
-                    'name': {
-                        'givenName': 'nike',
-                        'familyName': 'shikari'
-                    },
-                    'phoneNumbers': [{
-                        'value': '+0101010101'
-                    }],
-                    'first_name': 'Emanuel',
-                    'last_name': 'Lindberg',
-                    'on_tinktime': true,
-                    'phone_type': 'work',
-                    'phone_number': '(978) 165-3214',
-                    'photo': ''
-                }, {
-                    'id': 5,
-                    'name': {
-                        'givenName': 'nike',
-                        'familyName': 'shikari'
-                    },
-                    'phoneNumbers': [{
-                        'value': '+919610614914'
-                    }],
-                    'first_name': 'Rajesh',
-                    'last_name': 'Gehlawat',
-                    'on_tinktime': false,
-                    'phone_type': 'work',
-                    'phone_number': '+919610614914',
-                    'photo': ''
-                }, {
-                    'id': 6,
-                    'name': {
-                        'givenName': 'nike',
-                        'familyName': 'shikari'
-                    },
-                    'phoneNumbers': [{
-                        'value': '+919352427971'
-                    }],
-                    'first_name': 'Rishi',
-                    'last_name': 'Khangwal',
-                    'on_tinktime': false,
-                    'phone_type': 'work',
-                    'phone_number': '+919352427971',
-                    'photo': ''
-                }, {
-                    'id': 7,
-                    'name': {
-                        'givenName': 'nike',
-                        'familyName': 'shikari'
-                    },
-                    'phoneNumbers': [{
-                        'value': '+919549194555'
-                    }],
-                    'first_name': 'Maneesh',
-                    'last_name': 'Jangid',
-                    'on_tinktime': false,
-                    'phone_type': 'work',
-                    'phone_number': '+919549194555',
-                    'photo': ''
-                }];
-            }
-
+            // test contacts only for desktop testing
+            var contacts = [];
             x = ttapp.util.ContactsCleaner.process(contacts, 'default');
             this.areOnTinktime(cStore, x);
             Ext.Viewport.setMasked(false);
         }
+
+
+
     }
 });
 
@@ -208,7 +112,7 @@ Ext.define('ttapp.store.Contacts', {
         //     type: 'localstorage',
         //     id: 'contactstoreproxy'
         // },
-        data: [],
+        data: []
         //sort the store using the lastname field
         //sorters: 'first_name'/*'lastName'*/,
 
