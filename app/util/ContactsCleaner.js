@@ -10,7 +10,7 @@ Ext.define('ttapp.util.ContactsCleaner', {
     },
     cleanPhoneNumber: function(dialcode, n) {
         var f = 0;
-
+debugger;
         if (n.charAt(0) == '+') {
             f = 1;
         }
@@ -21,6 +21,9 @@ Ext.define('ttapp.util.ContactsCleaner', {
             if (f == 1) {
                 return '+' + n;
             } else if (dialcode) {
+                if (n.charAt(0) == '0') {
+                    n = n.substring(1); //remove the leading zero
+                }
                 return dialcode + n;
             }
             else {
@@ -49,7 +52,23 @@ Ext.define('ttapp.util.ContactsCleaner', {
     process: function(contacts) {
         var c = {},
             c_array = [],
-            dc = Ext.getStore('ipinfostore').getDialCode();
+            dc = '+46',
+            dc_based_on_ip = Ext.getStore('ipinfostore').getDialCode(),
+            dc_based_on_profile;
+
+        Ext.getStore('profilestore').getDialCode(function(dc){
+            dc_based_on_profile = dc;
+        });
+
+        if ( dc_based_on_profile){
+            dc = dc_based_on_profile;
+        }
+        else if(dc_based_on_ip){
+            dc = dc_based_on_ip;
+        }
+        else{
+            dc = '+46';
+        }
 
         //Ext.Array.each(contacts, function(item, index, contacts_itself){
         for (var i = 0; i < contacts.length; i++) {

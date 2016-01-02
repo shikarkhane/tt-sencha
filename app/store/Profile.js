@@ -38,7 +38,7 @@ Ext.define('ttapp.store.Profile', {
             callback(false);
         }
     },
-    addProfile: function(phoneNumber, isVerified, lastUpdatedOn, selectedTrinketName, lastSecondsSent) {
+    addProfile: function(phoneNumber, isVerified, lastUpdatedOn, selectedTrinketName, lastSecondsSent, dialcode) {
         var result = false;
         //empty store if exists
         //this.removeAll();
@@ -54,7 +54,8 @@ Ext.define('ttapp.store.Profile', {
             last_seconds_sent: lastSecondsSent,
             profile_url: null,
             allowedEULAContactsRead: false,
-            allowedPushNotification: false
+            allowedPushNotification: false,
+            dialcode: dialcode
         });
 
         var errors = usr.validate();
@@ -72,6 +73,22 @@ Ext.define('ttapp.store.Profile', {
         var record = this.getAt(0);
         if (record) {
             callback(record.get('phone_number'));
+        } else {
+            callback(false);
+        }
+    },
+    getDialCodeAndPhoneNumber: function(callback) {
+        var record = this.getAt(0);
+        if (record) {
+            callback(record.get('dialcode'), record.get('phone_number'));
+        } else {
+            callback(false);
+        }
+    },
+    getDialCode: function(callback) {
+        var record = this.getAt(0);
+        if (record) {
+            callback(record.get('dialcode'));
         } else {
             callback(false);
         }

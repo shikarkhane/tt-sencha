@@ -13,7 +13,8 @@ Ext.define('ttapp.model.Profile', {
             'last_seconds_sent',
             'profile_url',
             'allowedEULAContactsRead',
-            'allowedPushNotification'
+            'allowedPushNotification',
+            'dialcode'
         ],
         validations: [{
             type: 'format',

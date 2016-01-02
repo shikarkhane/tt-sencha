@@ -98,7 +98,7 @@ Ext.define('ttapp.util.ContactsProxy', {
                     'familyName': 'shikari'
                 },
                 'phoneNumbers': [{
-                    'value': '+46705438947'
+                    'value': '0705438947'
                 }],
                 'first_name': 'Eddåäöielksjdflkdsfkljsdlfkjsdlkfj',
                 'last_name': 'Huang',
