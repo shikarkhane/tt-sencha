@@ -60,9 +60,13 @@ Ext.define('ttapp.controller.Authenticate', {
         if (number) {
           number = number.replace(/\s/g, '');
         }
+        if (number.charAt(0) == '0') {
+            number = number.substring(1); //remove the leading zero
+        }
 
         var phoneNumber = dcode + number;
         me.myPhoneNumber = phoneNumber;
+
 
         // store user profile locally
         Ext.getStore('trinketstore').getDefaultTrinket(function(trinketName) {
