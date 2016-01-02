@@ -56,7 +56,7 @@ Ext.define('ttapp.view.Authenticate', {
 										type: 'tel'
 									},
 					                name: 'verify-phone-number',
-					                placeHolder: '705432112',
+					                placeHolder: 'e.g. 705432112',
 					                cls:'form-field clsAuthenticatePhoneNumber',
 					                clearIcon:false,
 					                flex: 6
