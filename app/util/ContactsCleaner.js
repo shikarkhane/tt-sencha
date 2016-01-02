@@ -10,7 +10,7 @@ Ext.define('ttapp.util.ContactsCleaner', {
     },
     cleanPhoneNumber: function(dialcode, n) {
         var f = 0;
-debugger;
+
         if (n.charAt(0) == '+') {
             f = 1;
         }
