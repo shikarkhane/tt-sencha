@@ -11,7 +11,7 @@ Ext.define('ttapp.util.ContactsCleaner', {
     removeExtraZeroPrefixAfterDialCode: function( phn){
         // make phn = +460707547878 into +46707547878, provided that +46 is a country code
         s = Ext.application.dict_dial_codes;
-debugger;
+
         var f = -1,
             f2 = phn.substring(0,2),
             f3 = phn.substring(0,3),
