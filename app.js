@@ -28,7 +28,7 @@ Ext.application({
     ],
 
     stores: ['Trinkets', 'Contacts', 'Profile', 'IpInfo'],
-
+    dict_dial_codes: {},
 
     isIconPrecomposed: true,
 

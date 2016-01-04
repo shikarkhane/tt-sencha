@@ -171,6 +171,7 @@ Ext.define('ttapp.controller.Authenticate', {
       for (var i = 0; i < countries.length; i++) {
         if (countries[i].code == code) {
           Ext.ComponentQuery.query('#myDialCode')[0].setValue(countries[i].dial_code);
+            return 0; // optimize, why loop the rest if i found a match
         }
       }
     },

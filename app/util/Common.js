@@ -60,7 +60,7 @@ Ext.define('ttapp.util.Common', {
             console.log(e);
         }
     }
-},
+    },
     isUserVerifiedOnServer: function(callback) {
         // if user is not verified on server, clear local profile and make him authenticate again
         Ext.getStore('profilestore').getPhoneNumber(function(user) {
@@ -99,7 +99,14 @@ Ext.define('ttapp.util.Common', {
             });
         });
     },
-
+    makeDictOfCountryDialCodes: function(){
+        var countries = this.setDialCode('123');
+        var finalCountries = {};
+        for(i=0; i<countries.length; i++) {
+            finalCountries[countries[i].dial_code] = countries[i].code;
+        }
+        return finalCountries;
+    },
     setDialCode: function(params) {
         var c = [{
             "name": "Afghanistan",
