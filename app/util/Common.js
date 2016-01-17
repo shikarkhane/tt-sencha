@@ -1238,13 +1238,31 @@ Ext.define('ttapp.util.Common', {
     userDescription: function() {
         var arr = [
             {
-                text: 'Failure will never overtake me if my determination to succeed is strong enough.'
-            }, {
-                text: 'What you do today can improve all your tomorrows.'
-            }, {
-                text: 'In order to succeed, we must first believe that we can.'
-            }, {
-                text: 'Aim for the moon. If you miss, you may hit a star.'
+                text: 'Time you enjoy wasting is not wasted time.'
+            },
+            {
+                text: 'Time has a wonderful way to show us what really matters.'
+            },
+            {
+                text: 'You can find something truly important in an ordinary minute.'
+            },
+            {
+                text: "With endless time, nothing is special. With no loss or sacrifice, we can’t appreciate what we have"
+            },
+            {
+                text: "It is the time you have wasted for your rose that makes your rose so important."
+            },
+            {
+                text: "Time is a gift – share it!"
+            },
+            {
+                text: 'Time is the most valuable thing that a man can spend.'
+            },
+            {
+                text: "You forget, time doesn't exist anymore. You gave it to me."
+            },
+            {
+                text: 'Any time not spent on love is wasted.'
             }
         ];
 
