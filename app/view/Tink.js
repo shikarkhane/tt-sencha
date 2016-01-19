@@ -13,20 +13,7 @@ Ext.define('ttapp.view.Tink', {
             type: 'vbox',
             align: 'middle'
         },
-        items: [/*{
-            xtype: 'toolbar',
-            docked: 'top',
-            cls: 'top-bar',
-            items: [{
-                xtype: 'button',
-                cls: 'top-btn btn-tink',
-                docked: 'left'
-            }, {
-                xtype: 'button',
-                cls: 'top-btn btn-mail flip-design-right',
-                docked: 'right'
-            }]
-        },*/ {
+        items: [{
                 xtype: 'panel',
                 docked: 'top',
                 cls: 'new-header send-to-header',

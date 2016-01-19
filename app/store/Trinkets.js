@@ -8,32 +8,33 @@ Ext.define('ttapp.util.TrinketProxy', {
         if (clearAll) {
             tStore.removeAll();
         }
+        Ext.getStore('ipinfostore').getDialCode(function(dc, countrycode) {
+            Ext.Ajax.request({
+                url: ttapp.config.Config.getBaseURL() + '/trinket-list/country/' + countrycode + '/',
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                disableCaching: false,
+                success: function (response) {
+                    // if nothing has changed dont re-render feed
+                    if (response.status != 200) {
+                        return 0;
+                    }
+                    var ts = Ext.JSON.decode(response.responseText.trim());
+                    //console.log(ts);
+                    //var tStore = Ext.getStore('trinketstore');
 
-        Ext.Ajax.request({
-            url: ttapp.config.Config.getBaseURL() + '/trinket-list/',
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            disableCaching: false,
-            success: function(response) {
-                // if nothing has changed dont re-render feed
-                if (response.status != 200) {
-                    return 0;
+                    Ext.Array.each(ts, function (t) {
+                        tStore.addTrinket(t.trinketId, t.groupId, t.name, t.label, t.thumbnailPath, t.swiffyPath);
+                        tStore.sync();
+                    });
+
+                    if (callback) {
+                        callback();
+                    }
                 }
-                var ts = Ext.JSON.decode(response.responseText.trim());
-                //console.log(ts);
-                //var tStore = Ext.getStore('trinketstore');
-
-                Ext.Array.each(ts, function(t) {
-                    tStore.addTrinket(t.trinketId, t.groupId, t.name, t.label, t.thumbnailPath, t.swiffyPath);
-                    tStore.sync();
-                });
-
-                if (callback) {
-                    callback();
-                }
-            }
+            });
         });
     }
 });

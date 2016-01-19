@@ -32,7 +32,7 @@ Ext.define('ttapp.controller.Tink', {
         this.hideActiveTrinketThumbnail();
         this.getClock().start();
         this.runAnimation();
-        //Ext.getDom('tinkcontainer').contentWindow.tt_start_animation();
+
         Ext.getCmp('tinkScreen').addCls('show-full-frame');
 
         ttapp.util.Analytics.trackEvent('Tink', 'Started thinking');
@@ -47,7 +47,7 @@ Ext.define('ttapp.controller.Tink', {
         var me = this;
 
         me.stopAnimation();
-        //Ext.getDom('tinkcontainer').contentWindow.tt_stop_animation();
+
         me.getClock().pause();
 
         var periodInSeconds = me.getClock().getDuration();
@@ -143,7 +143,6 @@ Ext.define('ttapp.controller.Tink', {
         }
     },
     stopAnimation: function() {
-        //this.stage.destroy();
         Ext.getDom('tinkcontainer').contentWindow.tt_stop_animation();
     }
 });
