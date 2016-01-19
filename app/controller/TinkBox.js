@@ -124,7 +124,7 @@ Ext.define('ttapp.controller.TinkBox', {
             ],
             store: {
                 id: 'tinkBoxStore',
-                autoLoad: false,
+                autoLoad: true,
                 fields: ['tink_in', 'tink_out', 'unread', 'user', 'img', 'background', 'number', 'inout', 'inTime', 'outTime' ]
             },
             listeners: {
