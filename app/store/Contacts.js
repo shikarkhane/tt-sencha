@@ -64,11 +64,12 @@ Ext.define('ttapp.util.ContactsProxy', {
     process: function(cStore) {
 
         console.log('SLOWNESS-CONTACTS: contacts-process starts');
+        console.log('SLOWNESS-CONTACTS: contacts-process starts: ' + Ext.os.deviceType);
         Ext.Viewport.mask({
             xtype: 'loadmask',
             html: '<img src="resources/images/green-loader.png" alt="loader">'
         });
-        if (Ext.os.deviceType == 'Phone') {
+        if (Ext.os.deviceType === 'Phone') {
             navigator.contactsPhoneNumbers.list(function(contacts) {
 
                 console.log('SLOWNESS-CONTACTS: received contacts');
@@ -91,7 +92,7 @@ Ext.define('ttapp.util.ContactsProxy', {
             });
         } else {
             // test contacts only for desktop testing
-            var contacts = [{
+            /*var contacts = [{
                 'id': 1,
                 'name': {
                     'givenName': 'nike',
@@ -106,7 +107,8 @@ Ext.define('ttapp.util.ContactsProxy', {
                 'phone_type': 'mobile',
                 'phone_number': '+46700907802',
                 'photo': ttapp.config.Config.getBaseURL()+'/static/img/user_profile/+46705438947.jpeg'
-            }];
+            }];*/
+            var contacts = [];
             x = ttapp.util.ContactsCleaner.process(contacts, 'default');
             this.areOnTinktime(cStore, x);
             Ext.Viewport.setMasked(false);
