@@ -67,6 +67,8 @@ Ext.define('ttapp.util.Push', {
                 console.log(data.sound);
                 console.log(data.image);
                 console.log(data.additionalData);
+
+                Ext.Viewport.animateActiveItem('tinkbox', { type: 'slide' });
             });
         } catch(e) {
             console.log('PUSH_NOTIFY_ERROR:' + e);
