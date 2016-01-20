@@ -111,12 +111,6 @@ Ext.define('ttapp.controller.TinkChat', {
                             fromUserName = Ext.getStore('phonecontacts').getFirstLastName(fromUser);
                         }
 
-                        // order of this check is imp
-                        if (unread === true) {
-                            //trinketFilePath = logoTrinketFilePath;
-                            unreadRedDot = true;
-                        }
-
                         store.add({
                             'from_user_name': fromUserName,
                             'to_user_name': toUserName,
