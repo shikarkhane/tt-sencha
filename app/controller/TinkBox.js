@@ -105,7 +105,7 @@ Ext.define('ttapp.controller.TinkBox', {
                     '<tpl else>',
                         '<div class="list-box" style="background:url({background}) no-repeat 50% 50%">',
                             '<div class="over-lay"></div>',
-                                '<span class="inner-detail"><span class="user-name">{user}</span><span class="info right"><span class="circle"><img src={img} ></span><span class="time">{tink_in}</span><span class="tinkinout">Tink in</span></span><span class="info"><span class="circle"><img src={img} ></span><span class="time">{tink_out}</span><span class="tinkinout">Tink out</span></span><span class="arrow"></span></span>',
+                                '<span class="inner-detail"><span class="user-name">{user}</span><span class="info right"><span class="circle active"><span class="notification-icon"></span><img src={img} ></span><span class="time">{tink_in}</span><span class="tinkinout">Tink in</span></span><span class="info"><span class="circle"><img src={img} ></span><span class="time">{tink_out}</span><span class="tinkinout">Tink out</span></span><span class="arrow"></span></span>',
                             '</div>',
                     '</tpl>',
                 '<tpl else>',
@@ -124,7 +124,7 @@ Ext.define('ttapp.controller.TinkBox', {
             ],
             store: {
                 id: 'tinkBoxStore',
-                autoLoad: true,
+                autoLoad: false,
                 fields: ['tink_in', 'tink_out', 'unread', 'user', 'img', 'background', 'number', 'inout', 'inTime', 'outTime' ]
             },
             listeners: {
