@@ -15,9 +15,6 @@ Ext.define('ttapp.controller.SendTo', {
             'btnSendTink': {
                 tap: 'composeTink'
             },
-            'sendto list': {
-                itemtap: 'saveTappedContact'
-            },
             'sendto list toolbar button': {
                 tap: 'returnToTink'
             },
@@ -68,19 +65,6 @@ Ext.define('ttapp.controller.SendTo', {
         Ext.getStore('trinketstore').getThumbnailPath(this.trinket_name, function(activeTrinketThumbnailPath) {
             prevTrinket.setSrc(activeTrinketThumbnailPath);
         });
-    },
-    saveTappedContact: function(list, idx, target, record, evt) {
-        console.log(this);
-        this.fullName = record.data.first_name + ' ' + record.data.last_name;
-        this.phoneNumber = record.data.phone_number;
-        this.getSearchContactsField().setValue(this.fullName);
-        console.log(this);
-
-        setTimeout(function() {
-            Ext.getStore('phonecontacts').clearFilter();
-            Ext.getCmp('contactsListToChoose').setHeight('0px');
-            Ext.getCmp('contactsListToChoose').removeCls('show-list');
-        }, 5);
     },
     clearAll: function() {
         var sf = Ext.ComponentQuery.query('searchfield[cls~=search-contacts-field]')[0];
