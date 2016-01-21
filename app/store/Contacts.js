@@ -136,6 +136,21 @@ Ext.define('ttapp.store.Contacts', {
         //group the store using the lastName field
         //groupField: 'lastName'
     },
+    getContactObject: function(phoneNumber){
+        var i = this.find('phone_number', phoneNumber);
+        if (i === -1) {
+            // if user doesnt exist, make a dummy object, to that reply to a unknown phonenumber works
+            var o = {};
+            o['data'] = {};
+            o['data']['phone_number'] = phoneNumber;
+            o['data']['first_name'] = phoneNumber;
+            o['data']['last_name'] = '';
+            o['data']['on_tinktime'] = true;
+            return o;
+        } else {
+            return this.getAt(i);
+        }
+    },
     getFirstLastName: function(phoneNumber) {
         var i = this.find('phone_number', phoneNumber);
         if (i === -1) {

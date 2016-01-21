@@ -40,11 +40,11 @@ Ext.define('ttapp.controller.SendTo', {
     onShowSendTo: function(component) {
 
         //component.add(ttapp.util.Common.createMenuButton());
-        this.phoneNumber = window.contactSelected.data.phone_number;
+        this.selectedContact = window.contactSelected.data;
         this.setPreviewItems();
         Ext.getCmp('sendToImage').setStyle({'background':'url(resources/images/user-icon.png)'});
 
-        var profile_url = Ext.getStore('phonecontacts').getUserImage(this.phoneNumber);
+        var profile_url = Ext.getStore('phonecontacts').getUserImage(this.selectedContact.phone_number);
 
         if(!Ext.isEmpty(profile_url)) {
             Ext.getCmp('sendToImage').setStyle({'background':'url('+profile_url+')'});
@@ -120,10 +120,9 @@ Ext.define('ttapp.controller.SendTo', {
 
     },
     inviteViaSms: function() {
-        //console.log(this.phoneNumber);
         if (Ext.os.deviceType == 'Phone') {
             var sConf = {
-                number: this.phoneNumber,
+                number: this.selectedContact.phone_number,
                 message: "Join me on tinktime. Download app at http://tinktime.com/",
                 intent: "INTENT",
                 success: function() {
@@ -144,10 +143,11 @@ Ext.define('ttapp.controller.SendTo', {
         Ext.getStore('profilestore').getPhoneNumber(function(from_user) {
             // no embeded html tags allowed
             var prevTextMsg = Ext.ComponentQuery.query('#previewTextMsg')[0].getValue().replace(/[<|>]/g, '');
-            if (me.phoneNumber) {
+            if (me.selectedContact.phone_number) {
                 //is receipient on tinktime
-                if (Ext.getStore('phonecontacts').isOnTinkTime(me.phoneNumber)) {
-                    me.sendTink(from_user, me.phoneNumber, (new Date()).valueOf(), me.trinket_name, prevTextMsg, me.seconds_sent);
+                if (me.selectedContact.on_tinktime) {
+                    me.sendTink(from_user, me.selectedContact.phone_number, (new Date()).valueOf(), me.trinket_name,
+                        prevTextMsg, me.seconds_sent);
 
                     //reset before leaving
                     //me.clearAll();
@@ -157,8 +157,8 @@ Ext.define('ttapp.controller.SendTo', {
                 } else {
                     //ask for user confirmation to send sms
                     Ext.Msg.confirm(
-                        "Invite " + window.contactSelected.data.first_name+' '+window.contactSelected.data.last_name,
-                        "Send sms invite to (" + me.phoneNumber + ").",
+                        "Invite " + me.selectedContact.first_name+' '+ me.selectedContact.last_name,
+                        "Send sms invite to (" + me.selectedContact.phone_number + ").",
                         function(buttonId) {
                             if (buttonId === 'yes') {
                                 me.inviteViaSms();

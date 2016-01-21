@@ -44,7 +44,9 @@ Ext.define('ttapp.controller.Trinket', {
         var profile_url = Ext.getStore('phonecontacts').getUserImage(window.contactSelected.data.phone_number);
         if(!Ext.isEmpty(profile_url)) {
             Ext.ComponentQuery.query('#trinketProfileImg')[0].setStyle({'background':'url('+profile_url+')'});
-            //Ext.getCmp('tinkchatimage').setStyle({'background':'url('+profile_url+')'});
+        }
+        else{
+            Ext.ComponentQuery.query('#trinketProfileImg')[0].setStyle({'background':'url(resources/images/user-icon.png)'});
         }
 
         Ext.select('.user-title').setHtml(getName(window.contactSelected.data.phone_number));

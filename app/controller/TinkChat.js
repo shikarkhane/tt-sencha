@@ -13,9 +13,22 @@ Ext.define('ttapp.controller.TinkChat', {
 			},
 			'backBtn': {
 				tap: 'backToTinkBox'
-			}
+			},
+            'tinkchat panel image': {
+                tap: 'replyWithTink'
+            }
 		}
 	},
+    replyWithTink: function(){
+        console.log('reply with tink');
+
+        //set new contact selected and start tinking
+        var replyTo = Ext.getStore('phonecontacts').getContactObject(window.selectedTinkBoxItem.data.number);
+        if (replyTo){
+            window.contactSelected = replyTo;
+            Ext.Viewport.animateActiveItem('trinket', {type: 'slide', direction: 'right'});
+        }
+    },
 	removeList: function() {
         var me = this;
 		me.list.destroy();
