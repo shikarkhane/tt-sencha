@@ -40,7 +40,7 @@ Ext.define('ttapp.util.Push', {
 
             var push = PushNotification.init({
                 android: {
-                    senderID: "241347109918"
+                    senderID: "196429376160"
                 },
                 ios: {
                     alert: "true",

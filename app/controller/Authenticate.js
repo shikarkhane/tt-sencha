@@ -52,8 +52,7 @@ Ext.define('ttapp.controller.Authenticate', {
         this.setDialcode();
     },
     sendConfirmationCode: function() {
-        var me = this,
-            m = Ext.ComponentQuery.query('#myDialCode')[0];
+        var m = Ext.ComponentQuery.query('#myDialCode')[0];
 
         var number = Ext.getCmp('myPhoneNumber').getValue(),
             dcode = m.getValue();
@@ -65,13 +64,13 @@ Ext.define('ttapp.controller.Authenticate', {
         }
 
         var phoneNumber = dcode + number;
-        me.myPhoneNumber = phoneNumber;
+        this.myPhoneNumber = phoneNumber;
 
 
         // store user profile locally
         Ext.getStore('trinketstore').getDefaultTrinket(function(trinketName) {
-            if (Ext.getStore('profilestore').addProfile(phoneNumber, false, (new Date()).valueOf(), trinketName, 0, dcode)) {
-                me.sendCode(phoneNumber);
+            if (Ext.getStore('profilestore').addProfile(this.myPhoneNumber, false, (new Date()).valueOf(), trinketName, 0, dcode)) {
+                this.sendCode(this.myPhoneNumber);
 
                 if (Ext.os.is.Android && SMS) {
                     Ext.Viewport.mask({
