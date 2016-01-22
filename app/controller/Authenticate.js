@@ -28,12 +28,12 @@ Ext.define('ttapp.controller.Authenticate', {
         }
     },
     sendCodeAgain: function() {
-        this.sendCode(this.myPhoneNumber);
+        this.sendCode(window.myPhoneNumber);
     },
     showPhoneNumber: function() {
         console.log('show phone number');
         var pn = Ext.ComponentQuery.query('#entered_mobile_number')[0];
-        pn.setHtml(this.myPhoneNumber);
+        pn.setHtml(window.myPhoneNumber);
     },
     setDialcode: function() {
         var m = Ext.ComponentQuery.query('#myDialCode')[0];
@@ -64,13 +64,14 @@ Ext.define('ttapp.controller.Authenticate', {
         }
 
         var phoneNumber = dcode + number;
-        this.myPhoneNumber = phoneNumber;
+        window.myPhoneNumber = phoneNumber;
 
 
         // store user profile locally
         Ext.getStore('trinketstore').getDefaultTrinket(function(trinketName) {
-            if (Ext.getStore('profilestore').addProfile(this.myPhoneNumber, false, (new Date()).valueOf(), trinketName, 0, dcode)) {
-                this.sendCode(this.myPhoneNumber);
+            if (Ext.getStore('profilestore').addProfile(window.myPhoneNumber, false, (new Date()).valueOf(), trinketName, 0, dcode)) {
+
+                ttapp.app.getController('Authenticate').sendCode(window.myPhoneNumber);
 
                 if (Ext.os.is.Android && SMS) {
                     Ext.Viewport.mask({
@@ -191,7 +192,7 @@ Ext.define('ttapp.controller.Authenticate', {
             },
             disableCaching: false,
             jsonData: {
-                "to_user": this.myPhoneNumber,
+                "to_user": window.myPhoneNumber,
                 "code": code
             },
             success: function(response) {
