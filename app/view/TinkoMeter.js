@@ -20,7 +20,7 @@ Ext.define('ttapp.view.TinkoMeter', {
                                 cls: 'next-btn-icon',
                                 docked: 'right',
                                 handler: function() {
-																	ttapp.util.Analytics.trackView('Contacts');
+                                    ttapp.util.Analytics.trackView('Contacts');
                                     Ext.Viewport.animateActiveItem('phoneContacts', { type: 'slide' });
                                 }
                             }
@@ -144,10 +144,18 @@ Ext.define('ttapp.view.TinkoMeter', {
                         flex: 2,
                         cls:'in-out-list in-out-bar',
                         html:'<div class="circle" id="tinkometerCircle"></div>',
+                        initialize: function() {
+                            this.element.on({
+                                tap: function() {
+                                    ttapp.util.Analytics.trackView('Contacts');
+                                    Ext.Viewport.animateActiveItem('phoneContacts', { type: 'slide' });
+                                }
+                            });
+                        },
                         listeners: {
                             'painted': {
-                                fn: function(element) {
-                                    Ext.getStore('profilestore').getPhoneNumber(function(user) {
+                                fn: function (element) {
+                                    Ext.getStore('profilestore').getPhoneNumber(function (user) {
                                         if (!user) {
                                             if (callback) {
                                                 callback(false);
@@ -162,13 +170,13 @@ Ext.define('ttapp.view.TinkoMeter', {
                                         });
 
                                         Ext.Ajax.request({
-                                            url: ttapp.config.Config.getBaseURL()+'/time-split/'+user+'/',
+                                            url: ttapp.config.Config.getBaseURL() + '/time-split/' + user + '/',
                                             method: 'GET',
                                             disableCaching: false,
-                                            success: function(response) {
+                                            success: function (response) {
                                                 console.log('SLOWNESS: before mask set to false');
                                                 Ext.Viewport.setMasked(false);
-                                                if(Ext.isEmpty(response.responseText)) {
+                                                if (Ext.isEmpty(response.responseText)) {
                                                     // (id, radius, border-width, percent)
                                                     console.log(element.dom.firstChild.firstChild.firstChild.id);
                                                     testCircleCss(element.dom.firstChild.firstChild.firstChild.id, 50, 10, 100);
@@ -178,14 +186,14 @@ Ext.define('ttapp.view.TinkoMeter', {
                                                 } else {
                                                     obj = Ext.decode(response.responseText);
                                                     total_time = parseInt(obj.time_in) + parseInt(obj.time_out);
-                                                    percent = (parseInt(obj.time_out)/total_time)*100;
+                                                    percent = (parseInt(obj.time_out) / total_time) * 100;
                                                     // (id, radius, border-width, percent)
                                                     testCircleCss(element.dom.firstChild.firstChild.firstChild.id, 50, 10, Math.ceil(percent));
                                                     Ext.select('.tink-out-user').setHtml(showTinkTime(obj.time_out));
                                                     Ext.select('.tink-in-user').setHtml(showTinkTime(obj.time_in));
                                                 }
                                             },
-                                            failure: function() {
+                                            failure: function () {
 
                                             }
                                         });
@@ -195,6 +203,7 @@ Ext.define('ttapp.view.TinkoMeter', {
                                 }
                             }
                         }
+
                     }, {
                         xtype:'panel',
                         flex: 2,
