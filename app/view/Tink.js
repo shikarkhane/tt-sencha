@@ -61,6 +61,9 @@ Ext.define('ttapp.view.Tink', {
             cls: 'clsTinkButton rotate-image',
             docked: 'bottom',
             src:'resources/images/circle-icon-blank.png',
+            html: '<p>Press & hold</p>',
+            styleHtmlContent: true,
+            styleHtmlCls: 'cls-press-n-hold'
         }]
     },
     initialize: function() {
