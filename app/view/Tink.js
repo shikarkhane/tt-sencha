@@ -32,9 +32,6 @@ Ext.define('ttapp.view.Tink', {
                     },
                 ]
             }, {
-            itemId: 'tinkTimerClock',
-            xtype: 'timerClock'
-        }, {
             xtype: 'image',
             itemId: 'placeholderTrinket',
             hidden: true,
@@ -54,6 +51,9 @@ Ext.define('ttapp.view.Tink', {
             id: "swiffydiv",
             //flex: 5,
             html: '<iframe id="tinkcontainer" class="tinkanimation" style="" ></iframe>'
+        }, {
+            itemId: 'tinkTimerClock',
+            xtype: 'timerClock'
         }, {
             //flex: 1,
             xtype: 'image',

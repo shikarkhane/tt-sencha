@@ -96,7 +96,8 @@ Ext.define('ttapp.controller.Tink', {
         tp.add({
             itemId: 'tinkTimerClock',
             xtype: 'timerClock',
-            cls: 'clsTimerClock'
+            cls: 'clsTimerClock',
+            docked: 'bottom'
         });
     },
     useActiveTrinket: function() {

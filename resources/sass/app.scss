@@ -123,13 +123,14 @@ body {
     color:#FFFFFF;
     font-family: 'gotham_bookregular';
     font-size:20pt;
-    top: 5%;
     left:50%;
     margin-left: -85px;
     position: absolute;
     width: 170px;
     height: 50px;
    text-align: center;
+    z-index: 20;
+    margin-top: -30px;
 }
 
 .img-trinket {
@@ -846,16 +847,6 @@ margin-bottom: 30px;
     font-size: 25px;
 }
 
-.clsTimerClock{
-    .x-innerhtml{
-        background-color: rgba(173, 174, 158, 0.7);
-        font-weight: bolder;
-        padding: 10px;
-         -moz-border-radius:10px;
-         -webkit-border-radius:10px;
-        
-        }
-}
 
 .x-container.x-toolbar-dark.x-toolbar.replay-top-bar{
 	background-color: rgba(173, 174, 158, 0.7);
