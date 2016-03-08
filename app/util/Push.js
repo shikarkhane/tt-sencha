@@ -40,7 +40,7 @@ Ext.define('ttapp.util.Push', {
 
             var push = PushNotification.init({
                 android: {
-                    senderID: "39724"
+                    senderID: "00000"
                 },
                 ios: {
                     alert: "true",
@@ -68,7 +68,17 @@ Ext.define('ttapp.util.Push', {
                 console.log(data.image);
                 console.log(data.additionalData);
 
-                Ext.Viewport.animateActiveItem('tinkbox', { type: 'slide' });
+                try{
+                    // check if tinkbox view exists in viewport, if not add it.
+                    var tb = Ext.Viewport.down('tinkbox');
+                    if (!tb){
+                        Ext.Viewport.add(Ext.create('ttapp.view.TinkBox'));
+                    }
+                    Ext.Viewport.animateActiveItem('tinkbox', { type: 'slide' });
+                }
+                catch(e) {
+                    console.log('Create tinkbox view if not exists:' + e);
+                };
             });
         } catch(e) {
             console.log('PUSH_NOTIFY_ERROR:' + e);
