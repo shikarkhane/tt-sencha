@@ -212,10 +212,12 @@ Ext.define('ttapp.view.TinkoMeter', {
             		}
             	]
             }, {
-                xtype:'panel',
+                layout:'hbox',
                 flex: 1,
                 cls:'social-section',
-            	html: '<span class="social-icon twitter"></span><span class="social-icon facebook"></span><span class="social-icon instagram"></span>'
+            	items: [{xtype: 'button', cls: 'social-icon twitter'},
+                    {xtype: 'button', cls: 'social-icon facebook'},
+                    {xtype: 'button', cls: 'social-icon instagram'}]
             }
 		]
 	},

@@ -30,9 +30,13 @@ Ext.define('ttapp.store.IpInfo', {
                     callback(me.getAt(0).get('country_dial_code'), me.getAt(0).get('country'));
                 }
                 else {
-                  setTimeout(function() {
+                /*  setTimeout(function() {
                     me.getDialCode(callback);
                   }, 1000);
+                */
+                    Ext.create('Ext.util.DelayedTask', function () {
+                        me.getDialCode(callback);
+                    }).delay(1000);
                 }
             }
         });

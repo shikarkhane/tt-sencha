@@ -114,9 +114,14 @@ Ext.define('ttapp.controller.SendTo', {
     },
     closeMe: function() {
         var cs = Ext.ComponentQuery.query('#choose-recepients')[0];
-        setTimeout(function() {
+/*        setTimeout(function() {
             cs.destroy();
         }, 300);
+*/
+        Ext.create('Ext.util.DelayedTask', function () {
+            cs.destroy();
+        }).delay(300);
+
 
     },
     inviteViaSms: function() {

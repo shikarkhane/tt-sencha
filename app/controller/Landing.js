@@ -45,20 +45,34 @@ Ext.define('ttapp.controller.Landing', {
 
                 ttapp.util.Analytics.trackView('Tinkometer');
 
-                setTimeout(function() {
+/*                setTimeout(function() {
                     item.element.hide();
                     item.element.setStyle('opacity', '1');
 
                     Ext.Viewport.animateActiveItem(item, fade === true ? 'fade' : 'slide');
                 }, 180);
+*/
+                Ext.create('Ext.util.DelayedTask', function () {
+                    item.element.hide();
+                    item.element.setStyle('opacity', '1');
+
+                    Ext.Viewport.animateActiveItem(item, fade === true ? 'fade' : 'slide');
+                }).delay(180);
+
             } else {
               ttapp.util.Analytics.trackView('Intro');
 
-                setTimeout(function() {
+/*                setTimeout(function() {
                     Ext.Viewport.animateActiveItem('intro', {
                         type: 'fade'
                     });
-                }, 400);
+                }, 400);*/
+                Ext.create('Ext.util.DelayedTask', function () {
+                    Ext.Viewport.animateActiveItem('intro', {
+                        type: 'fade'
+                    });
+                }).delay(400);
+
             }
         });
     }

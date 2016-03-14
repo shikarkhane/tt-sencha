@@ -152,10 +152,19 @@ Ext.define('ttapp.controller.TinkBox', {
                                 }
                             };
                             img.src = url;
-                            timer = setTimeout(function() {
+/*                            timer = setTimeout(function() {
                                 timedOut = true;
                                 callback("timeout");
                             }, timeout);
+*/
+                            timer = function (timeout) {
+                                Ext.create('Ext.util.DelayedTask', function () {
+                                    timedOut = true;
+                                    callback("timeout");
+                                }).delay(timeout);
+                            };
+
+
                         }
 
                         function recursiveStoreForTinkBox(counter) {

@@ -19,7 +19,8 @@ Ext.application({
         'ttapp.util.Analytics'
     ],
     controllers: ['Main', 'Tink', 'SendTo', 'Landing', 'Authenticate',
-    'Trinket', 'ReplayTink', 'TinkChat', 'PhoneContact', 'TinkBox'],
+    'Trinket', 'ReplayTink', 'TinkChat', 'PhoneContact', 'TinkBox',
+        'TinkoMeter'],
 
     views: [
         'Landing', 'Tink', 'SendTo', 'Trinket',

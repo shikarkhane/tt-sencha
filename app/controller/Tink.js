@@ -134,9 +134,15 @@ Ext.define('ttapp.controller.Tink', {
         try {
             Ext.getDom('tinkcontainer').contentWindow.tt_start_animation();
         } catch(e) {
+            /*
             setTimeout(function() {
                 me.runAnimation();
             }, 500);
+*/
+
+            Ext.create('Ext.util.DelayedTask', function () {
+                me.runAnimation();
+            }).delay(500);
         }
     },
     stopAnimation: function() {

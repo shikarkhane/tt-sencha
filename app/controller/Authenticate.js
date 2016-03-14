@@ -80,14 +80,23 @@ Ext.define('ttapp.controller.Authenticate', {
 
                     });
 
-                    // set timeout for 15 seconds
-                    me._androidTimeout = setTimeout(function() {
+                    Ext.create('Ext.util.DelayedTask', function () {
+                        console.log('wait for sms received');
                         Ext.Viewport.unmask();
 
                         Ext.Viewport.animateActiveItem('confirmphonenumber', {
                             type: 'slide'
                         });
-                    }, 15000);
+                    }).delay(10000);
+
+                    // set timeout for 15 seconds
+                    /*me._androidTimeout = setTimeout(function() {
+                        Ext.Viewport.unmask();
+
+                        Ext.Viewport.animateActiveItem('confirmphonenumber', {
+                            type: 'slide'
+                        });
+                    }, 15000);*/
                 }
                 else {
                     Ext.Viewport.animateActiveItem('confirmphonenumber', {

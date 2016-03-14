@@ -1188,10 +1188,15 @@ Ext.define('ttapp.util.Common', {
                             $("body").addClass("mask-fade-effect");
 
                             Ext.getCmp('btn-panel').hide();
-                            setTimeout(function() {
+/*                            setTimeout(function() {
                                 $("body").removeClass("mask-fade-effect");
                                 Ext.getCmp('btn-panel').destroy();
                             }, 100);
+*/
+                            Ext.create('Ext.util.DelayedTask', function () {
+                                $("body").removeClass("mask-fade-effect");
+                                Ext.getCmp('btn-panel').destroy();
+                            }).delay(100);
                         }
 
                         // $('.clickable').on('click', function() {
@@ -1353,7 +1358,10 @@ function resizeHeight(){
 
 function resizeDiv(){
     resizeHeight();
-    setTimeout(resizeDiv, 20);
+    // setTimeout(resizeDiv, 20);
+    Ext.create('Ext.util.DelayedTask', function () {
+        resizeDiv();
+    }).delay(20);
 }
 
 $(window).resize(function(){
