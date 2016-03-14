@@ -212,7 +212,13 @@ Ext.define('ttapp.view.TinkoMeter', {
             		}
             	]
             }, {
-                layout:'hbox',
+                xtype: 'container',
+                layout:
+                {
+                    type: 'hbox',
+                    align: 'center',
+                    pack: 'center'
+                },
                 flex: 1,
                 cls:'social-section',
             	items: [{xtype: 'button', cls: 'social-icon twitter'},
