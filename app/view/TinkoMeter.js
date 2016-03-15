@@ -144,7 +144,7 @@ Ext.define('ttapp.view.TinkoMeter', {
                         flex: 2,
                         cls:'in-out-list in-out-bar',
                         html:'<div class="circle" id="tinkometerCircle"></div>',
-                        initialize: function() {
+/*                      initialize: function() {
                             this.element.on({
                                 tap: function() {
                                     ttapp.util.Analytics.trackView('Contacts');
@@ -152,9 +152,18 @@ Ext.define('ttapp.view.TinkoMeter', {
                                 }
                             });
                         },
+                        */
                         listeners: {
+                            tap: {
+                                fn: function() {
+                                    ttapp.util.Analytics.trackView('Contacts');
+                                    Ext.Viewport.animateActiveItem('phoneContacts', { type: 'slide' });
+                                },
+                                element: 'element'
+                            },
                             'painted': {
                                 fn: function (element) {
+
                                     Ext.getStore('profilestore').getPhoneNumber(function (user) {
                                         if (!user) {
                                             if (callback) {

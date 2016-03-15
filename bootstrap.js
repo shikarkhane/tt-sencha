@@ -679,6 +679,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "ttapp.controller.Tink": [],
   "ttapp.controller.TinkBox": [],
   "ttapp.controller.TinkChat": [],
+  "ttapp.controller.TinkoMeter": [],
   "ttapp.controller.Trinket": [],
   "ttapp.model.Contact": [],
   "ttapp.model.IpInfo": [],
@@ -1454,6 +1455,7 @@ Ext.ClassManager.addNameAliasMappings({
   "ttapp.controller.Tink": [],
   "ttapp.controller.TinkBox": [],
   "ttapp.controller.TinkChat": [],
+  "ttapp.controller.TinkoMeter": [],
   "ttapp.controller.Trinket": [
     "widget.trinketselection"
   ],

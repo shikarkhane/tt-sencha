@@ -3,13 +3,13 @@ cordova create pg-tinktime "com.tinktime.app" "Tinktime"
 
 cd pg-tinktime
 
-cordova platform add ios
+cordova platform add ios@4.1.0
 cordova prepare ios
 
 cordova platform add android
 cordova prepare android
 
-cordova plugin add phonegap-plugin-push --variable SENDER_ID="196429376160"
+cordova plugin add phonegap-plugin-push --variable SENDER_ID="00000" 
 cordova plugin add cordova-plugin-camera
 cordova plugin add cordova-plugin-console
 cordova plugin add cordova-plugin-contacts-phonenumbers
