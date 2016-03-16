@@ -88,6 +88,7 @@ Ext.define('ttapp.util.ContactsProxy', {
                     console.log('SLOWNESS-CONTACTS: are on tinktime');
                 }
             }, function(error) {
+                Ext.Viewport.setMasked(false);
                 console.log(error);
             });
         } else {
