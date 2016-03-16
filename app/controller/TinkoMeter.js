@@ -25,7 +25,8 @@ Ext.define('ttapp.controller.TinkoMeter', {
             // the boolean is only false on iOS < 6
             if (isAvailable) {
                 // now use any of the share() functions
-                window.plugins.socialsharing.shareViaTwitter('Try Tinktime app. Time is a gift, share it!', null , 'http://www.tinktime.com/');
+                window.plugins.socialsharing.shareViaTwitter('Try Tinktime app. Time is a gift, share it!',
+                    null , ttapp.config.Config.getBaseURL() + '/social/twitter/');
             }
         });
     },
@@ -35,7 +36,8 @@ Ext.define('ttapp.controller.TinkoMeter', {
             // the boolean is only false on iOS < 6
             if (isAvailable) {
                 // now use any of the share() functions
-                window.plugins.socialsharing.shareViaFacebook('Try Tinktime app. Time is a gift, share it!', null /* img */, 'http://www.tinktime.com/' /* url */,
+                window.plugins.socialsharing.shareViaFacebook('Try Tinktime app. Time is a gift, share it!',
+                    null /* img */, ttapp.config.Config.getBaseURL() + '/social/facebook/' /* url */,
                     function() {console.log('share ok')}, function(errormsg){console.log(errormsg)});
             }
         });
@@ -50,7 +52,7 @@ Ext.define('ttapp.controller.TinkoMeter', {
                 window.plugins.socialsharing.canShareVia('instagram', 'msg', null, null, null,
                     function(e){
                         shareViaInstagram('Try Tinktime app. Time is a gift, share it!',
-                            'http://d2ba6o56c6jz0m.cloudfront.net/welcome-to-tinktime.png', function() {console.log('share ok')}, function(errormsg){console.log(errormsg)})
+                            ttapp.config.Config.getBaseURL() + '/social/instagram/', function() {console.log('share ok')}, function(errormsg){console.log(errormsg)})
                     },
                     function(e){console.log(e)});
             }
