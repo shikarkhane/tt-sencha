@@ -28,6 +28,6 @@ Ext.define('Ext.device.contacts.Cordova', {
             config.multiple = true;
         }
 
-        navigator.contacts.find(config.fields, config.success, config.failure, config.options);
+        navigator.contacts.find(config.fields, config.success, config.failure, config);
     }
 });

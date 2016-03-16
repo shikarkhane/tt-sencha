@@ -163,7 +163,7 @@ Ext.define('ttapp.view.TinkoMeter', {
                             },
                             'painted': {
                                 fn: function (element) {
-
+                                    console.log('tinkometer: painted');
                                     Ext.getStore('profilestore').getPhoneNumber(function (user) {
                                         if (!user) {
                                             if (callback) {

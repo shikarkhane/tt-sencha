@@ -26,11 +26,11 @@
  *         }
  *     });
  *
+ * For more information regarding Native APIs, please review our [Native APIs guide](../../../packaging/native_apis.html).
+ *
  * @mixins Ext.device.contacts.Abstract
  * @mixins Ext.device.contacts.Sencha
  * @mixins Ext.device.contacts.Cordova
- *
- * @aside guide native_apis
  */
 Ext.define('Ext.device.Contacts', {
     singleton: true,
@@ -42,7 +42,15 @@ Ext.define('Ext.device.Contacts', {
     ],
 
     constructor: function() {
+        var browserEnv = Ext.browser.is;
 
-        return Ext.create('Ext.device.contacts.Cordova');
+        if (browserEnv.WebView) {
+            if (browserEnv.Cordova) {
+                return Ext.create('Ext.device.contacts.Cordova');
+            }else if (browserEnv.Sencha) {
+                return Ext.create('Ext.device.contacts.Sencha');
+            }
+        }
+        return Ext.create('Ext.device.contacts.Abstract');
     }
 });
