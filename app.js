@@ -36,6 +36,8 @@ Ext.application({
 
     launch: function() {
         console.log('sencha touch - device ready');
+        navigator.splashscreen.hide();
+
         // get trinket content
         ttapp.util.TrinketProxy.process(true, function() {
             // check on server, if user is verified

@@ -23,3 +23,4 @@ cordova plugin add cordova-plugin-filepath
 cordova plugin add cordova-plugin-google-analytics
 cordova plugin add cordova-plugin-network-information
 cordova plugin add cordova-plugin-x-socialsharing
+cordova plugin add cordova-plugin-splashscreen
