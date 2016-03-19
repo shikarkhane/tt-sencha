@@ -87,6 +87,10 @@
         <icon src="www/resources/icons/ios/icon-50.png" width="50" height="50" />
         <icon src="www/resources/icons/ios/icon-50@2x.png" width="100" height="100" />
 
+        <icon src="www/resources/icons/ios/icon-40.png" width="40" height="40" />
+        <icon src="www/resources/icons/ios/icon-40@2x.png" width="80" height="80" />
+
+        <splash height="568" src="www/resources/images/others/bg.png" width="320" />
         <splash height="480" src="www/resources/images/others/bg.png" width="320" />
         <splash height="960" src="www/resources/images/others/bg.png" width="640" />
         <splash height="1136" src="www/resources/images/others/bg.png" width="640" />
