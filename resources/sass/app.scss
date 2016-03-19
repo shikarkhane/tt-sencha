@@ -130,9 +130,17 @@ body {
     height: 50px;
    text-align: center;
     z-index: 20;
-    margin-top: -30px;
+    margin-top: -45px;
 }
-
+.clsTimerClock{
+    .x-innerhtml{
+        background-color: rgba(173, 174, 158, 0.7);
+        font-weight: bolder;
+        padding: 10px;
+        -moz-border-radius:10px;
+        -webkit-border-radius:10px;
+    }
+}
 .img-trinket {
     border:2px solid white;
     margin-left:7px;

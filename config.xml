@@ -92,6 +92,10 @@
         <splash height="1136" src="www/resources/images/others/bg.png" width="640" />
         <splash height="1024" src="www/resources/images/others/bg.png" width="768" />
         <splash height="768" src="www/resources/images/others/bg.png" width="1024" />
+        <splash height="2208" src="www/resources/images/others/bg.png" width="1242" />
+        <splash height="1334" src="www/resources/images/others/bg.png" width="750" />
+        <splash height="1242" src="www/resources/images/others/bg.png" width="2208" />
+
 
     </platform>
     <engine name="ios" spec="~4.1.0" />
@@ -102,7 +106,7 @@
     </plugin>
     <plugin name="cordova-plugin-camera" spec="~2.1.0" />
     <plugin name="cordova-plugin-console" spec="~1.0.2" />
-    <plugin name="com.dbaq.cordova.contactsPhoneNumbers" spec="~0.0.6" />
+    <plugin name="com.dbaq.cordova.contactsPhoneNumbers" spec="https://github.com/dbaq/cordova-plugin-contacts-phone-numbers.git" />
     <plugin name="cordova-plugin-device" spec="~1.1.1" />
     <plugin name="cordova-plugin-file" spec="~4.1.0" />
     <plugin name="cordova-plugin-file-transfer" spec="~1.5.0" />

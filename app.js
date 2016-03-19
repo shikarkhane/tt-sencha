@@ -36,7 +36,9 @@ Ext.application({
 
     launch: function() {
         console.log('sencha touch - device ready');
-        navigator.splashscreen.hide();
+        if (Ext.os.deviceType == 'Phone') {
+            navigator.splashscreen.hide();
+        }
 
         // get trinket content
         ttapp.util.TrinketProxy.process(true, function() {
