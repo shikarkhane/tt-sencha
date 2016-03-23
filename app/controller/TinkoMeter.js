@@ -29,6 +29,7 @@ Ext.define('ttapp.controller.TinkoMeter', {
             method: 'GET',
             disableCaching: false,
             success: function(response) {
+                Ext.Viewport.setMasked(false);
                 var json = Ext.JSON.decode(response.responseText);
                 var sn = json.socialnetwork, url = json.url, imgurl = json.imgurl;
 
