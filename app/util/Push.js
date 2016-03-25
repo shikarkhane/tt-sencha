@@ -37,10 +37,10 @@ Ext.define('ttapp.util.Push', {
     },
     takeUserPermissionForPushNotify: function() {
         try {
-
+            var senderId = ttapp.config.Config.getAndroidSenderId();
             var push = PushNotification.init({
                 android: {
-                    senderID: "00000"
+                    senderID: senderId
                 },
                 ios: {
                     alert: "true",
@@ -75,6 +75,7 @@ Ext.define('ttapp.util.Push', {
                         Ext.Viewport.add(Ext.create('ttapp.view.TinkBox'));
                     }
                     Ext.Viewport.animateActiveItem('tinkbox', { type: 'slide' });
+                    ttapp.config.Config.setLaunchedViaNotification(true);
                 }
                 catch(e) {
                     console.log('Create tinkbox view if not exists:' + e);
