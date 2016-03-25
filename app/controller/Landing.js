@@ -24,6 +24,8 @@ Ext.define('ttapp.controller.Landing', {
     //     });
     // },
     onUserAction: function(fade) {
+        ttapp.util.Analytics.trackView('Landing');
+
         if (this._animating) {
             return;
         }

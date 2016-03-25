@@ -55,6 +55,7 @@ Ext.application({
                     ttapp.app.getController('Landing').onUserAction(true);
                 }
                 else {
+                    ttapp.util.Analytics.trackView('Authenticate');
                     Ext.Viewport.add(Ext.create('ttapp.view.Authenticate'));
                 }
             });

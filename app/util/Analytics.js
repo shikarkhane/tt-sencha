@@ -31,7 +31,7 @@ Ext.define('ttapp.util.Analytics', {
       // }
 
       this._try(function() {
-        window.analytics.trackEvemt(category, action, label, value);
+        window.analytics.trackEvent(category, action, label, value);
       }, 'Tracked event: ' + category + ', ' + action + ', ' + label + ', ' + value);
     },
 

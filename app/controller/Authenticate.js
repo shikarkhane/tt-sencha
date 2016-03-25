@@ -28,6 +28,7 @@ Ext.define('ttapp.controller.Authenticate', {
         }
     },
     sendCodeAgain: function() {
+        ttapp.util.Analytics.trackView('Send Code again');
         this.sendCode(window.myPhoneNumber);
     },
     showPhoneNumber: function() {
@@ -84,6 +85,8 @@ Ext.define('ttapp.controller.Authenticate', {
                         console.log('wait for sms received');
                         Ext.Viewport.unmask();
 
+                        ttapp.util.Analytics.trackView('Manual Confirm');
+
                         Ext.Viewport.animateActiveItem('confirmphonenumber', {
                             type: 'slide'
                         });
@@ -99,6 +102,7 @@ Ext.define('ttapp.controller.Authenticate', {
                     }, 15000);*/
                 }
                 else {
+                    ttapp.util.Analytics.trackView('Manual Confirm');
                     Ext.Viewport.animateActiveItem('confirmphonenumber', {
                         type: 'slide'
                     });
