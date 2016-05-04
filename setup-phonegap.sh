@@ -24,3 +24,4 @@ cordova plugin add cordova-plugin-network-information
 cordova plugin add cordova-plugin-x-socialsharing
 cordova plugin add cordova-plugin-splashscreen
 cordova plugin add https://github.com/dbaq/cordova-plugin-contacts-phone-numbers.git
+cordova plugin add cordova-plugin-fullscreen

@@ -29,7 +29,7 @@ Ext.define('ttapp.controller.TinkoMeter', {
             method: 'GET',
             disableCaching: false,
             success: function(response) {
-                Ext.Viewport.setMasked(false);
+
                 var json = Ext.JSON.decode(response.responseText);
                 var sn = json.socialnetwork, url = json.url, imgurl = json.imgurl;
 
@@ -61,7 +61,7 @@ Ext.define('ttapp.controller.TinkoMeter', {
                             // now use any of the share() functions
                             window.plugins.socialsharing.canShareVia('instagram', 'msg', null, null, null,
                                 function(e){
-                                    shareViaInstagram('Try Tinktime app. Time is a gift, share it!',
+                                    window.plugins.socialsharing.shareViaInstagram('Try Tinktime app. Time is a gift, share it!',
                                         imgurl, function() {console.log('share ok')}, function(errormsg){console.log(errormsg)})
                                 },
                                 function(e){console.log(e)});
@@ -70,7 +70,9 @@ Ext.define('ttapp.controller.TinkoMeter', {
                 }
                 else{
                     console.log('no social network found');
+                    Ext.Msg.alert('Share failed!', 'Unable to find app.');
                 }
+                Ext.Viewport.setMasked(false);
             },
             failure: function(error) {
                 Ext.Viewport.setMasked(false);

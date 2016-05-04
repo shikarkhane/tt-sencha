@@ -32,8 +32,15 @@ Ext.define('ttapp.util.ContactsProxy', {
                             time_split = item.time_split,
                             profile_url = item.profile_url;
 
+                        if(Ext.isEmpty(fname)){
+                            fname = "";
+                        }
+                        if(Ext.isEmpty(lname)){
+                            lname = "";
+                        }
+
                         if (fname == "" && lname == "") {
-                          continue;
+                            continue;
                         }
 
                         cStore.add({
