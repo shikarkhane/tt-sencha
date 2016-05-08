@@ -69,13 +69,15 @@ Ext.define('ttapp.util.Push', {
                 console.log(data.additionalData);
 
                 try{
+                    ttapp.config.Config.setLaunchedViaNotification(true);
+
                     // check if tinkbox view exists in viewport, if not add it.
                     var tb = Ext.Viewport.down('tinkbox');
                     if (!tb){
                         Ext.Viewport.add(Ext.create('ttapp.view.TinkBox'));
                     }
                     Ext.Viewport.animateActiveItem('tinkbox', { type: 'slide' });
-                    ttapp.config.Config.setLaunchedViaNotification(true);
+
                 }
                 catch(e) {
                     console.log('Create tinkbox view if not exists:' + e);

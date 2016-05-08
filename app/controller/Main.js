@@ -53,6 +53,14 @@ Ext.define('ttapp.controller.Main', {
                         }
                     });
                     console.log('SLOWNESS: refresh contacts from phone');
+
+                    //if on resume activeItem is tinkbox, refresh it
+                    if(Ext.Viewport.getActiveItem().config.xtype == 'tinkbox') {
+                        console.log('On resume, if active item tinkbox - refresh it');
+                        var activeItem = Ext.Viewport.getActiveItem();
+                        activeItem.hide();
+                        activeItem.show();
+                    }
                 }
                 else {
                     Ext.Viewport.add(Ext.create('ttapp.view.Authenticate'));
