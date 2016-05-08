@@ -37,7 +37,7 @@ Ext.define('ttapp.controller.Main', {
                             console.log('SLOWNESS: take permission for push');
                         }
                         else{
-                            Ext.getStore('profilestore').askPushNotificationPermission();
+                            ttapp.util.Common.askPushNotificationPermission();
                         }
                     });
 
@@ -46,7 +46,7 @@ Ext.define('ttapp.controller.Main', {
                     Ext.getStore('profilestore').setUserImage();
                     console.log('SLOWNESS: get user profile url');
 
-                    Ext.getStore('profilestore').hasUserAllowedEULAContactsRead(function(success) {
+                    ttapp.util.Common.hasUserAllowedEULAContactsRead(function(success) {
                         if(success){
                             // get contacts from device
                             ttapp.util.ContactsProxy.process(Ext.getStore('phonecontacts'));
