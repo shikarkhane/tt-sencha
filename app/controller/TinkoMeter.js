@@ -41,6 +41,7 @@ Ext.define('ttapp.controller.TinkoMeter', {
                             window.plugins.socialsharing.shareViaTwitter('Try Tinktime app. Time is a gift, share it!',
                                 null , url);
                         }
+                        Ext.Viewport.setMasked(false);
                     });
                 }
                 else if ( sn == 'facebook'){
@@ -52,6 +53,7 @@ Ext.define('ttapp.controller.TinkoMeter', {
                                 imgurl /* img */, url /* url */,
                                 function() {console.log('share ok')}, function(errormsg){console.log(errormsg)});
                         }
+                        Ext.Viewport.setMasked(false);
                     });
                 }
                 else if ( sn == 'instagram'){
@@ -66,13 +68,17 @@ Ext.define('ttapp.controller.TinkoMeter', {
                                 },
                                 function(e){console.log(e)});
                         }
+                        Ext.Viewport.setMasked(false);
                     });
                 }
                 else{
                     console.log('no social network found');
+                    Ext.Viewport.setMasked(false);
+
                     Ext.Msg.alert('Share failed!', 'Unable to find app.');
+
                 }
-                Ext.Viewport.setMasked(false);
+
             },
             failure: function(error) {
                 Ext.Viewport.setMasked(false);
