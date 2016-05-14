@@ -1,5 +1,30 @@
 Ext.define('ttapp.util.Common', {
     singleton: true,
+    existsUnreadMessages: function(callback){
+        Ext.getStore('profilestore').getPhoneNumber(function(num){
+            Ext.Ajax.request({
+                url: ttapp.config.Config.getBaseURL() + '/groupedfeed/' + num + '/',
+                method: 'GET',
+                disableCaching: false,
+                success: function(response) {
+                    var json = Ext.JSON.decode(response.responseText);
+                    if ( json.groups.length > 0){
+                        //since groupfeed is sorted by unread first, check first element only
+                        if (json.groups[0].unread > 0){
+                            // goto tinkbox
+                            callback(true);
+                        }
+                    }
+                    callback(false);
+                }
+                ,
+                failure: function(error) {
+                    Ext.Msg.alert('Error', 'Unable to check if unread msgs exists');
+                    callback(false);
+                }
+            });
+        });
+    },
     askEULAPermission: function(){
         Ext.getStore('profilestore').hasUserAllowedEULAContactsRead(function(success) {
             if(! success) {

@@ -38,29 +38,34 @@ Ext.define('ttapp.controller.Landing', {
 
         Ext.getStore('profilestore').isUserVerified(function(success) {
             if (success === true) {
-                var item = Ext.Viewport.add({
-                    xtype: 'tinkometer'
+                ttapp.util.common.existsUnreadMessages(function(exists){
+                    var itemXtype, itemFullname;
+
+                    if (exists === true){
+                        itemXtype = 'tinkbox';
+                        itemFullname = 'ttapp.view.TinkBox';
+                    }
+                    else{
+                        itemXtype = 'tinkometer';
+                        itemFullname = 'ttapp.view.TinkoMeter';
+                    }
+
+                    try{
+                        // check if view exists in viewport, if not add it.
+                        var tb = Ext.Viewport.down(itemXtype);
+                        if (!tb){
+                            Ext.Viewport.add(Ext.create(itemFullname));
+                        }
+
+                        Ext.Viewport.animateActiveItem(itemXtype, { type: 'slide' });
+
+                    }
+                    catch(e) {
+                        console.log('Create tinkbox/tinkometer view if not exists:' + e);
+                    }
+
+                    ttapp.util.Analytics.trackView(itemXtype);
                 });
-
-                item.element.setStyle('opacity', '0');
-                item.element.show();
-
-                ttapp.util.Analytics.trackView('Tinkometer');
-
-                //dont move to tinkometer, if app was launched by alert notification
-                if ( ttapp.config.Config.getLaunchedViaNotification()){
-                    // good job, now we revert back config to false
-                    ttapp.config.Config.setLaunchedViaNotification(false);
-                }
-                else{
-                    Ext.create('Ext.util.DelayedTask', function () {
-                        item.element.hide();
-                        item.element.setStyle('opacity', '1');
-
-                        Ext.Viewport.animateActiveItem(item, fade === true ? 'fade' : 'slide');
-                    }).delay(180);
-                }
-
             } else {
                 ttapp.util.Analytics.trackView('Authenticate');
 

@@ -5,8 +5,7 @@ Ext.define('ttapp.config.Config', {
         //baseURL         : /*'http://tinktime.com',*/ 'http://localhost:9090',
         width			: (window.innerWidth > 0) ? window.innerWidth : screen.width,
         height			: (window.innerHeight > 0) ? window.innerHeight : screen.height,
-        launchedViaNotification: false,
-        androidSenderId: "0000000"
+        androidSenderId: "0000"
     },
     constructor: function(config) {
         this.initConfig(config);
