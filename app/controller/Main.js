@@ -59,6 +59,12 @@ Ext.define('ttapp.controller.Main', {
                         activeItem.hide();
                         activeItem.show();
                     }
+                    else{
+                        // Param(true) if on resume, screen is not tinkbox but new msgs are received than change screen to tinkbox
+                        // Param(false) if on resume, screen is not tinbox but NO new msgs than stay on the screen as before
+                        ttapp.app.getController('Landing').onUserAction(false);
+                    }
+
                 }
                 else {
                     Ext.Viewport.add(Ext.create('ttapp.view.Authenticate'));

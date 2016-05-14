@@ -23,14 +23,9 @@ Ext.define('ttapp.controller.Landing', {
     //         type: 'fade'
     //     });
     // },
-    onUserAction: function(fade) {
+    onUserAction: function(showTinkometer) {
+
         ttapp.util.Analytics.trackView('Landing');
-
-        if (this._animating) {
-            return;
-        }
-
-        this._animating = true;
 
         if (Ext.os.deviceType == 'Phone') {
             ttapp.util.Push.takeUserPermissionForPushNotify();
@@ -38,7 +33,7 @@ Ext.define('ttapp.controller.Landing', {
 
         Ext.getStore('profilestore').isUserVerified(function(success) {
             if (success === true) {
-                ttapp.util.common.existsUnreadMessages(function(exists){
+                ttapp.util.Common.existsUnreadMessages(function(exists){
                     var itemXtype, itemFullname;
 
                     if (exists === true){
@@ -50,21 +45,28 @@ Ext.define('ttapp.controller.Landing', {
                         itemFullname = 'ttapp.view.TinkoMeter';
                     }
 
-                    try{
-                        // check if view exists in viewport, if not add it.
-                        var tb = Ext.Viewport.down(itemXtype);
-                        if (!tb){
-                            Ext.Viewport.add(Ext.create(itemFullname));
+                    if (!showTinkometer && itemXtype === 'tinkometer')
+                    {
+                        console.log('Skip tinkometer screen. Caller method doesnt want to switch screen if no new msgs');
+                    }
+                    else {
+                        try {
+                            // check if view exists in viewport, if not add it.
+                            var tb = Ext.Viewport.down(itemXtype);
+                            if (!tb) {
+                                Ext.Viewport.add(Ext.create(itemFullname));
+                            }
+
+                            Ext.Viewport.animateActiveItem(itemXtype, {type: 'slide'});
+
+                        }
+                        catch (e) {
+                            console.log('Create tinkbox/tinkometer view if not exists:' + e);
                         }
 
-                        Ext.Viewport.animateActiveItem(itemXtype, { type: 'slide' });
-
-                    }
-                    catch(e) {
-                        console.log('Create tinkbox/tinkometer view if not exists:' + e);
+                        ttapp.util.Analytics.trackView(itemXtype);
                     }
 
-                    ttapp.util.Analytics.trackView(itemXtype);
                 });
             } else {
                 ttapp.util.Analytics.trackView('Authenticate');

@@ -14,8 +14,13 @@ Ext.define('ttapp.util.Common', {
                             // goto tinkbox
                             callback(true);
                         }
+                        else{
+                            callback(false);
+                        }
                     }
-                    callback(false);
+                    else{
+                        callback(false);
+                    }
                 }
                 ,
                 failure: function(error) {
