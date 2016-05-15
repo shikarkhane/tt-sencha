@@ -6,14 +6,38 @@ Ext.define('ttapp.model.Contact', {
             type: 'uuid'
         },
         fields: [
-            'id',
-            'first_name',
-            'last_name',
-            'on_tinktime',
-            'phone_number',
-            'phone_type',
-            'time_split',
-            'profile_url'
+            {
+                name: 'id',
+                type: 'int'
+            },
+            {
+                name: 'first_name',
+                type: 'string'
+            },
+            {
+                name: 'last_name',
+                type: 'string'
+            },
+            {
+                name: 'on_tinktime',
+                type: 'boolean'
+            },
+            {
+                name: 'phone_number',
+                type: 'string'
+            },
+            {
+                name: 'phone_type',
+                type: 'string'
+            },
+            {
+                name: 'time_split',
+                type: 'string'
+            },
+            {
+                name: 'profile_url',
+                type: 'string'
+            }
         ]
     }
 });

@@ -55,62 +55,67 @@ Ext.define('ttapp.controller.Authenticate', {
     sendConfirmationCode: function() {
         var m = Ext.ComponentQuery.query('#myDialCode')[0];
 
-        var number = Ext.getCmp('myPhoneNumber').getValue(),
+        var number = Ext.ComponentQuery.query('#myPhoneNumber')[0].getValue(),
             dcode = m.getValue();
-        if (number) {
-          number = number.replace(/\s/g, '');
-        }
-        if (number.charAt(0) == '0') {
-            number = number.substring(1); //remove the leading zero
-        }
-
-        var phoneNumber = dcode + number;
-        window.myPhoneNumber = phoneNumber;
-
-
-        // store user profile locally
-        Ext.getStore('trinketstore').getDefaultTrinket(function(trinketName) {
-            if (Ext.getStore('profilestore').addProfile(window.myPhoneNumber, false, (new Date()).valueOf(), trinketName, 0, dcode)) {
-
-                ttapp.app.getController('Authenticate').sendCode(window.myPhoneNumber);
-
-                if (Ext.os.is.Android && SMS) {
-                    Ext.Viewport.mask({
-                        xtype: 'loadmask',
-                        html: '<img src="resources/images/green-loader.png" alt="loader">'
-
-                    });
-
-                    Ext.create('Ext.util.DelayedTask', function () {
-                        console.log('wait for sms received');
-                        Ext.Viewport.unmask();
-
-                        ttapp.util.Analytics.trackView('Manual Confirm');
-
-                        Ext.Viewport.animateActiveItem('confirmphonenumber', {
-                            type: 'slide'
-                        });
-                    }).delay(10000);
-
-                    // set timeout for 15 seconds
-                    /*me._androidTimeout = setTimeout(function() {
-                        Ext.Viewport.unmask();
-
-                        Ext.Viewport.animateActiveItem('confirmphonenumber', {
-                            type: 'slide'
-                        });
-                    }, 15000);*/
-                }
-                else {
-                    ttapp.util.Analytics.trackView('Manual Confirm');
-                    Ext.Viewport.animateActiveItem('confirmphonenumber', {
-                        type: 'slide'
-                    });
-                }
+        if ( number.length > 0) {
+            if (number) {
+                number = number.replace(/\s/g, '');
             }
-        });
+            if (number.charAt(0) == '0') {
+                number = number.substring(1); //remove the leading zero
+            }
 
-        Ext.getStore('profilestore').setUserImage();
+            var phoneNumber = dcode + number;
+            window.myPhoneNumber = phoneNumber;
+
+
+            // store user profile locally
+            Ext.getStore('trinketstore').getDefaultTrinket(function (trinketName) {
+                if (Ext.getStore('profilestore').addProfile(window.myPhoneNumber, false, (new Date()).valueOf(), trinketName, 0, dcode)) {
+
+                    ttapp.app.getController('Authenticate').sendCode(window.myPhoneNumber);
+
+                    if (Ext.os.is.Android && SMS) {
+                        Ext.Viewport.mask({
+                            xtype: 'loadmask',
+                            html: '<img src="resources/images/green-loader.png" alt="loader">'
+
+                        });
+
+                        Ext.create('Ext.util.DelayedTask', function () {
+                            console.log('wait for sms received');
+                            Ext.Viewport.unmask();
+
+                            ttapp.util.Analytics.trackView('Manual Confirm');
+
+                            Ext.Viewport.animateActiveItem('confirmphonenumber', {
+                                type: 'slide'
+                            });
+                        }).delay(10000);
+
+                        // set timeout for 15 seconds
+                        /*me._androidTimeout = setTimeout(function() {
+                         Ext.Viewport.unmask();
+
+                         Ext.Viewport.animateActiveItem('confirmphonenumber', {
+                         type: 'slide'
+                         });
+                         }, 15000);*/
+                    }
+                    else {
+                        ttapp.util.Analytics.trackView('Manual Confirm');
+                        Ext.Viewport.animateActiveItem('confirmphonenumber', {
+                            type: 'slide'
+                        });
+                    }
+                }
+            });
+
+            Ext.getStore('profilestore').setUserImage();
+        }
+        else{
+            Ext.Msg.alert('Oops!', 'We couldnt capture your number.', Ext.emptyFn);
+        }
     },
     sendCode: function(phoneNumber) {
         var me = this;

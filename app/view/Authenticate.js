@@ -48,7 +48,7 @@ Ext.define('ttapp.view.Authenticate', {
 					                flex:3
 					        	},
 					        	{
-						        	id: 'myPhoneNumber',
+						        	itemId: 'myPhoneNumber',
 					                // xtype: 'numberfield',
 									xclass: 'ttapp.view.NumberField',
 									component: {
