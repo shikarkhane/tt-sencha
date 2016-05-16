@@ -32,14 +32,14 @@ Ext.define('ttapp.util.ContactsProxy', {
                             time_split = item.time_split,
                             profile_url = item.profile_url;
 
-                        if(Ext.isEmpty(fname)){
-                            fname = "";
+                        if(Ext.isEmpty(fname) || fname === 'undefined'){
+                            fname = null;
                         }
-                        if(Ext.isEmpty(lname)){
-                            lname = "";
+                        if(Ext.isEmpty(lname) || lname === 'undefined'){
+                            lname = null;
                         }
 
-                        if (fname == "" && lname == "") {
+                        if (Ext.isEmpty(fname) && Ext.isEmpty(lname)) {
                             continue;
                         }
 
@@ -51,7 +51,8 @@ Ext.define('ttapp.util.ContactsProxy', {
                             phone_type: pType,
                             phone_number: pnumber,
                             time_split: time_split,
-                            profile_url: profile_url/*ttapp.config.Config.getBaseURL()+'/static/img/user_profile/'+pnumber+'.jpeg'*/
+                            profile_url: profile_url /*ttapp.config.Config.getBaseURL()+'/static/img/user_profile/'+pnumber+'.jpeg'*/
+
                         });
                     }
 

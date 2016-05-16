@@ -55,8 +55,9 @@ Ext.define('ttapp.controller.Authenticate', {
     sendConfirmationCode: function() {
         var m = Ext.ComponentQuery.query('#myDialCode')[0];
 
-        var number = Ext.ComponentQuery.query('#myPhoneNumber')[0].getValue(),
+        var number = Ext.ComponentQuery.query('#myPhoneNumber')[0].getValue().toString(),
             dcode = m.getValue();
+
         if ( number.length > 0) {
             if (number) {
                 number = number.replace(/\s/g, '');
