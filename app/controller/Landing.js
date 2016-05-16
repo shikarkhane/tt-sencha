@@ -75,6 +75,11 @@ Ext.define('ttapp.controller.Landing', {
                 if (!a) {
                     Ext.Viewport.add(Ext.create('ttapp.view.Authenticate'));
                 }
+
+                Ext.Viewport.animateActiveItem('authenticate', {
+                    type: 'slide'
+                });
+
             }
         });
     }

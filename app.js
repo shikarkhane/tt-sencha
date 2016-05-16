@@ -53,6 +53,7 @@ Ext.application({
                         cls: 'bg-transparent'
                     });
                     ttapp.app.getController('Landing').onUserAction(true);
+
                 }
                 else {
                     ttapp.util.Analytics.trackView('Authenticate');
