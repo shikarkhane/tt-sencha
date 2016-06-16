@@ -134,7 +134,7 @@ Ext.define('ttapp.controller.Authenticate', {
                 console.log(response.responseText);
 
                 ttapp.util.Analytics.trackView('Sent SMS');
-
+/*
                 if (Ext.os.is.Android && SMS) {
                     SMS.enableIntercept(true, function() {
                     }, function() {
@@ -178,7 +178,7 @@ Ext.define('ttapp.controller.Authenticate', {
                             });
                         });
                     });
-                }
+                }*/
             }
         });
     },

@@ -76,9 +76,12 @@ Ext.define('ttapp.controller.Landing', {
                     Ext.Viewport.add(Ext.create('ttapp.view.Authenticate'));
                 }
 
-                Ext.Viewport.animateActiveItem('authenticate', {
-                    type: 'slide'
-                });
+                //change to authenticate screen only if its not confirm code screen
+                if(Ext.Viewport.getActiveItem().config.xtype != 'confirmphonenumber') {
+                    Ext.Viewport.animateActiveItem('authenticate', {
+                        type: 'slide'
+                    });
+                }
 
             }
         });
