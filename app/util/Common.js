@@ -1255,7 +1255,19 @@ Ext.define('ttapp.util.Common', {
 
         return imagePath;
     },
-
+    logInviteAction: function(user, invitee){
+        Ext.Ajax.request({
+            url: ttapp.config.Config.getBaseURL() + '/log-invite-action/' + num + '/invitee/'+ invitee + '/',
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            disableCaching: false,
+            success: function (response) {
+                console.log('invite action was logged');
+            }
+        });
+    },
     userDescription: function() {
         var arr = [
             {

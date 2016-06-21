@@ -125,6 +125,10 @@ Ext.define('ttapp.controller.SendTo', {
 
     },
     inviteViaSms: function() {
+        Ext.getStore('profilestore').getPhoneNumber(function(from_user) {
+            ttapp.util.Common.logInviteAction(from_user, this.selectedContact.phone_number);
+        });
+
         if (Ext.os.deviceType == 'Phone') {
             var sConf = {
                 number: this.selectedContact.phone_number,

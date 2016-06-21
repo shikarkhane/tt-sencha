@@ -166,7 +166,10 @@ Ext.define('ttapp.controller.PhoneContact', {
     contactTap: function(list, idx, target, record, evt) {
         window.contactSelected = record;
         if(evt.target.className == "invite-btn") {
-					ttapp.util.Analytics.trackEvent('Contacts', 'Sent invite');
+            ttapp.util.Analytics.trackEvent('Contacts', 'Sent invite');
+            Ext.getStore('profilestore').getPhoneNumber(function(from_user) {
+                ttapp.util.Common.logInviteAction(from_user, record.data.phone_number);
+            });
 
             if (Ext.os.deviceType == 'Phone') {
                 var sConf = {

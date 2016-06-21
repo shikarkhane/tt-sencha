@@ -18,6 +18,50 @@ Ext.define('ttapp.controller.TinkoMeter', {
             }
         }
     },
+    shareNowOptions: function(obsolete_param){
+        Ext.Viewport.mask({
+            xtype: 'loadmask',
+            html: '<img src="resources/images/green-loader.png" alt="loader">'
+        });
+
+        Ext.Ajax.request({
+            url: ttapp.config.Config.getBaseURL() + '/socialv2/' + socialnetwork + '/',
+            method: 'GET',
+            disableCaching: false,
+            success: function (response) {
+
+                var json = Ext.JSON.decode(response.responseText);
+                var sn = json.socialnetwork, url = json.url, imgurl = json.imgurl;
+
+                // this is the complete list of currently supported params you can pass to the plugin (all optional)
+                var options = {
+                    message: 'time is a gift, share it!', // not supported on some apps (Facebook, Instagram)
+                    subject: 'Join me on app tinktime', // fi. for email
+                    files: ['', ''], // an array of filenames either locally or remotely
+                    url: url,
+                    chooserTitle: 'Pick an app' // Android only, you can override the default share sheet title
+                }
+
+                var onSuccess = function (result) {
+                    console.log("Share completed? " + result.completed); // On Android apps mostly return false even while it's true
+                    console.log("Shared to app: " + result.app); // On Android result.app is currently empty. On iOS it's empty when sharing is cancelled (result.completed=false)
+                    Ext.Viewport.setMasked(false);
+                }
+
+                var onError = function (msg) {
+                    console.log("Sharing failed with message: " + msg);
+                    Ext.Viewport.setMasked(false);
+                }
+
+                window.plugins.socialsharing.shareWithOptions(options, onSuccess, onError);
+
+            },
+            failure: function (error) {
+                Ext.Viewport.setMasked(false);
+                Ext.Msg.alert('Error', 'Unable to fetch data.');
+            }
+        });
+    },
     shareNow: function(socialnetwork){
         Ext.Viewport.mask({
             xtype: 'loadmask',
@@ -89,16 +133,16 @@ Ext.define('ttapp.controller.TinkoMeter', {
     tweetNow: function(callback, scope) {
         console.log('lets tweet');
 
-        this.shareNow('twitter');
+        this.shareNowOptions('twitter');
     },
     fbNow: function(callback, scope) {
         console.log('lets fb');
 
-        this.shareNow('facebook');
+        this.shareNowOptions('facebook');
     },
     instaNow: function(callback, scope) {
         console.log('lets insta');
 
-        this.shareNow('instagram');
+        this.shareNowOptions('instagram');
     }
 });
