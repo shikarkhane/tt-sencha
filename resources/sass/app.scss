@@ -1632,15 +1632,25 @@ margin-bottom: 30px;
     height: 100%;
     vertical-align: middle;
 }
-.phone-contact-list .inner-list .img-name span{
+.phone-contact-list .inner-list .img-name .contact-name{
     display: table-cell;
     font-size: 18px;
     font-family: 'gotham_xlightregular';
     padding-left: 60px;
     vertical-align: middle;
-    line-height: 28px;
+    line-height: 20px;
     color: #2d2d2d;
     word-break: break-all;
+}
+.phone-contact-list .inner-list .img-name .contact-number{
+    display: table-cell;
+    font-size: 10px;
+    font-family: 'gotham_xlightregular';
+    padding-left: 60px;
+    vertical-align: middle;
+    line-height: 10px;
+    color: #2d2d2d;
+    float: left;
 }
 .phone-contact-list .inner-list .invite-btn-sec{
     display: table-cell;

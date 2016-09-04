@@ -140,11 +140,11 @@ Ext.define('ttapp.controller.PhoneContact', {
                 '<tpl else>',
                     '<tpl if="profile_url != null">',
                         '<div class="inner-list p-bar">',
-                            '<div class="img-name"><div class="contact-img" style="background:url({profile_url})"></div> <span>{first_name} {last_name}</span></div> <div class="circle" id={id}></div>',
+                            '<div class="img-name"><div class="contact-img" style="background:url({profile_url})"></div> <div class="contact-name">{first_name} {last_name}</div><div class="contact-number">{phone_number}</div></div><div class="circle" id={id}></div>',
                         '</div>',
                     '<tpl else>',
                         '<div class="inner-list p-bar">',
-                            '<div class="img-name"><div class="contact-img" style="background:url(resources/images/user-icon.png)"></div> <span>{first_name} {last_name}</span></div> <div class="circle" id={id}></div>',
+                            '<div class="img-name"><div class="contact-img" style="background:url(resources/images/user-icon.png)"></div> <div class="contact-name">{first_name} {last_name}</div><div class="contact-number">{phone_number}</div></div> <div class="circle" id={id}></div>',
                         '</div>',
                     '</tpl>',
                 '</tpl>'
