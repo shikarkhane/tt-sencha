@@ -133,11 +133,6 @@ Ext.define('ttapp.controller.PhoneContact', {
             itemHeight: 80,
             infinite: true,
             itemTpl: [
-                '<tpl if="on_tinktime == false">',/*\'false\'*/
-                    '<div class="inner-list">',
-                        '<div class="img-name"><div class="contact-img" style="background:url(resources/images/user-icon.png)"></div> <span>{first_name} {last_name}</span></div> <div class="invite-btn-sec"><div class="invite-btn">Invite</div></div>',
-                    '</div>',
-                '<tpl else>',
                     '<tpl if="profile_url != null">',
                         '<div class="inner-list p-bar">',
                             '<div class="img-name"><div class="contact-img" style="background:url({profile_url})"></div> <div class="contact-name">{first_name} {last_name}</div><div class="contact-number">{phone_number}</div></div><div class="circle" id={id}></div>',
@@ -146,8 +141,7 @@ Ext.define('ttapp.controller.PhoneContact', {
                         '<div class="inner-list p-bar">',
                             '<div class="img-name"><div class="contact-img" style="background:url(resources/images/user-icon.png)"></div> <div class="contact-name">{first_name} {last_name}</div><div class="contact-number">{phone_number}</div></div> <div class="circle" id={id}></div>',
                         '</div>',
-                    '</tpl>',
-                '</tpl>'
+                    '</tpl>'
             ],
             // store: Ext.getStore('phonecontacts'),
 						data: this._contacts,
@@ -165,6 +159,8 @@ Ext.define('ttapp.controller.PhoneContact', {
 
     contactTap: function(list, idx, target, record, evt) {
         window.contactSelected = record;
+
+        /*
         if(evt.target.className == "invite-btn") {
             ttapp.util.Analytics.trackEvent('Contacts', 'Sent invite');
             Ext.getStore('profilestore').getPhoneNumber(function(from_user) {
@@ -200,5 +196,11 @@ Ext.define('ttapp.controller.PhoneContact', {
 
 						ttapp.util.Analytics.trackView('Trinket');
         }
+        */
+
+        Ext.Viewport.animateActiveItem('trinket', {type: 'fade', direction: 'up', easing: 'ease-out'});
+        list.destroy();
+
+        ttapp.util.Analytics.trackView('Trinket');
     }
 });

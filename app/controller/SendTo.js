@@ -153,6 +153,17 @@ Ext.define('ttapp.controller.SendTo', {
             // no embeded html tags allowed
             var prevTextMsg = Ext.ComponentQuery.query('#previewTextMsg')[0].getValue().replace(/[<|>]/g, '');
             if (me.selectedContact.phone_number) {
+
+
+                me.sendTink(from_user, me.selectedContact.phone_number, (new Date()).valueOf(), me.trinket_name,
+                    prevTextMsg, me.seconds_sent, me.selectedContact.on_tinktime);
+
+                //reset before leaving
+                Ext.ComponentQuery.query('#previewTextMsg')[0].setValue('');
+                me.showSplit();
+
+
+                /*
                 //is receipient on tinktime
                 if (me.selectedContact.on_tinktime) {
                     me.sendTink(from_user, me.selectedContact.phone_number, (new Date()).valueOf(), me.trinket_name,
@@ -163,7 +174,9 @@ Ext.define('ttapp.controller.SendTo', {
                     //me.closeMe();
                     Ext.ComponentQuery.query('#previewTextMsg')[0].setValue('');
                     me.showSplit();
-                } else {
+                }
+
+                else {
                     //ask for user confirmation to send sms
                     Ext.Msg.confirm(
                         "Invite " + me.selectedContact.first_name+' '+ me.selectedContact.last_name,
@@ -173,7 +186,8 @@ Ext.define('ttapp.controller.SendTo', {
                                 me.inviteViaSms();
                             }
                         }, me);
-                }
+                }*/
+
                 //me.clearAll();
             } else {
                 Ext.Msg.alert('Recipient?', 'Please choose a recipient.', Ext.emptyFn);
@@ -181,7 +195,7 @@ Ext.define('ttapp.controller.SendTo', {
         });
 
     },
-    sendTink: function(from_user, to_user, send_timestamp, trinket_name, text, seconds_sent) {
+    sendTink: function(from_user, to_user, send_timestamp, trinket_name, text, seconds_sent, on_tinktime) {
         seconds_sent = seconds_sent.split(":");
         total_seconds = (parseInt(seconds_sent[0])*3600) + (parseInt(seconds_sent[1])*60) + (parseInt(seconds_sent[2]));
         total_seconds = total_seconds < 1? 1 : total_seconds;
@@ -200,7 +214,8 @@ Ext.define('ttapp.controller.SendTo', {
                 "trinket_name": trinket_name,
                 "text": text,
                 "seconds_sent": total_seconds,
-                "unread": true
+                "unread": true,
+                "on_tinktime": on_tinktime
             },
             success: function(response) {
                 console.log(response.responseText);

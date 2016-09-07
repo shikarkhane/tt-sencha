@@ -1256,6 +1256,7 @@ Ext.define('ttapp.util.Common', {
         return imagePath;
     },
     logInviteAction: function(user, invitee){
+        console.log('log invite action ');
         Ext.Ajax.request({
             url: ttapp.config.Config.getBaseURL() + '/log-invite-action/' + num + '/invitee/'+ invitee + '/',
             method: 'POST',

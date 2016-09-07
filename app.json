@@ -1,5 +1,6 @@
 {
     "framework": "touch",
+    "framework": "touch",
     "builds": {
         "web": {"default": true},
         "native": {
